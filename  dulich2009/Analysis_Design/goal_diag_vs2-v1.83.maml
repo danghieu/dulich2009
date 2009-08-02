@@ -1,0 +1,36 @@
+<?xml version="1.83"?><!DOCTYPE mas SYSTEM "atsystem1.83.dtd">
+<mas name=°null° key=°system@000°><dscr>none</dscr><framework name="agentMOM"/><kmark="43"/>
+<goal name=°Goal 1° key=°goal@1°> num=°1° dscr=°Book tourism service
+°<gName=°null°<gprt=f<sps=<view x="1379" y="68" w="92" h="37"/> n_pts="2" x0="0" y0="0" x1="0" y1="0"</goal>
+<goal name=°Goal 1.1° key=°goal@3°> num=°1.1° dscr=°Search °<gName=°goal@1°<gprt=f<sps=<view x="166" y="155" w="60" h="37"/> n_pts="2" x0="1339" y0="88" x1="166" y1="136"</goal>
+<goal name=°Goal 1.1.1° key=°goal@11°> num=°1.1.1° dscr=°Read key words°<gName=°goal@3°<gprt=f<sps=<view x="56" y="258" w="69" h="37"/> n_pts="2" x0="151" y0="175" x1="57" y1="239"</goal>
+<goal name=°Goal 1.1.2° key=°goal@12°> num=°1.1.2° dscr=°Refine and rank keyword°<gName=°goal@3°<gprt=f<sps=<view x="155" y="258" w="99" h="37"/> n_pts="2" x0="166" y0="175" x1="156" y1="239"</goal>
+<goal name=°Goal 1.1.3° key=°goal@42°> num=°1.1.3° dscr=°Search with key words°<gName=°goal@3°<gprt=f<sps=<view x="267" y="242" w="103" h="37"/> n_pts="2" x0="181" y0="175" x1="268" y1="223"</goal>
+<goal name=°Goal 1.2° key=°goal@4°> num=°1.2° dscr=°Produce results°<gName=°goal@1°<gprt=f<sps=<view x="464" y="155" w="75" h="37"/> n_pts="2" x0="1345" y0="88" x1="465" y1="136"</goal>
+<goal name=°Goal 1.2.1° key=°goal@10°> num=°1.2.1° dscr=°Read raw results°<gName=°goal@4°<gprt=f<sps=<view x="399" y="258" w="92" h="37"/> n_pts="2" x0="445" y0="175" x1="399" y1="239"</goal>
+<goal name=°Goal 1.2.2° key=°goal@14°> num=°1.2.2° dscr=°Refine results°<gName=°goal@4°<gprt=f<sps=<view x="494" y="258" w="75" h="37"/> n_pts="2" x0="463" y0="175" x1="495" y1="239"</goal>
+<goal name=°Goal 1.2.3° key=°goal@16°> num=°1.2.3° dscr=°Display final results°<gName=°goal@4°<gprt=f<sps=<view x="586" y="258" w="80" h="37"/> n_pts="2" x0="481" y0="175" x1="586" y1="239"</goal>
+<goal name=°Goal 1.3° key=°goal@5°> num=°1.3° dscr=°Book services°<gName=°goal@1°<gprt=f<sps=<view x="722" y="155" w="60" h="37"/> n_pts="2" x0="1351" y0="88" x1="722" y1="136"</goal>
+<goal name=°Goal 1.3.1° key=°goal@41°> num=°1.3.1° dscr=°Check availability°<gName=°goal@5°<gprt=f<sps=<view x="695" y="242" w="74" h="37"/> n_pts="2" x0="707" y0="175" x1="695" y1="223"</goal>
+<goal name=°Goal 1.3.2° key=°goal@17°> num=°1.3.2° dscr=°Get user information°<gName=°goal@5°<gprt=f<sps=<view x="789" y="258" w="86" h="37"/> n_pts="2" x0="722" y0="175" x1="789" y1="239"</goal>
+<goal name=°Goal 1.3.3° key=°goal@18°> num=°1.3.3° dscr=°Process booking°<gName=°goal@5°<gprt=f<sps=<view x="885" y="258" w="85" h="37"/> n_pts="2" x0="737" y0="175" x1="886" y1="239"</goal>
+<goal name=°Goal 1.3.3.1° key=°goal@22°> num=°1.3.3.1° dscr=°Book service from suppliers°<gName=°goal@18°<gprt=f<sps=<view x="883" y="361" w="119" h="37"/> n_pts="2" x0="885" y0="278" x1="884" y1="342"</goal>
+<goal name=°Goal 1.4° key=°goal@6°> num=°1.4° dscr=°Post services
+°<gName=°goal@1°<gprt=f<sps=<view x="1260" y="155" w="60" h="37"/> n_pts="2" x0="1369" y0="88" x1="1260" y1="136"</goal>
+<goal name=°Goal 1.4.1° key=°goal@30°> num=°1.4.1° dscr=°Post basic services°<gName=°goal@6°<gprt=f<sps=<view x="1216" y="258" w="97" h="37"/> n_pts="2" x0="1250" y0="175" x1="1217" y1="239"</goal>
+<goal name=°Goal 1.4.2° key=°goal@31°> num=°1.4.2° dscr=°Post 
+composition
+ services°<gName=°goal@6°<gprt=f<sps=<view x="1313" y="266" w="77" h="53"/> n_pts="2" x0="1270" y0="175" x1="1314" y1="239"</goal>
+<goal name=°Goal 1.5° key=°goal@24°> num=°1.5° dscr=°Update prices°<gName=°goal@1°<gprt=f<sps=<view x="1365" y="155" w="69" h="37"/> n_pts="2" x0="1375" y0="88" x1="1366" y1="136"</goal>
+<goal name=°Goal 1.5.1° key=°goal@32°> num=°1.5.1° dscr=°Update local database°<gName=°goal@24°<gprt=f<sps= sp=°goal@25° sp=°goal@26° sp=°goal@27° sp=°goal@28°<view x="1432" y="258" w="90" h="37"/> n_pts="2" x0="1354" y0="175" x1="1405" y1="239"</goal>
+<goal name=°Goal 1.5.2° key=°goal@33°> num=°1.5.2° dscr=°Inform relative paticipators°<gName=°goal@24°<gprt=f<sps= sp=°goal@25° sp=°goal@26° sp=°goal@27° sp=°goal@28°<view x="1578" y="266" w="74" h="53"/> n_pts="2" x0="1377" y0="175" x1="1559" y1="239"</goal>
+<goal name=°Goal 1.6° key=°goal@25°> num=°1.6° dscr=°Modify services°<gName=°goal@1°<gprt=f<sps=<view x="1460" y="155" w="63" h="37"/> n_pts="2" x0="1381" y0="88" x1="1461" y1="136"</goal>
+<goal name=°Goal 1.7° key=°goal@26°> num=°1.7° dscr=°Delete services°<gName=°goal@1°<gprt=f<sps=<view x="1547" y="155" w="65" h="37"/> n_pts="2" x0="1387" y0="88" x1="1548" y1="136"</goal>
+<goal name=°Goal 1.8° key=°goal@27°> num=°1.8° dscr=°Modify booking°<gName=°goal@1°<gprt=f<sps=<view x="1640" y="155" w="63" h="37"/> n_pts="2" x0="1393" y0="88" x1="1641" y1="136"</goal>
+<goal name=°Goal 1.9° key=°goal@28°> num=°1.9° dscr=°Cancel booking°<gName=°goal@1°<gprt=f<sps=<view x="1743" y="155" w="68" h="37"/> n_pts="2" x0="1399" y0="88" x1="1743" y1="136"</goal>
+<goal name=°Goal 1.10° key=°goal@35°> num=°1.10° dscr=°Manage destinations°<gName=°goal@1°<gprt=f<sps=<view x="1837" y="155" w="80" h="37"/> n_pts="2" x0="1405" y0="88" x1="1837" y1="136"</goal>
+<goal name=°Goal 1.11° key=°goal@36°> num=°1.11° dscr=°Operate 
+tour°<gName=°goal@1°<gprt=f<sps=<view x="1926" y="155" w="77" h="37"/> n_pts="2" x0="1411" y0="88" x1="1927" y1="136"</goal>
+<goal name=°Goal 1.12° key=°goal@37°> num=°1.12° dscr=°Manage system°<gName=°goal@1°<gprt=f<sps=<view x="2010" y="155" w="80" h="37"/> n_pts="2" x0="1417" y0="88" x1="2010" y1="136"</goal>
+<goal name=°Goal 1.13° key=°goal@38°> num=°1.13° dscr=°Interact between suppliers°<gName=°goal@1°<gprt=f<sps=<view x="1158" y="155" w="111" h="37"/> n_pts="2" x0="1363" y0="88" x1="1159" y1="136"</goal>
+<goal name=°Goal 1.14° key=°goal@40°> num=°1.14° dscr=°Synchronize°<gName=°goal@1°<gprt=f<sps=<view x="916" y="155" w="75" h="37"/> n_pts="2" x0="1357" y0="88" x1="917" y1="136"</goal></mas>
