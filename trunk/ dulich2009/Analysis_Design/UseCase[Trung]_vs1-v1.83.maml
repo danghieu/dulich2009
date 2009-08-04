@@ -1,0 +1,63 @@
+<?xml version="1.83"?><!DOCTYPE mas SYSTEM "atsystem1.83.dtd">
+<mas name=°null° key=°system@000°><dscr>none</dscr><framework name="agentMOM"/><kmark="65"/>
+<role name=°Controller° key=°role@3°> dscr=°none°<goals: goals=0<view x="87" y="75" w="74" h="50"/></role>
+<role name=°User° key=°role@4°> dscr=°none°<goals: goals=0<view x="165" y="74" w="60" h="50"/></role>
+<useCase name=°View metadata° key=°usecase@1°> dscr=°Khi truy c?p vào h? th?ng, ng??i s? d?ng c?n có kh? n?ng yêu c?u vi?c xem xét các mô t? v? các d?ch v? du lich, các thành ph?n th? tr??ng khác nhau. ?? kh? d?ng c?a các metadata này là ?i?u ki?n tiên quy?t ?? theo dõi c?u trúc c?a các thành ph?n th? tr??ng và ??t ???c tính liên k?t gi?a các thành ph?n th? tr??ng c? th?°
+<seqDiag name=°View metadata° key=°seqdiag@2°>
+<Role2 name=°user° key=°role2@5°> rName=°role@4°> dscr=°none°<view x="107" y="62" w="81" h="25"/> lLen "300"/></Role2>
+<Role2 name=°manager° key=°role2@6°> rName=°role@3°> dscr=°none°<view x="327" y="62" w="133" h="25"/> lLen "300"/></Role2>
+<message name=°View metadata° key=°mess@8°> f=°role2@5° s=°role2@6°<view y ="148"</message>
+<message name=°metadata° key=°mess@9°> f=°role2@6° s=°role2@5°<view y ="196"</message></seqDiag></useCase>
+<useCase name=°Manage feedback° key=°usecase@10°> dscr=°none°
+<seqDiag name=°Manage feedback° key=°seqdiag@11°>
+<Role2 name=°user° key=°role2@12°> rName=°role@4°> dscr=°none°<view x="93" y="75" w="81" h="25"/> lLen "300"/></Role2>
+<Role2 name=°manager° key=°role2@13°> rName=°role@3°> dscr=°none°<view x="358" y="75" w="133" h="25"/> lLen "300"/></Role2>
+<message name=°Post comments ° key=°mess@14°> f=°role2@12° s=°role2@13°<view y ="139"</message>
+<message name=°View comments° key=°mess@15°> f=°role2@12° s=°role2@13°<view y ="246"</message>
+<message name=°Comments° key=°mess@16°> f=°role2@13° s=°role2@12°<view y ="306"</message></seqDiag></useCase>
+<useCase name=°Manage access° key=°usecase@17°> dscr=°none°
+<seqDiag name=°Manage access° key=°seqdiag@19°>
+<Role2 name=°user° key=°role2@20°> rName=°role@4°> dscr=°none°<view x="76" y="75" w="81" h="25"/> lLen "300"/></Role2>
+<Role2 name=°manager° key=°role2@21°> rName=°role@3°> dscr=°none°<view x="344" y="75" w="133" h="25"/> lLen "300"/></Role2>
+<message name=°Register° key=°mess@22°> f=°role2@20° s=°role2@21°<view y ="129"</message>
+<message name=°Log in° key=°mess@23°> f=°role2@20° s=°role2@21°<view y ="177"</message>
+<message name=°Log out° key=°mess@24°> f=°role2@20° s=°role2@21°<view y ="221"</message>
+<message name=°Inform success or fail° key=°mess@25°> f=°role2@21° s=°role2@20°<view y ="293"</message></seqDiag></useCase>
+<useCase name=°Change languages° key=°usecase@18°> dscr=°none°
+<seqDiag name=°Change languages° key=°seqdiag@26°>
+<Role2 name=°user° key=°role2@27°> rName=°role@4°> dscr=°none°<view x="65" y="75" w="81" h="25"/> lLen "300"/></Role2>
+<Role2 name=°manager° key=°role2@28°> rName=°role@3°> dscr=°none°<view x="369" y="75" w="133" h="25"/> lLen "300"/></Role2>
+<message name=°change language° key=°mess@29°> f=°role2@27° s=°role2@28°<view y ="136"</message>
+<message name=°display in new language° key=°mess@30°> f=°role2@28° s=°role2@27°<view y ="189"</message></seqDiag></useCase>
+<useCase name=°Change currencies° key=°usecase@31°> dscr=°none°
+<seqDiag name=°Change currencies° key=°seqdiag@32°>
+<Role2 name=°user° key=°role2@33°> rName=°role@4°> dscr=°none°<view x="70" y="75" w="81" h="25"/> lLen "300"/></Role2>
+<Role2 name=°manager° key=°role2@34°> rName=°role@3°> dscr=°none°<view x="333" y="75" w="133" h="25"/> lLen "300"/></Role2>
+<message name=°Change currency° key=°mess@35°> f=°role2@33° s=°role2@34°<view y ="150"</message>
+<message name=°use new currency type° key=°mess@36°> f=°role2@34° s=°role2@33°<view y ="221"</message></seqDiag></useCase>
+<useCase name=°Inform automatically° key=°usecase@37°> dscr=°none°
+<seqDiag name=°Inform automatically° key=°seqdiag@38°>
+<Role2 name=°customer° key=°role2@39°> rName=°role@4°> dscr=°none°<view x="534" y="75" w="108" h="25"/> lLen "300"/></Role2>
+<Role2 name=°supplier° key=°role2@40°> rName=°role@3°> dscr=°none°<view x="120" y="75" w="128" h="25"/> lLen "300"/></Role2>
+<Role2 name=°manager° key=°role2@42°> rName=°role@3°> dscr=°none°<view x="396" y="75" w="133" h="25"/> lLen "300"/></Role2>
+<message name=°Select customers° key=°mess@43°> f=°role2@40° s=°role2@42°<view y ="121"</message>
+<message name=°list of customers° key=°mess@45°> f=°role2@42° s=°role2@40°<view y ="180"</message>
+<message name=°Inform news° key=°mess@46°> f=°role2@40° s=°role2@39°<view y ="238"</message></seqDiag></useCase>
+<useCase name=°View market data° key=°usecase@47°> dscr=°none°
+<seqDiag name=°View market data° key=°seqdiag@48°>
+<Role2 name=°user° key=°role2@49°> rName=°role@4°> dscr=°none°<view x="65" y="75" w="81" h="25"/> lLen "300"/></Role2>
+<Role2 name=°manager° key=°role2@50°> rName=°role@3°> dscr=°none°<view x="369" y="75" w="133" h="25"/> lLen "300"/></Role2>
+<message name=°View market data° key=°mess@51°> f=°role2@49° s=°role2@50°<view y ="139"</message>
+<message name=°market data° key=°mess@52°> f=°role2@50° s=°role2@49°<view y ="206"</message></seqDiag></useCase>
+<useCase name=°Create services° key=°usecase@53°> dscr=°none°
+<seqDiag name=°Create services° key=°seqdiag@54°>
+<Role2 name=°user° key=°role2@55°> rName=°role@4°> dscr=°none°<view x="65" y="75" w="81" h="25"/> lLen "300"/></Role2>
+<Role2 name=°manager° key=°role2@56°> rName=°role@3°> dscr=°none°<view x="352" y="75" w="133" h="25"/> lLen "300"/></Role2>
+<message name=°create a new service° key=°mess@57°> f=°role2@55° s=°role2@56°<view y ="133"</message>
+<message name=°Inform success or fail° key=°mess@58°> f=°role2@56° s=°role2@55°<view y ="199"</message></seqDiag></useCase>
+<useCase name=°Modify services° key=°usecase@59°> dscr=°none°
+<seqDiag name=°Modify services° key=°seqdiag@60°>
+<Role2 name=°user° key=°role2@61°> rName=°role@4°> dscr=°none°<view x="65" y="75" w="81" h="25"/> lLen "300"/></Role2>
+<Role2 name=°manager° key=°role2@62°> rName=°role@3°> dscr=°none°<view x="351" y="75" w="133" h="25"/> lLen "300"/></Role2>
+<message name=°Modify a service° key=°mess@63°> f=°role2@61° s=°role2@62°<view y ="128"</message>
+<message name=°Inform success or fail° key=°mess@64°> f=°role2@62° s=°role2@61°<view y ="188"</message></seqDiag></useCase></mas>
