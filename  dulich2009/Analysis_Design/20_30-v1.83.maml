@@ -1,0 +1,93 @@
+<?xml version="1.83"?><!DOCTYPE mas SYSTEM "atsystem1.83.dtd">
+<mas name=°null° key=°system@000°><dscr>none</dscr><framework name="agentMOM"/><kmark="108"/>
+<goal name=°Goal 1° key=°goal@1°> num=°1° dscr=°Book tourism service
+°<gName=°null°<gprt=f<sps=<view x="1379" y="68" w="92" h="37"/> n_pts="2" x0="0" y0="0" x1="0" y1="0"</goal>
+<goal name=°Goal 1.1° key=°goal@3°> num=°1.1° dscr=°Search °<gName=°goal@1°<gprt=f<sps=<view x="166" y="155" w="60" h="37"/> n_pts="2" x0="1339" y0="88" x1="166" y1="136"</goal>
+<goal name=°Goal 1.1.1° key=°goal@11°> num=°1.1.1° dscr=°Read key words°<gName=°goal@3°<gprt=f<sps=<view x="56" y="258" w="69" h="37"/> n_pts="2" x0="151" y0="175" x1="57" y1="239"</goal>
+<goal name=°Goal 1.1.2° key=°goal@12°> num=°1.1.2° dscr=°Refine and rank keyword°<gName=°goal@3°<gprt=f<sps=<view x="155" y="258" w="99" h="37"/> n_pts="2" x0="166" y0="175" x1="156" y1="239"</goal>
+<goal name=°Goal 1.1.3° key=°goal@42°> num=°1.1.3° dscr=°Search with key words°<gName=°goal@3°<gprt=f<sps=<view x="267" y="242" w="103" h="37"/> n_pts="2" x0="181" y0="175" x1="268" y1="223"</goal>
+<goal name=°Goal 1.2° key=°goal@4°> num=°1.2° dscr=°Produce results°<gName=°goal@1°<gprt=f<sps=<view x="464" y="155" w="75" h="37"/> n_pts="2" x0="1345" y0="88" x1="465" y1="136"</goal>
+<goal name=°Goal 1.2.1° key=°goal@10°> num=°1.2.1° dscr=°Read raw results°<gName=°goal@4°<gprt=f<sps=<view x="399" y="258" w="92" h="37"/> n_pts="2" x0="445" y0="175" x1="399" y1="239"</goal>
+<goal name=°Goal 1.2.2° key=°goal@14°> num=°1.2.2° dscr=°Refine results°<gName=°goal@4°<gprt=f<sps=<view x="494" y="258" w="75" h="37"/> n_pts="2" x0="463" y0="175" x1="495" y1="239"</goal>
+<goal name=°Goal 1.2.3° key=°goal@16°> num=°1.2.3° dscr=°Display final results°<gName=°goal@4°<gprt=f<sps=<view x="586" y="258" w="80" h="37"/> n_pts="2" x0="481" y0="175" x1="586" y1="239"</goal>
+<goal name=°Goal 1.3° key=°goal@5°> num=°1.3° dscr=°Book services°<gName=°goal@1°<gprt=f<sps=<view x="722" y="155" w="60" h="37"/> n_pts="2" x0="1351" y0="88" x1="722" y1="136"</goal>
+<goal name=°Goal 1.3.1° key=°goal@41°> num=°1.3.1° dscr=°Check availability°<gName=°goal@5°<gprt=f<sps=<view x="695" y="242" w="74" h="37"/> n_pts="2" x0="707" y0="175" x1="695" y1="223"</goal>
+<goal name=°Goal 1.3.2° key=°goal@17°> num=°1.3.2° dscr=°Get user information°<gName=°goal@5°<gprt=f<sps=<view x="789" y="258" w="86" h="37"/> n_pts="2" x0="722" y0="175" x1="789" y1="239"</goal>
+<goal name=°Goal 1.3.3° key=°goal@18°> num=°1.3.3° dscr=°Process booking°<gName=°goal@5°<gprt=f<sps=<view x="885" y="258" w="85" h="37"/> n_pts="2" x0="737" y0="175" x1="886" y1="239"</goal>
+<goal name=°Goal 1.3.3.1° key=°goal@22°> num=°1.3.3.1° dscr=°Book service from suppliers°<gName=°goal@18°<gprt=f<sps=<view x="883" y="361" w="119" h="37"/> n_pts="2" x0="885" y0="278" x1="884" y1="342"</goal>
+<goal name=°Goal 1.4° key=°goal@6°> num=°1.4° dscr=°Post services
+°<gName=°goal@1°<gprt=f<sps=<view x="1260" y="155" w="60" h="37"/> n_pts="2" x0="1369" y0="88" x1="1260" y1="136"</goal>
+<goal name=°Goal 1.4.1° key=°goal@30°> num=°1.4.1° dscr=°Post basic services°<gName=°goal@6°<gprt=f<sps=<view x="1216" y="258" w="97" h="37"/> n_pts="2" x0="1250" y0="175" x1="1217" y1="239"</goal>
+<goal name=°Goal 1.4.2° key=°goal@31°> num=°1.4.2° dscr=°Post 
+composition
+ services°<gName=°goal@6°<gprt=f<sps=<view x="1313" y="266" w="77" h="53"/> n_pts="2" x0="1270" y0="175" x1="1314" y1="239"</goal>
+<goal name=°Goal 1.5° key=°goal@24°> num=°1.5° dscr=°Update prices°<gName=°goal@1°<gprt=f<sps=<view x="1365" y="155" w="69" h="37"/> n_pts="2" x0="1375" y0="88" x1="1366" y1="136"</goal>
+<goal name=°Goal 1.5.1° key=°goal@32°> num=°1.5.1° dscr=°Update local database°<gName=°goal@24°<gprt=f<sps= sp=°goal@25° sp=°goal@26° sp=°goal@27° sp=°goal@28°<view x="1432" y="258" w="90" h="37"/> n_pts="2" x0="1354" y0="175" x1="1405" y1="239"</goal>
+<goal name=°Goal 1.5.2° key=°goal@33°> num=°1.5.2° dscr=°Inform relative paticipators°<gName=°goal@24°<gprt=f<sps= sp=°goal@25° sp=°goal@26° sp=°goal@27° sp=°goal@28°<view x="1578" y="266" w="74" h="53"/> n_pts="2" x0="1377" y0="175" x1="1559" y1="239"</goal>
+<goal name=°Goal 1.6° key=°goal@25°> num=°1.6° dscr=°Modify services°<gName=°goal@1°<gprt=f<sps=<view x="1460" y="155" w="63" h="37"/> n_pts="2" x0="1381" y0="88" x1="1461" y1="136"</goal>
+<goal name=°Goal 1.7° key=°goal@26°> num=°1.7° dscr=°Delete services°<gName=°goal@1°<gprt=f<sps=<view x="1547" y="155" w="65" h="37"/> n_pts="2" x0="1387" y0="88" x1="1548" y1="136"</goal>
+<goal name=°Goal 1.8° key=°goal@27°> num=°1.8° dscr=°Modify booking°<gName=°goal@1°<gprt=f<sps=<view x="1640" y="155" w="63" h="37"/> n_pts="2" x0="1393" y0="88" x1="1641" y1="136"</goal>
+<goal name=°Goal 1.9° key=°goal@28°> num=°1.9° dscr=°Cancel booking°<gName=°goal@1°<gprt=f<sps=<view x="1743" y="155" w="68" h="37"/> n_pts="2" x0="1399" y0="88" x1="1743" y1="136"</goal>
+<goal name=°Goal 1.10° key=°goal@35°> num=°1.10° dscr=°Manage destinations°<gName=°goal@1°<gprt=f<sps=<view x="1837" y="155" w="80" h="37"/> n_pts="2" x0="1405" y0="88" x1="1837" y1="136"</goal>
+<goal name=°Goal 1.11° key=°goal@36°> num=°1.11° dscr=°Operate 
+tour°<gName=°goal@1°<gprt=f<sps=<view x="1926" y="155" w="77" h="37"/> n_pts="2" x0="1411" y0="88" x1="1927" y1="136"</goal>
+<goal name=°Goal 1.12° key=°goal@37°> num=°1.12° dscr=°Manage system°<gName=°goal@1°<gprt=f<sps=<view x="2010" y="155" w="80" h="37"/> n_pts="2" x0="1417" y0="88" x1="2010" y1="136"</goal>
+<goal name=°Goal 1.13° key=°goal@38°> num=°1.13° dscr=°Interact between suppliers°<gName=°goal@1°<gprt=f<sps=<view x="1158" y="155" w="111" h="37"/> n_pts="2" x0="1363" y0="88" x1="1159" y1="136"</goal>
+<goal name=°Goal 1.14° key=°goal@40°> num=°1.14° dscr=°Synchronize°<gName=°goal@1°<gprt=f<sps=<view x="916" y="155" w="75" h="37"/> n_pts="2" x0="1357" y0="88" x1="917" y1="136"</goal>
+<role name=°Controller° key=°role@45°> dscr=°none°<goals: goals=0<view x="87" y="75" w="74" h="50"/></role>
+<role name=°User° key=°role@46°> dscr=°none°<goals: goals=0<view x="155" y="75" w="60" h="50"/></role>
+<role name=°Broker° key=°role@47°> dscr=°none°<goals: goals=0<view x="230" y="75" w="60" h="50"/></role>
+<role name=°Supplier° key=°role@48°> dscr=°none°<goals: goals=0<view x="308" y="75" w="66" h="50"/></role>
+<useCase name=°Update Price° key=°usecase@43°> dscr=°C?p nh?t giá cho d?ch v? nào ?ó.°
+<seqDiag name=°Update Price° key=°seqdiag@44°>
+<Role2 name=°Manager° key=°role2@49°> rName=°role@45°> dscr=°none°<view x="319" y="75" w="131" h="25"/> lLen "300"/></Role2>
+<Role2 name=°suppliers° key=°role2@50°> rName=°role@48°> dscr=°none°<view x="125" y="75" w="127" h="25"/> lLen "300"/></Role2>
+<Role2 name=°Customer° key=°role2@54°> rName=°role@46°> dscr=°none°<view x="622" y="75" w="111" h="25"/> lLen "300"/></Role2>
+<message name=°G?i yêu c?u c?p nh?t giá° key=°mess@51°> f=°role2@50° s=°role2@49°<view y ="156"</message>
+<message name=°Thông báo c?p nh?t thành công° key=°mess@53°> f=°role2@49° s=°role2@50°<view y ="204"</message>
+<message name=°G?i thông báo thay ??i giá t?i khách hàng ?ã ??ng ký° key=°mess@55°> f=°role2@49° s=°role2@54°<view y ="247"</message></seqDiag></useCase>
+<useCase name=°Update Availability° key=°usecase@56°> dscr=°none°
+<seqDiag name=°Update Availability° key=°seqdiag@57°>
+<Role2 name=°suppliers° key=°role2@58°> rName=°role@48°> dscr=°none°<view x="88" y="75" w="127" h="25"/> lLen "300"/></Role2>
+<Role2 name=°Manager° key=°role2@60°> rName=°role@45°> dscr=°none°<view x="359" y="75" w="131" h="25"/> lLen "300"/></Role2>
+<message name=°G?i thông tin c?p nh?t v? ?? kh? d?ng° key=°mess@62°> f=°role2@58° s=°role2@60°<view y ="151"</message>
+<message name=°Thông báo c?p nh?t thành công° key=°mess@64°> f=°role2@60° s=°role2@58°<view y ="202"</message></seqDiag></useCase>
+<useCase name=°DefineFlexibleServices° key=°usecase@65°> dscr=°Các d?ch v? khách hàng có th? ??a thêm m?t s? yêu c?u ph? nh?: gh? cho tr? em, ?i?u hòa không khí...°
+<seqDiag name=°DefineFlexibleServices° key=°seqdiag@66°>
+<Role2 name=°Customer° key=°role2@67°> rName=°role@46°> dscr=°none°<view x="80" y="75" w="111" h="25"/> lLen "340"/></Role2>
+<Role2 name=°Manager° key=°role2@68°> rName=°role@45°> dscr=°none°<view x="250" y="75" w="131" h="25"/> lLen "340"/></Role2>
+<Role2 name=°suppliers° key=°role2@69°> rName=°role@48°> dscr=°none°<view x="575" y="75" w="127" h="25"/> lLen "340"/></Role2>
+<Role2 name=°brokers° key=°role2@70°> rName=°role@47°> dscr=°none°<view x="436" y="75" w="107" h="25"/> lLen "340"/></Role2>
+<message name=°Yêu c?u v? d?ch v? ° key=°mess@71°> f=°role2@67° s=°role2@68°<view y ="105"</message>
+<message name=°g?i yêu c?u ?? tìm nhà cung c?p th?a mãn° key=°mess@72°> f=°role2@68° s=°role2@70°<view y ="142"</message>
+<message name=°G?i yêu c?u v? d?ch v? ?? tìm nhà cung c?p th?a mãn° key=°mess@73°> f=°role2@68° s=°role2@69°<view y ="184"</message>
+<message name=°Tr? l?i° key=°mess@75°> f=°role2@70° s=°role2@68°<view y ="224"</message>
+<message name=°Tr? l?i có d?ch v? th?a mãn° key=°mess@76°> f=°role2@69° s=°role2@68°<view y ="282"</message>
+<message name=°Thông báo cho khách hàng° key=°mess@77°> f=°role2@68° s=°role2@67°<view y ="318"</message></seqDiag></useCase>
+<useCase name=°CombineServices° key=°usecase@78°> dscr=°none°
+<seqDiag name=°CombineService° key=°seqdiag@79°></seqDiag></useCase>
+<useCase name=°SubstituteServices° key=°usecase@80°> dscr=°none°
+<seqDiag name=°SubstituteServices° key=°seqdiag@81°>
+<Role2 name=°suppliers° key=°role2@83°> rName=°role@48°> dscr=°none°<view x="88" y="75" w="127" h="25"/> lLen "340"/></Role2>
+<Role2 name=°brokers° key=°role2@84°> rName=°role@47°> dscr=°none°<view x="239" y="75" w="107" h="25"/> lLen "340"/></Role2>
+<Role2 name=°Manager° key=°role2@85°> rName=°role@45°> dscr=°none°<view x="392" y="75" w="131" h="25"/> lLen "340"/></Role2>
+<Role2 name=°Customer° key=°role2@86°> rName=°role@46°> dscr=°none°<view x="536" y="75" w="111" h="25"/> lLen "340"/></Role2>
+<message name=°g?i yêu c?u thay ??i d?ch v?° key=°mess@90°> f=°role2@84° s=°role2@85°<view y ="129"</message>
+<message name=°G?i yêu c?u thay ??i d?ch v?° key=°mess@88°> f=°role2@83° s=°role2@85°<view y ="173"</message>
+<message name=°Thông báo thay ??i thành công° key=°mess@91°> f=°role2@85° s=°role2@84°<view y ="222"</message>
+<message name=°Thông báo thay ??i thành công° key=°mess@92°> f=°role2@85° s=°role2@83°<view y ="265"</message>
+<message name=°G?i thông báo v? thay ??i cho khách hàng ?ã ??ng ký nh?n thông báo° key=°mess@93°> f=°role2@85° s=°role2@86°<view y ="312"</message></seqDiag></useCase>
+<useCase name=°RequestUserProfile° key=°usecase@94°> dscr=°none°
+<seqDiag name=°RequestUserProfile° key=°seqdiag@95°></seqDiag></useCase>
+<useCase name=°InteractBetweenSuppliers° key=°usecase@96°> dscr=°none°
+<seqDiag name=°InteractBetweenSuppliers° key=°seqdiag@97°>
+<Role2 name=°suplier° key=°role2@98°> rName=°role@48°> dscr=°none°<view x="107" y="75" w="113" h="25"/> lLen "300"/></Role2>
+<Role2 name=°supplier° key=°role2@99°> rName=°role@48°> dscr=°none°<view x="498" y="75" w="120" h="25"/> lLen "300"/></Role2>
+<Role2 name=°Manager° key=°role2@100°> rName=°role@45°> dscr=°none°<view x="311" y="75" w="131" h="25"/> lLen "300"/></Role2>
+<message name=°Yêu c?u tìm nhà cung c?p° key=°mess@101°> f=°role2@98° s=°role2@100°<view y ="124"</message>
+<message name=°Tr? v? nhà cung c?p phù h?p° key=°mess@102°> f=°role2@100° s=°role2@98°<view y ="189"</message>
+<message name=°Th??ng l??ng° key=°mess@103°> f=°role2@98° s=°role2@99°<view y ="242"</message></seqDiag></useCase>
+<useCase name=°Synchronize° key=°usecase@104°> dscr=°none°
+<seqDiag name=°Synchronize° key=°seqdiag@105°></seqDiag></useCase>
+<useCase name=°ManageDestinations° key=°usecase@106°> dscr=°none°
+<seqDiag name=°ManageDestinations° key=°seqdiag@107°></seqDiag></useCase></mas>
