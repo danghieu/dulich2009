@@ -1,0 +1,145 @@
+<?xml version="1.83"?><!DOCTYPE mas SYSTEM "atsystem1.83.dtd">
+<mas name=°null° key=°system@000°><dscr>none</dscr><framework name="agentMOM"/><kmark="160"/>
+<role name=°User° key=°role@1°> dscr=°none°<goals: goals=0<view x="80" y="75" w="60" h="50"/></role>
+<role name=°Sleuth° key=°role@2°> dscr=°none°<goals: goals=0<view x="189" y="78" w="60" h="50"/></role>
+<role name=°Supplier° key=°role@3°> dscr=°none°<goals: goals=0<view x="399" y="72" w="66" h="50"/></role>
+<role name=°Broker° key=°role@4°> dscr=°none°<goals: goals=0<view x="281" y="163" w="60" h="50"/></role>
+<role name=°Customer° key=°role@65°> dscr=°none°<goals: goals=0<view x="430" y="221" w="75" h="50"/></role>
+<role name=°Manager° key=°role@80°> dscr=°none°<goals: goals=0<view x="151" y="227" w="68" h="50"/></role>
+<role name=°Processor° key=°role@117°> dscr=°none°<goals: goals=0<view x="538" y="75" w="77" h="50"/></role>
+<role name=°DMO° key=°role@136°> dscr=°none°<goals: goals=0<view x="249" y="321" w="60" h="50"/></role>
+<useCase name=°Search° key=°usecase@5°> dscr=°none°
+<seqDiag name=°Search° key=°seqdiag@6°>
+<Role2 name=°Customer° key=°role2@7°> rName=°role@1°> dscr=°none°<view x="58" y="62" w="111" h="25"/> lLen "340"/></Role2>
+<Role2 name=°Manager ° key=°role2@8°> rName=°role@2°> dscr=°none°<view x="208" y="62" w="172" h="25"/> lLen "340"/></Role2>
+<Role2 name=°suppliers° key=°role2@9°> rName=°role@3°> dscr=°none°<view x="544" y="62" w="127" h="25"/> lLen "340"/></Role2>
+<Role2 name=°Ranker° key=°role2@11°> rName=°role@2°> dscr=°none°<view x="385" y="62" w="161" h="25"/> lLen "340"/></Role2>
+<message name=°G?i yêu c?u tìm ki?m d?ch v?° key=°mess@10°> f=°role2@7° s=°role2@8°<view y ="105"</message>
+<message name=°Ch?n l?c, s?p x?p t? khóa° key=°mess@12°> f=°role2@8° s=°role2@11°<view y ="149"</message>
+<message name=°Tìm ki?m d?ch v? c?a các nhà cung c?p° key=°mess@13°> f=°role2@11° s=°role2@9°<view y ="187"</message>
+<message name=°Các d?ch v? th?a mãn° key=°mess@17°> f=°role2@9° s=°role2@11°<view y ="223"</message>
+<message name=°ch?n l?c, s?p x?p k?t qu?° key=°mess@18°> f=°role2@11° s=°role2@8°<view y ="253"</message>
+<message name=°Hi?n th? các d?ch v? th?a mãn° key=°mess@19°> f=°role2@8° s=°role2@7°<view y ="283"</message></seqDiag></useCase>
+<useCase name=°Check availability° key=°usecase@20°> dscr=°none°
+<seqDiag name=°Check availability° key=°seqdiag@21°>
+<Role2 name=°Customer° key=°role2@22°> rName=°role@1°> dscr=°none°<view x="90" y="62" w="111" h="25"/> lLen "340"/></Role2>
+<Role2 name=°Manager ° key=°role2@23°> rName=°role@2°> dscr=°none°<view x="315" y="62" w="172" h="25"/> lLen "340"/></Role2>
+<Role2 name=°Service Suppliers° key=°role2@24°> rName=°role@3°> dscr=°none°<view x="504" y="62" w="171" h="25"/> lLen "340"/></Role2>
+<message name=°ki?m tra d?ch v? còn ph?c v? không° key=°mess@25°> f=°role2@22° s=°role2@23°<view y ="130"</message>
+<message name=°Ki?m tra dich v?° key=°mess@28°> f=°role2@23° s=°role2@24°<view y ="157"</message>
+<message name=°K?t qu?° key=°mess@29°> f=°role2@24° s=°role2@23°<view y ="207"</message>
+<message name=°K?t qu?° key=°mess@30°> f=°role2@23° s=°role2@22°<view y ="229"</message></seqDiag></useCase>
+<useCase name=°Book service° key=°usecase@31°> dscr=°none°
+<seqDiag name=°Book service° key=°seqdiag@32°>
+<Role2 name=°Customer° key=°role2@33°> rName=°role@1°> dscr=°none°<view x="55" y="62" w="111" h="25"/> lLen "580"/></Role2>
+<Role2 name=°Controller° key=°role2@34°> rName=°role@2°> dscr=°none°<view x="213" y="62" w="175" h="25"/> lLen "580"/></Role2>
+<Role2 name=°Suppliers° key=°role2@35°> rName=°role@3°> dscr=°none°<view x="532" y="62" w="128" h="25"/> lLen "580"/></Role2>
+<message name=°??t m?t d?ch v?° key=°mess@37°> f=°role2@33° s=°role2@34°<view y ="105"</message>
+<message name=°ki?m tra ?? kh? d?ng c?a d?ch v?° key=°mess@38°> f=°role2@34° s=°role2@35°<view y ="139"</message>
+<message name=°dich v? s?n sàng ph?c v?° key=°mess@40°> f=°role2@35° s=°role2@34°<view y ="173"</message>
+<message name=°Yêu c?u thông tin cá nhân° key=°mess@43°> f=°role2@34° s=°role2@33°<view y ="214"</message>
+<message name=°G?i thông tin cá nhân° key=°mess@44°> f=°role2@33° s=°role2@34°<view y ="255"</message>
+<message name=°g?i thông tin cá nhân° key=°mess@42°> f=°role2@34° s=°role2@35°<view y ="291"</message>
+<message name=°c?p nh?t csdl và thông báo k?t qu?° key=°mess@48°> f=°role2@35° s=°role2@34°<view y ="333"</message>
+<message name=°K?t qu? vi?c ??t d?ch v?° key=°mess@49°> f=°role2@34° s=°role2@33°<view y ="362"</message></seqDiag></useCase>
+<useCase name=°Manage user profile° key=°usecase@50°> dscr=°none°
+<seqDiag name=°Manage user profile° key=°seqdiag@51°>
+<Role2 name=°Customer° key=°role2@52°> rName=°role@1°> dscr=°none°<view x="352" y="62" w="111" h="25"/> lLen "340"/></Role2>
+<Role2 name=°Controller° key=°role2@53°> rName=°role@2°> dscr=°none°<view x="547" y="62" w="175" h="25"/> lLen "340"/></Role2>
+<Role2 name=°Supplier° key=°role2@54°> rName=°role@3°> dscr=°none°<view x="180" y="62" w="121" h="25"/> lLen "340"/></Role2>
+<Role2 name=°Broker° key=°role2@55°> rName=°role@4°> dscr=°none°<view x="48" y="62" w="101" h="25"/> lLen "340"/></Role2>
+<message name=°g?i thông tin cá nhân° key=°mess@57°> f=°role2@52° s=°role2@53°<view y ="113"</message>
+<message name=°g?i thông tin ??ng ký làm nhà môi gi?i d?ch v?° key=°mess@59°> f=°role2@55° s=°role2@53°<view y ="173"</message>
+<message name=°G?i các thông tin c?n thi?t v? nhà cung c?p° key=°mess@58°> f=°role2@54° s=°role2@53°<view y ="220"</message>
+<message name=°l?u thông tin vào csdl khách hàng° key=°mess@60°> f=°role2@53° s=°role2@52°<view y ="271"</message>
+<message name=°l?u thông tin vào csdl nhà cung c?p và thông báo ket qu?° key=°mess@61°> f=°role2@53° s=°role2@54°<view y ="311"</message>
+<message name=°l?u tr? thông tin vào csdl nhà trung gian và thông báo k?t qu?° key=°mess@62°> f=°role2@53° s=°role2@55°<view y ="355"</message></seqDiag></useCase>
+<useCase name=°Search supplier° key=°usecase@63°> dscr=°none°
+<seqDiag name=°Search supplier° key=°seqdiag@64°>
+<Role2 name=°user° key=°role2@66°> rName=°role@1°> dscr=°none°<view x="42" y="62" w="81" h="25"/> lLen "300"/></Role2>
+<Role2 name=°Manager° key=°role2@67°> rName=°role@2°> dscr=°none°<view x="259" y="62" w="131" h="25"/> lLen "300"/></Role2>
+<Role2 name=°sleuth° key=°role2@72°> rName=°role@2°> dscr=°none°<view x="576" y="62" w="117" h="25"/> lLen "300"/></Role2>
+<message name=°yêu c?u tìm ki?m nhà cung c?p d?ch v? A° key=°mess@69°> f=°role2@66° s=°role2@67°<view y ="105"</message>
+<message name=°Tìm ki?m trong csdl các nhà cung c?p ??ng d?ch v? A° key=°mess@73°> f=°role2@67° s=°role2@72°<view y ="145"</message>
+<message name=°Danh sách k?t qu? th?a mãn° key=°mess@74°> f=°role2@72° s=°role2@67°<view y ="211"</message>
+<message name=°Hi?n th? k?t qu? cho ng??i dùng° key=°mess@75°> f=°role2@67° s=°role2@66°<view y ="244"</message></seqDiag></useCase>
+<useCase name=°SearchDestination° key=°usecase@76°> dscr=°1. Nguoi su dung (user) yeu cau tim kiem cac dia danh du lich theo yeu cau nao day (vi du: tim cac dia danh thuoc tinh Ninh Binh, hoac tim cac dia danh du lich ve Bien...).
+2. Nguoi quan ly he thong nhan cac yeu cau va hoi nguoi tim kiem (Sleuth)   co dia danh nao phu hop
+3. Nguoi thuc hien tim kiem, tim thong tin ve cac dia danh da dang ky trong he thong, de tim cac dia danh phu hop voi yeu cau
+4. Gui danh sach cac dia danh phu hop voi yeu cau.°
+<seqDiag name=°SearchDestination° key=°seqdiag@78°>
+<Role2 name=°null° key=°role2@79°> rName=°role@1°> dscr=°none°<view x="34" y="75" w="60" h="25"/> lLen "300"/></Role2>
+<Role2 name=°null° key=°role2@81°> rName=°role@80°> dscr=°none°<view x="344" y="75" w="77" h="25"/> lLen "300"/></Role2>
+<Role2 name=°null° key=°role2@82°> rName=°role@2°> dscr=°none°<view x="587" y="75" w="64" h="25"/> lLen "300"/></Role2>
+<message name=°Dua ra cac yeu cau ma muon dia diem du lich dap ung° key=°mess@83°> f=°role2@79° s=°role2@81°<view y ="105"</message>
+<message name=°gui yeu cau den nguoi thuc hien tim kiem° key=°mess@84°> f=°role2@81° s=°role2@82°<view y ="166"</message>
+<message name=°Tien hanh tim cac dia diem phu hop, gui ket qua° key=°mess@88°> f=°role2@82° s=°role2@81°<view y ="215"</message>
+<message name=°Gui ket qua cho nguoi yeu cau° key=°mess@90°> f=°role2@81° s=°role2@79°<view y ="251"</message></seqDiag></useCase>
+<useCase name=°searchServices° key=°usecase@77°> dscr=°none°
+<seqDiag name=°searchServices° key=°seqdiag@91°>
+<Role2 name=°null° key=°role2@92°> rName=°role@1°> dscr=°none°<view x="55" y="75" w="60" h="25"/> lLen "300"/></Role2>
+<Role2 name=°null° key=°role2@93°> rName=°role@80°> dscr=°none°<view x="263" y="75" w="77" h="25"/> lLen "300"/></Role2>
+<Role2 name=°null° key=°role2@94°> rName=°role@2°> dscr=°none°<view x="511" y="75" w="64" h="25"/> lLen "300"/></Role2>
+<message name=°Nhap cac thong tin ve dich vu can° key=°mess@95°> f=°role2@92° s=°role2@93°<view y ="105"</message>
+<message name=°Gui thong tin va yeu cau thuc hien tim kiem° key=°mess@97°> f=°role2@93° s=°role2@94°<view y ="145"</message>
+<message name=°Danh sach ket qua phu hop° key=°mess@98°> f=°role2@94° s=°role2@93°<view y ="184"</message>
+<message name=°Thong bao ket qua den nguoi dung° key=°mess@99°> f=°role2@93° s=°role2@92°<view y ="202"</message></seqDiag></useCase>
+<useCase name=°searchEvents° key=°usecase@100°> dscr=°none°
+<seqDiag name=°searchEvents° key=°seqdiag@101°>
+<Role2 name=°null° key=°role2@102°> rName=°role@1°> dscr=°none°<view x="55" y="75" w="60" h="25"/> lLen "300"/></Role2>
+<Role2 name=°null° key=°role2@103°> rName=°role@80°> dscr=°none°<view x="275" y="75" w="77" h="25"/> lLen "300"/></Role2>
+<Role2 name=°null° key=°role2@104°> rName=°role@2°> dscr=°none°<view x="537" y="75" w="64" h="25"/> lLen "300"/></Role2>
+<message name=°Thong tin yeu cau su kien thoa man° key=°mess@105°> f=°role2@102° s=°role2@103°<view y ="105"</message>
+<message name=°g?i yeu cau den nguoi tim kiem va yeu cau thuc hien° key=°mess@106°> f=°role2@103° s=°role2@104°<view y ="146"</message>
+<message name=°danh sach cac su kien phu hop° key=°mess@107°> f=°role2@104° s=°role2@103°<view y ="197"</message>
+<message name=°g?i ket qua cho nguoi dung° key=°mess@108°> f=°role2@103° s=°role2@102°<view y ="230"</message></seqDiag></useCase>
+<useCase name=°viewService'Detail° key=°usecase@109°> dscr=°none°
+<seqDiag name=°viewService'sDetail° key=°seqdiag@110°>
+<Role2 name=°null° key=°role2@111°> rName=°role@1°> dscr=°none°<view x="34" y="75" w="60" h="25"/> lLen "340"/></Role2>
+<Role2 name=°null° key=°role2@112°> rName=°role@80°> dscr=°none°<view x="213" y="75" w="77" h="25"/> lLen "340"/></Role2>
+<Role2 name=°null° key=°role2@113°> rName=°role@3°> dscr=°none°<view x="427" y="75" w="75" h="25"/> lLen "340"/></Role2>
+<Role2 name=°null° key=°role2@114°> rName=°role@117°> dscr=°none°<view x="574" y="75" w="86" h="25"/> lLen "340"/></Role2>
+<message name=°yeu cau xem chi tiet dich vu A° key=°mess@115°> f=°role2@111° s=°role2@112°<view y ="105"</message>
+<message name=°Gui yeu cau den nha cung cap d?ch vu A° key=°mess@116°> f=°role2@112° s=°role2@113°<view y ="140"</message>
+<message name=°yeu cau thuc hien viec lay thong tin chi tiet° key=°mess@118°> f=°role2@113° s=°role2@114°<view y ="185"</message>
+<message name=°ket qua chi tiet dich vu° key=°mess@119°> f=°role2@114° s=°role2@113°<view y ="244"</message>
+<message name=°Ket qua chi tiet dich vu° key=°mess@120°> f=°role2@113° s=°role2@112°<view y ="277"</message>
+<message name=°hien thi cho nguoi dung° key=°mess@121°> f=°role2@112° s=°role2@111°<view y ="314"</message></seqDiag></useCase>
+<useCase name=°viewSupplier'Detail° key=°usecase@122°> dscr=°none°
+<seqDiag name=°viewSupplier'Detail° key=°seqdiag@123°>
+<Role2 name=°null° key=°role2@124°> rName=°role@1°> dscr=°none°<view x="38" y="75" w="60" h="25"/> lLen "340"/></Role2>
+<Role2 name=°null° key=°role2@125°> rName=°role@80°> dscr=°none°<view x="240" y="75" w="77" h="25"/> lLen "340"/></Role2>
+<Role2 name=°A° key=°role2@126°> rName=°role@3°> dscr=°none°<view x="436" y="75" w="82" h="25"/> lLen "340"/></Role2>
+<Role2 name=°A° key=°role2@127°> rName=°role@117°> dscr=°none°<view x="581" y="75" w="93" h="25"/> lLen "340"/></Role2>
+<message name=°Yeu cau xem thong tin nha cung cap A° key=°mess@128°> f=°role2@124° s=°role2@125°<view y ="120"</message>
+<message name=°yeu cau xem thong tin chi tiet° key=°mess@129°> f=°role2@125° s=°role2@126°<view y ="163"</message>
+<message name=°thuc hien xu ly yeu cau° key=°mess@130°> f=°role2@126° s=°role2@127°<view y ="191"</message>
+<message name=°Thong tin ve nha cung cap A° key=°mess@131°> f=°role2@127° s=°role2@126°<view y ="238"</message>
+<message name=°gui ket qua° key=°mess@132°> f=°role2@126° s=°role2@125°<view y ="262"</message>
+<message name=°Hien thi ket qua cho nguoi dung° key=°mess@133°> f=°role2@125° s=°role2@124°<view y ="335"</message></seqDiag></useCase>
+<useCase name=°viewDestination'Detail° key=°usecase@134°> dscr=°none°
+<seqDiag name=°viewDestination'Detail° key=°seqdiag@135°>
+<Role2 name=°null° key=°role2@137°> rName=°role@1°> dscr=°none°<view x="36" y="75" w="60" h="25"/> lLen "340"/></Role2>
+<Role2 name=°null° key=°role2@138°> rName=°role@80°> dscr=°none°<view x="245" y="75" w="77" h="25"/> lLen "340"/></Role2>
+<Role2 name=°A° key=°role2@139°> rName=°role@136°> dscr=°none°<view x="402" y="75" w="63" h="25"/> lLen "340"/></Role2>
+<Role2 name=°A° key=°role2@140°> rName=°role@117°> dscr=°none°<view x="565" y="75" w="93" h="25"/> lLen "340"/></Role2>
+<message name=°yeu cau xem thong tin dia danh A° key=°mess@141°> f=°role2@137° s=°role2@138°<view y ="105"</message>
+<message name=°Gui yeu cau den dia danh A° key=°mess@143°> f=°role2@138° s=°role2@139°<view y ="159"</message>
+<message name=°Yeu cau xu ly° key=°mess@144°> f=°role2@139° s=°role2@140°<view y ="190"</message>
+<message name=°thong tin chi tiet ve dia danh A° key=°mess@145°> f=°role2@140° s=°role2@139°<view y ="240"</message>
+<message name=°Gui thong tin cho nguoi quan ly° key=°mess@146°> f=°role2@139° s=°role2@138°<view y ="286"</message>
+<message name=°Hien thi thong tin cho nguoi dung° key=°mess@147°> f=°role2@138° s=°role2@137°<view y ="328"</message></seqDiag></useCase>
+<useCase name=°registryCustomer° key=°usecase@148°> dscr=°none°
+<seqDiag name=°registryCustomer° key=°seqdiag@149°>
+<Role2 name=°null° key=°role2@150°> rName=°role@1°> dscr=°none°<view x="140" y="75" w="60" h="25"/> lLen "300"/></Role2>
+<Role2 name=°null° key=°role2@151°> rName=°role@80°> dscr=°none°<view x="484" y="75" w="77" h="25"/> lLen "300"/></Role2>
+<message name=°Nhap cac thong tin dang ky lam khach hang° key=°mess@152°> f=°role2@150° s=°role2@151°<view y ="105"</message>
+<message name=°Kiem tra cac thong tin, thoa man thi cap nhat csdl. Gui thong bao cho nguoi dung° key=°mess@153°> f=°role2@151° s=°role2@150°<view y ="190"</message></seqDiag></useCase>
+<useCase name=°registrySupplier° key=°usecase@154°> dscr=°none°
+<seqDiag name=°registrySupplier° key=°seqdiag@155°>
+<Role2 name=°null° key=°role2@156°> rName=°role@3°> dscr=°none°<view x="62" y="75" w="75" h="25"/> lLen "300"/></Role2>
+<Role2 name=°null° key=°role2@157°> rName=°role@80°> dscr=°none°<view x="384" y="75" w="77" h="25"/> lLen "300"/></Role2>
+<message name=°Gui cac thong tin yeu cau dang ky lam nha cung cap cho he thong° key=°mess@158°> f=°role2@156° s=°role2@157°<view y ="127"</message>
+<message name=°Kiem tra, luu lai cac thong tin, va thong bao ket qua den nguoi su dung° key=°mess@159°> f=°role2@157° s=°role2@156°<view y ="191"</message></seqDiag></useCase>
+<agent name=°Agent1° key=°agent@71°> dscr=°none°<view x="80" y="75" w="60" h="50"/>
+<architecture name=°Agent1 architecture° key=°arch@71°> dscr=°none°</architecture><Roles>0</agent></mas>
