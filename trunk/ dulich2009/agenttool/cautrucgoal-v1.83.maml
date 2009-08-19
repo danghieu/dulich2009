@@ -1,30 +1,151 @@
 <?xml version="1.83"?><!DOCTYPE mas SYSTEM "atsystem1.83.dtd">
-<mas name=°null° key=°system@000°><dscr>none</dscr><framework name="agentMOM"/><kmark="31"/>
-<goal name=°Goal 1° key=°goal@1°> num=°1° dscr=°Tourism Services°<gName=°null°<gprt=f<sps=<view x="1067" y="68" w="65" h="37"/> n_pts="2" x0="0" y0="0" x1="0" y1="0"</goal>
-<goal name=°Goal 1.1° key=°goal@2°> num=°1.1° dscr=°Search°<gName=°goal@1°<gprt=f<sps=<view x="357" y="155" w="60" h="37"/> n_pts="2" x0="1042" y0="88" x1="357" y1="136"</goal>
-<goal name=°Goal 1.1.1° key=°goal@10°> num=°1.1.1° dscr=°Search services°<gName=°goal@2°<gprt=f<sps=<view x="39" y="242" w="78" h="37"/> n_pts="2" x0="334" y0="175" x1="39" y1="223"</goal>
-<goal name=°Goal 1.1.2° key=°goal@11°> num=°1.1.2° dscr=°Search Destinations°<gName=°goal@2°<gprt=f<sps=<view x="126" y="242" w="79" h="37"/> n_pts="2" x0="341" y0="175" x1="127" y1="223"</goal>
-<goal name=°Goal 1.1.3° key=°goal@12°> num=°1.1.3° dscr=°Search Services°<gName=°goal@2°<gprt=f<sps=<view x="216" y="242" w="78" h="37"/> n_pts="2" x0="348" y0="175" x1="216" y1="223"</goal>
-<goal name=°Goal 1.1.4° key=°goal@13°> num=°1.1.4° dscr=°Search Events°<gName=°goal@2°<gprt=f<sps=<view x="303" y="242" w="78" h="37"/> n_pts="2" x0="355" y0="175" x1="303" y1="223"</goal>
-<goal name=°Goal 1.1.5° key=°goal@14°> num=°1.1.5° dscr=°viewService'Detail°<gName=°goal@2°<gprt=f<sps=<view x="411" y="242" w="107" h="37"/> n_pts="2" x0="362" y0="175" x1="412" y1="223"</goal>
-<goal name=°Goal 1.1.6° key=°goal@15°> num=°1.1.6° dscr=°viewSupplier'Detail°<gName=°goal@2°<gprt=f<sps=<view x="536" y="242" w="113" h="37"/> n_pts="2" x0="369" y0="175" x1="537" y1="223"</goal>
-<goal name=°Goal 1.1.7° key=°goal@16°> num=°1.1.7° dscr=°ViewDestination'Detail°<gName=°goal@2°<gprt=f<sps=<view x="686" y="242" w="132" h="37"/> n_pts="2" x0="376" y0="175" x1="686" y1="223"</goal>
-<goal name=°Goal 1.2° key=°goal@3°> num=°1.2° dscr=°Registry°<gName=°goal@1°<gprt=f<sps=<view x="872" y="155" w="60" h="37"/> n_pts="2" x0="1049" y0="88" x1="872" y1="136"</goal>
-<goal name=°Goal 1.2.1° key=°goal@17°> num=°1.2.1° dscr=°registryCutomer°<gName=°goal@3°<gprt=f<sps=<view x="820" y="242" w="97" h="37"/> n_pts="2" x0="862" y0="175" x1="821" y1="223"</goal>
-<goal name=°Goal 1.2.2° key=°goal@18°> num=°1.2.2° dscr=°registrySupplier°<gName=°goal@3°<gprt=f<sps=<view x="940" y="242" w="95" h="37"/> n_pts="2" x0="882" y0="175" x1="941" y1="223"</goal>
-<goal name=°Goal 1.3° key=°goal@4°> num=°1.3° dscr=°bookServices°<gName=°goal@1°<gprt=f<sps=<view x="1056" y="155" w="83" h="37"/> n_pts="2" x0="1056" y0="88" x1="1057" y1="136"</goal>
-<goal name=°Goal 1.4° key=°goal@5°> num=°1.4° dscr=°alterBooking°<gName=°goal@1°<gprt=f<sps=<view x="1214" y="155" w="78" h="37"/> n_pts="2" x0="1063" y0="88" x1="1214" y1="136"</goal>
-<goal name=°Goal 1.4.1° key=°goal@20°> num=°1.4.1° dscr=°UpdateBooking°<gName=°goal@5°<gprt=f<sps=<view x="1149" y="242" w="94" h="37"/> n_pts="2" x0="1201" y0="175" x1="1149" y1="223"</goal>
-<goal name=°Goal 1.4.2° key=°goal@21°> num=°1.4.2° dscr=°cancelBooking°<gName=°goal@5°<gprt=f<sps=<view x="1257" y="242" w="90" h="37"/> n_pts="2" x0="1227" y0="175" x1="1257" y1="223"</goal>
-<goal name=°Goal 1.5° key=°goal@6°> num=°1.5° dscr=°viewFeedback°<gName=°goal@1°<gprt=f<sps=<view x="1434" y="155" w="87" h="37"/> n_pts="2" x0="1070" y0="88" x1="1435" y1="136"</goal>
-<goal name=°Goal 1.5.1° key=°goal@22°> num=°1.5.1° dscr=°viewFeedback°<gName=°goal@6°<gprt=f<sps=<view x="1357" y="242" w="87" h="37"/> n_pts="2" x0="1420" y0="175" x1="1358" y1="223"</goal>
-<goal name=°Goal 1.5.2° key=°goal@23°> num=°1.5.2° dscr=°writeFeedback°<gName=°goal@6°<gprt=f<sps=<view x="1472" y="242" w="89" h="37"/> n_pts="2" x0="1449" y0="175" x1="1473" y1="223"</goal>
-<goal name=°Goal 1.6° key=°goal@7°> num=°1.6° dscr=°publishServices°<gName=°goal@1°<gprt=f<sps=<view x="1668" y="155" w="97" h="37"/> n_pts="2" x0="1077" y0="88" x1="1669" y1="136"</goal>
-<goal name=°Goal 1.6.1° key=°goal@24°> num=°1.6.1° dscr=°insertServices°<gName=°goal@7°<gprt=f<sps=<view x="1597" y="242" w="87" h="37"/> n_pts="2" x0="1652" y0="175" x1="1598" y1="223"</goal>
-<goal name=°Goal 1.6.2° key=°goal@25°> num=°1.6.2° dscr=°alterService°<gName=°goal@7°<gprt=f<sps=<view x="1763" y="242" w="73" h="37"/> n_pts="2" x0="1684" y0="175" x1="1764" y1="223"</goal>
+<mas name=°null° key=°system@000°><dscr>none</dscr><framework name="agentMOM"/><kmark="115"/>
+<goal name=°Goal 1° key=°goal@1°> num=°1° dscr=°Tourism Services°<gName=°null°<gprt=f<sps=<view x="1160" y="68" w="65" h="37"/> n_pts="2" x0="0" y0="0" x1="0" y1="0"</goal>
+<goal name=°Goal 1.1° key=°goal@2°> num=°1.1° dscr=°Search°<gName=°goal@1°<gprt=f<sps=<view x="317" y="155" w="60" h="37"/> n_pts="2" x0="1135" y0="88" x1="317" y1="136"</goal>
+<goal name=°Goal 1.1.1° key=°goal@10°> num=°1.1.1° dscr=°Search services°<gName=°goal@2°<gprt=f<sps=<view x="139" y="242" w="78" h="37"/> n_pts="2" x0="297" y0="175" x1="139" y1="223"</goal>
+<goal name=°Goal 1.1.1.1° key=°goal@63°> num=°1.1.1.1° dscr=°SearchSuppliers°<gName=°goal@10°<gprt=f<sps=<view x="50" y="329" w="101" h="37"/> n_pts="2" x0="119" y0="262" x1="51" y1="310"</goal>
+<goal name=°Goal 1.1.1.2° key=°goal@64°> num=°1.1.1.2° dscr=°CheckAvailability°<gName=°goal@10°<gprt=f<sps=<view x="156" y="329" w="100" h="37"/> n_pts="2" x0="138" y0="262" x1="156" y1="310"</goal>
+<goal name=°Goal 1.1.1.3° key=°goal@65°> num=°1.1.1.3° dscr=°ReturnResults°<gName=°goal@10°<gprt=f<sps=<view x="256" y="329" w="89" h="37"/> n_pts="2" x0="157" y0="262" x1="257" y1="310"</goal>
+<goal name=°Goal 1.1.1.3.1° key=°goal@68°> num=°1.1.1.3.1° dscr=°CombineServices°<gName=°goal@65°<gprt=f<sps=<view x="186" y="416" w="107" h="37"/> n_pts="2" x0="241" y0="349" x1="187" y1="397"</goal>
+<goal name=°Goal 1.1.1.3.2° key=°goal@69°> num=°1.1.1.3.2° dscr=°RefineandRanker Results°<gName=°goal@65°<gprt=f<sps=<view x="323" y="424" w="106" h="53"/> n_pts="2" x0="270" y0="349" x1="323" y1="397"</goal>
+<goal name=°Goal 1.1.2° key=°goal@13°> num=°1.1.2° dscr=°Search Events°<gName=°goal@2°<gprt=f<sps=<view x="336" y="242" w="78" h="37"/> n_pts="2" x0="317" y0="175" x1="336" y1="223"</goal>
+<goal name=°Goal 1.1.3° key=°goal@14°> num=°1.1.3° dscr=°SearchSupplier°<gName=°goal@2°<gprt=f<sps=<view x="575" y="242" w="94" h="37"/> n_pts="2" x0="337" y0="175" x1="575" y1="223"</goal>
+<goal name=°Goal 1.1.4° key=°goal@59°> num=°1.1.4° dscr=°ViewInfomation°<gName=°goal@2°<gprt=f<sps=<view x="466" y="242" w="93" h="37"/> n_pts="2" x0="327" y0="175" x1="467" y1="223"</goal>
+<goal name=°Goal 1.1.4.1° key=°goal@60°> num=°1.1.4.1° dscr=°viewService'Detail°<gName=°goal@59°<gprt=f<sps=<view x="363" y="329" w="107" h="37"/> n_pts="2" x0="443" y0="262" x1="364" y1="310"</goal>
+<goal name=°Goal 1.1.4.2° key=°goal@61°> num=°1.1.4.2° dscr=°viewSupplier'Detail°<gName=°goal@59°<gprt=f<sps=<view x="484" y="329" w="113" h="37"/> n_pts="2" x0="466" y0="262" x1="485" y1="310"</goal>
+<goal name=°Goal 1.1.4.3° key=°goal@62°> num=°1.1.4.3° dscr=°ViewDestination'Detail°<gName=°goal@59°<gprt=f<sps=<view x="615" y="329" w="132" h="37"/> n_pts="2" x0="489" y0="262" x1="615" y1="310"</goal>
+<goal name=°Goal 1.1.5° key=°goal@67°> num=°1.1.5° dscr=°Search Destinations°<gName=°goal@2°<gprt=f<sps=<view x="224" y="242" w="79" h="37"/> n_pts="2" x0="307" y0="175" x1="225" y1="223"</goal>
+<goal name=°Goal 1.2° key=°goal@3°> num=°1.2° dscr=°Registry°<gName=°goal@1°<gprt=f<sps=<view x="782" y="155" w="60" h="37"/> n_pts="2" x0="1142" y0="88" x1="782" y1="136"</goal>
+<goal name=°Goal 1.2.1° key=°goal@17°> num=°1.2.1° dscr=°registryCutomer°<gName=°goal@3°<gprt=f<sps=<view x="682" y="242" w="97" h="37"/> n_pts="2" x0="767" y0="175" x1="683" y1="223"</goal>
+<goal name=°Goal 1.2.2° key=°goal@18°> num=°1.2.2° dscr=°registrySupplier°<gName=°goal@3°<gprt=f<sps=<view x="800" y="242" w="95" h="37"/> n_pts="2" x0="782" y0="175" x1="801" y1="223"</goal>
+<goal name=°Goal 1.2.3° key=°goal@54°> num=°1.2.3° dscr=°Subscribe to messages°<gName=°goal@3°<gprt=f<sps=<view x="907" y="242" w="95" h="37"/> n_pts="2" x0="797" y0="175" x1="908" y1="223"</goal>
+<goal name=°Goal 1.3° key=°goal@4°> num=°1.3° dscr=°bookServices°<gName=°goal@1°<gprt=f<sps=<view x="1079" y="155" w="83" h="37"/> n_pts="2" x0="1149" y0="88" x1="1080" y1="136"</goal>
+<goal name=°Goal 1.3.1° key=°goal@55°> num=°1.3.1° dscr=°CheckAvailability°<gName=°goal@4°<gprt=f<sps=<view x="1014" y="242" w="100" h="37"/> n_pts="2" x0="1065" y0="175" x1="1014" y1="223"</goal>
+<goal name=°Goal 1.3.2° key=°goal@56°> num=°1.3.2° dscr=°ProcessBooking°<gName=°goal@4°<gprt=f<sps=<view x="1139" y="242" w="100" h="37"/> n_pts="2" x0="1092" y0="175" x1="1139" y1="223"</goal>
+<goal name=°Goal 1.4° key=°goal@5°> num=°1.4° dscr=°alterBooking°<gName=°goal@1°<gprt=f<sps=<view x="1316" y="155" w="78" h="37"/> n_pts="2" x0="1156" y0="88" x1="1316" y1="136"</goal>
+<goal name=°Goal 1.4.1° key=°goal@20°> num=°1.4.1° dscr=°UpdateBooking°<gName=°goal@5°<gprt=f<sps=<view x="1254" y="242" w="94" h="37"/> n_pts="2" x0="1303" y0="175" x1="1254" y1="223"</goal>
+<goal name=°Goal 1.4.1.1° key=°goal@57°> num=°1.4.1.1° dscr=°ViewInfomationBooking°<gName=°goal@20°<gprt=f<sps=<view x="1162" y="329" w="138" h="37"/> n_pts="2" x0="1238" y0="262" x1="1162" y1="310"</goal>
+<goal name=°Goal 1.4.1.2° key=°goal@58°> num=°1.4.1.2° dscr=°ProcesstoUpdateBooking°<gName=°goal@20°<gprt=f<sps=<view x="1331" y="329" w="150" h="37"/> n_pts="2" x0="1269" y0="262" x1="1331" y1="310"</goal>
+<goal name=°Goal 1.4.2° key=°goal@21°> num=°1.4.2° dscr=°cancelBooking°<gName=°goal@5°<gprt=f<sps=<view x="1373" y="242" w="90" h="37"/> n_pts="2" x0="1329" y0="175" x1="1373" y1="223"</goal>
+<goal name=°Goal 1.5° key=°goal@6°> num=°1.5° dscr=°viewFeedback°<gName=°goal@1°<gprt=f<sps=<view x="1506" y="155" w="87" h="37"/> n_pts="2" x0="1163" y0="88" x1="1507" y1="136"</goal>
+<goal name=°Goal 1.5.1° key=°goal@22°> num=°1.5.1° dscr=°viewFeedback°<gName=°goal@6°<gprt=f<sps=<view x="1471" y="242" w="87" h="37"/> n_pts="2" x0="1492" y0="175" x1="1472" y1="223"</goal>
+<goal name=°Goal 1.5.2° key=°goal@23°> num=°1.5.2° dscr=°writeFeedback°<gName=°goal@6°<gprt=f<sps=<view x="1566" y="242" w="89" h="37"/> n_pts="2" x0="1521" y0="175" x1="1567" y1="223"</goal>
+<goal name=°Goal 1.6° key=°goal@7°> num=°1.6° dscr=°publishServices°<gName=°goal@1°<gprt=f<sps=<view x="1717" y="155" w="97" h="37"/> n_pts="2" x0="1170" y0="88" x1="1718" y1="136"</goal>
+<goal name=°Goal 1.6.1° key=°goal@24°> num=°1.6.1° dscr=°insertServices°<gName=°goal@7°<gprt=f<sps=<view x="1661" y="242" w="87" h="37"/> n_pts="2" x0="1701" y0="175" x1="1662" y1="223"</goal>
+<goal name=°Goal 1.6.2° key=°goal@25°> num=°1.6.2° dscr=°alterService°<gName=°goal@7°<gprt=f<sps=<view x="1763" y="242" w="73" h="37"/> n_pts="2" x0="1733" y0="175" x1="1764" y1="223"</goal>
 <goal name=°Goal 1.6.2.1° key=°goal@27°> num=°1.6.2.1° dscr=°updateService°<gName=°goal@25°<gprt=f<sps=<view x="1692" y="329" w="87" h="37"/> n_pts="2" x0="1751" y0="262" x1="1693" y1="310"</goal>
-<goal name=°Goal 1.6.2.2° key=°goal@28°> num=°1.6.2.2° dscr=°cancelService°<gName=°goal@25°<gprt=f<sps=<view x="1802" y="329" w="85" h="37"/> n_pts="2" x0="1775" y0="262" x1="1803" y1="310"</goal>
-<goal name=°Goal 1.7° key=°goal@8°> num=°1.7° dscr=°manageUserProfile°<gName=°goal@1°<gprt=f<sps=<view x="1894" y="155" w="117" h="37"/> n_pts="2" x0="1084" y0="88" x1="1895" y1="136"</goal>
-<goal name=°null° key=°goal@29°> num=°1.7.1° dscr=°manageUserInformation  °<gName=°goal@8°<gprt=f<sps=<view x="1885" y="242" w="150" h="37"/> n_pts="2" x0="1875" y0="175" x1="1885" y1="223"</goal>
-<goal name=°null° key=°goal@30°> num=°1.7.2° dscr=°updateUserInformation°<gName=°goal@8°<gprt=f<sps=<view x="2034" y="242" w="136" h="37"/> n_pts="2" x0="1914" y0="175" x1="2034" y1="223"</goal>
-<goal name=°Goal 1.8° key=°goal@9°> num=°1.8° dscr=°Auction service°<gName=°goal@1°<gprt=f<sps=<view x="2018" y="155" w="69" h="37"/> n_pts="2" x0="1091" y0="88" x1="2019" y1="136"</goal></mas>
+<goal name=°Goal 1.6.2.1.1° key=°goal@70°> num=°1.6.2.1.1° dscr=°ViewInformation Service°<gName=°goal@27°<gprt=f<sps=<view x="1608" y="424" w="97" h="53"/> n_pts="2" x0="1678" y0="349" x1="1609" y1="397"</goal>
+<goal name=°Goal 1.6.2.1.2° key=°goal@71°> num=°1.6.2.1.2° dscr=°ProcessUpdateService°<gName=°goal@27°<gprt=f<sps=<view x="1747" y="416" w="135" h="37"/> n_pts="2" x0="1707" y0="349" x1="1748" y1="397"</goal>
+<goal name=°Goal 1.6.2.2° key=°goal@28°> num=°1.6.2.2° dscr=°cancelService°<gName=°goal@25°<gprt=f<sps=<view x="1830" y="329" w="85" h="37"/> n_pts="2" x0="1775" y0="262" x1="1831" y1="310"</goal>
+<goal name=°Goal 1.7° key=°goal@8°> num=°1.7° dscr=°manageUserProfile°<gName=°goal@1°<gprt=f<sps=<view x="1967" y="155" w="117" h="37"/> n_pts="2" x0="1177" y0="88" x1="1968" y1="136"</goal>
+<goal name=°Goal 1.7.1° key=°goal@29°> num=°1.7.1° dscr=°manageUserInformation  °<gName=°goal@8°<gprt=f<sps=<view x="1885" y="242" w="150" h="37"/> n_pts="2" x0="1948" y0="175" x1="1885" y1="223"</goal>
+<goal name=°Goal 1.7.2° key=°goal@30°> num=°1.7.2° dscr=°updateUserInformation°<gName=°goal@8°<gprt=f<sps=<view x="2041" y="242" w="136" h="37"/> n_pts="2" x0="1987" y0="175" x1="2041" y1="223"</goal>
+<goal name=°Goal 1.8° key=°goal@9°> num=°1.8° dscr=°Auction service°<gName=°goal@1°<gprt=f<sps=<view x="2083" y="155" w="69" h="37"/> n_pts="2" x0="1184" y0="88" x1="2084" y1="136"</goal>
+<role name=°User° key=°role@31°> dscr=°none°<goals: goals=0<view x="68" y="152" w="60" h="50"/></role>
+<role name=°Manager° key=°role@32°> dscr=°none°<goals: goals=8 Num=°goal@3° Num=°goal@17° Num=°goal@18° Num=°goal@24° Num=°goal@8° Num=°goal@71° Num=°goal@28° Num=°goal@57°<view x="464" y="294" w="68" h="147"/></role>
+<role name=°Sleuth° key=°role@33°> dscr=°none°<goals: goals=5 Num=°goal@2° Num=°goal@63° Num=°goal@67° Num=°goal@10° Num=°goal@13°<view x="913" y="212" w="60" h="99"/></role>
+<role name=°Supplier° key=°role@34°> dscr=°none°<goals: goals=9 Num=°goal@64° Num=°goal@29° Num=°goal@30° Num=°goal@7° Num=°goal@6° Num=°goal@61° Num=°goal@60° Num=°goal@27° Num=°goal@70°<view x="854" y="466" w="67" h="163"/></role>
+<role name=°Processor° key=°role@35°> dscr=°none°<goals: goals=9 Num=°goal@55° Num=°goal@56° Num=°goal@58° Num=°goal@21° Num=°goal@25° Num=°goal@65° Num=°goal@61° Num=°goal@60° Num=°goal@70°<view x="1103" y="449" w="77" h="163"/></role>
+<role name=°DMO° key=°role@36°> dscr=°none°<goals: goals=1 Num=°goal@62°<view x="1167" y="330" w="60" h="50"/></role>
+<role name=°Customer° key=°role@37°> dscr=°none°<goals: goals=3 Num=°goal@4° Num=°goal@5° Num=°goal@20°<view x="49" y="298" w="75" h="67"/></role>
+<role name=°InformationPresentation° key=°role@38°> dscr=°none°<goals: goals=1 Num=°goal@22°<view x="580" y="419" w="152" h="50"/></role>
+<role name=°Broker° key=°role@41°> dscr=°none°<goals: goals=2 Num=°goal@9° Num=°goal@68°<view x="1036" y="208" w="67" h="51"/></role>
+<role name=°NotificationSender° key=°role@42°> dscr=°none°<goals: goals=1 Num=°goal@54°<view x="172" y="521" w="121" h="50"/></role>
+<role name=°NotificationReceiver° key=°role@43°> dscr=°none°<goals: goals=0<view x="71" y="446" w="129" h="50"/></role>
+<role name=°Ranker° key=°role@44°> dscr=°none°<goals: goals=1 Num=°goal@69°<view x="681" y="217" w="67" h="50"/></role>
+<useCase name=°viewResult° key=°usecase@45°> dscr=°none°
+<seqDiag name=°viewResult° key=°seqdiag@46°>
+<Role2 name=°null° key=°role2@47°> rName=°role@33°> dscr=°none°<view x="57" y="62" w="64" h="25"/> lLen "300"/></Role2>
+<Role2 name=°null° key=°role2@48°> rName=°role@32°> dscr=°none°<view x="226" y="62" w="77" h="25"/> lLen "300"/></Role2>
+<Role2 name=°null° key=°role2@49°> rName=°role@44°> dscr=°none°<view x="410" y="62" w="69" h="25"/> lLen "300"/></Role2>
+<Role2 name=°null° key=°role2@50°> rName=°role@31°> dscr=°none°<view x="579" y="62" w="60" h="25"/> lLen "300"/></Role2>
+<message name=°Danh sach ket qua tim kiem° key=°mess@51°> f=°role2@47° s=°role2@48°<view y ="105"</message>
+<message name=°Yeu cau chon loc, sap xep ket qua° key=°mess@52°> f=°role2@48° s=°role2@49°<view y ="145"</message>
+<message name=°Bieu dien ket qua ° key=°mess@53°> f=°role2@49° s=°role2@50°<view y ="191"</message></seqDiag></useCase>
+<task name=°Dua ra yeu cau° key=°task@72°> dscr=°none°<rName=°role@31°<view x="61" y="203" w="90" h="30"/> n_pts="2" x0="68" y0="178" x1="65" y1="188"
+<statetable name=°null° key=°statetable@72°> owner=°null°>
+<state name=°StartState° key=°startstate@72°><pos="100","100"></state>
+<state name=°EndState° key=°endstate@72°><pos="400","100"></state></statetable></task>
+<task name=°Nhan yeu cau° key=°task@73°> dscr=°none°<rName=°role@32°<view x="281" y="151" w="83" h="30"/> n_pts="2" x0="429" y0="270" x1="297" y1="164"
+<statetable name=°null° key=°statetable@73°> owner=°null°>
+<state name=°StartState° key=°startstate@73°><pos="100","100"></state>
+<state name=°EndState° key=°endstate@73°><pos="400","100"></state></statetable></task>
+<task name=°Dieu khien hoat dong° key=°task@74°> dscr=°none°<rName=°role@32°<view x="434" y="152" w="125" h="30"/> n_pts="2" x0="464" y0="220" x1="440" y1="166"
+<statetable name=°null° key=°statetable@74°> owner=°null°>
+<state name=°StartState° key=°startstate@74°><pos="100","100"></state>
+<state name=°EndState° key=°endstate@74°><pos="400","100"></state></statetable></task>
+<task name=°Xu ly tim kiem° key=°task@75°> dscr=°none°<rName=°role@33°<view x="800" y="163" w="83" h="30"/> n_pts="2" x0="882" y0="213" x1="821" y1="175"
+<statetable name=°null° key=°statetable@75°> owner=°null°>
+<state name=°StartState° key=°startstate@75°><pos="100","100"></state>
+<state name=°EndState° key=°endstate@75°><pos="400","100"></state></statetable></task>
+<task name=°Cung cap thong tin dich° key=°task@76°> dscr=°none°<rName=°role@36°<view x="1168" y="257" w="137" h="30"/> n_pts="2" x0="1167" y0="304" x1="1167" y1="271"
+<statetable name=°null° key=°statetable@76°> owner=°null°>
+<state name=°StartState° key=°startstate@76°><pos="100","100"></state>
+<state name=°EndState° key=°endstate@76°><pos="400","100"></state></statetable></task>
+<task name=°Lay thong tin can hien thi° key=°task@77°> dscr=°none°<rName=°role@38°<view x="580" y="351" w="143" h="30"/> n_pts="2" x0="580" y0="393" x1="580" y1="366"
+<statetable name=°null° key=°statetable@77°> owner=°null°>
+<state name=°StartState° key=°startstate@77°><pos="100","100"></state>
+<state name=°EndState° key=°endstate@77°><pos="400","100"></state></statetable></task>
+<task name=°Ket hop cac dich vu° key=°task@78°> dscr=°none°<rName=°role@41°<view x="1008" y="300" w="113" h="30"/> n_pts="2" x0="1036" y0="235" x1="1014" y1="285"
+<statetable name=°null° key=°statetable@78°> owner=°null°>
+<state name=°StartState° key=°startstate@78°><pos="100","100"></state>
+<state name=°EndState° key=°endstate@78°><pos="400","100"></state></statetable></task>
+<task name=°Sap xep ket qua° key=°task@80°> dscr=°none°<rName=°role@44°<view x="817" y="296" w="95" h="30"/> n_pts="2" x0="716" y0="217" x1="799" y1="282"
+<statetable name=°null° key=°statetable@80°> owner=°null°>
+<state name=°StartState° key=°startstate@80°><pos="100","100"></state>
+<state name=°EndState° key=°endstate@80°><pos="400","100"></state></statetable></task>
+<task name=°Nhan yeu cau he thong° key=°task@81°> dscr=°none°<rName=°role@34°<view x="981" y="391" w="134" h="30"/> n_pts="2" x0="889" y0="466" x1="963" y1="405"
+<statetable name=°null° key=°statetable@81°> owner=°null°>
+<state name=°StartState° key=°startstate@81°><pos="100","100"></state>
+<state name=°EndState° key=°endstate@81°><pos="400","100"></state></statetable></task>
+<task name=°Quang ba dich vu° key=°task@83°> dscr=°none°<rName=°role@34°<view x="731" y="461" w="103" h="30"/> n_pts="2" x0="820" y0="440" x1="770" y1="451"
+<statetable name=°null° key=°statetable@83°> owner=°null°>
+<state name=°StartState° key=°startstate@83°><pos="100","100"></state>
+<state name=°EndState° key=°endstate@83°><pos="400","100"></state></statetable></task>
+<task name=°Xu ly yeu cau° key=°task@86°> dscr=°none°<rName=°role@35°<view x="990" y="468" w="78" h="30"/> n_pts="2" x0="1064" y0="450" x1="1022" y1="459"
+<statetable name=°null° key=°statetable@86°> owner=°null°>
+<state name=°StartState° key=°startstate@86°><pos="100","100"></state>
+<state name=°EndState° key=°endstate@86°><pos="400","100"></state></statetable></task>
+<task name=°Dang ky nhan tin tu dong° key=°task@87°> dscr=°none°<rName=°role@42°<view x="217" y="439" w="143" h="30"/> n_pts="2" x0="173" y0="495" x1="205" y1="453"
+<statetable name=°null° key=°statetable@87°> owner=°null°>
+<state name=°StartState° key=°startstate@87°><pos="100","100"></state>
+<state name=°EndState° key=°endstate@87°><pos="400","100"></state></statetable></task>
+<task name=°Nhan thong tin tu dong° key=°task@88°> dscr=°none°<rName=°role@43°<view x="112" y="362" w="132" h="30"/> n_pts="2" x0="72" y0="420" x1="101" y1="376"
+<statetable name=°null° key=°statetable@88°> owner=°null°>
+<state name=°StartState° key=°startstate@88°><pos="100","100"></state>
+<state name=°EndState° key=°endstate@88°><pos="400","100"></state></statetable></task>
+<task name=°Dat dich vu° key=°task@91°> dscr=°none°<rName=°role@37°<view x="135" y="260" w="68" h="30"/> n_pts="2" x0="88" y0="287" x1="114" y1="271"
+<statetable name=°null° key=°statetable@91°> owner=°null°>
+<state name=°StartState° key=°startstate@91°><pos="100","100"></state>
+<state name=°EndState° key=°endstate@91°><pos="400","100"></state></statetable></task>
+<task name=°Thay doi yeu cau dat° key=°task@92°> dscr=°none°<rName=°role@37°<view x="144" y="323" w="119" h="30"/> n_pts="2" x0="88" y0="309" x1="101" y1="312"
+<statetable name=°null° key=°statetable@92°> owner=°null°>
+<state name=°StartState° key=°startstate@92°><pos="100","100"></state>
+<state name=°EndState° key=°endstate@92°><pos="400","100"></state></statetable></task>
+<task name=°Quan ly thong tin° key=°task@107°> dscr=°none°<rName=°role@32°<view x="381" y="299" w="99" h="30"/> n_pts="2" x0="429" y0="319" x1="410" y1="311"
+<statetable name=°null° key=°statetable@107°> owner=°null°>
+<state name=°StartState° key=°startstate@107°><pos="100","100"></state>
+<state name=°EndState° key=°endstate@107°><pos="400","100"></state></statetable></task>
+<task name=°Dang ky lam nha cung cap° key=°task@108°> dscr=°none°<rName=°role@34°<view x="722" y="508" w="153" h="30"/> n_pts="2" x0="820" y0="494" x1="783" y1="499"
+<statetable name=°null° key=°statetable@108°> owner=°null°>
+<state name=°StartState° key=°startstate@108°><pos="100","100"></state>
+<state name=°EndState° key=°endstate@108°><pos="400","100"></state></statetable></task>
+<task name=°Quang ba dich vu° key=°task@113°> dscr=°none°<rName=°role@41°<view x="1142" y="191" w="103" h="30"/> n_pts="2" x0="1071" y0="208" x1="1102" y1="200"
+<statetable name=°null° key=°statetable@113°> owner=°null°>
+<state name=°StartState° key=°startstate@113°><pos="100","100"></state>
+<state name=°EndState° key=°endstate@113°><pos="400","100"></state></statetable></task>
+<protocol name=°Gui cac yeu cau° key=°prot@95°> c1=°task@72° c2=°task@73°<view n_pts="3" x0="100" y0="195" x1="256" y1="168" x2="261" y2="164" lt =" " ext ="t" Q1 ="2" Q2 ="1"/> n_pts2="2" x0="82" y0="201" x1="430" y1="231" lt2 =" " Q1 ="2" Q2 ="0"/></protocol>
+<protocol name=°Gui yeu cau dat dich vu° key=°prot@96°> c1=°task@91° c2=°task@73°<view n_pts="2" x0="152" y0="247" x1="262" y1="164" lt =" " ext ="t" Q1 ="1" Q2 ="3"/> n_pts2="2" x0="95" y0="321" x1="430" y1="303" lt2 =" " Q1 ="2" Q2 ="0"/></protocol>
+<protocol name=°Yeu cau tim kiem° key=°prot@97°> c1=°task@74° c2=°task@75°<view n_pts="2" x0="495" y0="153" x1="759" y1="161" lt =" " ext ="t" Q1 ="2" Q2 ="0"/> n_pts2="2" x0="500" y0="228" x1="912" y1="193" lt2 =" " Q1 ="2" Q2 ="0"/></protocol>
+<protocol name=°Nhan yeu cau xu ly° key=°prot@99°> c1=°task@81° c2=°task@86°<view n_pts="2" x0="982" y0="405" x1="988" y1="453" lt =" " ext ="t" Q1 ="1" Q2 ="3"/> n_pts2="2" x0="851" y0="485" x1="1041" y1="470" lt2 =" " Q1 ="2" Q2 ="0"/></protocol>
+<protocol name=°Gui yeu cau dat dich vu° key=°prot@100°> c1=°task@74° c2=°task@81°<view n_pts="6" x0="460" y0="165" x1="647" y1="261" x2="459" y2="167" x3="645" y3="263" x4="762" y4="318" x5="943" y5="378" lt =" " ext ="t" Q1 ="3" Q2 ="1"/> n_pts2="2" x0="500" y0="264" x1="782" y1="459" lt2 =" " Q1 ="2" Q2 ="0"/></protocol>
+<protocol name=°Thay doi dich vu° key=°prot@101°> c1=°task@92° c2=°task@73°<view n_pts="3" x0="158" y0="308" x1="184" y1="283" x2="270" y2="165" lt =" " ext ="t" Q1 ="2" Q2 ="3"/> n_pts2="2" x0="95" y0="299" x1="430" y1="267" lt2 =" " Q1 ="2" Q2 ="0"/></protocol>
+<protocol name=°Ket hop dich vu ket qua° key=°prot@103°> c1=°task@75° c2=°task@78°<view n_pts="3" x0="803" y0="177" x1="821" y1="248" x2="969" y2="289" lt =" " ext ="t" Q1 ="3" Q2 ="1"/> n_pts2="2" x0="974" y0="192" x1="1109" y1="314" lt2 =" " Q1 ="2" Q2 ="0"/></protocol>
+<protocol name=° ket qua tim kiem° key=°prot@104°> c1=°task@78° c2=°task@80°<view n_pts="3" x0="952" y0="300" x1="883" y1="302" x2="862" y2="300" lt =" " ext ="t" Q1 ="0" Q2 ="2"/> n_pts2="2" x0="1109" y0="331" x1="584" y1="317" lt2 =" " Q1 ="0" Q2 ="2"/></protocol>
+<protocol name=°Danh sach ket qua° key=°prot@105°> c1=°task@80° c2=°task@77°<view n_pts="3" x0="779" y0="305" x1="669" y1="332" x2="629" y2="340" lt =" " ext ="t" Q1 ="0" Q2 ="2"/> n_pts2="2" x0="515" y0="317" x1="568" y1="446" lt2 =" " Q1 ="0" Q2 ="2"/></protocol>
+<protocol name=°Dang ky dich vu° key=°prot@106°> c1=°task@83° c2=°task@73°<view n_pts="5" x0="680" y0="461" x1="558" y1="462" x2="382" y2="462" x3="327" y3="459" x4="283" y4="165" lt =" " ext ="t" Q1 ="0" Q2 ="3"/> n_pts2="2" x0="782" y0="513" x1="500" y1="300" lt2 =" " Q1 ="0" Q2 ="2"/></protocol>
+<protocol name=°Dang ky lam nha cung cap° key=°prot@109°> c1=°task@108° c2=°task@73°<view n_pts="5" x0="646" y0="507" x1="305" y1="503" x2="303" y2="462" x3="288" y3="303" x4="281" y4="165" lt =" " ext ="t" Q1 ="1" Q2 ="3"/> n_pts2="2" x0="782" y0="447" x1="500" y1="265" lt2 =" " Q1 ="0" Q2 ="2"/></protocol>
+<protocol name=°Quan ly cac thong tin° key=°prot@110°> c1=°task@73° c2=°task@107°<view n_pts="4" x0="291" y0="165" x1="362" y1="261" x2="369" y2="271" x3="374" y3="284" lt =" " ext ="t" Q1 ="3" Q2 ="1"/> n_pts2="2" x0="465" y0="191" x1="0" y1="0" lt2 =" " Q1 ="1" Q2 ="0"/></protocol>
+<protocol name=°null° key=°prot@111°> c1=°task@87° c2=°task@73°<view n_pts="3" x0="221" y0="424" x1="242" y1="349" x2="278" y2="165" lt =" " ext ="t" Q1 ="1" Q2 ="3"/> n_pts2="2" x0="70" y0="489" x1="430" y1="303" lt2 =" " Q1 ="1" Q2 ="0"/></protocol>
+<protocol name=°Them thong tin chi tiet dia diem dich° key=°prot@112°> c1=°task@75° c2=°task@76°<view n_pts="4" x0="840" y0="161" x1="1104" y1="154" x2="1166" y2="156" x3="1167" y3="242" lt =" " ext ="t" Q1 ="3" Q2 ="1"/> n_pts2="2" x0="974" y0="192" x1="1284" y1="437" lt2 =" " Q1 ="2" Q2 ="0"/></protocol>
+<protocol name=°Dang ky dich vu° key=°prot@114°> c1=°task@113° c2=°task@73°<view n_pts="4" x0="1141" y0="176" x1="1140" y1="130" x2="280" y2="125" x3="280" y3="136" lt =" " ext ="t" Q1 ="0" Q2 ="2"/> n_pts2="2" x0="1085" y0="208" x1="500" y1="265" lt2 =" " Q1 ="0" Q2 ="2"/></protocol></mas>
