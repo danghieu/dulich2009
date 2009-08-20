@@ -1,4 +1,4 @@
-; Thu Aug 20 17:02:18 GMT+07:00 2009
+; Thu Aug 20 17:04:08 GMT+07:00 2009
 ; 
 ;+ (version "3.4")
 ;+ (build "Build 533")
@@ -6,11 +6,11 @@
 ([BROWSER_SLOT_NAMES] of  Property_List
 
 	(properties
-		[Travel_ProjectKB_Class10004]
-		[Travel_ProjectKB_Class10005]
-		[Travel_ProjectKB_Class10006]
-		[Travel_ProjectKB_Class10007]
-		[Travel_ProjectKB_Class10008]))
+		[Travel_ProjectKB_Class10012]
+		[Travel_ProjectKB_Class10013]
+		[Travel_ProjectKB_Class10014]
+		[Travel_ProjectKB_Class10015]
+		[Travel_ProjectKB_Class10016]))
 
 ([CLSES_TAB] of  Widget
 
@@ -751,9 +751,9 @@
 ([KB_325529_Class0] of  Map
 
 	(entries
-		[Travel_ProjectKB_Class10009]
-		[Travel_ProjectKB_Class10010]
-		[Travel_ProjectKB_Class10011]))
+		[Travel_ProjectKB_Class10017]
+		[Travel_ProjectKB_Class10018]
+		[Travel_ProjectKB_Class10019]))
 
 ([KB_325529_Class4] of  String
 
@@ -5677,46 +5677,46 @@
 ([Travel_ProjectKB_Class10] of  Property_List
 )
 
-([Travel_ProjectKB_Class10004] of  String
+([Travel_ProjectKB_Class10012] of  String
 
 	(name "http://www.w3.org/2002/07/owl#Class")
 	(string_value "%3ANAME"))
 
-([Travel_ProjectKB_Class10005] of  String
+([Travel_ProjectKB_Class10013] of  String
 
 	(name ":INSTANCE-ANNOTATION")
 	(string_value "%3AANNOTATION-TEXT"))
 
-([Travel_ProjectKB_Class10006] of  String
+([Travel_ProjectKB_Class10014] of  String
 
 	(name ":META-CLASS")
 	(string_value "%3ANAME"))
 
-([Travel_ProjectKB_Class10007] of  String
+([Travel_ProjectKB_Class10015] of  String
 
 	(name "http://www.w3.org/2002/07/owl#Thing")
 	(string_value "%3ANAME"))
 
-([Travel_ProjectKB_Class10008] of  String
+([Travel_ProjectKB_Class10016] of  String
 
 	(name ":PAL-CONSTRAINT")
 	(string_value "%3APAL-NAME"))
 
-([Travel_ProjectKB_Class10009] of  Map_Entry
+([Travel_ProjectKB_Class10017] of  Map_Entry
 
 	(key "suppress_instance_counting")
 	(key_class "java.lang.String")
 	(value "false")
 	(value_class "java.lang.String"))
 
-([Travel_ProjectKB_Class10010] of  Map_Entry
+([Travel_ProjectKB_Class10018] of  Map_Entry
 
 	(key "change_tracking_active")
 	(key_class "java.lang.String")
 	(value "false")
 	(value_class "java.lang.String"))
 
-([Travel_ProjectKB_Class10011] of  Map_Entry
+([Travel_ProjectKB_Class10019] of  Map_Entry
 
 	(key "add_name_on_instance_form")
 	(key_class "java.lang.String")
