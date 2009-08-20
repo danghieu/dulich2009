@@ -1,4 +1,4 @@
-; Thu Aug 20 17:04:08 GMT+07:00 2009
+; Fri Aug 21 01:03:40 ICT 2009
 ; 
 ;+ (version "3.4")
 ;+ (build "Build 533")
@@ -6,11 +6,11 @@
 ([BROWSER_SLOT_NAMES] of  Property_List
 
 	(properties
-		[Travel_ProjectKB_Class10012]
-		[Travel_ProjectKB_Class10013]
-		[Travel_ProjectKB_Class10014]
-		[Travel_ProjectKB_Class10015]
-		[Travel_ProjectKB_Class10016]))
+		[Travel_ProjectKB_Class10148]
+		[Travel_ProjectKB_Class10149]
+		[Travel_ProjectKB_Class10150]
+		[Travel_ProjectKB_Class10151]
+		[Travel_ProjectKB_Class10152]))
 
 ([CLSES_TAB] of  Widget
 
@@ -484,9 +484,6 @@
 ([KB_140180_Instance_9] of  Property_List
 )
 
-([KB_185278_Class3] of  Map
-)
-
 ([KB_221055_Instance_10] of  Widget
 
 	(height 0)
@@ -751,9 +748,9 @@
 ([KB_325529_Class0] of  Map
 
 	(entries
-		[Travel_ProjectKB_Class10017]
-		[Travel_ProjectKB_Class10018]
-		[Travel_ProjectKB_Class10019]))
+		[Travel_ProjectKB_Class10153]
+		[Travel_ProjectKB_Class10154]
+		[Travel_ProjectKB_Class10155]))
 
 ([KB_325529_Class4] of  String
 
@@ -3020,6 +3017,9 @@
 	(name "http://www.w3.org/2002/07/owl#Ontology")
 	(property_list [XY_Instance_195])
 	(widget_class_name "edu.stanford.smi.protegex.owl.ui.widget.OWLFormWidget"))
+
+([KB_823113_Class3] of  Map
+)
 
 ([KB_865583_Instance_10] of  Widget
 
@@ -5677,46 +5677,46 @@
 ([Travel_ProjectKB_Class10] of  Property_List
 )
 
-([Travel_ProjectKB_Class10012] of  String
+([Travel_ProjectKB_Class10148] of  String
 
 	(name "http://www.w3.org/2002/07/owl#Class")
 	(string_value "%3ANAME"))
 
-([Travel_ProjectKB_Class10013] of  String
+([Travel_ProjectKB_Class10149] of  String
 
 	(name ":INSTANCE-ANNOTATION")
 	(string_value "%3AANNOTATION-TEXT"))
 
-([Travel_ProjectKB_Class10014] of  String
+([Travel_ProjectKB_Class10150] of  String
 
 	(name ":META-CLASS")
 	(string_value "%3ANAME"))
 
-([Travel_ProjectKB_Class10015] of  String
+([Travel_ProjectKB_Class10151] of  String
 
 	(name "http://www.w3.org/2002/07/owl#Thing")
 	(string_value "%3ANAME"))
 
-([Travel_ProjectKB_Class10016] of  String
+([Travel_ProjectKB_Class10152] of  String
 
 	(name ":PAL-CONSTRAINT")
 	(string_value "%3APAL-NAME"))
 
-([Travel_ProjectKB_Class10017] of  Map_Entry
+([Travel_ProjectKB_Class10153] of  Map_Entry
 
 	(key "suppress_instance_counting")
 	(key_class "java.lang.String")
 	(value "false")
 	(value_class "java.lang.String"))
 
-([Travel_ProjectKB_Class10018] of  Map_Entry
+([Travel_ProjectKB_Class10154] of  Map_Entry
 
 	(key "change_tracking_active")
 	(key_class "java.lang.String")
 	(value "false")
 	(value_class "java.lang.String"))
 
-([Travel_ProjectKB_Class10019] of  Map_Entry
+([Travel_ProjectKB_Class10155] of  Map_Entry
 
 	(key "add_name_on_instance_form")
 	(key_class "java.lang.String")
