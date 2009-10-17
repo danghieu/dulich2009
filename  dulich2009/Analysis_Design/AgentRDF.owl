@@ -35,15 +35,18 @@
   <Agent rdf:ID="Hotel">
     <name rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
     >DeWoo</name>
-    <name rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >Sofitel</name>
     <host rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
     >localhost</host>
-    <host xml:lang="en">192.168.1.33</host>
     <port rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
     >1099</port>
+  </Agent>
+  <Agent rdf:ID="Sofitel">
+    <host rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >192.168.1.33</host>
+    <name rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Sofitel</name>
     <port rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >44</port>
+    >1099</port>
   </Agent>
 </rdf:RDF>
 
