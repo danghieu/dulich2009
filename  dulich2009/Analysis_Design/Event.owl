@@ -15,6 +15,9 @@
     <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
     >represents the tourism service event and enables to specify all types of event services 
 like cultural event, sport event etc</rdfs:comment>
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1253719048.owl#TourismService"/>
+    </rdfs:subClassOf>
   </owl:Class>
   <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1253719048.owl#CulturalEvent">
     <rdfs:subClassOf>
@@ -41,6 +44,10 @@ like cultural event, sport event etc</rdfs:comment>
     <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/Ontology1253719048.owl#Event"/>
   </owl:Class>
   <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1253719048.owl#AvailabilityPeriod"/>
+  <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1253719048.owl#PointOfTime">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >specifies a point of time by a date and a time.</rdfs:comment>
+  </owl:Class>
   <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1253719048.owl#Hours"/>
   <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1253719048.owl#Lecture">
     <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/Ontology1253719048.owl#Event"/>
@@ -80,18 +87,24 @@ drama, comedy, etc.).</rdfs:comment>
     >to specify a period of time as a component of a tourism service.</rdfs:comment>
     <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/Ontology1253719048.owl#Period"/>
   </owl:Class>
-  <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1253719048.owl#PeriodOfDay"/>
   <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1253719048.owl#SportEventSeat">
     <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
     ></rdfs:comment>
     <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/Ontology1253719048.owl#Seat"/>
   </owl:Class>
+  <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1253719048.owl#PeriodOfDay"/>
   <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1253719048.owl#CulturalEventService">
     <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/Ontology1253719048.owl#EventService"/>
   </owl:Class>
   <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1253719048.owl#SportEventService">
     <rdfs:subClassOf rdf:resource="http://www.owl-ontologies.com/Ontology1253719048.owl#EventService"/>
   </owl:Class>
+  <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1253719048.owl#hasBegin">
+    <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1253719048.owl#Period"/>
+    <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1253719048.owl#PointOfTime"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >specifys the begin point of time</rdfs:comment>
+  </owl:ObjectProperty>
   <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1253719048.owl#hasLocation">
     <rdfs:domain>
       <owl:Class>
@@ -129,13 +142,17 @@ drama, comedy, etc.).</rdfs:comment>
   <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1253719048.owl#ObjectProperty_49">
     <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1253719048.owl#Location"/>
   </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1253719048.owl#hasSportEventSeat">
+    <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1253719048.owl#SportEventSeat"/>
+    <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1253719048.owl#SportEventService"/>
+  </owl:ObjectProperty>
   <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1253719048.owl#hasSpeaker">
     <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1253719048.owl#BasicElements.Speaker"/>
     <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1253719048.owl#Conference"/>
   </owl:ObjectProperty>
-  <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1253719048.owl#hasSportEventSeat">
-    <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1253719048.owl#SportEventSeat"/>
-    <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1253719048.owl#SportEventService"/>
+  <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1253719048.owl#hasEndPoint">
+    <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1253719048.owl#TourismService"/>
+    <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1253719048.owl#Address"/>
   </owl:ObjectProperty>
   <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1253719048.owl#hasOrganizer"/>
   <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1253719048.owl#hasCountry"/>
@@ -155,9 +172,9 @@ drama, comedy, etc.).</rdfs:comment>
     <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1253719048.owl#EventService"/>
     <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1253719048.owl#Event"/>
   </owl:ObjectProperty>
-  <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1253719048.owl#hasPeriodOfDay">
-    <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1253719048.owl#Hours"/>
-    <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1253719048.owl#PeriodOfDay"/>
+  <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1253719048.owl#hasBeginPoint">
+    <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1253719048.owl#Address"/>
+    <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1253719048.owl#TourismService"/>
   </owl:ObjectProperty>
   <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1253719048.owl#hasPrice">
     <rdfs:domain>
@@ -165,10 +182,15 @@ drama, comedy, etc.).</rdfs:comment>
         <owl:unionOf rdf:parseType="Collection">
           <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1253719048.owl#Event"/>
           <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1253719048.owl#Seat"/>
+          <owl:Class rdf:about="http://www.owl-ontologies.com/Ontology1253719048.owl#TourismService"/>
         </owl:unionOf>
       </owl:Class>
     </rdfs:domain>
     <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1253719048.owl#Price"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1253719048.owl#hasPeriodOfDay">
+    <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1253719048.owl#Hours"/>
+    <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1253719048.owl#PeriodOfDay"/>
   </owl:ObjectProperty>
   <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1253719048.owl#hasCulturalEventSeat">
     <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1253719048.owl#CulturalEventSeat"/>
@@ -185,13 +207,13 @@ drama, comedy, etc.).</rdfs:comment>
     </rdfs:domain>
     <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1253719048.owl#Period"/>
   </owl:ObjectProperty>
-  <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1253719048.owl#hasInclusivePeriod">
-    <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1253719048.owl#Hours"/>
-    <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1253719048.owl#Period"/>
-  </owl:ObjectProperty>
   <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1253719048.owl#hasAddress">
     <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1253719048.owl#Address"/>
     <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1253719048.owl#Institution"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1253719048.owl#hasInclusivePeriod">
+    <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1253719048.owl#Hours"/>
+    <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1253719048.owl#Period"/>
   </owl:ObjectProperty>
   <owl:ObjectProperty rdf:about="http://www.owl-ontologies.com/Ontology1253719048.owl#hasInstitution">
     <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1253719048.owl#Institution"/>
@@ -206,39 +228,66 @@ drama, comedy, etc.).</rdfs:comment>
     <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
     >chỉ rõ việc thực hiện kết hợp một sự kiện văn hóa</rdfs:comment>
   </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.owl-ontologies.com/Ontology1253719048.owl#date">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
+    <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1253719048.owl#PointOfTime"/>
+  </owl:DatatypeProperty>
   <owl:DatatypeProperty rdf:about="http://www.owl-ontologies.com/Ontology1253719048.owl#CulturalEventSeatCategoryType">
     <rdfs:range>
       <owl:DataRange>
         <owl:oneOf rdf:parseType="Resource">
-          <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-          >stall</rdf:first>
           <rdf:rest rdf:parseType="Resource">
             <rdf:rest rdf:parseType="Resource">
               <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
               >box</rdf:first>
               <rdf:rest rdf:parseType="Resource">
-                <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-                >dressCircle</rdf:first>
                 <rdf:rest rdf:parseType="Resource">
-                  <rdf:rest rdf:parseType="Resource">
-                    <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-                    >gallery</rdf:first>
-                    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
-                  </rdf:rest>
                   <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
                   >upperCircle</rdf:first>
+                  <rdf:rest rdf:parseType="Resource">
+                    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                    <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+                    >gallery</rdf:first>
+                  </rdf:rest>
                 </rdf:rest>
+                <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+                >dressCircle</rdf:first>
               </rdf:rest>
             </rdf:rest>
             <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
             >pit</rdf:first>
           </rdf:rest>
+          <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+          >stall</rdf:first>
         </owl:oneOf>
       </owl:DataRange>
     </rdfs:range>
     <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
     >CulturalEventSeatCategoryType enables to specify the type of a category of a seat within a theatre or opera.</rdfs:comment>
     <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1253719048.owl#CulturalEventSeat"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.owl-ontologies.com/Ontology1253719048.owl#sportEventSeatCategoryType">
+    <rdfs:range>
+      <owl:DataRange>
+        <owl:oneOf rdf:parseType="Resource">
+          <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+          >seat</rdf:first>
+          <rdf:rest rdf:parseType="Resource">
+            <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >standingRoom</rdf:first>
+            <rdf:rest rdf:parseType="Resource">
+              <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+              <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+              >box</rdf:first>
+            </rdf:rest>
+          </rdf:rest>
+        </owl:oneOf>
+      </owl:DataRange>
+    </rdfs:range>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >enables to specify a type of a category of a seat within a sport 
+event (e.g. seat, standing room, box, etc.).</rdfs:comment>
+    <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1253719048.owl#SportEventSeat"/>
   </owl:DatatypeProperty>
   <owl:DatatypeProperty rdf:about="http://www.owl-ontologies.com/Ontology1253719048.owl#organizer">
     <rdfs:domain>
@@ -252,32 +301,14 @@ drama, comedy, etc.).</rdfs:comment>
     </rdfs:domain>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
   </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:about="http://www.owl-ontologies.com/Ontology1253719048.owl#sportEventSeatCategoryType">
-    <rdfs:range>
-      <owl:DataRange>
-        <owl:oneOf rdf:parseType="Resource">
-          <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-          >seat</rdf:first>
-          <rdf:rest rdf:parseType="Resource">
-            <rdf:rest rdf:parseType="Resource">
-              <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
-              <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-              >box</rdf:first>
-            </rdf:rest>
-            <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-            >standingRoom</rdf:first>
-          </rdf:rest>
-        </owl:oneOf>
-      </owl:DataRange>
-    </rdfs:range>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >enables to specify a type of a category of a seat within a sport 
-event (e.g. seat, standing room, box, etc.).</rdfs:comment>
-    <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1253719048.owl#SportEventSeat"/>
-  </owl:DatatypeProperty>
   <owl:DatatypeProperty rdf:about="http://www.owl-ontologies.com/Ontology1253719048.owl#endTime">
     <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1253719048.owl#PeriodOfDay"/>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#time"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.owl-ontologies.com/Ontology1253719048.owl#city">
+    <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1253719048.owl#Address"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
   </owl:DatatypeProperty>
   <owl:DatatypeProperty rdf:about="http://www.owl-ontologies.com/Ontology1253719048.owl#lectureSubject">
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
@@ -285,22 +316,17 @@ event (e.g. seat, standing room, box, etc.).</rdfs:comment>
     >chỉ rõ người sáng tác của vở kịch hoặc tác phẩm (ví dụ: nhà soạn thảo, tác giả).</rdfs:comment>
     <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1253719048.owl#Lecture"/>
   </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:about="http://www.owl-ontologies.com/Ontology1253719048.owl#speaker">
-    <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1253719048.owl#Lecture"/>
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-  </owl:DatatypeProperty>
   <owl:DatatypeProperty rdf:about="http://www.owl-ontologies.com/Ontology1253719048.owl#zipCode">
     <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1253719048.owl#Address"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.owl-ontologies.com/Ontology1253719048.owl#speaker">
+    <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1253719048.owl#Lecture"/>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
   </owl:DatatypeProperty>
   <owl:DatatypeProperty rdf:about="http://www.owl-ontologies.com/Ontology1253719048.owl#street">
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
     <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1253719048.owl#Address"/>
-  </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:about="http://www.owl-ontologies.com/Ontology1253719048.owl#amount">
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-    <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1253719048.owl#Price"/>
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
   </owl:DatatypeProperty>
   <owl:DatatypeProperty rdf:about="http://www.owl-ontologies.com/Ontology1253719048.owl#eventTitle">
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
@@ -317,37 +343,37 @@ event (e.g. seat, standing room, box, etc.).</rdfs:comment>
     <rdfs:range>
       <owl:DataRange>
         <owl:oneOf rdf:parseType="Resource">
+          <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+          >adults</rdf:first>
           <rdf:rest rdf:parseType="Resource">
-            <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-            >children</rdf:first>
             <rdf:rest rdf:parseType="Resource">
               <rdf:rest rdf:parseType="Resource">
-                <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-                >families</rdf:first>
                 <rdf:rest rdf:parseType="Resource">
-                  <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-                  >singles</rdf:first>
                   <rdf:rest rdf:parseType="Resource">
-                    <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-                    >seniors</rdf:first>
                     <rdf:rest rdf:parseType="Resource">
-                      <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-                      >schoolGroups</rdf:first>
                       <rdf:rest rdf:parseType="Resource">
+                        <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
                         <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
                         >tourGroups</rdf:first>
-                        <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
                       </rdf:rest>
+                      <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+                      >schoolGroups</rdf:first>
                     </rdf:rest>
+                    <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+                    >seniors</rdf:first>
                   </rdf:rest>
+                  <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+                  >singles</rdf:first>
                 </rdf:rest>
+                <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+                >families</rdf:first>
               </rdf:rest>
               <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
               >teenagers</rdf:first>
             </rdf:rest>
+            <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >children</rdf:first>
           </rdf:rest>
-          <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-          >adults</rdf:first>
         </owl:oneOf>
       </owl:DataRange>
     </rdfs:range>
@@ -396,21 +422,21 @@ apartment or transportation unit like seat or compartment) as unequivocal identi
           <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
           >opera</rdf:first>
           <rdf:rest rdf:parseType="Resource">
-            <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-            >operetta</rdf:first>
             <rdf:rest rdf:parseType="Resource">
-              <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-              >musical</rdf:first>
               <rdf:rest rdf:parseType="Resource">
+                <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+                >drama</rdf:first>
                 <rdf:rest rdf:parseType="Resource">
                   <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
                   <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
                   >comedy</rdf:first>
                 </rdf:rest>
-                <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-                >drama</rdf:first>
               </rdf:rest>
+              <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+              >musical</rdf:first>
             </rdf:rest>
+            <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >operetta</rdf:first>
           </rdf:rest>
         </owl:oneOf>
       </owl:DataRange>
@@ -420,17 +446,17 @@ apartment or transportation unit like seat or compartment) as unequivocal identi
     <rdfs:range>
       <owl:DataRange>
         <owl:oneOf rdf:parseType="Resource">
-          <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-          >weekday</rdf:first>
           <rdf:rest rdf:parseType="Resource">
+            <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >public holiday</rdf:first>
             <rdf:rest rdf:parseType="Resource">
               <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
               <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
               >daily</rdf:first>
             </rdf:rest>
-            <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-            >public holiday</rdf:first>
           </rdf:rest>
+          <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+          >weekday</rdf:first>
         </owl:oneOf>
       </owl:DataRange>
     </rdfs:range>
@@ -440,9 +466,9 @@ apartment or transportation unit like seat or compartment) as unequivocal identi
     <rdfs:range>
       <owl:DataRange>
         <owl:oneOf rdf:parseType="Resource">
-          <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
           <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
           >VietNam</rdf:first>
+          <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
         </owl:oneOf>
       </owl:DataRange>
     </rdfs:range>
@@ -453,36 +479,40 @@ apartment or transportation unit like seat or compartment) as unequivocal identi
     <rdfs:range>
       <owl:DataRange>
         <owl:oneOf rdf:parseType="Resource">
-          <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-          >central</rdf:first>
           <rdf:rest rdf:parseType="Resource">
             <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
             >outside</rdf:first>
             <rdf:rest rdf:parseType="Resource">
               <rdf:rest rdf:parseType="Resource">
+                <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+                >nearRailwayStation</rdf:first>
                 <rdf:rest rdf:parseType="Resource">
                   <rdf:rest rdf:parseType="Resource">
+                    <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+                    >nearAriport</rdf:first>
                     <rdf:rest rdf:parseType="Resource">
                       <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
                       <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
                       >nearBeach</rdf:first>
                     </rdf:rest>
-                    <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-                    >nearAriport</rdf:first>
                   </rdf:rest>
                   <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
                   >nearPublicTransport</rdf:first>
                 </rdf:rest>
-                <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-                >nearRailwayStation</rdf:first>
               </rdf:rest>
               <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
               >countryside</rdf:first>
             </rdf:rest>
           </rdf:rest>
+          <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+          >central</rdf:first>
         </owl:oneOf>
       </owl:DataRange>
     </rdfs:range>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:about="http://www.owl-ontologies.com/Ontology1253719048.owl#time">
+    <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1253719048.owl#PointOfTime"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#time"/>
   </owl:DatatypeProperty>
   <owl:DatatypeProperty rdf:about="http://www.owl-ontologies.com/Ontology1253719048.owl#beginTime">
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#time"/>
@@ -511,9 +541,9 @@ apartment or transportation unit like seat or compartment) as unequivocal identi
             <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
             >EUR</rdf:first>
             <rdf:rest rdf:parseType="Resource">
+              <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
               <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
               >VND</rdf:first>
-              <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
             </rdf:rest>
           </rdf:rest>
           <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
@@ -531,10 +561,27 @@ apartment or transportation unit like seat or compartment) as unequivocal identi
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
     <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1253719048.owl#BasicElements.Speaker"/>
   </owl:DatatypeProperty>
-  <owl:FunctionalProperty rdf:about="http://www.owl-ontologies.com/Ontology1253719048.owl#city">
-    <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1253719048.owl#Address"/>
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  <owl:FunctionalProperty rdf:about="http://www.owl-ontologies.com/Ontology1253719048.owl#amount">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1253719048.owl#Price"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="http://www.owl-ontologies.com/Ontology1253719048.owl#hasEnd">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1253719048.owl#Period"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >specify the end point of time</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1253719048.owl#PointOfTime"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="http://www.owl-ontologies.com/Ontology1253719048.owl#hasBeginTime">
+    <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1253719048.owl#TourismService"/>
+    <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1253719048.owl#PeriodOfTime"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:about="http://www.owl-ontologies.com/Ontology1253719048.owl#hasEndTime">
+    <rdfs:domain rdf:resource="http://www.owl-ontologies.com/Ontology1253719048.owl#TourismService"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:range rdf:resource="http://www.owl-ontologies.com/Ontology1253719048.owl#PeriodOfTime"/>
   </owl:FunctionalProperty>
 </rdf:RDF>
 
