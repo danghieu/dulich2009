@@ -1,0 +1,377 @@
+<?xml version="1.83"?><!DOCTYPE mas SYSTEM "atsystem1.83.dtd">
+<mas name=°null° key=°system@000°><dscr>none</dscr><framework name="agentMOM"/><kmark="277"/>
+<goal name=°Goal 1° key=°goal@1°> num=°1° dscr=°Tourism Services°<gName=°null°<gprt=f<sps=<view x="1160" y="68" w="65" h="37"/> n_pts="2" x0="0" y0="0" x1="0" y1="0"</goal>
+<goal name=°Goal 1.1° key=°goal@2°> num=°1.1° dscr=°Search°<gName=°goal@1°<gprt=f<sps=<view x="317" y="155" w="60" h="37"/> n_pts="2" x0="1135" y0="88" x1="317" y1="136"</goal>
+<goal name=°Goal 1.1.1° key=°goal@10°> num=°1.1.1° dscr=°Search services°<gName=°goal@2°<gprt=f<sps=<view x="139" y="242" w="78" h="37"/> n_pts="2" x0="297" y0="175" x1="139" y1="223"</goal>
+<goal name=°Goal 1.1.1.1° key=°goal@63°> num=°1.1.1.1° dscr=°SearchSuppliers°<gName=°goal@10°<gprt=f<sps=<view x="50" y="329" w="101" h="37"/> n_pts="2" x0="119" y0="262" x1="51" y1="310"</goal>
+<goal name=°Goal 1.1.1.2° key=°goal@64°> num=°1.1.1.2° dscr=°CheckAvailability°<gName=°goal@10°<gprt=f<sps=<view x="156" y="329" w="100" h="37"/> n_pts="2" x0="138" y0="262" x1="156" y1="310"</goal>
+<goal name=°Goal 1.1.1.3° key=°goal@65°> num=°1.1.1.3° dscr=°ReturnResults°<gName=°goal@10°<gprt=f<sps=<view x="256" y="329" w="89" h="37"/> n_pts="2" x0="157" y0="262" x1="257" y1="310"</goal>
+<goal name=°Goal 1.1.1.3.1° key=°goal@68°> num=°1.1.1.3.1° dscr=°CombineServices°<gName=°goal@65°<gprt=f<sps=<view x="186" y="416" w="107" h="37"/> n_pts="2" x0="241" y0="349" x1="187" y1="397"</goal>
+<goal name=°Goal 1.1.1.3.2° key=°goal@69°> num=°1.1.1.3.2° dscr=°RefineandRanker Results°<gName=°goal@65°<gprt=f<sps=<view x="323" y="424" w="106" h="53"/> n_pts="2" x0="270" y0="349" x1="323" y1="397"</goal>
+<goal name=°Goal 1.1.2° key=°goal@13°> num=°1.1.2° dscr=°Search Events°<gName=°goal@2°<gprt=f<sps=<view x="336" y="242" w="78" h="37"/> n_pts="2" x0="317" y0="175" x1="336" y1="223"</goal>
+<goal name=°Goal 1.1.3° key=°goal@14°> num=°1.1.3° dscr=°SearchSupplier°<gName=°goal@2°<gprt=f<sps=<view x="575" y="242" w="94" h="37"/> n_pts="2" x0="337" y0="175" x1="575" y1="223"</goal>
+<goal name=°Goal 1.1.4° key=°goal@59°> num=°1.1.4° dscr=°ViewInfomation°<gName=°goal@2°<gprt=f<sps=<view x="466" y="242" w="93" h="37"/> n_pts="2" x0="327" y0="175" x1="467" y1="223"</goal>
+<goal name=°Goal 1.1.4.1° key=°goal@60°> num=°1.1.4.1° dscr=°viewService'Detail°<gName=°goal@59°<gprt=f<sps=<view x="363" y="329" w="107" h="37"/> n_pts="2" x0="443" y0="262" x1="364" y1="310"</goal>
+<goal name=°Goal 1.1.4.2° key=°goal@61°> num=°1.1.4.2° dscr=°viewSupplier'Detail°<gName=°goal@59°<gprt=f<sps=<view x="484" y="329" w="113" h="37"/> n_pts="2" x0="466" y0="262" x1="485" y1="310"</goal>
+<goal name=°Goal 1.1.4.3° key=°goal@62°> num=°1.1.4.3° dscr=°ViewDestination'Detail°<gName=°goal@59°<gprt=f<sps=<view x="615" y="329" w="132" h="37"/> n_pts="2" x0="489" y0="262" x1="615" y1="310"</goal>
+<goal name=°Goal 1.1.5° key=°goal@67°> num=°1.1.5° dscr=°Search Destinations°<gName=°goal@2°<gprt=f<sps=<view x="224" y="242" w="79" h="37"/> n_pts="2" x0="307" y0="175" x1="225" y1="223"</goal>
+<goal name=°Goal 1.2° key=°goal@3°> num=°1.2° dscr=°Registry°<gName=°goal@1°<gprt=f<sps=<view x="782" y="155" w="60" h="37"/> n_pts="2" x0="1142" y0="88" x1="782" y1="136"</goal>
+<goal name=°Goal 1.2.1° key=°goal@17°> num=°1.2.1° dscr=°registryCutomer°<gName=°goal@3°<gprt=f<sps=<view x="682" y="242" w="97" h="37"/> n_pts="2" x0="767" y0="175" x1="683" y1="223"</goal>
+<goal name=°Goal 1.2.2° key=°goal@18°> num=°1.2.2° dscr=°registrySupplier°<gName=°goal@3°<gprt=f<sps=<view x="800" y="242" w="95" h="37"/> n_pts="2" x0="782" y0="175" x1="801" y1="223"</goal>
+<goal name=°Goal 1.2.3° key=°goal@54°> num=°1.2.3° dscr=°Subscribe to messages°<gName=°goal@3°<gprt=f<sps=<view x="907" y="242" w="95" h="37"/> n_pts="2" x0="797" y0="175" x1="908" y1="223"</goal>
+<goal name=°Goal 1.3° key=°goal@4°> num=°1.3° dscr=°bookServices°<gName=°goal@1°<gprt=f<sps=<view x="1079" y="155" w="83" h="37"/> n_pts="2" x0="1149" y0="88" x1="1080" y1="136"</goal>
+<goal name=°Goal 1.3.1° key=°goal@55°> num=°1.3.1° dscr=°CheckAvailability°<gName=°goal@4°<gprt=f<sps=<view x="1014" y="242" w="100" h="37"/> n_pts="2" x0="1065" y0="175" x1="1014" y1="223"</goal>
+<goal name=°Goal 1.3.2° key=°goal@56°> num=°1.3.2° dscr=°ProcessBooking°<gName=°goal@4°<gprt=f<sps=<view x="1139" y="242" w="100" h="37"/> n_pts="2" x0="1092" y0="175" x1="1139" y1="223"</goal>
+<goal name=°Goal 1.4° key=°goal@5°> num=°1.4° dscr=°alterBooking°<gName=°goal@1°<gprt=f<sps=<view x="1316" y="155" w="78" h="37"/> n_pts="2" x0="1156" y0="88" x1="1316" y1="136"</goal>
+<goal name=°Goal 1.4.1° key=°goal@20°> num=°1.4.1° dscr=°UpdateBooking°<gName=°goal@5°<gprt=f<sps=<view x="1254" y="242" w="94" h="37"/> n_pts="2" x0="1303" y0="175" x1="1254" y1="223"</goal>
+<goal name=°Goal 1.4.1.1° key=°goal@57°> num=°1.4.1.1° dscr=°ViewInfomationBooking°<gName=°goal@20°<gprt=f<sps=<view x="1162" y="329" w="138" h="37"/> n_pts="2" x0="1238" y0="262" x1="1162" y1="310"</goal>
+<goal name=°Goal 1.4.1.2° key=°goal@58°> num=°1.4.1.2° dscr=°ProcesstoUpdateBooking°<gName=°goal@20°<gprt=f<sps=<view x="1331" y="329" w="150" h="37"/> n_pts="2" x0="1269" y0="262" x1="1331" y1="310"</goal>
+<goal name=°Goal 1.4.2° key=°goal@21°> num=°1.4.2° dscr=°cancelBooking°<gName=°goal@5°<gprt=f<sps=<view x="1373" y="242" w="90" h="37"/> n_pts="2" x0="1329" y0="175" x1="1373" y1="223"</goal>
+<goal name=°Goal 1.5° key=°goal@6°> num=°1.5° dscr=°viewFeedback°<gName=°goal@1°<gprt=f<sps=<view x="1506" y="155" w="87" h="37"/> n_pts="2" x0="1163" y0="88" x1="1507" y1="136"</goal>
+<goal name=°Goal 1.5.1° key=°goal@22°> num=°1.5.1° dscr=°viewFeedback°<gName=°goal@6°<gprt=f<sps=<view x="1471" y="242" w="87" h="37"/> n_pts="2" x0="1492" y0="175" x1="1472" y1="223"</goal>
+<goal name=°Goal 1.5.2° key=°goal@23°> num=°1.5.2° dscr=°writeFeedback°<gName=°goal@6°<gprt=f<sps=<view x="1566" y="242" w="89" h="37"/> n_pts="2" x0="1521" y0="175" x1="1567" y1="223"</goal>
+<goal name=°Goal 1.6° key=°goal@7°> num=°1.6° dscr=°publishServices°<gName=°goal@1°<gprt=f<sps=<view x="1717" y="155" w="97" h="37"/> n_pts="2" x0="1170" y0="88" x1="1718" y1="136"</goal>
+<goal name=°Goal 1.6.1° key=°goal@24°> num=°1.6.1° dscr=°insertServices°<gName=°goal@7°<gprt=f<sps=<view x="1661" y="242" w="87" h="37"/> n_pts="2" x0="1701" y0="175" x1="1662" y1="223"</goal>
+<goal name=°Goal 1.6.2° key=°goal@25°> num=°1.6.2° dscr=°alterService°<gName=°goal@7°<gprt=f<sps=<view x="1763" y="242" w="73" h="37"/> n_pts="2" x0="1733" y0="175" x1="1764" y1="223"</goal>
+<goal name=°Goal 1.6.2.1° key=°goal@27°> num=°1.6.2.1° dscr=°updateService°<gName=°goal@25°<gprt=f<sps=<view x="1692" y="329" w="87" h="37"/> n_pts="2" x0="1751" y0="262" x1="1693" y1="310"</goal>
+<goal name=°Goal 1.6.2.1.1° key=°goal@70°> num=°1.6.2.1.1° dscr=°ViewInformation Service°<gName=°goal@27°<gprt=f<sps=<view x="1608" y="424" w="97" h="53"/> n_pts="2" x0="1678" y0="349" x1="1609" y1="397"</goal>
+<goal name=°Goal 1.6.2.1.2° key=°goal@71°> num=°1.6.2.1.2° dscr=°ProcessUpdateService°<gName=°goal@27°<gprt=f<sps=<view x="1747" y="416" w="135" h="37"/> n_pts="2" x0="1707" y0="349" x1="1748" y1="397"</goal>
+<goal name=°Goal 1.6.2.2° key=°goal@28°> num=°1.6.2.2° dscr=°cancelService°<gName=°goal@25°<gprt=f<sps=<view x="1830" y="329" w="85" h="37"/> n_pts="2" x0="1775" y0="262" x1="1831" y1="310"</goal>
+<goal name=°Goal 1.7° key=°goal@8°> num=°1.7° dscr=°manageUserProfile°<gName=°goal@1°<gprt=f<sps=<view x="1967" y="155" w="117" h="37"/> n_pts="2" x0="1177" y0="88" x1="1968" y1="136"</goal>
+<goal name=°Goal 1.7.1° key=°goal@29°> num=°1.7.1° dscr=°manageUserInformation  °<gName=°goal@8°<gprt=f<sps=<view x="1885" y="242" w="150" h="37"/> n_pts="2" x0="1948" y0="175" x1="1885" y1="223"</goal>
+<goal name=°Goal 1.7.2° key=°goal@30°> num=°1.7.2° dscr=°updateUserInformation°<gName=°goal@8°<gprt=f<sps=<view x="2041" y="242" w="136" h="37"/> n_pts="2" x0="1987" y0="175" x1="2041" y1="223"</goal>
+<goal name=°Goal 1.8° key=°goal@9°> num=°1.8° dscr=°Auction service°<gName=°goal@1°<gprt=f<sps=<view x="2083" y="155" w="69" h="37"/> n_pts="2" x0="1184" y0="88" x1="2084" y1="136"</goal>
+<role name=°Guest° key=°role@31°> dscr=°none°<goals: goals=0<view x="62" y="35" w="60" h="50"/></role>
+<role name=°Manager° key=°role@32°> dscr=°none°<goals: goals=8 Num=°goal@3° Num=°goal@17° Num=°goal@18° Num=°goal@24° Num=°goal@8° Num=°goal@71° Num=°goal@28° Num=°goal@57°<view x="700" y="203" w="68" h="147"/></role>
+<role name=°Sleuth° key=°role@33°> dscr=°none°<goals: goals=5 Num=°goal@2° Num=°goal@63° Num=°goal@67° Num=°goal@10° Num=°goal@13°<view x="598" y="47" w="60" h="99"/></role>
+<role name=°Supplier° key=°role@34°> dscr=°none°<goals: goals=9 Num=°goal@64° Num=°goal@29° Num=°goal@30° Num=°goal@7° Num=°goal@6° Num=°goal@61° Num=°goal@60° Num=°goal@27° Num=°goal@70°<view x="1029" y="311" w="67" h="163"/></role>
+<role name=°Processor° key=°role@35°> dscr=°none°<goals: goals=9 Num=°goal@55° Num=°goal@56° Num=°goal@58° Num=°goal@21° Num=°goal@25° Num=°goal@65° Num=°goal@61° Num=°goal@60° Num=°goal@70°<view x="1000" y="94" w="77" h="163"/></role>
+<role name=°DMO° key=°role@36°> dscr=°none°<goals: goals=1 Num=°goal@62°<view x="326" y="34" w="60" h="50"/></role>
+<role name=°Customer° key=°role@37°> dscr=°none°<goals: goals=3 Num=°goal@4° Num=°goal@5° Num=°goal@20°<view x="212" y="249" w="75" h="67"/></role>
+<role name=°InformationPresentation° key=°role@38°> dscr=°none°<goals: goals=1 Num=°goal@22°<view x="90" y="165" w="152" h="50"/></role>
+<role name=°Broker° key=°role@41°> dscr=°none°<goals: goals=2 Num=°goal@9° Num=°goal@68°<view x="508" y="372" w="67" h="51"/></role>
+<role name=°NotificationSender° key=°role@42°> dscr=°none°<goals: goals=1 Num=°goal@54°<view x="304" y="453" w="121" h="50"/></role>
+<role name=°NotificationReceiver° key=°role@43°> dscr=°none°<goals: goals=0<view x="84" y="342" w="129" h="50"/></role>
+<role name=°Ranker° key=°role@44°> dscr=°none°<goals: goals=1 Num=°goal@69°<view x="626" y="398" w="67" h="50"/></role>
+<role name=°FlightSupplier° key=°role@272°> dscr=°none°<goals: goals=0<view x="248" y="150" w="96" h="50"/></role>
+<role name=°TrainSupplier° key=°role@273°> dscr=°none°<goals: goals=0<view x="427" y="150" w="94" h="50"/></role>
+<role name=°HotelSupplier° key=°role@274°> dscr=°none°<goals: goals=0<view x="397" y="150" w="95" h="50"/></role>
+<role name=°CarRentalSupplier° key=°role@275°> dscr=°none°<goals: goals=0<view x="635" y="148" w="122" h="50"/></role>
+<useCase name=°viewResult° key=°usecase@45°> dscr=°none°
+<seqDiag name=°viewResult° key=°seqdiag@46°>
+<Role2 name=°null° key=°role2@47°> rName=°role@33°> dscr=°none°<view x="57" y="62" w="64" h="25"/> lLen "300"/></Role2>
+<Role2 name=°null° key=°role2@48°> rName=°role@32°> dscr=°none°<view x="226" y="62" w="77" h="25"/> lLen "300"/></Role2>
+<Role2 name=°null° key=°role2@49°> rName=°role@44°> dscr=°none°<view x="410" y="62" w="69" h="25"/> lLen "300"/></Role2>
+<Role2 name=°null° key=°role2@50°> rName=°role@31°> dscr=°none°<view x="579" y="62" w="60" h="25"/> lLen "300"/></Role2>
+<message name=°Danh sach ket qua tim kiem° key=°mess@51°> f=°role2@47° s=°role2@48°<view y ="105"</message>
+<message name=°Yeu cau chon loc, sap xep ket qua° key=°mess@52°> f=°role2@48° s=°role2@49°<view y ="145"</message>
+<message name=°Bieu dien ket qua ° key=°mess@53°> f=°role2@49° s=°role2@50°<view y ="191"</message></seqDiag></useCase>
+<task name=°sendRequirement° key=°task@72°> dscr=°none°<rName=°role@31°<view x="53" y="88" w="108" h="30"/> n_pts="2" x0="62" y0="61" x1="57" y1="73"
+<statetable name=°null° key=°statetable@72°> owner=°null°>
+<state name=°StartState° key=°startstate@72°><pos="100","100"></state>
+<state name=°EndState° key=°endstate@72°><pos="400","100"></state></statetable></task>
+<task name=°receiveRequirement° key=°task@73°> dscr=°none°<rName=°role@32°<view x="498" y="219" w="119" h="30"/> n_pts="2" x0="688" y0="278" x1="538" y1="221"
+<statetable name=°null° key=°statetable@73°> owner=°null°>
+<state name=°StartState° key=°startstate@73°><pos="100","100"></state>
+<state name=°EndState° key=°endstate@73°><pos="400","100"></state></statetable></task>
+<task name=°controller° key=°task@74°> dscr=°none°<rName=°role@32°<view x="522" y="149" w="59" h="30"/> n_pts="2" x0="710" y0="278" x1="548" y1="154"
+<statetable name=°null° key=°statetable@74°> owner=°null°>
+<state name=°StartState° key=°startstate@74°><pos="100","100"></state>
+<state name=°EndState° key=°endstate@74°><pos="400","100"></state></statetable></task>
+<task name=°processToSearch° key=°task@75°> dscr=°none°<rName=°role@33°<view x="435" y="63" w="106" h="30"/> n_pts="2" x0="598" y0="98" x1="474" y1="58"
+<statetable name=°null° key=°statetable@75°> owner=°null°>
+<state name=°StartState° key=°startstate@75°><pos="100","100"></state>
+<state name=°EndState° key=°endstate@75°><pos="400","100"></state></statetable></task>
+<task name=°provideDestinationInfomation° key=°task@76°> dscr=°none°<rName=°role@36°<view x="244" y="94" w="169" h="30"/> n_pts="2" x0="326" y0="60" x1="256" y1="79"
+<statetable name=°null° key=°statetable@76°> owner=°null°>
+<state name=°StartState° key=°startstate@76°><pos="100","100"></state>
+<state name=°EndState° key=°endstate@76°><pos="400","100"></state></statetable></task>
+<task name=°getInfomationtoDisplay° key=°task@77°> dscr=°none°<rName=°role@38°<view x="85" y="219" w="134" h="30"/> n_pts="2" x0="90" y0="191" x1="87" y1="204"
+<statetable name=°null° key=°statetable@77°> owner=°null°>
+<state name=°StartState° key=°startstate@77°><pos="100","100"></state>
+<state name=°EndState° key=°endstate@77°><pos="400","100"></state></statetable></task>
+<task name=°combineServices° key=°task@78°> dscr=°none°<rName=°role@41°<view x="438" y="311" w="103" h="30"/> n_pts="2" x0="519" y0="399" x1="464" y1="324"
+<statetable name=°null° key=°statetable@78°> owner=°null°>
+<state name=°StartState° key=°startstate@78°><pos="100","100"></state>
+<state name=°EndState° key=°endstate@78°><pos="400","100"></state></statetable></task>
+<task name=°auction° key=°task@79°> dscr=°none°<rName=°role@41°<view x="575" y="310" w="50" h="30"/> n_pts="2" x0="497" y0="399" x1="554" y1="323"
+<statetable name=°null° key=°statetable@79°> owner=°null°>
+<state name=°StartState° key=°startstate@79°><pos="100","100"></state>
+<state name=°EndState° key=°endstate@79°><pos="400","100"></state></statetable></task>
+<task name=°refineAndRankResults° key=°task@80°> dscr=°none°<rName=°role@44°<view x="689" y="321" w="132" h="30"/> n_pts="2" x0="626" y0="424" x1="671" y1="335"
+<statetable name=°null° key=°statetable@80°> owner=°null°>
+<state name=°StartState° key=°startstate@80°><pos="100","100"></state>
+<state name=°EndState° key=°endstate@80°><pos="400","100"></state></statetable></task>
+<task name=°receiveRequirement° key=°task@81°> dscr=°none°<rName=°role@34°<view x="881" y="281" w="119" h="30"/> n_pts="2" x0="1040" y0="394" x1="947" y1="283"
+<statetable name=°null° key=°statetable@81°> owner=°null°>
+<state name=°StartState° key=°startstate@81°><pos="100","100"></state>
+<state name=°EndState° key=°endstate@81°><pos="400","100"></state></statetable></task>
+<task name=°publishService° key=°task@83°> dscr=°none°<rName=°role@34°<view x="853" y="382" w="89" h="30"/> n_pts="2" x0="1018" y0="394" x1="888" y1="371"
+<statetable name=°null° key=°statetable@83°> owner=°null°>
+<state name=°StartState° key=°startstate@83°><pos="100","100"></state>
+<state name=°EndState° key=°endstate@83°><pos="400","100"></state></statetable></task>
+<task name=°processRequirement° key=°task@86°> dscr=°none°<rName=°role@35°<view x="875" y="71" w="125" h="30"/> n_pts="2" x0="1000" y0="177" x1="906" y1="79"
+<statetable name=°null° key=°statetable@86°> owner=°null°>
+<state name=°StartState° key=°startstate@86°><pos="100","100"></state>
+<state name=°EndState° key=°endstate@86°><pos="400","100"></state></statetable></task>
+<task name=°registerSubcribeToMessage° key=°task@87°> dscr=°none°<rName=°role@42°<view x="299" y="387" w="164" h="30"/> n_pts="2" x0="304" y0="479" x1="301" y1="401"
+<statetable name=°null° key=°statetable@87°> owner=°null°>
+<state name=°StartState° key=°startstate@87°><pos="100","100"></state>
+<state name=°EndState° key=°endstate@87°><pos="400","100"></state></statetable></task>
+<task name=°subcribeToMessage° key=°task@88°> dscr=°none°<rName=°role@43°<view x="130" y="407" w="121" h="30"/> n_pts="2" x0="84" y0="368" x1="112" y1="392"
+<statetable name=°null° key=°statetable@88°> owner=°null°>
+<state name=°StartState° key=°startstate@88°><pos="100","100"></state>
+<state name=°EndState° key=°endstate@88°><pos="400","100"></state></statetable></task>
+<task name=°bookServices° key=°task@91°> dscr=°none°<rName=°role@37°<view x="332" y="242" w="82" h="30"/> n_pts="2" x0="200" y0="284" x1="284" y1="246"
+<statetable name=°null° key=°statetable@91°> owner=°null°>
+<state name=°StartState° key=°startstate@91°><pos="100","100"></state>
+<state name=°EndState° key=°endstate@91°><pos="400","100"></state></statetable></task>
+<task name=°AlterBooking° key=°task@92°> dscr=°none°<rName=°role@37°<view x="301" y="309" w="77" h="30"/> n_pts="2" x0="225" y0="284" x1="261" y1="297"
+<statetable name=°null° key=°statetable@92°> owner=°null°>
+<state name=°StartState° key=°startstate@92°><pos="100","100"></state>
+<state name=°EndState° key=°endstate@92°><pos="400","100"></state></statetable></task>
+<agent name=°HotelAgent° key=°agent@93°> dscr=°none°<view x="871" y="376" w="95" h="50"/>
+<architecture name=°HotelAgent architecture° key=°arch@93°> dscr=°none°</architecture><Roles>1"role@274"</agent>
+<agent name=°FlightAgent° key=°agent@94°> dscr=°none°<view x="638" y="64" w="96" h="50"/>
+<architecture name=°FlightAgent architecture° key=°arch@94°> dscr=°none°</architecture><Roles>1"role@272"</agent>
+<agent name=°CarRentalAgent° key=°agent@95°> dscr=°none°<view x="668" y="489" w="122" h="50"/>
+<architecture name=°CarRentalAgent architecture° key=°arch@95°> dscr=°none°</architecture><Roles>1"role@275"</agent>
+<agent name=°TrainAgent° key=°agent@97°> dscr=°none°<view x="885" y="135" w="94" h="50"/>
+<architecture name=°TrainAgent architecture° key=°arch@97°> dscr=°none°</architecture><Roles>1"role@273"</agent>
+<agent name=°BrokerAgent° key=°agent@98°> dscr=°none°<view x="1087" y="241" w="87" h="50"/>
+<architecture name=°BrokerAgent architecture° key=°arch@98°> dscr=°none°</architecture><Roles>1"role@41"</agent>
+<agent name=°DMOAgent° key=°agent@99°> dscr=°none°<view x="83" y="161" w="78" h="50"/>
+<architecture name=°DMOAgent architecture° key=°arch@99°> dscr=°none°</architecture><Roles>1"role@36"</agent>
+<agent name=°CustomerAgent° key=°agent@100°> dscr=°none°<view x="647" y="217" w="106" h="50"/>
+<architecture name=°CustomerAgent architecture° key=°arch@100°> dscr=°none°</architecture><Roles>1"role@37"</agent>
+<agent name=°ControllerAgent° key=°agent@101°> dscr=°none°<view x="289" y="265" w="105" h="50"/>
+<architecture name=°ControllerAgent architecture° key=°arch@101°> dscr=°none°</architecture><Roles>1"role@32"</agent>
+<conversation name=°SearchService/Supplier/Destination° key=°conv@102°> ic=°Component° rc=°Component° dscr=°none°
+<statetable name=°null° key=°statetable@102°> owner=°agent@100°>
+<state name=°StartState° key=°startstate@102°><pos="23","202"></state>
+<state name=°EndState° key=°endstate@102°><pos="906","21"></state>
+<state name=°RegisterCustomer° key=°state@129°> act=°registerCustomer(customer)°/><view x="259" y="203" w="177" h="57"/></state>
+<state name=°Wait° key=°state@130°>/><view x="693" y="123" w="60" h="41"/></state>
+<state name=°AlterService° key=°state@184°> act=°findService()° act=°displayService(serviceInfo)° act=°alterService(service)°/><view x="1141" y="336" w="166" h="89"/></state>
+<state name=°BookService° key=°state@185°> act=°BookService (Customer, service)°/><view x="167" y="77" w="199" h="57"/></state>
+<state name=°viewInfomation° key=°state@186°>/><view x="336" y="305" w="102" h="41"/></state>
+<transition name=°null° key=°trans@131°> rMessage=°° tMessage=°° guard=°° cstate=°startstate@102° nstate=°state@129°<view n_pts="2" x0="42" y0="211" x1="170" y1="204" linetype =" " Q1=2 Q2=0 se ="f" "f"/></transition>
+<transition name=°null° key=°trans@132°> rMessage=°sendMessage (type = RegisterCustomer, customer)° tMessage=°° guard=°° cstate=°state@129° nstate=°state@130°<view n_pts="4" x0="259" y0="233" x1="259" y1="266" x2="647" y2="265" x3="673" y3="145" linetype =" " Q1=3 Q2=3 se ="f" "f"/></transition>
+<transition name=°null° key=°trans@134°> rMessage=°° tMessage=°registerCustomer()° guard=°NOT statisfy° cstate=°state@130° nstate=°state@129°<view n_pts="3" x0="662" y0="131" x1="376" y1="204" x2="349" y2="203" linetype =" " Q1=0 Q2=2 se ="f" "f"/></transition>
+<transition name=°null° key=°trans@187°> rMessage=°° tMessage=°° guard=°° cstate=°startstate@102° nstate=°state@184°<view n_pts="3" x0="33" y0="221" x1="34" y1="352" x2="1057" y2="337" linetype =" " Q1=3 Q2=0 se ="f" "f"/></transition>
+<transition name=°null° key=°trans@188°> rMessage=°° tMessage=°° guard=°° cstate=°startstate@102° nstate=°state@185°<view n_pts="2" x0="40" y0="205" x1="167" y1="107" linetype =" " Q1=1 Q2=3 se ="f" "f"/></transition>
+<transition name=°null° key=°trans@189°> rMessage=°° tMessage=°° guard=°° cstate=°startstate@102° nstate=°state@186°<view n_pts="2" x0="42" y0="215" x1="284" y1="306" linetype =" " Q1=2 Q2=0 se ="f" "f"/></transition>
+<transition name=°null° key=°trans@191°> rMessage=°sendMessage(type =Book, service)° tMessage=°° guard=°° cstate=°state@185° nstate=°state@130°<view n_pts="2" x0="268" y0="87" x1="662" y1="118" linetype =" " Q1=2 Q2=0 se ="f" "f"/></transition>
+<transition name=°null° key=°trans@192°> rMessage=°° tMessage=°BookService()° guard=°NOT avalability° cstate=°state@130° nstate=°state@185°<view n_pts="3" x0="693" y0="102" x1="694" y1="72" x2="268" y2="68" linetype =" " Q1=1 Q2=2 se ="f" "f"/></transition>
+<transition name=°null° key=°trans@193°> rMessage=°sendMessage(type = Update/Cancel, bookedService)° tMessage=°° guard=°° cstate=°state@184° nstate=°state@130°<view n_pts="3" x0="1057" y0="315" x1="715" y1="321" x2="713" y2="145" linetype =" " Q1=0 Q2=3 se ="f" "f"/></transition>
+<transition name=°null° key=°trans@194°> rMessage=°receive(type = alter, serviceInfo)° tMessage=°dispayService(serviceInfo)° guard=°° cstate=°state@130° nstate=°state@184°<view n_pts="3" x0="724" y0="133" x1="1094" y1="187" x2="1114" y2="291" linetype =" " Q1=2 Q2=1 se ="f" "f"/></transition>
+<transition name=°null° key=°trans@197°> rMessage=°sendMessage (alter,serviceInfo)° tMessage=°° guard=°° cstate=°state@184° nstate=°state@130°<view n_pts="3" x0="1169" y0="291" x1="1169" y1="132" x2="724" y2="123" linetype =" " Q1=1 Q2=2 se ="f" "f"/></transition>
+<transition name=°null° key=°trans@198°> rMessage=°° tMessage=°alterService()° guard=°NOT statisfy° cstate=°state@130° nstate=°state@184°<view n_pts="4" x0="703" y0="145" x1="703" y1="374" x2="1029" y2="373" x3="1057" y3="359" linetype =" " Q1=3 Q2=0 se ="f" "f"/></transition>
+<transition name=°null° key=°trans@199°> rMessage=°° tMessage=°° guard=°Statisfy° cstate=°state@130° nstate=°endstate@102°<view n_pts="2" x0="724" y0="113" x1="906" y1="34" linetype =" " Q1=2 Q2=0 se ="f" "f"/></transition>
+<transition name=°null° key=°trans@203°> rMessage=°sendMessage(view, requireInfo)° tMessage=°° guard=°° cstate=°state@186° nstate=°state@130°<view n_pts="3" x0="388" y0="305" x1="682" y1="310" x2="683" y2="145" linetype =" " Q1=2 Q2=3 se ="f" "f"/></transition>
+<transition name=°null° key=°trans@204°> rMessage=°receiveMessage(results)° tMessage=°° guard=°° cstate=°state@130° nstate=°state@186°<view n_pts="4" x0="693" y0="145" x1="693" y1="384" x2="338" y2="387" x3="336" y3="327" linetype =" " Q1=3 Q2=3 se ="f" "f"/></transition></statetable>
+<statetable name=°null° key=°statetable@102°> owner=°agent@101°>
+<state name=°StartState° key=°startstate@102°><pos="55","76"></state>
+<state name=°EndState° key=°endstate@102°><pos="1102","169"></state>
+<state name=°Wait° key=°state@135°>/><view x="64" y="207" w="60" h="41"/></state>
+<state name=°Check° key=°state@136°> act=°type = checkMesage(Message)°/><view x="414" y="237" w="190" h="57"/></state>
+<state name=°ProcessAlterBooking° key=°state@200°> act=°suppier = findSupplier(service)° act=°BookedInfo = viewInfo(supplier, service)° act=°alterBooking(supplier, serviceInfo)°/><view x="431" y="94" w="237" h="89"/></state>
+<state name=°ProcessBook° key=°state@201°> act=°result = processBook (supplier, service)° act=°supplier = findSupplier (Serivce)°/><view x="730" y="177" w="238" h="73"/></state>
+<state name=°ProcessRegister° key=°state@202°> act=°Boolean a = checkRegisterInfo(Customer)° act=°registerCustomer(Customer)°/><view x="751" y="365" w="251" h="73"/></state>
+<state name=°ProcessViewInfomation° key=°state@205°> act=°result = findInfomation (requirement)° act=°processViewInfomation°/><view x="740" y="269" w="220" h="73"/></state>
+<state name=°Wait(2)° key=°state@211°>/><view x="1130" y="42" w="60" h="41"/></state>
+<transition name=°null° key=°trans@138°> rMessage=°receive(Message)° tMessage=°° guard=°° cstate=°startstate@102° nstate=°state@135°<view n_pts="2" x0="64" y0="95" x1="64" y1="186" linetype =" " Q1=3 Q2=1 se ="f" "f"/></transition>
+<transition name=°null° key=°trans@206°> rMessage=°CheckMessage (Message)° tMessage=°° guard=°° cstate=°state@135° nstate=°state@136°<view n_pts="4" x0="95" y0="207" x1="94" y1="196" x2="300" y2="235" x3="318" y3="238" linetype =" " Q1=2 Q2=0 se ="f" "f"/></transition>
+<transition name=°null° key=°trans@207°> rMessage=°° tMessage=°° guard=°Type =AlterBooking° cstate=°state@136° nstate=°state@200°<view n_pts="3" x0="383" y0="208" x1="404" y1="179" x2="431" y2="140" linetype =" " Q1=1 Q2=3 se ="f" "f"/></transition>
+<transition name=°null° key=°trans@208°> rMessage=°° tMessage=°° guard=°type = BookService° cstate=°state@136° nstate=°state@201°<view n_pts="2" x0="446" y0="208" x1="610" y1="178" linetype =" " Q1=1 Q2=0 se ="f" "f"/></transition>
+<transition name=°null° key=°trans@209°> rMessage=°° tMessage=°° guard=°type = ViewInfo° cstate=°state@136° nstate=°state@205°<view n_pts="2" x0="510" y0="237" x1="629" y1="270" linetype =" " Q1=2 Q2=0 se ="f" "f"/></transition>
+<transition name=°null° key=°trans@210°> rMessage=°° tMessage=°° guard=°Type = Customerregister° cstate=°state@136° nstate=°state@202°<view n_pts="3" x0="414" y0="267" x1="414" y1="354" x2="625" y2="354" linetype =" " Q1=3 Q2=0 se ="f" "f"/></transition>
+<transition name=°null° key=°trans@212°> rMessage=°sendMessage(BookedInfo)° tMessage=°° guard=°° cstate=°state@200° nstate=°state@211°<view n_pts="4" x0="551" y0="72" x1="551" y1="50" x2="1083" y2="50" x3="1099" y3="50" linetype =" " Q1=2 Q2=0 se ="f" "f"/></transition>
+<transition name=°null° key=°trans@214°> rMessage=°° tMessage=°° guard=°a =true° cstate=°state@202° nstate=°endstate@102°<view n_pts="3" x0="878" y0="365" x1="1110" y1="365" x2="1111" y2="188" linetype =" " Q1=2 Q2=0 se ="f" "f"/></transition>
+<transition name=°null° key=°trans@215°> rMessage=°° tMessage=°sendMessage (register)° guard=°a = false° cstate=°state@202° nstate=°state@135°<view n_pts="3" x0="625" y0="378" x1="64" y1="378" x2="64" y2="229" linetype =" " Q1=0 Q2=3 se ="f" "f"/></transition>
+<transition name=°null° key=°trans@216°> rMessage=°sendMessage(result )° tMessage=°° guard=°° cstate=°state@201° nstate=°endstate@102°<view n_pts="3" x0="850" y0="177" x1="1084" y1="177" x2="1102" y2="178" linetype =" " Q1=2 Q2=0 se ="f" "f"/></transition>
+<transition name=°null° key=°trans@217°> rMessage=°receiveMessage (Alter,BookingInfo)° tMessage=°° guard=°° cstate=°state@211° nstate=°state@200°<view n_pts="4" x0="1099" y0="37" x1="1101" y1="24" x2="432" y2="24" x3="432" y3="49" linetype =" " Q1=0 Q2=1 se ="f" "f"/></transition>
+<transition name=°null° key=°trans@218°> rMessage=°° tMessage=°° guard=°Success° cstate=°state@200° nstate=°endstate@102°<view n_pts="3" x0="551" y0="116" x1="1112" y1="115" x2="1112" y2="169" linetype =" " Q1=2 Q2=0 se ="f" "f"/></transition>
+<transition name=°null° key=°trans@220°> rMessage=°° tMessage=°° guard=°NOT success° cstate=°state@200° nstate=°state@211°<view n_pts="3" x0="551" y0="94" x1="1129" y1="94" x2="1130" y2="64" linetype =" " Q1=2 Q2=3 se ="f" "f"/></transition>
+<transition name=°null° key=°trans@221°> rMessage=°sendMessage (results)° tMessage=°° guard=°° cstate=°state@205° nstate=°endstate@102°<view n_pts="2" x0="851" y0="269" x1="1102" y1="182" linetype =" " Q1=2 Q2=0 se ="f" "f"/></transition></statetable><view n_pts="4" x0="593" y0="217" x1="553" y1="232" x2="553" y2="252" x3="343" y3="252" linetype =" " Q1=0 Q2=2</conversation>
+<conversation name=°CheckAvalabilityHotel'sServices° key=°conv@104°> ic=°Component° rc=°Component° dscr=°none°
+<statetable name=°null° key=°statetable@104°> owner=°agent@101°>
+<state name=°StartState° key=°startstate@104°><pos="9","138"></state>
+<state name=°EndState° key=°endstate@104°><pos="530","11"></state>
+<state name=°requireProcessBook° key=°state@223°> act=°ProcessBook(supplier,service)°/><view x="178" y="66" w="189" h="57"/></state>
+<state name=°requireProcessAlterBooking° key=°state@224°> act=°processAlterBooking(supplier, Bookedservice)°/><view x="148" y="342" w="274" h="57"/></state>
+<state name=°viewDetailInfomation° key=°state@225°> act=°processViewInfomation(requirement)°/><view x="170" y="174" w="224" h="57"/></state>
+<state name=°Wait° key=°state@229°>/><view x="539" y="173" w="60" h="41"/></state>
+<transition name=°null° key=°trans@226°> rMessage=°° tMessage=°° guard=°° cstate=°startstate@104° nstate=°state@223°<view n_pts="2" x0="25" y0="140" x1="83" y1="67" linetype =" " Q1=2 Q2=0 se ="f" "f"/></transition>
+<transition name=°null° key=°trans@227°> rMessage=°° tMessage=°° guard=°° cstate=°startstate@104° nstate=°state@225°<view n_pts="2" x0="27" y0="153" x1="57" y1="175" linetype =" " Q1=2 Q2=0 se ="f" "f"/></transition>
+<transition name=°null° key=°trans@228°> rMessage=°° tMessage=°° guard=°° cstate=°startstate@104° nstate=°state@224°<view n_pts="2" x0="23" y0="156" x1="103" y1="313" linetype =" " Q1=3 Q2=1 se ="f" "f"/></transition>
+<transition name=°null° key=°trans@230°> rMessage=°sendMessage(supplier,Book, Service)° tMessage=°° guard=°° cstate=°state@223° nstate=°state@229°<view n_pts="2" x0="274" y0="66" x1="508" y1="164" linetype =" " Q1=2 Q2=0 se ="f" "f"/></transition>
+<transition name=°null° key=°trans@231°> rMessage=°receiveMessage(type, results)° tMessage=°° guard=°° cstate=°state@229° nstate=°endstate@104°<view n_pts="2" x0="539" y0="152" x1="539" y1="30" linetype =" " Q1=1 Q2=0 se ="f" "f"/></transition>
+<transition name=°null° key=°trans@233°> rMessage=°sendMessage(view, requirement)° tMessage=°° guard=°° cstate=°state@225° nstate=°state@229°<view n_pts="2" x0="283" y0="174" x1="508" y1="174" linetype =" " Q1=2 Q2=0 se ="f" "f"/></transition>
+<transition name=°null° key=°trans@234°> rMessage=°sendMessage(supplier, alterBooking, service)° tMessage=°° guard=°° cstate=°state@224° nstate=°state@229°<view n_pts="3" x0="194" y0="313" x1="348" y1="254" x2="508" y2="184" linetype =" " Q1=1 Q2=0 se ="f" "f"/></transition>
+<transition name=°null° key=°trans@235°> rMessage=°receiveMessage(BookedServiceinfo)° tMessage=°° guard=°° cstate=°state@229° nstate=°state@224°<view n_pts="4" x0="529" y0="195" x1="503" y1="334" x2="401" y2="334" x3="286" y3="333" linetype =" " Q1=3 Q2=2 se ="f" "f"/></transition>
+<transition name=°null° key=°trans@236°> rMessage=°° tMessage=°requireAterBooking (serviceInfo)° guard=°° cstate=°state@224° nstate=°state@229°<view n_pts="3" x0="286" y0="352" x1="549" y1="352" x2="549" y2="195" linetype =" " Q1=2 Q2=3 se ="f" "f"/></transition></statetable>
+<statetable name=°null° key=°statetable@104°> owner=°agent@93°>
+<state name=°StartState° key=°startstate@104°><pos="104","372"></state>
+<state name=°EndState° key=°endstate@104°><pos="881","172"></state>
+<state name=°Wait° key=°state@237°>/><view x="112" y="154" w="60" h="41"/></state>
+<state name=°ProcessBookSerivce° key=°state@238°> act=°Boolean = checkAvalabiliy(Service)° act=°processBookService(service)°/><view x="397" y="36" w="209" h="73"/></state>
+<state name=°ProcessAlterService° key=°state@239°> act=°ServiceInfo = viewDetailInfo(service)° act=°processAlterBooking(ServiceInfo )°/><view x="388" y="353" w="216" h="73"/></state>
+<state name=°ProcessViewInfomation° key=°state@240°> act=°info = processViewInfomation(requirement)°/><view x="586" y="153" w="257" h="57"/></state>
+<state name=°Wait(2)° key=°state@246°>/><view x="782" y="355" w="60" h="41"/></state>
+<transition name=°null° key=°trans@241°> rMessage=°receiveMessage(type, requirement)° tMessage=°° guard=°° cstate=°startstate@104° nstate=°state@237°<view n_pts="2" x0="113" y0="372" x1="112" y1="176" linetype =" " Q1=2 Q2=3 se ="f" "f"/></transition>
+<transition name=°null° key=°trans@242°> rMessage=°° tMessage=°processBookService(service)° guard=°type = BookService° cstate=°state@237° nstate=°state@238°<view n_pts="2" x0="143" y0="144" x1="397" y1="74" linetype =" " Q1=2 Q2=3 se ="f" "f"/></transition>
+<transition name=°null° key=°trans@243°> rMessage=°° tMessage=°ProcessViewInfomation()° guard=°type = ViewInfomation° cstate=°state@237° nstate=°state@240°<view n_pts="5" x0="143" y0="154" x1="300" y1="154" x2="340" y2="154" x3="432" y3="153" x4="457" y4="154" linetype =" " Q1=2 Q2=0 se ="f" "f"/></transition>
+<transition name=°null° key=°trans@244°> rMessage=°° tMessage=°processAlterBooking(service)° guard=°type = AlterBooking° cstate=°state@237° nstate=°state@239°<view n_pts="3" x0="143" y0="164" x1="330" y1="301" x2="352" y2="316" linetype =" " Q1=2 Q2=1 se ="f" "f"/></transition>
+<transition name=°null° key=°trans@247°> rMessage=°sendMessage(ServiceInfo)° tMessage=°° guard=°° cstate=°state@239° nstate=°state@246°<view n_pts="4" x0="497" y0="335" x1="495" y1="347" x2="732" y2="347" x3="751" y3="350" linetype =" " Q1=2 Q2=0 se ="f" "f"/></transition>
+<transition name=°null° key=°trans@248°> rMessage=°receiveMessage(ServiceInfo)° tMessage=°processAlterBooking(ServiceInfo)° guard=°° cstate=°state@246° nstate=°state@239°<view n_pts="4" x0="772" y0="334" x1="772" y1="268" x2="424" y2="267" x3="424" y3="316" linetype =" " Q1=1 Q2=1 se ="f" "f"/></transition>
+<transition name=°null° key=°trans@249°> rMessage=°° tMessage=°° guard=°TimeOut° cstate=°state@246° nstate=°endstate@104°<view n_pts="2" x0="792" y0="334" x1="885" y1="190" linetype =" " Q1=1 Q2=3 se ="f" "f"/></transition>
+<transition name=°null° key=°trans@250°> rMessage=°° tMessage=°° guard=°success° cstate=°state@239° nstate=°endstate@104°<view n_pts="4" x0="497" y0="371" x1="495" y1="393" x2="891" y2="393" x3="891" y3="192" linetype =" " Q1=2 Q2=0 se ="f" "f"/></transition>
+<transition name=°null° key=°trans@254°> rMessage=°° tMessage=°sendMessage(notify)° guard=°flase° cstate=°state@239° nstate=°state@246°<view n_pts="4" x0="497" y0="353" x1="495" y1="366" x2="731" y2="365" x3="751" y3="363" linetype =" " Q1=2 Q2=0 se ="f" "f"/></transition></statetable><view n_pts="4" x0="258" y0="291" x1="258" y1="389" x2="526" y2="389" x3="823" y3="389" linetype =" " Q1=3 Q2=0</conversation>
+<conversation name=°CheckAvalabilityHotel'sServices° key=°conv@105°> ic=°Component° rc=°Component° dscr=°none°
+<statetable name=°null° key=°statetable@105°> owner=°agent@101°>
+<state name=°StartState° key=°startstate@105°><pos="100","100"></state>
+<state name=°EndState° key=°endstate@105°><pos="400","100"></state></statetable>
+<statetable name=°null° key=°statetable@105°> owner=°agent@95°>
+<state name=°StartState° key=°startstate@105°><pos="100","100"></state>
+<state name=°EndState° key=°endstate@105°><pos="400","100"></state></statetable><view n_pts="4" x0="321" y0="291" x1="321" y1="381" x2="321" y2="498" x3="606" y3="498" linetype =" " Q1=3 Q2=0</conversation>
+<conversation name=°CheckAvalabilityFlight'sServices° key=°conv@106°> ic=°Component° rc=°Component° dscr=°none°
+<statetable name=°null° key=°statetable@106°> owner=°agent@101°>
+<state name=°StartState° key=°startstate@106°><pos="100","100"></state>
+<state name=°EndState° key=°endstate@106°><pos="400","100"></state></statetable>
+<statetable name=°null° key=°statetable@106°> owner=°agent@94°>
+<state name=°StartState° key=°startstate@106°><pos="100","100"></state>
+<state name=°EndState° key=°endstate@106°><pos="400","100"></state></statetable><view n_pts="3" x0="279" y0="239" x1="279" y1="73" x2="589" y2="73" linetype =" " Q1=1 Q2=0</conversation>
+<conversation name=°CheckAvalabilityTrain'sServices° key=°conv@109°> ic=°Component° rc=°Component° dscr=°none°
+<statetable name=°null° key=°statetable@109°> owner=°agent@101°>
+<state name=°StartState° key=°startstate@109°><pos="100","100"></state>
+<state name=°EndState° key=°endstate@109°><pos="400","100"></state></statetable>
+<statetable name=°null° key=°statetable@109°> owner=°agent@97°>
+<state name=°StartState° key=°startstate@109°><pos="100","100"></state>
+<state name=°EndState° key=°endstate@109°><pos="400","100"></state></statetable><view n_pts="3" x0="321" y0="239" x1="321" y1="140" x2="837" y2="140" linetype =" " Q1=1 Q2=0</conversation>
+<conversation name=°Publish/AlterCarRental'sServices° key=°conv@112°> ic=°Component° rc=°Component° dscr=°none°
+<statetable name=°null° key=°statetable@112°> owner=°agent@95°>
+<state name=°StartState° key=°startstate@112°><pos="100","100"></state>
+<state name=°EndState° key=°endstate@112°><pos="400","100"></state></statetable>
+<statetable name=°null° key=°statetable@112°> owner=°agent@101°>
+<state name=°StartState° key=°startstate@112°><pos="100","100"></state>
+<state name=°EndState° key=°endstate@112°><pos="400","100"></state></statetable><view n_pts="3" x0="606" y0="482" x1="279" y1="482" x2="279" y2="291" linetype =" " Q1=0 Q2=3</conversation>
+<conversation name=°Publish/AlterFlight'sServices° key=°conv@113°> ic=°Component° rc=°Component° dscr=°none°
+<statetable name=°null° key=°statetable@113°> owner=°agent@94°>
+<state name=°StartState° key=°startstate@113°><pos="100","100"></state>
+<state name=°EndState° key=°endstate@113°><pos="400","100"></state></statetable>
+<statetable name=°null° key=°statetable@113°> owner=°agent@101°>
+<state name=°StartState° key=°startstate@113°><pos="100","100"></state>
+<state name=°EndState° key=°endstate@113°><pos="400","100"></state></statetable><view n_pts="3" x0="589" y0="57" x1="258" y1="56" x2="258" y2="239" linetype =" " Q1=0 Q2=1</conversation>
+<conversation name=°Publish/AlterDestination'sInformations° key=°conv@114°> ic=°Component° rc=°Component° dscr=°none°
+<statetable name=°null° key=°statetable@114°> owner=°agent@99°>
+<state name=°StartState° key=°startstate@114°><pos="100","100"></state>
+<state name=°EndState° key=°endstate@114°><pos="400","100"></state></statetable>
+<statetable name=°null° key=°statetable@114°> owner=°agent@101°>
+<state name=°StartState° key=°startstate@114°><pos="100","100"></state>
+<state name=°EndState° key=°endstate@114°><pos="400","100"></state></statetable><view n_pts="2" x0="83" y0="187" x1="236" y1="265" linetype =" " Q1=3 Q2=0</conversation>
+<conversation name=°Publish/AlterTrain'sServices° key=°conv@116°> ic=°Component° rc=°Component° dscr=°none°
+<statetable name=°null° key=°statetable@116°> owner=°agent@97°>
+<state name=°StartState° key=°startstate@116°><pos="100","100"></state>
+<state name=°EndState° key=°endstate@116°><pos="400","100"></state></statetable>
+<statetable name=°null° key=°statetable@116°> owner=°agent@101°>
+<state name=°StartState° key=°startstate@116°><pos="100","100"></state>
+<state name=°EndState° key=°endstate@116°><pos="400","100"></state></statetable><view n_pts="3" x0="837" y0="130" x1="299" y1="130" x2="300" y2="239" linetype =" " Q1=0 Q2=1</conversation>
+<conversation name=°Book/AlterTrain'sService° key=°conv@117°> ic=°Component° rc=°Component° dscr=°none°
+<statetable name=°null° key=°statetable@117°> owner=°agent@98°>
+<state name=°StartState° key=°startstate@117°><pos="100","100"></state>
+<state name=°EndState° key=°endstate@117°><pos="400","100"></state></statetable>
+<statetable name=°null° key=°statetable@117°> owner=°agent@97°>
+<state name=°StartState° key=°startstate@117°><pos="100","100"></state>
+<state name=°EndState° key=°endstate@117°><pos="400","100"></state></statetable><view n_pts="5" x0="1089" y0="215" x1="1089" y1="94" x2="805" y2="94" x3="805" y3="121" x4="837" y4="120" linetype =" " Q1=1 Q2=0</conversation>
+<conversation name=°Book/AlterFlight'sServices° key=°conv@118°> ic=°Component° rc=°Component° dscr=°none°
+<statetable name=°null° key=°statetable@118°> owner=°agent@98°>
+<state name=°StartState° key=°startstate@118°><pos="100","100"></state>
+<state name=°EndState° key=°endstate@118°><pos="400","100"></state></statetable>
+<statetable name=°null° key=°statetable@118°> owner=°agent@94°>
+<state name=°StartState° key=°startstate@118°><pos="100","100"></state>
+<state name=°EndState° key=°endstate@118°><pos="400","100"></state></statetable><view n_pts="4" x0="1110" y0="215" x1="1110" y1="62" x2="737" y2="62" x3="687" y3="64" linetype =" " Q1=1 Q2=2</conversation>
+<conversation name=°Book/AlterHotel'sServices° key=°conv@120°> ic=°Component° rc=°Component° dscr=°none°
+<statetable name=°null° key=°statetable@120°> owner=°agent@98°>
+<state name=°StartState° key=°startstate@120°><pos="100","100"></state>
+<state name=°EndState° key=°endstate@120°><pos="400","100"></state></statetable>
+<statetable name=°null° key=°statetable@120°> owner=°agent@93°>
+<state name=°StartState° key=°startstate@120°><pos="100","100"></state>
+<state name=°EndState° key=°endstate@120°><pos="400","100"></state></statetable><view n_pts="4" x0="1073" y0="267" x1="1073" y1="376" x2="957" y2="376" x3="920" y3="376" linetype =" " Q1=3 Q2=2</conversation>
+<conversation name=°Book/AlterCarRental'sServices° key=°conv@121°> ic=°Component° rc=°Component° dscr=°none°
+<statetable name=°null° key=°statetable@121°> owner=°agent@98°>
+<state name=°StartState° key=°startstate@121°><pos="100","100"></state>
+<state name=°EndState° key=°endstate@121°><pos="400","100"></state></statetable>
+<statetable name=°null° key=°statetable@121°> owner=°agent@95°>
+<state name=°StartState° key=°startstate@121°><pos="100","100"></state>
+<state name=°EndState° key=°endstate@121°><pos="400","100"></state></statetable><view n_pts="4" x0="1102" y0="267" x1="1102" y1="398" x2="1102" y2="489" x3="715" y3="489" linetype =" " Q1=3 Q2=2</conversation>
+<conversation name=°CheckAvalabilityBroker'sServices° key=°conv@127°> ic=°Component° rc=°Component° dscr=°none°
+<statetable name=°null° key=°statetable@127°> owner=°agent@101°>
+<state name=°StartState° key=°startstate@127°><pos="100","100"></state>
+<state name=°EndState° key=°endstate@127°><pos="400","100"></state></statetable>
+<statetable name=°null° key=°statetable@127°> owner=°agent@98°>
+<state name=°StartState° key=°startstate@127°><pos="100","100"></state>
+<state name=°EndState° key=°endstate@127°><pos="400","100"></state></statetable><view n_pts="4" x0="343" y0="276" x1="752" y1="276" x2="955" y2="276" x3="1043" y3="254" linetype =" " Q1=2 Q2=0</conversation>
+<conversation name=°Publish/AlterBroker'sServices° key=°conv@128°> ic=°Component° rc=°Component° dscr=°none°
+<statetable name=°null° key=°statetable@128°> owner=°agent@98°>
+<state name=°StartState° key=°startstate@128°><pos="100","100"></state>
+<state name=°EndState° key=°endstate@128°><pos="400","100"></state></statetable>
+<statetable name=°null° key=°statetable@128°> owner=°agent@101°>
+<state name=°StartState° key=°startstate@128°><pos="100","100"></state>
+<state name=°EndState° key=°endstate@128°><pos="400","100"></state></statetable><view n_pts="4" x0="1043" y0="242" x1="957" y1="264" x2="732" y2="264" x3="343" y3="264" linetype =" " Q1=0 Q2=2</conversation>
+<conversation name=°BookCarRental'sServices° key=°conv@264°> ic=°Component° rc=°Component° dscr=° °
+<statetable name=°null° key=°statetable@264°> owner=°agent@100°>
+<state name=°StartState° key=°startstate@264°><pos="100","100"></state>
+<state name=°EndState° key=°endstate@264°><pos="400","100"></state></statetable>
+<statetable name=°null° key=°statetable@264°> owner=°agent@95°>
+<state name=°StartState° key=°startstate@264°><pos="100","100"></state>
+<state name=°EndState° key=°endstate@264°><pos="400","100"></state></statetable><view n_pts="4" x0="672" y0="243" x1="679" y1="261" x2="679" y2="368" x3="679" y3="463" linetype =" " Q1=3 Q2=1</conversation>
+<conversation name=°SubcribleToMessage° key=°conv@265°> ic=°Component° rc=°Component° dscr=°none°
+<statetable name=°null° key=°statetable@265°> owner=°agent@95°>
+<state name=°StartState° key=°startstate@265°><pos="100","100"></state>
+<state name=°EndState° key=°endstate@265°><pos="400","100"></state></statetable>
+<statetable name=°null° key=°statetable@265°> owner=°agent@100°>
+<state name=°StartState° key=°startstate@265°><pos="100","100"></state>
+<state name=°EndState° key=°endstate@265°><pos="400","100"></state></statetable><view n_pts="3" x0="644" y0="463" x1="620" y1="432" x2="620" y2="243" linetype =" " Q1=1 Q2=3</conversation>
+<conversation name=°Book/AlterBroker'sServices° key=°conv@266°> ic=°Component° rc=°Component° dscr=°none°
+<statetable name=°null° key=°statetable@266°> owner=°agent@100°>
+<state name=°StartState° key=°startstate@266°><pos="100","100"></state>
+<state name=°EndState° key=°endstate@266°><pos="400","100"></state></statetable>
+<statetable name=°null° key=°statetable@266°> owner=°agent@98°>
+<state name=°StartState° key=°startstate@266°><pos="100","100"></state>
+<state name=°EndState° key=°endstate@266°><pos="400","100"></state></statetable><view n_pts="4" x0="701" y0="224" x1="734" y1="230" x2="920" y2="230" x3="1043" y3="230" linetype =" " Q1=2 Q2=0</conversation>
+<conversation name=°SubcribleToMessage° key=°conv@267°> ic=°Component° rc=°Component° dscr=°none°
+<statetable name=°null° key=°statetable@267°> owner=°agent@98°>
+<state name=°StartState° key=°startstate@267°><pos="100","100"></state>
+<state name=°EndState° key=°endstate@267°><pos="400","100"></state></statetable>
+<statetable name=°null° key=°statetable@267°> owner=°agent@100°>
+<state name=°StartState° key=°startstate@267°><pos="100","100"></state>
+<state name=°EndState° key=°endstate@267°><pos="400","100"></state></statetable><view n_pts="4" x0="1068" y0="215" x1="1045" y1="208" x2="879" y2="208" x3="701" y3="208" linetype =" " Q1=1 Q2=2</conversation>
+<conversation name=°BookHotel'sServices° key=°conv@268°> ic=°Component° rc=°Component° dscr=°none°
+<statetable name=°null° key=°statetable@268°> owner=°agent@100°>
+<state name=°StartState° key=°startstate@268°><pos="100","100"></state>
+<state name=°EndState° key=°endstate@268°><pos="400","100"></state></statetable>
+<statetable name=°null° key=°statetable@268°> owner=°agent@93°>
+<state name=°StartState° key=°startstate@268°><pos="100","100"></state>
+<state name=°EndState° key=°endstate@268°><pos="400","100"></state></statetable><view n_pts="3" x0="646" y0="243" x1="646" y1="365" x2="823" y2="365" linetype =" " Q1=3 Q2=0</conversation>
+<conversation name=°Book/AlterTrain'sServices° key=°conv@270°> ic=°Component° rc=°Component° dscr=°none°
+<statetable name=°null° key=°statetable@270°> owner=°agent@100°>
+<state name=°StartState° key=°startstate@270°><pos="100","100"></state>
+<state name=°EndState° key=°endstate@270°><pos="400","100"></state></statetable>
+<statetable name=°null° key=°statetable@270°> owner=°agent@97°>
+<state name=°StartState° key=°startstate@270°><pos="100","100"></state>
+<state name=°EndState° key=°endstate@270°><pos="400","100"></state></statetable><view n_pts="3" x0="630" y0="191" x1="630" y1="150" x2="837" y2="150" linetype =" " Q1=1 Q2=0</conversation>
+<conversation name=°Book/AlterFlight'sServices° key=°conv@271°> ic=°Component° rc=°Component° dscr=°none°
+<statetable name=°null° key=°statetable@271°> owner=°agent@100°>
+<state name=°StartState° key=°startstate@271°><pos="100","100"></state>
+<state name=°EndState° key=°endstate@271°><pos="400","100"></state></statetable>
+<statetable name=°null° key=°statetable@271°> owner=°agent@94°>
+<state name=°StartState° key=°startstate@271°><pos="100","100"></state>
+<state name=°EndState° key=°endstate@271°><pos="400","100"></state></statetable><view n_pts="4" x0="665" y0="191" x1="665" y1="114" x2="629" y2="114" x3="630" y3="90" linetype =" " Q1=1 Q2=3</conversation>
+<conversation name=°Publish/AlterHotel'sServices° key=°conv@276°> ic=°Component° rc=°Component° dscr=°Publish/AlterHotel'sServices°
+<statetable name=°null° key=°statetable@276°> owner=°agent@93°>
+<state name=°StartState° key=°startstate@276°><pos="100","100"></state>
+<state name=°EndState° key=°endstate@276°><pos="400","100"></state></statetable>
+<statetable name=°null° key=°statetable@276°> owner=°agent@101°>
+<state name=°StartState° key=°startstate@276°><pos="100","100"></state>
+<state name=°EndState° key=°endstate@276°><pos="400","100"></state></statetable><view n_pts="3" x0="823" y0="377" x1="300" y1="377" x2="300" y2="291" linetype =" " Q1=0 Q2=3</conversation></mas>
