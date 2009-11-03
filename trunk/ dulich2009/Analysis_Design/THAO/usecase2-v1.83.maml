@@ -1,0 +1,73 @@
+<?xml version="1.83"?><!DOCTYPE mas SYSTEM "atsystem1.83.dtd">
+<mas name=°null° key=°system@000°><dscr>none</dscr><framework name="agentMOM"/><kmark="94"/>
+<role name=°Customer° key=°role@3°> dscr=°none°<goals: goals=0<view x="87" y="75" w="75" h="50"/></role>
+<role name=°Controller° key=°role@4°> dscr=°none°<goals: goals=0<view x="417" y="50" w="74" h="50"/></role>
+<role name=°Broker° key=°role@5°> dscr=°none°<goals: goals=0<view x="230" y="75" w="60" h="50"/></role>
+<role name=°Supplier° key=°role@6°> dscr=°none°<goals: goals=0<view x="439" y="181" w="66" h="50"/></role>
+<role name=°Destination° key=°role@7°> dscr=°none°<goals: goals=0<view x="290" y="204" w="83" h="50"/></role>
+<useCase name=°TimNhaCungCap° key=°usecase@1°> dscr=°none°
+<seqDiag name=°TimNhaCungCap° key=°seqdiag@2°>
+<Role2 name=°null° key=°role2@8°> rName=°role@3°> dscr=°none°<view x="78" y="62" w="107" h="25"/> lLen "300"/></Role2>
+<Role2 name=°null° key=°role2@9°> rName=°role@4°> dscr=°none°<view x="393" y="62" w="137" h="25"/> lLen "300"/></Role2>
+<message name=°Yeu cau tim tat ca cac nha cung cap dich vu A° key=°mess@10°> f=°role2@8° s=°role2@9°<view y ="105"</message>
+<message name=°Thuc hien tim du lieu va gui ve danh sach ket qua° key=°mess@12°> f=°role2@9° s=°role2@8°<view y ="163"</message></seqDiag></useCase>
+<useCase name=°KiemTraTinhSanSang° key=°usecase@13°> dscr=°none°
+<seqDiag name=°KiemTraTinhSanSang° key=°seqdiag@14°>
+<Role2 name=°null° key=°role2@15°> rName=°role@3°> dscr=°none°<view x="64" y="62" w="107" h="25"/> lLen "300"/></Role2>
+<Role2 name=°null° key=°role2@16°> rName=°role@5°> dscr=°none°<view x="289" y="62" w="93" h="25"/> lLen "300"/></Role2>
+<Role2 name=°null° key=°role2@17°> rName=°role@6°> dscr=°none°<view x="498" y="62" w="181" h="25"/> lLen "300"/></Role2>
+<message name=°Kiem tra dich vu A co san sang khong?° key=°mess@18°> f=°role2@15° s=°role2@16°<view y ="105"</message>
+<message name=°Co/ khong° key=°mess@20°> f=°role2@16° s=°role2@15°<view y ="144"</message>
+<message name=°Kiem tra dich vu A co san sang phuc vu° key=°mess@19°> f=°role2@15° s=°role2@17°<view y ="198"</message>
+<message name=°Co / khong° key=°mess@21°> f=°role2@17° s=°role2@15°<view y ="263"</message></seqDiag></useCase>
+<useCase name=°KetHopCacDichVu° key=°usecase@24°> dscr=°none°
+<seqDiag name=°KetHopCacDichVu° key=°seqdiag@25°>
+<Role2 name=°null° key=°role2@26°> rName=°role@5°> dscr=°none°<view x="57" y="62" w="93" h="25"/> lLen "300"/></Role2>
+<Role2 name=°dich vu 1° key=°role2@27°> rName=°role@6°> dscr=°none°<view x="287" y="62" w="229" h="25"/> lLen "300"/></Role2>
+<Role2 name=°dich vu 2° key=°role2@28°> rName=°role@6°> dscr=°none°<view x="541" y="62" w="229" h="25"/> lLen "300"/></Role2>
+<message name=°yeu cau kiem tra tinh san sang dich vu 1° key=°mess@29°> f=°role2@26° s=°role2@27°<view y ="105"</message>
+<message name=°yeu cau kiem tra tinh san sang dich vu 2° key=°mess@30°> f=°role2@26° s=°role2@28°<view y ="143"</message>
+<message name=°dich vu 1 co kha dung° key=°mess@31°> f=°role2@27° s=°role2@26°<view y ="182"</message>
+<message name=°Dich vu 2 kha dung° key=°mess@32°> f=°role2@28° s=°role2@26°<view y ="227"</message></seqDiag></useCase>
+<useCase name=°DatDichVu° key=°usecase@33°> dscr=°none°
+<seqDiag name=°DatDichVuNhaCungCapCoBan° key=°seqdiag@34°>
+<Role2 name=°null° key=°role2@35°> rName=°role@3°> dscr=°none°<view x="67" y="62" w="84" h="25"/> lLen "300"/></Role2>
+<Role2 name=°null° key=°role2@36°> rName=°role@4°> dscr=°none°<view x="658" y="62" w="83" h="25"/> lLen "300"/></Role2>
+<Role2 name=°null° key=°role2@37°> rName=°role@6°> dscr=°none°<view x="428" y="62" w="75" h="25"/> lLen "300"/></Role2>
+<message name=°BookServiceRequest° key=°mess@38°> f=°role2@35° s=°role2@37°<view y ="125"</message>
+<message name=°ContractInformation (BookServiceInfo, ContractCode, SecurityCode)° key=°mess@41°> f=°role2@37° s=°role2@35°<view y ="221"</message>
+<message name=°BookServiceInfomation° key=°mess@42°> f=°role2@37° s=°role2@36°<view y ="291"</message></seqDiag>
+<seqDiag name=°DatDichVuNhaMoiGioi° key=°seqdiag@44°>
+<Role2 name=°null° key=°role2@45°> rName=°role@3°> dscr=°none°<view x="67" y="62" w="84" h="25"/> lLen "420"/></Role2>
+<Role2 name=°null° key=°role2@46°> rName=°role@5°> dscr=°none°<view x="440" y="62" w="65" h="25"/> lLen "420"/></Role2>
+<Role2 name=°null° key=°role2@47°> rName=°role@6°> dscr=°none°<view x="633" y="62" w="75" h="25"/> lLen "420"/></Role2>
+<Role2 name=°null° key=°role2@48°> rName=°role@4°> dscr=°none°<view x="834" y="62" w="83" h="25"/> lLen "420"/></Role2>
+<message name=°BookServiceRequest° key=°mess@49°> f=°role2@45° s=°role2@46°<view y ="113"</message>
+<message name=°BookServiceRequest° key=°mess@50°> f=°role2@46° s=°role2@47°<view y ="178"</message>
+<message name=°Notification° key=°mess@54°> f=°role2@47° s=°role2@46°<view y ="250"</message>
+<message name=°ContractInformation(BookServiceInfo, ContractCode, SecurityCode)° key=°mess@55°> f=°role2@46° s=°role2@45°<view y ="343"</message>
+<message name=°BookServiceInfo° key=°mess@56°> f=°role2@46° s=°role2@48°<view y ="376"</message></seqDiag></useCase>
+<useCase name=°HuyDichVu° key=°usecase@57°> dscr=°none°
+<seqDiag name=°HuyDichVuNhaCungCapCoBan° key=°seqdiag@58°>
+<Role2 name=°null° key=°role2@59°> rName=°role@3°> dscr=°none°<view x="67" y="62" w="84" h="25"/> lLen "340"/></Role2>
+<Role2 name=°null° key=°role2@60°> rName=°role@4°> dscr=°none°<view x="365" y="62" w="83" h="25"/> lLen "340"/></Role2>
+<Role2 name=°null° key=°role2@61°> rName=°role@6°> dscr=°none°<view x="702" y="62" w="75" h="25"/> lLen "340"/></Role2>
+<message name=°CancelBookServiceRequest° key=°mess@62°> f=°role2@59° s=°role2@60°<view y ="105"</message>
+<message name=°CancelBookServiceRequest° key=°mess@65°> f=°role2@60° s=°role2@61°<view y ="132"</message>
+<message name=°ContractInfomation && SecurityRequest° key=°mess@71°> f=°role2@61° s=°role2@59°<view y ="189"</message>
+<message name=°SecurityCode && ConfirmCancelBookService° key=°mess@72°> f=°role2@59° s=°role2@61°<view y ="256"</message>
+<message name=°Thong bao ° key=°mess@74°> f=°role2@61° s=°role2@59°<view y ="313"</message>
+<message name=°CancelBookServiceInfo° key=°mess@77°> f=°role2@61° s=°role2@60°<view y ="353"</message></seqDiag>
+<seqDiag name=°HuyDichVuNhaMoiGioi° key=°seqdiag@78°>
+<Role2 name=°null° key=°role2@79°> rName=°role@3°> dscr=°none°<view x="70" y="62" w="84" h="25"/> lLen "420"/></Role2>
+<Role2 name=°null° key=°role2@80°> rName=°role@4°> dscr=°none°<view x="323" y="62" w="83" h="25"/> lLen "420"/></Role2>
+<Role2 name=°null° key=°role2@81°> rName=°role@5°> dscr=°none°<view x="591" y="62" w="65" h="25"/> lLen "420"/></Role2>
+<Role2 name=°null° key=°role2@82°> rName=°role@6°> dscr=°none°<view x="764" y="62" w="75" h="25"/> lLen "420"/></Role2>
+<message name=°CancelBookServiceRequest° key=°mess@83°> f=°role2@79° s=°role2@80°<view y ="109"</message>
+<message name=°CancelBookServiceRequest° key=°mess@86°> f=°role2@80° s=°role2@81°<view y ="161"</message>
+<message name=°ContractInformation && SecurityCodeRequest° key=°mess@88°> f=°role2@81° s=°role2@79°<view y ="224"</message>
+<message name=°SecurityCode && ConfirmCancelBookService° key=°mess@89°> f=°role2@79° s=°role2@81°<view y ="282"</message>
+<message name=°CancelBookServiceRequest° key=°mess@90°> f=°role2@81° s=°role2@82°<view y ="332"</message>
+<message name=°Notification° key=°mess@91°> f=°role2@82° s=°role2@81°<view y ="365"</message>
+<message name=°Notification° key=°mess@92°> f=°role2@81° s=°role2@79°<view y ="396"</message>
+<message name=°CanceledContractInfo° key=°mess@93°> f=°role2@81° s=°role2@80°<view y ="475"</message></seqDiag></useCase></mas>
