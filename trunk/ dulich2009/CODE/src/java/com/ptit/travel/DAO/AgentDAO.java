@@ -44,7 +44,7 @@ public class AgentDAO extends Object {
                 "<http://www.owl-ontologies.com/Ontology1254907557.owl#> " + // prefix
                 "SELECT ?name,?port, ?host  WHERE { tiento:" +
                 agentType + //"Hotel " +
-                "tiento:name ?name, ?host,?port }");
+                "tiento:name ?name, tiento:host ?host,tiento:port ?port }");
 
         QueryExecution qexec = QueryExecutionFactory.create(query, model);
         try {
