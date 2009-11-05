@@ -1,4 +1,4 @@
-; Fri Sep 25 23:42:14 ICT 2009
+; Thu Nov 05 22:24:03 ICT 2009
 ; 
 ;+ (version "3.4.1")
 ;+ (build "Build 537")
@@ -6,11 +6,11 @@
 ([BROWSER_SLOT_NAMES] of  Property_List
 
 	(properties
-		[Destination_ProjectKB_Class95]
-		[Destination_ProjectKB_Class96]
-		[Destination_ProjectKB_Class97]
-		[Destination_ProjectKB_Class98]
-		[Destination_ProjectKB_Class99]))
+		[Destination_ProjectKB_Class60]
+		[Destination_ProjectKB_Class61]
+		[Destination_ProjectKB_Class62]
+		[Destination_ProjectKB_Class63]
+		[Destination_ProjectKB_Class64]))
 
 ([CLSES_TAB] of  Widget
 
@@ -19,30 +19,273 @@
 	(property_list [Instance_47])
 	(widget_class_name "edu.stanford.smi.protege.widget.ClsesTab"))
 
-([Destination_ProjectKB_Class95] of  String
+([Destination_ProjectKB_Class1] of  Widget
+
+	(is_hidden TRUE)
+	(property_list [Destination_ProjectKB_Class2])
+	(widget_class_name "TGViztab.TGVizTab"))
+
+([Destination_ProjectKB_Class10] of  Property_List
+)
+
+([Destination_ProjectKB_Class11] of  Widget
+
+	(is_hidden TRUE)
+	(property_list [Destination_ProjectKB_Class12])
+	(widget_class_name "nl.uva.psy.swi.beangenerator.OntologyBeanGeneratorTab"))
+
+([Destination_ProjectKB_Class12] of  Property_List
+)
+
+([Destination_ProjectKB_Class13] of  Widget
+
+	(is_hidden TRUE)
+	(property_list [Destination_ProjectKB_Class14])
+	(widget_class_name "edu.stanford.smi.RemoteKBTab.WordNetTab"))
+
+([Destination_ProjectKB_Class14] of  Property_List
+)
+
+([Destination_ProjectKB_Class15] of  Widget
+
+	(is_hidden TRUE)
+	(property_list [Destination_ProjectKB_Class16])
+	(widget_class_name "edu.stanford.smi.protegex.changes.ChangesTab"))
+
+([Destination_ProjectKB_Class16] of  Property_List
+)
+
+([Destination_ProjectKB_Class17] of  Widget
+
+	(is_hidden TRUE)
+	(property_list [Destination_ProjectKB_Class18])
+	(widget_class_name "ezpal.EZPalTab"))
+
+([Destination_ProjectKB_Class18] of  Property_List
+)
+
+([Destination_ProjectKB_Class19] of  Widget
+
+	(is_hidden TRUE)
+	(property_list [Destination_ProjectKB_Class20])
+	(widget_class_name "edu.stanford.smi.protegex.fctab.FacetConstraintsTab"))
+
+([Destination_ProjectKB_Class2] of  Property_List
+)
+
+([Destination_ProjectKB_Class20] of  Property_List
+)
+
+([Destination_ProjectKB_Class21] of  Widget
+
+	(is_hidden TRUE)
+	(property_list [Destination_ProjectKB_Class22])
+	(widget_class_name "edu.stanford.smi.protegex.changes.changesKBViewTab.ChangesKBViewTab"))
+
+([Destination_ProjectKB_Class22] of  Property_List
+)
+
+([Destination_ProjectKB_Class23] of  Widget
+
+	(is_hidden TRUE)
+	(property_list [Destination_ProjectKB_Class24])
+	(widget_class_name "edu.stanford.smi.protegex.xml.tab.XMLTab"))
+
+([Destination_ProjectKB_Class24] of  Property_List
+)
+
+([Destination_ProjectKB_Class25] of  Widget
+
+	(is_hidden TRUE)
+	(property_list [Destination_ProjectKB_Class26])
+	(widget_class_name "edu.stanford.smi.protegex.prompt.PromptTab"))
+
+([Destination_ProjectKB_Class26] of  Property_List
+)
+
+([Destination_ProjectKB_Class27] of  Widget
+
+	(is_hidden TRUE)
+	(property_list [Destination_ProjectKB_Class28])
+	(widget_class_name "edu.stanford.smi.protege.widget.ProtegePropertiesTab"))
+
+([Destination_ProjectKB_Class28] of  Property_List
+)
+
+([Destination_ProjectKB_Class29] of  Widget
+
+	(is_hidden TRUE)
+	(property_list [Destination_ProjectKB_Class30])
+	(widget_class_name "edu.stanford.smi.protegex.widget.pal.PalConstraintsTab"))
+
+([Destination_ProjectKB_Class3] of  Widget
+
+	(is_hidden TRUE)
+	(property_list [Destination_ProjectKB_Class4])
+	(widget_class_name "dfki.protege.ontoviz_tab.OntovizTab"))
+
+([Destination_ProjectKB_Class30] of  Property_List
+)
+
+([Destination_ProjectKB_Class31] of  Widget
+
+	(is_hidden TRUE)
+	(property_list [Destination_ProjectKB_Class32])
+	(widget_class_name "edu.stanford.smi.protege.widget.instance_tree.KnowledgeTreeTab"))
+
+([Destination_ProjectKB_Class32] of  Property_List
+)
+
+([Destination_ProjectKB_Class33] of  Widget
+
+	(is_hidden TRUE)
+	(property_list [Destination_ProjectKB_Class34])
+	(widget_class_name "edu.stanford.smi.protege.widget.instance_tree.InstanceTreeTab"))
+
+([Destination_ProjectKB_Class34] of  Property_List
+)
+
+([Destination_ProjectKB_Class35] of  Widget
+
+	(is_hidden TRUE)
+	(property_list [Destination_ProjectKB_Class36])
+	(widget_class_name "edu.stanford.smi.protegex.changes.stats.ChangeStatisticsTab"))
+
+([Destination_ProjectKB_Class36] of  Property_List
+)
+
+([Destination_ProjectKB_Class37] of  Widget
+
+	(is_hidden TRUE)
+	(property_list [Destination_ProjectKB_Class38])
+	(widget_class_name "se.liu.ida.JessTab.JessTab"))
+
+([Destination_ProjectKB_Class38] of  Property_List
+)
+
+([Destination_ProjectKB_Class39] of  Widget
+
+	(is_hidden TRUE)
+	(property_list [Destination_ProjectKB_Class40])
+	(widget_class_name "ca.uvic.csr.shrimp.jambalaya.JambalayaTab"))
+
+([Destination_ProjectKB_Class4] of  Property_List
+)
+
+([Destination_ProjectKB_Class40] of  Property_List
+)
+
+([Destination_ProjectKB_Class41] of  Widget
+
+	(is_hidden TRUE)
+	(property_list [Destination_ProjectKB_Class42])
+	(widget_class_name "edu.stanford.smi.protegex.datamaster.DataMasterTab"))
+
+([Destination_ProjectKB_Class42] of  Property_List
+)
+
+([Destination_ProjectKB_Class43] of  Widget
+
+	(is_hidden TRUE)
+	(property_list [Destination_ProjectKB_Class44])
+	(widget_class_name "org.algernon.kb.okbc.protege.plugins.AlgernonTab"))
+
+([Destination_ProjectKB_Class44] of  Property_List
+)
+
+([Destination_ProjectKB_Class45] of  Widget
+
+	(is_hidden TRUE)
+	(property_list [Destination_ProjectKB_Class46])
+	(widget_class_name "edu.stanford.smi.protegex.widget.pal.PalQueriesTab"))
+
+([Destination_ProjectKB_Class46] of  Property_List
+)
+
+([Destination_ProjectKB_Class47] of  Widget
+
+	(is_hidden TRUE)
+	(property_list [Destination_ProjectKB_Class48])
+	(widget_class_name "edu.stanford.smi.protegex.chatPlugin.ChatTab"))
+
+([Destination_ProjectKB_Class48] of  Property_List
+)
+
+([Destination_ProjectKB_Class49] of  Widget
+
+	(is_hidden TRUE)
+	(property_list [Destination_ProjectKB_Class50])
+	(widget_class_name "edu.stanford.smi.RemoteKBTab.UMLSTab"))
+
+([Destination_ProjectKB_Class5] of  Widget
+
+	(is_hidden TRUE)
+	(property_list [Destination_ProjectKB_Class6])
+	(widget_class_name "script.ProtegeScriptTab"))
+
+([Destination_ProjectKB_Class50] of  Property_List
+)
+
+([Destination_ProjectKB_Class51] of  Widget
+
+	(is_hidden TRUE)
+	(property_list [Destination_ProjectKB_Class52])
+	(widget_class_name "edu.stanford.smi.protegex.server_changes.prompt.UsersTab"))
+
+([Destination_ProjectKB_Class52] of  Property_List
+)
+
+([Destination_ProjectKB_Class53] of  Widget
+
+	(is_hidden TRUE)
+	(property_list [Destination_ProjectKB_Class54])
+	(widget_class_name "uk.ac.man.cs.mig.coode.owlviz.ui.OWLVizTab"))
+
+([Destination_ProjectKB_Class54] of  Property_List
+)
+
+([Destination_ProjectKB_Class6] of  Property_List
+)
+
+([Destination_ProjectKB_Class60] of  String
 
 	(name "http://www.w3.org/2002/07/owl#Class")
 	(string_value "%3ANAME"))
 
-([Destination_ProjectKB_Class96] of  String
+([Destination_ProjectKB_Class61] of  String
 
 	(name ":INSTANCE-ANNOTATION")
 	(string_value "%3AANNOTATION-TEXT"))
 
-([Destination_ProjectKB_Class97] of  String
+([Destination_ProjectKB_Class62] of  String
 
 	(name ":META-CLASS")
 	(string_value "%3ANAME"))
 
-([Destination_ProjectKB_Class98] of  String
+([Destination_ProjectKB_Class63] of  String
 
 	(name "http://www.w3.org/2002/07/owl#Thing")
 	(string_value "%3ANAME"))
 
-([Destination_ProjectKB_Class99] of  String
+([Destination_ProjectKB_Class64] of  String
 
 	(name ":PAL-CONSTRAINT")
 	(string_value "%3APAL-NAME"))
+
+([Destination_ProjectKB_Class7] of  Widget
+
+	(is_hidden TRUE)
+	(property_list [Destination_ProjectKB_Class8])
+	(widget_class_name "edu.stanford.smi.protegex.evaluation.MetaAnalysis"))
+
+([Destination_ProjectKB_Class8] of  Property_List
+)
+
+([Destination_ProjectKB_Class9] of  Widget
+
+	(is_hidden TRUE)
+	(property_list [Destination_ProjectKB_Class10])
+	(widget_class_name "edu.stanford.smi.protege.keywordsearch.StringSearch"))
 
 ([empty.owl_ProjectKB_Class5] of  String
 
@@ -507,252 +750,6 @@
 
 ([KB_140180_Instance_9] of  Property_List
 )
-
-([KB_153072_Class0] of  Map
-)
-
-([KB_153072_Class1] of  Widget
-
-	(is_hidden TRUE)
-	(property_list [KB_153072_Class2])
-	(widget_class_name "TGViztab.TGVizTab"))
-
-([KB_153072_Class10] of  Property_List
-)
-
-([KB_153072_Class11] of  Widget
-
-	(is_hidden TRUE)
-	(property_list [KB_153072_Class12])
-	(widget_class_name "edu.stanford.smi.protege.keywordsearch.StringSearch"))
-
-([KB_153072_Class12] of  Property_List
-)
-
-([KB_153072_Class13] of  Widget
-
-	(is_hidden TRUE)
-	(property_list [KB_153072_Class14])
-	(widget_class_name "edu.stanford.smi.RemoteKBTab.WordNetTab"))
-
-([KB_153072_Class14] of  Property_List
-)
-
-([KB_153072_Class15] of  Widget
-
-	(is_hidden TRUE)
-	(property_list [KB_153072_Class16])
-	(widget_class_name "edu.stanford.smi.protegex.changes.ChangesTab"))
-
-([KB_153072_Class16] of  Property_List
-)
-
-([KB_153072_Class17] of  Widget
-
-	(is_hidden TRUE)
-	(property_list [KB_153072_Class18])
-	(widget_class_name "ezpal.EZPalTab"))
-
-([KB_153072_Class18] of  Property_List
-)
-
-([KB_153072_Class19] of  Widget
-
-	(is_hidden TRUE)
-	(property_list [KB_153072_Class20])
-	(widget_class_name "edu.stanford.smi.protegex.fctab.FacetConstraintsTab"))
-
-([KB_153072_Class2] of  Property_List
-)
-
-([KB_153072_Class20] of  Property_List
-)
-
-([KB_153072_Class21] of  Widget
-
-	(is_hidden TRUE)
-	(property_list [KB_153072_Class22])
-	(widget_class_name "edu.stanford.smi.protegex.changes.changesKBViewTab.ChangesKBViewTab"))
-
-([KB_153072_Class22] of  Property_List
-)
-
-([KB_153072_Class23] of  Widget
-
-	(is_hidden TRUE)
-	(property_list [KB_153072_Class24])
-	(widget_class_name "edu.stanford.smi.protegex.xml.tab.XMLTab"))
-
-([KB_153072_Class24] of  Property_List
-)
-
-([KB_153072_Class25] of  Widget
-
-	(is_hidden TRUE)
-	(property_list [KB_153072_Class26])
-	(widget_class_name "edu.stanford.smi.protegex.prompt.PromptTab"))
-
-([KB_153072_Class26] of  Property_List
-)
-
-([KB_153072_Class27] of  Widget
-
-	(is_hidden TRUE)
-	(property_list [KB_153072_Class28])
-	(widget_class_name "edu.stanford.smi.protege.widget.ProtegePropertiesTab"))
-
-([KB_153072_Class28] of  Property_List
-)
-
-([KB_153072_Class29] of  Widget
-
-	(is_hidden TRUE)
-	(property_list [KB_153072_Class30])
-	(widget_class_name "edu.stanford.smi.protegex.widget.pal.PalConstraintsTab"))
-
-([KB_153072_Class3] of  Widget
-
-	(is_hidden TRUE)
-	(property_list [KB_153072_Class4])
-	(widget_class_name "dfki.protege.ontoviz_tab.OntovizTab"))
-
-([KB_153072_Class30] of  Property_List
-)
-
-([KB_153072_Class31] of  Widget
-
-	(is_hidden TRUE)
-	(property_list [KB_153072_Class32])
-	(widget_class_name "edu.stanford.smi.protege.widget.instance_tree.KnowledgeTreeTab"))
-
-([KB_153072_Class32] of  Property_List
-)
-
-([KB_153072_Class33] of  Widget
-
-	(is_hidden TRUE)
-	(property_list [KB_153072_Class34])
-	(widget_class_name "edu.stanford.smi.protege.widget.instance_tree.InstanceTreeTab"))
-
-([KB_153072_Class34] of  Property_List
-)
-
-([KB_153072_Class35] of  Widget
-
-	(is_hidden TRUE)
-	(property_list [KB_153072_Class36])
-	(widget_class_name "edu.stanford.smi.protegex.changes.stats.ChangeStatisticsTab"))
-
-([KB_153072_Class36] of  Property_List
-)
-
-([KB_153072_Class37] of  Widget
-
-	(is_hidden TRUE)
-	(property_list [KB_153072_Class38])
-	(widget_class_name "se.liu.ida.JessTab.JessTab"))
-
-([KB_153072_Class38] of  Property_List
-)
-
-([KB_153072_Class39] of  Widget
-
-	(is_hidden TRUE)
-	(property_list [KB_153072_Class40])
-	(widget_class_name "ca.uvic.csr.shrimp.jambalaya.JambalayaTab"))
-
-([KB_153072_Class4] of  Property_List
-)
-
-([KB_153072_Class40] of  Property_List
-)
-
-([KB_153072_Class41] of  Widget
-
-	(is_hidden TRUE)
-	(property_list [KB_153072_Class42])
-	(widget_class_name "edu.stanford.smi.protegex.datamaster.DataMasterTab"))
-
-([KB_153072_Class42] of  Property_List
-)
-
-([KB_153072_Class43] of  Widget
-
-	(is_hidden TRUE)
-	(property_list [KB_153072_Class44])
-	(widget_class_name "org.algernon.kb.okbc.protege.plugins.AlgernonTab"))
-
-([KB_153072_Class44] of  Property_List
-)
-
-([KB_153072_Class45] of  Widget
-
-	(is_hidden TRUE)
-	(property_list [KB_153072_Class46])
-	(widget_class_name "edu.stanford.smi.protegex.widget.pal.PalQueriesTab"))
-
-([KB_153072_Class46] of  Property_List
-)
-
-([KB_153072_Class47] of  Widget
-
-	(is_hidden TRUE)
-	(property_list [KB_153072_Class48])
-	(widget_class_name "edu.stanford.smi.protegex.chatPlugin.ChatTab"))
-
-([KB_153072_Class48] of  Property_List
-)
-
-([KB_153072_Class49] of  Widget
-
-	(is_hidden TRUE)
-	(property_list [KB_153072_Class50])
-	(widget_class_name "edu.stanford.smi.RemoteKBTab.UMLSTab"))
-
-([KB_153072_Class5] of  Widget
-
-	(is_hidden TRUE)
-	(property_list [KB_153072_Class6])
-	(widget_class_name "script.ProtegeScriptTab"))
-
-([KB_153072_Class50] of  Property_List
-)
-
-([KB_153072_Class51] of  Widget
-
-	(is_hidden TRUE)
-	(property_list [KB_153072_Class52])
-	(widget_class_name "edu.stanford.smi.protegex.server_changes.prompt.UsersTab"))
-
-([KB_153072_Class52] of  Property_List
-)
-
-([KB_153072_Class53] of  Widget
-
-	(is_hidden TRUE)
-	(property_list [KB_153072_Class54])
-	(widget_class_name "uk.ac.man.cs.mig.coode.owlviz.ui.OWLVizTab"))
-
-([KB_153072_Class54] of  Property_List
-)
-
-([KB_153072_Class6] of  Property_List
-)
-
-([KB_153072_Class7] of  Widget
-
-	(is_hidden TRUE)
-	(property_list [KB_153072_Class8])
-	(widget_class_name "nl.uva.psy.swi.beangenerator.OntologyBeanGeneratorTab"))
-
-([KB_153072_Class8] of  Property_List
-)
-
-([KB_153072_Class9] of  Widget
-
-	(is_hidden TRUE)
-	(property_list [KB_153072_Class10])
-	(widget_class_name "edu.stanford.smi.protegex.evaluation.MetaAnalysis"))
 
 ([KB_221055_Instance_10] of  Widget
 
@@ -3284,6 +3281,9 @@
 	(property_list [XY_Instance_195])
 	(widget_class_name "edu.stanford.smi.protegex.owl.ui.widget.OWLFormWidget"))
 
+([KB_843783_Class0] of  Map
+)
+
 ([KB_865583_Instance_10] of  Widget
 
 	(is_hidden TRUE)
@@ -5621,8 +5621,8 @@
 		[STANDARD_CLASS_FORM_WIDGET]
 		[PAL_FORM_WIDGET]
 		[KB_691299_Instance_398]
-		[KB_313796_Instance_852]
 		[KB_938545_Instance_329]
+		[KB_313796_Instance_852]
 		[KB_713803_Instance_303]
 		[KB_764103_Instance_545]
 		[KB_303942_Instance_68]
@@ -5638,8 +5638,8 @@
 		[INSTANCE_ANNOTATION_FORM_WIDGET]
 		[KB_713803_Instance_648]
 		[KB_938545_Instance_661]
-		[KB_713803_Instance_780]
 		[Instance_443]
+		[KB_713803_Instance_780]
 		[KB_938545_Instance_166])
 	(default_cls_metaclass "http://www.w3.org/2002/07/owl#Class")
 	(default_facet_metaclass ":STANDARD-FACET")
@@ -5655,17 +5655,17 @@
 		":FACET"
 		"http://www.w3.org/2001/XMLSchema#nonPositiveInteger"
 		"http://www.w3.org/2002/07/owl#AllValuesFromRestriction"
-		"http://www.w3.org/2000/01/rdf-schema#range"
 		"http://www.w3.org/2000/01/rdf-schema#Container"
+		"http://www.w3.org/2000/01/rdf-schema#range"
 		":SLOT"
-		"http://www.w3.org/1999/02/22-rdf-syntax-ns#Seq"
 		"http://www.w3.org/2002/07/owl#DatatypeProperty"
+		"http://www.w3.org/1999/02/22-rdf-syntax-ns#Seq"
 		":CREATION-TIMESTAMP"
-		"http://www.w3.org/1999/02/22-rdf-syntax-ns#value"
-		":VALUES"
-		"http://www.w3.org/2002/07/owl#AllDifferent"
-		"http://www.w3.org/2002/07/owl#FunctionalProperty"
 		"http://www.w3.org/2003/11/swrl#body"
+		"http://www.w3.org/2002/07/owl#FunctionalProperty"
+		"http://www.w3.org/2002/07/owl#AllDifferent"
+		":VALUES"
+		"http://www.w3.org/1999/02/22-rdf-syntax-ns#value"
 		"http://www.w3.org/2002/07/owl#MaxCardinalityRestriction"
 		"http://www.w3.org/2001/XMLSchema#gYearMonth"
 		"http://protege.stanford.edu/plugins/owl/protege#ExternalResource"
@@ -5694,15 +5694,15 @@
 		"http://protege.stanford.edu/plugins/owl/protege#DIRECTED-BINARY-RELATION"
 		"http://www.w3.org/2000/01/rdf-schema#Datatype"
 		"http://protege.stanford.edu/plugins/owl/protege#PAL-DESCRIPTION"
-		"http://www.w3.org/1999/02/22-rdf-syntax-ns#Bag"
 		":META-CLASS"
+		"http://www.w3.org/1999/02/22-rdf-syntax-ns#Bag"
 		":PAL-DESCRIPTION"
-		"http://www.w3.org/2001/XMLSchema#duration"
 		":SLOT-DEFAULTS"
+		"http://www.w3.org/2001/XMLSchema#duration"
 		":DIRECT-DOMAIN"
 		"http://www.w3.org/2002/07/owl#AnonymousClass"
-		"http://www.w3.org/2003/11/swrl#AtomList"
 		"http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom"
+		"http://www.w3.org/2003/11/swrl#AtomList"
 		"http://www.w3.org/2003/11/swrl#DifferentIndividualsAtom"
 		"http://www.w3.org/2002/07/owl#SomeValuesFromRestriction"
 		"http://www.w3.org/2001/XMLSchema#normalizedString"
@@ -5710,25 +5710,25 @@
 		"http://www.w3.org/2003/11/swrl#Atom"
 		"http://www.w3.org/2002/07/owl#sameAs"
 		"http://www.w3.org/2001/XMLSchema#negativeInteger"
-		":ASSOCIATED-FACET"
 		"http://www.w3.org/2002/07/owl#ObjectProperty"
-		":MINIMUM-CARDINALITY"
+		":ASSOCIATED-FACET"
 		":OWL-ANONYMOUS-ROOT"
+		":MINIMUM-CARDINALITY"
 		"http://www.w3.org/2001/XMLSchema#IDREF"
 		":INSTANCE-ANNOTATION"
-		"http://www.w3.org/2002/07/owl#cardinality"
 		"http://www.w3.org/2003/11/swrl#argument2"
-		"http://www.w3.org/1999/02/22-rdf-syntax-ns#subject"
+		"http://www.w3.org/2002/07/owl#cardinality"
 		":SLOT-VALUES"
+		"http://www.w3.org/1999/02/22-rdf-syntax-ns#subject"
 		":STANDARD-FACET"
 		"http://www.w3.org/2002/07/owl#onProperty"
 		"http://www.w3.org/2002/07/owl#complementOf"
 		"http://www.w3.org/2003/11/swrl#SameIndividualAtom"
 		"http://www.w3.org/2000/01/rdf-schema#subPropertyOf"
 		"http://www.w3.org/2001/XMLSchema#ENTITY"
-		"http://www.w3.org/2002/07/owl#distinctMembers"
-		"http://www.w3.org/2003/11/swrl#Builtin"
 		"http://www.w3.org/2003/11/swrl#DataRangeAtom"
+		"http://www.w3.org/2003/11/swrl#Builtin"
+		"http://www.w3.org/2002/07/owl#distinctMembers"
 		"http://www.w3.org/2003/11/swrl#builtin"
 		"http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral"
 		"http://www.w3.org/1999/02/22-rdf-syntax-ns#first"
@@ -5839,8 +5839,8 @@
 		":ANNOTATED-INSTANCE"
 		"http://www.w3.org/2000/01/rdf-schema#member"
 		":SLOT-VALUE-TYPE"
-		"http://www.w3.org/2001/XMLSchema#decimal"
 		"http://www.w3.org/2001/XMLSchema#unsignedShort"
+		"http://www.w3.org/2001/XMLSchema#decimal"
 		"http://www.w3.org/2003/11/swrl#classPredicate")
 	(journaling_enabled FALSE)
 	(next_frame_number 0)
@@ -6270,19 +6270,6 @@
 
 	(name "vertical_stretcher")
 	(string_value "http://www.w3.org/2002/07/owl#imports"))
-
-([XY_Instance_217] of  Widget
-
-	(height 0)
-	(is_hidden FALSE)
-	(name ":OWL-ONTOLOGY-PREFIXES")
-	(property_list [XY_Instance_218])
-	(width 0)
-	(x 0)
-	(y 0))
-
-([XY_Instance_218] of  Property_List
-)
 
 ([XY_Instance_235] of  Widget
 
