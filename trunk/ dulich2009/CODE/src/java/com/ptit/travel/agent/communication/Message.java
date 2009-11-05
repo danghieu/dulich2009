@@ -4,7 +4,7 @@ import com.hp.hpl.jena.rdf.model.*;
 
 import java.io.StringWriter;
 
-import agent.core.onto.*;
+import com.ptit.travel.agent.onto.*;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -23,270 +23,255 @@ import jade.domain.FIPAAgentManagement.ServiceDescription;
 /**
  * Contain of relevant methods for communication using OWL or RDF models
  * 
- * @author Michal Laclavik
- * @version 1.2
  */
-
 public class Message {
 
-	private static Logger log = Logger.getLogger(Message.class.getName());
+    private static Logger log = Logger.getLogger(Message.class.getName());
 
-	/**
-	 * This method returns XML/RDF text representation of RDF Resource
-	 * 
-	 * @param resource
-	 *            Jena Resource
-	 */
+    /**
+     * This method returns XML/RDF text representation of RDF Resource
+     * 
+     * @param resource
+     *            Jena Resource
+     */
+    public static String resource2RDF(Resource resource) {
+        return resource2RDF(resource, ModelFactory.createOntologyModel());
+    }
 
-	public static String resource2RDF(Resource resource) {
-		return resource2RDF(resource, ModelFactory.createOntologyModel());
-	}
+    /**
+     * This method returns XML/RDF text representation of RDF Model
+     * 
+     * @param model
+     *            Jena Model
+     */
+    public static String model2RDF(Model model) {
+        String rdf = "";
+        try {
+            StringWriter writer = new StringWriter();
 
-	/**
-	 * This method returns XML/RDF text representation of RDF Model
-	 * 
-	 * @param model
-	 *            Jena Model
-	 */
+            model.write(writer, "RDF/XML-ABBREV");
+            rdf = writer.getBuffer().toString();
+        } catch (Exception e) {
+            log.error("error adding instance to model");
+        }
+        return rdf;
+    }
 
-	public static String model2RDF(Model model) {
-		String rdf = "";
-		try {
-			StringWriter writer = new StringWriter();
+    public static String resource2RDF(Resource r, Model model) {
+        return model2RDF(resource2Model(r, model));
+    }
 
-			model.write(writer, "RDF/XML-ABBREV");
-			rdf = writer.getBuffer().toString();
-		} catch (Exception e) {
-			log.error("error adding instance to model");
-		}
-		return rdf;
-	}
+    public static Model resource2Model(Resource r, Model model) {
+        try {
 
-	public static String resource2RDF(Resource r, Model model) {
-		return model2RDF(resource2Model(r, model));
-	}
+            model.add(r.listProperties());
 
-	public static Model resource2Model(Resource r, Model model) {
-		try {
+            StmtIterator i = r.listProperties();
+            while (i.hasNext()) { // this is here to put simple resource values
+                // (String, int) to message as well
 
-			model.add(r.listProperties());
+                Statement s = i.nextStatement();
+                if (s.getObject() instanceof Resource) {
+                    // log.debug("ddi:" + s.getObject().toString());
+                    model.add(((Resource) r.getProperty(s.getPredicate()).getObject()).listProperties());
+                }
+            // log.debug("prop:"+s.toString());
 
-			StmtIterator i = r.listProperties();
-			while (i.hasNext()) { // this is here to put simple resource values
-									// (String, int) to message as well
-				Statement s = i.nextStatement();
-				if (s.getObject() instanceof Resource) {
-					// log.debug("ddi:" + s.getObject().toString());
-					model.add(((Resource) r.getProperty(s.getPredicate())
-							.getObject()).listProperties());
-				}
-				// log.debug("prop:"+s.toString());
+            }
 
-			}
+        } catch (Exception e) {
+            log.error("error adding instance to model");
+        }
+        return model;
+    }
 
-		} catch (Exception e) {
-			log.error("error adding instance to model");
-		}
-		return model;
-	}
+    /**
+     * Recursive method which writes resource with all properties recursively
+     * into string and returns it
+     * 
+     * @param space
+     *            is just to track levels of XML
+     *@param r
+     *            resource which should be converted to XML text
+     * 
+     */
+    public static String getXML(Resource r, String space, String strRes) {
+        String xml = "";
+        String typeAndId = "";
+        String typeEnd = "";
+        StmtIterator si = r.listProperties();
+        while (si.hasNext()) {
+            Statement s = si.nextStatement();
+            Resource subject = s.getSubject(); // get the subject
 
-	/**
-	 * Recursive method which writes resource with all properties recursively
-	 * into string and returns it
-	 * 
-	 * @param space
-	 *            is just to track levels of XML
-	 *@param r
-	 *            resource which should be converted to XML text
-	 * 
-	 */
+            Property predicate = s.getPredicate(); // get the predicate
 
-	public static String getXML(Resource r, String space, String strRes) {
-		String xml = "";
-		String typeAndId = "";
-		String typeEnd = "";
-		StmtIterator si = r.listProperties();
-		while (si.hasNext()) {
-			Statement s = si.nextStatement();
-			Resource subject = s.getSubject(); // get the subject
-			Property predicate = s.getPredicate(); // get the predicate
-			RDFNode object = s.getObject(); // get the object
-			// System.out.println(space + s.toString() );
+            RDFNode object = s.getObject(); // get the object
+            // System.out.println(space + s.toString() );
 
-			
-			if (predicate.getNameSpace().equals(Ontology.RDF)
-					&& predicate.getLocalName().equals("type")) {
-				typeAndId = space + "<" + s.getResource().getLocalName()
-						+ " ID=\"" + subject.getLocalName() + "\">\n";
-				// System.out.print(typeAndId);
-				typeEnd = space + "</" + s.getResource().getLocalName() + ">\n";
-				// xml = typeAndId + xml + typeEnd;
-			} else {
-				StmtIterator rP = r.listProperties(r.getModel().createProperty(
-						predicate.getURI()));
 
-				while (rP.hasNext()) {
-					String xmlRes = "";
+            if (predicate.getNameSpace().equals(Ontology.RDF) && predicate.getLocalName().equals("type")) {
+                typeAndId = space + "<" + s.getResource().getLocalName() + " ID=\"" + subject.getLocalName() + "\">\n";
+                // System.out.print(typeAndId);
+                typeEnd = space + "</" + s.getResource().getLocalName() + ">\n";
+            // xml = typeAndId + xml + typeEnd;
+            } else {
+                StmtIterator rP = r.listProperties(r.getModel().createProperty(
+                        predicate.getURI()));
 
-					try {
-						Statement ss = rP.nextStatement();
-						Resource rr = ss.getResource();
-						if (rr.toString().equals(s.getObject().toString())
-								&& strRes.indexOf(r.getLocalName()) == -1) {
-							// we have to compare strRes in this if because
-							// otherwise we willhave infinite recursive loop
-							xmlRes += getXML(rr, space + "    ", strRes + ";"
-									+ r.getLocalName());
-						}
-					} catch (Exception e) {
-						String valS = "";
-						if (object instanceof Literal) {
-							valS = ((Literal) object).getString();
-						} else {
-							valS = object.toString();
-						}
+                while (rP.hasNext()) {
+                    String xmlRes = "";
 
-						Pattern pp = Pattern.compile("<");
-						Matcher mm = pp.matcher(valS);
-						valS = mm.replaceAll("&lt;");
-						pp = Pattern.compile(">");
-						mm = pp.matcher(valS);
-						valS = mm.replaceAll("&gt;");
+                    try {
+                        Statement ss = rP.nextStatement();
+                        Resource rr = ss.getResource();
+                        if (rr.toString().equals(s.getObject().toString()) && strRes.indexOf(r.getLocalName()) == -1) {
+                            // we have to compare strRes in this if because
+                            // otherwise we willhave infinite recursive loop
+                            xmlRes += getXML(rr, space + "    ", strRes + ";" + r.getLocalName());
+                        }
+                    } catch (Exception e) {
+                        String valS = "";
+                        if (object instanceof Literal) {
+                            valS = ((Literal) object).getString();
+                        } else {
+                            valS = object.toString();
+                        }
 
-						String simpleProp = space + "  <"
-								+ predicate.getLocalName() + ">" + valS + "</"
-								+ predicate.getLocalName() + ">\n";
-						xml = xml + simpleProp;
-						// System.out.print(simpleProp);
-						// System.out.println(space+"error1:"+e.toString());
-					}
+                        Pattern pp = Pattern.compile("<");
+                        Matcher mm = pp.matcher(valS);
+                        valS = mm.replaceAll("&lt;");
+                        pp = Pattern.compile(">");
+                        mm = pp.matcher(valS);
+                        valS = mm.replaceAll("&gt;");
 
-					String beginRes = space + "  <" + predicate.getLocalName()
-							+ ">\n";
-					String endRes = space + "  </" + predicate.getLocalName()
-							+ ">\n";
-					if (!xmlRes.equals("")) {
-						xml = xml + beginRes + xmlRes + endRes;
-					}
+                        String simpleProp = space + "  <" + predicate.getLocalName() + ">" + valS + "</" + predicate.getLocalName() + ">\n";
+                        xml = xml + simpleProp;
+                    // System.out.print(simpleProp);
+                    // System.out.println(space+"error1:"+e.toString());
+                    }
 
-					// System.out.print(endRes);
-				}
-			}
+                    String beginRes = space + "  <" + predicate.getLocalName() + ">\n";
+                    String endRes = space + "  </" + predicate.getLocalName() + ">\n";
+                    if (!xmlRes.equals("")) {
+                        xml = xml + beginRes + xmlRes + endRes;
+                    }
 
-		}
-		xml = typeAndId + xml + typeEnd;
-		return xml;
-	}
+                // System.out.print(endRes);
+                }
+            }
 
-	/**
-	 * Recursive method which move resource with all properties recursively into
-	 * new model
-	 * 
-	 * @param m
-	 *            represents model where properties should be put in
-	 *@param r
-	 *            resource which properties shouldbe added
-	 * 
-	 */
-	public static void addProperties(Model m, Resource r) {
-		m.add(r.listProperties());
-		StmtIterator si = r.listProperties();
-		while (si.hasNext()) {
-			Statement s = si.nextStatement();
-			try {
-				m.add(s.getResource().listProperties());
-				addProperties(m, s.getResource());
-			} catch (Exception e) {
-				;
-			}
-		}
-	}
+        }
+        xml = typeAndId + xml + typeEnd;
+        return xml;
+    }
 
-	/**
-	 * This method creates ACL Query message
-	 * 
-	 * @param sender
-	 *            Agent which sends message
-	 *@param recieverName
-	 *            string name of Agent which recieve the message
-	 *@param query
-	 *            SPARQL query
-	 * 
-	 */
+    /**
+     * Recursive method which move resource with all properties recursively into
+     * new model
+     * 
+     * @param m
+     *            represents model where properties should be put in
+     *@param r
+     *            resource which properties should be added
+     * 
+     */
+    public static void addProperties(Model m, Resource r) {
+        m.add(r.listProperties());
+        StmtIterator si = r.listProperties();
+        while (si.hasNext()) {
+            Statement s = si.nextStatement();
+            try {
+                m.add(s.getResource().listProperties());
+                addProperties(m, s.getResource());
+            } catch (Exception e) {
+                ;
+            }
+        }
+    }
 
-	public static ACLMessage createQueryMessage(Agent sender,
-			String recieverName, String query) {
-		ACLMessage m = new ACLMessage(ACLMessage.QUERY_REF);
-		AID receiver = new AID(recieverName, false);
-		m.setSender(sender.getAID());
-		m.addReceiver(receiver);
-		m.setLanguage(Ontology.SPARQL);
-		m.setOntology(Ontology.BASE);
+    /**
+     * This method creates ACL Query message
+     * 
+     * @param sender
+     *            Agent which sends message
+     *@param recieverName
+     *            string name of Agent which recieve the message
+     *@param query
+     *            SPARQL query
+     * 
+     */
+    public static ACLMessage createQueryMessage(Agent sender,
+            String recieverName, String query) {
+        ACLMessage m = new ACLMessage(ACLMessage.QUERY_REF);
+        AID receiver = new AID(recieverName, false);
+        m.setSender(sender.getAID());
+        m.addReceiver(receiver);
+        m.setLanguage(Ontology.SPARQL);
+        m.setOntology(Ontology.BASE);
 
-		String content = Ontology.SPARQL_PREFIX + query;
-		log.debug("Message:\n" + content);
+        String content = Ontology.SPARQL_PREFIX + query;
+        log.debug("Message:\n" + content);
 
-		m.setContent(content);
-		log.debug("message prepared for " + recieverName + ": " + m);
+        m.setContent(content);
+        log.debug("message prepared for " + recieverName + ": " + m);
 
-		return m;
+        return m;
 
-	}
+    }
 
-	/**
-	 * This method creates ACL Inform message containing of RDF of some Jena RDF
-	 * Resource
-	 * 
-	 * @param sender
-	 *            Agent which sends message
-	 *@param recieverName
-	 *            string name of Agent which recieve the message
-	 *@param r
-	 *            RDF Jena Resouce
-	 * 
-	 */
-	public static ACLMessage createInformMessage(Agent sender,
-			String recieverName, Resource r) {
+    /**
+     * This method creates ACL Inform message containing of RDF of some Jena RDF
+     * Resource
+     * 
+     * @param sender
+     *            Agent which sends message
+     *@param recieverName
+     *            string name of Agent which recieve the message
+     *@param r
+     *            RDF Jena Resouce
+     * 
+     */
+    public static ACLMessage createInformMessage(Agent sender,
+            String recieverName, Resource r) {
 
-		log.info("Preparing inform message...");
-		String content = resource2RDF(r);
-		ACLMessage m = new ACLMessage(ACLMessage.INFORM);
-		m.setSender(sender.getAID());
-		m.addReceiver(new AID(recieverName, false));
-		m.setLanguage(Ontology.RDF);
-		m.setOntology(Ontology.BASE);
-		m.setContent(content);
-		log.debug("message prepared for " + recieverName + ": " + m);
-		return m;
-	}
+        log.info("Preparing inform message...");
+        String content = resource2RDF(r);
+        ACLMessage m = new ACLMessage(ACLMessage.INFORM);
+        m.setSender(sender.getAID());
+        m.addReceiver(new AID(recieverName, false));
+        m.setLanguage(Ontology.RDF);
+        m.setOntology(Ontology.BASE);
+        m.setContent(content);
+        log.debug("message prepared for " + recieverName + ": " + m);
+        return m;
+    }
 
-	/**
-	 * This method register agent with directory facilitator
-	 * 
-	 * @param a
-	 *            Agent which registers
-	 *@param agentType
-	 *            string description of agent type
-	 * 
-	 */
+    /**
+     * This method register agent with directory facilitator
+     * 
+     * @param a
+     *            Agent which registers
+     *@param agentType
+     *            string description of agent type
+     * 
+     */
+    public static void register(Agent a, String agentType) {
+        DFAgentDescription dfd = new DFAgentDescription();
+        ServiceDescription sd = new ServiceDescription();
+        sd.setType(agentType);
+        sd.setName(a.getName());
+        sd.setOwnership(Ontology.AGENT_OWNERSHIP);
+        sd.addOntologies(Ontology.BASE);
+        dfd.setName(a.getAID());
+        dfd.addServices(sd);
+        try {
+            DFService.register(a, dfd);
+        } catch (FIPAException e) {
+            System.err.println(a.getLocalName() + " registration with DF unsucceeded. Reason: " + e.getMessage()); //$NON-NLS-1$
 
-	public static void register(Agent a, String agentType) {
-		DFAgentDescription dfd = new DFAgentDescription();
-		ServiceDescription sd = new ServiceDescription();
-		sd.setType(agentType);
-		sd.setName(a.getName());
-		sd.setOwnership(Ontology.AGENT_OWNERSHIP);
-		sd.addOntologies(Ontology.BASE);
-		dfd.setName(a.getAID());
-		dfd.addServices(sd);
-		try {
-			DFService.register(a, dfd);
-		} catch (FIPAException e) {
-			System.err
-					.println(a.getLocalName()
-							+ " registration with DF unsucceeded. Reason: " + e.getMessage()); //$NON-NLS-1$
-			a.doDelete();
-		}
+            a.doDelete();
+        }
 
-	}
+    }
 }

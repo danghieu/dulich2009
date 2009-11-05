@@ -4,149 +4,156 @@
  */
 package com.ptit.travel.agent;
 
+import java.net.URL;
+
+import com.ptit.travel.agent.onto.*;
+import com.ptit.travel.agent.memory.*;
+import com.ptit.travel.agent.communication.*;
+
+import com.hp.hpl.jena.query.Query;
+import com.hp.hpl.jena.query.QueryExecution;
+import com.hp.hpl.jena.query.QueryExecutionFactory;
+import com.hp.hpl.jena.query.QueryFactory;
+import com.hp.hpl.jena.query.QuerySolution;
+import com.hp.hpl.jena.query.ResultSet;
+import com.hp.hpl.jena.rdf.model.*;
+
+import com.hp.hpl.jena.rdf.model.Resource;
+
 import jade.core.Agent;
 import jade.core.behaviours.*;
 import jade.lang.acl.ACLMessage;
-import jade.lang.acl.MessageTemplate;
-import jade.domain.DFService;
-import jade.domain.FIPAException;
-import jade.domain.FIPAAgentManagement.DFAgentDescription;
-import jade.domain.FIPAAgentManagement.ServiceDescription;
 
-import java.util.*;
+import org.apache.log4j.Logger;
+import org.apache.log4j.PropertyConfigurator;
 
+/**
+ * AnswerAgent answers to SPARQL queries sent by AskAgent
+ * 
+ * @author Michal Laclavik
+ * @version 0.5
+ */
 public class HotelAgent extends Agent {
-    // The catalogue of books for sale (maps the title of a book to its price)
 
-    private Hashtable catalogue;
-    // The GUI by means of which the user can add books in the catalogue
-    private HotelGui myGui;
+    private static Logger log = Logger.getLogger(HotelAgent.class.getName());
+    private Memory mem;
 
-    // Put agent initializations here
+    // this method sends result to AskAgent
+    private void informAskAgent(Resource r) {
+        this.addBehaviour(new BehaviourSendResult(this, r));
+    }
+
+    /**
+     * 
+     * 
+     *Behaviour is useed with AnswerAgent and it sends RDF Resources to
+     * AskAgents
+     * 
+     * @author Michal Laclavik
+     */
+    class BehaviourSendResult extends OneShotBehaviour {
+
+        private Resource r = null;
+        private Agent a;
+
+        public BehaviourSendResult(Agent _a, Resource _r) {
+            super(_a);
+            a = _a;
+            r = _r;
+        }
+
+        public void action() {
+            System.out.println("sends RDF Resources to UserAgent");
+            send(Message.createInformMessage(a, "UserAgent", r));
+        }
+    } // End class BehaviourSendResult
+
+
+    /**
+     * 
+     *This behaviour is used by AnswerAgent to handle recieved SPARQL messages
+     * sent by AskAgent then it performs SPARQL query on AnswerAgent model and
+     * return the results to AskAgent using BehaviourSentResult
+     *      
+     * 
+     */
+    class BehaviourHandleRecivedMessages extends SimpleBehaviour {
+
+        private boolean finished = false;
+        private Agent a;
+
+        public BehaviourHandleRecivedMessages(Agent _a) {
+            super(_a);
+            a = _a;
+        }
+
+        public void action() {
+
+            synchronized (this) {
+                /*
+                 * try {
+                 * 
+                 * Thread.sleep(100); } catch (InterruptedException e) { ; }
+                 */
+                ACLMessage msg = receive();
+                if (msg != null) {
+                    switch (msg.getPerformative()) {
+                        // case ACLMessage.QUERY_REF:
+                        default: // TrungPQ
+                            //System.out.println("ANSWER....");
+
+                            log.info("######Message#######\n" + msg.toString() + "\n############");
+
+                            log.info(getName() + ":message recived:" + msg.getContent());
+
+                            if (msg.getLanguage().equals(Ontology.SPARQL)) {
+                                Model m = mem.getModel();
+
+                                Query query = QueryFactory.create(msg.getContent());
+                                QueryExecution qexec = QueryExecutionFactory.create(query, m);
+                                try {
+                                    ResultSet results = qexec.execSelect();
+                                    for (; results.hasNext();) {
+                                        QuerySolution soln = results.nextSolution();
+                                        Resource x = soln.getResource("x"); 
+
+                                        informAskAgent(x);
+                                        log.info(x.toString());
+
+                                    }
+                                } finally {
+                                    qexec.close();
+                                }
+
+                            }
+                            break;
+                        case ACLMessage.INFORM:
+                            ;
+
+                            break;
+                    }
+                }
+                block(); // this is to allow other behaviours
+
+            }
+            ;
+
+        }
+
+        public boolean done() {
+            return finished;
+        }
+    } // end of BehaviourHandleRecivedMessages
+
+
     protected void setup() {
-        // Create the catalogue
-        catalogue = new Hashtable();
 
-        // Create and show the GUI 
-        myGui = new HotelGui(this);
-        myGui.show();
+        Message.register(this, "HotelAgent");
 
-        // Register the book-selling service in the yellow pages
-        DFAgentDescription dfd = new DFAgentDescription();
-        dfd.setName(getAID());
-        ServiceDescription sd = new ServiceDescription();
-        sd.setType("book-selling");
-        sd.setName("JADE-book-trading");
-        dfd.addServices(sd);
-        try {
-            DFService.register(this, dfd);
-        } catch (FIPAException fe) {
-            fe.printStackTrace();
-        }
+        mem = new Memory("config/HotelAgent.properties", "HotelAgent");
 
-        
-        // Add the behaviour serving queries from buyer agents
-        addBehaviour(new OfferRequestsServer());
-
-        // Add the behaviour serving purchase orders from buyer agents
-        addBehaviour(new PurchaseOrdersServer());
+        BehaviourHandleRecivedMessages hrmBehaviour = new BehaviourHandleRecivedMessages(
+                this);
+        addBehaviour(hrmBehaviour);
     }
-
-    // Put agent clean-up operations here
-    protected void takeDown() {
-        // Deregister from the yellow pages
-        try {
-            DFService.deregister(this);
-        } catch (FIPAException fe) {
-            fe.printStackTrace();
-        }
-        // Close the GUI
-        myGui.dispose();
-        // Printout a dismissal message
-        System.out.println("Seller-agent " + getAID().getName() + " terminating.");
-    }
-
-    /**
-    This is invoked by the GUI when the user adds a new book for sale
-     */
-    public void updateCatalogue(final String title, final int price) {
-        addBehaviour(new OneShotBehaviour() {
-
-            public void action() {
-                catalogue.put(title, new Integer(price));
-                System.out.println(title + " inserted into catalogue. Price = " + price);
-            }
-        });
-    }
-
-    /**
-    Inner class OfferRequestsServer.
-    This is the behaviour used by Book-seller agents to serve incoming requests 
-    for offer from buyer agents.
-    If the requested book is in the local catalogue the seller agent replies 
-    with a PROPOSE message specifying the price. Otherwise a REFUSE message is
-    sent back.
-     */
-    private class OfferRequestsServer extends CyclicBehaviour {
-
-        public void action() {
-            MessageTemplate mt = MessageTemplate.MatchPerformative(ACLMessage.CFP);
-            ACLMessage msg = myAgent.receive(mt);
-            if (msg != null) {
-                // CFP Message received. Process it
-                String title = msg.getContent();
-                ACLMessage reply = msg.createReply();
-
-                Integer price = (Integer) catalogue.get(title);
-                if (price != null) {
-                    // The requested book is available for sale. Reply with the price
-                    reply.setPerformative(ACLMessage.PROPOSE);
-                    reply.setContent(String.valueOf(price.intValue()));
-                } else {
-                    // The requested book is NOT available for sale.
-                    reply.setPerformative(ACLMessage.REFUSE);
-                    reply.setContent("not-available");
-                }
-                myAgent.send(reply);
-            } else {
-                block();
-            }
-        }
-    }  // End of inner class OfferRequestsServer
-
-
-    /**
-    Inner class PurchaseOrdersServer.
-    This is the behaviour used by Book-seller agents to serve incoming 
-    offer acceptances (i.e. purchase orders) from buyer agents.
-    The seller agent removes the purchased book from its catalogue 
-    and replies with an INFORM message to notify the buyer that the
-    purchase has been sucesfully completed.
-     */
-    private class PurchaseOrdersServer extends CyclicBehaviour {
-
-        public void action() {
-            MessageTemplate mt = MessageTemplate.MatchPerformative(ACLMessage.ACCEPT_PROPOSAL);
-            ACLMessage msg = myAgent.receive(mt);
-            if (msg != null) {
-                // ACCEPT_PROPOSAL Message received. Process it
-                String title = msg.getContent();
-                ACLMessage reply = msg.createReply();
-
-                Integer price = (Integer) catalogue.remove(title);
-                if (price != null) {
-                    reply.setPerformative(ACLMessage.INFORM);
-                    System.out.println(title + " sold to agent " + msg.getSender().getName());
-                } else {
-                    // The requested book has been sold to another buyer in the meanwhile .
-                    reply.setPerformative(ACLMessage.FAILURE);
-                    reply.setContent("not-available");
-                }
-                myAgent.send(reply);
-            } else {
-                block();
-            }
-        }
-    }  // End of inner class OfferRequestsServer
-
 }
