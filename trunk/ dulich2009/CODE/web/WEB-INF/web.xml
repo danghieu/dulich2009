@@ -21,6 +21,11 @@
         <servlet-name>MakeAgent</servlet-name>
         <servlet-class>com.ptit.travel.common.MakeAgent</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ServletAdaptor</servlet-name>
+        <servlet-class>com.sun.ws.rest.impl.container.servlet.ServletAdaptor</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
     <servlet-mapping>
         <servlet-name>action</servlet-name>
         <url-pattern>*.do</url-pattern>
@@ -28,6 +33,10 @@
     <servlet-mapping>
         <servlet-name>MakeAgent</servlet-name>
         <url-pattern>/MakeAgent</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServletAdaptor</servlet-name>
+        <url-pattern>/resources/*</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
