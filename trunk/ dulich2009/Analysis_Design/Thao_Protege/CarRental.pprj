@@ -1,4 +1,4 @@
-; Wed Oct 21 01:39:14 PDT 2009
+; Sat Nov 07 09:39:36 PST 2009
 ; 
 ;+ (version "3.4")
 ;+ (build "Build 533")
@@ -6,11 +6,11 @@
 ([BROWSER_SLOT_NAMES] of  Property_List
 
 	(properties
-		[CarRental_ProjectKB_Class158]
-		[CarRental_ProjectKB_Class159]
-		[CarRental_ProjectKB_Class160]
-		[CarRental_ProjectKB_Class161]
-		[CarRental_ProjectKB_Class162]))
+		[CarRental_ProjectKB_Class58]
+		[CarRental_ProjectKB_Class59]
+		[CarRental_ProjectKB_Class60]
+		[CarRental_ProjectKB_Class61]
+		[CarRental_ProjectKB_Class62]))
 
 ([CarRental_ProjectKB_Class1] of  Widget
 
@@ -45,33 +45,8 @@
 	(property_list [CarRental_ProjectKB_Class16])
 	(widget_class_name "ezpal.EZPalTab"))
 
-([CarRental_ProjectKB_Class158] of  String
-
-	(name "http://www.w3.org/2002/07/owl#Class")
-	(string_value "%3ANAME"))
-
-([CarRental_ProjectKB_Class159] of  String
-
-	(name ":INSTANCE-ANNOTATION")
-	(string_value "%3AANNOTATION-TEXT"))
-
 ([CarRental_ProjectKB_Class16] of  Property_List
 )
-
-([CarRental_ProjectKB_Class160] of  String
-
-	(name ":META-CLASS")
-	(string_value "%3ANAME"))
-
-([CarRental_ProjectKB_Class161] of  String
-
-	(name "http://www.w3.org/2002/07/owl#Thing")
-	(string_value "%3ANAME"))
-
-([CarRental_ProjectKB_Class162] of  String
-
-	(name ":PAL-CONSTRAINT")
-	(string_value "%3APAL-NAME"))
 
 ([CarRental_ProjectKB_Class17] of  Widget
 
@@ -253,8 +228,33 @@
 ([CarRental_ProjectKB_Class52] of  Property_List
 )
 
+([CarRental_ProjectKB_Class58] of  String
+
+	(name "http://www.w3.org/2002/07/owl#Class")
+	(string_value "%3ANAME"))
+
+([CarRental_ProjectKB_Class59] of  String
+
+	(name ":INSTANCE-ANNOTATION")
+	(string_value "%3AANNOTATION-TEXT"))
+
 ([CarRental_ProjectKB_Class6] of  Property_List
 )
+
+([CarRental_ProjectKB_Class60] of  String
+
+	(name ":META-CLASS")
+	(string_value "%3ANAME"))
+
+([CarRental_ProjectKB_Class61] of  String
+
+	(name "http://www.w3.org/2002/07/owl#Thing")
+	(string_value "%3ANAME"))
+
+([CarRental_ProjectKB_Class62] of  String
+
+	(name ":PAL-CONSTRAINT")
+	(string_value "%3APAL-NAME"))
 
 ([CarRental_ProjectKB_Class7] of  Widget
 
@@ -1016,6 +1016,9 @@
 	(name "SwitchableClassDefinitionType")
 	(string_value "edu.stanford.smi.protegex.owl.ui.cls.PropertiesClassDefinitionWidget"))
 
+([KB_459514_Class0] of  Map
+)
+
 ([KB_465546_Instance_567] of  Widget
 
 	(is_hidden FALSE)
@@ -1203,9 +1206,6 @@
 	(property_list [KB_635552_Instance_9]))
 
 ([KB_635552_Instance_9] of  Property_List
-)
-
-([KB_638190_Class0] of  Map
 )
 
 ([KB_691299_Instance_398] of  Widget
