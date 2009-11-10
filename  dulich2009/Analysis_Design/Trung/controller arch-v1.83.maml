@@ -1,0 +1,31 @@
+<?xml version="1.83"?><!DOCTYPE mas SYSTEM "atsystem1.83.dtd">
+<mas name=°null° key=°system@000°><dscr>none</dscr><framework name="agentMOM"/><kmark="21"/>
+<agent name=°ControllerCustomer° key=°agent@1°> dscr=°none°<view x="372" y="200" w="129" h="50"/>
+<architecture name=°ControllerCustomer architecture° key=°arch@1°> dscr=°none°</architecture><Roles>0</agent>
+<agent name=°ControllerAgent° key=°agent@2°> dscr=°none°<view x="129" y="197" w="105" h="50"/>
+<architecture name=°ControllerAgent architecture° key=°arch@2°> dscr=°none°
+<component name=°Publish/Alert Services ° key=°comp@3°> iss=f isc=f isp=f dscr=°none°<view x="166" y="169" w="254" h="85"/>
+<statetable name=°null° key=°statetable@3°> owner=°null°>
+<state name=°StartState° key=°startstate@3°><pos="100","100"></state>
+<state name=°EndState° key=°endstate@3°><pos="400","100"></state></statetable>
+<method name=°create° key=°compmethod@4°> rtype=°boolean° prm=°new services information° pre=° ° post=° ° vis=f/></method>
+<method name=°edit° key=°compmethod@14°> rtype=°boolean° prm=°id service° pre=°° post=°° vis=f/></method>
+<method name=°delete° key=°compmethod@15°> rtype=°boolean° prm=°id service° pre=°° post=°° vis=f/></method>
+<architecture name=°null° key=°arch@3°> dscr=°none°</architecture></component>
+<component name=°Search services, suppliers, destinations° key=°comp@5°> iss=f isc=f isp=f dscr=°none°<view x="170" y="289" w="240" h="85"/>
+<statetable name=°null° key=°statetable@5°> owner=°null°>
+<state name=°StartState° key=°startstate@5°><pos="90","102"></state>
+<state name=°EndState° key=°endstate@5°><pos="400","100"></state></statetable>
+<method name=°searchService° key=°compmethod@8°> rtype=°ServiceType° prm=° ° pre=° ° post=° ° vis=f/></method>
+<method name=°searchSupplier° key=°compmethod@9°> rtype=°Supplier° prm=°				° pre=° ° post=° ° vis=f/></method>
+<method name=°searDestination° key=°compmethod@10°> rtype=°Destination° prm=° ° pre=° ° post=° ° vis=f/></method>
+<architecture name=°null° key=°arch@5°> dscr=°none°</architecture></component>
+<component name=°Manage booking information° key=°comp@16°> iss=f isc=f isp=f dscr=°none°<view x="605" y="179" w="351" h="101"/>
+<statetable name=°null° key=°statetable@16°> owner=°null°>
+<state name=°StartState° key=°startstate@16°><pos="100","100"></state>
+<state name=°EndState° key=°endstate@16°><pos="400","100"></state></statetable>
+<method name=°readBookingInfo° key=°compmethod@17°> rtype=°BookingRecord° prm=°id customer° pre=°° post=°° vis=f/></method>
+<method name=°createBookingRecord° key=°compmethod@18°> rtype=°boolean° prm=°booking information° pre=°° post=°° vis=f/></method>
+<method name=°delBookingRecord° key=°compmethod@19°> rtype=°boolean° prm=°id customer, id booking record° pre=°° post=°° vis=f/></method>
+<method name=°editBookingInfo° key=°compmethod@20°> rtype=°boolean° prm=°id customer, id booking record° pre=°° post=°° vis=f/></method>
+<architecture name=°null° key=°arch@16°> dscr=°none°</architecture></component></architecture><Roles>0</agent></mas>
