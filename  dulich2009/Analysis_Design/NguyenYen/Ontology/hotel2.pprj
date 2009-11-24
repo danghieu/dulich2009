@@ -1,4 +1,4 @@
-; Wed Nov 18 22:25:47 ICT 2009
+; Sun Nov 22 21:46:54 ICT 2009
 ; 
 ;+ (version "3.4")
 ;+ (build "Build 533")
@@ -6,11 +6,11 @@
 ([BROWSER_SLOT_NAMES] of  Property_List
 
 	(properties
-		[hotel2_ProjectKB_Class61]
-		[hotel2_ProjectKB_Class62]
-		[hotel2_ProjectKB_Class63]
-		[hotel2_ProjectKB_Class64]
-		[hotel2_ProjectKB_Class65]))
+		[hotel2_ProjectKB_Class20268]
+		[hotel2_ProjectKB_Class20269]
+		[hotel2_ProjectKB_Class20270]
+		[hotel2_ProjectKB_Class20271]
+		[hotel2_ProjectKB_Class20272]))
 
 ([CLSES_TAB] of  Widget
 
@@ -86,6 +86,31 @@
 	(is_hidden TRUE)
 	(property_list [hotel2_ProjectKB_Class21])
 	(widget_class_name "edu.stanford.smi.protegex.fctab.FacetConstraintsTab"))
+
+([hotel2_ProjectKB_Class20268] of  String
+
+	(name "http://www.w3.org/2002/07/owl#Class")
+	(string_value "%3ANAME"))
+
+([hotel2_ProjectKB_Class20269] of  String
+
+	(name ":INSTANCE-ANNOTATION")
+	(string_value "%3AANNOTATION-TEXT"))
+
+([hotel2_ProjectKB_Class20270] of  String
+
+	(name ":META-CLASS")
+	(string_value "%3ANAME"))
+
+([hotel2_ProjectKB_Class20271] of  String
+
+	(name "http://www.w3.org/2002/07/owl#Thing")
+	(string_value "%3ANAME"))
+
+([hotel2_ProjectKB_Class20272] of  String
+
+	(name ":PAL-CONSTRAINT")
+	(string_value "%3APAL-NAME"))
 
 ([hotel2_ProjectKB_Class21] of  Property_List
 )
@@ -285,31 +310,6 @@
 
 	(name "JENA-SCHEMAGEN-PACKAGE")
 	(string_value "Hotel"))
-
-([hotel2_ProjectKB_Class61] of  String
-
-	(name "http://www.w3.org/2002/07/owl#Class")
-	(string_value "%3ANAME"))
-
-([hotel2_ProjectKB_Class62] of  String
-
-	(name ":INSTANCE-ANNOTATION")
-	(string_value "%3AANNOTATION-TEXT"))
-
-([hotel2_ProjectKB_Class63] of  String
-
-	(name ":META-CLASS")
-	(string_value "%3ANAME"))
-
-([hotel2_ProjectKB_Class64] of  String
-
-	(name "http://www.w3.org/2002/07/owl#Thing")
-	(string_value "%3ANAME"))
-
-([hotel2_ProjectKB_Class65] of  String
-
-	(name ":PAL-CONSTRAINT")
-	(string_value "%3APAL-NAME"))
 
 ([hotel2_ProjectKB_Class7] of  Property_List
 )
@@ -809,9 +809,6 @@
 	(property_list [KB_100699_Instance_11])
 	(widget_class_name "edu.stanford.smi.protege.widget.FormWidget"))
 
-([KB_127482_Class0] of  Map
-)
-
 ([KB_140180_Instance_0] of  Widget
 
 	(is_hidden FALSE)
@@ -1075,6 +1072,9 @@
 	(y 0))
 
 ([KB_221055_Instance_71] of  Property_List
+)
+
+([KB_222606_Class0] of  Map
 )
 
 ([KB_301165_Instance_1013] of  Widget
