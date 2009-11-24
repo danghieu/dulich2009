@@ -1,0 +1,39 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix admin: <http://webns.net/mvcb/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix swp2: <http://semwebprogramming.org/2009/ont/chp2#>.
+< swp2:me>
+rdf:type foaf:Person ;
+foaf:depiction <http://semwebprogramming.org/semweb.jpg> ;
+foaf:family name "Web" ;
+foaf:givenname "Semantic" ;
+foaf:homepage <http://semwebprogramming.org> ;
+foaf:knows < swp2:Reasoner> , < swp2:Statement> , < swp2:
+Ontology> ;
+foaf:name "Semantic Web" ;
+foaf:nick "Webby" ;
+foaf:phone <tel:410-679-8999> ;
+foaf:schoolHomepage <http://www.web.edu> ;
+foaf:title "Dr" ;
+foaf:workInfoHomepage
+<http://semwebprogramming.com/dataweb.html> ;
+foaf:workplaceHomepage
+<http://semwebprogramming.com> .
+< swp2:Reasoner>
+rdf:type foaf:Person ;
+rdfs:seeAlso <http://reasoner.com> ;
+foaf:mbox <mailto:reason@hotmail.com> ;
+foaf:name "Ican Reason" .
+< swp2:Statement>
+rdf:type foaf:Person ;
+rdfs:seeAlso <http://statement.com> ;
+foaf:mbox <mailto:mstatement@gmail.com> ;
+foaf:name "Makea Statement" .
+< swp2:Ontology>
+rdf:type foaf:Person ;
+rdfs:seeAlso <http://ont.com> ;
+foaf:mbox <mailto:ont@gmail.com> ;
+foaf:name "I. M. Ontology" 
