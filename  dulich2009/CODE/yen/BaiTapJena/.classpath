@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="D:/TaiLieu/Agent/jena/arq.jar"/>
+	<classpathentry kind="lib" path="D:/TaiLieu/Agent/jena/axis.jar"/>
+	<classpathentry kind="lib" path="D:/TaiLieu/Agent/jena/commons-logging.jar"/>
+	<classpathentry kind="lib" path="D:/TaiLieu/Agent/jena/icu4j_3_4.jar"/>
+	<classpathentry kind="lib" path="D:/TaiLieu/Agent/jena/iri.jar"/>
+	<classpathentry kind="lib" path="D:/TaiLieu/Agent/jena/jena.jar"/>
+	<classpathentry kind="lib" path="D:/TaiLieu/Agent/jena/jenajars.zip"/>
+	<classpathentry kind="lib" path="D:/TaiLieu/Agent/jena/virtjdbc3.jar"/>
+	<classpathentry kind="lib" path="D:/TaiLieu/Agent/jena/virtjenasamples.zip"/>
+	<classpathentry kind="lib" path="D:/TaiLieu/Agent/jena/xercesImpl.jar"/>
+	<classpathentry kind="lib" path="D:/TaiLieu/Agent/jena/pellet-2.0.0-rc7/lib/aterm-java-1.6.jar"/>
+	<classpathentry kind="lib" path="D:/TaiLieu/Agent/jena/pellet-2.0.0-rc7/lib/pellet-cli.jar"/>
+	<classpathentry kind="lib" path="D:/TaiLieu/Agent/jena/pellet-2.0.0-rc7/lib/pellet-core.jar"/>
+	<classpathentry kind="lib" path="D:/TaiLieu/Agent/jena/pellet-2.0.0-rc7/lib/pellet-datatypes.jar"/>
+	<classpathentry kind="lib" path="D:/TaiLieu/Agent/jena/pellet-2.0.0-rc7/lib/pellet-dig.jar"/>
+	<classpathentry kind="lib" path="D:/TaiLieu/Agent/jena/pellet-2.0.0-rc7/lib/pellet-el.jar"/>
+	<classpathentry kind="lib" path="D:/TaiLieu/Agent/jena/pellet-2.0.0-rc7/lib/pellet-explanation.jar"/>
+	<classpathentry kind="lib" path="D:/TaiLieu/Agent/jena/pellet-2.0.0-rc7/lib/pellet-jena.jar"/>
+	<classpathentry kind="lib" path="D:/TaiLieu/Agent/jena/pellet-2.0.0-rc7/lib/pellet-modularity.jar"/>
+	<classpathentry kind="lib" path="D:/TaiLieu/Agent/jena/pellet-2.0.0-rc7/lib/pellet-owlapi.jar"/>
+	<classpathentry kind="lib" path="D:/TaiLieu/Agent/jena/pellet-2.0.0-rc7/lib/pellet-pellint.jar"/>
+	<classpathentry kind="lib" path="D:/TaiLieu/Agent/jena/pellet-2.0.0-rc7/lib/pellet-query.jar"/>
+	<classpathentry kind="lib" path="D:/TaiLieu/Agent/jena/pellet-2.0.0-rc7/lib/pellet-rules.jar"/>
+	<classpathentry kind="lib" path="D:/TaiLieu/Agent/jena/pellet-2.0.0-rc7/lib/pellet-test.jar"/>
+	<classpathentry kind="lib" path="D:/TaiLieu/Agent/jena/pellet-2.0.0-rc7/lib/servlet.jar"/>
+	<classpathentry kind="lib" path="D:/SETUP/My SQL/My Sql connect to Java/mysql-connector-java-5.0.4/mysql-connector-java-5.0.4-bin.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
