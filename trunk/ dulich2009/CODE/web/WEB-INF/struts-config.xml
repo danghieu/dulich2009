@@ -3,31 +3,62 @@
 <!DOCTYPE struts-config PUBLIC
           "-//Apache Software Foundation//DTD Struts Configuration 1.2//EN"
           "http://jakarta.apache.org/struts/dtds/struts-config_1_2.dtd">
-
-
 <struts-config>
     <form-beans>
-    
+        <form-bean name="LoginForm" type="com.ptit.travel.struts.form.LoginForm"/>
+    <form-bean name="bookRoomInfoForm" type="com.ptit.edu.travel.struts.form.hotel.BookRoomInfoForm" />    	
     </form-beans>
-    
     <global-exceptions>
-    
     </global-exceptions>
-
     <global-forwards>
-        <forward name="welcome"  path="/Welcome.do"/>
+        <forward
+            name="index"
+            path="/index.do"
+            redirect="true" />
+          
+        <forward
+            name="error"
+            path="error.page"
+            redirect="true" />
+        <forward
+            name="success"
+            path="success.page"
+            redirect="true" />
     </global-forwards>
-
     <action-mappings>
-        <action path="/Welcome" forward="/welcomeStruts.jsp"/>
-    </action-mappings>
-    
-    <controller processorClass="org.apache.struts.tiles.TilesRequestProcessor"/>
+        <action path="/index" forward="home.page"/>
+    <action
+      attribute="LoginForm"
+      input="/pages/login/loginPage.jsp"
+      name="LoginForm"
+      parameter="action"
+      path="/loginAction"
+      scope="request"
+      type="com.ptit.travel.struts.action.LoginAction">
+      <set-property property="cancellable" value="true" />
+      <forward name="failure" path="loginError.page" />
+      <forward name="success" path="home.page" />
+    </action>
+    <action
+      attribute="bookRoomInfoForm"
+      input="/pages/hotel/searchRoom.jsp"
+      name="bookRoomInfoForm"
+      parameter="action"
+      path="/bookRoomInfo"
+      scope="request"
+      type="com.ptit.edu.travel.struts.action.BookRoomInfoAction">
+      <set-property property="cancellable" value="false" />
+      <forward name="prepareBookHotel" path="hotel.book" />
+      <forward name="formatError" path="format.error" />
+    </action>
 
-    <message-resources parameter="com/myapp/struts/ApplicationResource"/>    
+        
+    </action-mappings>
+    <controller processorClass="org.apache.struts.tiles.TilesRequestProcessor" />
+    <message-resources parameter="com/ptit/travel/struts/ApplicationResource"/>    
     
     <!-- ========================= Tiles plugin ===============================-->
-    <!--
+    <!--  
     This plugin initialize Tiles definition factory. This later can takes some
     parameters explained here after. The plugin first read parameters from
     web.xml, thenoverload them with parameters defined here. All parameters
@@ -53,16 +84,15 @@
 
     Paths found in Tiles definitions are relative to the main context.
     -->
-    <plug-in className="org.apache.struts.tiles.TilesPlugin" >
-        <set-property property="definitions-config" value="/WEB-INF/tiles-defs.xml" />      
+    <plug-in className="org.apache.struts.tiles.TilesPlugin">
+        <set-property property="definitions-config" value="/WEB-INF/tiles-defs.xml" />
         <set-property property="moduleAware" value="true" />
-    </plug-in>
-    
+        <set-property property="definitions-parser-validate" value="true" />
+    </plug-in>    
     <!-- ========================= Validator plugin ================================= -->
     <plug-in className="org.apache.struts.validator.ValidatorPlugIn">
         <set-property
             property="pathnames"
             value="/WEB-INF/validator-rules.xml,/WEB-INF/validation.xml"/>
     </plug-in>
-  
 </struts-config>

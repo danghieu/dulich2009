@@ -11,32 +11,32 @@
 
 <tiles-definitions>
 
-    <!-- sample tiles definitions
-    <definition name=".mainLayout" path="/common/layouts/classicLayout.jsp">
-        <put name="title"  value="Sample Page Title" />
-        <put name="header" value="/common/header.jsp" />
-        <put name="menu"   value=".mainMenu" />
-        <put name="footer" value="/common/footer.jsp" />
-        <put name="body"   value=".portal.body" />
+    <!-- sample tiles definitions end samples -->
+   <definition name="base.definition" path="/pages/layout/layout.jsp">      
+        <put name="title" value="" />
+        <put name="header" value="/pages/layout/header.jsp" /> 
+        <put name="menu" value="/pages/layout/menu.jsp" /> 
+        <put name="body" value="" /> 
+        <put name="news" value="/pages/layout/news.jsp" /> 
+        <put name="adv" value="adv.jsp" /> 
+        <put name="footer" value="/pages/layout/copyright.jsp" />         
+    </definition>
+    
+    <definition name="home.page" extends="base.definition">
+        <put name="title" value="home.pagetitle" /> 
+        <put name="body" value="/pages/layout/success.jsp" /> 
+        <put name="news" value="/pages/layout/emptypage.jsp" /> 
     </definition>
 
-    <definition name=".mainMenu" path="/common/layouts/vboxLayout.jsp" >
-        <putList name="list" >
-            <add value=".menu.links" />
-            <add value=".menu.taglib.references" />
-            <add value=".menu.printer.friendly" />
-            <add value=".menu.old.documents" />
-      </putList>
+    <definition name="login.page" extends="base.definition">
+        <put name="title" value="login.pagetitle" /> 
+        <put name="body" value="/pages/login/loginPage.jsp" /> 
+        <put name="news" value="/pages/layout/emptypage.jsp" /> 
     </definition>
-
-    <definition name="aPage" extends=".mainLayout">
-        <put name="title"  value="Another Title" />
-        <put name="body"   value=".aPage.body" />
+        <definition name="loginError.page" extends="base.definition">
+        <put name="title" value="error.pagetitle" /> 
+        <put name="body" value="/pages/layout/error.jsp" /> 
+        <put name="news" value="/pages/layout/emptypage.jsp" /> 
     </definition>
-
-    end samples -->
-
-    <definition name="${YOUR_DEFINITION_HERE}">
-    </definition>
-
+    
 </tiles-definitions>
