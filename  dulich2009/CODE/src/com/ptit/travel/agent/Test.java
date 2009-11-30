@@ -1,10 +1,13 @@
-package com.ptit.travel.agent;
+package com.ptit.travel.agent.user;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 import java.util.Vector;
 
 import org.apache.xmlrpc.XmlRpcClientLite;
 import org.apache.xmlrpc.XmlRpcException;
+
+import com.ptit.travel.agent.communication.Message;
 
 public class Test {
 
@@ -46,13 +49,46 @@ public class Test {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		String msgId = System.currentTimeMillis() + "";
-		String arr = "_aaaNONEbbb_";
+		String s = "_aaaNONEbbb_";
 		Test test = new Test();
 //		while(((arr = test.callTheAgentViaXmlRpc("getSearchResults", msgId)).equals("_aaaNONEbbb_"))){
 //
 //		}
-		arr = test.callTheAgentViaXmlRpc("getSearchResults", "102");
-		System.out.println(arr.toString());
+		s = test.callTheAgentViaXmlRpc("getSearchResults", "102");
+		System.out.println(s);
+		ArrayList<String> arr = new Test().split(s);
+		System.out.println(arr);
 	}
 
+	public ArrayList<String> split(String input){
+		ArrayList<String> arr = new ArrayList<String>();
+		String sSaparate = Message.SAPARATE;
+		int beginIndex = 0;
+		int endIndex = input.indexOf(sSaparate);
+		int maxIndex = input.lastIndexOf(sSaparate);
+		String s = "";
+		if(endIndex == -1){
+			arr.add(input);
+			return arr;
+		}
+		while(beginIndex <= maxIndex){
+			endIndex = input.indexOf(sSaparate, beginIndex+1);
+			if(endIndex != -1){
+				s = input.substring(beginIndex, endIndex); 
+				
+				s = s.replaceAll(sSaparate, "");
+				System.out.println(s);
+				arr.add(s);
+			}
+			else{
+				s = input.substring(beginIndex, input.length());
+				s = s.replaceAll(sSaparate, "");
+				arr.add(s);
+				break;
+			}
+			
+			beginIndex = endIndex;
+		}
+		return arr;
+	}
 }

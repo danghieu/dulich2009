@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.ptit.travel.agent;
+package com.ptit.travel.agent.user;
 
 /**
  *
@@ -39,11 +39,17 @@ import org.apache.log4j.PropertyConfigurator;
 import org.apache.xmlrpc.WebServer;
 
 /**
- * Ask Agent asks AnswerAgent for recources of certain type by generating SPARQL
- * query and then save results into its memory. Agent runs also XML-RPC server
- * on port 8000 and public methods can be called by GUI implementation see:
- * {@link agent.demo.askAgent.FrameGUI FrameGUI}
+ * User Agent runs also XML-RPC server
+ * on port 8000 and public methods can be called by outside 
+ * Behaviors:
+ * 	search for services, supplier, place, event
+ * 	request booking
+ * 	prepare to modify/cancel
+ * 	modify
+ * 	cancel	
  * 
+ * Each behavior executed by two methods and one inner class. For example
+ *  
  * @version 0.5
  */
 public class UserAgent extends Agent {
@@ -84,8 +90,8 @@ public class UserAgent extends Agent {
 	/**
 	 * This method is called by whatever GUI implementation In current
 	 * implementation it is called by XML-RPC through XMLRPC webserver Method
-	 * send type of Resource which should be search by AskAgent <br>
-	 * you need to call "AskAgent.search(String resourceType)" function from
+	 * send Resource which should be search by SupplierAgent <br>
+	 * you need to call "AskAgent.search(Resource resource)" function from
 	 * your external system
 	 * 
 	 * @param resource
@@ -101,12 +107,21 @@ public class UserAgent extends Agent {
 		return "ok";
 	}	
 	public String getSearchResults(String msgId){
-		ArrayList<String> msgs = msgQueue.get(msgId);
-		msgQueue.remove(msgId);
-		if(msgs != null && msgs.size() != 0)
-			return msgs.toString();
-			else
-				return "_aaaNONEbbb_";
+		String results = "";
+		try {
+			ArrayList<String> msgs = msgQueue.get(msgId);
+			//msgQueue.remove(msgId);
+			for (int i = 0; i < msgs.size(); i++) {
+				results += msgs.get(i).trim();			
+				if(i <msgs.size()-1)
+					results += Message.SAPARATE;
+			}
+		} catch (Exception e) {
+			results = "";
+			e.printStackTrace();
+		}			
+
+		return results;
 	}
 	/**
 	 * This method is called when we want this agent executes booking behavior
@@ -220,7 +235,8 @@ public class UserAgent extends Agent {
 			msgs = _msgs;
 		}
 
-		public void action() {			
+		public void action() {	
+			msgs.add("Nothing is more important than peace");
 			switch (step) {
 			case 0:
 				// collect agents who satisfy action
@@ -253,7 +269,7 @@ public class UserAgent extends Agent {
 						 * avail = true
 						 * put msg into msgQueue of agent: 
 						 */
-						msgs.add("Nothing is more important than peace");
+						//TODO
 					}
 					repliesCnt++;
 					if (repliesCnt >= receivers.size()) {
@@ -273,8 +289,8 @@ public class UserAgent extends Agent {
 		public boolean done() {
 			msgs.add("TRUNGPQ");
 			msgs.add("THU");
-			System.out.println(System.currentTimeMillis());
-			msgQueue.put(msgId,msgs );
+			
+			msgQueue.put(msgId,msgs );			
 			if(step == 2) {// && avail); if finishing only exist available
 				// put messages into queue of agent
 				
