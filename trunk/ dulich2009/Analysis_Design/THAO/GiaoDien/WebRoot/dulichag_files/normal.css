@@ -1,0 +1,66 @@
+BODY {
+	FONT-SIZE: 12px; COLOR: #666666; FONT-FAMILY: Arial, helvetica, sans-serif;
+}
+FORM {
+	MARGIN: 0px;
+}
+IMG {
+	MARGIN: 0px;
+}
+P {
+	MARGIN: 0px;
+	PADDING: 0px;
+}
+TABLE {
+	MARGIN: 0px;
+}
+TD {
+	MARGIN: 0px;
+	PADDING: 0px;
+	WHITE-SPACE: normal;
+	FONT-SIZE: 12px; COLOR: #666666; FONT-FAMILY: Arial, helvetica, sans-serif;
+}
+TH {
+	MARGIN: 0px;
+}
+SUP {
+	TEXT-DECORATION: none;
+}
+A:link {
+	COLOR: #1683cd; TEXT-DECORATION: none;
+}
+.link {
+	COLOR: #1683cd; TEXT-DECORATION: none;
+}
+A:visited {
+	COLOR: #0066CC; TEXT-DECORATION: none;
+}
+.visitedlink {
+	COLOR: #1683cd; TEXT-DECORATION: none;
+}
+A:hover {
+	COLOR: #cc6666; TEXT-DECORATION: none;
+}
+.hoverlink {
+	COLOR: #cc6666; TEXT-DECORATION: none;
+}
+H1 {
+	FONT-WEIGHT: bold; FONT-SIZE: 16px; MARGIN-BOTTOM: 0px; PADDING-BOTTOM: 2px; COLOR: #006400; LETTER-SPACING: 0px; MARGIN: 0px;
+}
+H2 {
+	FONT-WEIGHT: bold; FONT-SIZE: 14px; PADDING-TOP: 5px; PADDING-BOTTOM: 2px; MARGIN-BOTTOM: 0px; COLOR: #000080; MARGIN: 0px;
+}
+H3 {
+	FONT-SIZE: 13px; MARGIN-BOTTOM: 0px; COLOR: #037AC3; MARGIN: 0px;
+}
+
+UL{
+	PADDING-TOP: 0px;
+	PADDING-LEFT: 30px;
+	PADDING-RIGHT: 0px;
+	MARGIN-TOP: 5px;
+}
+LI {
+	PADDING: 0px 50px 0px 5px;
+	MARGIN: 0px 0px 0px 0px;
+}
