@@ -1,0 +1,494 @@
+.sitename{
+	font-family: Verdana, Tahoma, Arial;
+	color: #13548D;
+	font-weight: bold;
+	font-size: 20px;
+	text-decoration: none;
+}
+.siteSlogan{
+	font-family: Verdana, Tahoma, Arial;
+	color: #13548D;
+	font-weight: normal;
+	font-size: 12px;
+	text-decoration: none;
+	padding-top: 5px;
+}
+
+.sitenamePrint{
+	font-family: Verdana, Tahoma, Arial;
+	color: #000000;
+	font-weight: bold;
+	font-size: 22px;
+	text-decoration: none;
+}
+
+.borderAll {
+	border: 1px solid #004B97;
+}
+.topMenu {
+	font-family: Tahoma, arial, Verdana;
+	font-size: 10px;
+	font-weight: bold;
+	color: #FFFFFF;
+	text-decoration: none;
+	text-transform: uppercase;
+}
+.topMenu:hover {
+	font-family: Tahoma, arial, Verdana;
+	font-size: 10px;
+	font-weight: bold;
+	color: #FFFFFF;
+	text-decoration: underline;
+	text-transform: uppercase;
+}
+.currentDay {
+	font-family: Tahoma, arial, Verdana;
+	font-size: 11px;
+	font-weight: normal;
+	color: #FFFFFF;
+	text-decoration: none;
+}
+.footer {
+	font-family: Tahoma, arial, Verdana;
+	font-size: 11px;
+	font-weight: normal;
+	color: #FFFFFF;
+	text-decoration: none;
+}
+.soso {
+	font-family: Tahoma, arial, Verdana;
+	font-size: 11px;
+	font-weight: bold;
+	color: #0066CC;
+	text-decoration: none;
+}
+.leftTitleblock {
+	font-family: Tahoma, arial, Verdana;
+	font-size: 10px;
+	font-weight: bold;
+	color: #FFFFFF;
+	text-decoration: none;
+	text-transform: uppercase;
+}
+.leftTitleblock:hover {
+	font-family: Tahoma, arial, Verdana;
+	font-size: 10px;
+	font-weight: bold;
+	color: #FFFFFF;
+	text-decoration: underline;
+	text-transform: uppercase;
+}
+.rightTitleblock {
+	font-family: Tahoma, arial, Verdana;
+	font-size: 10px;
+	font-weight: bold;
+	color: #FFFFFF;
+	text-decoration: none;
+	text-transform: uppercase;
+}
+.mainText {
+	font-family: Tahoma, arial, Verdana;
+	font-size: 11px;
+	font-weight: normal;
+	color: #000000;
+	text-decoration: none;
+}
+.leftMenu {
+	font-family: Tahoma, arial, Verdana;
+	font-size: 11px;
+	font-weight: bold;
+	color: #2d2d2c;
+	text-decoration: none;
+}
+.leftMenu:hover {
+	font-family: Tahoma, arial, Verdana;
+	font-size: 11px;
+	font-weight: bold;
+	color: #CC0000;
+	text-decoration: none;
+}
+.backG {
+	background-repeat: no-repeat;
+	background-position: top;
+}
+
+.backGX {
+	background-repeat: repeat-x;
+	background-position: center top;
+}
+.backGXM {
+	background-repeat: repeat-x;
+	background-position: center center;
+}
+.borderLR {
+	border-right-width: 1px;
+	border-left-width: 1px;
+	border-right-style: solid;
+	border-left-style: solid;
+	border-right-color: #4C9EF2;
+	border-left-color: #4C9EF2;
+}
+.titleRBlock {
+	font-family: Tahoma, arial, Verdana;
+	font-size: 10px;
+	font-weight: bold;
+	color: #D50000;
+	text-decoration: none;
+	text-transform: uppercase;
+}
+.titleRBlock:hover {
+	font-family: Tahoma, arial, Verdana;
+	font-size: 10px;
+	font-weight: bold;
+	color: #0069D2;
+	text-decoration: none;
+	text-transform: uppercase;
+}
+.calendar {
+	font-family: Tahoma, arial, Verdana;
+	font-size: 10px;
+	font-weight: normal;
+	color: #000000;
+	text-decoration: none;
+}
+.calendar:hover {
+	font-family: Tahoma, arial, Verdana;
+	font-size: 10px;
+	font-weight: normal;
+	color: #D50000;
+	text-decoration: none;
+}
+a {
+	font-family: Tahoma, arial, Verdana;
+	font-size: 12px;
+	font-weight: normal;
+	color: #0066CC;
+	text-decoration: none;
+}
+a:hover {
+	font-family: Tahoma, arial, Verdana;
+	font-size: 12px;
+	font-weight: normal;
+	color: #FF9900;
+	text-decoration: underline;
+}
+.NPMonth {
+	font-family: Tahoma, arial, Verdana;
+	font-size: 10px;
+	font-weight: bold;
+	color: #3399FF;
+	text-decoration: none;
+}
+.NPMonth:hover {
+	font-family: Tahoma, arial, Verdana;
+	font-size: 10px;
+	font-weight: bold;
+	color: #000000;
+	text-decoration: none;
+}
+.borderLR2 {
+	border-right-width: 1px;
+	border-left-width: 1px;
+	border-right-style: solid;
+	border-left-style: solid;
+	border-right-color: #0077AF;
+	border-left-color: #0077AF;
+}
+.borderLRT {
+	border-right-width: 1px;
+	border-left-width: 1px;
+	border-right-style: solid;
+	border-left-style: solid;
+	border-right-color: #0077AF;
+	border-left-color: #0077AF;
+	border-top-width: 1px;
+	border-top-style: solid;
+	border-top-color: #0077AF;
+
+}
+.newsDate {
+	font-family: Tahoma, arial, Verdana;
+	font-size: 10px;
+	font-weight: bold;
+	color: #0069D2;
+	text-decoration: none;
+}
+.newsDate:hover {
+	font-family: Tahoma, arial, Verdana;
+	font-size: 10px;
+	font-weight: bold;
+	color: #0069D2;
+	text-decoration: underline;
+}
+.advanceSearch {
+	font-family: Tahoma, arial, Verdana;
+	font-size: 11px;
+	font-weight: normal;
+	color: #0069D2;
+	text-decoration: none;
+}
+.advanceSearch:hover {
+	font-family: Tahoma, arial, Verdana;
+	font-size: 11px;
+	font-weight: normal;
+	color: #0069D2;
+	text-decoration: underline;
+}
+.more {
+	font-family: Tahoma, arial, Verdana;
+	font-size: 10px;
+	font-weight: normal;
+	color: #FFFFFF;
+	text-decoration: none;
+}
+.more:hover {
+	font-family: Tahoma, arial, Verdana;
+	font-size: 10px;
+	font-weight: normal;
+	color: #000000;
+	text-decoration: none;
+}
+.myForm {
+	font-family: Tahoma, arial, Verdana;
+	font-size: 10px;
+	font-weight: normal;
+	color: #000000;
+	background-color: #f2f2f2;
+	border: 1px solid #3366CC;
+}
+.mySubmit {
+	font-family: Tahoma, arial, Verdana;
+	font-size: 11px;
+	font-weight: bold;
+	color: #584D38;
+	background-color: #C1CCD1;
+	border: 1px solid #3366CC;
+}
+.headLine {
+	font-family: Tahoma, arial, Verdana;
+	font-size: 11px;
+	font-weight: bold;
+	color: #CC0000;
+	text-decoration: none;
+}
+.headLine:hover {
+	font-family: Tahoma, arial, Verdana;
+	font-size: 11px;
+	font-weight: bold;
+	color: #000000;
+	text-decoration: none;
+}
+.btitle {
+	font-family: Tahoma, arial, Verdana;
+	font-size: 12px;
+	font-weight: bold;
+	color: #CC0000;
+	text-decoration: none;
+}
+
+.btitle:hover {
+	font-family: Tahoma, arial, Verdana;
+	font-size: 12px;
+	font-weight: bold;
+	color: #0066CC;
+	text-decoration: none;
+}
+.otherNews {
+	font-family: Tahoma, arial, Verdana;
+	font-size: 11px;
+	font-weight: normal;
+	color: #0066CC;
+	text-decoration: none;
+}
+.otherNews:hover {
+	font-family: Tahoma, arial, Verdana;
+	font-size: 11px;
+	font-weight: normal;
+	color: #0066CC;
+	text-decoration: underline;
+}
+.ntitle {
+	font-family: Tahoma, arial, Verdana;
+	font-size: 11px;
+	font-weight: bold;
+	color: #0066CC;
+	text-decoration: none;
+}
+.ntitle:hover {
+	font-family: Tahoma, arial, Verdana;
+	font-size: 11px;
+	font-weight: bold;
+	color: #0066CC;
+	text-decoration: underline;
+}
+.titleBlockNewsM {
+	font-family: Tahoma, arial, Verdana;
+	font-size: 10px;
+	font-weight: bold;
+	color: #CC0000;
+	text-decoration: none;
+	text-transform: uppercase;
+}
+.catnav {
+	font-family: Tahoma, arial, Verdana;
+	font-size: 10px;
+	font-weight: bold;
+	color: #CC0000;
+	text-decoration: none;
+	text-transform: uppercase;
+}
+.catnav:hover {
+	font-family: Tahoma, arial, Verdana;
+	font-size: 10px;
+	font-weight: bold;
+	color: #CD7605;
+	text-decoration: underline;
+	text-transform: uppercase;
+}
+.mtitle {
+	font-family: Tahoma, arial, Verdana;
+	font-size: 11px;
+	font-weight: bold;
+	color: #3366CC;
+	text-decoration: none;
+}
+.mtitle:hover {
+	font-family: Tahoma, arial, Verdana;
+	font-size: 11px;
+	font-weight: bold;
+	color: #3366CC;
+	text-decoration: underline;
+}
+.hottitle2 {
+	font-family: Tahoma, arial, Verdana;
+	font-size: 11px;
+	font-weight: bold;
+	color: #000000;
+	text-decoration: none;
+}
+.hottitle2:hover {
+	font-family: Tahoma, arial, Verdana;
+	font-size: 11px;
+	font-weight: bold;
+	color: #000000;
+	text-decoration: underline;
+}
+.date {
+	font-family: Tahoma, arial, Verdana;
+	font-size: 11px;
+	font-style: italic;
+	font-weight: normal;
+	color: #999999;
+	text-decoration: none;
+}
+.leftMenuActive {
+	font-family: Tahoma, arial, Verdana;
+	font-size: 11px;
+	font-weight: bold;
+	color: #CD7605;
+	text-decoration: none;
+}
+.leftMenuActive:hover {
+	font-family: Tahoma, arial, Verdana;
+	font-size: 11px;
+	font-weight: bold;
+	color: #ffffff;
+	text-decoration: none;
+}.leftsubMenu {
+	font-family: Tahoma, arial, Verdana;
+	font-size: 11px;
+	font-weight: normal;
+	color: #000000;
+	text-decoration: none;
+}
+
+.haveEvent{
+	font-size: 10px;
+	color: #FF0000;
+	text-decoration: underline;
+	font-weight: bold;
+}
+.haveEvent:hover{
+	font-size: 10px;
+	color: #003399;
+	text-decoration: none;
+	font-weight: bold;
+}
+.haveEvent2{
+	font-size: 11px;
+	color: #FF0000;
+	text-decoration: underline;
+	font-weight: bold;
+}
+.haveEvent2:hover{
+	font-size: 11px;
+	color: #003399;
+	text-decoration: none;
+	font-weight: bold;
+}
+
+.pageNav {
+	font-family: Tahoma, arial, Verdana;
+	font-size: 12px;
+	font-weight: normal;
+	color: #000000;
+	text-decoration: none;
+}
+.pageNav:hover {
+	font-family: Tahoma, arial, Verdana;
+	font-size: 12px;
+	font-weight: normal;
+	color: #006600;
+	text-decoration: none;
+}
+.pageItem {
+	font-family: Tahoma, arial, Verdana;
+	font-size: 12px;
+	font-weight: normal;
+	color: #000099;
+	text-decoration: none;
+}
+.pageItem:hover {
+	font-family: Tahoma, arial, Verdana;
+	font-size: 12px;
+	font-weight: normal;
+	color: #FF0000;
+	text-decoration: none;
+}
+.tdtext1 {
+	BACKGROUND-COLOR: #E1EBF1; COLOR: #000000; FONT-SIZE: 12px;
+}
+.tdtext2 {
+	BACKGROUND-COLOR: #EAF3F5; COLOR: #000000; FONT-SIZE: 12px;
+}
+.titles
+{
+	font-family:Tahoma;
+	font-size:14px;
+	color:#1188FF;
+	font-weight:bold;
+	TEXT-DECORATION: none;
+	
+}
+/*===============================================*/
+
+#menu_zone {
+	clear: both;
+}
+
+#menu_zone ul {
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+
+#menu_zone ul li {
+	text-align:center;
+	float: left;
+	margin: 0px;
+	padding: 0px 3px;
+	overflow: hidden;
+	border-right:thick #CC0000;
+}
+/*===============================================*/
+.tooltip { BORDER-RIGHT: black 1px solid; PADDING-RIGHT: 2px; BORDER-TOP: black 1px solid; PADDING-LEFT: 2px; Z-INDEX: 100; VISIBILITY: hidden; PADDING-BOTTOM: 2px; BORDER-LEFT: black 1px solid; PADDING-TOP: 2px; BORDER-BOTTOM: black 1px solid; POSITION: absolute; BACKGROUND-COLOR: #ffffee; }

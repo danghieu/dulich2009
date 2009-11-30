@@ -1,0 +1,169 @@
+Table
+{
+	font-size:12px;
+	font-family:arial;
+}
+A
+{
+	text-decoration:none;
+}
+A:hover
+{
+	text-decoration:underline;
+}
+.categoryItems
+{
+	font-weight:bold;
+}
+.categoryItems A
+{
+	color:#ffffff;
+}
+.subcategoryItems
+{
+	padding-left:25px;
+}
+.subcategoryItems A
+{
+	color:#ffffff;
+}
+.articleItems
+{
+	font-weight:bold;
+	padding-bottom:5px;
+	padding-top:10px;
+}
+.articleItems A
+{
+	color:#FF0000;
+}
+.breakcrum
+{
+	padding-bottom:10px;
+	color:#000000;
+	font-weight:bold;
+	font-size:16px;
+}
+.categoryitemright
+{
+	font-weight:bold;
+	color:#ffffff;
+	padding-left:5px;
+}
+.categoryitemright A
+{
+	color:ffffff
+}
+.articleItemRight
+{
+	padding-top:3px;
+	padding-bottom:3px;
+}
+.articleItemRight A
+{
+	color:#000000;
+}
+.articleDetail
+{
+	padding-bottom:10px;
+	text-align:right;
+	padding-right:10px;
+	font-weight:bold;
+	font-family:verdana;
+	font-size:10px;
+} 
+.articleDetail A
+{
+	color:red;
+}	
+.articleheadline
+{
+	font-weight:bold;
+	padding-bottom:10px;
+}
+.copyright
+{
+	padding:10px;
+	background:#D6EBF7;
+	text-align:center;
+}
+.categorynameNews
+{
+	font-weight:bold;
+	font-size:14px;
+}
+.mainmenu
+{
+	font-weight:bold;
+	color:#ffffff;
+	padding-right:5px;
+}
+.mainmenu A
+{
+	color:#ffffff
+}
+.categpryItemHome
+{
+	font-size:11px;
+	font-weight:bold;
+	font-family:verdana;
+}
+.categpryItemHome A
+{
+	color:#1A5284;
+}
+.categoryItemHome
+{
+	font-weight:bold;
+	padding-left:5px;
+	padding-right:10px;
+}
+.categoryItemHome A
+{
+	color:#ffffff;
+}
+.HeadlinelistTitle
+{
+	width:98%;
+	margin-top:1px;
+	margin-bottom:4px;
+}
+.HeadlinelistTitle A
+{
+	color:#008bce;
+	font-size:11px;
+	font-weight:bold;
+	text-decoration:none;
+	padding-left:1px;
+}
+.Headlinelist
+{
+	border-bottom:#FFEBEF 1px solid;
+	width:98%;
+	margin-top:1px;
+	margin-bottom:4px;
+}
+.Headlinelist A:visited, .Headlinelist A:link
+{
+	color:#CC0000;
+	font-size:11px;
+	font-weight:bold;
+	text-decoration:none;
+	padding-left:1px;
+}
+.Headlinelist A:hover
+{
+	color:#52616B;
+	font-size:11px;
+	font-weight:bold;
+	padding-left:1px;
+	text-decoration:underline;
+}
+.menu-footer
+{
+	color:#ffffff;
+}
+.menu-footer A
+{
+	color:#ffffff;
+}
