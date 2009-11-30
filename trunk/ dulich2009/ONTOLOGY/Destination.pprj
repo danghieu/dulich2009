@@ -1,4 +1,4 @@
-; Sun Nov 29 11:05:57 ICT 2009
+; Sun Nov 29 12:59:58 ICT 2009
 ; 
 ;+ (version "3.4.1")
 ;+ (build "Build 537")
@@ -6,11 +6,11 @@
 ([BROWSER_SLOT_NAMES] of  Property_List
 
 	(properties
-		[Destination_ProjectKB_Class10290]
-		[Destination_ProjectKB_Class10291]
-		[Destination_ProjectKB_Class10292]
-		[Destination_ProjectKB_Class10293]
-		[Destination_ProjectKB_Class10294]))
+		[Destination_ProjectKB_Class10295]
+		[Destination_ProjectKB_Class10296]
+		[Destination_ProjectKB_Class10297]
+		[Destination_ProjectKB_Class10298]
+		[Destination_ProjectKB_Class10299]))
 
 ([CLSES_TAB] of  Widget
 
@@ -28,27 +28,27 @@
 ([Destination_ProjectKB_Class10] of  Property_List
 )
 
-([Destination_ProjectKB_Class10290] of  String
+([Destination_ProjectKB_Class10295] of  String
 
 	(name "http://www.w3.org/2002/07/owl#Class")
 	(string_value "%3ANAME"))
 
-([Destination_ProjectKB_Class10291] of  String
+([Destination_ProjectKB_Class10296] of  String
 
 	(name ":INSTANCE-ANNOTATION")
 	(string_value "%3AANNOTATION-TEXT"))
 
-([Destination_ProjectKB_Class10292] of  String
+([Destination_ProjectKB_Class10297] of  String
 
 	(name ":META-CLASS")
 	(string_value "%3ANAME"))
 
-([Destination_ProjectKB_Class10293] of  String
+([Destination_ProjectKB_Class10298] of  String
 
 	(name "http://www.w3.org/2002/07/owl#Thing")
 	(string_value "%3ANAME"))
 
-([Destination_ProjectKB_Class10294] of  String
+([Destination_ProjectKB_Class10299] of  String
 
 	(name ":PAL-CONSTRAINT")
 	(string_value "%3APAL-NAME"))
