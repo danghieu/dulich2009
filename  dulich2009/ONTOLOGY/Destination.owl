@@ -270,14 +270,9 @@ business trip</rdfs:comment>
     <rdfs:range rdf:resource="#Country"/>
   </owl:InverseFunctionalProperty>
   <Country rdf:ID="Britain"/>
-  <Region rdf:ID="Midland">
-    <isRegionOf>
+  <City rdf:ID="HaiPhong">
+    <isCityOf>
       <Country rdf:ID="VienNam">
-        <isCityOf>
-          <City rdf:ID="HaiPhong">
-            <isCityOf rdf:resource="#VienNam"/>
-          </City>
-        </isCityOf>
         <hasCity>
           <City rdf:ID="KhanhHoa">
             <isCityOf rdf:resource="#VienNam"/>
@@ -285,7 +280,10 @@ business trip</rdfs:comment>
           </City>
         </hasCity>
       </Country>
-    </isRegionOf>
+    </isCityOf>
+  </City>
+  <Region rdf:ID="Midland">
+    <isRegionOf rdf:resource="#VienNam"/>
   </Region>
   <City rdf:ID="NewYork">
     <hasCity>
