@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-module
   type="WEB"
-  name="HiVong"
-  id="myeclipse.1259604416686"
-  context-root="/HiVong"
+  name="E-Tourism"
+  id="myeclipse.1259640135992"
+  context-root="/E-Tourism"
   j2ee-spec="1.4"
-  archive="HiVong.war">
+  archive="E-Tourism.war">
   <attributes>
     <attribute name="webrootdir" value="WebRoot" />
   </attributes>
