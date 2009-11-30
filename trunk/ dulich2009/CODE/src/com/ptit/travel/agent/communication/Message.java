@@ -29,6 +29,7 @@ public class Message {
 
     private static Logger log = Logger.getLogger(Message.class.getName());
 
+    public static String SAPARATE = "@@@";
     /**
      * This method returns XML/RDF text representation of RDF Resource
      * 
@@ -204,7 +205,7 @@ public class Message {
      */
     public static ACLMessage createQueryMessage(Agent sender,
             String recieverName, String query) {
-        ACLMessage m = new ACLMessage(ACLMessage.QUERY_REF);
+        ACLMessage m = new ACLMessage(ACLMessage.INFORM);
         AID receiver = new AID(recieverName, false);
         m.setSender(sender.getAID());
         m.addReceiver(receiver);
