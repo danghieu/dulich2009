@@ -29,7 +29,7 @@ public class Message {
 
     private static Logger log = Logger.getLogger(Message.class.getName());
 
-    public static String SAPARATE = "@@@";
+    public static String SEPARATE = "@@@";
     /**
      * This method returns XML/RDF text representation of RDF Resource
      * 
@@ -248,12 +248,38 @@ public class Message {
         log.debug("message prepared for " + recieverName + ": " + m);
         return m;
     }
-
+    /**
+     * This method creates ACL Inform message containing of RDF of some Jena RDF
+     * Resource
+     * 
+     * @param sender
+     *            Agent which sends message
+     *@param recieverName
+     *            string name of Agent which recieve the message
+     *@param content
+     *            String
+     * 
+     */
     public static ACLMessage createInformMessage(Agent sender,
-            ArrayList<String> recieverNames, Resource r) {
+            String recieverName, String content) {
 
         log.info("Preparing inform message...");
-        String content = resource2RDF(r);
+        //String content = resource2RDF(r);
+        ACLMessage m = new ACLMessage(ACLMessage.INFORM);
+        m.setSender(sender.getAID());
+        m.addReceiver(new AID(recieverName, false));
+        m.setLanguage(Ontology.RDF);
+        m.setOntology(Ontology.BASE);
+        m.setContent(content);
+        log.debug("message prepared for " + recieverName + ": " + m);
+        return m;
+    }
+
+    public static ACLMessage createInformMessage(Agent sender,
+            ArrayList<String> recieverNames, String content) {
+
+        log.info("Preparing inform message...");
+        //String content = resource2RDF(r);
         ACLMessage m = new ACLMessage(ACLMessage.INFORM);
         m.setSender(sender.getAID());
         for (int i = 0; i < recieverNames.size(); i++) {
@@ -294,4 +320,43 @@ public class Message {
         }
 
     }
+    /**
+     * method split a string with Message.SAPARATE.
+     * @param input
+     * @return Array of pieces of input separated by Message.SAPARATE
+     * For example:
+     * 	input = "we@@@love@@@you"
+     *  return {we,love,you}
+     */
+	public ArrayList<String> split(String input){
+		ArrayList<String> arr = new ArrayList<String>();
+		String sSaparate = Message.SEPARATE;
+		int beginIndex = 0;
+		int endIndex = input.indexOf(sSaparate);
+		int maxIndex = input.lastIndexOf(sSaparate);
+		String s = "";
+		if(endIndex == -1){
+			arr.add(input);
+			return arr;
+		}
+		while(beginIndex <= maxIndex){
+			endIndex = input.indexOf(sSaparate, beginIndex+1);
+			if(endIndex != -1){
+				s = input.substring(beginIndex, endIndex); 
+				
+				s = s.replaceAll(sSaparate, "");
+				System.out.println(s);
+				arr.add(s);
+			}
+			else{
+				s = input.substring(beginIndex, input.length());
+				s = s.replaceAll(sSaparate, "");
+				arr.add(s);
+				break;
+			}
+			
+			beginIndex = endIndex;
+		}
+		return arr;
+	}
 }
