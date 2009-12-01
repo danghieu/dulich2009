@@ -139,7 +139,7 @@ public class HotelAgent extends Agent {
 
 							// action of message <-> protocol of ACL
 							String protocol = msg.getProtocol();
-							if (protocol.equals(Protocol.AVAIL_GET)) {
+							if (protocol.equals(ProtocolHotel.AVAIL_GET)) {
 								// TODO
 							}
 
@@ -175,7 +175,7 @@ public class HotelAgent extends Agent {
 	 *            represents type of resource in Memory Model (OWL model)
 	 * 
 	 */
-	public String search(Resource resource) {
+	public String search(String resource) {
 		final String msgId = "102";// getLocalName() +
 									// System.currentTimeMillis();
 		ArrayList<String> msgs = new ArrayList<String>();
@@ -193,7 +193,7 @@ public class HotelAgent extends Agent {
 			for (int i = 0; i < msgs.size(); i++) {
 				results += msgs.get(i).trim();			
 				if(i <msgs.size()-1)
-					results += Message.SAPARATE;
+					results += Message.SEPARATE;
 			}
 		} catch (Exception e) {
 			results = "";
@@ -212,14 +212,14 @@ public class HotelAgent extends Agent {
 		private MessageTemplate mt; // The template to receive replies
 		private int step = 0;
 
-		private Resource resource = null;
+		private String resource = null;
 		private ArrayList<String> receivers;
 		private String msgId;
 		private Agent a;
 		private boolean avail = false;
 		private ArrayList<String> msgs = new ArrayList<String>();
 
-		public CommunicationHotel(Agent _a, Resource _resource, String _msgId,
+		public CommunicationHotel(Agent _a, String _resource, String _msgId,
 				ArrayList<String> _msgs) {
 			super(_a);
 			a = _a;
