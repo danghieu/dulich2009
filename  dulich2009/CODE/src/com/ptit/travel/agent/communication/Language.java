@@ -1,0 +1,15 @@
+package com.ptit.travel.agent.communication;
+/**
+ * Language of each domain of tourism
+ * @author D05CNPM
+ *
+ */
+public class Language {
+
+	public final static String HOTEL = "hotel";
+	public final static String TRAIN = "train";
+	public final static String CAR = "car";
+	public final static String EVENT = "event";
+	public final static String DESTINATION = "destination";
+	public final static String FLIGHT = "flight";
+}
