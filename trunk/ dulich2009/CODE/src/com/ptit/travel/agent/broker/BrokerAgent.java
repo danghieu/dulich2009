@@ -7,33 +7,27 @@ package com.ptit.travel.agent.broker;
  */
 import com.ptit.travel.DAO.AgentDAO;
 import com.ptit.travel.agent.onto.*;
-import com.ptit.travel.agent.hotel.Protocol;
 import com.ptit.travel.agent.memory.*;
 import com.ptit.travel.agent.communication.*;
 
 import java.io.StringWriter;
 import java.io.IOException;
 import java.io.StringReader;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.Hashtable;
-import java.util.Iterator;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import com.hp.hpl.jena.assembler.Mode;
 import com.hp.hpl.jena.ontology.OntModel;
 import com.hp.hpl.jena.rdf.model.ModelFactory;
 import com.hp.hpl.jena.rdf.model.Resource;
 
-import jade.core.AID;
 import jade.core.Agent;
 import jade.core.behaviours.*;
 import jade.lang.acl.ACLMessage;
 import jade.lang.acl.MessageTemplate;
 
 import org.apache.log4j.Logger;
-import org.apache.log4j.PropertyConfigurator;
 import org.apache.xmlrpc.WebServer;
 
 /**
@@ -64,7 +58,7 @@ public class BrokerAgent extends Agent {
 	private AgentDAO agentDAO = new AgentDAO(); // manipulate with agent db
 
 	protected void setup() {
-		Message.register(this, "AskAgent");
+		Message.register(this, this.getLocalName());
 
 		try {
 			xmlrpcServer = new WebServer(port);
@@ -73,11 +67,11 @@ public class BrokerAgent extends Agent {
 			log.error("PANIC: maybe the port " + port + " is in use");
 			System.out.println("NGOAI LE: " + e);
 		}
-		xmlrpcServer.addHandler("UserAgent", this);
+		xmlrpcServer.addHandler(this.getLocalName(), this);
 
 		mem = new Memory(
 				"E:/Develop/Netbean/Travel/config/UserAgent.properties",
-				"UserAgent");// E:/Develop/Netbean/Travel/
+				this.getLocalName());// E:/Develop/Netbean/Travel/
 		agentIndividual = mem.getModel().getResource(
 				Memory.getBase() + this.getLocalName());
 		HandleRecivedMessages hrmBehaviour = new HandleRecivedMessages(
@@ -89,14 +83,14 @@ public class BrokerAgent extends Agent {
 	 * This method is called by whatever GUI implementation In current
 	 * implementation it is called by XML-RPC through XMLRPC webserver Method
 	 * send Resource which should be search by SupplierAgent <br>
-	 * you need to call "AskAgent.search(Resource resource)" function from
+	 * you need to call "Agent.search(Resource resource)" function from
 	 * your external system
 	 * 
 	 * @param resource
 	 *            represents type of resource in Memory Model (OWL model)
 	 * 
 	 */
-	public String search(Resource resource) {
+	public String search(String resource) {
 		final String msgId = "102";//getLocalName() + System.currentTimeMillis();
 		ArrayList<String> msgs = new ArrayList<String>();
 		addBehaviour(new RequestAvailability(this, resource, msgId, msgs));		
@@ -108,11 +102,11 @@ public class BrokerAgent extends Agent {
 		String results = "";
 		try {
 			ArrayList<String> msgs = msgQueue.get(msgId);
-			//msgQueue.remove(msgId);
+			msgQueue.remove(msgId);
 			for (int i = 0; i < msgs.size(); i++) {
 				results += msgs.get(i).trim();			
 				if(i <msgs.size()-1)
-					results += Message.SAPARATE;
+					results += Message.SEPARATE;
 			}
 		} catch (Exception e) {
 			results = "";
@@ -127,7 +121,7 @@ public class BrokerAgent extends Agent {
 	 * 
 	 * 			resource: information about services wanting to book
 	 */
-	public String book(Resource resource) {
+	public String book(String resource) {
 		String msgId = getLocalName() + System.currentTimeMillis(); //unique
 		addBehaviour(new RequestBook(this, resource, msgId));
 		ArrayList<String> msgs = msgQueue.get(msgId);
@@ -138,12 +132,21 @@ public class BrokerAgent extends Agent {
 			return "_aaaNONEbbb_";
 	}	
 	public String getBookResults(String msgId){
-		ArrayList<String> msgs = msgQueue.get(msgId);
-		msgQueue.remove(msgId);
-		if(msgs != null && msgs.size() != 0)
-			return msgs.toString();
-			else
-				return "_aaaNONEbbb_";
+		String results = "";
+		try {
+			ArrayList<String> msgs = msgQueue.get(msgId);
+			msgQueue.remove(msgId);
+			for (int i = 0; i < msgs.size(); i++) {
+				results += msgs.get(i).trim();			
+				if(i <msgs.size()-1)
+					results += Message.SEPARATE;
+			}
+		} catch (Exception e) {
+			results = "";
+			e.printStackTrace();
+		}			
+
+		return results;
 	}
 	/**
 	 * This method is called when we want this agent prepares to execute 
@@ -151,60 +154,84 @@ public class BrokerAgent extends Agent {
 	 * @param 
 	 * 			resource: information about services
 	 */
-	public ArrayList<String> prepareModify(Resource resource) {
+	public String prepareModify(String resource) {
 		String msgId = getLocalName() + System.currentTimeMillis(); //unique
 		addBehaviour(new PrepareModify(this, resource, msgId));
-		ArrayList<String> msgs = msgQueue.get(msgId);
-		msgQueue.remove(msgId);
-		return msgs;
+		
+		return "ok";
 	}	
 	public String getPrepareResults(String msgId){
-		ArrayList<String> msgs = msgQueue.get(msgId);
-		msgQueue.remove(msgId);
-		if(msgs != null && msgs.size() != 0)
-			return msgs.toString();
-			else
-				return "_aaaNONEbbb_";
+		String results = "";
+		try {
+			ArrayList<String> msgs = msgQueue.get(msgId);
+			msgQueue.remove(msgId);
+			for (int i = 0; i < msgs.size(); i++) {
+				results += msgs.get(i).trim();			
+				if(i <msgs.size()-1)
+					results += Message.SEPARATE;
+			}
+		} catch (Exception e) {
+			results = "";
+			e.printStackTrace();
+		}			
+
+		return results;
 	}
 	/**
 	 * This method is called when we want this agent executes modifying behavior
 	 * @param 
 	 * 			resource: information about services wanting to modify
 	 */
-	public ArrayList<String> modify(Resource resource) {
+	public String modify(String resource) {
 		String msgId = getLocalName() + System.currentTimeMillis(); //unique
 		addBehaviour(new RequestModify(this, resource, msgId));
-		ArrayList<String> msgs = msgQueue.get(msgId);
-		msgQueue.remove(msgId);
-		return msgs;
+		
+		return "ok";
 	}	
 	public String getModifyResults(String msgId){
-		ArrayList<String> msgs = msgQueue.get(msgId);
-		msgQueue.remove(msgId);
-		if(msgs != null && msgs.size() != 0)
-			return msgs.toString();
-			else
-				return "_aaaNONEbbb_";
+		String results = "";
+		try {
+			ArrayList<String> msgs = msgQueue.get(msgId);
+			msgQueue.remove(msgId);
+			for (int i = 0; i < msgs.size(); i++) {
+				results += msgs.get(i).trim();			
+				if(i <msgs.size()-1)
+					results += Message.SEPARATE;
+			}
+		} catch (Exception e) {
+			results = "";
+			e.printStackTrace();
+		}			
+
+		return results;
 	}
 	/**
 	 * This method is called when we want this agent executes canceling behavior
 	 * @param 
 	 * 			resource: information about services wanting to cancel
 	 */
-	public ArrayList<String> cancel(Resource resource) {
+	public String cancel(String resource) {
 		String msgId = getLocalName() + System.currentTimeMillis(); //unique
 		addBehaviour(new RequestCancel(this, resource, msgId));
-		ArrayList<String> msgs = msgQueue.get(msgId);
-		msgQueue.remove(msgId);
-		return msgs;
+		
+		return "ok";
 	}	
 	public String getCancelResults(String msgId){
-		ArrayList<String> msgs = msgQueue.get(msgId);
-		msgQueue.remove(msgId);
-		if(msgs != null && msgs.size() != 0)
-			return msgs.toString();
-			else
-				return "_aaaNONEbbb_";
+		String results = "";
+		try {
+			ArrayList<String> msgs = msgQueue.get(msgId);
+			msgQueue.remove(msgId);
+			for (int i = 0; i < msgs.size(); i++) {
+				results += msgs.get(i).trim();			
+				if(i <msgs.size()-1)
+					results += Message.SEPARATE;
+			}
+		} catch (Exception e) {
+			results = "";
+			e.printStackTrace();
+		}			
+
+		return results;
 	}
 	/**
 	 * checking availability behavior 
@@ -219,13 +246,13 @@ public class BrokerAgent extends Agent {
 		private MessageTemplate mt; // The template to receive replies
 		private int step = 0;
 
-		private Resource resource = null;
+		private String resource = null;
 		private ArrayList<String> receivers;
 		private String msgId;
 		private Agent a;
 		private boolean avail = false;
 		private ArrayList<String> msgs = new ArrayList<String>();
-		public RequestAvailability(Agent _a, Resource _resource, String _msgId, ArrayList<String> _msgs) {
+		public RequestAvailability(Agent _a, String _resource, String _msgId, ArrayList<String> _msgs) {
 			super(_a);
 			a = _a;
 			resource = _resource;
@@ -285,10 +312,10 @@ public class BrokerAgent extends Agent {
 		}
 
 		public boolean done() {
-			msgQueue.put(msgId,msgs );			
+				
 			if(step == 2) {// && avail); if finishing only exist available
 				// put messages into queue of agent
-				
+				msgQueue.put(msgId,msgs );		
 				return true;
 			}
 			return false;
@@ -304,11 +331,11 @@ public class BrokerAgent extends Agent {
 	 */
 	class RequestBook extends Behaviour {
 
-		private Resource resource = null;
+		private String resource = null;
 		private Agent a;
 		private String msgId;
 
-		public RequestBook(Agent _a, Resource _resource, String _msgId) {
+		public RequestBook(Agent _a, String _resource, String _msgId) {
 			super(_a);
 			a = _a;
 			resource = _resource;
@@ -333,11 +360,11 @@ public class BrokerAgent extends Agent {
 	 */
 	class PrepareModify extends Behaviour {
 
-		private Resource resource = null;
+		private String resource = null;
 		private Agent a;
 		private String msgId;
 
-		public PrepareModify(Agent _a, Resource _resource, String _msgId) {
+		public PrepareModify(Agent _a, String _resource, String _msgId) {
 			super(_a);
 			a = _a;
 			resource = _resource;
@@ -359,11 +386,11 @@ public class BrokerAgent extends Agent {
 	 */
 	class RequestCancel extends Behaviour {
 
-		private Resource resource = null;
+		private String resource = null;
 		private Agent a;
 		private String msgId;
 
-		public RequestCancel(Agent _a, Resource _resource, String _msgId) {
+		public RequestCancel(Agent _a, String _resource, String _msgId) {
 			super(_a);
 			a = _a;
 			resource = _resource;
@@ -386,11 +413,11 @@ public class BrokerAgent extends Agent {
 	 */
 	class RequestModify extends Behaviour {
 
-		private Resource resource = null;
+		private String resource = null;
 		private Agent a;
 		private String msgId;
 
-		public RequestModify(Agent _a, Resource _resource, String _msgId) {
+		public RequestModify(Agent _a, String _resource, String _msgId) {
 			super(_a);
 			a = _a;
 			resource = _resource;
@@ -405,32 +432,7 @@ public class BrokerAgent extends Agent {
 			return false;
 		}
 	} // End class RequestCancel
-
-
-	/**
-	 * 
-	 *Behaviour is used with AnswerAgent and it sends RDF Resources to other
-	 * Agents
-	 * 
-	 * @author D05CNPM
-	 */
-	class BehaviourSendResult extends OneShotBehaviour {
-
-		private Resource r = null;
-		private Agent a;
-
-		public BehaviourSendResult(Agent _a, Resource _r) {
-			super(_a);
-			a = _a;
-			r = _r;
-		}
-
-		public void action() {
-			System.out.println("sends RDF Resources to UserAgent");
-			send(Message.createInformMessage(a, "UserAgent", r));
-		}
-	} // End class BehaviourSendResult
-
+	
 	/**
 	 * 
 	 *This behaviour is used by HotelAgent to handle received messages return
@@ -458,8 +460,10 @@ public class BrokerAgent extends Agent {
 						break;
 					
 					case ACLMessage.INFORM:
-						// read language to know if it is hotel to process
-						if (msg.getLanguage().equals("hotel")) {
+						// read language to know
+						String language = msg.getLanguage(); 
+						//if it is hotel to process
+						if (language.equals(Language.HOTEL)) {
 							// read content message into a model
 							OntModel m = ModelFactory.createOntologyModel();
 							try {
@@ -475,12 +479,31 @@ public class BrokerAgent extends Agent {
 
 							// action of message <-> protocol of ACL
 							String protocol = msg.getProtocol();
-							if (protocol.equals(Protocol.AVAIL_GET)) {
+							if (protocol.equals(ProtocolHotel.AVAIL_GET)) {
 								// TODO
 							}
-
+							if(protocol.equals(ProtocolHotel.HOTEL_RES)){
+								// TODO
+							}
+							if(protocol.equals(ProtocolHotel.CANCEL)){
+								// TODO
+							}
 						}
-						;
+						if(language.equals(Language.CAR)){
+							// TODO
+						}
+						if(language.equals(Language.FLIGHT)){
+							// TODO
+						}
+						if(language.equals(Language.TRAIN)){
+							// TODO
+						}
+						if(language.equals(Language.EVENT)){
+							// TODO
+						}
+						if(language.equals(Language.DESTINATION)){
+							// TODO
+						}
 
 						break;
 					default:
@@ -499,49 +522,5 @@ public class BrokerAgent extends Agent {
 			return finished;
 		}
 	} // end of HandleRecivedMessages
-	/**
-	 * This method is called by whatever GUI implementation In current
-	 * implementation it is called by XML-RPC through XMLRPC webserver Method
-	 * returns XML data of the actor - context,resources and other or of any
-	 * other resource <br>
-	 * you need to call "AskAgent.getXML(String id)" function from your external
-	 * system in order to get xml of that RDF resource if you want to get RDF
-	 * results instead of XML id will leead with "rdf:" for example
-	 * "rdf:concrete_id"
-	 * 
-	 * @param id
-	 *            represents id of resource in Agent Memory if we want to get
-	 *            actor/Employee data we need to enter actor ID which is in this
-	 *            case "AskAgent"
-	 * 
-	 */
-	public String getXML(String id) {
-		String xml = "";
-		mem.testConnection();
-
-		boolean wantsRDF = false;
-		if (id.startsWith("rdf:")) {
-			Pattern pp = Pattern.compile("rdf:");
-			Matcher mm = pp.matcher(id);
-			id = mm.replaceAll("");
-			wantsRDF = true;
-		}
-
-		Resource r = mem.getModel().getResource(Memory.getBase() + id);
-
-		if (wantsRDF) {
-			// This is rdf implementation
-			OntModel m = ModelFactory.createOntologyModel();
-			Message.addProperties(m, r);
-
-			StringWriter writer = new StringWriter();
-			m.write(writer, "RDF/XML", Ontology.BASE); // "RDF/XML-ABBREV");
-
-			xml = writer.getBuffer().toString();
-		} else {
-			xml = Message.getXML(r, "", "");
-		}
-		return xml;
-	}
 
 }
