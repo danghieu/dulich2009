@@ -1,4 +1,4 @@
-; Mon Oct 19 16:51:30 PDT 2009
+; Tue Dec 01 23:45:41 ICT 2009
 ; 
 ;+ (version "3.4")
 ;+ (build "Build 533")
@@ -6,11 +6,11 @@
 ([BROWSER_SLOT_NAMES] of  Property_List
 
 	(properties
-		[Travel_ProjectKB_Class53]
-		[Travel_ProjectKB_Class54]
-		[Travel_ProjectKB_Class55]
-		[Travel_ProjectKB_Class56]
-		[Travel_ProjectKB_Class57]))
+		[Travel_ProjectKB_Class10083]
+		[Travel_ProjectKB_Class10084]
+		[Travel_ProjectKB_Class10085]
+		[Travel_ProjectKB_Class10086]
+		[Travel_ProjectKB_Class10087]))
 
 ([CLSES_TAB] of  Widget
 
@@ -294,7 +294,9 @@
 
 ([KB_100699_Instance_11] of  Property_List
 
-	(properties [KB_100699_Instance_12]))
+	(properties
+		[KB_100699_Instance_12]
+		[Travel_ProjectKB_Class68]))
 
 ([KB_100699_Instance_12] of  Boolean
 
@@ -483,9 +485,6 @@
 ([KB_140180_Instance_9] of  Property_List
 )
 
-([KB_217006_Class0] of  Map
-)
-
 ([KB_221055_Instance_10] of  Widget
 
 	(height 0)
@@ -641,6 +640,9 @@
 	(y 0))
 
 ([KB_221055_Instance_71] of  Property_List
+)
+
+([KB_240860_Class0] of  Map
 )
 
 ([KB_301165_Instance_1013] of  Widget
@@ -5483,8 +5485,8 @@
 		":DOCUMENTATION"
 		":ANNOTATION-TEXT"
 		"http://www.w3.org/2001/XMLSchema#unsignedLong"
-		"http://www.w3.org/2001/XMLSchema#hexBinary"
 		"http://www.w3.org/2001/XMLSchema#long"
+		"http://www.w3.org/2001/XMLSchema#hexBinary"
 		"http://www.w3.org/2002/07/owl#HasValueRestriction"
 		"http://protege.stanford.edu/plugins/owl/protege#inferredSubclassOf"
 		"http://www.w3.org/2001/XMLSchema#short"
@@ -5500,11 +5502,11 @@
 		":DEFAULTS"
 		"http://www.w3.org/2002/07/owl#LogicalClass"
 		":DIRECT-SUPERCLASSES"
-		":DOCUMENTATION-IN-FRAME"
 		"http://www.w3.org/2001/XMLSchema#unsignedInt"
+		":DOCUMENTATION-IN-FRAME"
 		"http://www.w3.org/2002/07/owl#oneOf"
-		"http://protege.stanford.edu/plugins/owl/protege#TO"
 		"http://www.w3.org/2001/XMLSchema#gDay"
+		"http://protege.stanford.edu/plugins/owl/protege#TO"
 		"http://www.w3.org/1999/02/22-rdf-syntax-ns#rest"
 		"http://www.w3.org/2001/XMLSchema#NCName"
 		"http://www.w3.org/1999/02/22-rdf-syntax-ns#Alt"
@@ -5516,8 +5518,8 @@
 		":ASSOCIATED-SLOT"
 		":SYSTEM-CLASS"
 		"http://protege.stanford.edu/plugins/owl/protege#FROM"
-		":OWL-ONTOLOGY-POINTER-CLASS"
 		"http://www.w3.org/2001/XMLSchema#language"
+		":OWL-ONTOLOGY-POINTER-CLASS"
 		"http://www.w3.org/2002/07/owl#Ontology"
 		":ANNOTATION"
 		"http://www.w3.org/2003/11/swrl#dataRange"
@@ -5571,8 +5573,8 @@
 		":ANNOTATED-INSTANCE"
 		"http://www.w3.org/2000/01/rdf-schema#member"
 		":SLOT-VALUE-TYPE"
-		"http://www.w3.org/2001/XMLSchema#unsignedShort"
 		"http://www.w3.org/2001/XMLSchema#decimal"
+		"http://www.w3.org/2001/XMLSchema#unsignedShort"
 		"http://www.w3.org/2003/11/swrl#classPredicate")
 	(journaling_enabled FALSE)
 	(next_frame_number 0)
@@ -5644,6 +5646,31 @@
 
 ([Travel_ProjectKB_Class10] of  Property_List
 )
+
+([Travel_ProjectKB_Class10083] of  String
+
+	(name "http://www.w3.org/2002/07/owl#Class")
+	(string_value "%3ANAME"))
+
+([Travel_ProjectKB_Class10084] of  String
+
+	(name ":INSTANCE-ANNOTATION")
+	(string_value "%3AANNOTATION-TEXT"))
+
+([Travel_ProjectKB_Class10085] of  String
+
+	(name ":META-CLASS")
+	(string_value "%3ANAME"))
+
+([Travel_ProjectKB_Class10086] of  String
+
+	(name "http://www.w3.org/2002/07/owl#Thing")
+	(string_value "%3ANAME"))
+
+([Travel_ProjectKB_Class10087] of  String
+
+	(name ":PAL-CONSTRAINT")
+	(string_value "%3APAL-NAME"))
 
 ([Travel_ProjectKB_Class11] of  Widget
 
@@ -5852,33 +5879,13 @@
 ([Travel_ProjectKB_Class52] of  Property_List
 )
 
-([Travel_ProjectKB_Class53] of  String
-
-	(name "http://www.w3.org/2002/07/owl#Class")
-	(string_value "%3ANAME"))
-
-([Travel_ProjectKB_Class54] of  String
-
-	(name ":INSTANCE-ANNOTATION")
-	(string_value "%3AANNOTATION-TEXT"))
-
-([Travel_ProjectKB_Class55] of  String
-
-	(name ":META-CLASS")
-	(string_value "%3ANAME"))
-
-([Travel_ProjectKB_Class56] of  String
-
-	(name "http://www.w3.org/2002/07/owl#Thing")
-	(string_value "%3ANAME"))
-
-([Travel_ProjectKB_Class57] of  String
-
-	(name ":PAL-CONSTRAINT")
-	(string_value "%3APAL-NAME"))
-
 ([Travel_ProjectKB_Class6] of  Property_List
 )
+
+([Travel_ProjectKB_Class68] of  Boolean
+
+	(boolean_value TRUE)
+	(name "HideGlobalCharacteristics"))
 
 ([Travel_ProjectKB_Class7] of  Widget
 
