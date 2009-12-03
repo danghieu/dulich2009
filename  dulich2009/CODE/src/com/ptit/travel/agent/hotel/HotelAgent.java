@@ -139,7 +139,7 @@ public class HotelAgent extends Agent {
 
 							// action of message <-> protocol of ACL
 							String protocol = msg.getProtocol();
-							if (protocol.equals(ProtocolHotel.AVAIL_GET)) {
+							if (protocol.equals(Protocol.AVAIL_GET)) {
 								// TODO
 							}
 
