@@ -6,9 +6,9 @@ package com.ptit.travel.agent.broker;
  * @author D05CNPM
  */
 import com.ptit.travel.DAO.AgentDAO;
-import com.ptit.travel.agent.onto.*;
-import com.ptit.travel.agent.memory.*;
-import com.ptit.travel.agent.communication.*;
+import com.ptit.travel.agent.user.communication.*;
+import com.ptit.travel.agent.user.memory.*;
+import com.ptit.travel.agent.user.onto.*;
 
 import java.io.StringWriter;
 import java.io.IOException;
