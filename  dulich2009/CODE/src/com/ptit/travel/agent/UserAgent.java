@@ -66,22 +66,22 @@ public class UserAgent extends Agent {
 	private AgentDAO agentDAO = new AgentDAO(); // manipulate with agent db
 
 	protected void setup() {
-		Message.register(this, "AskAgent");
+		Message.register(this, this.getLocalName());
 
 		try {
 			xmlrpcServer = new WebServer(port);
 			log.debug("XMLRPC Running ....");
 		} catch (IOException e) {
 			log.error("PANIC: maybe the port " + port + " is in use");
-			System.out.println("NGOAI LE: " + e);
+			System.out.println(e);
 		}
-		xmlrpcServer.addHandler("UserAgent", this);
+		xmlrpcServer.addHandler(this.getLocalName(), this);
 
 		mem = new Memory(
 				"E:/Develop/Netbean/Travel/config/UserAgent.properties",
-				"UserAgent");// E:/Develop/Netbean/Travel/
+				this.getLocalName());// E:/Develop/Netbean/Travel/
 		agentIndividual = mem.getModel().getResource(
-				Memory.getBase() + "UserAgent");	
+				Memory.getBase() + this.getLocalName());	
 		System.out.println("============= Hi, I'm user");
 		search(null);
 		System.out.println("============= FINISH");
@@ -91,14 +91,14 @@ public class UserAgent extends Agent {
 	 * This method is called by whatever GUI implementation In current
 	 * implementation it is called by XML-RPC through XMLRPC webserver Method
 	 * send Resource which should be search by SupplierAgent <br>
-	 * you need to call "AskAgent.search(Resource resource)" function from
+	 * you need to call "Agent.search(Resource resource)" function from
 	 * your external system
 	 * 
 	 * @param resource
 	 *            represents type of resource in Memory Model (OWL model)
 	 * 
 	 */
-	public String search(Resource resource) {
+	public String search(String resource) {
 		final String msgId = "102";//getLocalName() + System.currentTimeMillis();
 		ArrayList<String> msgs = new ArrayList<String>();
 		addBehaviour(new RequestAvailability(this, resource, msgId, msgs));		
@@ -110,11 +110,11 @@ public class UserAgent extends Agent {
 		String results = "";
 		try {
 			ArrayList<String> msgs = msgQueue.get(msgId);
-			//msgQueue.remove(msgId);
+			msgQueue.remove(msgId);
 			for (int i = 0; i < msgs.size(); i++) {
 				results += msgs.get(i).trim();			
 				if(i <msgs.size()-1)
-					results += Message.SAPARATE;
+					results += Message.SEPARATE;
 			}
 		} catch (Exception e) {
 			results = "";
@@ -129,7 +129,7 @@ public class UserAgent extends Agent {
 	 * 
 	 * 			resource: information about services wanting to book
 	 */
-	public String book(Resource resource) {
+	public String book(String resource) {
 		String msgId = getLocalName() + System.currentTimeMillis(); //unique
 		addBehaviour(new RequestBook(this, resource, msgId));
 		ArrayList<String> msgs = msgQueue.get(msgId);
@@ -140,12 +140,21 @@ public class UserAgent extends Agent {
 			return "_aaaNONEbbb_";
 	}	
 	public String getBookResults(String msgId){
-		ArrayList<String> msgs = msgQueue.get(msgId);
-		msgQueue.remove(msgId);
-		if(msgs != null && msgs.size() != 0)
-			return msgs.toString();
-			else
-				return "_aaaNONEbbb_";
+		String results = "";
+		try {
+			ArrayList<String> msgs = msgQueue.get(msgId);
+			msgQueue.remove(msgId);
+			for (int i = 0; i < msgs.size(); i++) {
+				results += msgs.get(i).trim();			
+				if(i <msgs.size()-1)
+					results += Message.SEPARATE;
+			}
+		} catch (Exception e) {
+			results = "";
+			e.printStackTrace();
+		}			
+
+		return results;
 	}
 	/**
 	 * This method is called when we want this agent prepares to execute 
@@ -153,60 +162,84 @@ public class UserAgent extends Agent {
 	 * @param 
 	 * 			resource: information about services
 	 */
-	public ArrayList<String> prepareModify(Resource resource) {
+	public String prepareModify(String resource) {
 		String msgId = getLocalName() + System.currentTimeMillis(); //unique
 		addBehaviour(new PrepareModify(this, resource, msgId));
-		ArrayList<String> msgs = msgQueue.get(msgId);
-		msgQueue.remove(msgId);
-		return msgs;
+		
+		return "ok";
 	}	
 	public String getPrepareResults(String msgId){
-		ArrayList<String> msgs = msgQueue.get(msgId);
-		msgQueue.remove(msgId);
-		if(msgs != null && msgs.size() != 0)
-			return msgs.toString();
-			else
-				return "_aaaNONEbbb_";
+		String results = "";
+		try {
+			ArrayList<String> msgs = msgQueue.get(msgId);
+			msgQueue.remove(msgId);
+			for (int i = 0; i < msgs.size(); i++) {
+				results += msgs.get(i).trim();			
+				if(i <msgs.size()-1)
+					results += Message.SEPARATE;
+			}
+		} catch (Exception e) {
+			results = "";
+			e.printStackTrace();
+		}			
+
+		return results;
 	}
 	/**
 	 * This method is called when we want this agent executes modifying behavior
 	 * @param 
 	 * 			resource: information about services wanting to modify
 	 */
-	public ArrayList<String> modify(Resource resource) {
+	public String modify(String resource) {
 		String msgId = getLocalName() + System.currentTimeMillis(); //unique
 		addBehaviour(new RequestModify(this, resource, msgId));
-		ArrayList<String> msgs = msgQueue.get(msgId);
-		msgQueue.remove(msgId);
-		return msgs;
+		
+		return "ok";
 	}	
 	public String getModifyResults(String msgId){
-		ArrayList<String> msgs = msgQueue.get(msgId);
-		msgQueue.remove(msgId);
-		if(msgs != null && msgs.size() != 0)
-			return msgs.toString();
-			else
-				return "_aaaNONEbbb_";
+		String results = "";
+		try {
+			ArrayList<String> msgs = msgQueue.get(msgId);
+			msgQueue.remove(msgId);
+			for (int i = 0; i < msgs.size(); i++) {
+				results += msgs.get(i).trim();			
+				if(i <msgs.size()-1)
+					results += Message.SEPARATE;
+			}
+		} catch (Exception e) {
+			results = "";
+			e.printStackTrace();
+		}			
+
+		return results;
 	}
 	/**
 	 * This method is called when we want this agent executes canceling behavior
 	 * @param 
 	 * 			resource: information about services wanting to cancel
 	 */
-	public ArrayList<String> cancel(Resource resource) {
+	public String cancel(String resource) {
 		String msgId = getLocalName() + System.currentTimeMillis(); //unique
 		addBehaviour(new RequestCancel(this, resource, msgId));
-		ArrayList<String> msgs = msgQueue.get(msgId);
-		msgQueue.remove(msgId);
-		return msgs;
+		
+		return "ok";
 	}	
 	public String getCancelResults(String msgId){
-		ArrayList<String> msgs = msgQueue.get(msgId);
-		msgQueue.remove(msgId);
-		if(msgs != null && msgs.size() != 0)
-			return msgs.toString();
-			else
-				return "_aaaNONEbbb_";
+		String results = "";
+		try {
+			ArrayList<String> msgs = msgQueue.get(msgId);
+			msgQueue.remove(msgId);
+			for (int i = 0; i < msgs.size(); i++) {
+				results += msgs.get(i).trim();			
+				if(i <msgs.size()-1)
+					results += Message.SEPARATE;
+			}
+		} catch (Exception e) {
+			results = "";
+			e.printStackTrace();
+		}			
+
+		return results;
 	}
 	/**
 	 * checking availability behavior 
@@ -215,19 +248,19 @@ public class UserAgent extends Agent {
 	 * @param a: agent execute this behavior
 	 */
 
-	private class RequestAvailability extends Behaviour {
+	private class RequestInfo extends Behaviour {
 		
 		private int repliesCnt = 0; // The counter of replies from agents
 		private MessageTemplate mt; // The template to receive replies
 		private int step = 0;
 
-		private Resource resource = null;
+		private String resource = null;
 		private ArrayList<String> receivers;
 		private String msgId;
 		private Agent a;
 		private boolean avail = false;
 		private ArrayList<String> msgs = new ArrayList<String>();
-		public RequestAvailability(Agent _a, Resource _resource, String _msgId, ArrayList<String> _msgs) {
+		public RequestAvailability(Agent _a, String _resource, String _msgId, ArrayList<String> _msgs) {
 			super(_a);
 			a = _a;
 			resource = _resource;
@@ -287,13 +320,10 @@ public class UserAgent extends Agent {
 		}
 
 		public boolean done() {
-			msgs.add("TRUNGPQ");
-			msgs.add("THU");
-			
-			msgQueue.put(msgId,msgs );			
+				
 			if(step == 2) {// && avail); if finishing only exist available
 				// put messages into queue of agent
-				
+				msgQueue.put(msgId,msgs );		
 				return true;
 			}
 			return false;
@@ -309,11 +339,11 @@ public class UserAgent extends Agent {
 	 */
 	class RequestBook extends Behaviour {
 
-		private Resource resource = null;
+		private String resource = null;
 		private Agent a;
 		private String msgId;
 
-		public RequestBook(Agent _a, Resource _resource, String _msgId) {
+		public RequestBook(Agent _a, String _resource, String _msgId) {
 			super(_a);
 			a = _a;
 			resource = _resource;
@@ -338,11 +368,11 @@ public class UserAgent extends Agent {
 	 */
 	class PrepareModify extends Behaviour {
 
-		private Resource resource = null;
+		private String resource = null;
 		private Agent a;
 		private String msgId;
 
-		public PrepareModify(Agent _a, Resource _resource, String _msgId) {
+		public PrepareModify(Agent _a, String _resource, String _msgId) {
 			super(_a);
 			a = _a;
 			resource = _resource;
@@ -364,11 +394,11 @@ public class UserAgent extends Agent {
 	 */
 	class RequestCancel extends Behaviour {
 
-		private Resource resource = null;
+		private String resource = null;
 		private Agent a;
 		private String msgId;
 
-		public RequestCancel(Agent _a, Resource _resource, String _msgId) {
+		public RequestCancel(Agent _a, String _resource, String _msgId) {
 			super(_a);
 			a = _a;
 			resource = _resource;
@@ -391,11 +421,11 @@ public class UserAgent extends Agent {
 	 */
 	class RequestModify extends Behaviour {
 
-		private Resource resource = null;
+		private String resource = null;
 		private Agent a;
 		private String msgId;
 
-		public RequestModify(Agent _a, Resource _resource, String _msgId) {
+		public RequestModify(Agent _a, String _resource, String _msgId) {
 			super(_a);
 			a = _a;
 			resource = _resource;

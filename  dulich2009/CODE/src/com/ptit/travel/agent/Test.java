@@ -62,7 +62,7 @@ public class Test {
 
 	public ArrayList<String> split(String input){
 		ArrayList<String> arr = new ArrayList<String>();
-		String sSaparate = Message.SAPARATE;
+		String sSaparate = Message.SEPARATE;
 		int beginIndex = 0;
 		int endIndex = input.indexOf(sSaparate);
 		int maxIndex = input.lastIndexOf(sSaparate);
