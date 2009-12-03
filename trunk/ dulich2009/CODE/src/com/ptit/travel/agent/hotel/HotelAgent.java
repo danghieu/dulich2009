@@ -11,9 +11,9 @@ import java.util.Hashtable;
 import java.util.Iterator;
 
 
-import com.ptit.travel.agent.user.communication.*;
-import com.ptit.travel.agent.user.memory.*;
-import com.ptit.travel.agent.user.onto.*;
+import com.ptit.travel.agent.communication.*;
+import com.ptit.travel.agent.memory.*;
+import com.ptit.travel.agent.onto.*;
 
 import com.hp.hpl.jena.ontology.OntModel;
 import com.hp.hpl.jena.query.Query;
