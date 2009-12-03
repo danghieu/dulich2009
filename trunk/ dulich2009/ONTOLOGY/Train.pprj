@@ -1,16 +1,16 @@
-; Sun Nov 08 01:56:07 ICT 2009
+; Thu Dec 03 23:52:24 ICT 2009
 ; 
-;+ (version "3.4")
-;+ (build "Build 533")
+;+ (version "3.4.1")
+;+ (build "Build 537")
 
 ([BROWSER_SLOT_NAMES] of  Property_List
 
 	(properties
-		[Train_ProjectKB_Class10108]
-		[Train_ProjectKB_Class10109]
-		[Train_ProjectKB_Class10110]
-		[Train_ProjectKB_Class10111]
-		[Train_ProjectKB_Class10112]))
+		[Train_ProjectKB_Class20012]
+		[Train_ProjectKB_Class20013]
+		[Train_ProjectKB_Class20014]
+		[Train_ProjectKB_Class20015]
+		[Train_ProjectKB_Class20016]))
 
 ([CLSES_TAB] of  Widget
 
@@ -22,7 +22,7 @@
 ([empty.owl_ProjectKB_Class5] of  String
 
 	(name "owl_major_build")
-	(string_value "3.4"))
+	(string_value "3.4.1"))
 
 ([empty.owl_ProjectKB_Class6] of  Boolean
 
@@ -748,9 +748,9 @@
 ([KB_325529_Class0] of  Map
 
 	(entries
-		[Train_ProjectKB_Class10113]
-		[Train_ProjectKB_Class10114]
-		[Train_ProjectKB_Class10115]))
+		[Train_ProjectKB_Class20017]
+		[Train_ProjectKB_Class20018]
+		[Train_ProjectKB_Class20019]))
 
 ([KB_325529_Class4] of  String
 
@@ -949,6 +949,9 @@
 	(property_list [KB_635552_Instance_9]))
 
 ([KB_635552_Instance_9] of  Property_List
+)
+
+([KB_670516_Class3] of  Map
 )
 
 ([KB_691299_Instance_398] of  Widget
@@ -3011,9 +3014,6 @@
 ([KB_713803_Instance_981] of  Property_List
 )
 
-([KB_740960_Class3] of  Map
-)
-
 ([KB_764103_Instance_545] of  Widget
 
 	(is_hidden FALSE)
@@ -3023,7 +3023,7 @@
 
 ([KB_865583_Instance_10] of  Widget
 
-	(is_hidden TRUE)
+	(is_hidden FALSE)
 	(property_list [KB_865583_Instance_11])
 	(widget_class_name "edu.stanford.smi.protegex.owl.swrl.ui.tab.SWRLTab"))
 
@@ -5333,7 +5333,7 @@
 
 ([OWL_ProjectKB_Instance_3] of  Integer
 
-	(integer_value 533)
+	(integer_value 536)
 	(name "owl_build"))
 
 ([PAL_FORM_WIDGET] of  Widget
@@ -5372,6 +5372,7 @@
 		[KB_313796_Instance_943]
 		[KB_301165_Instance_856]
 		[KB_713803_Instance_477]
+		[Train_ProjectKB_Class10006]
 		[INSTANCE_ANNOTATION_FORM_WIDGET]
 		[KB_713803_Instance_648]
 		[KB_938545_Instance_661]
@@ -5430,6 +5431,8 @@
 		"http://www.w3.org/2003/11/swrl#argument1"
 		"http://protege.stanford.edu/plugins/owl/protege#DIRECTED-BINARY-RELATION"
 		"http://www.w3.org/2000/01/rdf-schema#Datatype"
+		"http://www.w3.org/2003/11/swrlb#args"
+		"http://www.w3.org/2003/11/swrlb#minArgs"
 		"http://protege.stanford.edu/plugins/owl/protege#PAL-DESCRIPTION"
 		":META-CLASS"
 		"http://www.w3.org/1999/02/22-rdf-syntax-ns#Bag"
@@ -5509,7 +5512,6 @@
 		":DOCUMENTATION-IN-FRAME"
 		"http://www.w3.org/2002/07/owl#oneOf"
 		"http://www.w3.org/2001/XMLSchema#gDay"
-		"http://protege.stanford.edu/plugins/owl/protege#TO"
 		"http://www.w3.org/1999/02/22-rdf-syntax-ns#rest"
 		"http://www.w3.org/2001/XMLSchema#NCName"
 		"http://www.w3.org/1999/02/22-rdf-syntax-ns#Alt"
@@ -5520,7 +5522,6 @@
 		":DIRECT-SUBCLASSES"
 		":ASSOCIATED-SLOT"
 		":SYSTEM-CLASS"
-		"http://protege.stanford.edu/plugins/owl/protege#FROM"
 		"http://www.w3.org/2001/XMLSchema#language"
 		":OWL-ONTOLOGY-POINTER-CLASS"
 		"http://www.w3.org/2002/07/owl#Ontology"
@@ -5536,6 +5537,7 @@
 		"http://www.w3.org/2002/07/owl#differentFrom"
 		"http://www.w3.org/2003/11/swrl#arguments"
 		"http://www.w3.org/2001/XMLSchema#NOTATION"
+		"http://www.w3.org/2003/11/swrlb#maxArgs"
 		":STANDARD-CLASS"
 		"http://www.w3.org/2002/07/owl#DataRange"
 		"http://protege.stanford.edu/plugins/owl/protege#PAL-CONSTRAINT"
@@ -5676,51 +5678,152 @@
 ([Train_ProjectKB_Class10] of  Property_List
 )
 
-([Train_ProjectKB_Class10108] of  String
+([Train_ProjectKB_Class10006] of  Widget
 
-	(name "http://www.w3.org/2002/07/owl#Class")
-	(string_value "%3ANAME"))
+	(is_hidden FALSE)
+	(name "http://www.w3.org/2003/11/swrl#Imp")
+	(property_list [Train_ProjectKB_Class10009])
+	(widget_class_name "edu.stanford.smi.protegex.owl.ui.widget.OWLFormWidget"))
 
-([Train_ProjectKB_Class10109] of  String
+([Train_ProjectKB_Class10009] of  Property_List
 
-	(name ":INSTANCE-ANNOTATION")
-	(string_value "%3AANNOTATION-TEXT"))
+	(properties
+		[Train_ProjectKB_Class10010]
+		[Train_ProjectKB_Class10013]
+		[Train_ProjectKB_Class10016]
+		[Train_ProjectKB_Class10019]
+		[Train_ProjectKB_Class10021]
+		[Train_ProjectKB_Class10023]
+		[Train_ProjectKB_Class10025]
+		[Train_ProjectKB_Class10027]
+		[Train_ProjectKB_Class10029]
+		[Train_ProjectKB_Class10031]
+		[Train_ProjectKB_Class10036]))
 
-([Train_ProjectKB_Class10110] of  String
+([Train_ProjectKB_Class10010] of  Widget
 
-	(name ":META-CLASS")
-	(string_value "%3ANAME"))
+	(height 120)
+	(is_hidden FALSE)
+	(label "Name")
+	(name ":NAME")
+	(property_list [Train_ProjectKB_Class10011])
+	(widget_class_name "edu.stanford.smi.protegex.owl.ui.metadata.NameDocumentationWidget")
+	(width 200)
+	(x 0)
+	(y 0))
 
-([Train_ProjectKB_Class10111] of  String
+([Train_ProjectKB_Class10011] of  Property_List
 
-	(name "http://www.w3.org/2002/07/owl#Thing")
-	(string_value "%3ANAME"))
+	(properties
+		[Train_ProjectKB_Class20009]
+		[Train_ProjectKB_Class20010]))
 
-([Train_ProjectKB_Class10112] of  String
+([Train_ProjectKB_Class10013] of  Property_List
 
-	(name ":PAL-CONSTRAINT")
-	(string_value "%3APAL-NAME"))
+	(name "layout properties")
+	(properties
+		[Train_ProjectKB_Class10014]
+		[Train_ProjectKB_Class10015]))
 
-([Train_ProjectKB_Class10113] of  Map_Entry
+([Train_ProjectKB_Class10014] of  String
 
-	(key "suppress_instance_counting")
-	(key_class "java.lang.String")
-	(value "false")
-	(value_class "java.lang.String"))
+	(name "horizontal_stretcher")
+	(string_value "<<all>>"))
 
-([Train_ProjectKB_Class10114] of  Map_Entry
+([Train_ProjectKB_Class10015] of  String
 
-	(key "change_tracking_active")
-	(key_class "java.lang.String")
-	(value "false")
-	(value_class "java.lang.String"))
+	(name "vertical_stretcher")
+	(string_value "http://www.w3.org/2003/11/swrl#body"))
 
-([Train_ProjectKB_Class10115] of  Map_Entry
+([Train_ProjectKB_Class10016] of  Widget
 
-	(key "add_name_on_instance_form")
-	(key_class "java.lang.String")
-	(value "false")
-	(value_class "java.lang.String"))
+	(height 0)
+	(is_hidden FALSE)
+	(name "http://protege.stanford.edu/plugins/owl/protege#inferredType")
+	(property_list [Train_ProjectKB_Class10017])
+	(width 0)
+	(x 0)
+	(y 0))
+
+([Train_ProjectKB_Class10017] of  Property_List
+)
+
+([Train_ProjectKB_Class10019] of  Widget
+
+	(is_hidden FALSE)
+	(name "http://www.w3.org/2002/07/owl#versionInfo")
+	(property_list [Train_ProjectKB_Class10020]))
+
+([Train_ProjectKB_Class10020] of  Property_List
+)
+
+([Train_ProjectKB_Class10021] of  Widget
+
+	(is_hidden FALSE)
+	(name "http://www.w3.org/2000/01/rdf-schema#isDefinedBy")
+	(property_list [Train_ProjectKB_Class10022]))
+
+([Train_ProjectKB_Class10022] of  Property_List
+)
+
+([Train_ProjectKB_Class10023] of  Widget
+
+	(is_hidden FALSE)
+	(name "http://www.w3.org/2000/01/rdf-schema#comment")
+	(property_list [Train_ProjectKB_Class10024]))
+
+([Train_ProjectKB_Class10024] of  Property_List
+)
+
+([Train_ProjectKB_Class10025] of  Widget
+
+	(is_hidden FALSE)
+	(name "http://www.w3.org/2000/01/rdf-schema#seeAlso")
+	(property_list [Train_ProjectKB_Class10026]))
+
+([Train_ProjectKB_Class10026] of  Property_List
+)
+
+([Train_ProjectKB_Class10027] of  Widget
+
+	(is_hidden FALSE)
+	(name "http://www.w3.org/2000/01/rdf-schema#label")
+	(property_list [Train_ProjectKB_Class10028]))
+
+([Train_ProjectKB_Class10028] of  Property_List
+)
+
+([Train_ProjectKB_Class10029] of  Widget
+
+	(is_hidden FALSE)
+	(name "http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled")
+	(property_list [Train_ProjectKB_Class10030]))
+
+([Train_ProjectKB_Class10030] of  Property_List
+)
+
+([Train_ProjectKB_Class10031] of  Widget
+
+	(is_hidden FALSE)
+	(name "http://swrl.stanford.edu/ontologies/3.3/swrla.owl#hasRuleGroup")
+	(property_list [Train_ProjectKB_Class10032]))
+
+([Train_ProjectKB_Class10032] of  Property_List
+)
+
+([Train_ProjectKB_Class10036] of  Widget
+
+	(height 300)
+	(is_hidden FALSE)
+	(name "http://www.w3.org/2003/11/swrl#body")
+	(property_list [Train_ProjectKB_Class10037])
+	(widget_class_name "edu.stanford.smi.protegex.owl.swrl.ui.widget.SWRLRuleSlotWidget")
+	(width 200)
+	(x 0)
+	(y 120))
+
+([Train_ProjectKB_Class10037] of  Property_List
+)
 
 ([Train_ProjectKB_Class11] of  Widget
 
@@ -5769,6 +5872,79 @@
 
 ([Train_ProjectKB_Class20] of  Property_List
 )
+
+([Train_ProjectKB_Class20007] of  Widget
+
+	(is_hidden TRUE)
+	(property_list [Train_ProjectKB_Class20008])
+	(widget_class_name "nl.uva.psy.swi.beangenerator.OntologyBeanGeneratorTab"))
+
+([Train_ProjectKB_Class20008] of  Property_List
+)
+
+([Train_ProjectKB_Class20009] of  Widget
+
+	(is_hidden FALSE)
+	(label "Name")
+	(name ":NAME")
+	(property_list [Train_ProjectKB_Class20011])
+	(widget_class_name "edu.stanford.smi.protege.widget.FormWidget"))
+
+([Train_ProjectKB_Class20010] of  Widget
+
+	(is_hidden FALSE)
+	(label "Comment")
+	(name "http://www.w3.org/2000/01/rdf-schema#comment")
+	(widget_class_name "edu.stanford.smi.protege.widget.FormWidget"))
+
+([Train_ProjectKB_Class20011] of  Property_List
+)
+
+([Train_ProjectKB_Class20012] of  String
+
+	(name "http://www.w3.org/2002/07/owl#Class")
+	(string_value "%3ANAME"))
+
+([Train_ProjectKB_Class20013] of  String
+
+	(name ":INSTANCE-ANNOTATION")
+	(string_value "%3AANNOTATION-TEXT"))
+
+([Train_ProjectKB_Class20014] of  String
+
+	(name ":META-CLASS")
+	(string_value "%3ANAME"))
+
+([Train_ProjectKB_Class20015] of  String
+
+	(name "http://www.w3.org/2002/07/owl#Thing")
+	(string_value "%3ANAME"))
+
+([Train_ProjectKB_Class20016] of  String
+
+	(name ":PAL-CONSTRAINT")
+	(string_value "%3APAL-NAME"))
+
+([Train_ProjectKB_Class20017] of  Map_Entry
+
+	(key "suppress_instance_counting")
+	(key_class "java.lang.String")
+	(value "false")
+	(value_class "java.lang.String"))
+
+([Train_ProjectKB_Class20018] of  Map_Entry
+
+	(key "change_tracking_active")
+	(key_class "java.lang.String")
+	(value "false")
+	(value_class "java.lang.String"))
+
+([Train_ProjectKB_Class20019] of  Map_Entry
+
+	(key "add_name_on_instance_form")
+	(key_class "java.lang.String")
+	(value "false")
+	(value_class "java.lang.String"))
 
 ([Train_ProjectKB_Class21] of  Widget
 
