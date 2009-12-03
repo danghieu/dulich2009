@@ -5,7 +5,7 @@ package com.ptit.travel.agent.communication;
  * @author D05CNPM
  *Reference: OpenTravel_MessageUsersGuide_2009A
  */
-public class ProtocolHotel {
+public class Protocol {
 
 	public final static String AVAIL = "HotelAvail";
 	/**
