@@ -5,7 +5,7 @@
 package com.ptit.travel.common;
 
 import com.ptit.travel.agent.hotel.HotelAgent;
-import com.ptit.travel.agent.user.UserAgent;
+import com.ptit.travel.agent.user.user.UserAgent;
 
 import com.ptit.travel.beans.AgentBean;
 import jade.core.Agent;
