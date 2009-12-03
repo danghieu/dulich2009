@@ -479,13 +479,13 @@ public class BrokerAgent extends Agent {
 
 							// action of message <-> protocol of ACL
 							String protocol = msg.getProtocol();
-							if (protocol.equals(ProtocolHotel.AVAIL_GET)) {
+							if (protocol.equals(Protocol.AVAIL_GET)) {
 								// TODO
 							}
-							if(protocol.equals(ProtocolHotel.HOTEL_RES)){
+							if(protocol.equals(Protocol.HOTEL_RES)){
 								// TODO
 							}
-							if(protocol.equals(ProtocolHotel.CANCEL)){
+							if(protocol.equals(Protocol.CANCEL)){
 								// TODO
 							}
 						}
