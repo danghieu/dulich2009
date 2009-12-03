@@ -101,7 +101,7 @@ public class UserAgent extends Agent {
 	public String search(String resource) {
 		final String msgId = "102";//getLocalName() + System.currentTimeMillis();
 		ArrayList<String> msgs = new ArrayList<String>();
-		addBehaviour(new RequestAvailability(this, resource, msgId, msgs));		
+		addBehaviour(new RequestInfo(this, resource, msgId, msgs));		
 
 		System.out.println(System.currentTimeMillis());
 		return "ok";
@@ -260,7 +260,7 @@ public class UserAgent extends Agent {
 		private Agent a;
 		private boolean avail = false;
 		private ArrayList<String> msgs = new ArrayList<String>();
-		public RequestAvailability(Agent _a, String _resource, String _msgId, ArrayList<String> _msgs) {
+		public RequestInfo(Agent _a, String _resource, String _msgId, ArrayList<String> _msgs) {
 			super(_a);
 			a = _a;
 			resource = _resource;
