@@ -46,17 +46,16 @@ public class MakeAgent extends HttpServlet {
         out.println("<body>");        
         try {            
             Agent user = new UserAgent();
-            Agent hoteler = new HotelAgent();
             String host = "localhost";
             String nickName = "user" + System.currentTimeMillis();
             String port = "1099";
             AgentBean agentBean = new AgentBean();
             
-            //AgentController acUser = startAgent(host, port, nickName, user);
+            AgentController acUser = startAgent(host, port, nickName, user);
             //acUser.putO2AObject(agentBean, true);
             nickName = "hotel" + System.currentTimeMillis();
             out.print("HOST: " + agentBean.getHost());
-            AgentController acHoteler = startAgent(host, port, nickName, hoteler);
+            //AgentController acHoteler = startAgent(host, port, nickName, hoteler);
             
             /**
              * Kill agent contains in agent controller 
@@ -73,12 +72,13 @@ public class MakeAgent extends HttpServlet {
             //* TODO output your page here
 
             out.println("<h1>Servlet MakeAgent at " + System.getProperty("user.dir") + "</h1>");
-            //out.println("<h1>Servlet MakeAgent at " + acHoteler + "</h1>");
+            out.println("<h1>Servlet MakeAgent at " + acUser + "</h1>");
             out.println("</body>");
             out.println("</html>");
         //*/
         } catch (Exception ex) {
             out.println(ex);
+            ex.printStackTrace();
             Logger.getLogger(MakeAgent.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
             out.close();
@@ -87,8 +87,8 @@ public class MakeAgent extends HttpServlet {
 
     /**
      * StartAgent create a new agent and start one on jadeServer
-     * @para: jadeServer is jade server on which new agent will run
-     * @para: nickName is nick name of agent
+     * @param: jadeServer is jade server on which new agent will run
+     * @param: nickName is nick name of agent
      * return 1 if start successfully new agent
      * else return -1;
      */
