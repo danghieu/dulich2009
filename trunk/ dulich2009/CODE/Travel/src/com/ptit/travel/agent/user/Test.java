@@ -22,95 +22,95 @@ import com.ptit.travel.common.AgentManager;
 
 public class Test {
 
-	public static final String SERVER = "http://localhost:8000";
+    public static final String SERVER = "http://localhost:8000";
 
-	//
-	// String id = "AskAgent";
-	// String resourceType = "CD";
-	XmlRpcClientLite myClient;
+    //
+    // String id = "AskAgent";
+    // String resourceType = "CD";
+    XmlRpcClientLite myClient;
 
-	public Test() {
-		try {
-			myClient = new XmlRpcClientLite(SERVER);
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
+    public Test() {
+        try {
+            myClient = new XmlRpcClientLite(SERVER);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
-	/**
-	 * @param args
-	 */
-	private String callTheAgentViaXmlRpc(String function, Address param) {
-		String result = null;
-		// the parameters are inserted in a vector
-		Vector v = new Vector();
-		v.addElement(param);
-		System.out.println("==============: " + param.getCity());
+    /**
+     * @param args
+     */
+    private String callTheAgentViaXmlRpc(String function, Address param) {
+        String result = null;
+        // the parameters are inserted in a vector
+        Vector v = new Vector();
+        v.addElement(param);
+        System.out.println("==============: " + param.getCity());
 
-		System.out.println("method is going to be called");
+        System.out.println("method is going to be called");
 
-		try {
+        try {
 
-			result = (String) myClient.execute("UserAgent." + function, v);
-		} catch (XmlRpcException e) {
-			System.out.println("exception while transmitting message " + e);
-			e.printStackTrace();
-		} catch (java.io.IOException e) {
-			System.out.println("exception while transmitting message " + e);
-			e.printStackTrace();
-		}
-		return result;
-	}
+            result = (String) myClient.execute("UserAgent." + function, v);
+        } catch (XmlRpcException e) {
+            System.out.println("exception while transmitting message " + e);
+            e.printStackTrace();
+        } catch (java.io.IOException e) {
+            System.out.println("exception while transmitting message " + e);
+            e.printStackTrace();
+        }
+        return result;
+    }
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		Test test = new Test();
-		try {
+    public static void main(String[] args) {
+        // TODO Auto-generated method stub
+        Test test = new Test();
+        try {
 
-			String host = "localhost";
-			String nickName = "user" + System.currentTimeMillis();
-			String port = "1099";
-			String className = "com.ptit.travel.agent.user.UserAgent";
+            String host = "localhost";
+            String nickName = "UserAgent";// + System.currentTimeMillis();
 
-			AgentController acUser = AgentManager.startAgent(host, port, nickName, className);
-			System.out.println(acUser.getName());
+            String port = "1099";
+            String className = "com.ptit.travel.agent.user.UserAgent";
 
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
+            AgentController acUser = AgentManager.startAgent(host, port, nickName, className);
+            System.out.println(acUser.getName());
 
-	/**
-	 * StartAgent create a new agent and start one on jadeServer
-	 * 
-	 * @param: jadeServer is jade server on which new agent will run
-	 * @param: nickName is nick name of agent return 1 if start successfully new
-	 *         agent else return -1;
-	 */
-	public static AgentController startAgent(String host, String port,
-			String nickName, String className) {
-		ContainerController cc;
-		Runtime rt = Runtime.instance();
-		// Create a default profile
-		Profile p = new ProfileImpl();
-		p.setParameter(Profile.MAIN_HOST, host);
-		p.setParameter(Profile.MAIN_PORT, port);
-		// Create a new main container, connecting to the default
-		cc = rt.createAgentContainer(p);// createMainContainer(p);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
-		AgentController ac;
-		try {
-			// ac = cc.acceptNewAgent(nickName, agent);
-			ac = cc.createNewAgent(nickName, className, null);
-			ac.start();
-			ac.activate();
-			return ac;
-		} catch (Exception e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
+    /**
+     * StartAgent create a new agent and start one on jadeServer
+     * 
+     * @param: jadeServer is jade server on which new agent will run
+     * @param: nickName is nick name of agent return 1 if start successfully new
+     *         agent else return -1;
+     */
+    public static AgentController startAgent(String host, String port,
+            String nickName, String className) {
+        ContainerController cc;
+        Runtime rt = Runtime.instance();
+        // Create a default profile
+        Profile p = new ProfileImpl();
+        p.setParameter(Profile.MAIN_HOST, host);
+        p.setParameter(Profile.MAIN_PORT, port);
+        // Create a new main container, connecting to the default
+        cc = rt.createAgentContainer(p);// createMainContainer(p);
 
-		}
-		return null;
-	}
+        AgentController ac;
+        try {
+            // ac = cc.acceptNewAgent(nickName, agent);
+            ac = cc.createNewAgent(nickName, className, null);
+            ac.start();
+            ac.activate();
+            return ac;
+        } catch (Exception e1) {
+            // TODO Auto-generated catch block
+            e1.printStackTrace();
 
+        }
+        return null;
+    }
 }
