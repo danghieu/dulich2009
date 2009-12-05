@@ -64,9 +64,14 @@ public class SearchHotel extends HttpServlet {
 //			}
 //			
 //		}
-//		
-		callAgent.callTheAgentViaXmlRpc("search", msg);
-		String result = callAgent.callTheAgentViaXmlRpc("getSearchResults", msgId);
+		String result = "";
+		try {
+			callAgent.callTheAgentViaXmlRpc("search", msg);
+			result = callAgent.callTheAgentViaXmlRpc("getSearchResults", msgId);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
 
 		PrintWriter out = response.getWriter();
 		out.print(result);
