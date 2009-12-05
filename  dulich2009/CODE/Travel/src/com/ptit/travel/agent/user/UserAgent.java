@@ -57,7 +57,7 @@ public class UserAgent extends Agent {
 
 	private static Logger log = Logger.getLogger(UserAgent.class.getName());
 	WebServer xmlrpcServer;
-	private static final int port = 8000;
+	private static final int port = 8002;
 	private Memory mem;
 	private Resource agentIndividual;
 	// message queue of agent contains every satisfactory replied messages 
