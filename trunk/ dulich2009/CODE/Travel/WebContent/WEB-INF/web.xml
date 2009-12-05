@@ -9,4 +9,34 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  <servlet>
+    <description></description>
+    <display-name>SearchHotel</display-name>
+    <servlet-name>SearchHotel</servlet-name>
+    <servlet-class>com.ptit.travel.common.servlet.SearchHotel</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SearchHotel</servlet-name>
+    <url-pattern>/SearchHotel</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>TestServlet</display-name>
+    <servlet-name>TestServlet</servlet-name>
+    <servlet-class>com.ptit.travel.common.servlet.TestServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>TestServlet</servlet-name>
+    <url-pattern>/TestServlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>MakeAgent</display-name>
+    <servlet-name>MakeAgent</servlet-name>
+    <servlet-class>com.ptit.travel.common.MakeAgent</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MakeAgent</servlet-name>
+    <url-pattern>/MakeAgent</url-pattern>
+  </servlet-mapping>
 </web-app>

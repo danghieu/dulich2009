@@ -5,15 +5,15 @@
 
 <head>
   <title>search room</title>
-  <script type="text/javascript" src="js/datepickercontrol.js"></script>
-  <link type="text/css" rel="stylesheet" href="css/datepickercontrol_bluegray.css">
-  <link type="text/css" rel="stylesheet" href="css/content.css">
+  <script type="text/javascript" src="../js/datepickercontrol.js" ></script>
+  <link type="text/css" rel="stylesheet" href="../css/datepickercontrol_bluegray.css">
+  <link type="text/css" rel="stylesheet" href="../css/content.css">
   <script language="JavaScript">
   function abc()
   {
   	var date = new Date();
 	cal8 = document.getElementById("beginDate");
-	//cal8.setMinDate();
+	//cal8.setMinDate(date);
   }
   
   DatePickerControl.onSelect = function(inputid)
@@ -32,7 +32,7 @@
 
 <body id="theme2" onload="abc()">
 
-<form name="form1" action="/servlet/Search" method="get">
+<form name="form1" action="/SearchHotel" method="get">
 <table width="450" border="0">
 <tbody><tr>
 <td>Địa điểm</td>
@@ -109,7 +109,7 @@
 <td><input type="text" name="beginDate" id="beginDate" size="13" datepicker="true" datepicker_format="DD/MM/YYYY"></td></tr>
 <tr>
 <td>Ng&agrave;y đi:</td>
-<td><input type="text" name="endDate" id="endDate" size="13" datepicker="true" datepicker_format="DD/MM/YYYY" disabled="false"></td></tr>
+<td><input type="text" name="endDate" id="endDate" size="13" datepicker="true" datepicker_format="DD/MM/YYYY" disabled="true"></td></tr>
 <tr>
 <td>Loại KS:</td>
 <td><select style="width: 160px; font-size: 11px; height: 22px;" name="numberStar">
