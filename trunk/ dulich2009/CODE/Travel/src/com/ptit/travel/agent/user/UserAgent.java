@@ -57,12 +57,11 @@ public class UserAgent extends Agent {
 
     private static Logger log = Logger.getLogger(UserAgent.class.getName());
     WebServer xmlrpcServer;
-    private static final int port = 8000;
+    private static final int port = ConfigXMLConnect.PORT_USER;
     private Memory mem;
     private Resource agentIndividual;
     // message queue of agent contains every satisfactory replied messages 
     private Hashtable<String, ArrayList<String>> msgQueue = new Hashtable<String, ArrayList<String>>();
-    private AgentDAO agentDAO = new AgentDAO(); // manipulate with agent db
 
 
     protected void setup() {
@@ -102,9 +101,9 @@ public class UserAgent extends Agent {
     public String search(String msg) {
         final String msgId = "102";//getLocalName() + System.currentTimeMillis();
 
-        ArrayList<String> msgs = new ArrayList<String>();
-
-        addBehaviour(new RequestInfo(this, msg, msgId, msgs));
+//        ArrayList<String> msgs = new ArrayList<String>();
+//
+//        addBehaviour(new RequestInfo(this, msg, msgId, msgs));
 
         System.out.println(System.currentTimeMillis());
         return "ok";

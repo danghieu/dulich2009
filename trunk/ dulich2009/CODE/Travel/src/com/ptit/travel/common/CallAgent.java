@@ -1,5 +1,6 @@
 package com.ptit.travel.common;
 
+import com.ptit.travel.agent.communication.ConfigXMLConnect;
 import java.util.Vector;
 
 import org.apache.xmlrpc.XmlRpcClientLite;
@@ -9,7 +10,8 @@ import com.ptit.travel.beans.Address;
 
 public class CallAgent {
 
-    public static final String SERVER = "http://localhost:8001";
+    public static final String SERVER = "http://" + ConfigXMLConnect.HOST_USER + ":" +
+            ConfigXMLConnect.PORT_USER;     //"http://localhost:8006";
     XmlRpcClientLite myClient;
     
     private String host;
@@ -41,7 +43,7 @@ public class CallAgent {
 
         try {
 
-            result = (String) myClient.execute(function, v);
+            result = (String) myClient.execute("UserAgent." + function, v);
         } catch (XmlRpcException e) {
             System.out.println("exception while transmitting message " + e);
             e.printStackTrace();

@@ -40,18 +40,17 @@ public class Test {
     /**
      * @param args
      */
-    private String callTheAgentViaXmlRpc(String function, Address param) {
+    private String callTheAgentViaXmlRpc(String function, String param) {
         String result = null;
         // the parameters are inserted in a vector
         Vector v = new Vector();
         v.addElement(param);
-        System.out.println("==============: " + param.getCity());
 
         System.out.println("method is going to be called");
 
         try {
 
-            result = (String) myClient.execute("UserAgent." + function, v);
+            result = (String) myClient.execute("Guest1260036980546." + function, v);
         } catch (XmlRpcException e) {
             System.out.println("exception while transmitting message " + e);
             e.printStackTrace();
@@ -65,20 +64,16 @@ public class Test {
     public static void main(String[] args) {
         // TODO Auto-generated method stub
         Test test = new Test();
+       System.out.println("------------ Before call ---------------------");
+        String result = "done";
         try {
-
-            String host = "localhost";
-            String nickName = "UserAgent";// + System.currentTimeMillis();
-
-            String port = "1099";
-            String className = "com.ptit.travel.agent.user.UserAgent";
-
-            AgentController acUser = AgentManager.startAgent(host, port, nickName, className);
-            System.out.println(acUser.getName());
-
+            result = test.callTheAgentViaXmlRpc("search", "Hello");
+            
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+        System.out.println("------------ affter call ---------------------" + result);
     }
 
     /**

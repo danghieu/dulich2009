@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.ptit.travel.agent.user.UserAgent;
 import com.ptit.travel.common.AgentManager;
 import com.ptit.travel.common.CallAgent;
+import jade.wrapper.AgentController;
 
 /**
  * Servlet implementation class SearchHotel
@@ -19,8 +20,40 @@ import com.ptit.travel.common.CallAgent;
 public class SearchHotel extends HttpServlet {
 
     private static final long serialVersionUID = 1L;
-    private CallAgent callAgent = new CallAgent("localhost", 8002);
+    private CallAgent callAgent ;
+    private AgentController agentController = null;
 
+    @Override
+    public void destroy() {
+        super.destroy();
+        if (agentController != null) {
+            try {
+                agentController.kill();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }    
+        
+    }
+
+    @Override
+    public void init() throws ServletException {
+        super.init();
+        if (agentController == null) {
+            String host = "localhost";
+            String port = "1099";
+            String nickName = "Guest" + System.currentTimeMillis();
+            String className = "com.ptit.travel.agent.user.UserAgent";
+            try {
+                agentController = AgentManager.startAgent(host, port, nickName, className);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+        }
+        callAgent = new CallAgent();//"localhost", 8002)
+        
+    }
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -55,28 +88,18 @@ public class SearchHotel extends HttpServlet {
         String msgId = "Hotel" + System.currentTimeMillis();
         String msg = msgId + "@@@";// +stateid + "@@@" +beginDate+ "@@@" +endDate + "@@@" +numberStar+ "@@@" + price;
 
-//        if (true) {
-//            String host = "localhost";
-//            String port = "1099";
-//            String nickName = "Guest" + System.currentTimeMillis();
-//            String className = "com.ptit.travel.agent.user.UserAgent";
-//            try {
-//                AgentManager.startAgent(host, port, nickName, className);
-//            } catch (Exception e) {
-//                e.printStackTrace();
-//            }
-//
-//        }
-        System.out.println("Before call");
-        String result = "";
+        
+        
+        String result = "done";
+        System.out.println("------------ Before call ---------------------");
         try {
             result = callAgent.callTheAgentViaXmlRpc("search", msg);
-            callAgent.callTheAgentViaXmlRpc("getSearchResults", msgId);
+            //callAgent.callTheAgentViaXmlRpc("UserAgent.getSearchResults", msgId);
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-
+        System.out.println("------------ affter call ---------------------");
         PrintWriter out = response.getWriter();
         out.print(result);
     }
