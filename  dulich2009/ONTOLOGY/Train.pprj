@@ -1,4 +1,4 @@
-; Thu Dec 03 23:52:24 ICT 2009
+; Sat Dec 05 00:45:09 ICT 2009
 ; 
 ;+ (version "3.4.1")
 ;+ (build "Build 537")
@@ -6,11 +6,12 @@
 ([BROWSER_SLOT_NAMES] of  Property_List
 
 	(properties
-		[Train_ProjectKB_Class20012]
-		[Train_ProjectKB_Class20013]
-		[Train_ProjectKB_Class20014]
-		[Train_ProjectKB_Class20015]
-		[Train_ProjectKB_Class20016]))
+		[Train_ProjectKB_Class20228]
+		[Train_ProjectKB_Class20229]
+		[Train_ProjectKB_Class20230]
+		[Train_ProjectKB_Class20231]
+		[Train_ProjectKB_Class20232]
+		[Train_ProjectKB_Class20233]))
 
 ([CLSES_TAB] of  Widget
 
@@ -266,6 +267,9 @@
 	(y 0))
 
 ([KB_024013_Instance_5] of  Property_List
+)
+
+([KB_030624_Class3] of  Map
 )
 
 ([KB_100699_Instance_0] of  Widget
@@ -748,9 +752,9 @@
 ([KB_325529_Class0] of  Map
 
 	(entries
-		[Train_ProjectKB_Class20017]
-		[Train_ProjectKB_Class20018]
-		[Train_ProjectKB_Class20019]))
+		[Train_ProjectKB_Class20234]
+		[Train_ProjectKB_Class20235]
+		[Train_ProjectKB_Class20236]))
 
 ([KB_325529_Class4] of  String
 
@@ -949,9 +953,6 @@
 	(property_list [KB_635552_Instance_9]))
 
 ([KB_635552_Instance_9] of  Property_List
-)
-
-([KB_670516_Class3] of  Map
 )
 
 ([KB_691299_Instance_398] of  Widget
@@ -5900,46 +5901,51 @@
 ([Train_ProjectKB_Class20011] of  Property_List
 )
 
-([Train_ProjectKB_Class20012] of  String
+([Train_ProjectKB_Class20228] of  String
 
 	(name "http://www.w3.org/2002/07/owl#Class")
 	(string_value "%3ANAME"))
 
-([Train_ProjectKB_Class20013] of  String
+([Train_ProjectKB_Class20229] of  String
 
 	(name ":INSTANCE-ANNOTATION")
 	(string_value "%3AANNOTATION-TEXT"))
 
-([Train_ProjectKB_Class20014] of  String
+([Train_ProjectKB_Class20230] of  String
 
 	(name ":META-CLASS")
 	(string_value "%3ANAME"))
 
-([Train_ProjectKB_Class20015] of  String
+([Train_ProjectKB_Class20231] of  String
+
+	(name "http://www.owl-ontologies.com/Travel.owl#Rule-1")
+	(string_value "http%3A%2F%2Fwww.owl-ontologies.com%2FTravel.owl%23beginTime"))
+
+([Train_ProjectKB_Class20232] of  String
 
 	(name "http://www.w3.org/2002/07/owl#Thing")
 	(string_value "%3ANAME"))
 
-([Train_ProjectKB_Class20016] of  String
+([Train_ProjectKB_Class20233] of  String
 
 	(name ":PAL-CONSTRAINT")
 	(string_value "%3APAL-NAME"))
 
-([Train_ProjectKB_Class20017] of  Map_Entry
+([Train_ProjectKB_Class20234] of  Map_Entry
 
 	(key "suppress_instance_counting")
 	(key_class "java.lang.String")
 	(value "false")
 	(value_class "java.lang.String"))
 
-([Train_ProjectKB_Class20018] of  Map_Entry
+([Train_ProjectKB_Class20235] of  Map_Entry
 
 	(key "change_tracking_active")
 	(key_class "java.lang.String")
 	(value "false")
 	(value_class "java.lang.String"))
 
-([Train_ProjectKB_Class20019] of  Map_Entry
+([Train_ProjectKB_Class20236] of  Map_Entry
 
 	(key "add_name_on_instance_form")
 	(key_class "java.lang.String")
