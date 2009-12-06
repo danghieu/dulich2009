@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
+<web-app id="WebApp_ID" version="2.5" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
   <display-name>Travel</display-name>
   <welcome-file-list>
     <welcome-file>/pages/hotel/searchRoom.jsp</welcome-file>
@@ -10,17 +10,25 @@
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
   <servlet>
-    <description></description>
+    <description/>
     <display-name>SearchHotel</display-name>
     <servlet-name>SearchHotel</servlet-name>
-    <servlet-class>com.ptit.travel.common.servlet.SearchHotel</servlet-class>
+    <servlet-class>com.ptit.travel.common.servlet.UserServlet</servlet-class>
+    <init-param>
+        <param-name>server</param-name>
+        <param-value>localhost</param-value>
+    </init-param>
+    <init-param>
+        <param-name>port</param-name>
+        <param-value>8006</param-value>
+    </init-param>
   </servlet>
   <servlet-mapping>
     <servlet-name>SearchHotel</servlet-name>
     <url-pattern>/SearchHotel</url-pattern>
   </servlet-mapping>
   <servlet>
-    <description></description>
+    <description/>
     <display-name>TestServlet</display-name>
     <servlet-name>TestServlet</servlet-name>
     <servlet-class>com.ptit.travel.common.servlet.TestServlet</servlet-class>
@@ -30,7 +38,7 @@
     <url-pattern>/TestServlet</url-pattern>
   </servlet-mapping>
   <servlet>
-    <description></description>
+    <description/>
     <display-name>MakeAgent</display-name>
     <servlet-name>MakeAgent</servlet-name>
     <servlet-class>com.ptit.travel.common.MakeAgent</servlet-class>

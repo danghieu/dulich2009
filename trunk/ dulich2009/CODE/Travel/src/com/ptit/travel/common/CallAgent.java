@@ -1,31 +1,29 @@
 package com.ptit.travel.common;
 
-import com.ptit.travel.agent.communication.ConfigXMLConnect;
 import java.util.Vector;
 
 import org.apache.xmlrpc.XmlRpcClientLite;
 import org.apache.xmlrpc.XmlRpcException;
 
-import com.ptit.travel.beans.Address;
-
 public class CallAgent {
 
-    public static final String SERVER = "http://" + ConfigXMLConnect.HOST_USER + ":" +
-            ConfigXMLConnect.PORT_USER;     //"http://localhost:8006";
+    public static final String SERVER = "http://localhost:8006";
+    //"http://" + ConfigXMLConnect.HOST_USER + ":" + ConfigXMLConnect.PORT_USER;     
     XmlRpcClientLite myClient;
-    
     private String host;
     private int port;
-    public CallAgent(){   
+
+    public CallAgent() {
         try {
             myClient = new XmlRpcClientLite(SERVER);
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
+
     public CallAgent(String host, int port) {
         try {
-            myClient = new XmlRpcClientLite(host,port);
+            myClient = new XmlRpcClientLite(host, port);
         } catch (Exception e) {
             e.printStackTrace();
         }

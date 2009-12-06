@@ -13,7 +13,7 @@
   {
   	var date = new Date();
 	cal8 = document.getElementById("beginDate");
-	//cal8.setMinDate(date);
+	cal8.setMinDate(date);
   }
   
   DatePickerControl.onSelect = function(inputid)
@@ -32,7 +32,7 @@
 
 <body id="theme2" onload="abc()">
 
-<form name="form1" action="/SearchHotel" method="get">
+<form name="form1" action="SearchHotel" method="get">
 <table width="450" border="0">
 <tbody><tr>
 <td>Địa điểm</td>

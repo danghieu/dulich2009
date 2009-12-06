@@ -106,7 +106,7 @@ public class BrokerAgent extends Agent {
 			for (int i = 0; i < msgs.size(); i++) {
 				results += msgs.get(i).trim();			
 				if(i <msgs.size()-1)
-					results += Message.SEPARATE;
+					results += Message.OBJECT_SEPARATE;
 			}
 		} catch (Exception e) {
 			results = "";
@@ -139,7 +139,7 @@ public class BrokerAgent extends Agent {
 			for (int i = 0; i < msgs.size(); i++) {
 				results += msgs.get(i).trim();			
 				if(i <msgs.size()-1)
-					results += Message.SEPARATE;
+					results += Message.OBJECT_SEPARATE;
 			}
 		} catch (Exception e) {
 			results = "";
@@ -168,7 +168,7 @@ public class BrokerAgent extends Agent {
 			for (int i = 0; i < msgs.size(); i++) {
 				results += msgs.get(i).trim();			
 				if(i <msgs.size()-1)
-					results += Message.SEPARATE;
+					results += Message.OBJECT_SEPARATE;
 			}
 		} catch (Exception e) {
 			results = "";
@@ -196,7 +196,7 @@ public class BrokerAgent extends Agent {
 			for (int i = 0; i < msgs.size(); i++) {
 				results += msgs.get(i).trim();			
 				if(i <msgs.size()-1)
-					results += Message.SEPARATE;
+					results += Message.OBJECT_SEPARATE;
 			}
 		} catch (Exception e) {
 			results = "";
@@ -224,7 +224,7 @@ public class BrokerAgent extends Agent {
 			for (int i = 0; i < msgs.size(); i++) {
 				results += msgs.get(i).trim();			
 				if(i <msgs.size()-1)
-					results += Message.SEPARATE;
+					results += Message.OBJECT_SEPARATE;
 			}
 		} catch (Exception e) {
 			results = "";
@@ -479,13 +479,13 @@ public class BrokerAgent extends Agent {
 
 							// action of message <-> protocol of ACL
 							String protocol = msg.getProtocol();
-							if (protocol.equals(Protocol.AVAIL_GET)) {
+							if (protocol.equals(Protocol.HOTEL_AVAIL_GET)) {
 								// TODO
 							}
 							if(protocol.equals(Protocol.HOTEL_RES)){
 								// TODO
 							}
-							if(protocol.equals(Protocol.CANCEL)){
+							if(protocol.equals(Protocol.HOTEL_CANCEL)){
 								// TODO
 							}
 						}
