@@ -1,5 +1,8 @@
 package Hotel;
+import java.io.FileOutputStream;
 import java.util.ArrayList;
+
+
 
 import com.hp.hpl.jena.ontology.Individual;
 import com.hp.hpl.jena.ontology.OntClass;
@@ -9,15 +12,11 @@ import com.hp.hpl.jena.query.Query;
 import com.hp.hpl.jena.query.QueryExecution;
 import com.hp.hpl.jena.query.QueryExecutionFactory;
 import com.hp.hpl.jena.query.QueryFactory;
-import com.hp.hpl.jena.query.QuerySolution;
 import com.hp.hpl.jena.query.ResultSet;
-import com.hp.hpl.jena.rdf.model.Property;
 import com.hp.hpl.jena.sparql.core.ResultBinding;
+
 import view.Address;
 import view.Contact;
-
-
-
 
 public class TaiNguyen {
 	public TaiNguyen() {
@@ -48,7 +47,7 @@ public class TaiNguyen {
 	 */
 	
 	
-	public Individual insertAddressProcess(Address add) {
+	public boolean insertAddressProcess(Address add) {
 		boolean isOk = false;
 		Database.LoadOnt2Database(); // ket noi csdl
 		OntModel om = Database.getOntologyModel();
@@ -78,7 +77,7 @@ public class TaiNguyen {
 			System.out.println(e.toString());
 			isOk = false;
 		}
-		return ind;
+		return isOk;
 	}
 
 	public boolean updateTaiLieu(Address add) {
@@ -152,14 +151,13 @@ public class TaiNguyen {
 	}
 		// search
 
-	public void searchbyId(String ontclass) {
-		ArrayList<Contact> list = new ArrayList<Contact>();
-		Database.LoadOnt2Database();
-		OntModel om = Database.getOntologyModel();
+	public void searchbyId1(String keyword)throws Exception {
+		System.out.println("vao search");
+	//	ArrayList<Contact> list = new ArrayList<Contact>();
 		
 		// Query query=QueryFactory.create("SELECT ?y  WHERE { ?y <http://swrl.stanford.edu/ontologies/examples/family.swrl.owl#hasNiece> <http://swrl.stanford.edu/ontologies/examples/family.swrl.owl#ConYen> }");
-		String x = "<" + Hotel.NS + ontclass + ">";
-		System.out.print("x= "+x);
+	//	String x = "<" + Hotel.NS + ontclass + ">";
+	//	System.out.print("x= "+x);
 		//Query query=QueryFactory.create("SELECT ?email ?PhoneNumber ?Fax ?hasAddress  WHERE { "+x+"?y <http://swrl.stanford.edu/ontologies/examples/family.swrl.owl#hasNiece> <http://swrl.stanford.edu/ontologies/examples/family.swrl.owl#ConYen> }");
 		
 	/*	String queryString = "PREFIX Hotel: <http://www.owl-ontologies.com/Travel.owl#> " +
@@ -167,99 +165,84 @@ public class TaiNguyen {
 	            "SELECT ?email ?PhoneNumber WHERE {"+x+"Hotel:Email ?email."+ x +" Hotel:PhoneNumber ?PhoneNumber}";
 */
 
-		Query query = QueryFactory.create("PREFIX Hotel: <http://www.owl-ontologies.com/Travel.owl#>"
-				+ "SELECT ?email ?PhoneNumber ?Fax ?hasAddress WHERE { " + x
-				+ " Hotel:Email ?email" + x
-				+ " Hotel:PhoneNumber ?PhoneNumber " + x
-				+ " Hotel:Fax ?Fax" + x
-				
-				+ " Hotel:hasAddress ?hasAddress }");
-				
-		// System.out.println(queryString);
-		//Query query = QueryFactory.create(queryString);
-		System.out.println("query");
-		QueryExecution queryexec = QueryExecutionFactory.create(query, om);
-		try {
-			ResultSet rs = queryexec.execSelect();
-			while (rs.hasNext()) {
-				System.out.println("xua ly khi co du lieu");
-				Object obj = rs.next();
-				ResultBinding binding = (ResultBinding) obj;
-				Contact contact = new Contact();
-								
-				if (binding.get("Email").isLiteral()) {
-					contact.setEmail(binding.getLiteral("email").getString());
-							
-				}
+		ArrayList<Address> list = new ArrayList<Address>();
+		Database.LoadOnt2Database();
+		OntModel om = Database.getOntologyModel();
+		System.out.println("om: "+ om.toString());
+		FileOutputStream out = new FileOutputStream("D:\\yen.txt");
+		  om.write(out);
+		Database.LoadOnt2Database();
+		
+		String queryString = "PREFIX hotel: <http://www.owl-ontologies.com/Travel.owl#> \n"
+			+ "SELECT DISTINCT ?x ?country ?street ?zipcode\n "
+			+ "WHERE \n"
+			+ "{ \n"
+			+ "?x hotel:zipCode ?zipcode. \n"				
+			
+			+ "FILTER (regex(?zipcode,'"
+			+ keyword
+			+ "',\"i\") || regex(?country,'"
+			+ keyword
+			+ "',\"i\") || regex(?street,'"
+			+ keyword
+			+ "',\"i\") )  \n"
 
-				if (binding.get("Fax").isLiteral()) {
-					contact.setFax((Integer)binding.getLiteral("Fax")
-							.getValue());
+			+ "}";
+	System.out.println(queryString);
+	Query query = QueryFactory.create(queryString);
+	System.out.println("create");
+	QueryExecution queryexec = QueryExecutionFactory.create(query, om);
+	System.out.println("create2");
+	try {
+		ResultSet rs = queryexec.execSelect();
+		 System.out.println("rs:"+rs.toString());	
+		while (rs.hasNext()) {
+			Object obj = rs.next();		
+			 System.out.println("thuc hien truy van1");	
+				 System.out.println("thuc hien truy van1");	
+				 ResultBinding binding = (ResultBinding) obj;
+				Address add = new Address();
+				
+
+				if (binding.get("zipcode").isLiteral()) {
+					add.setZipcode(binding.getLiteral("zipcode")
+							.getValue().toString());
+					System.out.println("nhan de:"+add.getCountry());	
 				} 
+		}	
 				
-				if (binding.get("PhoneNumber").isLiteral()) {
-					contact.setPhoneNumber((Integer)binding.getLiteral("PhoneNumber")
-							.getValue());
-				}
-								
-				if(binding.get("hasAddress").isLiteral()){
-					contact.setHasAddress(binding.getLiteral("hasAddress").getString());
-				}
-				list.add(contact);
-				System.out.print("email"+contact.getEmail());
-
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			om.close();
-		}
-	/*
-		
-		 try {
-
-     		System.out.println("in nao");
-         ResultSet rs = queryexec.execSelect(); 
-
-         for ( ; rs.hasNext() ; )  {
-        		System.out.println("b3");
-               QuerySolution rb = rs.nextSolution() ;
-        
-                System.out.println( "email:  "+rb.getResource("email").getLocalName());//toString());
-                System.out.println( "phonenumber:  "+rb.getResource("PhoneNumber").getLocalName());
-
-             }
-
-               
-     }
-    catch(Exception e)
-       {
-               e.printStackTrace();
-       }     
-         */
-		
+			
+		 }
+		 catch(Exception e){
+			 e.printStackTrace();
+		 }
 	}
+   
+		
+	
+		
 	
 	
-public static void main(String s[]){
+	
+public static void main(String s[]) throws Exception{
 	TaiNguyen tn =  new TaiNguyen();
 //String[] s1=tn.searchAdvanced("CongNgheThongTin", ".PDF", "BaiGiang", "Hoang Minh Thuc", "Bach Khoa Ha Noi", "Tieng anh");
-	Address add = new Address("English", "NamDinh", "085");
-	
-	//Address add = new Address("a", "b", "c");
+	Address add = new Address("vietnam", "NamDinh", "085");
+	//boolean a = tn.insertAddressProcess(add);
+//	Boolean a = tn.insertContact(contact);
+//System.out.println("ket qua:"+a);
+	ArrayList list = new ArrayList();
+
 	Contact contact = new Contact();
 //	contact.setAddress(add);
 	contact.setEmail("yennh235@yahoo.com");
 	contact.setPhoneNumber(01);
 	contact.setFax(01);
 	contact.setHasAddress("VietNam");
-	
 	//Boolean a = tn.insertContact(contact);
-//	Individual ad = tn.insertAddressProcess(add);
-	Boolean a = tn.insertContact(contact);
-	System.out.println("ket qua:"+a);
-	ArrayList list = new ArrayList();
-	 tn.searchbyId("Contact_yennh235@yahoo.com");
+	
+	 tn.searchbyId1("085");
+//	tn.searchbyId();
 
 	
 	 

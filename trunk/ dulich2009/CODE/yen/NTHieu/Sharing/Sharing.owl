@@ -1,0 +1,400 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns="http://localhost:8080/Ontology/Sharing/Sharing.owl#"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:assert="http://www.owl-ontologies.com/assert.owl#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+  xml:base="http://localhost:8080/Ontology/Sharing/Sharing.owl">
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.owl-ontologies.com/assert.owl"/>
+  </owl:Ontology>
+  <owl:Class rdf:ID="CongNgheThongTin">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="LinhVuc"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="LichSuDang">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="GiaoDucChinhTri"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="QuyHoachSuDungDat">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="NongLamNgu"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Truyen">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="GiaiTri"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="ToanHoc">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="KhoaHocTuNhien"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="KhoaHocMoitruong">
+    <rdfs:subClassOf rdf:resource="#LinhVuc"/>
+  </owl:Class>
+  <owl:Class rdf:ID="CongNghePhanMem">
+    <rdfs:subClassOf rdf:resource="#CongNgheThongTin"/>
+  </owl:Class>
+  <owl:Class rdf:ID="KhoaHocMayTinh">
+    <rdfs:subClassOf rdf:resource="#CongNgheThongTin"/>
+  </owl:Class>
+  <owl:Class rdf:ID="KinhTeChinhTri">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#GiaoDucChinhTri"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="MangTruyenThong">
+    <rdfs:subClassOf rdf:resource="#CongNgheThongTin"/>
+  </owl:Class>
+  <owl:Class rdf:ID="YTe">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="CongNgheSinhHoc"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="TacGia">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="ConNguoi"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="SinhThaiHocNongNghiep">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#NongLamNgu"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="HoaHoc">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#KhoaHocTuNhien"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="DiaLy">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="KhoaHocXaHoi"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="KeToanTaiChinh">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="KinhTeQuanLy"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="GiaoTrinh">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="TaiNguyen"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="DienTuVienThong">
+    <rdfs:subClassOf rdf:resource="#LinhVuc"/>
+  </owl:Class>
+  <owl:Class rdf:about="#NongLamNgu">
+    <rdfs:subClassOf rdf:resource="#LinhVuc"/>
+  </owl:Class>
+  <owl:Class rdf:ID="SinhHoc">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#KhoaHocTuNhien"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="ThamKhao">
+    <rdfs:subClassOf rdf:resource="#TaiNguyen"/>
+  </owl:Class>
+  <owl:Class rdf:ID="PhucVuNongNghiep">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#CongNgheSinhHoc"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="KhoaHocKyThuat">
+    <rdfs:subClassOf rdf:resource="#LinhVuc"/>
+  </owl:Class>
+  <owl:Class rdf:ID="HeThongVienThong">
+    <rdfs:subClassOf rdf:resource="#DienTuVienThong"/>
+  </owl:Class>
+  <owl:Class rdf:ID="KyThuatMayTinh">
+    <rdfs:subClassOf rdf:resource="#CongNgheThongTin"/>
+  </owl:Class>
+  <owl:Class rdf:ID="ThanhToanQuocTe">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#KinhTeQuanLy"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="NguoiDung">
+    <rdfs:subClassOf rdf:resource="#ConNguoi"/>
+  </owl:Class>
+  <owl:Class rdf:about="#KinhTeQuanLy">
+    <rdfs:subClassOf rdf:resource="#LinhVuc"/>
+  </owl:Class>
+  <owl:Class rdf:ID="HeThongThongTin">
+    <rdfs:subClassOf rdf:resource="#CongNgheThongTin"/>
+  </owl:Class>
+  <owl:Class rdf:about="#GiaoDucChinhTri">
+    <rdfs:subClassOf rdf:resource="#LinhVuc"/>
+  </owl:Class>
+  <owl:Class rdf:about="#CongNgheSinhHoc">
+    <rdfs:subClassOf rdf:resource="#LinhVuc"/>
+  </owl:Class>
+  <owl:Class rdf:ID="DienTuYSinh">
+    <rdfs:subClassOf rdf:resource="#DienTuVienThong"/>
+  </owl:Class>
+  <owl:Class rdf:ID="TrietHoc">
+    <rdfs:subClassOf rdf:resource="#GiaoDucChinhTri"/>
+  </owl:Class>
+  <owl:Class rdf:ID="SinhHocCongNghiep">
+    <rdfs:subClassOf rdf:resource="#CongNgheSinhHoc"/>
+  </owl:Class>
+  <owl:Class rdf:ID="UpLoadTaiLieu">
+    <rdfs:subClassOf rdf:resource="#LinhVuc"/>
+  </owl:Class>
+  <owl:Class rdf:ID="KhachHang">
+    <rdfs:subClassOf rdf:resource="#NguoiDung"/>
+  </owl:Class>
+  <owl:Class rdf:ID="KyThuatThongTin">
+    <rdfs:subClassOf rdf:resource="#DienTuVienThong"/>
+  </owl:Class>
+  <owl:Class rdf:ID="NuoiChongThuySan">
+    <rdfs:subClassOf rdf:resource="#NongLamNgu"/>
+  </owl:Class>
+  <owl:Class rdf:ID="DaPhuongTien">
+    <rdfs:subClassOf rdf:resource="#CongNgheThongTin"/>
+  </owl:Class>
+  <owl:Class rdf:ID="TieuThuyet">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#GiaiTri"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="TamLyHoc">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#KhoaHocXaHoi"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#KhoaHocTuNhien">
+    <rdfs:subClassOf rdf:resource="#LinhVuc"/>
+  </owl:Class>
+  <owl:Class rdf:ID="ChuNghiaXaHoi">
+    <rdfs:subClassOf rdf:resource="#GiaoDucChinhTri"/>
+  </owl:Class>
+  <owl:Class rdf:ID="MienDichHoc">
+    <rdfs:subClassOf rdf:resource="#NongLamNgu"/>
+  </owl:Class>
+  <owl:Class rdf:ID="GiaoDucTheChat">
+    <rdfs:subClassOf rdf:resource="#LinhVuc"/>
+  </owl:Class>
+  <owl:Class rdf:ID="CongTacVien">
+    <rdfs:subClassOf rdf:resource="#ConNguoi"/>
+  </owl:Class>
+  <owl:Class rdf:ID="NgoaiNgu">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#KhoaHocXaHoi"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Luat">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#KhoaHocXaHoi"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="VanHoc">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#KhoaHocXaHoi"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="TaiChinhTienTe">
+    <rdfs:subClassOf rdf:resource="#KinhTeQuanLy"/>
+  </owl:Class>
+  <owl:Class rdf:ID="ThoCa">
+    <rdfs:subClassOf>
+      <owl:Class rdf:about="#GiaiTri"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#KhoaHocXaHoi">
+    <rdfs:subClassOf rdf:resource="#LinhVuc"/>
+  </owl:Class>
+  <owl:Class rdf:about="#GiaiTri">
+    <rdfs:subClassOf rdf:resource="#TaiNguyen"/>
+  </owl:Class>
+  <owl:Class rdf:ID="QuanLy">
+    <rdfs:subClassOf rdf:resource="#NguoiDung"/>
+  </owl:Class>
+  <owl:Class rdf:ID="MachXuLyTinHieuSo">
+    <rdfs:subClassOf rdf:resource="#DienTuVienThong"/>
+  </owl:Class>
+  <owl:Class rdf:ID="BaoCao">
+    <rdfs:subClassOf rdf:resource="#TaiNguyen"/>
+  </owl:Class>
+  <owl:Class rdf:ID="ThiTruongChungKhoan">
+    <rdfs:subClassOf rdf:resource="#KinhTeQuanLy"/>
+  </owl:Class>
+  <owl:Class rdf:ID="LichSu">
+    <rdfs:subClassOf rdf:resource="#KhoaHocXaHoi"/>
+  </owl:Class>
+  <owl:Class rdf:ID="VatLy">
+    <rdfs:subClassOf rdf:resource="#KhoaHocTuNhien"/>
+  </owl:Class>
+  <owl:Class rdf:ID="BaoVeMoiTruong">
+    <rdfs:subClassOf rdf:resource="#CongNgheSinhHoc"/>
+  </owl:Class>
+  <owl:Class rdf:ID="TuTuongHoChiMinh">
+    <rdfs:subClassOf rdf:resource="#GiaoDucChinhTri"/>
+  </owl:Class>
+  <owl:ObjectProperty rdf:ID="HoTroViet">
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:ID="NguoiCongTac"/>
+    </owl:inverseOf>
+    <rdfs:range rdf:resource="#TaiNguyen"/>
+    <rdfs:domain rdf:resource="#CongTacVien"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="ThuocLinhVuc">
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:ID="CoTaiLieu"/>
+    </owl:inverseOf>
+    <rdfs:range rdf:resource="#LinhVuc"/>
+    <rdfs:domain rdf:resource="#TaiNguyen"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="TacGiaChinh">
+    <rdfs:domain rdf:resource="#TaiNguyen"/>
+    <rdfs:range rdf:resource="#TacGia"/>
+    <owl:inverseOf>
+      <owl:ObjectProperty rdf:ID="DaViet"/>
+    </owl:inverseOf>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#NguoiCongTac">
+    <owl:inverseOf rdf:resource="#HoTroViet"/>
+    <rdfs:range rdf:resource="#CongTacVien"/>
+    <rdfs:domain rdf:resource="#TaiNguyen"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#CoTaiLieu">
+    <owl:inverseOf rdf:resource="#ThuocLinhVuc"/>
+    <rdfs:range rdf:resource="#TaiNguyen"/>
+    <rdfs:domain rdf:resource="#LinhVuc"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="IsUpLoad">
+    <rdfs:domain rdf:resource="#TaiNguyen"/>
+    <rdfs:range rdf:resource="#UpLoadTaiLieu"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#DaViet">
+    <owl:inverseOf rdf:resource="#TacGiaChinh"/>
+    <rdfs:domain rdf:resource="#TacGia"/>
+    <rdfs:range rdf:resource="#TaiNguyen"/>
+  </owl:ObjectProperty>
+  <owl:DatatypeProperty rdf:ID="XuatBan">
+    <rdfs:domain rdf:resource="#TaiNguyen"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="Ten">
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#LinhVuc"/>
+          <owl:Class rdf:about="#ConNguoi"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="NgayThang">
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#TaiNguyen"/>
+          <owl:Class rdf:about="#ConNguoi"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="NguonGoc">
+    <rdfs:domain rdf:resource="#TaiNguyen"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="DinhDang">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#TaiNguyen"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="BanQuyen">
+    <rdfs:domain rdf:resource="#TaiNguyen"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="NhanDe">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#TaiNguyen"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="NoiChua">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#TaiNguyen"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="DeMuc">
+    <rdfs:domain rdf:resource="#TaiNguyen"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="LienKet">
+    <rdfs:domain rdf:resource="#TaiNguyen"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="NgonNgu">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#TaiNguyen"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="MoTa">
+    <rdfs:domain rdf:resource="#TaiNguyen"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="MoTaVatLy">
+    <rdfs:domain rdf:resource="#TaiNguyen"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <KhoaHocMayTinh rdf:ID="KhoaHocMayTinh_1"/>
+  <KinhTeQuanLy rdf:ID="KinhTeQuanLy_8"/>
+  <KhoaHocTuNhien rdf:ID="KhoaHocTuNhien_6">
+    <CoTaiLieu>
+      <GiaoTrinh rdf:ID="GiaoTrinh_2">
+        <ThuocLinhVuc>
+          <CongNgheSinhHoc rdf:ID="CongNgheSinhHoc_2">
+            <Ten rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >Bảo vệ môi trường</Ten>
+            <CoTaiLieu rdf:resource="#GiaoTrinh_2"/>
+          </CongNgheSinhHoc>
+        </ThuocLinhVuc>
+        <ThuocLinhVuc rdf:resource="#KhoaHocTuNhien_6"/>
+      </GiaoTrinh>
+    </CoTaiLieu>
+  </KhoaHocTuNhien>
+  <DienTuVienThong rdf:ID="DienTuVienThong_4"/>
+  <TaiNguyen rdf:ID="TaiNguyen_3">
+    <NhanDe rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >BAC</NhanDe>
+    <MoTa rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >FFF</MoTa>
+    <LienKet rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >BCCC</LienKet>
+  </TaiNguyen>
+  <CongNgheSinhHoc rdf:ID="CongNgheSinhHoc_5">
+    <Ten rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Phục vụ nông nghiệp</Ten>
+  </CongNgheSinhHoc>
+  <GiaoDucChinhTri rdf:ID="GiaoDucChinhTri_5"/>
+  <TaiNguyen rdf:ID="TaiNguyen_1">
+    <MoTa rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >HHH</MoTa>
+    <LienKet rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >KK</LienKet>
+    <NhanDe rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >BAC</NhanDe>
+    <DinhDang rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >TTT</DinhDang>
+    <BanQuyen rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    ></BanQuyen>
+  </TaiNguyen>
+  <LinhVuc rdf:ID="LinhVuc_1"/>
+  <CongNgheThongTin rdf:ID="CongNgheThongTin_3"/>
+  <KhoaHocXaHoi rdf:ID="KhoaHocXaHoi_7"/>
+  <NongLamNgu rdf:ID="NongLamNgu_9"/>
+  <TacGia rdf:ID="TacGia_6">
+    <NgayThang rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime"
+    >1986-01-24T16:37:26</NgayThang>
+    <Ten rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Nguyễn Trung Hiếu</Ten>
+  </TacGia>
+</rdf:RDF>
+
+<!-- Created with Protege (with OWL Plugin 3.3.1, Build 430)  http://protege.stanford.edu -->
