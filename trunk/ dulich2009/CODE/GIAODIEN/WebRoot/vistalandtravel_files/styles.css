@@ -1,0 +1,357 @@
+body,td,th {
+	font-size:12px;
+	FONT-FAMILY: arial, sans-serif;
+	margin-left:0px;
+	margin-top:0px;
+	margin-right:0px;
+	margin-bottom:0px;
+ }
+ body {
+	margin-bottom: 5px;
+	margin-left: 5px;
+}
+
+A {color:blue;}
+a:link{text-decoration:none;}
+a:visited{text-decoration:none;}
+a:hover{text-decoration:underline;}
+
+.normal_hotels {color:blue;font-weight:normal;font-size:80%;FONT-FAMILY: arial, sans-serif;}
+.normal_hotels:link{text-decoration:none;color:blue;font-weight:normal;font-size:80%;FONT-FAMILY: arial, sans-serif;}
+.normal_hotels:visited{text-decoration:none;color:blue;font-weight:normal;font-size:80%;FONT-FAMILY: arial, sans-serif;}
+.normal_hotels:hover{text-decoration:underline;color:blue;font-weight:normal;font-size:80%;FONT-FAMILY: arial, sans-serif;}
+
+.faqs {color:blue;font-weight:normal;font-size:90%;FONT-FAMILY: arial, sans-serif;}
+.faqs:link{text-decoration:none;color:blue;font-weight:normal;font-size:90%;FONT-FAMILY: arial, sans-serif;}
+.faqs:visited{text-decoration:none;color:blue;font-weight:normal;font-size:90%;FONT-FAMILY: arial, sans-serif;}
+.faqs:hover{text-decoration:underline;color:blue;font-weight:normal;font-size:90%;FONT-FAMILY: arial, sans-serif;}
+
+.header_reg {color:blue;font-weight:normal;font-size:12px;FONT-FAMILY: arial, sans-serif;}
+.header_reg:link{text-decoration:none;color:blue;font-weight:normal;font-size:12px;FONT-FAMILY: arial, sans-serif;}
+.header_reg:visited{text-decoration:none;color:blue;font-weight:normal;font-size:12px;FONT-FAMILY: arial, sans-serif;}
+.header_reg:hover{text-decoration:underline;color:blue;font-weight:normal;font-size:12px;FONT-FAMILY: arial, sans-serif;}
+
+.destination {color:blue;font-weight:bold;}
+.destination:link{text-decoration:none;color:blue;font-weight:bold;}
+.destination:visited{text-decoration:none;color:blue;font-weight:bold;}
+.destination:hover{text-decoration:underline;color:blue;font-weight:bold;}
+.destination_hot {color:#CC0000;font-weight:bold;}
+.destination_hot:link{text-decoration:none;color:CC0000;font-weight:bold;}
+.destination_hot:visited{text-decoration:none;color:CC0000;font-weight:bold;}
+.destination_hot:hover{text-decoration:underline;color:blue;font-weight:bold;}
+A.font_Arial_12_orange
+{
+font-family:Arial, Helvetica, sans-serif;
+font-size:12px;
+color:#FB6E10;
+}
+A.font_Arial_12_orange:visited
+{
+font-family:Arial, Helvetica, sans-serif;
+font-size:12px;
+color:#FB6E10;
+}
+A.font_Arial_12_orange:link
+{
+font-family:Arial, Helvetica, sans-serif;
+font-size:12px;
+color:#FB6E10;
+}
+A.font_Arial_12_orange:hover
+{
+font-family:Arial, Helvetica, sans-serif;
+font-size:12px;
+color:#FB6E10;
+}
+
+
+.font_Arial_12_black
+{
+color:#000000;
+}
+.font_Arial_13_black
+{
+color:#000000;
+}
+ 
+.border {
+	border-right-width: 1px;
+	border-left-width: 1px;
+	border-right-style: solid;
+	border-left-style: solid;
+	border-right-color: #f1f1f1;
+	border-left-color: #f1f1f1;
+}
+.border_search {
+	background-image: url(images/bg_search_large.jpg);
+	background-repeat: repeat-x;
+	background-position: bottom;
+	border: 1px solid #6d9ec3;
+}
+.border_img {
+	border: 1px solid #FFFFFF;
+}
+.border_img1 {
+	border: 1px solid #bdbdbd;
+}
+.bg_menu {
+	background-color: #25689b;
+}
+.bg_bottom_menu {
+	background-image: url(images/bg_menu.jpg);
+	background-repeat: repeat-x;
+}
+.bg_search {
+	COLOR: #2d2d2c;
+	background-image: url(images/bg_search.jpg);
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: bold;
+	background-repeat: repeat-x;
+}
+.bg_search_h {
+	background-image: url(images/bg_search_h.jpg);
+	font-weight: bold;
+	background-repeat: repeat-x;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	color: #990000;
+}
+.bg_hotel {
+	background-image: url(images/bg_hotel1.jpg);
+	background-repeat: repeat-x;
+	background-position: bottom;
+}
+
+.text_menu {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: bold;
+	color: #FFFFFF;
+	text-decoration: none;
+}
+.text_menu:link {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: bold;
+	color: #FFFFFF;
+	text-decoration: none;
+}
+.text_menu:hover {
+
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: bold;
+	color: #fdff2e;
+	text-decoration: none;
+}
+.text_search {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	font-weight: bold;
+	color: #4A4949;
+	text-decoration: none;
+}
+.text_search:link {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	font-weight: bold;
+	color: #4A4949;
+	text-decoration: none;
+}
+.text_search:hover {
+
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	font-weight: bold;
+	color: #a40707;
+	text-decoration: none;
+}
+.text_form_search {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	font-weight: normal;
+	color: #2d2d2c;
+	width: 160px;
+}
+.text_tittle_touroffer {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: bold;
+	color: #ff6c00;
+}
+.text_tittle_touroffer:visited {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: bold;
+	color: #ff6c00;
+}
+.text_tittle_touroffer:link {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: bold;
+	color: #ff6c00;
+}
+.text_tittle_touroffer:hover {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: bold;
+	color: #ff6c00;
+	text-decoration:underline;
+}
+
+.customize_css {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: normal;
+	color: #000000;
+}
+.customize_css:visited {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: normal;
+	color: #000000;
+}
+.customize_css:link {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: normal;
+	color: #000000;
+}
+.customize_css:hover {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: normal;
+	color: #ff0000;
+	text-decoration:underline;
+}
+
+.customer_review {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight:normal;
+  	color: #383A49;
+}
+
+.text_more {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	font-weight: normal;
+	color: #CC0000;
+	text-decoration: underline;
+}
+.text_more:link {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	font-weight: normal;
+	color: #CC0000;
+	text-decoration: underline;
+}
+.text_more:hover {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	font-weight: normal;
+	color: #CC0000;
+	text-decoration: underline;
+}
+.text_normal {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: bold;
+	color: #36337A;
+	text-decoration: none;
+}
+.text_normal:visited {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: bold;
+	color: #36337A;
+	text-decoration: none;
+}
+
+.text_normal:link {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: bold;
+	color: #36337A;
+	text-decoration: none;
+}
+.text_normal:hover {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: bold;
+	color: #FF6C00;
+	text-decoration: none;
+}
+.font_Arial_16_orange
+{
+color:#FB6E10;
+text-decoration:none;
+}
+.font_Arial_16_blue_b
+{
+font-weight:bold;
+color:#020095;
+text-decoration:none;
+}
+.price 
+{
+font-size:100%;
+font-weight:bold;
+color:#FB6E10;
+}
+.font_Arial_13_black
+{
+color:#000000;
+}
+.font_Arial_10_blue {
+	FONT-WEIGHT: bold; 
+	FONT-SIZE: 10px; 
+	COLOR: #020095; 
+	FONT-FAMILY: Arial; 
+	TEXT-DECORATION: none;
+}
+.font_Arial_10_blue:visited {
+	FONT-WEIGHT: bold; 
+	FONT-SIZE: 10px; 
+	COLOR: #020095; 
+	FONT-FAMILY: Arial; 
+	TEXT-DECORATION: none;
+}
+.font_Arial_10_blue:link {
+	FONT-WEIGHT: bold; 
+	FONT-SIZE: 10px; 
+	COLOR: #020095; 
+	FONT-FAMILY: Arial; 
+	TEXT-DECORATION: none;
+}
+.font_Arial_10_blue:hover {
+	FONT-WEIGHT: bold; 
+	FONT-SIZE: 10px; 
+	COLOR: #020095; 
+	FONT-FAMILY: Arial; 
+	TEXT-DECORATION: underline;
+}
+
+.text_user {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: bold;
+	color: #0066CC;
+	text-decoration: none;
+}
+.text_user:link {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: bold;
+	color: #0066CC;
+	text-decoration: none;
+}
+.text_user:hover {
+
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: bold;
+	color: #FF6C00;
+	text-decoration: none;
+}
