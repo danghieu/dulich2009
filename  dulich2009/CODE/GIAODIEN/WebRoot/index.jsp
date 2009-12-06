@@ -29,17 +29,19 @@ ty du lich Viet Nam, du lich Sa Pa</title>
 .style5 {color: #FF0000; font-weight: bold; }
 -->
 </style>
-</head><body topmargin="0" leftmargin="0" rightmargin="0" bottommargin="0" style="background-color: rgb(255, 255, 255);">
+</head>
+<body topmargin="0" leftmargin="0" rightmargin="0" bottommargin="0" style="background-color: rgb(255, 255, 255);">
 <center>
 
 	<table style="width: 960px;" align="center" border="0" cellpadding="0" cellspacing="0">
 	
-		<tbody><tr>
+		<tbody>
+		<tr>
 			<td valign="top" nowrap="nowrap">
 				<jsp:include page="header.jsp" flush="false"></jsp:include>
 			</td>
 		</tr>
-			<tr>
+		<tr>
 		<td style="width: 960px; text-align: center;" valign="top" width="100%" align="center" nowrap="nowrap">
 			<table style="border-collapse: collapse;" align="center" border="0" cellpadding="0" cellspacing="0">
 			<tbody>
@@ -52,10 +54,10 @@ ty du lich Viet Nam, du lich Sa Pa</title>
 			</table>
 		</td>
 	</tr>
-	<tr><td valign="top" nowrap="nowrap">
-
-<jsp:include page="footer.jsp" flush="false"></jsp:include>
-</td></tr>
-	</tbody></table>				
+	<tr>
+	<td valign="top" nowrap="nowrap"><jsp:include page="footer.jsp" flush="false"></jsp:include></td>
+	</tr>
+	</tbody>
+	</table>				
 	</center>
 	</body></html>
