@@ -1,5 +1,6 @@
 package com.ptit.travel.common.servlet;
 
+import com.ptit.travel.agent.communication.Message;
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -13,24 +14,29 @@ import com.ptit.travel.agent.user.UserAgent;
 import com.ptit.travel.common.AgentManager;
 import com.ptit.travel.common.CallAgent;
 import jade.wrapper.AgentController;
+import org.apache.log4j.Logger;
 
 /**
  * Servlet implementation class SearchHotel
  */
-public class SearchHotel extends HttpServlet {
+public class UserServlet extends HttpServlet {
 
+    Logger log = Logger.getLogger(UserServlet.class.getName());
     private static final long serialVersionUID = 1L;
-    private CallAgent callAgent ;
+    private CallAgent callAgent;// ConfigXMLConnect.HOST_USER
     private AgentController agentController = null;
-
+    private String nickName;
+    
     @Override
     public void destroy() {
         super.destroy();
         if (agentController != null) {
             try {
+                log.info("|| Killing agent: " + nickName);
                 agentController.kill();
             } catch (Exception e) {
                 e.printStackTrace();
+                log.error("UserServlet.destroy(): " +e);
             }
         }    
         
@@ -42,22 +48,22 @@ public class SearchHotel extends HttpServlet {
         if (agentController == null) {
             String host = "localhost";
             String port = "1099";
-            String nickName = "Guest" + System.currentTimeMillis();
+            nickName = "UserAgent";//"Guest" + System.currentTimeMillis();
             String className = "com.ptit.travel.agent.user.UserAgent";
             try {
+                log.info("|| Starting agent: " + nickName);
                 agentController = AgentManager.startAgent(host, port, nickName, className);
             } catch (Exception e) {
                 e.printStackTrace();
+                log.error("UserServlet.init(): " +e);
             }
 
         }
-        callAgent = new CallAgent();//"localhost", 8002)
-        
     }
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public SearchHotel() {
+    public UserServlet() {
         super();
     // TODO Auto-generated constructor stub
     }
@@ -85,21 +91,27 @@ public class SearchHotel extends HttpServlet {
 //		String endDate = request.getParameter("endDate");
 //		String numberStar = request.getParameter("numberStar");
 //		String price = request.getParameter("price");
+        callAgent = new CallAgent();//("localhost", 8006);
         String msgId = "Hotel" + System.currentTimeMillis();
-        String msg = msgId + "@@@";// +stateid + "@@@" +beginDate+ "@@@" +endDate + "@@@" +numberStar+ "@@@" + price;
-
-        
-        
+        String msg = msgId + Message.FIELD_SEPARATE +
+                "param1" + Message.FIELD_SEPARATE +
+                "PARAM2";
+    
         String result = "done";
         System.out.println("------------ Before call ---------------------");
         try {
-            result = callAgent.callTheAgentViaXmlRpc("search", msg);
-            //callAgent.callTheAgentViaXmlRpc("UserAgent.getSearchResults", msgId);
+            callAgent.callTheAgentViaXmlRpc("search", msg);
+            try {
+                Thread.sleep(1000);
+            } catch (Exception e) {
+            }
+            
+            result = callAgent.callTheAgentViaXmlRpc("getSearchResults", msgId);
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        System.out.println("------------ affter call ---------------------");
+        System.out.println("------------ affter call ---------------------" + result);
         PrintWriter out = response.getWriter();
         out.print(result);
     }
