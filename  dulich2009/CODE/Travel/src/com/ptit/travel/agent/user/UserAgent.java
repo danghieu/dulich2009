@@ -8,35 +8,26 @@ package com.ptit.travel.agent.user;
  *
  * @author D05CNPM
  */
-import com.ptit.travel.DAO.AgentDAO;
 import com.ptit.travel.agent.onto.*;
 import com.ptit.travel.agent.memory.*;
 import com.ptit.travel.agent.communication.*;
-import com.ptit.travel.beans.Address;
-
 import java.io.StringWriter;
 import java.io.IOException;
-import java.io.StringReader;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.Hashtable;
-import java.util.Iterator;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import com.hp.hpl.jena.assembler.Mode;
 import com.hp.hpl.jena.ontology.OntModel;
 import com.hp.hpl.jena.rdf.model.ModelFactory;
 import com.hp.hpl.jena.rdf.model.Resource;
 
-import jade.core.AID;
 import jade.core.Agent;
 import jade.core.behaviours.*;
 import jade.lang.acl.ACLMessage;
 import jade.lang.acl.MessageTemplate;
 
 import org.apache.log4j.Logger;
-import org.apache.log4j.PropertyConfigurator;
 import org.apache.xmlrpc.WebServer;
 
 /**
@@ -57,7 +48,7 @@ public class UserAgent extends Agent {
 
     private static Logger log = Logger.getLogger(UserAgent.class.getName());
     WebServer xmlrpcServer;
-    private static final int port = ConfigXMLConnect.PORT_USER;
+    private static final int port = 8006;//ConfigXMLConnect.PORT_USER;
     private Memory mem;
     private Resource agentIndividual;
     // message queue of agent contains every satisfactory replied messages 
@@ -80,11 +71,8 @@ public class UserAgent extends Agent {
                 "E:/Develop/Netbean/Travel/config/UserAgent.properties",
                 this.getLocalName());// E:/Develop/Netbean/Travel/
 
-        agentIndividual = mem.getModel().getResource(
-                Memory.getBase() + this.getLocalName());
-        System.out.println("============= Hi, I'm user");
-        search(null);
-        System.out.println("============= FINISH");
+//        agentIndividual = mem.getModel().getResource(
+//                Memory.getBase() + this.getLocalName());
     }
 
     /**
@@ -101,11 +89,8 @@ public class UserAgent extends Agent {
     public String search(String msg) {
         final String msgId = "102";//getLocalName() + System.currentTimeMillis();
 
-//        ArrayList<String> msgs = new ArrayList<String>();
-//
-//        addBehaviour(new RequestInfo(this, msg, msgId, msgs));
+        addBehaviour(new RequestInfo(this, msg, msgId));
 
-        System.out.println(System.currentTimeMillis());
         return "ok";
     }
 
@@ -113,15 +98,16 @@ public class UserAgent extends Agent {
         String results = "";
         try {
             ArrayList<String> msgs = msgQueue.get("102");
+            log.info("|| message Results:" + msgs);
             msgQueue.remove(msgId);
             for (int i = 0; i < msgs.size(); i++) {
                 results += msgs.get(i).trim();
                 if (i < msgs.size() - 1) {
-                    results += Message.SEPARATE;
+                    results += Message.OBJECT_SEPARATE;
                 }
             }
         } catch (Exception e) {
-            results = "";
+            results = e.toString();
             e.printStackTrace();
         }
 
@@ -155,7 +141,7 @@ public class UserAgent extends Agent {
             for (int i = 0; i < msgs.size(); i++) {
                 results += msgs.get(i).trim();
                 if (i < msgs.size() - 1) {
-                    results += Message.SEPARATE;
+                    results += Message.OBJECT_SEPARATE;
                 }
             }
         } catch (Exception e) {
@@ -188,7 +174,7 @@ public class UserAgent extends Agent {
             for (int i = 0; i < msgs.size(); i++) {
                 results += msgs.get(i).trim();
                 if (i < msgs.size() - 1) {
-                    results += Message.SEPARATE;
+                    results += Message.OBJECT_SEPARATE;
                 }
             }
         } catch (Exception e) {
@@ -220,7 +206,7 @@ public class UserAgent extends Agent {
             for (int i = 0; i < msgs.size(); i++) {
                 results += msgs.get(i).trim();
                 if (i < msgs.size() - 1) {
-                    results += Message.SEPARATE;
+                    results += Message.OBJECT_SEPARATE;
                 }
             }
         } catch (Exception e) {
@@ -252,7 +238,7 @@ public class UserAgent extends Agent {
             for (int i = 0; i < msgs.size(); i++) {
                 results += msgs.get(i).trim();
                 if (i < msgs.size() - 1) {
-                    results += Message.SEPARATE;
+                    results += Message.OBJECT_SEPARATE;
                 }
             }
         } catch (Exception e) {
@@ -276,39 +262,40 @@ public class UserAgent extends Agent {
         private MessageTemplate mt; // The template to receive replies
 
         private int step = 0;
-        private String resource = null;
+        private String content = null;
         private ArrayList<String> receivers;
         private String msgId;
         private Agent a;
         private boolean avail = false;
-        private ArrayList<String> msgs = new ArrayList<String>();
+        private ArrayList<String> msgs;
 
-        public RequestInfo(Agent _a, String _resource, String _msgId, ArrayList<String> _msgs) {
+        public RequestInfo(Agent _a, String _content, String _msgId) {
             super(_a);
             a = _a;
-            resource = _resource;
+            content = _content;
             msgId = _msgId;
-            msgs = _msgs;
+            msgs = new ArrayList<String>();
         }
 
         public void action() {
-            msgs.add("Nothing is more important than peace");
+            
             switch (step) {
                 case 0:
                     try {
                         // collect agents who satisfy action
                         //receivers = agentDAO.getAgents("", "hotel");
                         // FOR TEST ONLY
+                        log.info("=== Preparing msg to send HotelAgent: " + content);
                         receivers = new ArrayList<String>();
                         receivers.add("HotelAgent");
                         // Send the cfp to all agents
-                        ACLMessage msg = Message.createInformMessage(a, receivers,
-                                resource);
-
+                        ACLMessage msg = new ACLMessage(ACLMessage.INFORM);//Message.createInformMessage(a, receivers,content);
+                        msg.setContent(content);  
+                        msg.setProtocol(Protocol.HOTEL_AVAIL);
                         msg.setConversationId(myAgent.getLocalName());
                         msg.setReplyWith(msgId); // Unique
                         // value
-
+                        
                         myAgent.send(msg);
                         // Prepare the template to get proposals
                         mt = MessageTemplate.and(MessageTemplate.MatchConversationId(myAgent.getLocalName()),
@@ -323,15 +310,19 @@ public class UserAgent extends Agent {
 
                 case 1:
                     // Receive all proposals/refusals from agents
-                    ACLMessage replyMsg = myAgent.receive(mt);
+                    //ACLMessage replyMsg = myAgent.receive(mt);
+                    ACLMessage replyMsg = myAgent.receive();
                     if (replyMsg != null) {
-                        if (replyMsg.getPerformative() == ACLMessage.PROPOSE) {
+                        //if (replyMsg.getPerformative() == ACLMessage.PROPOSE) 
+                        {
                             /**
                              * / check if there is any available hotel/ if yes set
                              * avail = true
                              * put msg into msgQueue of agent: 
                              */
-                            //TODO
+                            //FOR TEST
+                            log.info("=== One more received message from HotelAgent");
+                            msgs.add(replyMsg.getContent());
                         }
                         repliesCnt++;
                         if (repliesCnt >= receivers.size()) {
@@ -350,10 +341,12 @@ public class UserAgent extends Agent {
 
         public boolean done() {
 
+            log.info("=== Satified Messages put into Message Queue");
+            msgs.add(content);
+            msgQueue.put(msgId, msgs);
             if (step == 2) {// && avail); if finishing only exist available
                 // put messages into queue of agent
-
-                msgQueue.put(msgId, msgs);
+                
                 return true;
             }
             return false;

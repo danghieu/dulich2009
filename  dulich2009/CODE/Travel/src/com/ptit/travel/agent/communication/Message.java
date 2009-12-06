@@ -8,6 +8,7 @@ import java.io.StringWriter;
 import com.ptit.travel.agent.onto.*;
 import com.ptit.travel.beans.Address;
 
+import com.ptit.travel.beans.SerializableBean;
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -30,8 +31,17 @@ import jade.domain.FIPAAgentManagement.ServiceDescription;
 public class Message {
 
     private static Logger log = Logger.getLogger(Message.class.getName());
+    /**
+     * special string uesed to separate objects
+     *  #_$
+     */
+    public static String OBJECT_SEPARATE = "#_$";
+    /**
+     * special string uesed to separate fields of the object
+     * @_&
+     */
+    public static String FIELD_SEPARATE = "@_&";
 
-    public static String SEPARATE = "@@@";
     /**
      * This method returns XML/RDF text representation of RDF Resource
      * 
@@ -213,7 +223,7 @@ public class Message {
         m.addReceiver(receiver);
         m.setLanguage(Ontology.SPARQL);
         m.setOntology(Ontology.BASE);
-        
+
         String content = Ontology.SPARQL_PREFIX + query;
         log.debug("Message:\n" + content);
 
@@ -250,6 +260,7 @@ public class Message {
         log.debug("message prepared for " + recieverName + ": " + m);
         return m;
     }
+
     /**
      * This method creates ACL Inform message containing of RDF of some Jena RDF
      * Resource
@@ -285,9 +296,9 @@ public class Message {
         ACLMessage m = new ACLMessage(ACLMessage.INFORM);
         m.setSender(sender.getAID());
         for (int i = 0; i < recieverNames.size(); i++) {
-        	m.addReceiver(new AID((String)recieverNames.get(i), false));
-		}
-        
+            m.addReceiver(new AID((String) recieverNames.get(i), false));
+        }
+
         m.setLanguage(Ontology.RDF);
         m.setOntology(Ontology.BASE);
         m.setContent(content);
@@ -299,23 +310,40 @@ public class Message {
      * create message with contain object 
      */
     public static ACLMessage createInformMessage(Agent sender,
-            ArrayList<String> recieverNames, Serializable content) throws Exception{
-    	
+            ArrayList<String> recieverNames, Serializable content) throws Exception {
+
         log.info("Preparing inform message...");
         //String content = resource2RDF(r);
         ACLMessage m = new ACLMessage(ACLMessage.INFORM);
         m.setSender(sender.getAID());
         for (int i = 0; i < recieverNames.size(); i++) {
-        	m.addReceiver(new AID((String)recieverNames.get(i), false));
-		}
-        
+            m.addReceiver(new AID((String) recieverNames.get(i), false));
+        }
+
         m.setLanguage(Ontology.RDF);
         m.setOntology(Ontology.BASE);
         m.setContentObject(content);
         log.debug("message prepared for " + recieverNames.toString() + ": " + m);
         return m;
     }
-    
+
+    public static ACLMessage createReplyMessage(ACLMessage msg, ArrayList<SerializableBean> arrContent) {
+        ACLMessage reply = msg.createReply();
+        reply.setPerformative(ACLMessage.PROPOSE);
+        SerializableBean bean;
+        String content = "";
+        int size = arrContent.size();
+        for (int i = 0; i < size; i++) {
+            bean = arrContent.get(i);
+            content += bean.toMsg();
+            if (i < size - 1) {
+                content += Message.OBJECT_SEPARATE;
+            }
+        }
+        reply.setContent(content);
+        return reply;
+    }
+
     /**
      * This method register agent with directory facilitator
      * 
@@ -343,6 +371,7 @@ public class Message {
         }
 
     }
+
     /**
      * method split a string with Message.SAPARATE.
      * @param input
@@ -351,35 +380,33 @@ public class Message {
      * 	input = "we@@@love@@@you"
      *  return {we,love,you}
      */
-	public static ArrayList<String> split(String input){
-		ArrayList<String> arr = new ArrayList<String>();
-		String sSaparate = Message.SEPARATE;
-		int beginIndex = 0;
-		int endIndex = input.indexOf(sSaparate);
-		int maxIndex = input.lastIndexOf(sSaparate);
-		String s = "";
-		if(endIndex == -1){
-			arr.add(input);
-			return arr;
-		}
-		while(beginIndex <= maxIndex){
-			endIndex = input.indexOf(sSaparate, beginIndex+1);
-			if(endIndex != -1){
-				s = input.substring(beginIndex, endIndex); 
-				
-				s = s.replaceAll(sSaparate, "");
-				System.out.println(s);
-				arr.add(s);
-			}
-			else{
-				s = input.substring(beginIndex, input.length());
-				s = s.replaceAll(sSaparate, "");
-				arr.add(s);
-				break;
-			}
-			
-			beginIndex = endIndex;
-		}
-		return arr;
-	}
+    public static ArrayList<String> split(String input, String separate) {
+        ArrayList<String> arr = new ArrayList<String>();
+        //String separate = Message.OBJECT_SEPARATE;
+        int beginIndex = 0;
+        int endIndex = input.indexOf(separate);
+        int maxIndex = input.lastIndexOf(separate);
+        String s = "";
+        if (endIndex == -1) {
+            arr.add(input);
+            return arr;
+        }
+        while (beginIndex <= maxIndex) {
+            endIndex = input.indexOf(separate, beginIndex + 1);
+            if (endIndex != -1) {
+                s = input.substring(beginIndex, endIndex);
+
+                s = s.replaceAll(separate, "");
+                arr.add(s);
+            } else {
+                s = input.substring(beginIndex, input.length());
+                s = s.replaceAll(separate, "");
+                arr.add(s);
+                break;
+            }
+
+            beginIndex = endIndex;
+        }
+        return arr;
+    }
 }

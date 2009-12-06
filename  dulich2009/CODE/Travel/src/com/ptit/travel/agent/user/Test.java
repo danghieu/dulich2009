@@ -1,5 +1,6 @@
 package com.ptit.travel.agent.user;
 
+import com.ptit.travel.agent.communication.ConfigXMLConnect;
 import jade.core.Agent;
 import jade.core.Profile;
 import jade.core.ProfileImpl;
@@ -19,6 +20,7 @@ import com.ptit.travel.agent.hotel.HotelAgent;
 import com.ptit.travel.beans.Address;
 import com.ptit.travel.beans.AgentBean;
 import com.ptit.travel.common.AgentManager;
+import com.ptit.travel.common.CallAgent;
 
 public class Test {
 
@@ -40,72 +42,53 @@ public class Test {
     /**
      * @param args
      */
-    private String callTheAgentViaXmlRpc(String function, String param) {
-        String result = null;
-        // the parameters are inserted in a vector
-        Vector v = new Vector();
-        v.addElement(param);
-
-        System.out.println("method is going to be called");
-
-        try {
-
-            result = (String) myClient.execute("Guest1260036980546." + function, v);
-        } catch (XmlRpcException e) {
-            System.out.println("exception while transmitting message " + e);
-            e.printStackTrace();
-        } catch (java.io.IOException e) {
-            System.out.println("exception while transmitting message " + e);
-            e.printStackTrace();
-        }
-        return result;
+    private void callTheAgentViaXmlRpc() {
+        String function = "UserAgent.getSearchResults";
+        String param = "102";
+        CallAgent ca = new CallAgent();
+        String result = ca.callTheAgentViaXmlRpc(function, param);
+        System.out.println("|| CALL "+function+": " + result);
+    }
+ 
+    public void testSplitMessage() {
+        String input = "param1" + Message.FIELD_SEPARATE +
+                "param2@" + Message.FIELD_SEPARATE +
+                "param3$" + Message.OBJECT_SEPARATE +
+                "paramA" + Message.FIELD_SEPARATE +
+                "paramB" + Message.OBJECT_SEPARATE +
+                "paramX";
+        System.out.println("|| INPUT: " + input);
+        ArrayList<String> list = Message.split(input, Message.OBJECT_SEPARATE);
+        System.out.println("|| SEPARATE OBJECT: " + list.toString());
+        System.out.println("|| SEPARATE FIELD of 1st Ojbect: " + Message.split(list.get(0), Message.FIELD_SEPARATE));
     }
 
+    public void testConfigXMLConnect(){
+        System.out.println(com.ptit.travel.agent.onto.Config.BASE);
+    }
+    public void testCreateAgent(){
+        AgentController agentController;
+            String host = "localhost";
+            String port = "1099";
+            String nickName = "HotelAgent";//"Guest" + System.currentTimeMillis();
+            String className = "com.ptit.travel.agent.hotel.HotelAgent";
+            try {                
+                agentController = AgentManager.startAgent(host, port, nickName, className);
+                System.out.println("|| Started agent: " + agentController.getName());
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            
+        
+    }
     public static void main(String[] args) {
         // TODO Auto-generated method stub
         Test test = new Test();
-       System.out.println("------------ Before call ---------------------");
-        String result = "done";
-        try {
-            result = test.callTheAgentViaXmlRpc("search", "Hello");
-            
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        System.out.println("------------ affter call ---------------------" + result);
+        //test.testSplitMessage();
+        //test.testConfigXMLConnect();
+        //test.callTheAgentViaXmlRpc();
+        test.testCreateAgent();
+    
     }
 
-    /**
-     * StartAgent create a new agent and start one on jadeServer
-     * 
-     * @param: jadeServer is jade server on which new agent will run
-     * @param: nickName is nick name of agent return 1 if start successfully new
-     *         agent else return -1;
-     */
-    public static AgentController startAgent(String host, String port,
-            String nickName, String className) {
-        ContainerController cc;
-        Runtime rt = Runtime.instance();
-        // Create a default profile
-        Profile p = new ProfileImpl();
-        p.setParameter(Profile.MAIN_HOST, host);
-        p.setParameter(Profile.MAIN_PORT, port);
-        // Create a new main container, connecting to the default
-        cc = rt.createAgentContainer(p);// createMainContainer(p);
-
-        AgentController ac;
-        try {
-            // ac = cc.acceptNewAgent(nickName, agent);
-            ac = cc.createNewAgent(nickName, className, null);
-            ac.start();
-            ac.activate();
-            return ac;
-        } catch (Exception e1) {
-            // TODO Auto-generated catch block
-            e1.printStackTrace();
-
-        }
-        return null;
-    }
 }

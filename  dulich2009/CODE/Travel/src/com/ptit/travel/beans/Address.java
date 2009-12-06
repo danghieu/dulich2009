@@ -29,12 +29,12 @@ public class Address implements Serializable {
 	}
 	
 	public String toMsg(){
-		return (this.city + Message.SEPARATE 
+		return (this.city + Message.OBJECT_SEPARATE 
 				+ this.country);
 	}
 	public Address(String msg){
 		
-		ArrayList<String> arr = Message.split(msg);
+		ArrayList<String> arr = Message.split(msg,Message.FIELD_SEPARATE);
 		setCity((String)arr.get(0));
 		setCountry(arr.get(1));
 	

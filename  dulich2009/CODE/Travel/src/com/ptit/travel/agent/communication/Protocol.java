@@ -7,7 +7,7 @@ package com.ptit.travel.agent.communication;
  */
 public class Protocol {
 
-	public final static String AVAIL = "HotelAvail";
+	public final static String HOTEL_AVAIL = "HotelAvail";
 	/**
 	 *  AVAIL_GET provides the ability for a booking source to obtain 
 	 *	availability status from one or more specified hotel properties.
@@ -16,7 +16,7 @@ public class Protocol {
 	 *	Room type: STD, DLX
 	 *                   
 	 */
-	public final static String AVAIL_GET = "HotelAvailGet";
+	public final static String HOTEL_AVAIL_GET = "HotelAvailGet";
 	/**
 	 *  HOTEL_RES provides the ability for a booking source to obtain 
 	 *	availability status from one or more specified hotel properties.
@@ -32,24 +32,24 @@ public class Protocol {
 	 *                   
 	 */
 	public final static String HOTEL_RES = "HotelRes";
-	public final static String CANCEL = "Cancel";
+	public final static String HOTEL_CANCEL = "Cancel";
 	public final static String HOTEL_RES_NOTIF = "HotelResNotif";
-	public final static String GET_MSG = "GetMsg";
-	public final static String GET_MSG_INFO = "GetMsgInfo";
+	public final static String HOTEL_GET_MSG = "GetMsg";
+	public final static String HOTEL_GET_MSG_INFO = "GetMsgInfo";
 	/**
 	 * common hotel information
 	 */
-	public final static String COMMNOTIF = "CommNotif";
+	public final static String HOTEL_COMMNOTIF = "CommNotif";
 	/**
 	 * stay information
 	 */
-	public final static String STAY_INFO_NOTIF = "StayInfoNotif";
+	public final static String HOTEL_STAY_INFO_NOTIF = "StayInfoNotif";
 	/**
 	 * statistics notify
 	 */
-	public final static String STATISTICS_NOTIF = "StatisticsNotif";
+	public final static String HOTEL_STATISTICS_NOTIF = "StatisticsNotif";
 	/**
 	 * statistic
 	 */
-	public final static String STATISTICS = "Statistics";
+	public final static String HOTEL_STATISTICS = "Statistics";
 }
