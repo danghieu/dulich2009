@@ -12,6 +12,7 @@ import com.hp.hpl.jena.rdf.model.Model;
 import com.hp.hpl.jena.rdf.model.ModelFactory;
 import com.hp.hpl.jena.rdf.model.ModelMaker;// ModelMaker ????
 import com.hp.hpl.jena.util.FileManager;
+import java.sql.*;
 
 /**
  * Ket noi Ontology voi MsSQL server 2005
@@ -20,11 +21,11 @@ import com.hp.hpl.jena.util.FileManager;
  * 
  */
 public class Database {
-private static java.sql.Connection con;
-private java.sql.Statement pst; 
-	
+
+ 
+	static String databaseName = "";
 			
-	public static final String DB_URL         = "jdbc:mysql://localhost/yen";
+	public static final String DB_URL         = "jdbc:mysql://localhost/yen" ;
 
 //User name
 
@@ -37,6 +38,8 @@ private java.sql.Statement pst;
 //Database engine name
 
 	public static final String DB = "MySQL";
+	static Connection connection;
+	private Statement statement; 
 
 //JDBC driver
 
@@ -67,7 +70,7 @@ private java.sql.Statement pst;
 	 * Dung Ham nay cho lan dau thoi , canh bao nguy hiem
 	 * s_reload =true tuc la xoa het roi them moi, lay toan bo owl chuyen vao database
 	 */
-	public static void loadData(boolean b_reload) {
+	public static boolean loadData(boolean b_reload) {
 		
 		// neu la true, xoa toan bo csdl, tra ve 1 model macker lay tu csdl
 		ModelMaker maker = getRDBModelMaker(b_reload);
@@ -82,12 +85,15 @@ private java.sql.Statement pst;
 		model.begin();
 		
 		// duong dan den file owl
+		
 		FileManager.get().readModel(model,"http://localhost:8080/MyOntology/hotel.owl");
 		
 		// cap nhat vao csdl
 		model.commit();
 		model.close();
 		System.out.print("commit xong");
+		
+		return true;
 	}
 	/**
 	 * Neu cleanDB==true thi se xoa het database va import lai file owl vao database
@@ -109,6 +115,18 @@ private java.sql.Statement pst;
 	private static IDBConnection getConnection(boolean cleanDB) {
 		try {
 			Class.forName(s_dbDriver);
+			/*
+			 *  try {
+			 
+					connection = DriverManager.getConnection(s_dbURL, s_dbUser, s_dbPw);
+					Statement stm=connection.createStatement();
+					stm.executeUpdate("CREATE DATABASE MyDB"); 
+					s_dbURL    = "jdbc:mysql://localhost/MyDB";
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				*/
 			
 		} catch (ClassNotFoundException e) {
 			throw new RuntimeException(
@@ -142,6 +160,7 @@ private java.sql.Statement pst;
 			
 	// ket noi csdl
 			Class.forName(s_dbDriver); 
+			
 		
 		} catch (Exception e) {
 			System.err.println("Failed to load the driver for the database: "
@@ -151,6 +170,8 @@ private java.sql.Statement pst;
 		
 		// lay mo hinh rdf tu owl, dua ra modelmaker
 		if (s_reload) {
+		
+			
 			
 			maker = getRDBMaker(s_dbURL, s_dbUser, s_dbPw, s_dbType, true);
 			loadDB(maker, s_source);
@@ -230,7 +251,9 @@ private java.sql.Statement pst;
 	 */
 	public static void main(String[] args) {
 		Database db=new Database(); 
-		//db.loadData(true);
+		//IDBConnection db1 = db.getConnection(true);
+		boolean result = db.loadData(true);
+		System.out.println("KET QUA:"+result);
 	}
 }
 

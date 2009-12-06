@@ -567,9 +567,9 @@ public class OntologyModel {
 	}
 	public static void main(String s[]){
 		OntologyModel on=new OntologyModel();
-		//on.builtOnt2Database();
-		long a = on.maxIdPlus("Address");
-		System.out.print("tong so:"+a);
+		on.builtOnt2Database();
+		//long a = on.maxIdPlus("Address");
+		//System.out.print("tong so:"+a);
 		
 	}
 }

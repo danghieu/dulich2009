@@ -37,4 +37,7 @@ public class Address {
 		this.zipcode = zipcode;
 		
 	}
+	public Address() {
+		// TODO Auto-generated constructor stub
+	}
 }
