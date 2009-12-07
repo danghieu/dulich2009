@@ -41,7 +41,35 @@ public class CallAgent {
 
         try {
 
-            result = (String) myClient.execute("UserAgent." + function, v);
+            result = (String) myClient.execute(function, v);
+        } catch (XmlRpcException e) {
+            System.out.println("exception while transmitting message " + e);
+            e.printStackTrace();
+        } catch (java.io.IOException e) {
+            System.out.println("exception while transmitting message " + e);
+            e.printStackTrace();
+        }
+        return result;
+    }
+    /**
+     * used for calling function with more than one param
+     * @param function
+     * @param params
+     * @return
+     */
+    public String callTheAgentViaXmlRpc(String function, String[] params) {
+        String result = null;
+        //the parameters are inserted in a vector
+        Vector v = new Vector();
+        for(int i = 0; i < params.length; i ++){
+            v.addElement(params[i]);
+        }
+        
+        System.out.println("method is going to be called");
+
+        try {
+
+            result = (String) myClient.execute(function, v);
         } catch (XmlRpcException e) {
             System.out.println("exception while transmitting message " + e);
             e.printStackTrace();

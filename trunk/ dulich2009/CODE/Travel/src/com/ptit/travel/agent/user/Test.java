@@ -24,7 +24,7 @@ import com.ptit.travel.common.CallAgent;
 
 public class Test {
 
-    public static final String SERVER = "http://localhost:8000";
+    public static final String SERVER = "http://localhost:8006";
 
     //
     // String id = "AskAgent";
@@ -39,12 +39,14 @@ public class Test {
         }
     }
 
+
     /**
      * @param args
+     * 
      */
     private void callTheAgentViaXmlRpc() {
-        String function = "UserAgent.getSearchResults";
-        String param = "102";
+        String function = "UserAgent.search";;
+        String param[] = {"102", "abc", "available"};
         CallAgent ca = new CallAgent();
         String result = ca.callTheAgentViaXmlRpc(function, param);
         System.out.println("|| CALL "+function+": " + result);
