@@ -87,16 +87,16 @@ public class UserAgent extends Agent {
      * 
      */
     public String search(String msg, String  msgId, String protocol) {       
-
+        log.info("=== ADD RequestInfo behavior to " + this.getLocalName());
         addBehaviour(new RequestInfo(msg, msgId, protocol));// duoc trieu goi tu UserServlet
 
         return "ok";
     }
 
-    public String getSearchResults(String msgId) {
+    public String searchResults(String msgId) {
         String results = "";
         try {
-            ArrayList<String> msgs = msgQueue.get("102");
+            ArrayList<String> msgs = msgQueue.get(msgId);
             log.info("|| message Results:" + msgs);
             msgQueue.remove(msgId);
             for (int i = 0; i < msgs.size(); i++) {
@@ -106,7 +106,8 @@ public class UserAgent extends Agent {
                 }
             }
         } catch (Exception e) {
-            results = e.toString();
+            results = "null";
+            log.info(e.toString());
             e.printStackTrace();
         }
 
@@ -132,7 +133,7 @@ public class UserAgent extends Agent {
         }
     }
 
-    public String getBookResults(String msgId) {
+    public String bookResults(String msgId) {
         String results = "";
         try {
             ArrayList<String> msgs = msgQueue.get(msgId);
@@ -165,7 +166,7 @@ public class UserAgent extends Agent {
         return "ok";
     }
 
-    public String getPrepareResults(String msgId) {
+    public String prepareModifyResults(String msgId) {
         String results = "";
         try {
             ArrayList<String> msgs = msgQueue.get(msgId);
@@ -197,7 +198,7 @@ public class UserAgent extends Agent {
         return "ok";
     }
 
-    public String getModifyResults(String msgId) {
+    public String modifyResults(String msgId) {
         String results = "";
         try {
             ArrayList<String> msgs = msgQueue.get(msgId);
@@ -223,13 +224,17 @@ public class UserAgent extends Agent {
      */
     public String cancel(String resource) {
         String msgId = getLocalName() + System.currentTimeMillis(); //unique
-
+        
         addBehaviour(new RequestCancel(this, resource, msgId));
 
         return "ok";
     }
-
-    public String getCancelResults(String msgId) {
+    /**
+     * get results affter finishing cancel behavior
+     * @param msgId
+     * @return
+     */
+    public String cancelResults(String msgId) {
         String results = "";
         try {
             ArrayList<String> msgs = msgQueue.get(msgId);
@@ -289,7 +294,6 @@ public class UserAgent extends Agent {
                         receivers.add("HotelAgent");
                         // Send the cfp to all agents
                         ACLMessage msg = Message.createInformMessage(a, receivers,content);
-                        msg.setContent(content);  
                         msg.setProtocol(protocol);
                         msg.setConversationId(myAgent.getLocalName());
                         msg.setReplyWith(msgId); // Unique
@@ -309,8 +313,8 @@ public class UserAgent extends Agent {
 
                 case 1:
                     // Receive all proposals/refusals from agents
-                    //ACLMessage replyMsg = myAgent.receive(mt);
-                    ACLMessage replyMsg = myAgent.receive();
+                    ACLMessage replyMsg = myAgent.receive(mt);
+                    //ACLMessage replyMsg = myAgent.receive();
                     if (replyMsg != null) {
                         //if (replyMsg.getPerformative() == ACLMessage.PROPOSE) 
                         {
@@ -332,7 +336,9 @@ public class UserAgent extends Agent {
                         block();
 
                     }
-
+                    break;
+                case 2:
+                    
                     break;
 
             }
@@ -343,7 +349,7 @@ public class UserAgent extends Agent {
             
             if (step == 2) {// && avail); if finishing only exist available
                 // put messages into queue of agent
-                log.info("=== Satified Messages put into Message Queue");            
+                log.info("=== FIHISHED RequestInfo behavior");            
                 msgQueue.put(msgId, msgs);
                 return true;
             }
