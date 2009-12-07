@@ -1,6 +1,7 @@
 package com.ptit.travel.common.servlet;
 
 import com.ptit.travel.agent.communication.Message;
+import com.ptit.travel.agent.communication.Protocol;
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -16,6 +17,7 @@ import com.ptit.travel.common.CallAgent;
 import jade.wrapper.AgentController;
 import java.util.ArrayList;
 import java.util.Enumeration;
+import java.util.TreeSet;
 import org.apache.log4j.Logger;
 
 /**
@@ -23,12 +25,12 @@ import org.apache.log4j.Logger;
  */
 public class UserServlet extends HttpServlet {
 
-    Logger log = Logger.getLogger(UserServlet.class.getName());
+    private Logger log = Logger.getLogger(UserServlet.class.getName());
     private static final long serialVersionUID = 1L;
     private CallAgent callAgent;// ConfigXMLConnect.HOST_USER
     private AgentController agentController = null;
     private String nickName;
-    //*
+    /*
 
     @Override
     public void destroy() {
@@ -91,50 +93,114 @@ public class UserServlet extends HttpServlet {
     protected void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 
-        String protocol = null;
-        String param = "";
+        String protocol = request.getParameter("protocol");
+        //*
+
         String msgId = "guest" + System.currentTimeMillis();
-        String msg = "";
-        Enumeration list = request.getParameterNames();
-        protocol = request.getParameter("protocol");
+        String msg = extract(request);
+        String function = "";
 
-        while (list.hasMoreElements()) {
-            param = (String) list.nextElement();
-            if (!"protocol".equals(param) && !"submit".equals(param)) {
-                msg += param + ": " + request.getParameter(param);
-                if (list.hasMoreElements()) {
-                    msg += Message.FIELD_SEPARATE;
+        // Foward to JSP to view
 
+        String page = "/SearchServlet";
+        if (protocol != null) {
+
+            if (protocol.endsWith(Protocol.SUFFIX_SEARCH)) {
+                function = "UserAgent.search";
+                page = "/SearchServlet";
+            } else if (protocol.endsWith(Protocol.SUFFIX_BOOK)) {
+                function = "UserAgent.book";
+                page = "/BookServlet";
+            } // more... //TODO
+            else {
+                log.error("Don't understand protocol: " + protocol);
+            }
+            // create parameters to call agent
+            String params[] = {msg, msgId, protocol};
+
+            callAgent = new CallAgent();
+            String result = callAgentBehavior(msgId, function, params);
+            request.setAttribute("result", result);
+            try {
+                log.info("Forward to: " + page);
+                getServletConfig().getServletContext().getRequestDispatcher(
+                        page).forward(request, response);
+
+            } catch (ServletException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            } catch (IOException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
+        } else {
+            log.error("Not identified protocol yet");
+        }
+    }
+
+    /**
+     * call to add a behavior to agent and get result from agent affter agent finishing this behavior
+     * @param msgId unique id of msg
+     * @param function invoked function of agent 
+     * @param params String[] parameters of function
+     * @return result affter agent has done the behavior
+     */
+    public String callAgentBehavior(String msgId, String function, String params[]) {
+
+        String result = "null";
+        try {
+            log.info("Call " + function + "()");
+            callAgent.callTheAgentViaXmlRpc(function, params);
+            int times = 5; // max times 
+
+            while ("null".equals(result) && times > 0) {
+                try {
+                    Thread.sleep(1000);
+                } catch (Exception e) {
                 }
+                times--;
+                result = callAgent.callTheAgentViaXmlRpc(function + "Results", msgId);
+
+            }
+        } catch (Exception e) {
+            log.error(e.toString());
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    /**
+     * combine all parameters values into a string.
+     * Firstly, parameters ordered according to alphabet, then executes combining 
+     * @param request
+     * @return ([) + SEPARATE + getParameter(param1) + ...]
+     */
+    public String extract(HttpServletRequest request) {
+        String param = null;
+        String msg = "";
+        Enumeration paramList = request.getParameterNames();
+        TreeSet<String> paramSet = new TreeSet<String>();
+
+        while (paramList.hasMoreElements()) {
+
+            param = (String) paramList.nextElement();
+            if (!"protocol".equals(param) && !"submit".equals(param) && !"button".equals(param)) {
+                paramSet.add(param);
+
+            }
+        }
+        log.info("|| Parameter: " + paramSet);
+        Object[] params = paramSet.toArray();
+        int length = params.length;
+        for (int i = 0; i < length; i++) {
+            param = (String) params[i];
+            msg += request.getParameter(param);
+            if (i < length - 1) {
+                msg += Message.FIELD_SEPARATE;
+
             }
         }
         log.info("|| " + msg);
-        callAgent = new CallAgent();//("localhost", 8006);
-
-
-
-        //*
-        String result = "done";
-        System.out.println("------------ Before call ---------------------");
-        try {
-            String input[] = { msg, msgId, protocol};
-            callAgent.callTheAgentViaXmlRpc("UserAgent.search",input);
-
-            try {
-                Thread.sleep(1000);
-            } catch (Exception e) {
-            }
-
-            result = callAgent.callTheAgentViaXmlRpc("UserAgent.getSearchResults", msgId);// trieu goi de lay ket qua search
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        System.out.println("------------ affter call ---------------------" + result);
-        //*/
-        PrintWriter out = response.getWriter();
-        out.print(result);// hien thi ket qua tren trang servlet
-
+        return msg;
     }
 }

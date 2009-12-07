@@ -13,5 +13,9 @@ import java.io.Serializable;
  */
 public interface SerializableBean extends Serializable{
 
-    public String toMsg();
+    /**
+     * combine all the attributes of Object into a string message
+     * @return
+     */
+    public String toMsg();    
 }
