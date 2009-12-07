@@ -50,7 +50,7 @@ public class HotelAgent extends Agent {
         mem = new Memory(
                 "E:/Develop/Netbean/Travel/config/HotelAgent.properties", this.getLocalName());
 
-        addBehaviour(new TickerBehaviour(this, 60000) {
+        addBehaviour(new TickerBehaviour(this, 30000) {
             protected void onTick() {
                 HandleRecivedMessages hrmBehaviour = new HandleRecivedMessages();
                 addBehaviour(hrmBehaviour);

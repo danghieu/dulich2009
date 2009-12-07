@@ -14,6 +14,8 @@ import com.ptit.travel.agent.user.UserAgent;
 import com.ptit.travel.common.AgentManager;
 import com.ptit.travel.common.CallAgent;
 import jade.wrapper.AgentController;
+import java.util.ArrayList;
+import java.util.Enumeration;
 import org.apache.log4j.Logger;
 
 /**
@@ -26,7 +28,8 @@ public class UserServlet extends HttpServlet {
     private CallAgent callAgent;// ConfigXMLConnect.HOST_USER
     private AgentController agentController = null;
     private String nickName;
-    
+    //*
+
     @Override
     public void destroy() {
         super.destroy();
@@ -36,10 +39,10 @@ public class UserServlet extends HttpServlet {
                 agentController.kill();
             } catch (Exception e) {
                 e.printStackTrace();
-                log.error("UserServlet.destroy(): " +e);
+                log.error("UserServlet.destroy(): " + e);
             }
-        }    
-        
+        }
+
     }
 
     @Override
@@ -49,17 +52,19 @@ public class UserServlet extends HttpServlet {
             String host = "localhost";
             String port = "1099";
             nickName = "UserAgent";//"Guest" + System.currentTimeMillis();
+
             String className = "com.ptit.travel.agent.user.UserAgent";
             try {
                 log.info("|| Starting agent: " + nickName);
                 agentController = AgentManager.startAgent(host, port, nickName, className);
             } catch (Exception e) {
                 e.printStackTrace();
-                log.error("UserServlet.init(): " +e);
+                log.error("UserServlet.init(): " + e);
             }
 
         }
-    }
+    }//*/
+
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -85,34 +90,51 @@ public class UserServlet extends HttpServlet {
 
     protected void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-//		
-//		String stateid = request.getParameter("stateid");
-//		String beginDate = request.getParameter("beginDate");;
-//		String endDate = request.getParameter("endDate");
-//		String numberStar = request.getParameter("numberStar");
-//		String price = request.getParameter("price");
+
+        String protocol = null;
+        String param = "";
+        String msgId = "guest" + System.currentTimeMillis();
+        String msg = "";
+        Enumeration list = request.getParameterNames();
+        protocol = request.getParameter("protocol");
+
+        while (list.hasMoreElements()) {
+            param = (String) list.nextElement();
+            if (!"protocol".equals(param) && !"submit".equals(param)) {
+                msg += param + ": " + request.getParameter(param);
+                if (list.hasMoreElements()) {
+                    msg += Message.FIELD_SEPARATE;
+
+                }
+            }
+        }
+        log.info("|| " + msg);
         callAgent = new CallAgent();//("localhost", 8006);
-        String msgId = "Hotel" + System.currentTimeMillis();
-        String msg = msgId + Message.FIELD_SEPARATE +
-                "param1" + Message.FIELD_SEPARATE +
-                "PARAM2";
-    
+
+
+
+        //*
         String result = "done";
         System.out.println("------------ Before call ---------------------");
         try {
-            callAgent.callTheAgentViaXmlRpc("search", msg);
+            String input[] = { msg, msgId, protocol};
+            callAgent.callTheAgentViaXmlRpc("UserAgent.search",input);
+
             try {
                 Thread.sleep(1000);
             } catch (Exception e) {
             }
-            
-            result = callAgent.callTheAgentViaXmlRpc("getSearchResults", msgId);
+
+            result = callAgent.callTheAgentViaXmlRpc("UserAgent.getSearchResults", msgId);// trieu goi de lay ket qua search
+
         } catch (Exception e) {
             e.printStackTrace();
         }
 
         System.out.println("------------ affter call ---------------------" + result);
+        //*/
         PrintWriter out = response.getWriter();
-        out.print(result);
+        out.print(result);// hien thi ket qua tren trang servlet
+
     }
 }

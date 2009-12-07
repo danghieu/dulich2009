@@ -86,10 +86,9 @@ public class UserAgent extends Agent {
      *            represents type of resource in Memory Model (OWL model)
      * 
      */
-    public String search(String msg) {
-        final String msgId = "102";//getLocalName() + System.currentTimeMillis();
+    public String search(String msg, String  msgId, String protocol) {       
 
-        addBehaviour(new RequestInfo(this, msg, msgId));
+        addBehaviour(new RequestInfo(msg, msgId, protocol));// duoc trieu goi tu UserServlet
 
         return "ok";
     }
@@ -263,17 +262,17 @@ public class UserAgent extends Agent {
 
         private int step = 0;
         private String content = null;
+        private String protocol = null;
         private ArrayList<String> receivers;
         private String msgId;
         private Agent a;
         private boolean avail = false;
         private ArrayList<String> msgs;
 
-        public RequestInfo(Agent _a, String _content, String _msgId) {
-            super(_a);
-            a = _a;
+        public RequestInfo(String _content, String _msgId, String _p) {
             content = _content;
             msgId = _msgId;
+            protocol = _p;
             msgs = new ArrayList<String>();
         }
 
@@ -285,13 +284,13 @@ public class UserAgent extends Agent {
                         // collect agents who satisfy action
                         //receivers = agentDAO.getAgents("", "hotel");
                         // FOR TEST ONLY
-                        log.info("=== Preparing msg to send HotelAgent: " + content);
+                        log.info("=== Preparing msg to send HotelAgent: " + protocol);
                         receivers = new ArrayList<String>();
                         receivers.add("HotelAgent");
                         // Send the cfp to all agents
-                        ACLMessage msg = new ACLMessage(ACLMessage.INFORM);//Message.createInformMessage(a, receivers,content);
+                        ACLMessage msg = Message.createInformMessage(a, receivers,content);
                         msg.setContent(content);  
-                        msg.setProtocol(Protocol.HOTEL_AVAIL);
+                        msg.setProtocol(protocol);
                         msg.setConversationId(myAgent.getLocalName());
                         msg.setReplyWith(msgId); // Unique
                         // value
@@ -341,12 +340,11 @@ public class UserAgent extends Agent {
 
         public boolean done() {
 
-            log.info("=== Satified Messages put into Message Queue");
-            msgs.add(content);
-            msgQueue.put(msgId, msgs);
+            
             if (step == 2) {// && avail); if finishing only exist available
                 // put messages into queue of agent
-                
+                log.info("=== Satified Messages put into Message Queue");            
+                msgQueue.put(msgId, msgs);
                 return true;
             }
             return false;
