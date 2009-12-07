@@ -109,7 +109,7 @@
 <td><input type="text" name="beginDate" id="beginDate" size="13" datepicker="true" datepicker_format="DD/MM/YYYY"></td></tr>
 <tr>
 <td>Ng&agrave;y đi:</td>
-<td><input type="text" name="endDate" id="endDate" size="13" datepicker="true" datepicker_format="DD/MM/YYYY" disabled="true"></td></tr>
+<td><input type="text" name="endDate" id="endDate" size="13" datepicker="true" datepicker_format="DD/MM/YYYY" ></td></tr>
 <tr>
 <td>Loại KS:</td>
 <td><select style="width: 160px; font-size: 11px; height: 22px;" name="numberStar">
@@ -126,12 +126,13 @@
 <td><select style="width: 160px; font-size: 11px; height: 22px;" name="price">
 <option value="0">- - - Tất cả - -</option>
 <option value="100">Form 100 ->150 USD</option>
-<option value="">Form 150 ->200 USD</option>
-<option value="">Form 100 ->150 USD</option>
-<option value="">Form 100 ->150 USD</option>
+<option value="150">Form 150 ->200 USD</option>
+<option value="200">Form 200 ->250 USD</option>
+<option value="250">Form 250 ->300 USD</option>
 </select></td></tr>
 </tbody></table><p> 
- 
+ <input type="hidden" value="HotelAvail" name="
+        <%=Protocol.HOTEL_AVAIL %>">
  <input type="submit" value="Tìm" name="submit">
 </p></form>
 
