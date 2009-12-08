@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app id="WebApp_ID" version="2.5" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
   <display-name>Travel</display-name>
-  <welcome-file-list>
+    
+    <welcome-file-list>
     <welcome-file>/pages/hotel/searchRoom.jsp</welcome-file>
     <welcome-file>index.htm</welcome-file>
     <welcome-file>index.jsp</welcome-file>
@@ -11,8 +12,8 @@
   </welcome-file-list>
   <servlet>
     <description/>
-    <display-name>SearchHotel</display-name>
-    <servlet-name>SearchHotel</servlet-name>
+    <display-name>UserServlet</display-name>
+    <servlet-name>UserServlet</servlet-name>
     <servlet-class>com.ptit.travel.common.servlet.UserServlet</servlet-class>
     <init-param>
         <param-name>server</param-name>
@@ -23,9 +24,17 @@
         <param-value>8006</param-value>
     </init-param>
   </servlet>
-  <servlet-mapping>
-    <servlet-name>SearchHotel</servlet-name>
-    <url-pattern>/SearchHotel</url-pattern>
+    <servlet>
+        <servlet-name>SearchServlet</servlet-name>
+        <servlet-class>com.ptit.travel.servlet.user.SearchServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SearchServlet</servlet-name>
+        <url-pattern>/SearchServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+    <servlet-name>UserServlet</servlet-name>
+    <url-pattern>/UserServlet</url-pattern>
   </servlet-mapping>
   <servlet>
     <description/>
