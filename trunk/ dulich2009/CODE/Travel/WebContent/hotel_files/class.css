@@ -1,0 +1,156 @@
+BODY {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; BACKGROUND: url('../bacground.gif'); PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px; TEXT-ALIGN: center
+}
+#body-wrapper {
+	BACKGROUND: url('../images/global/topFlower.gif') no-repeat 50% 10px; TEXT-ALIGN: left
+}
+UNKNOWN {
+	BACKGROUND: url(/images/newInterior/bottomFlower.png) no-repeat center bottom; TEXT-ALIGN: center
+}
+ HTML #body-bottom {
+	FILTER: progid:DXImageTransform.Microsoft.AlphaImageLoader(src="/images/newInterior/bottomFlower.png",sizingMethod="scale")
+}
+TABLE {
+	BORDER-RIGHT: medium none; PADDING-RIGHT: 0px; BORDER-TOP: medium none; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; BORDER-LEFT: medium none; PADDING-TOP: 0px; BORDER-BOTTOM: medium none
+}
+IMG {
+	BORDER-RIGHT: medium none; BORDER-TOP: medium none; BORDER-LEFT: medium none; BORDER-BOTTOM: medium none
+}
+.address {
+	PADDING-RIGHT: 40px; FONT-WEIGHT: normal; FONT-SIZE: 11px; COLOR: #000000; FONT-FAMILY: Verdana, Arial, sans-serif
+}
+.main {
+	FONT-WEIGHT: normal; FONT-SIZE: 11px; COLOR: #666666; FONT-FAMILY: Verdana, Arial, sans-serif
+}
+.droverviewinfo {
+	FONT-WEIGHT: normal; FONT-SIZE: 11px; COLOR: #ffffff; FONT-FAMILY: Verdana, Arial, sans-serif
+}
+.mainbold {
+	FONT-WEIGHT: bold; FONT-SIZE: 11px; COLOR: #666666; FONT-FAMILY: Verdana, Arial, sans-serif
+}
+.insideinformationtitle {
+	FONT-WEIGHT: bold; FONT-SIZE: 14px; COLOR: #ffffff; FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+.whitebold {
+	FONT-WEIGHT: bold; FONT-SIZE: 18px; COLOR: #ffffff; FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+SELECT {
+	FONT-SIZE: 11px; WIDTH: 124px; COLOR: #000000; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif
+}
+.border {
+	BORDER-RIGHT: #4d4d4d 1px solid; BORDER-TOP: #4d4d4d 1px solid; BORDER-LEFT: #4d4d4d 1px solid; BORDER-BOTTOM: #4d4d4d 1px solid
+}
+.docInput {
+	FONT-SIZE: 10px; WIDTH: 124px; COLOR: #4d4d4d; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif
+}
+.whiteTable {
+	WIDTH: 802px; BACKGROUND-COLOR: #ffffff
+}
+.darkTable {
+	WIDTH: 802px; BACKGROUND-COLOR: #4d4d4d
+}
+.tabsTable {
+	PADDING-TOP: 10px; BACKGROUND-COLOR: #4d4d4d
+}
+.docFinderTable {
+	BACKGROUND-POSITION: left top; BACKGROUND-IMAGE: url(../images/docFinder/docFinder.gif); WIDTH: 165px; BACKGROUND-REPEAT: no-repeat; HEIGHT: 86px; BACKGROUND-COLOR: #ffffff
+}
+.doctorImg {
+	FLOAT: left; MARGIN: 1px 0px 0px 1px
+}
+#form-wrap {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; BACKGROUND: url(/DailyBeauty/images/form-bg.gif) no-repeat; PADDING-BOTTOM: 20px; PADDING-TOP: 60px
+}
+#form-wrap SELECT {
+	FONT-WEIGHT: bold; VERTICAL-ALIGN: middle; WIDTH: 150px; MARGIN-RIGHT: 10px; HEIGHT: 18px
+}
+#form-wrap SELECT OPTION {
+	FONT-WEIGHT: bold; HEIGHT: 18px
+}
+#form-wrap INPUT {
+	FONT-WEIGHT: bold; VERTICAL-ALIGN: middle; MARGIN-RIGHT: 10px
+}
+.findDerm {
+	BACKGROUND-POSITION: left top; BACKGROUND-IMAGE: url(../images/docFinder/findDerm.gif); WIDTH: 165px; BACKGROUND-REPEAT: no-repeat; HEIGHT: 59px; BACKGROUND-COLOR: #ffffff
+}
+.findCD {
+	BACKGROUND-POSITION: left top; BACKGROUND-IMAGE: url(../images/docFinder/findCD.gif); WIDTH: 165px; BACKGROUND-REPEAT: no-repeat; HEIGHT: 59px; BACKGROUND-COLOR: #ffffff
+}
+.findPS {
+	BACKGROUND-POSITION: left top; BACKGROUND-IMAGE: url(../images/docFinder/findPS.gif); WIDTH: 165px; BACKGROUND-REPEAT: no-repeat; HEIGHT: 59px; BACKGROUND-COLOR: #ffffff
+}
+.docFinderInfo {
+	PADDING-LEFT: 15px; PADDING-TOP: 24px
+}
+.zipBox {
+	WIDTH: 124px; HEIGHT: 20px
+}
+.zipFind {
+	WIDTH: 80px; HEIGHT: 20px
+}
+.text {
+	FONT-WEIGHT: normal; FONT-SIZE: 11px; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif
+}
+.header {
+	FONT-WEIGHT: bold; FONT-SIZE: 10px; FONT-FAMILY: Verdana, Geneva, Arial, Helvetica, sans-serif
+}
+.bb {
+	BORDER-BOTTOM: #cccccc 1px solid
+}
+.bt {
+	BORDER-TOP: #cccccc 1px solid
+}
+.br {
+	BORDER-RIGHT: #cccccc 1px solid
+}
+.bl {
+	BORDER-LEFT: #cccccc 1px solid
+}
+#mag {
+	WIDTH: 800px; POSITION: absolute; TOP: 30px; TEXT-ALIGN: right
+}
+.mainTable {
+	BACKGROUND-POSITION: left bottom; BACKGROUND-IMAGE: url(../images/home_bg.jpg); WIDTH: 641px; BACKGROUND-REPEAT: no-repeat; HEIGHT: 432px; BACKGROUND-COLOR: #ffffff
+}
+.homeText {
+	PADDING-RIGHT: 10px; PADDING-LEFT: 20px; FONT-SIZE: 9px; COLOR: #4d4d4d; LINE-HEIGHT: 170%; FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+.homeLogo {
+	PADDING-LEFT: 10px; PADDING-BOTTOM: 15px
+}
+.footerTable {
+	PADDING-TOP: 10px; BACKGROUND-COLOR: #4d4d4d
+}
+.docCheck {
+	BACKGROUND-POSITION: left top; BACKGROUND-IMAGE: url(../images/docCheck.gif); WIDTH: 224px; BACKGROUND-REPEAT: no-repeat; HEIGHT: 66px
+}
+#magSmall {
+	WIDTH: 797px; POSITION: absolute; TOP: 16px
+}
+.goButton {
+	WIDTH: 40px
+}
+.rightColumn {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 5px; PADDING-BOTTOM: 0px; PADDING-TOP: 10px
+}
+.mainPT {
+	PADDING-TOP: 3px
+}
+.productHeader {
+	FONT-WEIGHT: normal; FONT-SIZE: 10px; PADDING-BOTTOM: 10px; COLOR: #b8b82e; FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif
+}
+INPUT {
+	FONT-SIZE: 11px; COLOR: #000000; FONT-FAMILY: Verdana, Arial
+}
+.fivestar-pager {
+	FONT-SIZE: 10px; COLOR: #000; FONT-FAMILY: Verdana, Arial, Helvetica, Sans-Serif; BACKGROUND-COLOR: #fff
+}
+.fivestar-pager SPAN {
+	FONT-WEIGHT: bold; FONT-SIZE: 11px; COLOR: #000; FONT-FAMILY: Verdana, Arial, Helvetica, Sans-Serif; BACKGROUND-COLOR: #fff
+}
+.cf:unknown {
+	CLEAR: both; DISPLAY: block; VISIBILITY: hidden; HEIGHT: 0px; content: "."
+}
+HTML .cf {
+	HEIGHT: 1%
+}
