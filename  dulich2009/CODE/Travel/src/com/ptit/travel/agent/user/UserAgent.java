@@ -88,7 +88,7 @@ public class UserAgent extends Agent {
      */
     public String search(String msg, String  msgId, String protocol) {       
         log.info("=== ADD RequestInfo behavior to " + this.getLocalName());
-        addBehaviour(new RequestInfo(msg, msgId, protocol));// duoc trieu goi tu UserServlet
+        addBehaviour(new RequestInfo(this, msg, msgId, protocol));// duoc trieu goi tu UserServlet
 
         return "ok";
     }
@@ -274,11 +274,12 @@ public class UserAgent extends Agent {
         private boolean avail = false;
         private ArrayList<String> msgs;
 
-        public RequestInfo(String _content, String _msgId, String _p) {
+        public RequestInfo(Agent _a, String _content, String _msgId, String _p) {
             content = _content;
             msgId = _msgId;
             protocol = _p;
             msgs = new ArrayList<String>();
+            a = _a;
         }
 
         public void action() {
@@ -308,6 +309,7 @@ public class UserAgent extends Agent {
                         break;
                     } catch (Exception e) {
                         // TODO: handle exception
+                        log.error(e.toString());
                         e.printStackTrace();
                     }
 
@@ -324,10 +326,11 @@ public class UserAgent extends Agent {
                              * put msg into msgQueue of agent: 
                              */
                             //FOR TEST
-                            log.info("=== One more received message from HotelAgent");
+                            log.info("=== One more received message from " + replyMsg.getSender());
                             msgs.add(replyMsg.getContent());
                         }
                         repliesCnt++;
+                        log.info("|| RECEIVERS: " + receivers.size() + " || repliesCnt: " + repliesCnt);
                         if (repliesCnt >= receivers.size()) {
                             // We received all replies
                             step = 2;

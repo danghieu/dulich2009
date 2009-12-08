@@ -30,7 +30,7 @@ public class UserServlet extends HttpServlet {
     private CallAgent callAgent;// ConfigXMLConnect.HOST_USER
     private AgentController agentController = null;
     private String nickName;
-    /*
+    //*
 
     @Override
     public void destroy() {
@@ -97,7 +97,7 @@ public class UserServlet extends HttpServlet {
         //*
 
         String msgId = "guest" + System.currentTimeMillis();
-        String msg = extract(request);
+        String msg = extractMsg(request);
         String function = "";
 
         // Foward to JSP to view
@@ -118,9 +118,9 @@ public class UserServlet extends HttpServlet {
             // create parameters to call agent
             String params[] = {msg, msgId, protocol};
 
-//            callAgent = new CallAgent();
-//            String result = callAgentBehavior(msgId, function, params);
-//            request.setAttribute("result", result);
+            callAgent = new CallAgent();
+            String result = callAgentBehavior(msgId, function, params);
+            request.setAttribute("result", result);
             try {
                 log.info("Forward to: " + page);
                 getServletConfig().getServletContext().getRequestDispatcher(
@@ -175,7 +175,7 @@ public class UserServlet extends HttpServlet {
      * @param request
      * @return ([) + SEPARATE + getParameter(param1) + ...]
      */
-    public String extract(HttpServletRequest request) {
+    public String extractMsg(HttpServletRequest request) {
         String param = null;
         String msg = "";
         Enumeration paramList = request.getParameterNames();
