@@ -1,28 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jre1.6.0"/>
 	<classpathentry kind="con" path="org.eclipse.jst.server.core.container/org.eclipse.jst.server.tomcat.runtimeTarget/Apache Tomcat v6.0 (2)"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/jade"/>
-	<classpathentry kind="lib" path="E:/GROUP/TRAVELING SYSTEM/MEMBERS/Docs/CODE/Travel/lib/jena/arq.jar"/>
-	<classpathentry kind="lib" path="E:/GROUP/TRAVELING SYSTEM/MEMBERS/Docs/CODE/Travel/lib/jena/arq-extra.jar"/>
-	<classpathentry kind="lib" path="E:/GROUP/TRAVELING SYSTEM/MEMBERS/Docs/CODE/Travel/lib/jena/icu4j_3_4.jar"/>
-	<classpathentry kind="lib" path="E:/GROUP/TRAVELING SYSTEM/MEMBERS/Docs/CODE/Travel/lib/jena/iri.jar"/>
-	<classpathentry kind="lib" path="E:/GROUP/TRAVELING SYSTEM/MEMBERS/Docs/CODE/Travel/lib/jena/jena.jar"/>
-	<classpathentry kind="lib" path="E:/GROUP/TRAVELING SYSTEM/MEMBERS/Docs/CODE/Travel/lib/jena/jenatest.jar"/>
-	<classpathentry kind="lib" path="E:/GROUP/TRAVELING SYSTEM/MEMBERS/Docs/CODE/Travel/lib/jena/json.jar"/>
-	<classpathentry kind="lib" path="E:/GROUP/TRAVELING SYSTEM/MEMBERS/Docs/CODE/Travel/lib/jena/junit-4.5.jar"/>
-	<classpathentry kind="lib" path="E:/GROUP/TRAVELING SYSTEM/MEMBERS/Docs/CODE/Travel/lib/jena/log4j-1.2.12.jar"/>
-	<classpathentry kind="lib" path="E:/GROUP/TRAVELING SYSTEM/MEMBERS/Docs/CODE/Travel/lib/jena/lucene-core-2.3.1.jar"/>
-	<classpathentry kind="lib" path="E:/GROUP/TRAVELING SYSTEM/MEMBERS/Docs/CODE/Travel/lib/jena/slf4j-api-1.5.6.jar"/>
-	<classpathentry kind="lib" path="E:/GROUP/TRAVELING SYSTEM/MEMBERS/Docs/CODE/Travel/lib/jena/slf4j-log4j12-1.5.6.jar"/>
-	<classpathentry kind="lib" path="E:/GROUP/TRAVELING SYSTEM/MEMBERS/Docs/CODE/Travel/lib/jena/stax-api-1.0.jar"/>
-	<classpathentry kind="lib" path="E:/GROUP/TRAVELING SYSTEM/MEMBERS/Docs/CODE/Travel/lib/jena/wstx-asl-3.0.0.jar"/>
-	<classpathentry kind="lib" path="E:/GROUP/TRAVELING SYSTEM/MEMBERS/Docs/CODE/Travel/lib/jena/xercesImpl.jar"/>
-	<classpathentry kind="lib" path="E:/GROUP/TRAVELING SYSTEM/MEMBERS/Docs/CODE/Travel/lib/common/log4j-1.2.12.jar"/>
-	<classpathentry kind="lib" path="E:/GROUP/TRAVELING SYSTEM/MEMBERS/Docs/CODE/Travel/lib/common/xercesImpl.jar"/>
-	<classpathentry kind="lib" path="E:/GROUP/TRAVELING SYSTEM/MEMBERS/Docs/CODE/Travel/lib/common/xmlrpc-1.1.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/common"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/semanticweb"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="C:/Program Files/Apache Software Foundation/Tomcat 6.0/lib/servlet-api.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
