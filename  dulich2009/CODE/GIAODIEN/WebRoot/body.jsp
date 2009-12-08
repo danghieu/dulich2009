@@ -22,137 +22,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </head>
 <body>
     <h1 style="margin-top: 1px; font-size: 11px; margin-bottom: 1px;" align="center"><font size="2">Du lịch Vietnam</font></h1>
-<p style="margin-top: 0px; font-weight: normal; margin-bottom: 0px; color: black; text-align: justify;">Du
-lịch E-Tourism đã có nhiều năm kinh nghiệm trong lĩnh vực lữ hành quốc tế
-và nội địa. Với đội ngũ nhân viên năng động, nhiệt tình, giàu kinh
-nghiệm và thông thạo nhiều ngoại ngữ như : Thái Lan, Anh, Pháp và Trung
-sẵn sàng giúp đỡ khách hàng của bạn trong mọi điều kiện kể cả trường
-hợp khẩn cấp. với phong cách phục vụ chuyên nghiệp chúng tôi xin được
-gửi đến Quý khách những chương trình du lịch đặc sắc, được tổ chức bằng
-tất cả tâm huyết của những người yêu nghề và sự trân trọng tuyệt đối
-với các sản phẩm tour. Chúng tôi cam kết đem đến cho khách hàng những
-sản phẩm dịch vụ chất lượng tốt nhất. <a href=""><font color="#009933">&gt;&gt;&gt;</font></a></p>
+<p style="margin-top: 0px; font-weight: normal; margin-bottom: 0px; color: black; text-align: justify;">Du 
+lịch E-Tourism đ&atilde; c&oacute; nhiều năm kinh nghiệm trong lĩnh vực lữ h&agrave;nh quốc tế 
+v&agrave; nội địa. Với đội ngũ nh&acirc;n vi&ecirc;n năng động, nhiệt t&igrave;nh, gi&agrave;u kinh 
+nghiệm v&agrave; th&ocirc;ng thạo nhiều ngoại ngữ như : Th&aacute;i Lan, Anh, Ph&aacute;p v&agrave; Trung 
+sẵn s&agrave;ng gi&uacute;p đỡ kh&aacute;ch h&agrave;ng của bạn trong mọi điều kiện kể cả trường 
+hợp khẩn cấp. với phong c&aacute;ch phục vụ chuy&ecirc;n nghiệp ch&uacute;ng t&ocirc;i xin được 
+gửi đến Qu&yacute; kh&aacute;ch những chương tr&igrave;nh du lịch đặc sắc, được tổ chức bằng 
+tất cả t&acirc;m huyết của những người y&ecirc;u nghề v&agrave; sự tr&acirc;n trọng tuyệt đối 
+với c&aacute;c sản phẩm tour. Ch&uacute;ng t&ocirc;i cam kết đem đến cho kh&aacute;ch h&agrave;ng những 
+sản phẩm dịch vụ chất lượng tốt nhất.&nbsp;</p>
 <br>
 
 						<table width="100%" border="0" cellpadding="0" cellspacing="0">
                         <tbody><tr>
-                          <td><table width="100%" border="0" cellpadding="0" cellspacing="0">
-                            <tbody><tr>
-                              <td width="116"><img src="vistalandtravel_files/img_search.jpg" width="116" height="27"></td>
-                              <td valign="bottom">
-<table border="0" cellpadding="0" cellspacing="0" height="23">
-                                <tbody><tr>
-                                  <td width="66" align="center">
-								  <table class="bg_search_h" width="100%" border="0" cellpadding="0" cellspacing="0">
-                                    <tbody><tr>
-                                      <td width="4">
-									  <img src="vistalandtravel_files/bg_search_h1.jpg" id="lefttop1" width="4" height="23"></td>
-                                      <td class="ctabon" id="titletag1" width="100%" align="center">
-									  <a href="javascript:showTag(1);" class="text_search">Khách sạn</a></td>
-                                      <td width="3"><img src="vistalandtravel_files/bg_search_h2.jpg" id="righttop1" width="3" height="23"></td>
-                                    </tr>
-                                  </tbody></table></td>
-                                  <td width="1"></td>
-                                  <td width="66" align="center">
-								  <table class="bg_search" width="100%" border="0" cellpadding="0" cellspacing="0">
-                                    <tbody><tr>
-                                      <td width="4">
-									  <img src="vistalandtravel_files/bg_search1.jpg" id="lefttop2" width="4" height="23"></td>
-                                      <td class="ctaboff" id="titletag2" width="100%" align="center">
-									  <a href="javascript:showTag(2);" class="text_search">Tours</a></td>
-                                      <td width="3">
-									  <img src="vistalandtravel_files/bg_search2.jpg" id="righttop2" width="3" height="23"></td>
-                                    </tr>
-                                  </tbody></table></td>
-                                  <td width="1"></td>
-                                 </tr>
-                              </tbody></table>							  </td>
-                              </tr>
-                          </tbody></table></td>
+                          
                         </tr>
-                        <tr style="" id="tag1">
-                          <td>
-							<table class="border_search" width="100%" border="0" cellpadding="0" cellspacing="0" height="180">
-							 <form method="get" action="http://vistalandtravel.com/?mod=search&amp;act=hotels" name="ADSFORM_HOTELS"></form> 
-							 <input name="s_cat_id" id="s_cat_id" value="" type="hidden">
-							 <input name="mod" id="mod" value="search" type="hidden">
-							 <input name="act" id="mod" value="hotels" type="hidden">
-                            <tbody><tr>
-                              <td>
-							  <table width="100%" border="0" cellpadding="0" cellspacing="0" height="92%">
-                                <tbody><tr>
-                                  <td width="5"></td>
-                                  <td width="62"></td>
-                                </tr>
-                                <tr>
-                                  <td></td>
-                                  <td>Country</td>
-                                  <td><select name="country" id="country" style="width: 140px;" class="text_form_search" onChange="javascript:ajaxLoadURL('loader.php?mod=services&amp;act=city&amp;q='+this.value,'GET','','city',2,2);s_cat_id.value=this.value;">
-								  <option value=""> Please select </option>
-                                    <option value="45">Vietnam</option>
-                                  </select>
-								  </td>
-                                  <td></td>
-                                </tr>
-                                <tr>
-                                  <td></td>
-                                  <td width="62">City </td>
-                                  <td width="160">
-									<select name="city" id="city" style="width: 140px;" class="text_form_search" onChange="s_cat_id.value=this.value">
-									<option value=""> Select Country First </option>
-									</select>								  </td>
-                                  <td></td>
-                                </tr>
-                                 
-                                <tr>
-                                  <td></td>
-                                  <td width="62">Price($)</td>
-                                  <td width="160">
-									  <select name="price" class="text_form_search" style="width: 140px;">
-										<option value="2">Below    $ 20.00</option>
-										<option value="3">$ 20.00 - $ 50.00</option>
-										<option value="4">$ 50.00 - $ 100.00</option>
-										<option value="5">$ 100.00 - $ 200.00</option>
-										<option value="6">Above  $ 200.00</option>
-                                    </select>								  </td>
-                                  <td>&nbsp;</td>
-                                </tr>
-                                <tr>
-                                  <td></td>
-                                  <td width="62">Check-in</td>
-                                  <td width="160">
-					<input class="text_form_search" name="dchkin" id="dchkin" style="width: 120px;" type="text">
-<img src="vistalandtravel_files/icon_calendar.jpg" alt="" onClick="popUpCalendar(this,document.getElementById('dchkin'), 'mm/dd/yyyy', fnSetDate);" align="absbottom" border="0">								  </td>
-                                  <td>								  </td>
-                                </tr>
-                                <tr>
-                                  <td></td>
-                                  <td width="62">Check-out</td>
-                                  <td width="160">
-								  <input class="text_form_search" id="dchkout" name="dchkout" style="width: 120px;" type="text"> 	
-<img src="vistalandtravel_files/icon_calendar.jpg" alt="" onClick="popUpCalendar(this,document.getElementById('dchkout'), 'mm/dd/yyyy', fnSetDate);" align="absbottom" border="0">								  </td>
-                                  <td><span lang="en-us">&nbsp;</span></td>
-                                </tr>
-                                <tr>
-                                  <td>&nbsp;</td>
-                                  <td width="62">&nbsp;</td>
-                                  <td width="160">
-								  <input name="s_submit" src="vistalandtravel_files/bt_search.jpg" type="image" border="0"></td>
-                                  <td>&nbsp;</td>
-                                </tr>
-                                <tr>
-                                  <td>&nbsp;</td>
-                                  <td>&nbsp;</td>
-                                  <td>
- 								 <a class="customize_css" href="http://vistalandtravel.com/customize_hotel/">
-								  Request Hotel</a></td>
-                                  <td>&nbsp;</td>
-                                </tr>
-                              </tbody></table></td>
-                            </tr>
-							
-                          </tbody></table></td>
-                        </tr>
+                    
 						
 						<tr style="display: none;" id="tag2">
                           <td>
@@ -595,7 +481,7 @@ sản phẩm dịch vụ chất lượng tốt nhất. <a href=""><font color="#
 				<a href=""><img src="achau_files/2FBFEDB82BBC7C0040391B830B069263.gif" align="left" border="0"></a>
 			</td>
 			<td class="categpryItemHome" width="99%">
-				<a href="">Vé máy bay</a>
+				<a href="Flight.jsp">Vé máy bay</a>
 			</td>
 		</tr>
 	</tbody></table>
