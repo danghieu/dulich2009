@@ -67,30 +67,31 @@
                             <tr valign="top"></tr>
                             <tr>
                                 <td height="49"></td>
-                                <td>Nước</td>
-                                <td><select name="country" id="country" style="width: 140px;" class="text_form_search" onChange="javascript:ajaxLoadURL('loader.php?mod=services&amp;act=city&amp;q='+this.value,'GET','','city',2,2);s_cat_id.value=this.value;">
-                                        <option value=""> Lựa chọn </option>
-                                        <option value="45">Vietnam</option>
+                                <td>Thành phố</td>
+                                <td><select name="city" id="city" style="width: 140px;" class="text_form_search" onChange="javascript:ajaxLoadURL('loader.php?mod=services&amp;act=city&amp;q='+this.value,'GET','','city',2,2);s_cat_id.value=this.value;">
+                                        <option value="null"> Lựa chọn </option>
+                                        <option value="HaiPhong">Hải Phòng</option>
+										<option value="KhanhHoa">Khánh Hòa</option>
                                 </select>								  </td>
                                 <td>Vị tr&iacute;<br></td>
                                 <td><select name="location" id="v" style="width: 140px;" class="text_form_search" onChange="javascript:ajaxLoadURL('loader.php?mod=services&amp;act=city&amp;q='+this.value,'GET','','city',2,2);s_cat_id.value=this.value;">
                                         <option value=""> Lựa chọn</option>
-                                        <option value="45">Trung tâm </option>
-                                        <option value="45">Gần trung tâm</option>
-                                        <option value="45">Ngoại thành</option>
-                                        <option value ="45">Gần nhà ga</option>
-                                        <option value="45">Gần sân bay </option>
-                                        <option value="45">Gần biển</option>
-                                        <option value="45">Gần núi</option>
+                                        <option value="inside">inside </option>
+                                        <option value="outside">outside</option>
+                                        <option value="deck">deck</option>
+                                        <option value ="lowerLevel">lowerLevel</option>
+                                        <option value="upperLevel">upperLevel </option>
                                 </select>								  </td>
                                 
                             </tr>
                             <tr>
                                 <td height="56"></td>
-                                <td width="79">Thành phố </td>
+                                <td width="79">Khí hậu</td>
                                 <td width="205">
-                                    <select name="city" id="city" style="width: 140px;" class="text_form_search" onChange="s_cat_id.value=this.value">
-                                        <option value=""> Select Country First </option>
+                                    <select name="climate" id="climate" style="width: 140px;" class="text_form_search" onChange="s_cat_id.value=this.value">
+                                        <option value="cool"> mát mẻ </option>
+										<option value="warm"> ấm áp </option>
+										<option value="snow"> có tuyết </option>
                                 </select>								  </td>
                                 <td width="79">Ngày đến </td>
                                 <td width="236">
