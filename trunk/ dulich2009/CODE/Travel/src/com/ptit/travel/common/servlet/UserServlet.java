@@ -118,9 +118,9 @@ public class UserServlet extends HttpServlet {
             // create parameters to call agent
             String params[] = {msg, msgId, protocol};
 
-            callAgent = new CallAgent();
-            String result = callAgentBehavior(msgId, function, params);
-            request.setAttribute("result", result);
+//            callAgent = new CallAgent();
+//            String result = callAgentBehavior(msgId, function, params);
+//            request.setAttribute("result", result);
             try {
                 log.info("Forward to: " + page);
                 getServletConfig().getServletContext().getRequestDispatcher(
@@ -181,10 +181,9 @@ public class UserServlet extends HttpServlet {
         Enumeration paramList = request.getParameterNames();
         TreeSet<String> paramSet = new TreeSet<String>();
 
-        while (paramList.hasMoreElements()) {
-
-            param = (String) paramList.nextElement();
-            if (!"protocol".equals(param) && !"submit".equals(param) && !"button".equals(param)) {
+        while (paramList.hasMoreElements()) {            
+            param = (String) paramList.nextElement();            
+            if (!"protocol".equals(param) && !param.contains("submit") && !"button".equals(param)) {
                 paramSet.add(param);
 
             }
@@ -194,9 +193,10 @@ public class UserServlet extends HttpServlet {
         int length = params.length;
         for (int i = 0; i < length; i++) {
             param = (String) params[i];
-            msg += request.getParameter(param);
+            msg += param + ": " +request.getParameter(param);
             if (i < length - 1) {
                 msg += Message.FIELD_SEPARATE;
+                
 
             }
         }

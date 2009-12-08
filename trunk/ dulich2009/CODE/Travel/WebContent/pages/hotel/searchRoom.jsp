@@ -1,141 +1,336 @@
-<%@page contentType="text/html"%>
-<%@page pageEncoding="UTF-8"%>
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@ page language="java" import="com.ptit.travel.agent.communication.Protocol" %>
+<%
+            String path = request.getContextPath();
+            String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
+%>
 
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
+    <head>
+        <base href="<%=basePath%>">
+        
+        <title>E-tourism - Hotel</title>
+        
+        <meta http-equiv="pragma" content="no-cache">
+        <meta http-equiv="cache-control" content="no-cache">
+        <meta http-equiv="expires" content="0">    
+        <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+        <meta http-equiv="description" content="This is my page">
+        <!--
+        <link rel="stylesheet" type="text/css" href="styles.css">
+        -->
 
-<head>
-  <title>search room</title>
-  <script type="text/javascript" src="../js/datepickercontrol.js" ></script>
-  <link type="text/css" rel="stylesheet" href="../css/datepickercontrol_bluegray.css">
-  <link type="text/css" rel="stylesheet" href="../css/content.css">
-  <script language="JavaScript">
-  function abc()
-  {
-  	var date = new Date();
-	cal8 = document.getElementById("beginDate");
-	cal8.setMinDate(date);
-  }
-  
-  DatePickerControl.onSelect = function(inputid)
-  {
-  	if (inputid == "beginDate"){
-  	
-		cal8 = document.getElementById("beginDate");		
-		cal9 = document.getElementById("endDate");
-		cal9.setMinDate(cal8.value);
-		cal9.disabled = false;
-		setTimeout("document.getElementById('calendar9').focus()", 5);
-	}
-  }
-  </script>
-</head>
-
-<body id="theme2" onload="abc()">
-
-<form name="form1" action="SearchHotel" method="get">
-<table width="450" border="0">
-<tbody><tr>
-<td>Địa điểm</td>
-<td><select id="stateid" style="width: 160px; font-size: 11px; height: 22px;" name="stateid">
-<option value="0">- - - Chọn Điểm đến - - -</option>
-<option value="B2dVMVFp" selected="selected">TP HCM</option>
-<option value="B2FVMVFp">Hà Nội</option>
-<option value="B2hVMFFt">Cần Thơ</option>
-<option value="B2VVMVFp">Đà Nẵng</option>
-<option value="B2hVMVFt">An Giang</option>
-<option value="B2dVMFFv">Bà Rịa - Vũng Tàu</option>
-<option value="B2VVMVFv">Bình Định</option>
-<option value="B2dVMFFp">Bình Dương</option>
-<option value="B2dVMVFv">Bình Phước</option>
-<option value="B2dVMFFt">Bình Thuận</option>
-<option value="B2JVMVFv">Bắc Cạn</option>
-<option value="B2JVM1Fp">Bắc Giang</option>
-<option value="B2JVM1Fr">Bắc Ninh</option>
-<option value="B2hVM1Fp">Bạc Liêu</option>
-<option value="B2hVMFFp">Bến Tre</option>
-<option value="B2hVM1Fr">Cà mau</option>
-<option value="B2JVMVFr">Cao Bằng</option>
-<option value="B2ZVMVFv">Daknông</option>
-<option value="B2dVMFFr">Đồng Nai</option>
-<option value="B2hVMVFr">Đồng Tháp</option>
-<option value="B2ZVMVFt">Đắc Lắc</option>
-<option value="B2NVMVFv">Điện Biên</option>
-<option value="B2ZVMVFr">Gia Lai</option>
-<option value="B2JVMVFp">Hà Giang</option>
-<option value="B2FVMFFp">Hà Nam</option>
-<option value="B2RVMVFt">Hà Tĩnh</option>
-<option value="B2FVMVFt">Hà Tây</option>
-<option value="B2NVMVFt">Hòa Bình</option>
-<option value="B2hVM1Ft">Hậu Giang</option>
-<option value="B2FVMVFv">Hải Dương</option>
-<option value="B2FVMVFr">Hải Phòng</option>
-<option value="B2FVMVFh">Hưng Yên</option>
-<option value="B2VVMFFp">Khánh Hoà</option>
-<option value="B2hVMFFr">Kiên Giang</option>
-<option value="B2ZVMVFp">Kon Tum</option>
-<option value="B2JVMVFt">Lào Cai</option>
-<option value="B2dVMVFr">Lâm Đồng</option>
-<option value="B2NVMVFp">Lai Châu</option>
-<option value="B2JVMVFh">Lạng Sơn</option>
-<option value="B2hVMVFp">Long An</option>
-<option value="B2FVMFFr">Nam Định</option>
-<option value="B2RVMVFr">Nghệ An</option>
-<option value="B2FVMFFv">Ninh Bình</option>
-<option value="B2dVMVFt">Ninh Thuận</option>
-<option value="B2JVMFFv">Phú Thọ</option>
-<option value="B2VVMVFh">Phú Yên</option>
-<option value="B2RVMVFv">Quảng Bình</option>
-<option value="B2VVMVFr">Quảng Nam</option>
-<option value="B2VVMVFt">Quảng Ngãi</option>
-<option value="B2JVM1Ft">Quảng Ninh</option>
-<option value="B2RVMVFh">Quảng Trị</option>
-<option value="B2hVMFFh">Sóc Trăng</option>
-<option value="B2NVMVFr">Sơn La</option>
-<option value="B2dVMVFh">Tây Ninh</option>
-<option value="B2FVMFFt">Thái Bình</option>
-<option value="B2JVMFFt">Thái Nguyên</option>
-<option value="B2RVMFFp">Thừa Thiên - Huế</option>
-<option value="B2RVMVFp">Thanh Hóa</option>
-<option value="B2hVMVFv">Tiền Giang</option>
-<option value="B2hVMFFv">Trà Vinh</option>
-<option value="B2JVMFFp">Tuyên Quang</option>
-<option value="B2hVMVFh">Vĩnh Long</option>
-<option value="B2FVMVFs">Vĩnh Phúc</option>
-<option value="B2JVMFFr">Yên Bái</option>
-<option value="B2lVOFFh">Không xác định</option>
-</select></td></tr>
-<tr>
-<td>Ng&agrave;y đến:</td>
-<td><input type="text" name="beginDate" id="beginDate" size="13" datepicker="true" datepicker_format="DD/MM/YYYY"></td></tr>
-<tr>
-<td>Ng&agrave;y đi:</td>
-<td><input type="text" name="endDate" id="endDate" size="13" datepicker="true" datepicker_format="DD/MM/YYYY" ></td></tr>
-<tr>
-<td>Loại KS:</td>
-<td><select style="width: 160px; font-size: 11px; height: 22px;" name="numberStar">
-<option value="0">- - Chọn Loại KS - -</option>
-<option value="1">1 sao</option>
-<option value="2">2 sao</option>
-<option value="3">3 sao</option>
-<option value="4">4 sao</option>
-<option value="5">5 sao</option>
-<option value="47">Mini</option>
-</select></td></tr>
-<tr>
-<td>Gi&aacute;:</td>
-<td><select style="width: 160px; font-size: 11px; height: 22px;" name="price">
-<option value="0">- - - Tất cả - -</option>
-<option value="100">Form 100 ->150 USD</option>
-<option value="150">Form 150 ->200 USD</option>
-<option value="200">Form 200 ->250 USD</option>
-<option value="250">Form 250 ->300 USD</option>
-</select></td></tr>
-</tbody></table><p> 
- <input type="hidden" value="HotelAvail" name="
-        <%=Protocol.HOTEL_AVAIL %>">
- <input type="submit" value="Tìm" name="submit">
-</p></form>
-
-
-</body>
+    </head>
+    
+    <body>
+        <form action="UserServlet" method="get"> 
+            <table width="200" border="1">
+            <tr>
+            <td>
+            <table border="0" cellpadding="5" cellspacing="0" width="100%">
+            <tbody><tr>
+                <td valign="top">
+                    <table border="0" cellpadding="0" cellspacing="0" width="59%">
+                        <tbody><tr>
+                                <td><img src="hotel_files/banner_7.jpg" /></td>
+                            </tr>
+                    </tbody></table>
+                </td>
+            </tr>
+            <tr>
+            <td>
+            <table border="0" cellpadding="5" cellspacing="0" width="100%">
+            <tbody><tr>
+            <td valign="top">
+            <table border="0" cellpadding="0" cellspacing="0" width="59%">
+                <tbody><tr>
+                    <td width="64%">
+                        <table width="604" height="40">
+                            <tbody><tr>
+                                    
+                                    <td width="596" align="center" bgcolor="#3399FF"><span class="style1">Tìm kiếm khách sạn</span></td>
+                                    
+                                    
+                                </tr>
+                                
+                        </tbody></table>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <table width="605" border="0" cellpadding="0" cellspacing="0" height="212">
+                            <tbody><tr>
+                                <td width="6"></td>
+                                <td width="79"></td>
+                            </tr>
+                            <tr valign="top"></tr>
+                            <tr>
+                                <td height="49"></td>
+                                <td>Nước</td>
+                                <td><select name="country" id="country" style="width: 140px;" class="text_form_search" onChange="javascript:ajaxLoadURL('loader.php?mod=services&amp;act=city&amp;q='+this.value,'GET','','city',2,2);s_cat_id.value=this.value;">
+                                        <option value=""> Lựa chọn </option>
+                                        <option value="45">Vietnam</option>
+                                </select>								  </td>
+                                <td>Vị tr&iacute;<br></td>
+                                <td><select name="location" id="v" style="width: 140px;" class="text_form_search" onChange="javascript:ajaxLoadURL('loader.php?mod=services&amp;act=city&amp;q='+this.value,'GET','','city',2,2);s_cat_id.value=this.value;">
+                                        <option value=""> Lựa chọn</option>
+                                        <option value="45">Trung tâm </option>
+                                        <option value="45">Gần trung tâm</option>
+                                        <option value="45">Ngoại thành</option>
+                                        <option value ="45">Gần nhà ga</option>
+                                        <option value="45">Gần sân bay </option>
+                                        <option value="45">Gần biển</option>
+                                        <option value="45">Gần núi</option>
+                                </select>								  </td>
+                                
+                            </tr>
+                            <tr>
+                                <td height="56"></td>
+                                <td width="79">Thành phố </td>
+                                <td width="205">
+                                    <select name="city" id="city" style="width: 140px;" class="text_form_search" onChange="s_cat_id.value=this.value">
+                                        <option value=""> Select Country First </option>
+                                </select>								  </td>
+                                <td width="79">Ngày đến </td>
+                                <td width="236">
+                                    <input class="text_form_search" id="dchkout" name="beginDay" style="width: 120px;" type="text"> 	
+                                <img src="vistalandtravel_files/icon_calendar.jpg" alt="" onClick="popUpCalendar(this,document.getElementById('dchkout'), 'mm/dd/yyyy', fnSetDate);" align="absbottom" border="0">								  </td>
+                                
+                            </tr>
+                            
+                            <tr>
+                                <td></td>
+                                <td width="79">Giá($)</td>
+                                <td width="205">
+                                    <select name="price" class="text_form_search" style="width: 140px;">
+                                        <option value="2">Dưới   $ 20.00</option>
+                                        <option value="3">$ 20.00 - $ 50.00</option>
+                                        <option value="4">$ 50.00 - $ 100.00</option>
+                                        <option value="5">$ 100.00 - $ 200.00</option>
+                                        <option value="6">Trên $ 200.00</option>
+                                </select>								  </td>
+                                <td width="79">Ng&agrave;y đi<br></td>
+                                <td width="236">
+                                    <input class="text_form_search" id="dchkout" name="endDay" style="width: 120px;" type="text"> 	
+                                <img src="vistalandtravel_files/icon_calendar.jpg" alt="" onClick="popUpCalendar(this,document.getElementById('dchkout'), 'mm/dd/yyyy', fnSetDate);" align="absbottom" border="0">								  </td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                
+                                <td>                                  </td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                            </tr>
+                            <tr>
+                            <td></td>
+                            <td width="79">&nbsp;</td>
+                            <td width="205" align="center" class="style3">Tiện nghi </td>
+                        </table>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <table width="605" height="110">
+                            <tbody><tr>
+                                    <td width="85" height="63"><input name="karaoke" value="Karaoke" type="checkbox">Karaoke</td>
+                                    <td width="144"><input name="fitnessCenter" value="FitnessCenter" type="checkbox">Phòng tập đa năng</td>
+                                    <td width="90"><input name="swimmingpool" value="SwimmingPool" type="checkbox">Bể bơi</td>
+                                    <td width="112"><input name="spa" value="Spa" type="checkbox">Spa</td>
+                                    <td width="150"><input name="meetingRoom" value="meetingRoom" type="checkbox">Phòng hội thảo</td>
+                                </tr>
+                                <tr>
+                                    <td height="39"><input name="restaurant" value="restaurant" type="checkbox">Nhà hàng</td>
+                                    <td><input name="nightClub" value="nightClub" type="checkbox">
+                                    Câu lạc bộ đêm</td>
+                                    <td><input name="parking" value="Parking" type="checkbox">Khu để xe</td>
+                                    <td><input name="tennis" value="tennis" type="checkbox">Sân tennis</td>
+                                    <td><input name="gardenCafe" value="GardenCafe" type="checkbox">Cafe vườn</td>
+                                </tr>
+                        </tbody></table>
+                    </td>
+                    
+                </tr>
+                <tr> <td>
+                        <table width="584" height="40">
+                            <tbody><tr>
+                                    <td width="154">&nbsp;</td>
+                                    <td width="69"><input name="submit" src="vistalandtravel_files/bt_search.jpg" type="image" border="0" /></td>
+                                    <td width="345" align="center">&nbsp;</td>
+                                    
+                                </tr>
+                                
+                        </tbody></table>
+                    </td>
+                </tr>
+                <tr>
+                    
+                    
+                    <p>&nbsp;</p>
+                    <p>&nbsp;</p>
+                    <p>&nbsp;</p>
+                    <p>
+                        <br>
+                    </p>
+                    
+                </tr>
+                <tr>
+                <td>
+                
+                <table border="0" cellpadding="0" cellspacing="0" width="91%">
+                    <tbody><tr> 
+                            <td height="5"><img src="hotel_files/pixel_1_1.gif" height="1" width="1"></td>
+                        </tr>
+                        <tr valign="top"> 
+                            <td width="300"><div align="center"><font color="#ffffff"><img src="hotel_files/vietnammap.jpg" height="420" width="300"></font></div></td>
+                            <td width="5"><div align="center"></div></td>
+                            <td width="663" bgcolor="#73baff"><div align="center"> 
+                                    <table border="0" cellpadding="0" cellspacing="0" width="75%">
+                                        <tbody><tr> 
+                                                <td><div align="center"><img src="hotel_files/destinations.jpg" height="71" width="303"></div></td>
+                                            </tr>
+                                            <tr> 
+                                                <td><div align="center"> 
+                                                        <table border="0" cellpadding="0" cellspacing="0" width="180">
+                                                            <tbody><tr> 
+                                                                    <td class="mnhotel" onMouseOver="this.className='mnhotel_ac';" onMouseOut="this.className='mnhotel';" onClick="window.location.href='?lang=0&amp;mn1=1&amp;mn2=8&amp;city=1#destination';" height="20">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Thành 
+                                                                    phố Cần Thơ</td>
+                                                                </tr>
+                                                                <tr> 
+                                                                    <td class="mnhotel" onMouseOver="this.className='mnhotel_ac';" onMouseOut="this.className='mnhotel';" onClick="window.location.href='?lang=0&amp;mn1=1&amp;mn2=8&amp;city=2#destination';" height="20">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Đảo 
+                                                                    Cát Bà</td>
+                                                                </tr>
+                                                                <tr> 
+                                                                    <td class="mnhotel" onMouseOver="this.className='mnhotel_ac';" onMouseOut="this.className='mnhotel';" onClick="window.location.href='?lang=0&amp;mn1=1&amp;mn2=8&amp;city=3#destination';" height="20">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Thành 
+                                                                    phố Đà Lạt</td>
+                                                                </tr>
+                                                                <tr> 
+                                                                    <td class="mnhotel" onMouseOver="this.className='mnhotel_ac';" onMouseOut="this.className='mnhotel';" onClick="window.location.href='?lang=0&amp;mn1=1&amp;mn2=8&amp;city=4#destination';" height="20">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Thành 
+                                                                    Phố Đà Nẵng</td>
+                                                                </tr>
+                                                                <tr> 
+                                                                    <td class="mnhotel" onMouseOver="this.className='mnhotel_ac';" onMouseOut="this.className='mnhotel';" onClick="window.location.href='?lang=0&amp;mn1=1&amp;mn2=8&amp;city=5#destination';" height="20">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Vịnh 
+                                                                    Hạ Long</td>
+                                                                </tr>
+                                                                <tr> 
+                                                                    <td class="mnhotel" onMouseOver="this.className='mnhotel_ac';" onMouseOut="this.className='mnhotel';" onClick="window.location.href='?lang=0&amp;mn1=1&amp;mn2=8&amp;city=6#destination';" height="20">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Thủ 
+                                                                    đô Hà Nội</td>
+                                                                </tr>
+                                                                <tr> 
+                                                                    <td class="mnhotel" onMouseOver="this.className='mnhotel_ac';" onMouseOut="this.className='mnhotel';" onClick="window.location.href='?lang=0&amp;mn1=1&amp;mn2=8&amp;city=7#destination';" height="20">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;TP. 
+                                                                    Hồ Chí Minh</td>
+                                                                </tr>
+                                                                <tr> 
+                                                                    <td class="mnhotel" onMouseOver="this.className='mnhotel_ac';" onMouseOut="this.className='mnhotel';" onClick="window.location.href='?lang=0&amp;mn1=1&amp;mn2=8&amp;city=8#destination';" height="20">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Thị 
+                                                                    xã Hội An</td>
+                                                                </tr>
+                                                                <tr> 
+                                                                    <td class="mnhotel" onMouseOver="this.className='mnhotel_ac';" onMouseOut="this.className='mnhotel';" onClick="window.location.href='?lang=0&amp;mn1=1&amp;mn2=8&amp;city=9#destination';" height="20">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Thành 
+                                                                    phố Huế</td>
+                                                                </tr>
+                                                                <tr> 
+                                                                    <td class="mnhotel" onMouseOver="this.className='mnhotel_ac';" onMouseOut="this.className='mnhotel';" onClick="window.location.href='?lang=0&amp;mn1=1&amp;mn2=8&amp;city=10#destination';" height="20">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Thành 
+                                                                    phố Nha Trang</td>
+                                                                </tr>
+                                                                <tr> 
+                                                                    <td class="mnhotel" onMouseOver="this.className='mnhotel_ac';" onMouseOut="this.className='mnhotel';" onClick="window.location.href='?lang=0&amp;mn1=1&amp;mn2=8&amp;city=11#destination';" height="20">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Phan 
+                                                                    Thiết</td>
+                                                                </tr>
+                                                                <tr> 
+                                                                    <td class="mnhotel" onMouseOver="this.className='mnhotel_ac';" onMouseOut="this.className='mnhotel';" onClick="window.location.href='?lang=0&amp;mn1=1&amp;mn2=8&amp;city=12#destination';" height="20">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Đảo 
+                                                                    Phú Quốc</td>
+                                                                </tr>
+                                                                <tr> 
+                                                                    <td class="mnhotel" onMouseOver="this.className='mnhotel_ac';" onMouseOut="this.className='mnhotel';" onClick="window.location.href='?lang=0&amp;mn1=1&amp;mn2=8&amp;city=13#destination';" height="20">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Quy 
+                                                                    Nhơn</td>
+                                                                </tr>
+                                                                <tr> 
+                                                                    <td class="mnhotel" onMouseOver="this.className='mnhotel_ac';" onMouseOut="this.className='mnhotel';" onClick="window.location.href='?lang=0&amp;mn1=1&amp;mn2=8&amp;city=14#destination';" height="20">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Thị 
+                                                                    trấn Sapa</td>
+                                                                </tr>
+                                                                <tr> 
+                                                                    <td class="mnhotel" onMouseOver="this.className='mnhotel_ac';" onMouseOut="this.className='mnhotel';" onClick="window.location.href='?lang=0&amp;mn1=1&amp;mn2=8&amp;city=15#destination';" height="20">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Vũng 
+                                                                    Tàu</td>
+                                                                </tr>
+                                                        </tbody></table>
+                                                </div></td>
+                                            </tr>
+                                            <tr> 
+                                                <td><div align="center"></div></td>
+                                            </tr>
+                                    </tbody></table>
+                            </div></td>
+                        </tr>
+                </tbody></table>
+                
+                
+                <td width="36%">
+                <tr>
+                <tr>
+                    <td>
+                    
+                    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                        <tbody><tr> 
+                                <td height="5" align="left" valign="top"><img src="hotel_files/none.htm" height="1" width="1"></td>
+                            </tr>
+                    </tbody></table>
+                    
+                    <td>
+                </tr>
+                <tr>
+                    <td>
+                    <td>
+                </tr>
+                
+                <tr>
+                    <td>
+                    
+                    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+                        <tbody><tr> 
+                                <td class="TitleLevel2" height="30">&nbsp;&nbsp;<img src="hotel_files/buttom.jpg" height="10" align="absmiddle" width="10">&nbsp;&nbsp;Tỉnh thành khác - Khách sạn phổ thông</td>
+                            </tr>
+                            <tr>
+                                <td height="5"><img src="hotel_files/pixel_1_1.gif" height="1" width="1"></td>
+                            </tr>
+                            <tr> 
+                                
+                                <td><table align="right" bgcolor="#5ebb03" border="0" cellpadding="4" cellspacing="1" width="108%">
+                                        
+                                        <tbody><tr><td><table border="0" cellpadding="0" cellspacing="0" width="100%">
+                                                        
+                                                        <tbody>
+                                                            
+                                                            <tr>
+                                                                
+                                                                
+                                                                <td height="150" bgcolor="#ffffff">
+                                                                    
+                                                                    
+                                            <div align="center"><strong>Thông tin khách sạn chưa được cập nhật</strong></div></td></tr></tbody></table></td></tr>
+                                </tbody></table></td>
+                                
+                                
+                            </tr>
+                            <tr>
+                                <td height="5"><img src="hotel_files/pixel_1_1.gif" height="1" width="1"></td>
+                            </tr>
+                    </tbody></table>
+                    <td>
+                </tr>
+                <tr>
+                    <td>&nbsp;</td>
+                </tr>
+                
+                
+                <tr>
+                    <td>&nbsp;</td>
+                </tr>
+                
+                
+                
+            </table>
+            <input type="hidden" name="protocol" value="<%=Protocol.HOTEL_AVAIL%>">
+        </form>
+    </body>
 </html>

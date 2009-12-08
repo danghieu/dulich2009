@@ -30,18 +30,37 @@
     <target depends="-pre-init" name="-init-private">
         <property file="nbproject/private/private.properties"/>
     </target>
-    <target depends="-pre-init,-init-private" name="-init-user">
+    <target depends="-pre-init,-init-private" name="-init-libraries">
+        <property location=".\lib\nblibraries.properties" name="libraries.1.path"/>
+        <dirname file="${libraries.1.path}" property="libraries.1.dir.nativedirsep"/>
+        <pathconvert dirsep="/" property="libraries.1.dir">
+            <path path="${libraries.1.dir.nativedirsep}"/>
+        </pathconvert>
+        <basename file="${libraries.1.path}" property="libraries.1.basename" suffix=".properties"/>
+        <touch file="${libraries.1.dir}/${libraries.1.basename}-private.properties"/>
+        <loadproperties srcfile="${libraries.1.dir}/${libraries.1.basename}-private.properties">
+            <filterchain>
+                <replacestring from="$${base}" to="${libraries.1.dir}"/>
+            </filterchain>
+        </loadproperties>
+        <loadproperties srcfile="${libraries.1.path}">
+            <filterchain>
+                <replacestring from="$${base}" to="${libraries.1.dir}"/>
+            </filterchain>
+        </loadproperties>
+    </target>
+    <target depends="-pre-init,-init-private,-init-libraries" name="-init-user">
         <property file="${user.properties.file}"/>
         <!-- The two properties below are usually overridden -->
         <!-- by the active platform. Just a fallback. -->
         <property name="default.javac.source" value="1.4"/>
         <property name="default.javac.target" value="1.4"/>
     </target>
-    <target depends="-pre-init,-init-private,-init-user" name="-init-project">
+    <target depends="-pre-init,-init-private,-init-libraries,-init-user" name="-init-project">
         <property file="nbproject/project.properties"/>
     </target>
     <target depends="-pre-init,-init-private,-init-user,-init-project,-init-macrodef-property" if="dist.ear.dir" name="-do-ear-init"/>
-    <target depends="-pre-init,-init-private,-init-user,-init-project,-init-macrodef-property" name="-do-init">
+    <target depends="-pre-init,-init-private,-init-libraries,-init-user,-init-project,-init-macrodef-property" name="-do-init">
         <condition property="have.tests">
             <or/>
         </condition>
@@ -170,7 +189,7 @@
         <!-- Empty placeholder for easier customization. -->
         <!-- You can override this target in the ../build.xml file. -->
     </target>
-    <target depends="-pre-init,-init-private,-init-user,-init-project,-do-init" name="-init-check">
+    <target depends="-pre-init,-init-private,-init-libraries,-init-user,-init-project,-do-init" name="-init-check">
         <fail unless="src.dir">Must set src.dir</fail>
         <fail unless="build.dir">Must set build.dir</fail>
         <fail unless="build.web.dir">Must set build.web.dir</fail>
@@ -360,7 +379,7 @@ or ant -Dj2ee.platform.classpath=&lt;server_classpath&gt; (where no properties f
             </sequential>
         </macrodef>
     </target>
-    <target depends="-pre-init,-init-private,-init-user,-init-project,-do-init,-post-init,-init-check,-init-macrodef-property,-init-macrodef-javac,-init-macrodef-junit,-init-macrodef-java,-init-macrodef-nbjpda,-init-macrodef-nbjsdebug,-init-macrodef-debug,-init-macrodef-copy-ear-war" name="init"/>
+    <target depends="-pre-init,-init-private,-init-libraries,-init-user,-init-project,-do-init,-post-init,-init-check,-init-macrodef-property,-init-macrodef-javac,-init-macrodef-junit,-init-macrodef-java,-init-macrodef-nbjpda,-init-macrodef-nbjsdebug,-init-macrodef-debug,-init-macrodef-copy-ear-war" name="init"/>
     <!--
                 COMPILATION SECTION
             -->
@@ -534,16 +553,16 @@ or ant -Dj2ee.platform.classpath=&lt;server_classpath&gt; (where no properties f
         <copy-ear-war file="${libs.semanticweb.classpath.libfile.3}" propname="included.lib.libs.semanticweb.classpath.3.X"/>
         <copy-ear-war file="${libs.semanticweb.classpath.libfile.2}" propname="included.lib.libs.semanticweb.classpath.2.X"/>
         <copy-ear-war file="${libs.semanticweb.classpath.libfile.1}" propname="included.lib.libs.semanticweb.classpath.1.X"/>
-        <basename file="${libs.jena.classpath.libfile.5}" property="included.lib.libs.jena.classpath.5"/>
-        <basename file="${libs.jena.classpath.libfile.4}" property="included.lib.libs.jena.classpath.4"/>
-        <basename file="${libs.jena.classpath.libfile.3}" property="included.lib.libs.jena.classpath.3"/>
-        <basename file="${libs.jena.classpath.libfile.2}" property="included.lib.libs.jena.classpath.2"/>
-        <basename file="${libs.jena.classpath.libfile.1}" property="included.lib.libs.jena.classpath.1"/>
-        <copy-ear-war file="${libs.jena.classpath.libfile.5}" propname="included.lib.libs.jena.classpath.5.X"/>
-        <copy-ear-war file="${libs.jena.classpath.libfile.4}" propname="included.lib.libs.jena.classpath.4.X"/>
-        <copy-ear-war file="${libs.jena.classpath.libfile.3}" propname="included.lib.libs.jena.classpath.3.X"/>
-        <copy-ear-war file="${libs.jena.classpath.libfile.2}" propname="included.lib.libs.jena.classpath.2.X"/>
-        <copy-ear-war file="${libs.jena.classpath.libfile.1}" propname="included.lib.libs.jena.classpath.1.X"/>
+        <basename file="${libs.jade.classpath.libfile.5}" property="included.lib.libs.jade.classpath.5"/>
+        <basename file="${libs.jade.classpath.libfile.4}" property="included.lib.libs.jade.classpath.4"/>
+        <basename file="${libs.jade.classpath.libfile.3}" property="included.lib.libs.jade.classpath.3"/>
+        <basename file="${libs.jade.classpath.libfile.2}" property="included.lib.libs.jade.classpath.2"/>
+        <basename file="${libs.jade.classpath.libfile.1}" property="included.lib.libs.jade.classpath.1"/>
+        <copy-ear-war file="${libs.jade.classpath.libfile.5}" propname="included.lib.libs.jade.classpath.5.X"/>
+        <copy-ear-war file="${libs.jade.classpath.libfile.4}" propname="included.lib.libs.jade.classpath.4.X"/>
+        <copy-ear-war file="${libs.jade.classpath.libfile.3}" propname="included.lib.libs.jade.classpath.3.X"/>
+        <copy-ear-war file="${libs.jade.classpath.libfile.2}" propname="included.lib.libs.jade.classpath.2.X"/>
+        <copy-ear-war file="${libs.jade.classpath.libfile.1}" propname="included.lib.libs.jade.classpath.1.X"/>
         <basename file="${libs.common.classpath.libfile.4}" property="included.lib.libs.common.classpath.4"/>
         <basename file="${libs.common.classpath.libfile.3}" property="included.lib.libs.common.classpath.3"/>
         <basename file="${libs.common.classpath.libfile.2}" property="included.lib.libs.common.classpath.2"/>
@@ -552,77 +571,9 @@ or ant -Dj2ee.platform.classpath=&lt;server_classpath&gt; (where no properties f
         <copy-ear-war file="${libs.common.classpath.libfile.3}" propname="included.lib.libs.common.classpath.3.X"/>
         <copy-ear-war file="${libs.common.classpath.libfile.2}" propname="included.lib.libs.common.classpath.2.X"/>
         <copy-ear-war file="${libs.common.classpath.libfile.1}" propname="included.lib.libs.common.classpath.1.X"/>
-        <basename file="${libs.lib.classpath.libfile.34}" property="included.lib.libs.lib.classpath.34"/>
-        <basename file="${libs.lib.classpath.libfile.33}" property="included.lib.libs.lib.classpath.33"/>
-        <basename file="${libs.lib.classpath.libfile.32}" property="included.lib.libs.lib.classpath.32"/>
-        <basename file="${libs.lib.classpath.libfile.31}" property="included.lib.libs.lib.classpath.31"/>
-        <basename file="${libs.lib.classpath.libfile.30}" property="included.lib.libs.lib.classpath.30"/>
-        <basename file="${libs.lib.classpath.libfile.29}" property="included.lib.libs.lib.classpath.29"/>
-        <basename file="${libs.lib.classpath.libfile.28}" property="included.lib.libs.lib.classpath.28"/>
-        <basename file="${libs.lib.classpath.libfile.27}" property="included.lib.libs.lib.classpath.27"/>
-        <basename file="${libs.lib.classpath.libfile.26}" property="included.lib.libs.lib.classpath.26"/>
-        <basename file="${libs.lib.classpath.libfile.25}" property="included.lib.libs.lib.classpath.25"/>
-        <basename file="${libs.lib.classpath.libfile.24}" property="included.lib.libs.lib.classpath.24"/>
-        <basename file="${libs.lib.classpath.libfile.23}" property="included.lib.libs.lib.classpath.23"/>
-        <basename file="${libs.lib.classpath.libfile.22}" property="included.lib.libs.lib.classpath.22"/>
-        <basename file="${libs.lib.classpath.libfile.21}" property="included.lib.libs.lib.classpath.21"/>
-        <basename file="${libs.lib.classpath.libfile.20}" property="included.lib.libs.lib.classpath.20"/>
-        <basename file="${libs.lib.classpath.libfile.19}" property="included.lib.libs.lib.classpath.19"/>
-        <basename file="${libs.lib.classpath.libfile.18}" property="included.lib.libs.lib.classpath.18"/>
-        <basename file="${libs.lib.classpath.libfile.17}" property="included.lib.libs.lib.classpath.17"/>
-        <basename file="${libs.lib.classpath.libfile.16}" property="included.lib.libs.lib.classpath.16"/>
-        <basename file="${libs.lib.classpath.libfile.15}" property="included.lib.libs.lib.classpath.15"/>
-        <basename file="${libs.lib.classpath.libfile.14}" property="included.lib.libs.lib.classpath.14"/>
-        <basename file="${libs.lib.classpath.libfile.13}" property="included.lib.libs.lib.classpath.13"/>
-        <basename file="${libs.lib.classpath.libfile.12}" property="included.lib.libs.lib.classpath.12"/>
-        <basename file="${libs.lib.classpath.libfile.11}" property="included.lib.libs.lib.classpath.11"/>
-        <basename file="${libs.lib.classpath.libfile.10}" property="included.lib.libs.lib.classpath.10"/>
-        <basename file="${libs.lib.classpath.libfile.9}" property="included.lib.libs.lib.classpath.9"/>
-        <basename file="${libs.lib.classpath.libfile.8}" property="included.lib.libs.lib.classpath.8"/>
-        <basename file="${libs.lib.classpath.libfile.7}" property="included.lib.libs.lib.classpath.7"/>
-        <basename file="${libs.lib.classpath.libfile.6}" property="included.lib.libs.lib.classpath.6"/>
-        <basename file="${libs.lib.classpath.libfile.5}" property="included.lib.libs.lib.classpath.5"/>
-        <basename file="${libs.lib.classpath.libfile.4}" property="included.lib.libs.lib.classpath.4"/>
-        <basename file="${libs.lib.classpath.libfile.3}" property="included.lib.libs.lib.classpath.3"/>
-        <basename file="${libs.lib.classpath.libfile.2}" property="included.lib.libs.lib.classpath.2"/>
-        <basename file="${libs.lib.classpath.libfile.1}" property="included.lib.libs.lib.classpath.1"/>
-        <copy-ear-war file="${libs.lib.classpath.libfile.34}" propname="included.lib.libs.lib.classpath.34.X"/>
-        <copy-ear-war file="${libs.lib.classpath.libfile.33}" propname="included.lib.libs.lib.classpath.33.X"/>
-        <copy-ear-war file="${libs.lib.classpath.libfile.32}" propname="included.lib.libs.lib.classpath.32.X"/>
-        <copy-ear-war file="${libs.lib.classpath.libfile.31}" propname="included.lib.libs.lib.classpath.31.X"/>
-        <copy-ear-war file="${libs.lib.classpath.libfile.30}" propname="included.lib.libs.lib.classpath.30.X"/>
-        <copy-ear-war file="${libs.lib.classpath.libfile.29}" propname="included.lib.libs.lib.classpath.29.X"/>
-        <copy-ear-war file="${libs.lib.classpath.libfile.28}" propname="included.lib.libs.lib.classpath.28.X"/>
-        <copy-ear-war file="${libs.lib.classpath.libfile.27}" propname="included.lib.libs.lib.classpath.27.X"/>
-        <copy-ear-war file="${libs.lib.classpath.libfile.26}" propname="included.lib.libs.lib.classpath.26.X"/>
-        <copy-ear-war file="${libs.lib.classpath.libfile.25}" propname="included.lib.libs.lib.classpath.25.X"/>
-        <copy-ear-war file="${libs.lib.classpath.libfile.24}" propname="included.lib.libs.lib.classpath.24.X"/>
-        <copy-ear-war file="${libs.lib.classpath.libfile.23}" propname="included.lib.libs.lib.classpath.23.X"/>
-        <copy-ear-war file="${libs.lib.classpath.libfile.22}" propname="included.lib.libs.lib.classpath.22.X"/>
-        <copy-ear-war file="${libs.lib.classpath.libfile.21}" propname="included.lib.libs.lib.classpath.21.X"/>
-        <copy-ear-war file="${libs.lib.classpath.libfile.20}" propname="included.lib.libs.lib.classpath.20.X"/>
-        <copy-ear-war file="${libs.lib.classpath.libfile.19}" propname="included.lib.libs.lib.classpath.19.X"/>
-        <copy-ear-war file="${libs.lib.classpath.libfile.18}" propname="included.lib.libs.lib.classpath.18.X"/>
-        <copy-ear-war file="${libs.lib.classpath.libfile.17}" propname="included.lib.libs.lib.classpath.17.X"/>
-        <copy-ear-war file="${libs.lib.classpath.libfile.16}" propname="included.lib.libs.lib.classpath.16.X"/>
-        <copy-ear-war file="${libs.lib.classpath.libfile.15}" propname="included.lib.libs.lib.classpath.15.X"/>
-        <copy-ear-war file="${libs.lib.classpath.libfile.14}" propname="included.lib.libs.lib.classpath.14.X"/>
-        <copy-ear-war file="${libs.lib.classpath.libfile.13}" propname="included.lib.libs.lib.classpath.13.X"/>
-        <copy-ear-war file="${libs.lib.classpath.libfile.12}" propname="included.lib.libs.lib.classpath.12.X"/>
-        <copy-ear-war file="${libs.lib.classpath.libfile.11}" propname="included.lib.libs.lib.classpath.11.X"/>
-        <copy-ear-war file="${libs.lib.classpath.libfile.10}" propname="included.lib.libs.lib.classpath.10.X"/>
-        <copy-ear-war file="${libs.lib.classpath.libfile.9}" propname="included.lib.libs.lib.classpath.9.X"/>
-        <copy-ear-war file="${libs.lib.classpath.libfile.8}" propname="included.lib.libs.lib.classpath.8.X"/>
-        <copy-ear-war file="${libs.lib.classpath.libfile.7}" propname="included.lib.libs.lib.classpath.7.X"/>
-        <copy-ear-war file="${libs.lib.classpath.libfile.6}" propname="included.lib.libs.lib.classpath.6.X"/>
-        <copy-ear-war file="${libs.lib.classpath.libfile.5}" propname="included.lib.libs.lib.classpath.5.X"/>
-        <copy-ear-war file="${libs.lib.classpath.libfile.4}" propname="included.lib.libs.lib.classpath.4.X"/>
-        <copy-ear-war file="${libs.lib.classpath.libfile.3}" propname="included.lib.libs.lib.classpath.3.X"/>
-        <copy-ear-war file="${libs.lib.classpath.libfile.2}" propname="included.lib.libs.lib.classpath.2.X"/>
-        <copy-ear-war file="${libs.lib.classpath.libfile.1}" propname="included.lib.libs.lib.classpath.1.X"/>
         <mkdir dir="${build.web.dir}/META-INF"/>
         <manifest file="${build.web.dir}/META-INF/MANIFEST.MF" mode="update">
-            <attribute name="Class-Path" value="${included.lib.libs.semanticweb.classpath.1.X} ${included.lib.libs.semanticweb.classpath.2.X} ${included.lib.libs.semanticweb.classpath.3.X} ${included.lib.libs.semanticweb.classpath.4.X} ${included.lib.libs.semanticweb.classpath.5.X} ${included.lib.libs.semanticweb.classpath.6.X} ${included.lib.libs.semanticweb.classpath.7.X} ${included.lib.libs.semanticweb.classpath.8.X} ${included.lib.libs.semanticweb.classpath.9.X} ${included.lib.libs.semanticweb.classpath.10.X} ${included.lib.libs.semanticweb.classpath.11.X} ${included.lib.libs.semanticweb.classpath.12.X} ${included.lib.libs.semanticweb.classpath.13.X} ${included.lib.libs.semanticweb.classpath.14.X} ${included.lib.libs.semanticweb.classpath.15.X} ${included.lib.libs.jena.classpath.1.X} ${included.lib.libs.jena.classpath.2.X} ${included.lib.libs.jena.classpath.3.X} ${included.lib.libs.jena.classpath.4.X} ${included.lib.libs.jena.classpath.5.X} ${included.lib.libs.common.classpath.1.X} ${included.lib.libs.common.classpath.2.X} ${included.lib.libs.common.classpath.3.X} ${included.lib.libs.common.classpath.4.X} ${included.lib.libs.lib.classpath.1.X} ${included.lib.libs.lib.classpath.2.X} ${included.lib.libs.lib.classpath.3.X} ${included.lib.libs.lib.classpath.4.X} ${included.lib.libs.lib.classpath.5.X} ${included.lib.libs.lib.classpath.6.X} ${included.lib.libs.lib.classpath.7.X} ${included.lib.libs.lib.classpath.8.X} ${included.lib.libs.lib.classpath.9.X} ${included.lib.libs.lib.classpath.10.X} ${included.lib.libs.lib.classpath.11.X} ${included.lib.libs.lib.classpath.12.X} ${included.lib.libs.lib.classpath.13.X} ${included.lib.libs.lib.classpath.14.X} ${included.lib.libs.lib.classpath.15.X} ${included.lib.libs.lib.classpath.16.X} ${included.lib.libs.lib.classpath.17.X} ${included.lib.libs.lib.classpath.18.X} ${included.lib.libs.lib.classpath.19.X} ${included.lib.libs.lib.classpath.20.X} ${included.lib.libs.lib.classpath.21.X} ${included.lib.libs.lib.classpath.22.X} ${included.lib.libs.lib.classpath.23.X} ${included.lib.libs.lib.classpath.24.X} ${included.lib.libs.lib.classpath.25.X} ${included.lib.libs.lib.classpath.26.X} ${included.lib.libs.lib.classpath.27.X} ${included.lib.libs.lib.classpath.28.X} ${included.lib.libs.lib.classpath.29.X} ${included.lib.libs.lib.classpath.30.X} ${included.lib.libs.lib.classpath.31.X} ${included.lib.libs.lib.classpath.32.X} ${included.lib.libs.lib.classpath.33.X} ${included.lib.libs.lib.classpath.34.X} "/>
+            <attribute name="Class-Path" value="${included.lib.libs.semanticweb.classpath.1.X} ${included.lib.libs.semanticweb.classpath.2.X} ${included.lib.libs.semanticweb.classpath.3.X} ${included.lib.libs.semanticweb.classpath.4.X} ${included.lib.libs.semanticweb.classpath.5.X} ${included.lib.libs.semanticweb.classpath.6.X} ${included.lib.libs.semanticweb.classpath.7.X} ${included.lib.libs.semanticweb.classpath.8.X} ${included.lib.libs.semanticweb.classpath.9.X} ${included.lib.libs.semanticweb.classpath.10.X} ${included.lib.libs.semanticweb.classpath.11.X} ${included.lib.libs.semanticweb.classpath.12.X} ${included.lib.libs.semanticweb.classpath.13.X} ${included.lib.libs.semanticweb.classpath.14.X} ${included.lib.libs.semanticweb.classpath.15.X} ${included.lib.libs.jade.classpath.1.X} ${included.lib.libs.jade.classpath.2.X} ${included.lib.libs.jade.classpath.3.X} ${included.lib.libs.jade.classpath.4.X} ${included.lib.libs.jade.classpath.5.X} ${included.lib.libs.common.classpath.1.X} ${included.lib.libs.common.classpath.2.X} ${included.lib.libs.common.classpath.3.X} ${included.lib.libs.common.classpath.4.X} "/>
         </manifest>
         <delete dir="${dist.ear.dir}/temp"/>
     </target>
@@ -642,49 +593,15 @@ or ant -Dj2ee.platform.classpath=&lt;server_classpath&gt; (where no properties f
         <copy file="${libs.semanticweb.classpath.libfile.3}" todir="${build.web.dir}/WEB-INF/lib"/>
         <copy file="${libs.semanticweb.classpath.libfile.2}" todir="${build.web.dir}/WEB-INF/lib"/>
         <copy file="${libs.semanticweb.classpath.libfile.1}" todir="${build.web.dir}/WEB-INF/lib"/>
-        <copy file="${libs.jena.classpath.libfile.5}" todir="${build.web.dir}/WEB-INF/lib"/>
-        <copy file="${libs.jena.classpath.libfile.4}" todir="${build.web.dir}/WEB-INF/lib"/>
-        <copy file="${libs.jena.classpath.libfile.3}" todir="${build.web.dir}/WEB-INF/lib"/>
-        <copy file="${libs.jena.classpath.libfile.2}" todir="${build.web.dir}/WEB-INF/lib"/>
-        <copy file="${libs.jena.classpath.libfile.1}" todir="${build.web.dir}/WEB-INF/lib"/>
+        <copy file="${libs.jade.classpath.libfile.5}" todir="${build.web.dir}/WEB-INF/lib"/>
+        <copy file="${libs.jade.classpath.libfile.4}" todir="${build.web.dir}/WEB-INF/lib"/>
+        <copy file="${libs.jade.classpath.libfile.3}" todir="${build.web.dir}/WEB-INF/lib"/>
+        <copy file="${libs.jade.classpath.libfile.2}" todir="${build.web.dir}/WEB-INF/lib"/>
+        <copy file="${libs.jade.classpath.libfile.1}" todir="${build.web.dir}/WEB-INF/lib"/>
         <copy file="${libs.common.classpath.libfile.4}" todir="${build.web.dir}/WEB-INF/lib"/>
         <copy file="${libs.common.classpath.libfile.3}" todir="${build.web.dir}/WEB-INF/lib"/>
         <copy file="${libs.common.classpath.libfile.2}" todir="${build.web.dir}/WEB-INF/lib"/>
         <copy file="${libs.common.classpath.libfile.1}" todir="${build.web.dir}/WEB-INF/lib"/>
-        <copy file="${libs.lib.classpath.libfile.34}" todir="${build.web.dir}/WEB-INF/lib"/>
-        <copy file="${libs.lib.classpath.libfile.33}" todir="${build.web.dir}/WEB-INF/lib"/>
-        <copy file="${libs.lib.classpath.libfile.32}" todir="${build.web.dir}/WEB-INF/lib"/>
-        <copy file="${libs.lib.classpath.libfile.31}" todir="${build.web.dir}/WEB-INF/lib"/>
-        <copy file="${libs.lib.classpath.libfile.30}" todir="${build.web.dir}/WEB-INF/lib"/>
-        <copy file="${libs.lib.classpath.libfile.29}" todir="${build.web.dir}/WEB-INF/lib"/>
-        <copy file="${libs.lib.classpath.libfile.28}" todir="${build.web.dir}/WEB-INF/lib"/>
-        <copy file="${libs.lib.classpath.libfile.27}" todir="${build.web.dir}/WEB-INF/lib"/>
-        <copy file="${libs.lib.classpath.libfile.26}" todir="${build.web.dir}/WEB-INF/lib"/>
-        <copy file="${libs.lib.classpath.libfile.25}" todir="${build.web.dir}/WEB-INF/lib"/>
-        <copy file="${libs.lib.classpath.libfile.24}" todir="${build.web.dir}/WEB-INF/lib"/>
-        <copy file="${libs.lib.classpath.libfile.23}" todir="${build.web.dir}/WEB-INF/lib"/>
-        <copy file="${libs.lib.classpath.libfile.22}" todir="${build.web.dir}/WEB-INF/lib"/>
-        <copy file="${libs.lib.classpath.libfile.21}" todir="${build.web.dir}/WEB-INF/lib"/>
-        <copy file="${libs.lib.classpath.libfile.20}" todir="${build.web.dir}/WEB-INF/lib"/>
-        <copy file="${libs.lib.classpath.libfile.19}" todir="${build.web.dir}/WEB-INF/lib"/>
-        <copy file="${libs.lib.classpath.libfile.18}" todir="${build.web.dir}/WEB-INF/lib"/>
-        <copy file="${libs.lib.classpath.libfile.17}" todir="${build.web.dir}/WEB-INF/lib"/>
-        <copy file="${libs.lib.classpath.libfile.16}" todir="${build.web.dir}/WEB-INF/lib"/>
-        <copy file="${libs.lib.classpath.libfile.15}" todir="${build.web.dir}/WEB-INF/lib"/>
-        <copy file="${libs.lib.classpath.libfile.14}" todir="${build.web.dir}/WEB-INF/lib"/>
-        <copy file="${libs.lib.classpath.libfile.13}" todir="${build.web.dir}/WEB-INF/lib"/>
-        <copy file="${libs.lib.classpath.libfile.12}" todir="${build.web.dir}/WEB-INF/lib"/>
-        <copy file="${libs.lib.classpath.libfile.11}" todir="${build.web.dir}/WEB-INF/lib"/>
-        <copy file="${libs.lib.classpath.libfile.10}" todir="${build.web.dir}/WEB-INF/lib"/>
-        <copy file="${libs.lib.classpath.libfile.9}" todir="${build.web.dir}/WEB-INF/lib"/>
-        <copy file="${libs.lib.classpath.libfile.8}" todir="${build.web.dir}/WEB-INF/lib"/>
-        <copy file="${libs.lib.classpath.libfile.7}" todir="${build.web.dir}/WEB-INF/lib"/>
-        <copy file="${libs.lib.classpath.libfile.6}" todir="${build.web.dir}/WEB-INF/lib"/>
-        <copy file="${libs.lib.classpath.libfile.5}" todir="${build.web.dir}/WEB-INF/lib"/>
-        <copy file="${libs.lib.classpath.libfile.4}" todir="${build.web.dir}/WEB-INF/lib"/>
-        <copy file="${libs.lib.classpath.libfile.3}" todir="${build.web.dir}/WEB-INF/lib"/>
-        <copy file="${libs.lib.classpath.libfile.2}" todir="${build.web.dir}/WEB-INF/lib"/>
-        <copy file="${libs.lib.classpath.libfile.1}" todir="${build.web.dir}/WEB-INF/lib"/>
     </target>
     <target depends="init,compile,compile-jsps,-pre-dist,library-inclusion-in-manifest" name="do-ear-dist">
         <dirname file="${dist.ear.war}" property="dist.jar.dir"/>
