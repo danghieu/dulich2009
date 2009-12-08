@@ -63,13 +63,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <td style="text-align: center;"><strong><span style="color: rgb(255, 255, 255);">|</span></strong></td>
 <td bgcolor="#6699FF" style="text-align: center;"><a title="Khách sạn, khachsan, khách sạn việt nam" href=""><strong><span style="color: rgb(255, 255, 255);">Khách sạn</span></strong></a></td>
 <td style="text-align: center;"><strong><span style="color: rgb(255, 255, 255);">|</span></strong></td>
-<td bgcolor="#6699FF" style="text-align: center;"><a title="Vé máy bay, vé tàu, thuê xe" href=""><strong><span style="color: rgb(255, 255, 255);">Phương tiện đi lại</span></strong></a></td>
+<td bgcolor="#6699FF" style="text-align: center;"><a title="Vé máy bay, vé tàu, thuê xe" href=""><strong><a title="Tour du lịch" href="../../../../SVN%20Client/%20dulich2009/CODE/GIAODIEN/WebRoot/"><strong><span style="color: rgb(255, 255, 255);">Tour du lịch</span></strong></a></strong></a></td>
 <td style="text-align: center;"><strong><span style="color: rgb(255, 255, 255);">|</span></strong></td>
 <td bgcolor="#6699FF" style="text-align: center;"><a title="Các điểm du lịch thú vị" href=""><strong><span style="color: rgb(255, 255, 255);">Địa điểm du lịch</span></strong></a></td>
 <td style="text-align: center;"><strong><span style="color: rgb(255, 255, 255);">|</span></strong></td>
-<td bgcolor="#6699FF" style="text-align: center;"><a title="Tour du lịch" href=""><strong><span style="color: rgb(255, 255, 255);">Tour du lịch</span></strong></a></td>
+<td bgcolor="#6699FF" style="text-align: center;"><a title="Tour du lịch" href="Flight.jsp"><strong><span style="color: rgb(255, 255, 255);">V&eacute; m&aacute;y bay<br></span></strong></a></td>
 <td style="text-align: center;"><strong><span style="color: rgb(255, 255, 255);">|</span></strong></td>
-<td bgcolor="#6699FF" style="text-align: center;"><a title="" href=""><strong><span style="color: rgb(255, 255, 255);">Tin tức du lịch</span></strong></a></td>
+<td bgcolor="#6699FF" style="text-align: center;"><a title="" href=""><strong><span style="color: rgb(255, 255, 255);">V&eacute; t&agrave;u<br></span></strong></a></td>
 <td style="text-align: center;"><strong><span style="color: rgb(255, 255, 255);">|</span></strong></td>
 <td bgcolor="#6699FF" style="text-align: center;"><a title="Giới thiệu" href=""><strong><span style="color: rgb(255, 255, 255);">Giới thiệu</span></strong></a></td>
 <td style="text-align: center;"><strong><span style="color: rgb(255, 255, 255);">|</span></strong></td>
