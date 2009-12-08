@@ -39,7 +39,7 @@ public class HotelProcess {
 			+ "WHERE \n"
 			+ "{ \n"
 			+ "?x hotel:hotelFacilities ?hotelFacilities. \n"
-                        + "?x hotel:HotelLocation ?HotelLocation. \n";
+                        + "?x hotel:hotelFacilities ?hotelFacilities1. \n";
                   
                         
 			                     
@@ -53,7 +53,7 @@ public class HotelProcess {
                 }
                    
                if (keyword2 !=null){
-			queryString = queryString + " FILTER regex(?HotelLocation,\""
+			queryString = queryString + " FILTER regex(?hotelFacilities1,\""
 					+ keyword2 + "\", \"i\")\n";
                 }
                     
@@ -83,7 +83,7 @@ public class HotelProcess {
     
     public static void main(String s[]){
         HotelProcess hotelprocess = new HotelProcess();
-        hotelprocess.searchbyId("Parking", "inside");
+        hotelprocess.searchbyId("Parking", "SwimmingPool");
     }
    
 }
