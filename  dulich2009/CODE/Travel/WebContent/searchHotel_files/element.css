@@ -1,0 +1,436 @@
+﻿#custom-doc
+{
+	width: 58.92em; *width:57.5em;min-width:766px;margin:auto;text-align:left;}
+
+/* Misc classes and elements
+-------------------------------------------------------------- */
+
+/* Use a .box to create a padded box inside a column.  */
+.box
+{
+	padding: 0.6em;
+	margin-bottom: 1.5em; /*background: #E5ECF9; */
+}
+
+.prepend-1
+{
+	padding-left: 10px;
+}
+
+/* Use this to create a horizontal ruler across a column. */
+hr
+{
+	background: #ddd;
+	color: #ddd;
+	clear: both;
+	float: none;
+	width: 100%;
+	height: .1em;
+	margin: 0 0 1.45em;
+	border: none;
+}
+hr.space
+{
+	background: #fff;
+	color: #fff;
+}
+.margin-bottom-1
+{
+	margin-bottom: .8em;
+}
+.margin-bottom-2
+{
+	margin-bottom: 1.6em;
+}
+
+
+/* Clearing floats without extra markup
+Based on How To Clear Floats Without Structural Markup by PiE
+[http://www.positioniseverything.net/easyclearing.html] */
+
+.clearfix:after, .container:after
+{
+	content: ".";
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden;
+}
+.clearfix, .container
+{
+	display: inline-block;
+}
+* html .clearfix, * html .container
+{
+	height: 1%;
+}
+.clearfix, .container
+{
+	display: block;
+}
+
+/* Regular clearing
+apply to column that should drop below previous ones. */
+
+.clear
+{
+	clear: both;
+}
+
+.last
+{
+	margin-right: 0;
+	padding-right: 0;
+}
+.top
+{
+	margin-top: 0;
+	padding-top: 0;
+}
+.bottom
+{
+	margin-bottom: 0;
+	padding-bottom: 0;
+	font-size: 11px;
+	height: 16px;
+	color: #0000ff;
+}
+
+a.bottom
+{
+	color: #0000ff;
+}
+a.bottom:link
+{
+	text-decoration: none;
+	color: blue;
+}
+a.bottom:visited
+{
+	text-decoration: none;
+	color: blue;
+}
+a.bottom:hover
+{
+	text-decoration: underline;
+	color: blue;
+}
+
+/* Menu */
+
+.glossymenusub
+{
+}
+.glossymenu
+{
+	position: relative;
+	padding: 0 0 0 4px;
+	margin: 0 0 0 0;
+	background: url(/images/nav/menui_bg.gif) repeat-x; /*tab background image path*/
+	height: 28px;
+	list-style: none;
+}
+
+.glossymenu li
+{
+	float: left;
+	list-style: none;
+}
+
+.glossymenu li a
+{
+	float: left;
+	display: block;
+	color: #2A60A4;
+	text-decoration: none;
+	font-weight: bold;
+	padding: 0 0 0 8px; /*Padding to accomodate left tab image. Do not change*/
+	height: 28px;
+	line-height: 28px;
+	text-align: center;
+	cursor: pointer;
+	background: url(/images/nav/menui_default_left.gif) no-repeat; /*left tab image path*/
+	background-position: left;
+}
+
+.glossymenu li a b
+{
+	float: left;
+	display: block;
+	padding: 0 16px 0 8px; /*Padding of menu items*/
+	background: url(/images/nav/menui_default_right.gif) no-repeat right top; /*right tab image path*/
+}
+
+.glossymenu li.current a, .glossymenu li a:hover
+{
+	color: #0E4181;
+	background: url(/images/nav/menui_hover_left.gif) no-repeat; /*left tab image path*/
+	background-position: left;
+	text-decoration: none;
+}
+
+.glossymenu li.current a b, .glossymenu li a:hover b
+{
+	color: #0E4181;
+	background: url(/images/nav/menui_hover_right.gif) no-repeat right top; /*right tab image path*/
+}
+
+/* Footer */
+#ft
+{
+	margin: 10px 0 10px 0;
+}
+#ft .nav
+{
+	text-align: center;
+	z-index: 0;
+	background: #fff;
+	border-top: #9ebfe8 1px solid;
+	padding-top: 10px;
+	margin-top: 20px;
+}
+
+
+#ft .nav ul
+{
+	margin: 0;
+	padding: 10px 0 0 0;
+	list-style: none;
+}
+
+#ft .nav ul li
+{
+	margin: 0;
+	padding: 0;
+	display: inline;
+	list-style: none;
+}
+
+#ft .nav ul li a, #ft .nav p
+{
+	margin: 0;
+	padding: 0 .6em;
+	display: inline;
+}
+
+
+
+
+/* Box General Attributes */
+
+.meta
+{
+	margin: 0;
+	padding: 10px 0 15px 20px;
+}
+
+.meta a
+{
+	text-decoration: none;
+}
+
+.meta a:hover
+{
+	text-decoration: underline;
+}
+
+.meta .more
+{
+	padding-left: 12px;
+	background: url(/images/greenbox/img09.gif) no-repeat left center;
+}
+
+.meta .comments
+{
+	padding-left: 15px;
+	background: url(/images/greenbox/img10.gif) no-repeat left center;
+}
+
+/* Gray Box */
+
+.graybox
+{
+	background: #FFF url(/images/graybox/img03.gif) repeat-x;
+}
+
+.graybox .title
+{
+	height: 24px;
+	background: url(/images/graybox/img04.gif) no-repeat;
+}
+
+.graybox .title h1, .graybox .title h2
+{
+	height: 24px;
+	margin: 0;
+	padding: 4px 0 0 20px;
+	background: url(/images/graybox/img05.gif) no-repeat right top;
+	
+	font-size: 1.1em;
+	font-weight: bold;
+	color: #000;
+}
+
+.graybox .entry
+{
+	padding: 10px 20px 1px 20px;
+	margin: 0;
+	border-left: 1px solid #c9c9c9;
+	border-right: 1px solid #c9c9c9;
+}
+
+.graybox .btm
+{
+	background: url(/images/graybox/img06.gif) repeat-x left bottom;
+}
+.graybox .btm .l
+{
+	background: url(/images/graybox/img07.gif) no-repeat left bottom;
+}
+.graybox .btm .r
+{
+	background: url(/images/graybox/img08.gif) no-repeat right bottom;
+}
+
+.entry span
+{
+	float: right;
+	padding-top: 5px 0px 0px 5px;
+}
+.entry ul
+{
+	margin: 0;
+	padding: 0px 0px 0px 20px;
+}
+.entry li
+{
+	margin: 0;
+	padding: 3px 0px 0px 0px;
+}
+.entry p
+{
+	margin: 0;
+	padding: 0px 0px 5px 0px;
+}
+
+h2
+{
+	margin: 0;
+	padding: 0;
+	
+	font-size: 1.3em;
+	font-weight: bold;
+}
+
+
+.orange
+{
+	color: #fd840f;
+}
+
+.blue
+{
+	color: #010195;
+}
+.brown
+{
+	color:rgb(169, 165, 166);
+}
+.small
+{
+	font-family: Arial;
+	font-size: 11px;
+}
+A
+{
+	color: blue;
+}
+a:link
+{
+	text-decoration: none;
+	color: blue; /*color:#010195;*/
+}
+a:visited
+{
+	text-decoration: none; /*color:#010195;*/
+	color: blue;
+}
+a:active
+{
+	text-decoration: none;
+	color: blue; /*color:#010195;*/
+}
+a:hover
+{
+	text-decoration: underline;
+	color: blue; /*color:#010195;*/
+}
+#Listhotel
+{
+	width: 766px;
+	margin: 60px 0px 0px 0px;
+	border-top: 1px solid #6666FF;
+	padding: 20px 0px 0px 0px;
+	float: left;
+	font-family: Arial;
+	font-size: 11px;
+	color: #636363;
+}
+.classListhotel
+{
+	float: left;
+	padding-left: 17px;
+	background-image: url(/Images/bg_bullet_full_1.gif);
+	background-repeat: no-repeat;
+	background-position: 8px 6px;
+	padding-top: 2px;
+	/*
+	padding-bottom: 5px;
+	width: 22%;
+	
+*/
+}
+
+
+.classListhotelimg
+{
+	float: left;
+	width: 120px;
+	padding: 0px 0px 10px 0px;
+	margin: 0px;
+}
+.classListhotelbody
+{
+	float: left;
+	width: 230px;
+	padding: 0px 0px 10px 10px;
+	margin: 0px;
+}
+.classListhotelbooknow
+{
+	float: right;
+	width: 73px;
+	padding: 15px 0px 10px 0px;
+	margin: 0px;
+}
+.classListTourimg
+{
+	float: left;
+	width: 120px;
+	padding: 0px 0px 10px 0px;
+	margin: 0px;
+}
+.classListTourbody
+{
+	float: left;
+	width: 240px;
+	padding: 0px 0px 10px 10px;
+	margin: 0px;
+}
+.classListTourbooknow
+{
+	float: left;
+	width: 75px;
+	padding: 15px 0px 10px 0px;
+	margin: 0px;
+}
