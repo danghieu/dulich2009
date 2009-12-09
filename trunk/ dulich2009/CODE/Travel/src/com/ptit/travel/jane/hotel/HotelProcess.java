@@ -9,12 +9,14 @@ import com.hp.hpl.jena.ontology.OntClass;
 import com.hp.hpl.jena.ontology.OntModel;
 import com.hp.hpl.jena.ontology.OntResource;
 import com.hp.hpl.jena.query.Query;
+import com.hp.hpl.jena.query.QuerySolution;
 import com.hp.hpl.jena.query.QueryExecution;
 import com.hp.hpl.jena.query.QueryExecutionFactory;
 import com.hp.hpl.jena.query.QueryFactory;
 import com.hp.hpl.jena.query.ResultSet;
 import com.hp.hpl.jena.sparql.core.ResultBinding;
 import com.ptit.travel.moduleJDBC.Model.*;
+import java.util.Iterator;
 import com.hp.hpl.jena.rdf.model.*;
 import java.io.FileOutputStream;
 import java.lang.*;
@@ -24,8 +26,20 @@ import java.lang.*;
  */
 public class HotelProcess {
 
+    /**
+     * Tim kiem theo mot so dieu kien, gia tri tra ve la Model chua cac khach san va thog tin ve cac khach san nay
+     * @param bar
+     * @param fitnescenter
+     * @param gardenCafe
+     * @param karaoke
+     * @param nightClub
+     * @param location
+     * @param meetingRoom
+     * @param restaurant
+     * @return
+     */
     
-    public Model searchbyId (boolean bar, boolean fitnescenter,boolean gardenCafe, boolean karaoke, boolean nightClub, String location,boolean meetingRoom, boolean restaurant ) {
+    public Model searchHotel (boolean bar, boolean fitnescenter,boolean gardenCafe, boolean karaoke, boolean nightClub, String location,boolean meetingRoom, boolean restaurant, String city ) {
 	
 		Database.LoadOnt2Database();
 		Model om = Database.getOntologyModel();		
@@ -41,12 +55,12 @@ public class HotelProcess {
                         
                       
                         + "?x hotel:hasRestaurant ?restaurant. \n"
-                        + "?restaurant hotel:RestaurantName ?ten.\n";
-                       
-			
-			
-			
-                
+                        
+                        + "?restaurant hotel:RestaurantName ?ten.\n"
+                        + "?x hotel:hasContact ?contact. \n"
+                        + "?contact hotel:hasAddress ?Address. \n"
+                        + "?Address hotel:city ?city. \n";
+                                      
                 if (bar == true){
 			queryString = queryString + "?x hotel:hotelActivities ?bar. \n"
                                + " FILTER regex(?bar,\""
@@ -74,6 +88,10 @@ public class HotelProcess {
 			queryString = queryString + "?x hotel:HotelLocation ?location. \n"
                                 +" FILTER regex(?location,\""
 					+ location + "\", \"i\")\n";
+                }  
+                if (city!= null){
+			queryString = queryString +" FILTER regex(?city,\""
+					+ city + "\", \"i\")\n";
                 }  
                       
                if (nightClub == true){
@@ -149,7 +167,7 @@ public class HotelProcess {
                    HotelProcess hotelprocess = new HotelProcess();
                    
                    Model model = ModelFactory.createDefaultModel();
-                         model  = hotelprocess.searchbyId(false, true, false, false, false, "inside",false, true );
+                         model  = hotelprocess.searchHotel(false, true, false, false, false, "inside",false, true, "Nam Dinh" );
                          
                   model1.add(model);
                    
@@ -183,10 +201,143 @@ public class HotelProcess {
                    return model1;
 	}
     
-    public static void main(String s[])throws Exception{
+    public Model checkAvailability (String begin, String hotelName, String roomType, String livingRoomType){
+           Database.LoadOnt2Database();
+           Model om = Database.getOntologyModel();		
+           Database.LoadOnt2Database();
+           String queryString = null;
+           queryString = "PREFIX hotel: <http://www.owl-ontologies.com/Travel.owl#> \n"
+			+ "SELECT DISTINCT * \n "
+			+ "WHERE \n"
+                        + "{ \n"
+                        +"?x hotel:HotelName ?hotelname. \n"    
+                        +"?x hotel:hasHotelRoom ?hotelRoom. \n"    
+                        +"?hotelRoom hotel:roomType ?roomType. \n"  
+                        +"?hotelRoom hotel:LivingRomType ?LivingRomType. \n"  
+                        +"?hotelRoom hotel:hasNotAvailabilityPeriod ?notAvail. \n"  
+                        +"?notAvail hotel:roomType ?roomType1. \n" 
+                        +"?notAvail hotel:ToDate ?ToDate. \n" 
+                        +"?notAvail hotel:LivingRomType ?LivingRomType1. \n" 
+                        +" FILTER ( regex(?hotelname,\""
+					+ hotelName + "\", \"i\"))" 
+                        +" FILTER ( regex(?roomType,\""
+					+ roomType + "\", \"i\"))" ;
+                       if(livingRoomType != null)
+                           queryString = queryString   +" FILTER ( regex(?LivingRomType,\""
+					+ livingRoomType + "\", \"i\"))" ;
+                        
+                    /*
+                                        +" FILTER ( regex(?roomType,\""
+					+ roomType + "\", \"i\")||regex(?roomType1,\""
+					+ roomType + "\", \"i\")) ";
+           
+                         if(livingRoomType != null)
+                         queryString = queryString    +" FILTER ( regex(?LivingRomType,\""
+					+ livingRoomType + "\", \"i\")||regex(?LivingRomType1,\""
+					+ livingRoomType + "\", \"i\")) ";
+                      */ 
+                      queryString = queryString + "}";
+		Query query = QueryFactory.create(queryString);	
+                QueryExecution queryexec = QueryExecutionFactory.create(query, om);
+                Model model = ModelFactory.createDefaultModel();
+             //   ArrayList <ResultSet> arr =new ArrayList<ResultSet>();
+                try {
+                    ResultSet rs = queryexec.execSelect();			
+                    while (rs.hasNext()) {
+                     model = rs.getResourceModel();
+                     
+                      
+                        
+                       
+		      Object obj = rs.next();						
+		      ResultBinding binding = (ResultBinding) obj;
+		      System.out.println("hotel:"+binding.toString());
+                   /*   if (binding.get("notAvail").isLiteral()) {
+			         
+                        long todate = binding.getLiteral("ToDate").getLong();
+                        long beginDate = begin.getTime();
+                        if(todate < beginDate)
+                            arr.add(rs);
+			}
+                      else arr.add(rs);                                               
+                       */         
+                    }
+                   
+                }catch(Exception e1){
+                    e1.printStackTrace();
+                }
+                
+                queryString = "PREFIX hotel: <http://www.owl-ontologies.com/Travel.owl#> \n"
+			+ "SELECT DISTINCT * \n "
+			+ "WHERE \n"
+                        + "{ \n"
+                        +"?x hotel:HotelName ?hotelname. \n"    
+                        +"?x hotel:hasHotelRoom ?hotelRoom. \n"    
+                        +"?hotelRoom hotel:roomType ?roomType. \n"                          
+                        +"?hotelRoom hotel:hasNotAvailabilityPeriod ?notAvail. \n"  
+                        +"?notAvail hotel:roomType ?roomType1. \n" 
+                        +"?notAvail hotel:ToDate ?ToDate. \n" 
+                        +"?notAvail hotel:LivingRomType ?LivingRomType1. \n" 
+                        
+                        +" FILTER ( regex(?hotelname,\""
+					+ hotelName + "\", \"i\"))" 
+                        +" FILTER ( regex(?roomType1,\""
+					+ roomType + "\", \"i\"))" ;
+                     //   + " FILTER ?ToDate.toString().hasCode() < "+ begin.hashCode()+ ".";
+
+                       if(livingRoomType != null)
+                           queryString = queryString   +" FILTER ( regex(?LivingRomType1,\""
+					+ livingRoomType + "\", \"i\"))" ;
+                
+                           queryString = queryString + "}";
+                        
+		Query query1 = QueryFactory.create(queryString);	
+                QueryExecution queryexec1 = QueryExecutionFactory.create(query1, om);
+                Model model1 = ModelFactory.createDefaultModel();
+              
+                try {
+                    ResultSet rs = queryexec1.execSelect();	
+                     Iterator<QuerySolution> results = queryexec1.execSelect() ;
+
+                    while (rs.hasNext()) 
+                    {
+                     ResultSet rs1 = null;                                          
+                     model1 = rs.getResourceModel();
+                     Object obj = rs.next();						
+		      ResultBinding binding = (ResultBinding) obj;
+		      System.out.println("notavail:"+binding.toString());
+                   
+			         
+                        String todate = binding.getLiteral("ToDate").getValue().toString();
+                        int toDate= todate.hashCode();
+                        int Begin = begin.hashCode();
+                        System.out.println("todate:"+todate);
+                        System.out.println("begin:"+begin);
+                        if(toDate < Begin) {
+                             System.out.println("availability");
+                            System.out.print( rs.getRowNumber());
+                            rs.next().getLiteral(begin);
+                            model.addLiteral(arg0, arg1, Begin);
+                            ResultSet.class
+                            
+                                    
+                        }    
+                    }
+                     }catch(Exception e1){
+                    e1.printStackTrace();
+                }    
+		
+                
+      return om;  
+    }
+    
+    public static void main(String s[]){
         HotelProcess hotelprocess = new HotelProcess();
-    //    hotelprocess.searchbyId(false, true, false, false, false, "inside",false, true );
-        hotelprocess.search2("HaiYen", "HotelSofitel");
+      // hotelprocess.searchHotel(false, true, false, false, false, "inside",false, true, "Nam Dinh" );
+     //   hotelprocess.search2("HaiYen", "HotelSofitel");
+      //  Date begin = new Date("109-11-10");
+        String begin = "2009-12-11";
+        hotelprocess.checkAvailability(begin, "HotelSofitel", "LivingRoom", "SingleRoom");
     }
    
 }
