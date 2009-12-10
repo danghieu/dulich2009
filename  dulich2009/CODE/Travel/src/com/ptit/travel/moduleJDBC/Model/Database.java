@@ -177,12 +177,19 @@ public class Database {
 			loadDB(maker, s_source);
 		
 		}
+                
 		maker = getRDBMaker(s_dbURL, s_dbUser, s_dbPw, s_dbType, false);
-		// Dong nay tao Database trong SQLServer
-		base = maker.createModel(s_source, false);
+		
+	
+                // tao ra 1 model tu file nguon
+                base = maker.createModel(s_source, false);
 			}
 
 	
+        /**
+         * Dug de lay 1 model. Toạ ra 1 model tu 
+         * @return
+         */
 	public static OntModel getOntologyModel() {
 		OntModel m = ModelFactory
 				.createOntologyModel(getModelSpec(maker), base);
@@ -235,12 +242,17 @@ public class Database {
 		m.read(source);
 	}
 
-	//tra ve mot mieu ta dong goi cac thanh phan cua 1 mo hinh ontology
+	//tra ve mot mieu ta dong goi cac thanh phan cua 1 mo hinh ontology,
 	//chua ca scheme, suy dien va ho so ngon ngu
 	private static OntModelSpec getModelSpec(ModelMaker maker) {
 		// owl_mem dac ta cac mo hinh owl ma duoc lu tru trong bo nho va
 		// ko them suy dien ke thua
+            //   A specification for OWL models that are stored in memory and do no additional entailment reasoning
 		OntModelSpec spec = new OntModelSpec(OntModelSpec.OWL_MEM);
+                
+                // Set the model maker that will be used when the ontology model needs
+                //to create an additional container for an imported ontology
+                
 		spec.setImportModelMaker(maker);
 		return spec;
 	}

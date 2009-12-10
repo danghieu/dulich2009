@@ -4,6 +4,14 @@
  */
 
 package com.ptit.travel.jane.hotel;
+import org.mindswap.pellet.jena.PelletReasonerFactory;
+
+
+import com.hp.hpl.jena.rdf.model.ModelFactory;
+import com.hp.hpl.jena.rdf.model.Property;
+import com.hp.hpl.jena.rdf.model.Resource;
+import com.hp.hpl.jena.update.UpdateFactory;
+import com.hp.hpl.jena.update.UpdateRequest;
 import com.hp.hpl.jena.ontology.Individual;
 import com.hp.hpl.jena.ontology.OntClass;
 import com.hp.hpl.jena.ontology.OntModel;
@@ -16,7 +24,7 @@ import com.hp.hpl.jena.query.QueryFactory;
 import com.hp.hpl.jena.query.ResultSet;
 import com.hp.hpl.jena.sparql.core.ResultBinding;
 import com.ptit.travel.moduleJDBC.Model.*;
-import java.util.Iterator;
+import java.util.*;
 import com.hp.hpl.jena.rdf.model.*;
 import java.io.FileOutputStream;
 import java.lang.*;
@@ -42,9 +50,14 @@ public class HotelProcess {
     public Model searchHotel (boolean bar, boolean fitnescenter,boolean gardenCafe, boolean karaoke, boolean nightClub, String location,boolean meetingRoom, boolean restaurant, String city ) {
 	
 		Database.LoadOnt2Database();
-		Model om = Database.getOntologyModel();		
-		Database.LoadOnt2Database();
+		OntModel om = Database.getOntologyModel();		
 		
+		try{
+                FileOutputStream ontoModel = new FileOutputStream("D:\\ontoModel");
+                om.write(ontoModel);
+                }catch(Exception e){
+                    e.printStackTrace();
+                }
 		String queryString = null;
                         
                       queryString  = "PREFIX hotel: <http://www.owl-ontologies.com/Travel.owl#> \n"
@@ -138,7 +151,7 @@ public class HotelProcess {
     public Model search2(String HotelName, String HotelName2){
            Database.LoadOnt2Database();
            Model om = Database.getOntologyModel();		
-		Database.LoadOnt2Database();
+
 		
 		String queryString = null;
                         
@@ -201,7 +214,7 @@ public class HotelProcess {
                    return model1;
 	}
     
-    public Model checkAvailability (String begin, String hotelName, String roomType, String livingRoomType){
+    public Model checkAvailability (Date begin, String hotelName, String roomType, String livingRoomType){
            Database.LoadOnt2Database();
            Model om = Database.getOntologyModel();		
            Database.LoadOnt2Database();
@@ -266,7 +279,7 @@ public class HotelProcess {
                 }catch(Exception e1){
                     e1.printStackTrace();
                 }
-                
+            //    long time = begin.getTime();
                 queryString = "PREFIX hotel: <http://www.owl-ontologies.com/Travel.owl#> \n"
 			+ "SELECT DISTINCT * \n "
 			+ "WHERE \n"
@@ -282,8 +295,25 @@ public class HotelProcess {
                         +" FILTER ( regex(?hotelname,\""
 					+ hotelName + "\", \"i\"))" 
                         +" FILTER ( regex(?roomType1,\""
-					+ roomType + "\", \"i\"))" ;
-                     //   + " FILTER ?ToDate.toString().hasCode() < "+ begin.hashCode()+ ".";
+					+ roomType + "\", \"i\"))" 
+                        + " FILTER (xsd:date(?date) >= xsd:date(\"2008-01-02\"))" ;
+                        
+        
+                
+  /*              
+         String query2 = "PREFIX ex: <http://temp.example.org/terms/>" 
+                 + "PREFIX loc: <http://simile.mit.edu/2005/05/ontologies/location#>" 
+                 + "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>" 
+                 + "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>" 
+                 + "SELECT *"
+                 + "WHERE {{?event ex:date ?date ." 
+                 + " FILTER (xsd:date(?date) >= xsd:date("+begin+") && xsd:date(?date) <= xsd:date("+2008-01-11+"))}" 
+                 + " UNION {?event ex:starts ?start; ex:finishes ?end." 
+                 + " FILTER (xsd:date(?start) >= xsd:date("2008-01-02") && xsd:date(?end) <= xsd:date("2008-01-10"))}" 
+                 + "}" 
+                 + "ORDER BY ?event" +  """;
+
+      */          
 
                        if(livingRoomType != null)
                            queryString = queryString   +" FILTER ( regex(?LivingRomType1,\""
@@ -310,18 +340,18 @@ public class HotelProcess {
 			         
                         String todate = binding.getLiteral("ToDate").getValue().toString();
                         int toDate= todate.hashCode();
-                        int Begin = begin.hashCode();
-                        System.out.println("todate:"+todate);
-                        System.out.println("begin:"+begin);
-                        if(toDate < Begin) {
+                   //     int Begin = begin.hashCode();
+                    //    System.out.println("todate:"+todate);
+                    //    System.out.println("begin:"+begin);
+                  /*      if(toDate < Begin) {
                              System.out.println("availability");
                             System.out.print( rs.getRowNumber());
-                            rs.next().getLiteral(begin);
-                            model.addLiteral(arg0, arg1, Begin);
-                            ResultSet.class
+                     //       rs.next().getLiteral(begin);
+                   //         model.addLiteral(arg0, arg1, Begin);
+                   //         ResultSet.class
                             
                                     
-                        }    
+                        }  */  
                     }
                      }catch(Exception e1){
                     e1.printStackTrace();
@@ -331,13 +361,57 @@ public class HotelProcess {
       return om;  
     }
     
+    public void search(String name){
+         Database.LoadOnt2Database();
+         OntModel model = ModelFactory.createOntologyModel(
+				PelletReasonerFactory.THE_SPEC, null);
+         
+            model= Database.getOntologyModel();	
+
+
+
+		
+		String queryString = null;
+                        
+                      queryString  = "PREFIX hotel: <http://www.owl-ontologies.com/Travel.owl#> \n"
+			+ "SELECT DISTINCT * \n "
+			+ "WHERE \n"
+                        + "{ \n"
+                        +"?x hotel:hasMsg_HotelSearchRS ?RS. \n" 
+                        +"?x hotel:city ?city. \n"  
+                  //      +"?RS hotel:hasHotel ?h. \n" 
+                        +" FILTER regex(?city,\""
+					+ name + "\", \"i\")}";
+               
+                 Query query = QueryFactory.create(queryString);	
+                QueryExecution queryexec = QueryExecutionFactory.create(query, model);
+                
+                try {
+                    ResultSet rs = queryexec.execSelect();			
+                    while (rs.hasNext()) {
+                     //    model1 = rs.getResourceModel(); 
+			Object obj = rs.next();						
+		
+                        
+                        
+                        ResultBinding binding = (ResultBinding) obj;
+				System.out.println("truy2:"+binding.toString());
+                    }
+                }catch(Exception e1){
+                    e1.printStackTrace();
+                }
+           
+    }
+    
     public static void main(String s[]){
         HotelProcess hotelprocess = new HotelProcess();
-      // hotelprocess.searchHotel(false, true, false, false, false, "inside",false, true, "Nam Dinh" );
+   //    hotelprocess.searchHotel(false, true, false, false, false, "inside",false, true, "Nam Dinh" );
      //   hotelprocess.search2("HaiYen", "HotelSofitel");
-      //  Date begin = new Date("109-11-10");
-        String begin = "2009-12-11";
-        hotelprocess.checkAvailability(begin, "HotelSofitel", "LivingRoom", "SingleRoom");
+        Date begin = new Date(109-12-11);
+      //  String begin = "2009-12-11";
+      //  hotelprocess.checkAvailability(begin, "HotelSofitel", "LivingRoom", "SingleRoom");
+        
+        hotelprocess.search("Nam Dinh");
     }
    
 }
