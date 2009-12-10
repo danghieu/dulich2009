@@ -6,6 +6,8 @@
 package com.ptit.travel.jane.hotel;
 import org.mindswap.pellet.jena.PelletReasonerFactory;
 
+import sun.security.jca.GetInstance.Instance;
+
 
 import com.hp.hpl.jena.rdf.model.ModelFactory;
 import com.hp.hpl.jena.rdf.model.Property;
@@ -363,12 +365,12 @@ public class HotelProcess {
     
     public void search(String name){
          Database.LoadOnt2Database();
-         OntModel model = ModelFactory.createOntologyModel(
+        OntModel model = ModelFactory.createOntologyModel(
 				PelletReasonerFactory.THE_SPEC, null);
          
             model= Database.getOntologyModel();	
 
-
+            model.prepare();
 
 		
 		String queryString = null;
