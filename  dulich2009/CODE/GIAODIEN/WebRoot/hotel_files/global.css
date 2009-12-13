@@ -1,0 +1,366 @@
+BODY {
+	FONT-SIZE: 12pt;
+	FONT-STYLE: normal;
+	LINE-HEIGHT: 16px;
+	TEXT-ALIGN: justify;
+	FONT-FAMILY: Arial, Helvetica, sans-serif
+}
+TD {
+	FONT-WEIGHT: 400;
+	FONT-SIZE: 12px;
+	LINE-HEIGHT: 18px;
+	TEXT-ALIGN: justify;
+	FONT-FAMILY: Arial, Verdana, Helvetica, sans-serif
+}
+.menu_background {
+	BACKGROUND: url('../images/global/menu_bg.jpg');
+}
+.hmenu_background {
+	BACKGROUND-COLOR: #5EBB03;
+}
+.rmenu_background {
+	background: #FE9103 url('../images/global/rmenu_background.jpg');
+	background-repeat: no-repeat; 
+	background-position: bottom
+}
+.bmenu_background {
+	BACKGROUND-COLOR: #FE9103;
+}
+A {
+	FONT-SIZE: 13px;
+	LINE-HEIGHT: 16px;
+	COLOR: #000000;
+	TEXT-ALIGN: left;
+	FONT-FAMILY: Arial, Helvetica, sans-serif;
+	TEXT-DECORATION: none
+}
+A:hover {
+	FONT-SIZE: 13px;
+	LINE-HEIGHT: 16px;
+	COLOR: #000000;
+	TEXT-ALIGN: left;
+	FONT-FAMILY: Arial, Helvetica, sans-serif;
+	TEXT-DECORATION: underline
+}
+.hmenulink {
+	FONT-WEIGHT: 400;
+	COLOR: #000000;
+	FONT-SIZE: 12px;
+	LINE-HEIGHT: 15px;
+	TEXT-ALIGN: Center;
+	FONT-FAMILY: Arial, Helvetica, sans-serif;
+	TEXT-DECORATION: none
+}
+.hmenulink:hover {
+	FONT-WEIGHT: 400;
+	COLOR: #000000;
+	FONT-SIZE: 12px;
+	LINE-HEIGHT: 15px;
+	TEXT-ALIGN: Center;
+	FONT-FAMILY: Arial, Helvetica, sans-serif;
+	TEXT-DECORATION: underline
+}
+.bmenulink {
+	FONT-WEIGHT: Bold;
+	COLOR: #FFFFFF;
+	FONT-SIZE: 12px;
+	LINE-HEIGHT: 15px;
+	FONT-FAMILY: Arial, Verdana, Helvetica, sans-serif;
+	TEXT-DECORATION: none
+}
+.bmenulink:hover {
+	FONT-WEIGHT: Bold;
+	COLOR: #FFFFFF;
+	FONT-SIZE: 12px;
+	LINE-HEIGHT: 15px;
+	FONT-FAMILY: Arial, Verdana, Helvetica, sans-serif;
+	TEXT-DECORATION: underline
+}
+.footer {
+	FONT-WEIGHT: 400;
+	COLOR: #000000;
+	FONT-SIZE: 12px;
+	LINE-HEIGHT: 15px;
+	FONT-FAMILY: Arial, Helvetica, sans-serif;
+	TEXT-DECORATION: none
+}
+.flink {
+	FONT-WEIGHT: 400;
+	COLOR: #FFFFFF;
+	FONT-SIZE: 12px;
+	LINE-HEIGHT: 15px;
+	FONT-FAMILY: Arial, Helvetica, sans-serif;
+	TEXT-DECORATION: none
+}
+.flink:hover {
+	FONT-WEIGHT: 400;
+	COLOR: #FFFFFF;
+	FONT-SIZE: 12px;
+	LINE-HEIGHT: 15px;
+	FONT-FAMILY: Arial, Helvetica, sans-serif;
+	TEXT-DECORATION: Underline
+}
+.Title {
+	FONT-WEIGHT: bolder;
+	FONT-SIZE: 18px;
+	LINE-HEIGHT: 20px;
+	COLOR: #000000;
+	FONT-FAMILY: Times New Roman, Times, serif;
+	TEXT-DECORATION: none
+}
+.topictitle {
+	FONT-WEIGHT: bold;
+	FONT-SIZE: 13px;
+	COLOR: #000000;
+	FONT-FAMILY: Arial, Helvetica, sans-serif;
+	TEXT-DECORATION: none
+}
+.Description {
+	FONT-WEIGHT: bolder;
+	FONT-SIZE: 13px;
+	LINE-HEIGHT: 18px;
+	COLOR: #333333;
+	FONT-FAMILY: Arial, Helvetica, sans-serif;
+	TEXT-DECORATION: none
+}
+.Tour_Description {
+	FONT-WEIGHT: 400;
+	FONT-SIZE: 13px;
+	LINE-HEIGHT: 18px;
+	COLOR: #333333;
+	FONT-FAMILY: Arial, Helvetica, sans-serif;
+	TEXT-DECORATION: none
+}
+.menubar_1 {
+	FONT-WEIGHT: Bold;
+	FONT-SIZE: 11px;
+	COLOR: #FFFFFF;
+	BACKGROUND-COLOR: #448801;
+	FONT-FAMILY: Arial, Tahoma;
+	TEXT-DECORATION: none
+}
+.menubar_2 {
+	FONT-WEIGHT: Bold;
+	FONT-SIZE: 12px;
+	COLOR: #000000;
+	CURSOR: hand;
+	FONT-FAMILY: Arial, Tahoma;
+	TEXT-DECORATION: none
+}
+.menubar_2ac {
+	FONT-WEIGHT: Bold;
+	FONT-SIZE: 12px;
+	COLOR: #FFFFFF;
+	CURSOR: hand;
+	FONT-FAMILY: Arial, Tahoma;
+	TEXT-DECORATION: none
+}
+.tdRight {
+	FONT: 13px Arial;
+	FONT-WEIGHT: Bold;
+	TEXT-ALIGN: center;
+	COLOR: #F6F5DF;
+	BACKGROUND-COLOR: #CA7506;
+	TEXT-DECORATION: none
+}
+.lstMenu {
+	FONT-SIZE: 11px;
+	WIDTH: 140px;
+	COLOR: #640000;
+	LINE-HEIGHT: 20px;
+	FONT-FAMILY: Arial, Tahoma, Helvetica, sans-serif
+}
+.TopStory {
+	FONT-WEIGHT: bold; 
+	FONT-SIZE: 18px; 
+	LINE-HEIGHT: 25px;
+	COLOR: #d30000; 
+	FONT-FAMILY: Tahoma, Arial; 
+	TEXT-DECORATION: none
+}
+.TopStory:hover {
+	FONT-WEIGHT: bold; 
+	FONT-SIZE: 18px; 
+	LINE-HEIGHT: 25px;
+	COLOR: #d30000; 
+	FONT-FAMILY: Tahoma, Arial; 
+	TEXT-DECORATION: underline
+}
+.Topic_Description {
+	FONT-WEIGHT: 400;
+	FONT-SIZE: 10pt;
+	COLOR: #333333;
+	FONT-FAMILY: Arial;
+	TEXT-DECORATION: none
+}
+.Topic_More {
+	FONT-SIZE: 9pt;
+	FONT-WEIGHT: bold;
+	COLOR: #333333;
+	FONT-FAMILY: Arial;
+	TEXT-ALIGN: Right;
+	TEXT-DECORATION: none
+}
+.Topic_More:Hover {
+	FONT-SIZE: 9pt;
+	FONT-WEIGHT: bold;
+	COLOR: #333333;
+	FONT-FAMILY: Arial;
+	TEXT-ALIGN: Right;
+	TEXT-DECORATION: none
+}
+.Topic_Title {
+	FONT-WEIGHT: bold;
+	FONT-SIZE: 12pt;
+	COLOR: #000000;
+	FONT-FAMILY: Times New Roman;
+	TEXT-DECORATION: none
+}
+.Topic_Title:Hover {
+	FONT-WEIGHT: bold;
+	FONT-SIZE: 12pt;
+	COLOR: #000000;
+	FONT-FAMILY: Times New Roman;
+	TEXT-DECORATION: underline
+}
+.Date_Updated {
+	FONT-WEIGHT: 400;
+	FONT-SIZE: 9pT;
+	COLOR: #336699;
+	FONT-FAMILY: Arial, Helvetica, sans-serif;
+	TEXT-ALIGN: Right
+}
+.Source {
+	FONT-WEIGHT: Bold;
+	FONT-SIZE: 11px;
+	COLOR: #000000;
+	FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif;
+	TEXT-ALIGN: Right;
+	LINE-HEIGHT: 13px
+}
+.Back_Link {
+	FONT-WEIGHT: Bold;
+	FONT-SIZE: 11px;
+	COLOR: #000000;
+	FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif;
+	TEXT-ALIGN: Right;
+	LINE-HEIGHT: 13px
+}
+.Back_Link:hover {
+	FONT-WEIGHT: Bold;
+	FONT-SIZE: 11px;
+	COLOR: #000000;
+	FONT-FAMILY: Verdana, Arial, Helvetica, sans-serif;
+	TEXT-ALIGN: Right;
+	LINE-HEIGHT: 13px
+}
+.News_detail {
+	FONT-WEIGHT: 400;
+	FONT-SIZE: 12px;
+	LINE-HEIGHT: 18px;
+	COLOR: #000000;
+	TEXT-ALIGN: Justify;
+	FONT-FAMILY: Arial, Helvetica, sans-serif;
+}
+.TitleLevel2 {
+	FONT-WEIGHT: Bold;
+	FONT-SIZE: 13px;
+	COLOR: #FFFFFF;
+	BACKGROUND-COLOR: #CA7506;
+	LINE-HEIGHT: 18px;
+	FONT-FAMILY: Arial, Verdana, Helvetica, sans-serif;
+	TEXT-ALIGN: Left
+}
+.a1 {
+	FONT-WEIGHT: bold; FONT-SIZE: 13px; COLOR: #0000ff; FONT-FAMILY: Arial, Verdana, Helvetica, sans-serif; TEXT-DECORATION: none
+}
+.a1:hover {
+	FONT-WEIGHT: bold; FONT-SIZE: 13px; COLOR: #640000; FONT-FAMILY: Arial, Verdana, Helvetica, sans-serif; TEXT-DECORATION: none
+}
+.a2 {
+	FONT-WEIGHT: bold; FONT-SIZE: 13px; COLOR: Blue; FONT-FAMILY: Arial, Verdana, Helvetica, sans-serif; TEXT-DECORATION: none
+}
+.a2:hover {
+	FONT-WEIGHT: bold; FONT-SIZE: 13px; COLOR: #640000; FONT-FAMILY: Arial, Verdana, Helvetica, sans-serif; TEXT-DECORATION: none
+}
+.TitleLevel3 {
+	FONT-WEIGHT: Bold;
+	FONT-SIZE: 14px;
+	COLOR: #640000;
+	LINE-HEIGHT: 18px;
+	FONT-FAMILY: Arial, Verdana, Helvetica, sans-serif;
+	TEXT-ALIGN: Left
+}
+.mnhotel {
+	FONT-WEIGHT: bold;
+	FONT-SIZE: 12px;
+	COLOR: #FFFFFF;
+	CURSOR: hand;
+	FONT-FAMILY: Arial, Tahoma;
+	BACKGROUND: url('../images/hotels/menus/hotel_bg.jpg');
+	TEXT-DECORATION: none
+}
+.mnhotel_ac {
+	FONT-WEIGHT: bold;
+	FONT-SIZE: 12px;
+	COLOR: #FCF902;
+	CURSOR: hand;
+	FONT-FAMILY: Arial, Tahoma;
+	BACKGROUND: url('../images/hotels/menus/hotel_bg.jpg');
+	TEXT-DECORATION: none
+}
+.vnhotel {
+	FONT-WEIGHT: Bold;
+	FONT-SIZE: 13px;
+	COLOR: #FFFFFF;
+	BACKGROUND-COLOR: #990100;
+	LINE-HEIGHT: 18px;
+	FONT-FAMILY: Arial, Verdana, Helvetica, sans-serif;
+	TEXT-ALIGN: Left;
+	TEXT-DECORATION: none
+}
+.vnhotel:hover {
+	FONT-WEIGHT: Bold;
+	FONT-SIZE: 13px;
+	COLOR: #FFFFFF;
+	BACKGROUND-COLOR: #990100;
+	LINE-HEIGHT: 18px;
+	FONT-FAMILY: Arial, Verdana, Helvetica, sans-serif;
+	TEXT-ALIGN: Left;
+	TEXT-DECORATION: underline
+}
+.anews {
+	FONT-SIZE: 12px; COLOR: #FFFFFF; FONT-FAMILY: Arial, Verdana, Helvetica, sans-serif; TEXT-ALIGN: left
+}
+.anews:hover {
+	FONT-SIZE: 12px; COLOR: #000000; FONT-FAMILY: Arial, Verdana, Helvetica, sans-serif; TEXT-ALIGN: left; TEXT-DECORATION: none
+}
+.tnews {
+	FONT-WEIGHT: Bold; FONT-SIZE: 12px; COLOR: red; FONT-FAMILY: Arial, Verdana, Helvetica, sans-serif; TEXT-ALIGN: left
+}
+.tnews:hover {
+	FONT-WEIGHT: Bold; FONT-SIZE: 12px; COLOR: #000000; FONT-FAMILY: Arial, Verdana, Helvetica, sans-serif; TEXT-ALIGN: left; TEXT-DECORATION: none
+}
+.Link_Booking {
+	FONT-WEIGHT: Bold;
+	FONT-SIZE: 13px;
+	COLOR: blue;
+	LINE-HEIGHT: 18px;
+	FONT-FAMILY: Arial, Verdana, Helvetica, sans-serif;
+	TEXT-ALIGN: Right
+}
+.Link_Booking:hover {
+	FONT-WEIGHT: Bold;
+	FONT-SIZE: 13px;
+	COLOR: red;
+	LINE-HEIGHT: 18px;
+	FONT-FAMILY: Arial, Verdana, Helvetica, sans-serif;
+	TEXT-ALIGN: Right;
+	TEXT-DECORATION: none
+}
+.a3 {
+	FONT-WEIGHT: 400; FONT-SIZE: 13px; COLOR: blue; FONT-FAMILY: Arial, Verdana, Helvetica, sans-serif; TEXT-DECORATION: none
+}
+.a3:hover {
+	FONT-WEIGHT: 400; FONT-SIZE: 13px; COLOR: #640000; FONT-FAMILY: Arial, Verdana, Helvetica, sans-serif; TEXT-DECORATION: none
+}
