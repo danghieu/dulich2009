@@ -525,7 +525,7 @@ function view_composer2(ob1) {
 
                                   <tbody><tr>
 
-                                    <td align="center" bgcolor="#6699FF" valign="middle" height="30"><span class="style5">T&Igrave;M KI&#7870;M CHUY&Ecirc;N BAY TRONG N&#431;&#7898;C </span></td>
+                                    <td align="center" bgcolor="#6699FF" valign="middle" height="30"><span class="style5">T&Igrave;M KIẾM CHUY&Ecirc;N BAY TRONG NƯỚC<br></span></td>
 
                                   </tr>
 
@@ -548,7 +548,7 @@ function view_composer2(ob1) {
                                             <td height="48" valign="middle"><select name="khoihanh" class="form_date" id="khoihanh">
 
                                                 
-                                          <option selected="selected">
+                                          <option >
 
                                                   Buôn Ma Thuột                                              </option>
 
@@ -583,7 +583,7 @@ function view_composer2(ob1) {
                                                   Hải Phòng                                              </option>
 
                                                 
-                                          <option>
+                                          <option selected="selected">
 
                                                   Hà Nội                                              </option>
 
@@ -636,7 +636,7 @@ function view_composer2(ob1) {
                                             </select></td>
 
                                             <td valign="middle"><select name="diden" class="form_date" id="select3" valign="middle">
-                                              <option selected="selected"> Buôn Ma Thuột </option>
+                                              <option > Buôn Ma Thuột </option>
                                               <option> Cà Mau </option>
                                               <option> Côn Đảo </option>
                                               <option> Đà Lạt </option>
@@ -650,7 +650,7 @@ function view_composer2(ob1) {
                                               <option> Pleiku </option>
                                               <option> Qui Nhơn </option>
                                               <option> Rạch Giá </option>
-                                              <option> Hồ Chí Minh </option>
+                                              <option selected="selected"> Hồ Chí Minh </option>
                                               <option> Tuy Hoà </option>
                                               <option> Vinh </option>
                                             </select></td>
