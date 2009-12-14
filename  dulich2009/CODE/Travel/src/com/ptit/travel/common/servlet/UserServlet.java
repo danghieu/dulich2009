@@ -15,6 +15,7 @@ import com.ptit.travel.agent.user.UserAgent;
 import com.ptit.travel.common.AgentManager;
 import com.ptit.travel.common.CallAgent;
 import jade.wrapper.AgentController;
+import jade.wrapper.ContainerController;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.TreeSet;
@@ -29,7 +30,12 @@ public class UserServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
     private CallAgent callAgent;// ConfigXMLConnect.HOST_USER
     private AgentController agentController = null;
+    private ContainerController containerController = null;
     private String nickName;
+    private String host = "localhost";
+    private String port = "1099";
+
+    private String className = "com.ptit.travel.agent.user.UserAgent";          
     //*
 
     @Override
@@ -39,6 +45,11 @@ public class UserServlet extends HttpServlet {
             try {
                 log.info("|| Killing agent: " + nickName);
                 agentController.kill();
+                if(containerController != null){
+                    log.info("|| Killing container: " + containerController.getContainerName());
+                    containerController.kill();
+                    
+                }
             } catch (Exception e) {
                 e.printStackTrace();
                 log.error("UserServlet.destroy(): " + e);
@@ -51,14 +62,16 @@ public class UserServlet extends HttpServlet {
     public void init() throws ServletException {
         super.init();
         if (agentController == null) {
-            String host = "localhost";
-            String port = "1099";
             nickName = "UserAgent";//"Guest" + System.currentTimeMillis();
-
-            String className = "com.ptit.travel.agent.user.UserAgent";
+              
             try {
                 log.info("|| Starting agent: " + nickName);
-                agentController = AgentManager.startAgent(host, port, nickName, className);
+                ArrayList arr = AgentManager.startContainer(host, port, nickName, className);
+                if(arr != null && arr.size() == 2){
+                    containerController = (ContainerController) arr.get(0);
+                    agentController = (AgentController)arr.get(1);
+                }
+                
             } catch (Exception e) {
                 e.printStackTrace();
                 log.error("UserServlet.init(): " + e);
@@ -202,5 +215,32 @@ public class UserServlet extends HttpServlet {
         }
         log.info("|| " + msg);
         return msg;
+    }
+    /**
+     * 
+     * @param request
+     * @return
+     */
+    public String login(HttpServletRequest request){
+        String id = request.getParameter("userName");
+        String password = request.getParameter("password");
+        // check information account
+        
+        // if satified
+        if(containerController != null){
+            try {
+                agentController.kill();
+                containerController.kill();
+                containerController = null;
+                agentController = AgentManager.addAgent(host, port, id, className);
+            } catch (Exception e) {
+                id = null;
+            }
+            
+        }
+        return id;
+    }
+    public void logout(HttpServletRequest request){
+        
     }
 }
