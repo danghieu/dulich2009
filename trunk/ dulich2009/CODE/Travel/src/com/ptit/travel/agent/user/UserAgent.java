@@ -420,7 +420,7 @@ public class UserAgent extends Agent {
 
             return false;
         }
-    } // End class RequestCancel
+    } // End class Prepare
 
 
     /**
@@ -450,7 +450,7 @@ public class UserAgent extends Agent {
 
             return false;
         }
-    } // End class RequestCancel
+    } // End class Cancel
 
 
     /**
@@ -483,48 +483,4 @@ public class UserAgent extends Agent {
     } // End class RequestCancel
 
 
-    /**
-     * This method is called by whatever GUI implementation In current
-     * implementation it is called by XML-RPC through XMLRPC webserver Method
-     * returns XML data of the actor - context,resources and other or of any
-     * other resource <br>
-     * you need to call "AskAgent.getXML(String id)" function from your external
-     * system in order to get xml of that RDF resource if you want to get RDF
-     * results instead of XML id will leead with "rdf:" for example
-     * "rdf:concrete_id"
-     * 
-     * @param id
-     *            represents id of resource in Agent Memory if we want to get
-     *            actor/Employee data we need to enter actor ID which is in this
-     *            case "AskAgent"
-     * 
-     */
-    public String getXML(String id) {
-        String xml = "";
-        mem.testConnection();
-
-        boolean wantsRDF = false;
-        if (id.startsWith("rdf:")) {
-            Pattern pp = Pattern.compile("rdf:");
-            Matcher mm = pp.matcher(id);
-            id = mm.replaceAll("");
-            wantsRDF = true;
-        }
-
-        Resource r = mem.getModel().getResource(Memory.getBase() + id);
-
-        if (wantsRDF) {
-            // This is rdf implementation
-            OntModel m = ModelFactory.createOntologyModel();
-            Message.addProperties(m, r);
-
-            StringWriter writer = new StringWriter();
-            m.write(writer, "RDF/XML", Ontology.BASE); // "RDF/XML-ABBREV");
-
-            xml = writer.getBuffer().toString();
-        } else {
-            xml = Message.getXML(r, "", "");
-        }
-        return xml;
-    }
 }
