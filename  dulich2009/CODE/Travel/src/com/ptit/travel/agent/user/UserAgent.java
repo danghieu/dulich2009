@@ -54,7 +54,6 @@ public class UserAgent extends Agent {
     // message queue of agent contains every satisfactory replied messages 
     private Hashtable<String, ArrayList<String>> msgQueue = new Hashtable<String, ArrayList<String>>();
 
-
     protected void setup() {
         Message.register(this, this.getLocalName());
 
@@ -86,7 +85,7 @@ public class UserAgent extends Agent {
      *            represents type of resource in Memory Model (OWL model)
      * 
      */
-    public String search(String msg, String  msgId, String protocol) {       
+    public String search(String msg, String msgId, String protocol) {
         log.info("=== ADD RequestInfo behavior to " + this.getLocalName());
         addBehaviour(new RequestInfo(this, msg, msgId, protocol));// duoc trieu goi tu UserServlet
 
@@ -123,7 +122,7 @@ public class UserAgent extends Agent {
     public String book(String resource) {
         String msgId = getLocalName() + System.currentTimeMillis(); //unique
 
-        addBehaviour(new RequestBook(this, resource, msgId));
+        addBehaviour(new Book(this, resource, msgId));
         ArrayList<String> msgs = msgQueue.get(msgId);
         msgQueue.remove(msgId);
         if (msgs != null && msgs.size() != 0) {
@@ -161,7 +160,7 @@ public class UserAgent extends Agent {
     public String prepareModify(String resource) {
         String msgId = getLocalName() + System.currentTimeMillis(); //unique
 
-        addBehaviour(new PrepareModify(this, resource, msgId));
+        addBehaviour(new Prepare(this, resource, msgId));
 
         return "ok";
     }
@@ -193,7 +192,7 @@ public class UserAgent extends Agent {
     public String modify(String resource) {
         String msgId = getLocalName() + System.currentTimeMillis(); //unique
 
-        addBehaviour(new RequestModify(this, resource, msgId));
+        addBehaviour(new Modify(this, resource, msgId));
 
         return "ok";
     }
@@ -224,11 +223,12 @@ public class UserAgent extends Agent {
      */
     public String cancel(String resource) {
         String msgId = getLocalName() + System.currentTimeMillis(); //unique
-        
-        addBehaviour(new RequestCancel(this, resource, msgId));
+
+        addBehaviour(new Cancel(this, resource, msgId));
 
         return "ok";
     }
+
     /**
      * get results affter finishing cancel behavior
      * @param msgId
@@ -283,7 +283,7 @@ public class UserAgent extends Agent {
         }
 
         public void action() {
-            
+
             switch (step) {
                 case 0:
                     try {
@@ -294,12 +294,12 @@ public class UserAgent extends Agent {
                         receivers = new ArrayList<String>();
                         receivers.add("HotelAgent");
                         // Send the cfp to all agents
-                        ACLMessage msg = Message.createInformMessage(a, receivers,content);
+                        ACLMessage msg = Message.createInformMessage(a, receivers, content);
                         msg.setProtocol(protocol);
                         msg.setConversationId(myAgent.getLocalName());
                         msg.setReplyWith(msgId); // Unique
                         // value
-                        
+
                         myAgent.send(msg);
                         // Prepare the template to get proposals
                         mt = MessageTemplate.and(MessageTemplate.MatchConversationId(myAgent.getLocalName()),
@@ -341,7 +341,7 @@ public class UserAgent extends Agent {
                     }
                     break;
                 case 2:
-                    
+
                     break;
 
             }
@@ -349,10 +349,11 @@ public class UserAgent extends Agent {
 
         public boolean done() {
 
-            
+
             if (step == 2) {// && avail); if finishing only exist available
                 // put messages into queue of agent
-                log.info("=== FIHISHED RequestInfo behavior");            
+
+                log.info("=== FIHISHED RequestInfo behavior");
                 msgQueue.put(msgId, msgs);
                 return true;
             }
@@ -368,13 +369,13 @@ public class UserAgent extends Agent {
      * @param resource: information about services need to book
      * @param a: agent execute this behavior
      */
-    class RequestBook extends Behaviour {
+    class Book extends Behaviour {
 
         private String resource = null;
         private Agent a;
         private String msgId;
 
-        public RequestBook(Agent _a, String _resource, String _msgId) {
+        public Book(Agent _a, String _resource, String _msgId) {
             super(_a);
             a = _a;
             resource = _resource;
@@ -398,13 +399,13 @@ public class UserAgent extends Agent {
      * @param resource: information about services need to modify 
      * @param a: agent execute this behavior
      */
-    class PrepareModify extends Behaviour {
+    class Prepare extends Behaviour {
 
         private String resource = null;
         private Agent a;
         private String msgId;
 
-        public PrepareModify(Agent _a, String _resource, String _msgId) {
+        public Prepare(Agent _a, String _resource, String _msgId) {
             super(_a);
             a = _a;
             resource = _resource;
@@ -428,13 +429,13 @@ public class UserAgent extends Agent {
      * @param resource: information about services need to modify 
      * @param a: agent execute this behavior
      */
-    class RequestCancel extends Behaviour {
+    class Cancel extends Behaviour {
 
         private String resource = null;
         private Agent a;
         private String msgId;
 
-        public RequestCancel(Agent _a, String _resource, String _msgId) {
+        public Cancel(Agent _a, String _resource, String _msgId) {
             super(_a);
             a = _a;
             resource = _resource;
@@ -458,13 +459,13 @@ public class UserAgent extends Agent {
      * @param resource: information about services need to book
      * @param a: agent execute this behavior
      */
-    class RequestModify extends Behaviour {
+    class Modify extends Behaviour {
 
         private String resource = null;
         private Agent a;
         private String msgId;
 
-        public RequestModify(Agent _a, String _resource, String _msgId) {
+        public Modify(Agent _a, String _resource, String _msgId) {
             super(_a);
             a = _a;
             resource = _resource;
