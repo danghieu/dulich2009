@@ -1,0 +1,35 @@
+Msg_HotelSearchRQ(?x)  ?
+city(?x, ?city1)  ?
+beginTime(?x, ?begin)  ?
+Hotel(?hotel)  ?
+hasContact(?hotel, ?contact)  ?
+hasAddress(?contact, ?add)  ?
+city(?add, ?city2)  ?
+hasHotelRoom(?hotel, ?room)  ?
+hasNotAvailabilityPeriod(?room, ?notavai)  ?
+ToDate(?notavai, ?todate)  ?
+swrlb:stringEqualIgnoreCase(?city1, ?city2)  ?
+swrlb:lessThanOrEqual(?todate, ?begin) 
+  ? Msg_HotelSearchRS(?x)  ?
+hasHotel(?x, ?hotel)
+
+
+
+--- truong hop 2
+Msg_HotelSearchRQ(?x)  ?
+city(?x, ?city1)  ?
+endTime(?x, ?end)  ?
+roomType(?x, ?room1)  ?
+Hotel(?hotel)  ?
+hasContact(?hotel, ?contact)  ?
+hasAddress(?contact, ?add)  ?
+city(?add, ?city2)  ?
+hasHotelRoom(?hotel, ?room)  ?
+hasNotAvailabilityPeriod(?room, ?notavai)  ?
+FromDate(?notavai, ?fromdate)  ?
+roomType(?notavai, ?room2)  ?
+swrlb:stringEqualIgnoreCase(?city1, ?city2)  ?
+swrlb:stringEqualIgnoreCase(?room1, ?room2)  ?
+swrlb:lessThanOrEqual(?end, ?fromdate) 
+  ? Msg_HotelSearchRS(?x)  ?
+hasHotel(?x, ?hotel)
