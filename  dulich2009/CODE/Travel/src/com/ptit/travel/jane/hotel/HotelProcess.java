@@ -6,14 +6,8 @@
 package com.ptit.travel.jane.hotel;
 import org.mindswap.pellet.jena.PelletReasonerFactory;
 
-import sun.security.jca.GetInstance.Instance;
-
-
-import com.hp.hpl.jena.rdf.model.ModelFactory;
-import com.hp.hpl.jena.rdf.model.Property;
-import com.hp.hpl.jena.rdf.model.Resource;
-import com.hp.hpl.jena.update.UpdateFactory;
-import com.hp.hpl.jena.update.UpdateRequest;
+import java.io.*;
+import com.hp.hpl.jena.ontology.ObjectProperty;
 import com.hp.hpl.jena.ontology.Individual;
 import com.hp.hpl.jena.ontology.OntClass;
 import com.hp.hpl.jena.ontology.OntModel;
@@ -30,6 +24,7 @@ import java.util.*;
 import com.hp.hpl.jena.rdf.model.*;
 import java.io.FileOutputStream;
 import java.lang.*;
+import com.hp.hpl.jena.util.iterator.ExtendedIterator;
 /**
  *
  * @author Administrator
@@ -363,57 +358,92 @@ public class HotelProcess {
       return om;  
     }
     
-    public void search(String name){
+    public void search(){
          Database.LoadOnt2Database();
-        OntModel model = ModelFactory.createOntologyModel(
-				PelletReasonerFactory.THE_SPEC, null);
-         
-            model= Database.getOntologyModel();	
-
-            model.prepare();
-
-		
-		String queryString = null;
-                        
-                      queryString  = "PREFIX hotel: <http://www.owl-ontologies.com/Travel.owl#> \n"
-			+ "SELECT DISTINCT * \n "
-			+ "WHERE \n"
-                        + "{ \n"
-                        +"?x hotel:hasMsg_HotelSearchRS ?RS. \n" 
-                        +"?x hotel:city ?city. \n"  
-                  //      +"?RS hotel:hasHotel ?h. \n" 
-                        +" FILTER regex(?city,\""
-					+ name + "\", \"i\")}";
-               
-                 Query query = QueryFactory.create(queryString);	
-                QueryExecution queryexec = QueryExecutionFactory.create(query, model);
+         String ont = "http://www.owl-ontologies.com/Travel.owl#";
+      String file = "C://Program Files/Apache Software Foundation/Tomcat 6.0/webapps/MyOntology/hotel_yen1.owl";
                 
-                try {
-                    ResultSet rs = queryexec.execSelect();			
-                    while (rs.hasNext()) {
-                     //    model1 = rs.getResourceModel(); 
-			Object obj = rs.next();						
-		
-                        
-                        
-                        ResultBinding binding = (ResultBinding) obj;
-				System.out.println("truy2:"+binding.toString());
-                    }
-                }catch(Exception e1){
-                    e1.printStackTrace();
-                }
+		OntModel model = ModelFactory.createOntologyModel(
+				PelletReasonerFactory.THE_SPEC, null);
+		try {
+			model.read(new FileInputStream(new File(file)), "");
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+      
+
+       
            
-    }
+		// System.out.println(extendedIterator.toList().size());
+	ObjectProperty beginPoint = model.getObjectProperty(ont
+				+ "hasHotel");
+		/*ObjectProperty endPoint = model.getObjectProperty(ont + "hasEndPoint");
+		ObjectProperty beginTime = model.getObjectProperty(ont
+				+ "hasBeginTime");
+		ObjectProperty endTime = model.getObjectProperty(ont + "hasEndTime");
+		*/
+                OntClass cl = model.getOntClass(ont + "Msg_HotelSearchRS");
+                System.out.println("luat: ");
+		model.prepare();
+                model.write(System.out);
+
+		// Print individual inferred
+                 ExtendedIterator <?> extendedIterator = cl.listInstances();
+                 
+		while (extendedIterator.hasNext()) {
+             
+                 
+                    System.out.println("Dich vu ket hop");
+			OntResource resource = (OntResource) extendedIterator.next();
+			System.out.println("Dich vu ket hop: " + cl);
+			System.out.println("The hien: " + resource.getLocalName());
+			// print properties of resource
+			Individual individual = model.getIndividual(ont 
+					+ resource.getLocalName());
+			printPropertyValues(individual, beginPoint);
+			
+			System.out
+					.println("---------------------------------------------------------------");
+		}
+	}
+
+	public static void printPropertyValues(Individual ind, Property prop) {
+		System.out.print(ind.getLocalName() + " has " + prop.getLocalName()
+				+ "(s): ");
+		printIterator(ind.listPropertyValues(prop));
+	}
+
+	public static void printInstances(OntClass cls) {
+		System.out.print(cls.getLocalName() + " instances: ");
+		printIterator(cls.listInstances());
+	}
+
+	public static void printIterator(ExtendedIterator i) {
+		if (!i.hasNext()) {
+			System.out.print("none");
+		} else {
+			while (i.hasNext()) {
+				Resource val = (Resource) i.next();
+				System.out.print(val.getLocalName());
+				if (i.hasNext())
+					System.out.print(", ");
+			}
+		}
+		System.out.println();
+	}
+
+    
     
     public static void main(String s[]){
         HotelProcess hotelprocess = new HotelProcess();
-   //    hotelprocess.searchHotel(false, true, false, false, false, "inside",false, true, "Nam Dinh" );
-     //   hotelprocess.search2("HaiYen", "HotelSofitel");
+      // hotelprocess.searchHotel(false, true, false, false, false, "inside",false, true, "Nam Dinh" );
+        hotelprocess.search2("HaiYen", "HotelSofitel");
         Date begin = new Date(109-12-11);
       //  String begin = "2009-12-11";
       //  hotelprocess.checkAvailability(begin, "HotelSofitel", "LivingRoom", "SingleRoom");
         
-        hotelprocess.search("Nam Dinh");
+       hotelprocess.search();
     }
    
 }
