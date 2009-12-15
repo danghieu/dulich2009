@@ -6,6 +6,7 @@
 package com.ptit.travel.jane.hotel;
 import org.mindswap.pellet.jena.PelletReasonerFactory;
 
+import com.ptit.travel.agent.communication;
 import java.io.*;
 import com.hp.hpl.jena.ontology.ObjectProperty;
 import com.hp.hpl.jena.ontology.Individual;
@@ -358,11 +359,18 @@ public class HotelProcess {
       return om;  
     }
     
+    public void insertMsg_HotelSearchRQ(){
+        
+    }
+    
     public void search(){
          Database.LoadOnt2Database();
          String ont = "http://www.owl-ontologies.com/Travel.owl#";
-      String file = "C://Program Files/Apache Software Foundation/Tomcat 6.0/webapps/MyOntology/hotel_yen1.owl";
+         // lay khung du lieu tu owl
+      String file = "C://Program Files/Apache Software Foundation/Tomcat 6.0/webapps/MyOntology/hotel_yen2.owl";
                 
+      // them 1 doi tuong moi
+      
 		OntModel model = ModelFactory.createOntologyModel(
 				PelletReasonerFactory.THE_SPEC, null);
 		try {
@@ -383,22 +391,26 @@ public class HotelProcess {
 				+ "hasBeginTime");
 		ObjectProperty endTime = model.getObjectProperty(ont + "hasEndTime");
 		*/
-                OntClass cl = model.getOntClass(ont + "Msg_HotelSearchRS");
+                OntClass cl = model.getOntClass(ont + "Msg_HotelSearchRS"); // day chi la ten cua 1 lop,
                 System.out.println("luat: ");
-		model.prepare();
-                model.write(System.out);
+		model.prepare();//  Phuong thuc nay thuc thi suy dien.
+                //model.write(System.out); // cai nay la cai to muon hien thi owl
 
 		// Print individual inferred
-                 ExtendedIterator <?> extendedIterator = cl.listInstances();
+                 ExtendedIterator <?> extendedIterator = cl.listInstances(); // lay tat ca cac the hien cua cai lop day
                  
+                 
+                 // in cac the hien day ra
 		while (extendedIterator.hasNext()) {
              
                  
-                    System.out.println("Dich vu ket hop");
+            
+                    // to muon lay the hien va cac tai nguyen tuong ung cua the hien day
 			OntResource resource = (OntResource) extendedIterator.next();
 			System.out.println("Dich vu ket hop: " + cl);
 			System.out.println("The hien: " + resource.getLocalName());
 			// print properties of resource
+                        System.out.println("Tai Nguyen");
 			Individual individual = model.getIndividual(ont 
 					+ resource.getLocalName());
 			printPropertyValues(individual, beginPoint);
