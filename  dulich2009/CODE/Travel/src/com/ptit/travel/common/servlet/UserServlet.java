@@ -66,7 +66,7 @@ public class UserServlet extends HttpServlet {
               
             try {
                 log.info("|| Starting agent: " + nickName);
-                ArrayList arr = AgentManager.startContainer(host, port, nickName, className);
+                ArrayList arr = AgentManager.startAgent(host, port, nickName, className,false);
                 if(arr != null && arr.size() == 2){
                     containerController = (ContainerController) arr.get(0);
                     agentController = (AgentController)arr.get(1);
@@ -232,7 +232,7 @@ public class UserServlet extends HttpServlet {
                 agentController.kill();
                 containerController.kill();
                 containerController = null;
-                agentController = AgentManager.addAgent(host, port, id, className);
+                agentController = AgentManager.addAgent(host, port, id, className,containerController);
             } catch (Exception e) {
                 id = null;
             }

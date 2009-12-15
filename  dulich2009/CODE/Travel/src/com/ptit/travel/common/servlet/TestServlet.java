@@ -44,7 +44,7 @@ public class TestServlet extends HttpServlet {
         String port = "1099";
         String className = " com.ptit.travel.agent.user.UserAgent";
         try {
-            AgentController acUser = AgentManager.startAgent(host, port, nickName, className);
+            //AgentController acUser = AgentManager.startAgent(host, port, nickName, className);
         } catch (Exception e) {
             // TODO: handle exception
             e.printStackTrace();

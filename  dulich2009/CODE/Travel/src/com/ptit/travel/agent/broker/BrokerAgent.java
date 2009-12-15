@@ -58,7 +58,7 @@ public class BrokerAgent extends Agent {
 	private AgentDAO agentDAO = new AgentDAO(); // manipulate with agent db
 
 	protected void setup() {
-		Message.register(this, this.getLocalName());
+		//Message.register(this, this.getLocalName());
 
 		try {
 			xmlrpcServer = new WebServer(port);
@@ -264,48 +264,12 @@ public class BrokerAgent extends Agent {
 			msgs.add("Nothing is more important than peace");
 			switch (step) {
 			case 0:
-				// collect agents who satisfy action
-				//receivers = agentDAO.getAgents("", "hotel");
-				// FOR TEST ONLY
-				receivers = new ArrayList<String>();
-				receivers.add("HotelAgent");
-				// Send the cfp to all agents
-				ACLMessage msg = Message.createInformMessage(a, receivers,
-						resource);
-
-				msg.setConversationId(myAgent.getLocalName());
-				msg.setReplyWith(msgId); // Unique
-				// value
-				myAgent.send(msg);
-				// Prepare the template to get proposals
-				mt = MessageTemplate.and(MessageTemplate
-						.MatchConversationId(myAgent.getLocalName()),
-						MessageTemplate.MatchInReplyTo(msg.getReplyWith()));
-
+				
 				step = 1;
 				break;
 			case 1:
 				// Receive all proposals/refusals from agents
-				ACLMessage replyMsg = myAgent.receive(mt);
-				if (replyMsg != null) {
-					if (replyMsg.getPerformative() == ACLMessage.PROPOSE) {
-						/**
-						 * / check if there is any available hotel/ if yes set
-						 * avail = true
-						 * put msg into msgQueue of agent: 
-						 */
-						//TODO
-					}
-					repliesCnt++;
-					if (repliesCnt >= receivers.size()) {
-						// We received all replies
-						step = 2;
-					}
-				} else {
-					block();
-
-				}
-
+				step = 2;
 				break;
 
 			}
@@ -343,7 +307,7 @@ public class BrokerAgent extends Agent {
 		}
 
 		public void action() {
-			send(Message.createInformMessage(a, "UserAgent", resource));
+			//send(Message.createInformMessage(a, "UserAgent", resource));
 		}
 		public boolean done(){
 			
@@ -371,7 +335,7 @@ public class BrokerAgent extends Agent {
 			msgId = _msgId;
 		}
 		public void action() {
-			send(Message.createInformMessage(a, "UserAgent", resource));
+			//send(Message.createInformMessage(a, "UserAgent", resource));
 		}
 		public boolean done(){
 			
@@ -398,7 +362,7 @@ public class BrokerAgent extends Agent {
 		}
 
 		public void action() {
-			send(Message.createInformMessage(a, "UserAgent", resource));
+			//send(Message.createInformMessage(a, "UserAgent", resource));
 		}
 		public boolean done(){
 			
@@ -425,7 +389,7 @@ public class BrokerAgent extends Agent {
 		}
 
 		public void action() {
-			send(Message.createInformMessage(a, "UserAgent", resource));
+			//send(Message.createInformMessage(a, "UserAgent", resource));
 		}
 		public boolean done(){
 			

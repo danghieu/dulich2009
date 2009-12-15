@@ -254,8 +254,8 @@ public class Message {
         ACLMessage m = new ACLMessage(ACLMessage.INFORM);
         m.setSender(sender.getAID());
         m.addReceiver(new AID(recieverName, false));
-        m.setLanguage(Ontology.RDF);
-        m.setOntology(Ontology.BASE);
+        //m.setLanguage(Ontology.RDF);
+        //m.setOntology(Ontology.BASE);
         m.setContent(content);
         log.debug("message prepared for " + recieverName + ": " + m);
         return m;
@@ -274,22 +274,24 @@ public class Message {
      * 
      */
     public static ACLMessage createInformMessage(Agent sender,
-            String recieverName, String content) {
+            String recieverName, String content, String language, String protocol, String conversationId) {
 
         log.info("Preparing inform message...");
         //String content = resource2RDF(r);
         ACLMessage m = new ACLMessage(ACLMessage.INFORM);
         m.setSender(sender.getAID());
         m.addReceiver(new AID(recieverName, false));
-        m.setLanguage(Ontology.RDF);
+        m.setLanguage(language);
         m.setOntology(Ontology.BASE);
+        m.setProtocol(protocol);
+        m.setConversationId(conversationId);
         m.setContent(content);
         log.debug("message prepared for " + recieverName + ": " + m);
         return m;
     }
 
-    public static ACLMessage createInformMessage(Agent sender,
-            ArrayList<String> recieverNames, String content) {
+    public static ACLMessage createInformMessage(Agent sender, ArrayList<String> recieverNames,
+            String content, String language, String protocol, String conversationId) {
 
         log.info("Preparing inform message...");
         //String content = resource2RDF(r);
@@ -299,8 +301,10 @@ public class Message {
             m.addReceiver(new AID((String) recieverNames.get(i), false));
         }
 
-        m.setLanguage(Ontology.RDF);
+        m.setLanguage(language);
         m.setOntology(Ontology.BASE);
+        m.setProtocol(protocol);
+        m.setConversationId(conversationId);
         m.setContent(content);
         log.debug("message prepared for " + recieverNames.toString() + ": " + m);
         return m;
@@ -326,22 +330,67 @@ public class Message {
         log.debug("message prepared for " + recieverNames.toString() + ": " + m);
         return m;
     }
-
+    /*
     public static ACLMessage createReplyMessage(ACLMessage msg, ArrayList<SerializableBean> arrContent) {
-        ACLMessage reply = msg.createReply();
-        reply.setPerformative(ACLMessage.PROPOSE);
-        SerializableBean bean;
+    ACLMessage reply = msg.createReply();
+    reply.setPerformative(ACLMessage.PROPOSE);
+    SerializableBean bean;
+    String content = "";
+    int size = arrContent.size();
+    for (int i = 0; i < size; i++) {
+    bean = arrContent.get(i);
+    content += bean.toMsg();
+    if (i < size - 1) {
+    content += Message.OBJECT_SEPARATE;
+    }
+    }
+    reply.setContent(content);
+    return reply;
+    }*/
+
+    public static ACLMessage createReplyMessage(ACLMessage msg, ArrayList<String> contents) {
+        ACLMessage m = msg.createReply();
+        m.setPerformative(ACLMessage.PROPOSE);
         String content = "";
-        int size = arrContent.size();
+        int size = contents.size();
         for (int i = 0; i < size; i++) {
-            bean = arrContent.get(i);
-            content += bean.toMsg();
+            content += contents.get(i);
             if (i < size - 1) {
                 content += Message.OBJECT_SEPARATE;
             }
         }
-        reply.setContent(content);
-        return reply;
+        m.setContent(content);
+        log.debug("reply message prepared for " + msg.getSender().getLocalName() + ": " + m);
+        return m;
+    }
+
+    public static ACLMessage createReplyMessage(ACLMessage msg, String content) {
+        ACLMessage m = msg.createReply();
+        m.setPerformative(ACLMessage.PROPOSE);
+        m.setContent(content);
+        log.debug("reply message prepared for " + msg.getSender().getLocalName() + ": " + m);
+        return m;
+    }
+
+    public static ACLMessage createForwardMessage(Agent sender,
+            ArrayList<String> recieverNames, ACLMessage msg) throws Exception {
+
+        log.info("Preparing inform message...");
+        //String content = resource2RDF(r);
+        ACLMessage m = new ACLMessage(ACLMessage.INFORM);
+        m.setSender(sender.getAID());
+        for (int i = 0; i < recieverNames.size(); i++) {
+            m.addReceiver(new AID((String) recieverNames.get(i), false));
+        }
+
+        m.setLanguage(msg.getLanguage());
+        m.setOntology(msg.getOntology());
+        m.setProtocol(msg.getProtocol());
+
+        m.setConversationId(msg.getConversationId());
+        m.setContent(msg.getContent());
+        log.debug("message prepared for " + recieverNames.toString() + ": " + m);
+        return m;
     }
 
     /**
@@ -353,25 +402,24 @@ public class Message {
      *            string description of agent type
      * 
      */
-    public static void register(Agent a, String agentType) {
-        DFAgentDescription dfd = new DFAgentDescription();
-        ServiceDescription sd = new ServiceDescription();
-        sd.setType(agentType);
-        sd.setName(a.getName());
-        sd.setOwnership(Ontology.AGENT_OWNERSHIP);
-        sd.addOntologies(Ontology.BASE);
-        dfd.setName(a.getAID());
-        dfd.addServices(sd);
-        try {
-            DFService.register(a, dfd);
-        } catch (FIPAException e) {
-            System.err.println(a.getLocalName() + " registration with DF unsucceeded. Reason: " + e.getMessage()); //$NON-NLS-1$
+//    public static void register(Agent a, String agentType) {
+//        DFAgentDescription dfd = new DFAgentDescription();
+//        ServiceDescription sd = new ServiceDescription();
+//        sd.setType(agentType);
+//        sd.setName(a.getName());
+//        sd.setOwnership(Ontology.AGENT_OWNERSHIP);
+//        sd.addOntologies(Ontology.BASE);
+//        dfd.setName(a.getAID());
+//        dfd.addServices(sd);
+//        try {
+//            DFService.register(a, dfd);
+//        } catch (FIPAException e) {
+//            System.err.println(a.getLocalName() + " registration with DF unsucceeded. Reason: " + e.getMessage()); //$NON-NLS-1$
+//
+//            a.doDelete();
+//        }
 
-            a.doDelete();
-        }
-
-    }
-
+//    }
     /**
      * method split a string with Message.SAPARATE.
      * @param input
