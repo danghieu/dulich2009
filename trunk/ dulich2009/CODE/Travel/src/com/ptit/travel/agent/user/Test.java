@@ -69,7 +69,25 @@ public class Test {
     public void testConfigXMLConnect(){
         System.out.println(com.ptit.travel.agent.onto.Config.BASE);
     }
-    public void testCreateAgent(){
+     public void testCreateAgentCH(){
+        AgentController agentController;
+            String host = "localhost";
+            String port = "1099";
+            String nickName = "ControllerAgent";//"Guest" + System.currentTimeMillis();
+            String className = "com.ptit.travel.agent.ControllerAgent";
+            try {                
+                ContainerController containerController = (ContainerController)AgentManager.startAgent(host, port, nickName, className,false).get(0);
+                nickName = "HotelAgent";//"Guest" + System.currentTimeMillis();
+                className = "com.ptit.travel.agent.hotel.HotelAgent";
+                agentController = AgentManager.addAgent(host, port, nickName, className,containerController);
+                
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            
+        
+    }
+    public void testCreateAgentUCH(){
         AgentController agentController;
             String host = "localhost";
             String port = "1099";
@@ -90,13 +108,37 @@ public class Test {
             
         
     }
+    public void testCreateAgent2UCH(){
+        AgentController agentController;
+            String host = "localhost";
+            String port = "1099";
+            String nickName = "ControllerAgent";//"Guest" + System.currentTimeMillis();
+            String className = "com.ptit.travel.agent.ControllerAgent";
+            try {                
+                ContainerController containerController = (ContainerController)AgentManager.startAgent(host, port, nickName, className,true).get(0);
+                nickName = "HotelAgent";//"Guest" + System.currentTimeMillis();
+                className = "com.ptit.travel.agent.hotel.HotelAgent";
+                agentController = AgentManager.addAgent(host, port, nickName, className,containerController);
+                nickName = "UserAgent1";//"Guest" + System.currentTimeMillis();
+                className = "com.ptit.travel.agent.user.UserAgent";
+                agentController = AgentManager.addAgent(host, port, nickName, className,containerController);
+                nickName = "UserAgent2";//"Guest" + System.currentTimeMillis();
+                className = "com.ptit.travel.agent.user.UserAgent";
+                agentController = AgentManager.addAgent(host, port, nickName, className,containerController);
+                
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            
+        
+    }
     public static void main(String[] args) {
         // TODO Auto-generated method stub
         Test test = new Test();
         //test.testSplitMessage();
         //test.testConfigXMLConnect();
         //test.callTheAgentViaXmlRpc();
-        test.testCreateAgent();
+        test.testCreateAgentCH();
     
     }
 

@@ -8,6 +8,7 @@ import com.ptit.travel.agent.communication.Language;
 import com.ptit.travel.agent.communication.Message;
 import com.ptit.travel.agent.communication.Protocol;
 import com.ptit.travel.beans.SerializableBean;
+import jade.core.AID;
 import jade.core.Agent;
 import jade.core.behaviours.Behaviour;
 import jade.core.behaviours.TickerBehaviour;
@@ -50,11 +51,12 @@ public class ControllerAgent extends Agent {
      */
     class HandleRecivedMessages extends Behaviour {
 
-        private boolean finished = false;
         private String conversationId;
         private ArrayList<String> msgsContent = new ArrayList<String>();
         private MessageTemplate mt; // The template to receive replies
 
+        private String userTracker;
+        private String replyWith;
         private int step = 0;
         private int repliesCnt;
         private final int finalStep = 100;
@@ -70,13 +72,16 @@ public class ControllerAgent extends Agent {
                 if (msg != null) {
 
                     try {
-                        String content = msg.getContent();
-                        conversationId = msg.getConversationId();
-                        log.info("=== [ControllerAgent] received reply message " + content);
+
+                        log.info("=== [ControllerAgent] received reply message " + msg.getSender().getLocalName());
                         switch (step) {
 
 
                             case 0:
+                                // keep track of user
+                                userTracker = msg.getSender().getLocalName();
+                                replyWith = msg.getReplyWith();
+                                conversationId = msg.getConversationId();
                                 // 
                                 log.info("LANGUAGE: " + msg.getLanguage());
                                 // Language used to get all appropriate supplier agents
@@ -84,23 +89,25 @@ public class ControllerAgent extends Agent {
                                 // Call DB and gain result into list
                                 receivers = new ArrayList<String>();
                                 receivers.add("HotelAgent");
-                                ACLMessage forwardMsg = Message.createForwardMessage(myAgent, receivers, msg);
+                                ACLMessage forwardMsg = Message.createForwardMessage(myAgent, receivers, msg,
+                                        replyWith);
                                 //myAgent.addBehaviour(new Negotiate(myAgent, forwardMsg));
                                 //log.info("HandleRecivedMessages behavior is blocked " + this.STATE_BLOCKED);
 
-                                forwardMsg.setReplyWith("[ControllerAgent]" + System.currentTimeMillis());
                                 send(forwardMsg);
                                 mt = MessageTemplate.and(MessageTemplate.MatchConversationId(forwardMsg.getConversationId()),
                                         MessageTemplate.MatchInReplyTo(forwardMsg.getReplyWith()));
+                                log.info("Message Template: " + mt.toString());
                                 step = 1;
 
                                 break;
                             case 1:
                                 log.info("[ControllerAgent] Negotiating... ");
-                                ACLMessage replyMsg = receive(mt);
+                                //ACLMessage replyMsg = receive(mt);
+                                //ACLMessage replyMsg = myAgent.receive();
                                 // Negotiating here
 
-                                if (replyMsg != null) {
+                                if (mt.match(msg)) {
                                     //if (replyMsg.getPerformative() == ACLMessage.PROPOSE) 
                                     {
                                         /**
@@ -109,35 +116,37 @@ public class ControllerAgent extends Agent {
                                          * put msg into msgQueue of agent: 
                                          */
                                         //FOR TEST
-                                        log.info("=== One more received message from " + replyMsg.getSender());
-                                        msgsContent.add(replyMsg.getContent());
+                                        log.info("=== One more received message from " + msg.getSender().getLocalName());
+                                        msgsContent.add(msg.getContent());
                                     }
                                     repliesCnt++;
                                     log.info("|| RECEIVERS: " + receivers.size() + " || repliesCnt: " + repliesCnt);
                                     if (repliesCnt >= receivers.size()) {
-                                        //We received all replies
-                                        step = 2;
+                                        //We received all replies, can combine services here
+
+                                        msgQueue.put(conversationId, msgsContent);
+                                        step = finalStep; // finish negotiating
+
+                                        log.info("[ControllerAgent] Refine the results ");
+                                        //TODO.. 
+                                        ArrayList<String> contents = msgQueue.get(conversationId);
+                                        msgQueue.remove(conversationId);
+                                        ACLMessage reply = Message.createForwardMessage(myAgent, userTracker, 
+                                                msg, replyWith);
+
+                                        log.info(reply);
+                                        send(reply);
                                     }
                                 } else {
                                     block();
 
                                 }
 
-                                break;
-                            case 2:
 
-                                msgQueue.put(conversationId, msgsContent);
-                                step = finalStep;
                                 break;
                             case finalStep:
 
-                                log.info("[ControllerAgent] Refine the results ");
-                                //TODO.. 
-                                ArrayList<String> contents = msgQueue.get(conversationId);
-                                msgQueue.remove(conversationId);
-                                ACLMessage reply = Message.createReplyMessage(msg, contents);
-                                log.info(reply);
-                                send(reply);
+
                                 break;
                         }
                     } catch (Exception e) {
