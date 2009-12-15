@@ -1,5 +1,6 @@
 package com.ptit.travel.agent.user;
 
+import com.ptit.travel.agent.ControllerAgent;
 import com.ptit.travel.agent.communication.ConfigXMLConnect;
 import jade.core.Agent;
 import jade.core.Profile;
@@ -72,11 +73,17 @@ public class Test {
         AgentController agentController;
             String host = "localhost";
             String port = "1099";
-            String nickName = "HotelAgent";//"Guest" + System.currentTimeMillis();
-            String className = "com.ptit.travel.agent.hotel.HotelAgent";
+            String nickName = "ControllerAgent";//"Guest" + System.currentTimeMillis();
+            String className = "com.ptit.travel.agent.ControllerAgent";
             try {                
-                agentController = AgentManager.startAgent(host, port, nickName, className);
-                System.out.println("|| Started agent: " + agentController.getName());
+                ContainerController containerController = (ContainerController)AgentManager.startAgent(host, port, nickName, className,true).get(0);
+                nickName = "HotelAgent";//"Guest" + System.currentTimeMillis();
+                className = "com.ptit.travel.agent.hotel.HotelAgent";
+                agentController = AgentManager.addAgent(host, port, nickName, className,containerController);
+                nickName = "UserAgent";//"Guest" + System.currentTimeMillis();
+                className = "com.ptit.travel.agent.user.UserAgent";
+                agentController = AgentManager.addAgent(host, port, nickName, className,containerController);
+                
             } catch (Exception e) {
                 e.printStackTrace();
             }

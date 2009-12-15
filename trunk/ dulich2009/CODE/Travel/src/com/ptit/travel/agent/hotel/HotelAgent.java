@@ -45,7 +45,7 @@ public class HotelAgent extends Agent {
 
     protected void setup() {
 
-        Message.register(this, this.getName());
+        //Message.register(this, this.getName());
 
         mem = new Memory(
                 "E:/Develop/Netbean/Travel/config/HotelAgent.properties", this.getLocalName());
@@ -103,14 +103,14 @@ public class HotelAgent extends Agent {
         }
 
         public void action() {
-            log.info("=== HOTELAGENT Ready to handle received message ");
+            log.info("=== HOTELAGENT is Ready now");
             synchronized (this) {
                 ACLMessage msg = receive();
                 if (msg != null) {     
                     
                     try {                        
                         String content = msg.getContent();
-                        log.info("=== [HotelAgent] received reply message " + content);
+                        log.info("=== [HotelAgent] received from " + msg.getSender().getLocalName());
                     switch (msg.getPerformative()) {
                         case ACLMessage.QUERY_REF:
                             break;
@@ -120,17 +120,12 @@ public class HotelAgent extends Agent {
                             // action of message <-> protocol of ACL
                             String protocol = msg.getProtocol();
                             if (Protocol.HOTEL_AVAIL.equals(protocol)) {
-                                // convert content into object
-                                HotelAvailability ha = new HotelAvailability(content);
-                                // Call DB and gain result into list
-                                ArrayList<SerializableBean> list = new ArrayList<SerializableBean>();
-                                
-                                ACLMessage reply = Message.createReplyMessage(msg, list);
                                 // FOR TEST
-                                reply.setContent(content);
+                                ACLMessage reply = Message.createReplyMessage(msg, content);
+                                
                                 log.info("=== [HotelAgent] sent reply message " + content);
                                 send(reply);
-                                
+                                finished = true;
                             }
                             break;
                         default:
@@ -139,7 +134,7 @@ public class HotelAgent extends Agent {
                     }
                     } catch (Exception e) {
                         e.printStackTrace();
-                        log.error("Exception in Hotel.HandleReceivedMessages: " +e);
+                        log.error(e.toString());
                     }
                 }
                 block(); // this is to allow other behaviours
@@ -231,17 +226,6 @@ public class HotelAgent extends Agent {
                     receivers = new ArrayList<String>();
                     receivers.add("HotelAgent");
                     // Send the cfp to all agents
-                    ACLMessage msg = Message.createInformMessage(a, receivers,
-                            resource);
-
-                    msg.setConversationId(myAgent.getLocalName());
-                    msg.setReplyWith(msgId); // Unique
-                    // value
-
-                    myAgent.send(msg);
-                    // Prepare the template to get proposals
-                    mt = MessageTemplate.and(MessageTemplate.MatchConversationId(myAgent.getLocalName()),
-                            MessageTemplate.MatchInReplyTo(msg.getReplyWith()));
 
                     step = 1;
                     break;

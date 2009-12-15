@@ -55,23 +55,27 @@ public class UserAgent extends Agent {
     private Hashtable<String, ArrayList<String>> msgQueue = new Hashtable<String, ArrayList<String>>();
 
     protected void setup() {
-        Message.register(this, this.getLocalName());
+        //Message.register(this, this.getLocalName());
 
         try {
-            xmlrpcServer = new WebServer(port);
+            //xmlrpcServer = new WebServer(port);
             log.debug("XMLRPC Running ....");
-        } catch (IOException e) {
+        } catch (Exception e) {
             log.error("PANIC: maybe the port " + port + " is in use");
             System.out.println(e);
         }
-        xmlrpcServer.addHandler(this.getLocalName(), this);
+        //xmlrpcServer.addHandler(this.getLocalName(), this);
+//
+//        mem = new Memory(
+//                "E:/Develop/Netbean/Travel/config/UserAgent.properties",
+//                this.getLocalName());// E:/Develop/Netbean/Travel/
 
-        mem = new Memory(
-                "E:/Develop/Netbean/Travel/config/UserAgent.properties",
-                this.getLocalName());// E:/Develop/Netbean/Travel/
-
-//        agentIndividual = mem.getModel().getResource(
-//                Memory.getBase() + this.getLocalName());
+        
+        addBehaviour(new TickerBehaviour(this, 30000) {
+            protected void onTick() {
+            search("msg", "conversationId", "protocol");
+            }
+        });
     }
 
     /**
@@ -85,19 +89,19 @@ public class UserAgent extends Agent {
      *            represents type of resource in Memory Model (OWL model)
      * 
      */
-    public String search(String msg, String msgId, String protocol) {
+    public String search(String msg, String conversationId, String protocol) {
         log.info("=== ADD RequestInfo behavior to " + this.getLocalName());
-        addBehaviour(new RequestInfo(this, msg, msgId, protocol));// duoc trieu goi tu UserServlet
+        addBehaviour(new RequestInfo(this, msg, conversationId, protocol));// duoc trieu goi tu UserServlet
 
         return "ok";
     }
 
-    public String searchResults(String msgId) {
+    public String searchResults(String conversationId) {
         String results = "";
         try {
-            ArrayList<String> msgs = msgQueue.get(msgId);
+            ArrayList<String> msgs = msgQueue.get(conversationId);
             log.info("|| message Results:" + msgs);
-            msgQueue.remove(msgId);
+            msgQueue.remove(conversationId);
             for (int i = 0; i < msgs.size(); i++) {
                 results += msgs.get(i).trim();
                 if (i < msgs.size() - 1) {
@@ -120,11 +124,11 @@ public class UserAgent extends Agent {
      * 			resource: information about services wanting to book
      */
     public String book(String resource) {
-        String msgId = getLocalName() + System.currentTimeMillis(); //unique
+        String conversationId = getLocalName() + System.currentTimeMillis(); //unique
 
-        addBehaviour(new Book(this, resource, msgId));
-        ArrayList<String> msgs = msgQueue.get(msgId);
-        msgQueue.remove(msgId);
+        addBehaviour(new Book(this, resource, conversationId));
+        ArrayList<String> msgs = msgQueue.get(conversationId);
+        msgQueue.remove(conversationId);
         if (msgs != null && msgs.size() != 0) {
             return msgs.toString();
         } else {
@@ -132,11 +136,11 @@ public class UserAgent extends Agent {
         }
     }
 
-    public String bookResults(String msgId) {
+    public String bookResults(String conversationId) {
         String results = "";
         try {
-            ArrayList<String> msgs = msgQueue.get(msgId);
-            msgQueue.remove(msgId);
+            ArrayList<String> msgs = msgQueue.get(conversationId);
+            msgQueue.remove(conversationId);
             for (int i = 0; i < msgs.size(); i++) {
                 results += msgs.get(i).trim();
                 if (i < msgs.size() - 1) {
@@ -158,18 +162,18 @@ public class UserAgent extends Agent {
      * 			resource: information about services
      */
     public String prepareModify(String resource) {
-        String msgId = getLocalName() + System.currentTimeMillis(); //unique
+        String conversationId = getLocalName() + System.currentTimeMillis(); //unique
 
-        addBehaviour(new Prepare(this, resource, msgId));
+        addBehaviour(new Prepare(this, resource, conversationId));
 
         return "ok";
     }
 
-    public String prepareModifyResults(String msgId) {
+    public String prepareModifyResults(String conversationId) {
         String results = "";
         try {
-            ArrayList<String> msgs = msgQueue.get(msgId);
-            msgQueue.remove(msgId);
+            ArrayList<String> msgs = msgQueue.get(conversationId);
+            msgQueue.remove(conversationId);
             for (int i = 0; i < msgs.size(); i++) {
                 results += msgs.get(i).trim();
                 if (i < msgs.size() - 1) {
@@ -190,18 +194,18 @@ public class UserAgent extends Agent {
      * 			resource: information about services wanting to modify
      */
     public String modify(String resource) {
-        String msgId = getLocalName() + System.currentTimeMillis(); //unique
+        String conversationId = getLocalName() + System.currentTimeMillis(); //unique
 
-        addBehaviour(new Modify(this, resource, msgId));
+        addBehaviour(new Modify(this, resource, conversationId));
 
         return "ok";
     }
 
-    public String modifyResults(String msgId) {
+    public String modifyResults(String conversationId) {
         String results = "";
         try {
-            ArrayList<String> msgs = msgQueue.get(msgId);
-            msgQueue.remove(msgId);
+            ArrayList<String> msgs = msgQueue.get(conversationId);
+            msgQueue.remove(conversationId);
             for (int i = 0; i < msgs.size(); i++) {
                 results += msgs.get(i).trim();
                 if (i < msgs.size() - 1) {
@@ -222,23 +226,23 @@ public class UserAgent extends Agent {
      * 			resource: information about services wanting to cancel
      */
     public String cancel(String resource) {
-        String msgId = getLocalName() + System.currentTimeMillis(); //unique
+        String conversationId = getLocalName() + System.currentTimeMillis(); //unique
 
-        addBehaviour(new Cancel(this, resource, msgId));
+        addBehaviour(new Cancel(this, resource, conversationId));
 
         return "ok";
     }
 
     /**
      * get results affter finishing cancel behavior
-     * @param msgId
+     * @param conversationId
      * @return
      */
-    public String cancelResults(String msgId) {
+    public String cancelResults(String conversationId) {
         String results = "";
         try {
-            ArrayList<String> msgs = msgQueue.get(msgId);
-            msgQueue.remove(msgId);
+            ArrayList<String> msgs = msgQueue.get(conversationId);
+            msgQueue.remove(conversationId);
             for (int i = 0; i < msgs.size(); i++) {
                 results += msgs.get(i).trim();
                 if (i < msgs.size() - 1) {
@@ -259,7 +263,7 @@ public class UserAgent extends Agent {
      * @param resource: information about services need to book
      * @param a: agent execute this behavior
      */
-    private class RequestInfo extends Behaviour {
+    private class RequestInfo extends SimpleBehaviour {
 
         private int repliesCnt = 0; // The counter of replies from agents
 
@@ -269,14 +273,14 @@ public class UserAgent extends Agent {
         private String content = null;
         private String protocol = null;
         private ArrayList<String> receivers;
-        private String msgId;
+        private String conversationId;
         private Agent a;
         private boolean avail = false;
         private ArrayList<String> msgs;
 
-        public RequestInfo(Agent _a, String _content, String _msgId, String _p) {
+        public RequestInfo(Agent _a, String _content, String _conversationId, String _p) {
             content = _content;
-            msgId = _msgId;
+            conversationId = _conversationId;
             protocol = _p;
             msgs = new ArrayList<String>();
             a = _a;
@@ -290,19 +294,18 @@ public class UserAgent extends Agent {
                         // collect agents who satisfy action
                         //receivers = agentDAO.getAgents("", "hotel");
                         // FOR TEST ONLY
-                        log.info("=== Preparing msg to send HotelAgent: " + protocol);
+                        
                         receivers = new ArrayList<String>();
-                        receivers.add("HotelAgent");
+                        receivers.add("ControllerAgent");
                         // Send the cfp to all agents
-                        ACLMessage msg = Message.createInformMessage(a, receivers, content);
-                        msg.setProtocol(protocol);
-                        msg.setConversationId(myAgent.getLocalName());
-                        msg.setReplyWith(msgId); // Unique
+                        ACLMessage msg = Message.createInformMessage(a, receivers, content, Language.HOTEL, protocol, conversationId);
+                        msg.setReplyWith("[UserAgent]"
+						+ System.currentTimeMillis());
                         // value
-
+                        log.info("=== Preparing msg to send msg to: " + receivers.toString());
                         myAgent.send(msg);
                         // Prepare the template to get proposals
-                        mt = MessageTemplate.and(MessageTemplate.MatchConversationId(myAgent.getLocalName()),
+                        mt = MessageTemplate.and(MessageTemplate.MatchConversationId(conversationId),
                                 MessageTemplate.MatchInReplyTo(msg.getReplyWith()));
 
                         step = 1;
@@ -315,8 +318,8 @@ public class UserAgent extends Agent {
 
                 case 1:
                     // Receive all proposals/refusals from agents
-                    ACLMessage replyMsg = myAgent.receive(mt);
-                    //ACLMessage replyMsg = myAgent.receive();
+                    //ACLMessage replyMsg = myAgent.receive(mt);
+                    ACLMessage replyMsg = myAgent.receive();
                     if (replyMsg != null) {
                         //if (replyMsg.getPerformative() == ACLMessage.PROPOSE) 
                         {
@@ -331,10 +334,10 @@ public class UserAgent extends Agent {
                         }
                         repliesCnt++;
                         log.info("|| RECEIVERS: " + receivers.size() + " || repliesCnt: " + repliesCnt);
-                        if (repliesCnt >= receivers.size()) {
+                        //if (repliesCnt >= receivers.size()) {
                             // We received all replies
                             step = 2;
-                        }
+                        //}
                     } else {
                         block();
 
@@ -354,7 +357,7 @@ public class UserAgent extends Agent {
                 // put messages into queue of agent
 
                 log.info("=== FIHISHED RequestInfo behavior");
-                msgQueue.put(msgId, msgs);
+                msgQueue.put(conversationId, msgs);
                 return true;
             }
             return false;
@@ -373,17 +376,17 @@ public class UserAgent extends Agent {
 
         private String resource = null;
         private Agent a;
-        private String msgId;
+        private String conversationId;
 
-        public Book(Agent _a, String _resource, String _msgId) {
+        public Book(Agent _a, String _resource, String _conversationId) {
             super(_a);
             a = _a;
             resource = _resource;
-            msgId = _msgId;
+            conversationId = _conversationId;
         }
 
         public void action() {
-            send(Message.createInformMessage(a, "UserAgent", resource));
+            
         }
 
         public boolean done() {
@@ -403,17 +406,17 @@ public class UserAgent extends Agent {
 
         private String resource = null;
         private Agent a;
-        private String msgId;
+        private String conversationId;
 
-        public Prepare(Agent _a, String _resource, String _msgId) {
+        public Prepare(Agent _a, String _resource, String _conversationId) {
             super(_a);
             a = _a;
             resource = _resource;
-            msgId = _msgId;
+            conversationId = _conversationId;
         }
 
         public void action() {
-            send(Message.createInformMessage(a, "UserAgent", resource));
+            
         }
 
         public boolean done() {
@@ -433,17 +436,17 @@ public class UserAgent extends Agent {
 
         private String resource = null;
         private Agent a;
-        private String msgId;
+        private String conversationId;
 
-        public Cancel(Agent _a, String _resource, String _msgId) {
+        public Cancel(Agent _a, String _resource, String _conversationId) {
             super(_a);
             a = _a;
             resource = _resource;
-            msgId = _msgId;
+            conversationId = _conversationId;
         }
 
         public void action() {
-            send(Message.createInformMessage(a, "UserAgent", resource));
+            
         }
 
         public boolean done() {
@@ -463,17 +466,17 @@ public class UserAgent extends Agent {
 
         private String resource = null;
         private Agent a;
-        private String msgId;
+        private String conversationId;
 
-        public Modify(Agent _a, String _resource, String _msgId) {
+        public Modify(Agent _a, String _resource, String _conversationId) {
             super(_a);
             a = _a;
             resource = _resource;
-            msgId = _msgId;
+            conversationId = _conversationId;
         }
 
         public void action() {
-            send(Message.createInformMessage(a, "UserAgent", resource));
+            
         }
 
         public boolean done() {
