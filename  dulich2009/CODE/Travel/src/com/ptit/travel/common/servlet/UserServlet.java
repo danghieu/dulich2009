@@ -34,8 +34,7 @@ public class UserServlet extends HttpServlet {
     private String nickName;
     private String host = "localhost";
     private String port = "1099";
-
-    private String className = "com.ptit.travel.agent.user.UserAgent";          
+    private String className = "com.ptit.travel.agent.user.UserAgent";
     //*
 
     @Override
@@ -45,10 +44,10 @@ public class UserServlet extends HttpServlet {
             try {
                 log.info("|| Killing agent: " + nickName);
                 agentController.kill();
-                if(containerController != null){
+                if (containerController != null) {
                     log.info("|| Killing container: " + containerController.getContainerName());
                     containerController.kill();
-                    
+
                 }
             } catch (Exception e) {
                 e.printStackTrace();
@@ -63,15 +62,15 @@ public class UserServlet extends HttpServlet {
         super.init();
         if (agentController == null) {
             nickName = "UserAgent";//"Guest" + System.currentTimeMillis();
-              
+
             try {
                 log.info("|| Starting agent: " + nickName);
-                ArrayList arr = AgentManager.startAgent(host, port, nickName, className,false);
-                if(arr != null && arr.size() == 2){
+                ArrayList arr = AgentManager.startAgent(host, port, nickName, className, false);
+                if (arr != null && arr.size() == 2) {
                     containerController = (ContainerController) arr.get(0);
-                    agentController = (AgentController)arr.get(1);
+                    agentController = (AgentController) arr.get(1);
                 }
-                
+
             } catch (Exception e) {
                 e.printStackTrace();
                 log.error("UserServlet.init(): " + e);
@@ -134,6 +133,9 @@ public class UserServlet extends HttpServlet {
             callAgent = new CallAgent();
             String result = callAgentBehavior(msgId, function, params);
             request.setAttribute("result", result);
+//            request.setAttribute("callAgent", callAgent);
+//            request.setAttribute("msgId", msgId);
+//            request.setAttribute("function", function + "Results");
             try {
                 log.info("Forward to: " + page);
                 getServletConfig().getServletContext().getRequestDispatcher(
@@ -168,8 +170,9 @@ public class UserServlet extends HttpServlet {
 
             while ("null".equals(result) && times > 0) {
                 try {
-                    Thread.sleep(1000);
+                    Thread.sleep(3000);
                 } catch (Exception e) {
+                    log.info(e.toString());
                 }
                 times--;
                 result = callAgent.callTheAgentViaXmlRpc(function + "Results", msgId);
@@ -194,8 +197,8 @@ public class UserServlet extends HttpServlet {
         Enumeration paramList = request.getParameterNames();
         TreeSet<String> paramSet = new TreeSet<String>();
 
-        while (paramList.hasMoreElements()) {            
-            param = (String) paramList.nextElement();            
+        while (paramList.hasMoreElements()) {
+            param = (String) paramList.nextElement();
             if (!"protocol".equals(param) && !param.contains("submit") && !"button".equals(param)) {
                 paramSet.add(param);
 
@@ -206,41 +209,42 @@ public class UserServlet extends HttpServlet {
         int length = params.length;
         for (int i = 0; i < length; i++) {
             param = (String) params[i];
-            msg += param + ": " +request.getParameter(param);
+            msg += param + ": " + request.getParameter(param);
             if (i < length - 1) {
                 msg += Message.FIELD_SEPARATE;
-                
+
 
             }
         }
         log.info("|| " + msg);
         return msg;
     }
+
     /**
      * 
      * @param request
      * @return
      */
-    public String login(HttpServletRequest request){
+    public String login(HttpServletRequest request) {
         String id = request.getParameter("userName");
         String password = request.getParameter("password");
         // check information account
-        
+
         // if satified
-        if(containerController != null){
+        if (containerController != null) {
             try {
                 agentController.kill();
                 containerController.kill();
                 containerController = null;
-                agentController = AgentManager.addAgent(host, port, id, className,containerController);
+                agentController = AgentManager.addAgent(host, port, id, className, containerController);
             } catch (Exception e) {
                 id = null;
             }
-            
+
         }
         return id;
     }
-    public void logout(HttpServletRequest request){
-        
+
+    public void logout(HttpServletRequest request) {
     }
 }

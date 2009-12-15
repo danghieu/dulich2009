@@ -119,12 +119,14 @@ public class HotelAgent extends Agent {
 
                             // action of message <-> protocol of ACL
                             String protocol = msg.getProtocol();
-                            if (Protocol.HOTEL_AVAIL.equals(protocol)) {
+                            //if (Protocol.HOTEL_AVAIL.equals(protocol)) 
+                            {
                                 // FOR TEST
                                 ACLMessage reply = Message.createReplyMessage(msg, content);
                                 
-                                log.info("=== [HotelAgent] sent reply message " + content);
+                                log.info("=== [HotelAgent] sent reply message " + reply);
                                 send(reply);
+                                
                                 finished = true;
                             }
                             break;

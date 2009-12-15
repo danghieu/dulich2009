@@ -29,8 +29,9 @@ public class SearchServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        response.setContentType("text/html;charset=UTF-8");
-        String result = (String)request.getAttribute("result");
+        response.setContentType("text/html;charset=UTF-8");        
+        
+        String result = (String) request.getAttribute("result");
         PrintWriter out = response.getWriter();
         try {
             //* TODO output your page here
@@ -46,6 +47,14 @@ public class SearchServlet extends HttpServlet {
         } finally {
             out.close();
         }
+    }
+    public String getSearchResults(HttpServletRequest request) {
+        
+        String msgId = (String) request.getAttribute("msgId");
+        String function = (String) request.getAttribute("function");
+        CallAgent callAgent = (CallAgent) request.getAttribute("callAgent");
+        log.info("Call " + function + "()");
+        return (callAgent.callTheAgentViaXmlRpc(function , msgId));
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
