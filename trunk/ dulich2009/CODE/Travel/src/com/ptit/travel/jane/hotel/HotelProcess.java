@@ -6,8 +6,23 @@
 package com.ptit.travel.jane.hotel;
 import org.mindswap.pellet.jena.PelletReasonerFactory;
 
-import com.ptit.travel.agent.communication;
+import com.ptit.travel.agent.communication.Message;
 import java.io.*;
+import java.text.DateFormat;
+import java.text.ParsePosition;
+import java.text.SimpleDateFormat;
+import com.hp.hpl.jena.reasoner.Reasoner;
+import com.hp.hpl.jena.reasoner.ValidityReport;
+import com.hp.hpl.jena.vocabulary.RDFS;
+import com.hp.hpl.jena.db.DBConnection;
+import com.hp.hpl.jena.db.IDBConnection;
+import com.hp.hpl.jena.db.ModelRDB;
+import com.hp.hpl.jena.ontology.OntModel;
+import com.hp.hpl.jena.ontology.OntModelSpec;
+import com.hp.hpl.jena.rdf.model.Model;
+import com.hp.hpl.jena.rdf.model.ModelFactory;
+import com.hp.hpl.jena.rdf.model.ModelMaker;// ModelMaker ????
+import com.hp.hpl.jena.util.FileManager;
 import com.hp.hpl.jena.ontology.ObjectProperty;
 import com.hp.hpl.jena.ontology.Individual;
 import com.hp.hpl.jena.ontology.OntClass;
@@ -24,7 +39,9 @@ import com.ptit.travel.moduleJDBC.Model.*;
 import java.util.*;
 import com.hp.hpl.jena.rdf.model.*;
 import java.io.FileOutputStream;
-import java.lang.*;
+
+import java.util.Date;
+
 import com.hp.hpl.jena.util.iterator.ExtendedIterator;
 /**
  *
@@ -359,11 +376,48 @@ public class HotelProcess {
       return om;  
     }
     
-    public void insertMsg_HotelSearchRQ(){
+    public OntModel insertMsg_HotelSearchRQ(String input, int total){
+        ArrayList<String>arr = new ArrayList<String>();
         
+        arr = Message.split(input, "@@");
+        
+        boolean isOk = false;
+	OntModel model = ModelFactory.createOntologyModel();
+        Individual ind = null;
+	try {
+            OntClass oc = model.createClass(Hotel.getURI() + "Msg_HotelSearchRQ"); // dinh danh ten lop
+	    ind = model.createIndividual(Hotel.getURI() + "Msg_HotelSearchRQ"+ total, oc);
+				
+			// them cac thuoc tinh vao ca the can tao
+	    if (arr.get(0) != null) {
+		ind.addProperty(Hotel.roomType, arr.get(0));
+                      
+		}
+            
+            Date date = new Date();
+            
+	    if (arr.get(1)!= null) {
+		ind.addProperty(Hotel.beginTime,arr.get(1));
+        
+        	}		
+	 /*  if (arr.get(2) != null) {
+		ind.addProperty(Hotel.endTime,arr.get(2));
+			}
+        */
+           if (arr.get(2) != null) {
+		ind.addProperty(Hotel.city,arr.get(2));
+			}
+			
+			isOk = true;
+		} catch (Exception e) {
+			System.out.println(e.toString());
+			isOk = false;
+		}
+		model.write(System.out);
+                return model;
     }
     
-    public void search(){
+    public void search(OntModel ontmodel){
          Database.LoadOnt2Database();
          String ont = "http://www.owl-ontologies.com/Travel.owl#";
          // lay khung du lieu tu owl
@@ -384,17 +438,35 @@ public class HotelProcess {
        
            
 		// System.out.println(extendedIterator.toList().size());
-	ObjectProperty beginPoint = model.getObjectProperty(ont
+	  ObjectProperty beginPoint = model.getObjectProperty(ont
 				+ "hasHotel");
-		/*ObjectProperty endPoint = model.getObjectProperty(ont + "hasEndPoint");
+	ObjectProperty endPoint = model.getObjectProperty(ont + "hasEndPoint");
 		ObjectProperty beginTime = model.getObjectProperty(ont
 				+ "hasBeginTime");
 		ObjectProperty endTime = model.getObjectProperty(ont + "hasEndTime");
-		*/
+		
                 OntClass cl = model.getOntClass(ont + "Msg_HotelSearchRS"); // day chi la ten cua 1 lop,
                 System.out.println("luat: ");
-		model.prepare();//  Phuong thuc nay thuc thi suy dien.
-                //model.write(System.out); // cai nay la cai to muon hien thi owl
+		Model model1 = model.add(ontmodel);
+               //     OntClass cl1 = model1.getOntClass(ont + "Msg_HotelSearchRS"); // day chi la ten cua 1 lop,
+              
+               
+                  
+  	    // create Pellet reasoner
+        Reasoner reasoner = PelletReasonerFactory.theInstance().create();
+      
+      try {
+			model.read(new FileInputStream(new File(file)), "");
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    //   Model model = inmodel.add(ontmodel);
+      
+
+                
+                
+             
 
 		// Print individual inferred
                  ExtendedIterator <?> extendedIterator = cl.listInstances(); // lay tat ca cac the hien cua cai lop day
@@ -418,6 +490,9 @@ public class HotelProcess {
 			System.out
 					.println("---------------------------------------------------------------");
 		}
+          
+        
+       
 	}
 
 	public static void printPropertyValues(Individual ind, Property prop) {
@@ -444,18 +519,43 @@ public class HotelProcess {
 		}
 		System.out.println();
 	}
-
+public static void printIterator(Iterator<?> i, String header) {
+        System.out.println(header);
+        for(int c = 0; c < header.length(); c++)
+            System.out.print("=");
+        System.out.println();
+        
+        if(i.hasNext()) {
+	        while (i.hasNext()) 
+	            System.out.println( i.next() );
+        }       
+        else
+            System.out.println("<EMPTY>");
+        
+        System.out.println();
+    }
     
     
     public static void main(String s[]){
         HotelProcess hotelprocess = new HotelProcess();
       // hotelprocess.searchHotel(false, true, false, false, false, "inside",false, true, "Nam Dinh" );
         hotelprocess.search2("HaiYen", "HotelSofitel");
-        Date begin = new Date(109-12-11);
-      //  String begin = "2009-12-11";
+       
+      //  String begin = "2009-12-19";
+        String end = "2009-12-20";
       //  hotelprocess.checkAvailability(begin, "HotelSofitel", "LivingRoom", "SingleRoom");
-        
-       hotelprocess.search();
+       OntModel ontmodel = ModelFactory.createOntologyModel(); 
+     Date begin = new Date("2009-12-20"); 
+     System.out.print(begin);
+            String begintime = DateFormat.getDateTimeInstance().format(begin);
+       
+     
+       String input = "MeetingRoom"+"@@"+begin +"@@"+"Ha Noi";
+   //    String input = "MeetingRoom"+"@@"+"Ha Noi";
+       ontmodel = hotelprocess.insertMsg_HotelSearchRQ(input, 3);
+       hotelprocess.search(ontmodel);
+      
+       
     }
    
 }
