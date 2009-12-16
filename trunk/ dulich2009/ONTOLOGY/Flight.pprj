@@ -1,4 +1,4 @@
-; Mon Dec 07 22:14:14 PST 2009
+; Wed Dec 16 08:40:05 PST 2009
 ; 
 ;+ (version "3.4")
 ;+ (build "Build 533")
@@ -6,11 +6,11 @@
 ([BROWSER_SLOT_NAMES] of  Property_List
 
 	(properties
-		[Flight_ProjectKB_Class53]
-		[Flight_ProjectKB_Class54]
-		[Flight_ProjectKB_Class55]
-		[Flight_ProjectKB_Class56]
-		[Flight_ProjectKB_Class57]))
+		[Flight_ProjectKB_Class10010]
+		[Flight_ProjectKB_Class10011]
+		[Flight_ProjectKB_Class10012]
+		[Flight_ProjectKB_Class10013]
+		[Flight_ProjectKB_Class10014]))
 
 ([CLSES_TAB] of  Widget
 
@@ -36,6 +36,217 @@
 	(widget_class_name "TGViztab.TGVizTab"))
 
 ([Flight_ProjectKB_Class10] of  Property_List
+)
+
+([Flight_ProjectKB_Class10007] of  Widget
+
+	(is_hidden FALSE)
+	(label "Name")
+	(name ":NAME")
+	(property_list [Flight_ProjectKB_Class10009])
+	(widget_class_name "edu.stanford.smi.protege.widget.FormWidget"))
+
+([Flight_ProjectKB_Class10008] of  Widget
+
+	(is_hidden FALSE)
+	(label "Comment")
+	(name "http://www.w3.org/2000/01/rdf-schema#comment")
+	(widget_class_name "edu.stanford.smi.protege.widget.FormWidget"))
+
+([Flight_ProjectKB_Class10009] of  Property_List
+)
+
+([Flight_ProjectKB_Class10010] of  String
+
+	(name "http://www.w3.org/2002/07/owl#Class")
+	(string_value "%3ANAME"))
+
+([Flight_ProjectKB_Class10011] of  String
+
+	(name ":INSTANCE-ANNOTATION")
+	(string_value "%3AANNOTATION-TEXT"))
+
+([Flight_ProjectKB_Class10012] of  String
+
+	(name ":META-CLASS")
+	(string_value "%3ANAME"))
+
+([Flight_ProjectKB_Class10013] of  String
+
+	(name "http://www.w3.org/2002/07/owl#Thing")
+	(string_value "%3ANAME"))
+
+([Flight_ProjectKB_Class10014] of  String
+
+	(name ":PAL-CONSTRAINT")
+	(string_value "%3APAL-NAME"))
+
+([Flight_ProjectKB_Class10015] of  Map_Entry
+
+	(key "suppress_instance_counting")
+	(key_class "java.lang.String")
+	(value "false")
+	(value_class "java.lang.String"))
+
+([Flight_ProjectKB_Class10016] of  Map_Entry
+
+	(key "change_tracking_active")
+	(key_class "java.lang.String")
+	(value "false")
+	(value_class "java.lang.String"))
+
+([Flight_ProjectKB_Class10017] of  Map_Entry
+
+	(key "add_name_on_instance_form")
+	(key_class "java.lang.String")
+	(value "false")
+	(value_class "java.lang.String"))
+
+([Flight_ProjectKB_Class10053] of  Widget
+
+	(is_hidden FALSE)
+	(name "http://www.w3.org/2003/11/swrl#Imp")
+	(property_list [Flight_ProjectKB_Class10056])
+	(widget_class_name "edu.stanford.smi.protegex.owl.ui.widget.OWLFormWidget"))
+
+([Flight_ProjectKB_Class10056] of  Property_List
+
+	(properties
+		[Flight_ProjectKB_Class10057]
+		[Flight_ProjectKB_Class10060]
+		[Flight_ProjectKB_Class10063]
+		[Flight_ProjectKB_Class10066]
+		[Flight_ProjectKB_Class10068]
+		[Flight_ProjectKB_Class10070]
+		[Flight_ProjectKB_Class10072]
+		[Flight_ProjectKB_Class10074]
+		[Flight_ProjectKB_Class10076]
+		[Flight_ProjectKB_Class10078]
+		[Flight_ProjectKB_Class10083]))
+
+([Flight_ProjectKB_Class10057] of  Widget
+
+	(height 120)
+	(is_hidden FALSE)
+	(label "Name")
+	(name ":NAME")
+	(property_list [Flight_ProjectKB_Class10058])
+	(widget_class_name "edu.stanford.smi.protegex.owl.ui.metadata.NameDocumentationWidget")
+	(width 200)
+	(x 0)
+	(y 0))
+
+([Flight_ProjectKB_Class10058] of  Property_List
+
+	(properties
+		[Flight_ProjectKB_Class10007]
+		[Flight_ProjectKB_Class10008]))
+
+([Flight_ProjectKB_Class10060] of  Property_List
+
+	(name "layout properties")
+	(properties
+		[Flight_ProjectKB_Class10061]
+		[Flight_ProjectKB_Class10062]))
+
+([Flight_ProjectKB_Class10061] of  String
+
+	(name "horizontal_stretcher")
+	(string_value "<<all>>"))
+
+([Flight_ProjectKB_Class10062] of  String
+
+	(name "vertical_stretcher")
+	(string_value "http://www.w3.org/2003/11/swrl#body"))
+
+([Flight_ProjectKB_Class10063] of  Widget
+
+	(height 0)
+	(is_hidden FALSE)
+	(name "http://protege.stanford.edu/plugins/owl/protege#inferredType")
+	(property_list [Flight_ProjectKB_Class10064])
+	(width 0)
+	(x 0)
+	(y 0))
+
+([Flight_ProjectKB_Class10064] of  Property_List
+)
+
+([Flight_ProjectKB_Class10066] of  Widget
+
+	(is_hidden FALSE)
+	(name "http://www.w3.org/2002/07/owl#versionInfo")
+	(property_list [Flight_ProjectKB_Class10067]))
+
+([Flight_ProjectKB_Class10067] of  Property_List
+)
+
+([Flight_ProjectKB_Class10068] of  Widget
+
+	(is_hidden FALSE)
+	(name "http://www.w3.org/2000/01/rdf-schema#isDefinedBy")
+	(property_list [Flight_ProjectKB_Class10069]))
+
+([Flight_ProjectKB_Class10069] of  Property_List
+)
+
+([Flight_ProjectKB_Class10070] of  Widget
+
+	(is_hidden FALSE)
+	(name "http://www.w3.org/2000/01/rdf-schema#comment")
+	(property_list [Flight_ProjectKB_Class10071]))
+
+([Flight_ProjectKB_Class10071] of  Property_List
+)
+
+([Flight_ProjectKB_Class10072] of  Widget
+
+	(is_hidden FALSE)
+	(name "http://www.w3.org/2000/01/rdf-schema#seeAlso")
+	(property_list [Flight_ProjectKB_Class10073]))
+
+([Flight_ProjectKB_Class10073] of  Property_List
+)
+
+([Flight_ProjectKB_Class10074] of  Widget
+
+	(is_hidden FALSE)
+	(name "http://www.w3.org/2000/01/rdf-schema#label")
+	(property_list [Flight_ProjectKB_Class10075]))
+
+([Flight_ProjectKB_Class10075] of  Property_List
+)
+
+([Flight_ProjectKB_Class10076] of  Widget
+
+	(is_hidden FALSE)
+	(name "http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled")
+	(property_list [Flight_ProjectKB_Class10077]))
+
+([Flight_ProjectKB_Class10077] of  Property_List
+)
+
+([Flight_ProjectKB_Class10078] of  Widget
+
+	(is_hidden FALSE)
+	(name "http://swrl.stanford.edu/ontologies/3.3/swrla.owl#hasRuleGroup")
+	(property_list [Flight_ProjectKB_Class10079]))
+
+([Flight_ProjectKB_Class10079] of  Property_List
+)
+
+([Flight_ProjectKB_Class10083] of  Widget
+
+	(height 300)
+	(is_hidden FALSE)
+	(name "http://www.w3.org/2003/11/swrl#body")
+	(property_list [Flight_ProjectKB_Class10084])
+	(widget_class_name "edu.stanford.smi.protegex.owl.swrl.ui.widget.SWRLRuleSlotWidget")
+	(width 200)
+	(x 0)
+	(y 120))
+
+([Flight_ProjectKB_Class10084] of  Property_List
 )
 
 ([Flight_ProjectKB_Class11] of  Widget
@@ -245,31 +456,6 @@
 ([Flight_ProjectKB_Class52] of  Property_List
 )
 
-([Flight_ProjectKB_Class53] of  String
-
-	(name "http://www.w3.org/2002/07/owl#Class")
-	(string_value "%3ANAME"))
-
-([Flight_ProjectKB_Class54] of  String
-
-	(name ":INSTANCE-ANNOTATION")
-	(string_value "%3AANNOTATION-TEXT"))
-
-([Flight_ProjectKB_Class55] of  String
-
-	(name ":META-CLASS")
-	(string_value "%3ANAME"))
-
-([Flight_ProjectKB_Class56] of  String
-
-	(name "http://www.w3.org/2002/07/owl#Thing")
-	(string_value "%3ANAME"))
-
-([Flight_ProjectKB_Class57] of  String
-
-	(name ":PAL-CONSTRAINT")
-	(string_value "%3APAL-NAME"))
-
 ([Flight_ProjectKB_Class6] of  Property_List
 )
 
@@ -422,6 +608,7 @@
 	(display_multi_parent_class_icon FALSE)
 	(is_readonly FALSE)
 	(tabbed_instance_form_layout TRUE)
+	(undo_enabled TRUE)
 	(update_modification_slots FALSE))
 
 ([Instance_581] of  Widget
@@ -633,6 +820,9 @@
 	(name ":DIRECT-TEMPLATE-SLOTS")
 	(property_list [KB_100699_Instance_11])
 	(widget_class_name "edu.stanford.smi.protege.widget.FormWidget"))
+
+([KB_130426_Class3] of  Map
+)
 
 ([KB_140180_Instance_0] of  Widget
 
@@ -899,9 +1089,6 @@
 ([KB_221055_Instance_71] of  Property_List
 )
 
-([KB_236785_Class0] of  Map
-)
-
 ([KB_301165_Instance_1013] of  Widget
 
 	(is_hidden FALSE)
@@ -1007,7 +1194,11 @@
 	(widget_class_name "edu.stanford.smi.protegex.owl.ui.widget.OWLFormWidget"))
 
 ([KB_325529_Class0] of  Map
-)
+
+	(entries
+		[Flight_ProjectKB_Class10015]
+		[Flight_ProjectKB_Class10016]
+		[Flight_ProjectKB_Class10017]))
 
 ([KB_325529_Class4] of  String
 
@@ -3277,7 +3468,7 @@
 
 ([KB_865583_Instance_10] of  Widget
 
-	(is_hidden TRUE)
+	(is_hidden FALSE)
 	(property_list [KB_865583_Instance_11])
 	(widget_class_name "edu.stanford.smi.protegex.owl.swrl.ui.tab.SWRLTab"))
 
@@ -5626,6 +5817,7 @@
 		[KB_313796_Instance_943]
 		[KB_301165_Instance_856]
 		[KB_713803_Instance_477]
+		[Flight_ProjectKB_Class10053]
 		[INSTANCE_ANNOTATION_FORM_WIDGET]
 		[KB_713803_Instance_648]
 		[KB_938545_Instance_661]
@@ -5684,6 +5876,8 @@
 		"http://www.w3.org/2003/11/swrl#argument1"
 		"http://protege.stanford.edu/plugins/owl/protege#DIRECTED-BINARY-RELATION"
 		"http://www.w3.org/2000/01/rdf-schema#Datatype"
+		"http://www.w3.org/2003/11/swrlb#args"
+		"http://www.w3.org/2003/11/swrlb#minArgs"
 		"http://protege.stanford.edu/plugins/owl/protege#PAL-DESCRIPTION"
 		"http://www.w3.org/1999/02/22-rdf-syntax-ns#Bag"
 		":META-CLASS"
@@ -5762,7 +5956,6 @@
 		":DOCUMENTATION-IN-FRAME"
 		"http://www.w3.org/2001/XMLSchema#unsignedInt"
 		"http://www.w3.org/2002/07/owl#oneOf"
-		"http://protege.stanford.edu/plugins/owl/protege#TO"
 		"http://www.w3.org/2001/XMLSchema#gDay"
 		"http://www.w3.org/1999/02/22-rdf-syntax-ns#rest"
 		"http://www.w3.org/2001/XMLSchema#NCName"
@@ -5774,7 +5967,6 @@
 		":DIRECT-SUBCLASSES"
 		":ASSOCIATED-SLOT"
 		":SYSTEM-CLASS"
-		"http://protege.stanford.edu/plugins/owl/protege#FROM"
 		":OWL-ONTOLOGY-POINTER-CLASS"
 		"http://www.w3.org/2001/XMLSchema#language"
 		"http://www.w3.org/2002/07/owl#Ontology"
@@ -5790,6 +5982,7 @@
 		"http://www.w3.org/2002/07/owl#differentFrom"
 		"http://www.w3.org/2003/11/swrl#arguments"
 		"http://www.w3.org/2001/XMLSchema#NOTATION"
+		"http://www.w3.org/2003/11/swrlb#maxArgs"
 		":STANDARD-CLASS"
 		"http://www.w3.org/2002/07/owl#DataRange"
 		"http://protege.stanford.edu/plugins/owl/protege#PAL-CONSTRAINT"
@@ -5842,18 +6035,44 @@
 		[Instance_2534]
 		[Instance_86]
 		[Instance_2600]
-		[FORMS_TAB]
 		[Instance_3234]
+		[KB_865583_Instance_8]
+		[Flight_ProjectKB_Class41]
+		[Flight_ProjectKB_Class13]
 		[Instance_43]
 		[CLSES_TAB]
+		[Flight_ProjectKB_Class39]
 		[KB_865583_Instance_6]
+		[Flight_ProjectKB_Class17]
+		[FORMS_TAB]
 		[INSTANCES_TAB]
+		[Flight_ProjectKB_Class31]
+		[Flight_ProjectKB_Class37]
+		[Flight_ProjectKB_Class35]
 		[Instance_45]
+		[Flight_ProjectKB_Class29]
+		[Flight_ProjectKB_Class7]
+		[Flight_ProjectKB_Class3]
 		[KB_865583_Instance_12]
-		[KB_865583_Instance_8]
+		[Flight_ProjectKB_Class51]
+		[Flight_ProjectKB_Class27]
+		[Flight_ProjectKB_Class23]
+		[Flight_ProjectKB_Class25]
+		[Flight_ProjectKB_Class5]
 		[KB_865583_Instance_4]
 		[SLOTS_TAB]
-		[KB_865583_Instance_10]))
+		[Flight_ProjectKB_Class9]
+		[KB_865583_Instance_10]
+		[Flight_ProjectKB_Class1]
+		[Flight_ProjectKB_Class47]
+		[Flight_ProjectKB_Class21]
+		[Flight_ProjectKB_Class19]
+		[Flight_ProjectKB_Class33]
+		[Flight_ProjectKB_Class45]
+		[Flight_ProjectKB_Class15]
+		[Flight_ProjectKB_Class43]
+		[Flight_ProjectKB_Class49]
+		[Flight_ProjectKB_Class11]))
 
 ([SLOTS_TAB] of  Widget
 
