@@ -49,8 +49,6 @@ public class UserAgent extends Agent {
     private static Logger log = Logger.getLogger(UserAgent.class.getName());
     WebServer xmlrpcServer;
     private static final int port = 8006;//ConfigXMLConnect.PORT_USER;
-    private Memory mem;
-    private Resource agentIndividual;
     // message queue of agent contains every satisfactory replied messages 
     private Hashtable<String, ArrayList<String>> msgQueue = new Hashtable<String, ArrayList<String>>();
 
@@ -59,7 +57,7 @@ public class UserAgent extends Agent {
 
         try {
             xmlrpcServer = new WebServer(port);
-            log.debug("XMLRPC Running ....");
+            log.debug("XMLRPC Running on port: " + port);
         } catch (Exception e) {
             log.error("PANIC: maybe the port " + port + " is in use");
             System.out.println(e);

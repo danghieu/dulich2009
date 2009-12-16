@@ -553,7 +553,7 @@ public static void printIterator(Iterator<?> i, String header) {
        String input = "MeetingRoom"+"@@"+begin +"@@"+"Ha Noi";
    //    String input = "MeetingRoom"+"@@"+"Ha Noi";
        ontmodel = hotelprocess.insertMsg_HotelSearchRQ(input, 3);
-       hotelprocess.search(ontmodel);
+       //hotelprocess.search(ontmodel);
       
        
     }

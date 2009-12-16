@@ -1,5 +1,6 @@
 package com.ptit.travel.common.servlet;
 
+import com.ptit.travel.agent.communication.ConfigXMLConnect;
 import com.ptit.travel.agent.communication.Message;
 import com.ptit.travel.agent.communication.Protocol;
 import java.io.IOException;
@@ -28,7 +29,13 @@ public class UserServlet extends HttpServlet {
 
     private Logger log = Logger.getLogger(UserServlet.class.getName());
     private static final long serialVersionUID = 1L;
-    private CallAgent callAgent;// ConfigXMLConnect.HOST_USER
+   // private String agentHost = ConfigXMLConnect.HOST_USER;
+    /**
+     * Generate a new port for user agent
+     */ 
+    //private int agentPort = ConfigXMLConnect.nextPort("USER");
+    
+    private CallAgent callAgent;// = new CallAgent(agentHost, agentPort);
     private AgentController agentController = null;
     private ContainerController containerController = null;
     private String nickName;
@@ -61,6 +68,7 @@ public class UserServlet extends HttpServlet {
     public void init() throws ServletException {
         super.init();
         if (agentController == null) {
+            //log.info("Generate a NEW PORT for user agent: " + agentHost);
             nickName = "UserAgent";//"Guest" + System.currentTimeMillis();
 
             try {
