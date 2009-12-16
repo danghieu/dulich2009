@@ -138,7 +138,7 @@ public class Test {
         //test.testSplitMessage();
         //test.testConfigXMLConnect();
         //test.callTheAgentViaXmlRpc();
-        test.testCreateAgentCH();
+        test.testCreateAgentCH();        
     
     }
 
