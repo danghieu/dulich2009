@@ -3385,41 +3385,38 @@
   <swrl:Imp rdf:ID="Rule-ChangeBookFlight2">
     <swrl:body>
       <swrl:AtomList>
+        <rdf:first>
+          <swrl:ClassAtom>
+            <swrl:argument1 rdf:resource="#x"/>
+            <swrl:classPredicate rdf:resource="#Msg_FlightBookChangeRQ"/>
+          </swrl:ClassAtom>
+        </rdf:first>
         <rdf:rest>
           <swrl:AtomList>
             <rdf:rest>
               <swrl:AtomList>
-                <rdf:first>
-                  <swrl:DatavaluedPropertyAtom>
-                    <swrl:argument2>
-                      <swrl:Variable rdf:ID="fullname"/>
-                    </swrl:argument2>
-                    <swrl:propertyPredicate rdf:resource="#fullName"/>
-                    <swrl:argument1 rdf:resource="#customer"/>
-                  </swrl:DatavaluedPropertyAtom>
-                </rdf:first>
                 <rdf:rest>
                   <swrl:AtomList>
                     <rdf:rest>
                       <swrl:AtomList>
-                        <rdf:first>
-                          <swrl:IndividualPropertyAtom>
-                            <swrl:propertyPredicate rdf:resource="#hasSecurityCode"/>
-                            <swrl:argument1 rdf:resource="#y"/>
-                            <swrl:argument2 rdf:resource="#securitycode"/>
-                          </swrl:IndividualPropertyAtom>
-                        </rdf:first>
                         <rdf:rest>
                           <swrl:AtomList>
+                            <rdf:first>
+                              <swrl:DatavaluedPropertyAtom>
+                                <swrl:argument2 rdf:resource="#contractcode"/>
+                                <swrl:argument1 rdf:resource="#securitycode"/>
+                                <swrl:propertyPredicate rdf:resource="#contractCode"/>
+                              </swrl:DatavaluedPropertyAtom>
+                            </rdf:first>
                             <rdf:rest>
                               <swrl:AtomList>
                                 <rdf:first>
                                   <swrl:IndividualPropertyAtom>
-                                    <swrl:propertyPredicate rdf:resource="#hasCustomer"/>
-                                    <swrl:argument1 rdf:resource="#y"/>
                                     <swrl:argument2>
                                       <swrl:Variable rdf:ID="customer1"/>
                                     </swrl:argument2>
+                                    <swrl:argument1 rdf:resource="#y"/>
+                                    <swrl:propertyPredicate rdf:resource="#hasCustomer"/>
                                   </swrl:IndividualPropertyAtom>
                                 </rdf:first>
                                 <rdf:rest>
@@ -3428,32 +3425,34 @@
                                       <swrl:AtomList>
                                         <rdf:first>
                                           <swrl:IndividualPropertyAtom>
-                                            <swrl:argument2 rdf:resource="#flight"/>
                                             <swrl:argument1 rdf:resource="#y"/>
+                                            <swrl:argument2 rdf:resource="#flight"/>
                                             <swrl:propertyPredicate rdf:resource="#hasFlight"/>
                                           </swrl:IndividualPropertyAtom>
                                         </rdf:first>
                                         <rdf:rest>
                                           <swrl:AtomList>
-                                            <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
                                             <rdf:first>
                                               <swrl:BuiltinAtom>
+                                                <swrl:builtin rdf:resource="http://www.w3.org/2003/11/swrlb#stringEqualIgnoreCase"/>
                                                 <swrl:arguments>
                                                   <rdf:List>
-                                                    <rdf:first rdf:resource="#fullname"/>
+                                                    <rdf:first>
+                                                      <swrl:Variable rdf:ID="fullname"/>
+                                                    </rdf:first>
                                                     <rdf:rest>
                                                       <rdf:List>
-                                                        <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
                                                         <rdf:first>
                                                           <swrl:Variable rdf:ID="fullname1"/>
                                                         </rdf:first>
+                                                        <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
                                                       </rdf:List>
                                                     </rdf:rest>
                                                   </rdf:List>
                                                 </swrl:arguments>
-                                                <swrl:builtin rdf:resource="http://www.w3.org/2003/11/swrlb#stringEqualIgnoreCase"/>
                                               </swrl:BuiltinAtom>
                                             </rdf:first>
+                                            <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
                                           </swrl:AtomList>
                                         </rdf:rest>
                                       </swrl:AtomList>
@@ -3471,15 +3470,15 @@
                                 </rdf:rest>
                               </swrl:AtomList>
                             </rdf:rest>
-                            <rdf:first>
-                              <swrl:DatavaluedPropertyAtom>
-                                <swrl:argument2 rdf:resource="#contractcode"/>
-                                <swrl:propertyPredicate rdf:resource="#contractCode"/>
-                                <swrl:argument1 rdf:resource="#securitycode"/>
-                              </swrl:DatavaluedPropertyAtom>
-                            </rdf:first>
                           </swrl:AtomList>
                         </rdf:rest>
+                        <rdf:first>
+                          <swrl:IndividualPropertyAtom>
+                            <swrl:argument2 rdf:resource="#securitycode"/>
+                            <swrl:argument1 rdf:resource="#y"/>
+                            <swrl:propertyPredicate rdf:resource="#hasSecurityCode"/>
+                          </swrl:IndividualPropertyAtom>
+                        </rdf:first>
                       </swrl:AtomList>
                     </rdf:rest>
                     <rdf:first>
@@ -3490,27 +3489,34 @@
                     </rdf:first>
                   </swrl:AtomList>
                 </rdf:rest>
+                <rdf:first>
+                  <swrl:DatavaluedPropertyAtom>
+                    <swrl:argument1 rdf:resource="#customer"/>
+                    <swrl:argument2 rdf:resource="#fullname"/>
+                    <swrl:propertyPredicate rdf:resource="#fullName"/>
+                  </swrl:DatavaluedPropertyAtom>
+                </rdf:first>
               </swrl:AtomList>
             </rdf:rest>
             <rdf:first>
               <swrl:IndividualPropertyAtom>
-                <swrl:argument2 rdf:resource="#customer"/>
                 <swrl:propertyPredicate rdf:resource="#hasCustomer"/>
+                <swrl:argument2 rdf:resource="#customer"/>
                 <swrl:argument1 rdf:resource="#x"/>
               </swrl:IndividualPropertyAtom>
             </rdf:first>
           </swrl:AtomList>
         </rdf:rest>
-        <rdf:first>
-          <swrl:ClassAtom>
-            <swrl:classPredicate rdf:resource="#Msg_FlightBookChangeRQ"/>
-            <swrl:argument1 rdf:resource="#x"/>
-          </swrl:ClassAtom>
-        </rdf:first>
       </swrl:AtomList>
     </swrl:body>
     <swrl:head>
       <swrl:AtomList>
+        <rdf:first>
+          <swrl:ClassAtom>
+            <swrl:argument1 rdf:resource="#x"/>
+            <swrl:classPredicate rdf:resource="#Msg_FlightBookChangeRS"/>
+          </swrl:ClassAtom>
+        </rdf:first>
         <rdf:rest>
           <swrl:AtomList>
             <rdf:rest>
@@ -3529,28 +3535,22 @@
                 </rdf:rest>
                 <rdf:first>
                   <swrl:IndividualPropertyAtom>
-                    <swrl:argument1 rdf:resource="#x"/>
-                    <swrl:argument2 rdf:resource="#customer1"/>
                     <swrl:propertyPredicate rdf:resource="#hasCustomer"/>
+                    <swrl:argument2 rdf:resource="#customer1"/>
+                    <swrl:argument1 rdf:resource="#x"/>
                   </swrl:IndividualPropertyAtom>
                 </rdf:first>
               </swrl:AtomList>
             </rdf:rest>
             <rdf:first>
               <swrl:DatavaluedPropertyAtom>
-                <swrl:argument1 rdf:resource="#x"/>
-                <swrl:argument2 rdf:resource="#contractcode"/>
                 <swrl:propertyPredicate rdf:resource="#contractCode"/>
+                <swrl:argument2 rdf:resource="#contractcode"/>
+                <swrl:argument1 rdf:resource="#x"/>
               </swrl:DatavaluedPropertyAtom>
             </rdf:first>
           </swrl:AtomList>
         </rdf:rest>
-        <rdf:first>
-          <swrl:ClassAtom>
-            <swrl:classPredicate rdf:resource="#Msg_FlightBookChangeRS"/>
-            <swrl:argument1 rdf:resource="#x"/>
-          </swrl:ClassAtom>
-        </rdf:first>
       </swrl:AtomList>
     </swrl:head>
   </swrl:Imp>
@@ -10644,25 +10644,25 @@
       <swrl:AtomList>
         <rdf:first>
           <swrl:ClassAtom>
-            <swrl:argument1 rdf:resource="#x"/>
             <swrl:classPredicate rdf:resource="#Msg_FlightBookChangeRS"/>
+            <swrl:argument1 rdf:resource="#x"/>
           </swrl:ClassAtom>
         </rdf:first>
         <rdf:rest>
           <swrl:AtomList>
             <rdf:first>
               <swrl:DatavaluedPropertyAtom>
-                <swrl:propertyPredicate rdf:resource="#contractCode"/>
-                <swrl:argument2 rdf:resource="#contractcode"/>
                 <swrl:argument1 rdf:resource="#x"/>
+                <swrl:argument2 rdf:resource="#contractcode"/>
+                <swrl:propertyPredicate rdf:resource="#contractCode"/>
               </swrl:DatavaluedPropertyAtom>
             </rdf:first>
             <rdf:rest>
               <swrl:AtomList>
                 <rdf:first>
                   <swrl:IndividualPropertyAtom>
-                    <swrl:propertyPredicate rdf:resource="#hasCustomer"/>
                     <swrl:argument1 rdf:resource="#x"/>
+                    <swrl:propertyPredicate rdf:resource="#hasCustomer"/>
                     <swrl:argument2 rdf:resource="#customer1"/>
                   </swrl:IndividualPropertyAtom>
                 </rdf:first>
@@ -10671,9 +10671,9 @@
                     <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
                     <rdf:first>
                       <swrl:IndividualPropertyAtom>
+                        <swrl:propertyPredicate rdf:resource="#hasFlight"/>
                         <swrl:argument1 rdf:resource="#x"/>
                         <swrl:argument2 rdf:resource="#flight"/>
-                        <swrl:propertyPredicate rdf:resource="#hasFlight"/>
                       </swrl:IndividualPropertyAtom>
                     </rdf:first>
                   </swrl:AtomList>
@@ -10686,108 +10686,82 @@
     </swrl:head>
     <swrl:body>
       <swrl:AtomList>
-        <rdf:first>
-          <swrl:ClassAtom>
-            <swrl:classPredicate rdf:resource="#Msg_FlightBookChangeRQ"/>
-            <swrl:argument1 rdf:resource="#x"/>
-          </swrl:ClassAtom>
-        </rdf:first>
         <rdf:rest>
           <swrl:AtomList>
             <rdf:first>
               <swrl:IndividualPropertyAtom>
-                <swrl:argument1 rdf:resource="#x"/>
-                <swrl:argument2 rdf:resource="#customer"/>
                 <swrl:propertyPredicate rdf:resource="#hasCustomer"/>
+                <swrl:argument2 rdf:resource="#customer"/>
+                <swrl:argument1 rdf:resource="#x"/>
               </swrl:IndividualPropertyAtom>
             </rdf:first>
             <rdf:rest>
               <swrl:AtomList>
-                <rdf:first>
-                  <swrl:DatavaluedPropertyAtom>
-                    <swrl:argument1 rdf:resource="#customer"/>
-                    <swrl:argument2 rdf:resource="#fullname"/>
-                    <swrl:propertyPredicate rdf:resource="#fullName"/>
-                  </swrl:DatavaluedPropertyAtom>
-                </rdf:first>
                 <rdf:rest>
                   <swrl:AtomList>
-                    <rdf:first>
-                      <swrl:IndividualPropertyAtom>
-                        <swrl:propertyPredicate rdf:resource="#hasDepartureAirport"/>
-                        <swrl:argument1 rdf:resource="#x"/>
-                        <swrl:argument2 rdf:resource="#departureAirport"/>
-                      </swrl:IndividualPropertyAtom>
-                    </rdf:first>
                     <rdf:rest>
                       <swrl:AtomList>
-                        <rdf:first>
-                          <swrl:DatavaluedPropertyAtom>
-                            <swrl:argument2 rdf:resource="#city1"/>
-                            <swrl:argument1 rdf:resource="#departureAirport"/>
-                            <swrl:propertyPredicate rdf:resource="#city"/>
-                          </swrl:DatavaluedPropertyAtom>
-                        </rdf:first>
                         <rdf:rest>
                           <swrl:AtomList>
                             <rdf:rest>
                               <swrl:AtomList>
-                                <rdf:first>
-                                  <swrl:DatavaluedPropertyAtom>
-                                    <swrl:argument1 rdf:resource="#arrivalAirport"/>
-                                    <swrl:argument2 rdf:resource="#city2"/>
-                                    <swrl:propertyPredicate rdf:resource="#city"/>
-                                  </swrl:DatavaluedPropertyAtom>
-                                </rdf:first>
                                 <rdf:rest>
                                   <swrl:AtomList>
                                     <rdf:rest>
                                       <swrl:AtomList>
+                                        <rdf:first>
+                                          <swrl:DatavaluedPropertyAtom>
+                                            <swrl:argument2 rdf:resource="#date1"/>
+                                            <swrl:propertyPredicate rdf:resource="#date"/>
+                                            <swrl:argument1 rdf:resource="#departuredatetime"/>
+                                          </swrl:DatavaluedPropertyAtom>
+                                        </rdf:first>
                                         <rdf:rest>
                                           <swrl:AtomList>
                                             <rdf:rest>
                                               <swrl:AtomList>
                                                 <rdf:rest>
                                                   <swrl:AtomList>
+                                                    <rdf:first>
+                                                      <swrl:DatavaluedPropertyAtom>
+                                                        <swrl:propertyPredicate rdf:resource="#contractCode"/>
+                                                        <swrl:argument2 rdf:resource="#contractcode"/>
+                                                        <swrl:argument1 rdf:resource="#securitycode"/>
+                                                      </swrl:DatavaluedPropertyAtom>
+                                                    </rdf:first>
                                                     <rdf:rest>
                                                       <swrl:AtomList>
                                                         <rdf:first>
                                                           <swrl:IndividualPropertyAtom>
-                                                            <swrl:argument2 rdf:resource="#departuredatetime2"/>
-                                                            <swrl:propertyPredicate rdf:resource="#hasDepartureDateTime"/>
                                                             <swrl:argument1 rdf:resource="#y"/>
+                                                            <swrl:propertyPredicate rdf:resource="#hasDepartureDateTime"/>
+                                                            <swrl:argument2 rdf:resource="#departuredatetime2"/>
                                                           </swrl:IndividualPropertyAtom>
                                                         </rdf:first>
                                                         <rdf:rest>
                                                           <swrl:AtomList>
-                                                            <rdf:first>
-                                                              <swrl:DatavaluedPropertyAtom>
-    <swrl:propertyPredicate rdf:resource="#date"/>
-    <swrl:argument2 rdf:resource="#date2"/>
-    <swrl:argument1 rdf:resource="#departuredatetime2"/>      </swrl:DatavaluedPropertyAtom>
-                                                            </rdf:first>
                                                             <rdf:rest>
                                                               <swrl:AtomList>
     <rdf:rest>
       <swrl:AtomList>
         <rdf:rest>
           <swrl:AtomList>
+            <rdf:first>
+              <swrl:IndividualPropertyAtom>
+                <swrl:argument1 rdf:resource="#y"/>
+                <swrl:propertyPredicate rdf:resource="#hasFlight"/>
+                <swrl:argument2 rdf:resource="#flight"/>
+              </swrl:IndividualPropertyAtom>
+            </rdf:first>
             <rdf:rest>
               <swrl:AtomList>
-                <rdf:first>
-                  <swrl:IndividualPropertyAtom>
-                    <swrl:argument2 rdf:resource="#departureAirport1"/>
-                    <swrl:argument1 rdf:resource="#flight"/>
-                    <swrl:propertyPredicate rdf:resource="#hasDepartureAirport"/>
-                  </swrl:IndividualPropertyAtom>
-                </rdf:first>
                 <rdf:rest>
                   <swrl:AtomList>
                     <rdf:first>
                       <swrl:DatavaluedPropertyAtom>
+                        <swrl:argument2 rdf:resource="#city3"/>
                         <swrl:argument1 rdf:resource="#departureAirpor1t"/>
                         <swrl:propertyPredicate rdf:resource="#city"/>
-                        <swrl:argument2 rdf:resource="#city3"/>
                       </swrl:DatavaluedPropertyAtom>
                     </rdf:first>
                     <rdf:rest>
@@ -10796,9 +10770,9 @@
                           <swrl:AtomList>
                             <rdf:first>
                               <swrl:DatavaluedPropertyAtom>
-                                <swrl:argument1 rdf:resource="#arrivalAirport2"/>
-                                <swrl:argument2 rdf:resource="#city4"/>
                                 <swrl:propertyPredicate rdf:resource="#city"/>
+                                <swrl:argument2 rdf:resource="#city4"/>
+                                <swrl:argument1 rdf:resource="#arrivalAirport2"/>
                               </swrl:DatavaluedPropertyAtom>
                             </rdf:first>
                             <rdf:rest>
@@ -10811,8 +10785,8 @@
                                         <rdf:first rdf:resource="#fullname"/>
                                         <rdf:rest>
                                           <rdf:List>
-                                            <rdf:first rdf:resource="#fullname1"/>
                                             <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                                            <rdf:first rdf:resource="#fullname1"/>
                                           </rdf:List>
                                         </rdf:rest>
                                       </rdf:List>
@@ -10823,29 +10797,9 @@
                                   <swrl:AtomList>
                                     <rdf:rest>
                                       <swrl:AtomList>
-                                        <rdf:rest>
-                                          <swrl:AtomList>
-                                            <rdf:first>
-                                              <swrl:BuiltinAtom>
-                                                <swrl:builtin rdf:resource="http://www.w3.org/2003/11/swrlb#equal"/>
-                                                <swrl:arguments>
-                                                  <rdf:List>
-                                                    <rdf:rest>
-                                                      <rdf:List>
-                                                        <rdf:first rdf:resource="#date2"/>
-                                                        <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
-                                                      </rdf:List>
-                                                    </rdf:rest>
-                                                    <rdf:first rdf:resource="#date1"/>
-                                                  </rdf:List>
-                                                </swrl:arguments>
-                                              </swrl:BuiltinAtom>
-                                            </rdf:first>
-                                            <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
-                                          </swrl:AtomList>
-                                        </rdf:rest>
                                         <rdf:first>
                                           <swrl:BuiltinAtom>
+                                            <swrl:builtin rdf:resource="http://www.w3.org/2003/11/swrlb#stringEqualIgnoreCase"/>
                                             <swrl:arguments>
                                               <rdf:List>
                                                 <rdf:first rdf:resource="#city2"/>
@@ -10857,22 +10811,42 @@
                                                 </rdf:rest>
                                               </rdf:List>
                                             </swrl:arguments>
-                                            <swrl:builtin rdf:resource="http://www.w3.org/2003/11/swrlb#stringEqualIgnoreCase"/>
                                           </swrl:BuiltinAtom>
                                         </rdf:first>
+                                        <rdf:rest>
+                                          <swrl:AtomList>
+                                            <rdf:first>
+                                              <swrl:BuiltinAtom>
+                                                <swrl:arguments>
+                                                  <rdf:List>
+                                                    <rdf:first rdf:resource="#date1"/>
+                                                    <rdf:rest>
+                                                      <rdf:List>
+                                                        <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                                                        <rdf:first rdf:resource="#date2"/>
+                                                      </rdf:List>
+                                                    </rdf:rest>
+                                                  </rdf:List>
+                                                </swrl:arguments>
+                                                <swrl:builtin rdf:resource="http://www.w3.org/2003/11/swrlb#equal"/>
+                                              </swrl:BuiltinAtom>
+                                            </rdf:first>
+                                            <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                                          </swrl:AtomList>
+                                        </rdf:rest>
                                       </swrl:AtomList>
                                     </rdf:rest>
                                     <rdf:first>
                                       <swrl:BuiltinAtom>
                                         <swrl:arguments>
                                           <rdf:List>
+                                            <rdf:first rdf:resource="#city1"/>
                                             <rdf:rest>
                                               <rdf:List>
                                                 <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
                                                 <rdf:first rdf:resource="#city3"/>
                                               </rdf:List>
                                             </rdf:rest>
-                                            <rdf:first rdf:resource="#city1"/>
                                           </rdf:List>
                                         </swrl:arguments>
                                         <swrl:builtin rdf:resource="http://www.w3.org/2003/11/swrlb#stringEqualIgnoreCase"/>
@@ -10886,30 +10860,30 @@
                         </rdf:rest>
                         <rdf:first>
                           <swrl:IndividualPropertyAtom>
+                            <swrl:argument2 rdf:resource="#arrivalAirport2"/>
                             <swrl:argument1 rdf:resource="#flight"/>
                             <swrl:propertyPredicate rdf:resource="#hasArrivalAirport"/>
-                            <swrl:argument2 rdf:resource="#arrivalAirport2"/>
                           </swrl:IndividualPropertyAtom>
                         </rdf:first>
                       </swrl:AtomList>
                     </rdf:rest>
                   </swrl:AtomList>
                 </rdf:rest>
+                <rdf:first>
+                  <swrl:IndividualPropertyAtom>
+                    <swrl:propertyPredicate rdf:resource="#hasDepartureAirport"/>
+                    <swrl:argument1 rdf:resource="#flight"/>
+                    <swrl:argument2 rdf:resource="#departureAirport1"/>
+                  </swrl:IndividualPropertyAtom>
+                </rdf:first>
               </swrl:AtomList>
             </rdf:rest>
-            <rdf:first>
-              <swrl:IndividualPropertyAtom>
-                <swrl:argument2 rdf:resource="#flight"/>
-                <swrl:propertyPredicate rdf:resource="#hasFlight"/>
-                <swrl:argument1 rdf:resource="#y"/>
-              </swrl:IndividualPropertyAtom>
-            </rdf:first>
           </swrl:AtomList>
         </rdf:rest>
         <rdf:first>
           <swrl:DatavaluedPropertyAtom>
-            <swrl:propertyPredicate rdf:resource="#fullName"/>
             <swrl:argument1 rdf:resource="#custome1"/>
+            <swrl:propertyPredicate rdf:resource="#fullName"/>
             <swrl:argument2 rdf:resource="#fullname1"/>
           </swrl:DatavaluedPropertyAtom>
         </rdf:first>
@@ -10917,79 +10891,105 @@
     </rdf:rest>
     <rdf:first>
       <swrl:IndividualPropertyAtom>
-        <swrl:propertyPredicate rdf:resource="#hasCustomer"/>
         <swrl:argument1 rdf:resource="#y"/>
+        <swrl:propertyPredicate rdf:resource="#hasCustomer"/>
         <swrl:argument2 rdf:resource="#customer1"/>
       </swrl:IndividualPropertyAtom>
     </rdf:first>                                              </swrl:AtomList>
                                                             </rdf:rest>
+                                                            <rdf:first>
+                                                              <swrl:DatavaluedPropertyAtom>
+    <swrl:propertyPredicate rdf:resource="#date"/>
+    <swrl:argument2 rdf:resource="#date2"/>
+    <swrl:argument1 rdf:resource="#departuredatetime2"/>      </swrl:DatavaluedPropertyAtom>
+                                                            </rdf:first>
                                                           </swrl:AtomList>
                                                         </rdf:rest>
                                                       </swrl:AtomList>
                                                     </rdf:rest>
-                                                    <rdf:first>
-                                                      <swrl:DatavaluedPropertyAtom>
-                                                        <swrl:argument2 rdf:resource="#contractcode"/>
-                                                        <swrl:propertyPredicate rdf:resource="#contractCode"/>
-                                                        <swrl:argument1 rdf:resource="#securitycode"/>
-                                                      </swrl:DatavaluedPropertyAtom>
-                                                    </rdf:first>
                                                   </swrl:AtomList>
                                                 </rdf:rest>
                                                 <rdf:first>
                                                   <swrl:IndividualPropertyAtom>
                                                     <swrl:propertyPredicate rdf:resource="#hasSecurityCode"/>
-                                                    <swrl:argument1 rdf:resource="#y"/>
                                                     <swrl:argument2 rdf:resource="#securitycode"/>
+                                                    <swrl:argument1 rdf:resource="#y"/>
                                                   </swrl:IndividualPropertyAtom>
                                                 </rdf:first>
                                               </swrl:AtomList>
                                             </rdf:rest>
                                             <rdf:first>
                                               <swrl:ClassAtom>
-                                                <swrl:classPredicate rdf:resource="#FlightBookContract"/>
                                                 <swrl:argument1 rdf:resource="#y"/>
+                                                <swrl:classPredicate rdf:resource="#FlightBookContract"/>
                                               </swrl:ClassAtom>
                                             </rdf:first>
                                           </swrl:AtomList>
                                         </rdf:rest>
-                                        <rdf:first>
-                                          <swrl:DatavaluedPropertyAtom>
-                                            <swrl:argument2 rdf:resource="#date1"/>
-                                            <swrl:argument1 rdf:resource="#departuredatetime"/>
-                                            <swrl:propertyPredicate rdf:resource="#date"/>
-                                          </swrl:DatavaluedPropertyAtom>
-                                        </rdf:first>
                                       </swrl:AtomList>
                                     </rdf:rest>
                                     <rdf:first>
                                       <swrl:IndividualPropertyAtom>
-                                        <swrl:argument1 rdf:resource="#x"/>
                                         <swrl:argument2 rdf:resource="#departuredatetime"/>
                                         <swrl:propertyPredicate rdf:resource="#hasDepartureDateTime"/>
+                                        <swrl:argument1 rdf:resource="#x"/>
                                       </swrl:IndividualPropertyAtom>
                                     </rdf:first>
                                   </swrl:AtomList>
                                 </rdf:rest>
+                                <rdf:first>
+                                  <swrl:DatavaluedPropertyAtom>
+                                    <swrl:argument1 rdf:resource="#arrivalAirport"/>
+                                    <swrl:propertyPredicate rdf:resource="#city"/>
+                                    <swrl:argument2 rdf:resource="#city2"/>
+                                  </swrl:DatavaluedPropertyAtom>
+                                </rdf:first>
                               </swrl:AtomList>
                             </rdf:rest>
                             <rdf:first>
                               <swrl:IndividualPropertyAtom>
-                                <swrl:argument2 rdf:resource="#arrivalAirport"/>
-                                <swrl:propertyPredicate rdf:resource="#hasArrivalAirport"/>
                                 <swrl:argument1 rdf:resource="#x"/>
+                                <swrl:propertyPredicate rdf:resource="#hasArrivalAirport"/>
+                                <swrl:argument2 rdf:resource="#arrivalAirport"/>
                               </swrl:IndividualPropertyAtom>
                             </rdf:first>
                           </swrl:AtomList>
                         </rdf:rest>
+                        <rdf:first>
+                          <swrl:DatavaluedPropertyAtom>
+                            <swrl:argument2 rdf:resource="#city1"/>
+                            <swrl:propertyPredicate rdf:resource="#city"/>
+                            <swrl:argument1 rdf:resource="#departureAirport"/>
+                          </swrl:DatavaluedPropertyAtom>
+                        </rdf:first>
                       </swrl:AtomList>
                     </rdf:rest>
+                    <rdf:first>
+                      <swrl:IndividualPropertyAtom>
+                        <swrl:argument1 rdf:resource="#x"/>
+                        <swrl:argument2 rdf:resource="#departureAirport"/>
+                        <swrl:propertyPredicate rdf:resource="#hasDepartureAirport"/>
+                      </swrl:IndividualPropertyAtom>
+                    </rdf:first>
                   </swrl:AtomList>
                 </rdf:rest>
+                <rdf:first>
+                  <swrl:DatavaluedPropertyAtom>
+                    <swrl:argument2 rdf:resource="#fullname"/>
+                    <swrl:propertyPredicate rdf:resource="#fullName"/>
+                    <swrl:argument1 rdf:resource="#customer"/>
+                  </swrl:DatavaluedPropertyAtom>
+                </rdf:first>
               </swrl:AtomList>
             </rdf:rest>
           </swrl:AtomList>
         </rdf:rest>
+        <rdf:first>
+          <swrl:ClassAtom>
+            <swrl:classPredicate rdf:resource="#Msg_FlightBookChangeRQ"/>
+            <swrl:argument1 rdf:resource="#x"/>
+          </swrl:ClassAtom>
+        </rdf:first>
       </swrl:AtomList>
     </swrl:body>
   </swrl:Imp>
