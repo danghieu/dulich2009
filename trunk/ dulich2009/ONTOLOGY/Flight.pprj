@@ -1,4 +1,4 @@
-; Wed Dec 16 13:47:08 PST 2009
+; Wed Dec 16 14:23:52 PST 2009
 ; 
 ;+ (version "3.4")
 ;+ (build "Build 533")
@@ -6,11 +6,11 @@
 ([BROWSER_SLOT_NAMES] of  Property_List
 
 	(properties
-		[Flight_ProjectKB_Class10050]
-		[Flight_ProjectKB_Class10051]
-		[Flight_ProjectKB_Class10052]
-		[Flight_ProjectKB_Class20053]
-		[Flight_ProjectKB_Class20054]))
+		[Flight_ProjectKB_Class20058]
+		[Flight_ProjectKB_Class20059]
+		[Flight_ProjectKB_Class20060]
+		[Flight_ProjectKB_Class20061]
+		[Flight_ProjectKB_Class20062]))
 
 ([CLSES_TAB] of  Widget
 
@@ -55,21 +55,6 @@
 
 ([Flight_ProjectKB_Class10009] of  Property_List
 )
-
-([Flight_ProjectKB_Class10050] of  String
-
-	(name "http://www.w3.org/2002/07/owl#Class")
-	(string_value "%3ANAME"))
-
-([Flight_ProjectKB_Class10051] of  String
-
-	(name ":INSTANCE-ANNOTATION")
-	(string_value "%3AANNOTATION-TEXT"))
-
-([Flight_ProjectKB_Class10052] of  String
-
-	(name ":META-CLASS")
-	(string_value "%3ANAME"))
 
 ([Flight_ProjectKB_Class10053] of  Widget
 
@@ -266,31 +251,46 @@
 ([Flight_ProjectKB_Class20] of  Property_List
 )
 
-([Flight_ProjectKB_Class20053] of  String
+([Flight_ProjectKB_Class20058] of  String
+
+	(name "http://www.w3.org/2002/07/owl#Class")
+	(string_value "%3ANAME"))
+
+([Flight_ProjectKB_Class20059] of  String
+
+	(name ":INSTANCE-ANNOTATION")
+	(string_value "%3AANNOTATION-TEXT"))
+
+([Flight_ProjectKB_Class20060] of  String
+
+	(name ":META-CLASS")
+	(string_value "%3ANAME"))
+
+([Flight_ProjectKB_Class20061] of  String
 
 	(name "http://www.w3.org/2002/07/owl#Thing")
 	(string_value "%3ANAME"))
 
-([Flight_ProjectKB_Class20054] of  String
+([Flight_ProjectKB_Class20062] of  String
 
 	(name ":PAL-CONSTRAINT")
 	(string_value "%3APAL-NAME"))
 
-([Flight_ProjectKB_Class20055] of  Map_Entry
+([Flight_ProjectKB_Class20063] of  Map_Entry
 
 	(key "suppress_instance_counting")
 	(key_class "java.lang.String")
 	(value "false")
 	(value_class "java.lang.String"))
 
-([Flight_ProjectKB_Class20056] of  Map_Entry
+([Flight_ProjectKB_Class20064] of  Map_Entry
 
 	(key "change_tracking_active")
 	(key_class "java.lang.String")
 	(value "false")
 	(value_class "java.lang.String"))
 
-([Flight_ProjectKB_Class20057] of  Map_Entry
+([Flight_ProjectKB_Class20065] of  Map_Entry
 
 	(key "add_name_on_instance_form")
 	(key_class "java.lang.String")
@@ -1196,9 +1196,9 @@
 ([KB_325529_Class0] of  Map
 
 	(entries
-		[Flight_ProjectKB_Class20055]
-		[Flight_ProjectKB_Class20056]
-		[Flight_ProjectKB_Class20057]))
+		[Flight_ProjectKB_Class20063]
+		[Flight_ProjectKB_Class20064]
+		[Flight_ProjectKB_Class20065]))
 
 ([KB_325529_Class4] of  String
 
