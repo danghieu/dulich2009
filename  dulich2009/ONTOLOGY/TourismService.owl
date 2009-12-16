@@ -1,0 +1,573 @@
+<?xml version="1.0"?>
+<rdf:RDF
+    xmlns:car="http://www.owl-ontologies.com/CarRental.owl#"
+    xmlns:swrla="http://swrl.stanford.edu/ontologies/3.3/swrla.owl#"
+    xmlns:event="http://www.owl-ontologies.com/Ontology1253719048.owl#"
+    xmlns:swrl="http://www.w3.org/2003/11/swrl#"
+    xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+    xmlns:owl="http://www.w3.org/2002/07/owl#"
+    xmlns:flight="http://www.owl-ontologies.com/Flight.owl#"
+    xmlns:xsp="http://www.owl-ontologies.com/2005/08/07/xsp.owl#"
+    xmlns:swrlb="http://www.w3.org/2003/11/swrlb#"
+    xmlns:hotel="http://www.owl-ontologies.com/Travel.owl#"
+    xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+    xmlns:protege="http://protege.stanford.edu/plugins/owl/protege#"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+    xmlns:sqwrl="http://sqwrl.stanford.edu/ontologies/built-ins/3.4/sqwrl.owl#"
+    xmlns="http://www.owl-ontologies.com/Ontology1253893790.owl#"
+  xml:base="http://www.owl-ontologies.com/Ontology1253893790.owl">
+  <owl:Ontology rdf:about="">
+    <owl:imports rdf:resource="http://www.owl-ontologies.com/Travel.owl"/>
+    <owl:imports rdf:resource="http://www.owl-ontologies.com/Flight.owl"/>
+    <owl:imports rdf:resource="http://www.owl-ontologies.com/Event.owl"/>
+    <owl:imports rdf:resource="http://www.owl-ontologies.com/CarRental.owl"/>
+  </owl:Ontology>
+  <owl:Class rdf:ID="AverageTemperature"/>
+  <owl:Class rdf:ID="Climate"/>
+  <owl:Class rdf:ID="City">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:InverseFunctionalProperty rdf:ID="isCityOf"/>
+        </owl:onProperty>
+        <owl:allValuesFrom>
+          <owl:Restriction>
+            <owl:allValuesFrom>
+              <owl:Class rdf:ID="Country"/>
+            </owl:allValuesFrom>
+            <owl:onProperty>
+              <owl:InverseFunctionalProperty rdf:about="#isCityOf"/>
+            </owl:onProperty>
+          </owl:Restriction>
+        </owl:allValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Destination"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="DestinationCharacteristics"/>
+  <owl:Class rdf:ID="PeriodOfTime">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="Period"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:about="#Destination">
+    <rdfs:subClassOf>
+      <owl:Class rdf:ID="TourismService"/>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="Activity">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >enables  the  representation  of  activities,  which  are  of  relevance  for  a  journey  or 
+business trip</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:about="#Country">
+    <rdfs:subClassOf rdf:resource="#Destination"/>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:someValuesFrom>
+          <owl:Restriction>
+            <owl:someValuesFrom rdf:resource="#City"/>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:ID="hasCity"/>
+            </owl:onProperty>
+          </owl:Restriction>
+        </owl:someValuesFrom>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasCity"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:about="#hasCity"/>
+        </owl:onProperty>
+        <owl:someValuesFrom>
+          <owl:Restriction>
+            <owl:onProperty>
+              <owl:ObjectProperty rdf:ID="hasRegion"/>
+            </owl:onProperty>
+            <owl:someValuesFrom>
+              <owl:Class rdf:ID="Region"/>
+            </owl:someValuesFrom>
+          </owl:Restriction>
+        </owl:someValuesFrom>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+  </owl:Class>
+  <owl:Class rdf:ID="RegionCharacteristics">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >represents basic characteristics of a region.</rdfs:comment>
+    <rdfs:subClassOf rdf:resource="#DestinationCharacteristics"/>
+  </owl:Class>
+  <owl:Class rdf:ID="PointOfTime"/>
+  <owl:Class rdf:ID="CityCharacteristics">
+    <rdfs:subClassOf rdf:resource="#DestinationCharacteristics"/>
+  </owl:Class>
+  <owl:Class rdf:ID="CountryCharacteristics">
+    <rdfs:subClassOf rdf:resource="#DestinationCharacteristics"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >represents basic characteristics of a country</rdfs:comment>
+  </owl:Class>
+  <owl:Class rdf:ID="MonthTemperature"/>
+  <owl:Class rdf:about="#Region">
+    <rdfs:subClassOf>
+      <owl:Restriction>
+        <owl:allValuesFrom rdf:resource="#Country"/>
+        <owl:onProperty>
+          <owl:ObjectProperty rdf:ID="isRegionOf"/>
+        </owl:onProperty>
+      </owl:Restriction>
+    </rdfs:subClassOf>
+    <rdfs:subClassOf rdf:resource="#Destination"/>
+  </owl:Class>
+  <owl:ObjectProperty rdf:about="#isRegionOf">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#SymmetricProperty"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#InverseFunctionalProperty"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <owl:inverseOf rdf:resource="#isRegionOf"/>
+    <rdfs:range rdf:resource="#Country"/>
+    <rdfs:domain rdf:resource="#Region"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasAverageTemperature">
+    <rdfs:range rdf:resource="#AverageTemperature"/>
+    <rdfs:domain rdf:resource="#Climate"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasPeriodOfTime">
+    <rdfs:range rdf:resource="#PeriodOfTime"/>
+    <rdfs:domain rdf:resource="#Activity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasActivity">
+    <rdfs:domain rdf:resource="#Destination"/>
+    <rdfs:range rdf:resource="#Activity"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasDestinationCharacteristics">
+    <rdfs:domain rdf:resource="#Destination"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:range rdf:resource="#DestinationCharacteristics"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:about="#hasRegion">
+    <rdfs:domain rdf:resource="#Country"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#SymmetricProperty"/>
+    <owl:inverseOf rdf:resource="#hasRegion"/>
+    <rdfs:range rdf:resource="#Region"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasClimate">
+    <rdfs:range rdf:resource="#Climate"/>
+    <rdfs:domain rdf:resource="#DestinationCharacteristics"/>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="inverse_of_hasCity"/>
+  <owl:ObjectProperty rdf:about="#hasCity">
+    <rdfs:domain rdf:resource="#Country"/>
+    <rdfs:range rdf:resource="#City"/>
+    <owl:inverseOf>
+      <owl:InverseFunctionalProperty rdf:about="#isCityOf"/>
+    </owl:inverseOf>
+  </owl:ObjectProperty>
+  <owl:ObjectProperty rdf:ID="hasMonthTemperature">
+    <rdfs:range rdf:resource="#MonthTemperature"/>
+    <rdfs:domain rdf:resource="#AverageTemperature"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  </owl:ObjectProperty>
+  <owl:DatatypeProperty rdf:ID="duration">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:domain rdf:resource="#Period"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="country">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >name of country</rdfs:comment>
+    <rdfs:domain rdf:resource="#CountryCharacteristics"/>
+    <rdfs:range>
+      <owl:DataRange>
+        <owl:oneOf rdf:parseType="Resource">
+          <rdf:rest rdf:parseType="Resource">
+            <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >England</rdf:first>
+          </rdf:rest>
+          <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+          >VietNam</rdf:first>
+        </owl:oneOf>
+      </owl:DataRange>
+    </rdfs:range>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="temperature">
+    <rdfs:domain rdf:resource="#MonthTemperature"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="language">
+    <rdfs:domain rdf:resource="#DestinationCharacteristics"/>
+    <rdfs:range>
+      <owl:DataRange>
+        <owl:oneOf rdf:parseType="Resource">
+          <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+          >English</rdf:first>
+          <rdf:rest rdf:parseType="Resource">
+            <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >Vietnamese</rdf:first>
+            <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+          </rdf:rest>
+        </owl:oneOf>
+      </owl:DataRange>
+    </rdfs:range>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="month">
+    <rdfs:domain rdf:resource="#MonthTemperature"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="region">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >specify a region by its name (as a character string).</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#RegionCharacteristics"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="city">
+    <rdfs:domain rdf:resource="#CityCharacteristics"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="climateCategory">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >specify a category for a climate (tropical, sub-tropical,...).</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#Climate"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="altitude">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain rdf:resource="#CityCharacteristics"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >specify the altitude (độ cao so với mặt nước biển) of a city.</rdfs:comment>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="landscape">
+    <rdfs:domain rdf:resource="#DestinationCharacteristics"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >specify the characteristic of the landscape (e.g. flat, hilly, mountainous,etc.).</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:FunctionalProperty rdf:ID="hasEnd">
+    <rdfs:domain rdf:resource="#Period"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:range rdf:resource="#PointOfTime"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="date">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:domain rdf:resource="#PointOfTime"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="activityType">
+    <rdfs:domain rdf:resource="#Activity"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="hasBegin">
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:range rdf:resource="#PointOfTime"/>
+    <rdfs:domain rdf:resource="#Period"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="time">
+    <rdfs:domain rdf:resource="#PointOfTime"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#time"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
+  </owl:FunctionalProperty>
+  <owl:InverseFunctionalProperty rdf:about="#isCityOf">
+    <owl:inverseOf rdf:resource="#hasCity"/>
+    <rdfs:domain rdf:resource="#City"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
+    <rdfs:range rdf:resource="#Country"/>
+  </owl:InverseFunctionalProperty>
+  <rdf:Description rdf:about="http://www.owl-ontologies.com/Travel.owl#SearchAvalability">
+    <swrla:isRuleEnabled rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+    >true</swrla:isRuleEnabled>
+  </rdf:Description>
+  <City rdf:ID="HaiPhong">
+    <isCityOf>
+      <Country rdf:ID="VienNam">
+        <hasCity>
+          <City rdf:ID="KhanhHoa">
+            <isCityOf rdf:resource="#VienNam"/>
+            <hasCity rdf:resource="#VienNam"/>
+          </City>
+        </hasCity>
+      </Country>
+    </isCityOf>
+  </City>
+  <swrl:Imp rdf:about="hote-destination-temperature">
+    <swrl:body>
+      <swrl:AtomList>
+        <rdf:first>
+          <swrl:ClassAtom>
+            <swrl:argument1>
+              <swrl:Variable rdf:ID="x"/>
+            </swrl:argument1>
+            <swrl:classPredicate rdf:resource="#Destination"/>
+          </swrl:ClassAtom>
+        </rdf:first>
+        <rdf:rest>
+          <swrl:AtomList>
+            <rdf:first>
+              <swrl:IndividualPropertyAtom>
+                <swrl:argument2>
+                  <swrl:Variable rdf:ID="destinationCharacteristics"/>
+                </swrl:argument2>
+                <swrl:propertyPredicate rdf:resource="#hasDestinationCharacteristics"/>
+                <swrl:argument1 rdf:resource="#x"/>
+              </swrl:IndividualPropertyAtom>
+            </rdf:first>
+            <rdf:rest>
+              <swrl:AtomList>
+                <rdf:rest>
+                  <swrl:AtomList>
+                    <rdf:first>
+                      <swrl:DatavaluedPropertyAtom>
+                        <swrl:argument1>
+                          <swrl:Variable rdf:ID="climate"/>
+                        </swrl:argument1>
+                        <swrl:argument2>
+                          <swrl:Variable rdf:ID="cCategory"/>
+                        </swrl:argument2>
+                        <swrl:propertyPredicate rdf:resource="#climateCategory"/>
+                      </swrl:DatavaluedPropertyAtom>
+                    </rdf:first>
+                    <rdf:rest>
+                      <swrl:AtomList>
+                        <rdf:first>
+                          <swrl:IndividualPropertyAtom>
+                            <swrl:propertyPredicate rdf:resource="#hasAverageTemperature"/>
+                            <swrl:argument1 rdf:resource="#climate"/>
+                            <swrl:argument2>
+                              <swrl:Variable rdf:ID="averageTemperature"/>
+                            </swrl:argument2>
+                          </swrl:IndividualPropertyAtom>
+                        </rdf:first>
+                        <rdf:rest>
+                          <swrl:AtomList>
+                            <rdf:first>
+                              <swrl:IndividualPropertyAtom>
+                                <swrl:propertyPredicate rdf:resource="#hasMonthTemperature"/>
+                                <swrl:argument2>
+                                  <swrl:Variable rdf:ID="monthTemperature"/>
+                                </swrl:argument2>
+                                <swrl:argument1 rdf:resource="#averageTemperature"/>
+                              </swrl:IndividualPropertyAtom>
+                            </rdf:first>
+                            <rdf:rest>
+                              <swrl:AtomList>
+                                <rdf:rest>
+                                  <swrl:AtomList>
+                                    <rdf:first>
+                                      <swrl:DatavaluedPropertyAtom>
+                                        <swrl:argument1 rdf:resource="#monthTemperature"/>
+                                        <swrl:propertyPredicate rdf:resource="#temperature"/>
+                                        <swrl:argument2>
+                                          <swrl:Variable rdf:ID="_temperature"/>
+                                        </swrl:argument2>
+                                      </swrl:DatavaluedPropertyAtom>
+                                    </rdf:first>
+                                    <rdf:rest>
+                                      <swrl:AtomList>
+                                        <rdf:first>
+                                          <swrl:DatavaluedPropertyAtom>
+                                            <swrl:argument1 rdf:resource="#destinationCharacteristics"/>
+                                            <swrl:argument2>
+                                              <swrl:Variable rdf:ID="_lanscape"/>
+                                            </swrl:argument2>
+                                            <swrl:propertyPredicate rdf:resource="#landscape"/>
+                                          </swrl:DatavaluedPropertyAtom>
+                                        </rdf:first>
+                                        <rdf:rest>
+                                          <swrl:AtomList>
+                                            <rdf:first>
+                                              <swrl:DatavaluedPropertyAtom>
+                                                <swrl:argument2>
+                                                  <swrl:Variable rdf:ID="_language"/>
+                                                </swrl:argument2>
+                                                <swrl:propertyPredicate rdf:resource="#language"/>
+                                                <swrl:argument1 rdf:resource="#destinationCharacteristics"/>
+                                              </swrl:DatavaluedPropertyAtom>
+                                            </rdf:first>
+                                            <rdf:rest>
+                                              <swrl:AtomList>
+                                                <rdf:first>
+                                                  <swrl:DatavaluedPropertyAtom>
+                                                    <swrl:propertyPredicate rdf:resource="#city"/>
+                                                    <swrl:argument1 rdf:resource="#destinationCharacteristics"/>
+                                                    <swrl:argument2>
+                                                      <swrl:Variable rdf:ID="_city"/>
+                                                    </swrl:argument2>
+                                                  </swrl:DatavaluedPropertyAtom>
+                                                </rdf:first>
+                                                <rdf:rest>
+                                                  <swrl:AtomList>
+                                                    <rdf:first>
+                                                      <swrl:ClassAtom>
+                                                        <swrl:argument1>
+                                                          <swrl:Variable rdf:ID="hotel"/>
+                                                        </swrl:argument1>
+                                                        <swrl:classPredicate rdf:resource="http://www.owl-ontologies.com/Travel.owl#Hotel"/>
+                                                      </swrl:ClassAtom>
+                                                    </rdf:first>
+                                                    <rdf:rest>
+                                                      <swrl:AtomList>
+                                                        <rdf:first>
+                                                          <swrl:IndividualPropertyAtom>
+                                                            <swrl:propertyPredicate rdf:resource="http://www.owl-ontologies.com/Travel.owl#hasAddress"/>
+                                                            <swrl:argument1 rdf:resource="#hotel"/>
+                                                            <swrl:argument2>
+                                                              <swrl:Variable rdf:ID="address"/>
+                                                            </swrl:argument2>
+                                                          </swrl:IndividualPropertyAtom>
+                                                        </rdf:first>
+                                                        <rdf:rest>
+                                                          <swrl:AtomList>
+                                                            <rdf:rest>
+                                                              <swrl:AtomList>
+    <rdf:rest>
+      <swrl:AtomList>
+        <rdf:first>
+          <swrl:BuiltinAtom>
+            <swrl:arguments>
+              <rdf:List>
+                <rdf:rest>
+                  <rdf:List>
+                    <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+                    >15</rdf:first>
+                    <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                  </rdf:List>
+                </rdf:rest>
+                <rdf:first rdf:resource="#_temperature"/>
+              </rdf:List>
+            </swrl:arguments>
+            <swrl:builtin rdf:resource="http://www.w3.org/2003/11/swrlb#greaterThanOrEqual"/>
+          </swrl:BuiltinAtom>
+        </rdf:first>
+        <rdf:rest>
+          <swrl:AtomList>
+            <rdf:first>
+              <swrl:BuiltinAtom>
+                <swrl:builtin rdf:resource="http://www.w3.org/2003/11/swrlb#greaterThanOrEqual"/>
+                <swrl:arguments>
+                  <rdf:List>
+                    <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#int"
+                    >25</rdf:first>
+                    <rdf:rest>
+                      <rdf:List>
+                        <rdf:first rdf:resource="#_temperature"/>
+                        <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                      </rdf:List>
+                    </rdf:rest>
+                  </rdf:List>
+                </swrl:arguments>
+              </swrl:BuiltinAtom>
+            </rdf:first>
+            <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+          </swrl:AtomList>
+        </rdf:rest>
+      </swrl:AtomList>
+    </rdf:rest>
+    <rdf:first>
+      <swrl:BuiltinAtom>
+        <swrl:arguments>
+          <rdf:List>
+            <rdf:first rdf:resource="#_city"/>
+            <rdf:rest>
+              <rdf:List>
+                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                <rdf:first>
+                  <swrl:Variable rdf:ID="_city0"/>
+                </rdf:first>
+              </rdf:List>
+            </rdf:rest>
+          </rdf:List>
+        </swrl:arguments>
+        <swrl:builtin rdf:resource="http://www.w3.org/2003/11/swrlb#stringEqualIgnoreCase"/>
+      </swrl:BuiltinAtom>
+    </rdf:first>                                              </swrl:AtomList>
+                                                            </rdf:rest>
+                                                            <rdf:first>
+                                                              <swrl:DatavaluedPropertyAtom>
+    <swrl:propertyPredicate rdf:resource="http://www.owl-ontologies.com/Travel.owl#city"/>
+    <swrl:argument1 rdf:resource="#address"/>
+    <swrl:argument2 rdf:resource="#_city0"/>                  </swrl:DatavaluedPropertyAtom>
+                                                            </rdf:first>
+                                                          </swrl:AtomList>
+                                                        </rdf:rest>
+                                                      </swrl:AtomList>
+                                                    </rdf:rest>
+                                                  </swrl:AtomList>
+                                                </rdf:rest>
+                                              </swrl:AtomList>
+                                            </rdf:rest>
+                                          </swrl:AtomList>
+                                        </rdf:rest>
+                                      </swrl:AtomList>
+                                    </rdf:rest>
+                                  </swrl:AtomList>
+                                </rdf:rest>
+                                <rdf:first>
+                                  <swrl:DatavaluedPropertyAtom>
+                                    <swrl:argument2>
+                                      <swrl:Variable rdf:ID="_month"/>
+                                    </swrl:argument2>
+                                    <swrl:propertyPredicate rdf:resource="#month"/>
+                                    <swrl:argument1 rdf:resource="#monthTemperature"/>
+                                  </swrl:DatavaluedPropertyAtom>
+                                </rdf:first>
+                              </swrl:AtomList>
+                            </rdf:rest>
+                          </swrl:AtomList>
+                        </rdf:rest>
+                      </swrl:AtomList>
+                    </rdf:rest>
+                  </swrl:AtomList>
+                </rdf:rest>
+                <rdf:first>
+                  <swrl:IndividualPropertyAtom>
+                    <swrl:argument1 rdf:resource="#destinationCharacteristics"/>
+                    <swrl:propertyPredicate rdf:resource="#hasClimate"/>
+                    <swrl:argument2 rdf:resource="#climate"/>
+                  </swrl:IndividualPropertyAtom>
+                </rdf:first>
+              </swrl:AtomList>
+            </rdf:rest>
+          </swrl:AtomList>
+        </rdf:rest>
+      </swrl:AtomList>
+    </swrl:body>
+    <swrl:head>
+      <swrl:AtomList/>
+    </swrl:head>
+  </swrl:Imp>
+  <Region rdf:ID="Midland">
+    <isRegionOf rdf:resource="#VienNam"/>
+  </Region>
+  <rdf:Description rdf:about="http://www.owl-ontologies.com/Travel.owl#avalability">
+    <swrla:isRuleEnabled rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean"
+    >true</swrla:isRuleEnabled>
+  </rdf:Description>
+  <City rdf:ID="NewYork">
+    <hasCity>
+      <Country rdf:ID="Britain">
+        <hasCity rdf:resource="#NewYork"/>
+      </Country>
+    </hasCity>
+    <hasCity>
+      <Country rdf:ID="USA">
+        <hasCity rdf:resource="#NewYork"/>
+        <isCityOf rdf:resource="#NewYork"/>
+      </Country>
+    </hasCity>
+    <isCityOf rdf:resource="#USA"/>
+  </City>
+</rdf:RDF>
+
+<!-- Created with Protege (with OWL Plugin 3.4.1, Build 536)  http://protege.stanford.edu -->
