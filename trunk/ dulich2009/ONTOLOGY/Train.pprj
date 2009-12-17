@@ -1,4 +1,4 @@
-; Thu Dec 17 02:30:32 ICT 2009
+; Thu Dec 17 11:01:13 ICT 2009
 ; 
 ;+ (version "3.4")
 ;+ (build "Build 533")
@@ -6,11 +6,11 @@
 ([BROWSER_SLOT_NAMES] of  Property_List
 
 	(properties
-		[Train_ProjectKB_Class129]
-		[Train_ProjectKB_Class130]
-		[Train_ProjectKB_Class131]
-		[Train_ProjectKB_Class132]
-		[Train_ProjectKB_Class133]))
+		[Train_ProjectKB_Class88]
+		[Train_ProjectKB_Class89]
+		[Train_ProjectKB_Class90]
+		[Train_ProjectKB_Class91]
+		[Train_ProjectKB_Class92]))
 
 ([CLSES_TAB] of  Widget
 
@@ -5663,31 +5663,6 @@
 ([Train_ProjectKB_Class12] of  Property_List
 )
 
-([Train_ProjectKB_Class129] of  String
-
-	(name "http://www.w3.org/2002/07/owl#Class")
-	(string_value "%3ANAME"))
-
-([Train_ProjectKB_Class130] of  String
-
-	(name ":INSTANCE-ANNOTATION")
-	(string_value "%3AANNOTATION-TEXT"))
-
-([Train_ProjectKB_Class131] of  String
-
-	(name ":META-CLASS")
-	(string_value "%3ANAME"))
-
-([Train_ProjectKB_Class132] of  String
-
-	(name "http://www.w3.org/2002/07/owl#Thing")
-	(string_value "%3ANAME"))
-
-([Train_ProjectKB_Class133] of  String
-
-	(name ":PAL-CONSTRAINT")
-	(string_value "%3APAL-NAME"))
-
 ([Train_ProjectKB_Class14] of  Widget
 
 	(is_hidden FALSE)
@@ -6057,10 +6032,35 @@
 ([Train_ProjectKB_Class87] of  Property_List
 )
 
+([Train_ProjectKB_Class88] of  String
+
+	(name "http://www.w3.org/2002/07/owl#Class")
+	(string_value "%3ANAME"))
+
+([Train_ProjectKB_Class89] of  String
+
+	(name ":INSTANCE-ANNOTATION")
+	(string_value "%3AANNOTATION-TEXT"))
+
 ([Train_ProjectKB_Class9] of  String
 
 	(name "horizontal_stretcher")
 	(string_value "<<all>>"))
+
+([Train_ProjectKB_Class90] of  String
+
+	(name ":META-CLASS")
+	(string_value "%3ANAME"))
+
+([Train_ProjectKB_Class91] of  String
+
+	(name "http://www.w3.org/2002/07/owl#Thing")
+	(string_value "%3ANAME"))
+
+([Train_ProjectKB_Class92] of  String
+
+	(name ":PAL-CONSTRAINT")
+	(string_value "%3APAL-NAME"))
 
 ([XY_Instance_0] of  Property_List
 
