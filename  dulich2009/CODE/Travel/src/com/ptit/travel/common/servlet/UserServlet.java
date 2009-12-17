@@ -42,7 +42,10 @@ public class UserServlet extends HttpServlet {
     private String host = "localhost";
     private String port = "1099";
     private String className = "com.ptit.travel.agent.user.UserAgent";
-    //*
+    /**
+     * Huy 1 agent khi het phien lam viec, timeout hoac tat agent
+     */
+    
 
     @Override
     public void destroy() {
@@ -64,6 +67,10 @@ public class UserServlet extends HttpServlet {
 
     }
 
+    /**
+     * chi chay 1 lan, duoc goi khi nguoi dung request den server
+     * @throws javax.servlet.ServletException
+     */
     @Override
     public void init() throws ServletException {
         super.init();
@@ -121,6 +128,7 @@ public class UserServlet extends HttpServlet {
         String function = "";
 
         // Foward to JSP to view
+
 
         String page = "/SearchServlet";
         if (protocol != null) {
@@ -217,7 +225,7 @@ public class UserServlet extends HttpServlet {
         int length = params.length;
         for (int i = 0; i < length; i++) {
             param = (String) params[i];
-            msg += param + ": " + request.getParameter(param);
+            msg +=  request.getParameter(param);//param + ": " +
             if (i < length - 1) {
                 msg += Message.FIELD_SEPARATE;
 
@@ -229,7 +237,7 @@ public class UserServlet extends HttpServlet {
     }
 
     /**
-     * 
+     * khi co yeu cau dang nhap
      * @param request
      * @return
      */
@@ -244,7 +252,8 @@ public class UserServlet extends HttpServlet {
                 agentController.kill();
                 containerController.kill();
                 containerController = null;
-                agentController = AgentManager.addAgent(host, port, id, className, containerController);
+                nickName = id;
+                agentController = AgentManager.addAgent(host, port, nickName, className, containerController);
             } catch (Exception e) {
                 id = null;
             }

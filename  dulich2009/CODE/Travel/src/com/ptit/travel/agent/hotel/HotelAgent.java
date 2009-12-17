@@ -4,6 +4,7 @@
  */
 package com.ptit.travel.agent.hotel;
 
+import com.hp.hpl.jena.ontology.OntModel;
 import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.Iterator;
@@ -17,6 +18,7 @@ import com.hp.hpl.jena.rdf.model.Resource;
 
 import com.ptit.travel.beans.SerializableBean;
 import com.ptit.travel.beans.hotel.HotelAvailability;
+import com.ptit.travel.jane.hotel.HotelProcess;
 import jade.core.Agent;
 import jade.core.behaviours.*;
 import jade.lang.acl.ACLMessage;
@@ -47,8 +49,8 @@ public class HotelAgent extends Agent {
 
         //Message.register(this, this.getName());
 
-        mem = new Memory(
-                "E:/Develop/Netbean/Travel/config/HotelAgent.properties", this.getLocalName());
+//        mem = new Memory(
+//                "E:/Develop/Netbean/Travel/config/HotelAgent.properties", this.getLocalName());
 
         addBehaviour(new TickerBehaviour(this, 30000) {
             protected void onTick() {
@@ -122,6 +124,8 @@ public class HotelAgent extends Agent {
                             //if (Protocol.HOTEL_AVAIL.equals(protocol)) 
                             {
                                 // FOR TEST
+                                OntModel ontModel = HotelProcess.insertMsg_HotelSearchRQ(content, 0);
+                                content = HotelProcess.search(ontModel);
                                 ACLMessage reply = Message.createReplyMessage(msg, content);
                                 
                                 log.info("=== [HotelAgent] sent reply message " + reply);
