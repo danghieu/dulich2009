@@ -76,7 +76,8 @@ public class Test {
             String nickName = "ControllerAgent";//"Guest" + System.currentTimeMillis();
             String className = "com.ptit.travel.agent.ControllerAgent";
             try {                
-                ContainerController containerController = (ContainerController)AgentManager.startAgent(host, port, nickName, className,false).get(0);
+                ContainerController containerController = (ContainerController)AgentManager.startAgent(host, port, 
+                        nickName, className,true).get(0);
                 nickName = "HotelAgent";//"Guest" + System.currentTimeMillis();
                 className = "com.ptit.travel.agent.hotel.HotelAgent";
                 agentController = AgentManager.addAgent(host, port, nickName, className,containerController);

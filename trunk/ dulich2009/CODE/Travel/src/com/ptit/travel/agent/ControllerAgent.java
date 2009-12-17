@@ -107,7 +107,8 @@ public class ControllerAgent extends Agent {
                                 //ACLMessage replyMsg = myAgent.receive();
                                 // Negotiating here
 
-                                if (mt.match(msg)) {
+                                if (true)//mt.match(msg))
+                                {
                                     //if (replyMsg.getPerformative() == ACLMessage.PROPOSE) 
                                     {
                                         /**
