@@ -56,24 +56,24 @@ public class UserAgent extends Agent {
         //Message.register(this, this.getLocalName());
 
         try {
-            xmlrpcServer = new WebServer(port);
-            log.debug("XMLRPC Running on port: " + port);
+//            xmlrpcServer = new WebServer(port);
+//            log.debug("XMLRPC Running on port: " + port);
         } catch (Exception e) {
             log.error("PANIC: maybe the port " + port + " is in use");
             System.out.println(e);
         }
-        xmlrpcServer.addHandler(this.getLocalName(), this);
+//        xmlrpcServer.addHandler(this.getLocalName(), this);
 //
 //        mem = new Memory(
 //                "E:/Develop/Netbean/Travel/config/UserAgent.properties",
 //                this.getLocalName());// E:/Develop/Netbean/Travel/
 
 //        
-//        addBehaviour(new TickerBehaviour(this, 30000) {
-//            protected void onTick() {
-//            search("msg", "conversationId", "protocol");
-//            }
-//        });
+        addBehaviour(new TickerBehaviour(this, 30000) {
+            protected void onTick() {
+            search("msg", "conversationId", "protocol");
+            }
+        });
     }
 
     /**
@@ -296,7 +296,8 @@ public class UserAgent extends Agent {
                         receivers = new ArrayList<String>();
                         receivers.add("ControllerAgent");
                         // Send the cfp to all agents
-                        ACLMessage msg = Message.createInformMessage(a, receivers, content, Language.HOTEL, protocol, conversationId);
+                        ACLMessage msg = Message.createInformMessage(a, receivers, content, Language.HOTEL, 
+                                protocol, conversationId);
                         msg.setReplyWith("[" + myAgent.getLocalName() + "]"
 						+ System.currentTimeMillis());
                         // value

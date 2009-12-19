@@ -52,7 +52,7 @@ public class HotelAgent extends Agent {
 //        mem = new Memory(
 //                "E:/Develop/Netbean/Travel/config/HotelAgent.properties", this.getLocalName());
 
-        addBehaviour(new TickerBehaviour(this, 30000) {
+        addBehaviour(new TickerBehaviour(this, 60000) {
             protected void onTick() {
                 HandleRecivedMessages hrmBehaviour = new HandleRecivedMessages();
                 addBehaviour(hrmBehaviour);
@@ -124,8 +124,8 @@ public class HotelAgent extends Agent {
                             //if (Protocol.HOTEL_AVAIL.equals(protocol)) 
                             {
                                 // FOR TEST
-                                OntModel ontModel = HotelProcess.insertMsg_HotelSearchRQ(content, 0);
-                                content = HotelProcess.search(ontModel);
+//                                OntModel ontModel = HotelProcess.insertMsg_HotelSearchRQ(content, 0);
+//                                content = HotelProcess.search(ontModel);
                                 ACLMessage reply = Message.createReplyMessage(msg, content);
                                 
                                 log.info("=== [HotelAgent] sent reply message " + reply);

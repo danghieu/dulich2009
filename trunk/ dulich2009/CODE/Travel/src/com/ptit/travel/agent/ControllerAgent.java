@@ -34,7 +34,7 @@ public class ControllerAgent extends Agent {
         //Message.register(this, this.getName());
 
 
-        addBehaviour(new TickerBehaviour(this, 30000) {
+        addBehaviour(new TickerBehaviour(this, 60000) {
 
             protected void onTick() {
                 HandleRecivedMessages hrmBehaviour = new HandleRecivedMessages();
@@ -73,7 +73,7 @@ public class ControllerAgent extends Agent {
 
                     try {
 
-                        log.info("=== [ControllerAgent] received reply message " + msg.getSender().getLocalName());
+                        log.info("=== [ControllerAgent] received message from " + msg.getSender().getLocalName());
                         switch (step) {
 
 
@@ -89,6 +89,7 @@ public class ControllerAgent extends Agent {
                                 // Call DB and gain result into list
                                 receivers = new ArrayList<String>();
                                 receivers.add("HotelAgent");
+                                receivers.add("HotelAgent1");
                                 ACLMessage forwardMsg = Message.createForwardMessage(myAgent, receivers, msg,
                                         replyWith);
                                 //myAgent.addBehaviour(new Negotiate(myAgent, forwardMsg));
@@ -107,7 +108,7 @@ public class ControllerAgent extends Agent {
                                 //ACLMessage replyMsg = myAgent.receive();
                                 // Negotiating here
 
-                                if (true)//mt.match(msg))
+                                if (mt.match(msg))
                                 {
                                     //if (replyMsg.getPerformative() == ACLMessage.PROPOSE) 
                                     {
