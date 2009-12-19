@@ -109,23 +109,27 @@ public class Test {
             
         
     }
-    public void testCreateAgent2UCH(){
+    public void testCreateAgentUC2H(){
         AgentController agentController;
             String host = "localhost";
             String port = "1099";
-            String nickName = "ControllerAgent";//"Guest" + System.currentTimeMillis();
+            String nickName = "ControllerAgent";//"Guest" + System.currentTimeMillis();HotelAgent1
             String className = "com.ptit.travel.agent.ControllerAgent";
             try {                
                 ContainerController containerController = (ContainerController)AgentManager.startAgent(host, port, nickName, className,true).get(0);
                 nickName = "HotelAgent";//"Guest" + System.currentTimeMillis();
                 className = "com.ptit.travel.agent.hotel.HotelAgent";
                 agentController = AgentManager.addAgent(host, port, nickName, className,containerController);
+                 nickName = "HotelAgent1";//"Guest" + System.currentTimeMillis();
+                className = "com.ptit.travel.agent.hotel.HotelAgent";
+                agentController = AgentManager.addAgent(host, port, nickName, className,containerController);
+
                 nickName = "UserAgent1";//"Guest" + System.currentTimeMillis();
                 className = "com.ptit.travel.agent.user.UserAgent";
                 agentController = AgentManager.addAgent(host, port, nickName, className,containerController);
-                nickName = "UserAgent2";//"Guest" + System.currentTimeMillis();
-                className = "com.ptit.travel.agent.user.UserAgent";
-                agentController = AgentManager.addAgent(host, port, nickName, className,containerController);
+//                nickName = "UserAgent2";//"Guest" + System.currentTimeMillis();
+//                className = "com.ptit.travel.agent.user.UserAgent";
+//                agentController = AgentManager.addAgent(host, port, nickName, className,containerController);
                 
             } catch (Exception e) {
                 e.printStackTrace();
@@ -139,7 +143,7 @@ public class Test {
         //test.testSplitMessage();
         //test.testConfigXMLConnect();
         //test.callTheAgentViaXmlRpc();
-        test.testCreateAgentCH();        
+        test.testCreateAgentUC2H();        
     
     }
 

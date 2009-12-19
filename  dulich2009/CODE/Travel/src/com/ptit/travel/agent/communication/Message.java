@@ -372,6 +372,15 @@ public class Message {
         return m;
     }
 
+    /**
+     * This method used to forward msg from USER agent to OTHER agents
+     * @param sender
+     * @param recieverNames
+     * @param msg
+     * @param replyWith
+     * @return
+     * @throws java.lang.Exception
+     */
     public static ACLMessage createForwardMessage(Agent sender,
             ArrayList<String> recieverNames, ACLMessage msg,String replyWith) throws Exception {
 
@@ -394,8 +403,17 @@ public class Message {
         return m;
     }
 
+    /**
+     * this method used to forward msgs to USER agent from OTHER agents
+     * @param sender
+     * @param reciever
+     * @param msg
+     * @param inReplyTo: the same as replyWith of received msg from USER agent
+     * @return
+     * @throws java.lang.Exception
+     */
     public static ACLMessage createForwardMessage(Agent sender,
-            String reciever, ACLMessage msg,String replyWith) throws Exception {
+            String reciever, ACLMessage msg,String inReplyTo) throws Exception {
 
         log.info("Preparing inform message...");
         //String content = resource2RDF(r);
@@ -409,7 +427,7 @@ public class Message {
         m.setProtocol(msg.getProtocol());
         m.setConversationId(msg.getConversationId());
         
-        m.setReplyWith(replyWith);
+        m.setInReplyTo(inReplyTo);
         log.debug("message prepared for " + reciever + ": " + m);
         return m;
     }
