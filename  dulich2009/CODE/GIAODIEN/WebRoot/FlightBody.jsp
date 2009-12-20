@@ -6,6 +6,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
+<head>
+    <base href="<%=basePath%>">
+    
+    <title>My JSP 'footer.jsp' starting page</title>
+    
+	<meta http-equiv="pragma" content="no-cache">
+	<meta http-equiv="cache-control" content="no-cache">
+	<meta http-equiv="expires" content="0">    
+	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+	<meta http-equiv="description" content="This is my page">
 <style type="text/css">
 <!--
 .style2 {font-weight: bold}
@@ -13,12 +23,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 .style12 {font-size: 18}
 .style13 {font-weight: bold; font-size: 16px; }
 .style14 {font-size: 18px}
-.style16 {
-	font-size: 18px;
-	font-weight: bold;
-}
 .style17 {font-size: 16px}
 .style18 {font-size: 16px; color: #000000; }
+.style22 {font-weight: bold; font-size: 16px; color: #FFFFFF; }
 -->
 </style>
 </head>
@@ -40,11 +47,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 
 
-                              <td height="35" valign="middle" class="style4 titlepage"><span class="style16">D&#7882;CH V&#7908; &#272;&#7862;T V&Eacute; MAY BAY </span></td>
+                              <td width="682" height="35" valign="middle" class="style4 titlepage" bgcolor="#6699FF"><span class="style22">D&#7882;CH V&#7908; &#272;&#7862;T V&Eacute; MAY BAY </span></td>
 
 
 
-                              <td width="80">&nbsp;</td>
+                              
 
 
 
@@ -279,8 +286,7 @@ function view_composer2(ob1) {
 
                                   <tbody><tr>
 
-                                    <td align="center" bgcolor="#6699FF" valign="middle" height="30"><span class=""><span class="style4"><strong>T&Igrave;M KIẾM CHUY&Ecirc;N BAY TRONG NƯỚC</strong></span><br>
-                                    </span></td>
+                                    <td height="30" valign="middle" bgcolor="#6699FF"><span class="style22"><strong>T&Igrave;M KIẾM CHUY&Ecirc;N BAY TRONG NƯỚC</strong></span><br>                                    </td>
 
                                   </tr>
 
@@ -509,9 +515,11 @@ function view_composer2(ob1) {
                                     </form></td>
                                   </tr>
                                 </tbody></table>
-                                <form id="form2" name="form2" method="post" action="">
+                                <p>&nbsp;</p>
+                                <p>&nbsp;</p>
+                                <form action="" method="post" name="form2" class="style13" id="form2">
                                   <label>
-                                  <input name="timkiemtrongnuoc" type="submit" class="style4" value="Tìm Kiếm" />
+                                  <input name="timkiemtrongnuoc" type="submit" class="style13" value="Tìm Kiếm" />
                                   </label>
                                 </form>                                <p>&nbsp;</p></td>
 
