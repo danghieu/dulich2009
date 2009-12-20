@@ -26,12 +26,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <table style="width: 100%; border-collapse: collapse;">
 <tbody>
 <tr>
-			<td valign="top" nowrap="nowrap">
-				<table style="width: 100%; border-collapse: collapse;">
-<tbody>
-<tr>
 <td style="padding-right: 7px; text-align: center;">
-<table style="width: 100%; border-collapse: collapse;">
+<table width="95%" style="width: 100%; border-collapse: collapse;">
 <tbody>
 <tr>
 <td width="17%"><a title="Vietnam tours" href="trangchu.jsp"><img style="margin-top: 5px; margin-bottom: 5px; margin-right: 10px;" alt="Vietnam travel" src="dulichag_files/banner_logo.jpg" width="200" border="0" height="100"></a></td>
@@ -42,10 +38,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <td style="vertical-align: middle; white-space: nowrap; text-align: left;" colspan="4">
 <p align="left"><strong>Du lịch E-Tourism: </strong>123 Nguyễn Trãi - Thanh Xuân - Hà Nội </p></td></tr>
 <tr>
-<td style="vertical-align: middle; text-align: left;"><span style="color: rgb(0, 0, 255); text-decoration: underline;"><img id="Home1_Banner1_Image4" alt="" src="dulichag_files/Email.gif" width="16" border="0" height="10"></span></td>
-<td style="vertical-align: middle; text-align: left;"><a href="mailto:booking@vietnamanztravel.com"><strong>booking@vietnamtravel.com</strong></a></td>
-<td style="vertical-align: middle; text-align: left;"><strong><img id="Home1_Banner1_Image5" alt="" src="dulichag_files/Phone.gif" width="16" border="0" height="13"></strong></td>
-<td style="vertical-align: middle; white-space: nowrap; text-align: left;">0912 377 644</td></tr>
+<td width="19" style="vertical-align: middle; text-align: left;"><span style="color: rgb(0, 0, 255); text-decoration: underline;"><img id="Home1_Banner1_Image4" alt="" src="dulichag_files/Email.gif" width="16" border="0" height="10"></span></td>
+<td width="216" style="vertical-align: middle; text-align: left;"><a href="mailto:booking@vietnamanztravel.com"><strong>booking@vietnamtravel.com</strong></a></td>
+<td width="19" style="vertical-align: middle; text-align: left;"><strong><img id="Home1_Banner1_Image5" alt="" src="dulichag_files/Phone.gif" width="16" border="0" height="13"></strong></td>
+<td width="47" style="vertical-align: middle; white-space: nowrap; text-align: left;">0912 377 644</td>
+</tr>
 <tr>
 <td style="vertical-align: middle; text-align: left;"><span style="color: rgb(0, 0, 255); text-decoration: underline;"><strong><img id="Home1_Banner1_Image5" alt="" src="dulichag_files/Phone.gif" width="16" border="0" height="13"></strong></span></td>
 <td style="vertical-align: middle; text-align: left;"><a href="mailto:booking@vietnamanztravel.com"></a><strong>(</strong>04) 38123456 - 38888888<strong> </strong></td>
@@ -63,7 +60,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <td style="text-align: center;"><strong><span style="color: rgb(255, 255, 255);">|</span></strong></td>
 <td bgcolor="#6699FF" style="text-align: center;"><a title="Khách sạn, khachsan, khách sạn việt nam" href=""><strong><span style="color: rgb(255, 255, 255);">Khách sạn</span></strong></a></td>
 <td style="text-align: center;"><strong><span style="color: rgb(255, 255, 255);">|</span></strong></td>
-<td bgcolor="#6699FF" style="text-align: center;"><a title="Vé máy bay, vé tàu, thuê xe" href=""><strong><a title="Tour du lịch" href="../../../../SVN%20Client/%20dulich2009/CODE/GIAODIEN/WebRoot/"><strong><span style="color: rgb(255, 255, 255);">Tour du lịch</span></strong></a></strong></a></td>
+<td bgcolor="#6699FF" style="text-align: center;"><a title="Vé máy bay, vé tàu, thuê xe" href=""><strong><a title="Tour du lịch" href="../../../../SVN%20Client/%20dulich2009/CODE/GIAODIEN/WebRoot/"><strong><span style="color: rgb(255, 255, 255);">Tour du lịch</span></strong></a></td>
 <td style="text-align: center;"><strong><span style="color: rgb(255, 255, 255);">|</span></strong></td>
 <td bgcolor="#6699FF" style="text-align: center;"><a title="Các điểm du lịch thú vị" href=""><strong><span style="color: rgb(255, 255, 255);">Địa điểm du lịch</span></strong></a></td>
 <td style="text-align: center;"><strong><span style="color: rgb(255, 255, 255);">|</span></strong></td>
@@ -75,12 +72,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <td style="text-align: center;"><strong><span style="color: rgb(255, 255, 255);">|</span></strong></td>
 <td bgcolor="#6699FF" style="text-align: center;"><a title="Liên hệ" href="p"><strong><span style="color: rgb(255, 255, 255);">Liên hệ</span></strong></a></td>
 </tr></tbody></table>
-<p><img src="dulichag_files/banner_image.jpg" width="950" height="79"></p></td></tr>
+<p><img src="dulichag_files/banner_image.jpg" width="957" height="79"></p></td></tr>
 <tr>
 
 <td style="font-weight: bold;" align="right"><a href="">Đăng nhập </a> | <a href="">Register</a> | <a href="">Quên mật khẩu</a></td>
 </tr>
-</tbody></table>
-     <br>
+    </table>
   </body>
 </html>

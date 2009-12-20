@@ -24,9 +24,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <body>
      
-     
-<table style="border: medium none ; margin-top: 30px; width: 100%; border-collapse: collapse;" cellpadding="0" cellspacing="0">
-<tbody>
+<table width="974" border="0">
 <tr>
 <td style="border: medium none ; background: rgb(255, 255, 255) url(http://www.vietnamtoptrip.com/Image/gradient_tcat.gif) repeat-x scroll left top; -moz-background-clip: -moz-initial; -moz-background-origin: -moz-initial; -moz-background-inline-policy: -moz-initial; height: 25px;">
 <table style="border: medium none ; width: 100%; border-collapse: collapse; height: 25px;" summary="" nowrap="" border="0" cellpadding="0" cellspacing="0">
@@ -69,7 +67,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 lich Ha Long, Du lich Cat Ba, Du lich Singapore, Du lich Malaysia, du
 lich Hong Kong, Campuchia, Châu Âu, Nhật Bản, Hàn Quốc, Ấn Độ, Mỹ, du
 lich sapa, Nha Trang, Phú Quốc, Huế, Hội An, du lịch nước ngoài,
-trong nuoc, cong ty du lich Viet Nam, du lich Sa Pa</strong></div></td></tr></tbody></table>
+trong nuoc, cong ty du lich Viet Nam, du lich Sa Pa</strong></div></td></tr>
+    </table>
 
 
 	

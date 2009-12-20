@@ -23,11 +23,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-   <table style="border-collapse: collapse;">
-<tbody>
-<tr>
-<td height="300" style="border: 1px solid rgb(220, 220, 220); padding: 0px 5px 5px; vertical-align: top; text-align: center;">
-   <table width="161" style="margin-top: 5px; width: 160px; border-collapse: collapse;">
+	
+	<table width="188" border="0">
+      <tr>
+<td width="178" height="240" style="border: 1px solid rgb(220, 220, 220); padding: 0px 5px 5px; vertical-align: top; text-align: center;">
+   <table style="margin-top: 5px; width: 160px; border-collapse: collapse; height: 211px;">
 <tbody>
  <tr bgcolor="#3399FF">
 <td width="100%" align="middle" bgcolor="#00CC00" class="BoxTitle" style="background: transparent url(/image/system/bgheademenu.gif) repeat scroll 0% 0%; padding-bottom: 3px; vertical-align: bottom; padding-top: 3px; text-align: left; -moz-background-clip: border; -moz-background-origin: padding; -moz-background-inline-policy: continuous;">
@@ -40,21 +40,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <tr>
 <td height="20" bgcolor="#FFFFFF" style="vertical-align: bottom; padding-top: 5px; text-align: left;"><img alt="" src="dulichag_files/sao.gif" width="8" border="0" height="8"> <a title="Du lịch Biển" href=""><span style="font-weight: bold;">Du lịch Biển</span></a></td>
 </tr>
-<tr>
-<td height="20" bgcolor="#FFFFFF" style="vertical-align: bottom; padding-top: 5px; text-align: left;"><img alt="" src="dulichag_files/sao.gif" width="8" border="0" height="8"> <a href=""><span style="font-weight: bold;">Du lịch Châu Á</span></a></td>
-</tr>
-<tr>
-<td height="20" bgcolor="#FFFFFF" style="vertical-align: bottom; padding-top: 5px; text-align: left;"><img alt="" src="dulichag_files/sao.gif" width="8" border="0" height="8"> <a href=""><span style="font-weight: bold;">Du lịch Châu Âu</span></a></td>
-</tr>
-<tr>
-<td height="20" bgcolor="#FFFFFF" style="vertical-align: bottom; padding-top: 5px; text-align: left;"><img alt="" src="dulichag_files/sao.gif" width="8" border="0" height="8"> <a title="Du lịch việt nam - Lào - Thái Lan" href=""><span style="font-weight: bold;">Du lịch Việt - Lào - Thái</span></a></td>
-</tr>
+
 <tr>
 <td height="20" bgcolor="#FFFFFF" style="vertical-align: bottom; padding-top: 5px; text-align: left;"><img alt="" src="dulichag_files/sao.gif" width="8" border="0" height="8"> <a href=""><span style="font-weight: bold;">Du lịch Trong nước</span></a></td>
 </tr>
-<tr>
-<td height="20" bgcolor="#FFFFFF" style="vertical-align: bottom; padding-top: 5px; text-align: left;"><img alt="" src="dulichag_files/sao.gif" width="8" border="0" height="8"><a href=""> <span style="font-weight: bold;">Du lịch Nước ngoài</span></a></td>
-</tr>
+
 <tr>
 <td height="20" bgcolor="#FFFFFF" style="vertical-align: bottom; padding-top: 5px; text-align: left;"><img alt="" src="dulichag_files/sao.gif" width="8" border="0" height="8"> <a href=""><span style="font-weight: bold;">Du lịch Miền Bắc</span></a></td>
 </tr>
@@ -73,7 +63,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <tr>
 <td height="20" bgcolor="#FFFFFF" style="vertical-align: bottom; padding-top: 5px; text-align: left;"><img alt="" src="dulichag_files/sao.gif" width="8" border="0" height="8"><a href=""> <span style="font-weight: bold;">Du lịch Hè</span></a></td>
 </tr>
-</tbody></table></td></tr></tbody></table>
+</tbody></table></td></tr>
+
+</table>
 <div>&nbsp;</div>
 <div>
 <table style="border-collapse: collapse;">
@@ -84,7 +76,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <tbody>
 <tr>
 <td class="BoxTitle" style="background: transparent url(/image/system/bgheademenu.gif) repeat scroll 0% 0%; padding-bottom: 3px; vertical-align: bottom; padding-top: 3px; text-align: left; -moz-background-clip: border; -moz-background-origin: padding; -moz-background-inline-policy: continuous;" width="100%" align="middle" background="dulichag_files/bgheademenu.gif">
-<div align="center" class="style5">Khách Sạn</div></td>
+<div align="center" class="style4">Khách Sạn</div></td>
 </tr>
 <tr>
 <td style="vertical-align: bottom; padding-top: 5px; text-align: left;" height="20"><img alt="" src="dulichag_files/sao.gif" width="8" border="0" height="8"> <a href=""><span style="font-weight: bold;">Khách sạn 5 sao</span></a></td></tr>
@@ -108,7 +100,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <tbody>
 <tr>
 <td class="BoxTitle" style="background: transparent url(/image/system/bgheademenu.gif) repeat scroll 0% 0%; padding-bottom: 3px; vertical-align: bottom; padding-top: 3px; text-align: left; -moz-background-clip: border; -moz-background-origin: padding; -moz-background-inline-policy: continuous;" width="100%" align="middle" background="dulichag_files/bgheademenu.gif">
-<p align="center" class="style1"><strong>Điểm du lịch </strong></p></td>
+<p align="center" class="style4">Điểm du lịch </p></td>
 </tr>
 <tr>
 <td style="vertical-align: bottom; padding-top: 5px; text-align: left;" height="20"><img alt="" src="dulichag_files/sao.gif" width="8" border="0" height="8"> <a href=""><span style="font-weight: bold;">Danh lam thắng cảnh </span></a></td>
@@ -120,7 +112,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <td style="vertical-align: bottom; padding-top: 5px; text-align: left;" height="20"><img alt="" src="dulichag_files/sao.gif" width="8" border="0" height="8"> <a href=""><span style="font-weight: bold;">Leo núi </span></a></td>
 </tr>
 <tr>
-<td style="vertical-align: bottom; padding-top: 5px; text-align: left;" height="20"><img alt="" src="dulichag_files/sao.gif" width="8" border="0" height="8"> <a href=""><span style="font-weight: bold;">Ngbỉ mát </span></a></td>
+<td style="vertical-align: bottom; padding-top: 5px; text-align: left;" height="20"><img alt="" src="dulichag_files/sao.gif" width="8" border="0" height="8"> <a href=""><span style="font-weight: bold;">Nghỉ mát </span></a></td>
 </tr></tbody></table></td></tr></tbody></table><br>
 <table style="width: 170px; border-collapse: collapse;">
 <tbody>
@@ -130,7 +122,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <tbody>
 <tr>
 <td class="BoxTitle" style="background: transparent url(/image/system/bgheademenu.gif) repeat scroll 0% 0%; padding-bottom: 3px; vertical-align: bottom; padding-top: 3px; text-align: left; -moz-background-clip: border; -moz-background-origin: padding; -moz-background-inline-policy: continuous;" width="100%" align="middle" background="dulichag_files/bgheademenu.gif">
-<p align="center" class="style5">Thông Tin Du lịch</p></td>
+<p align="center" class="style4">Thông Tin Du lịch</p></td>
 </tr>
 <tr>
 <td style="vertical-align: bottom; padding-top: 5px; text-align: left;" height="20"><img alt="" src="dulichag_files/sao.gif" width="8" border="0" height="8"> <a href=""><span style="font-weight: bold;">Giới thiệu Tour du lịch</span></a></td></tr>
@@ -146,7 +138,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <tbody>
 <tr>
 <td class="BoxTitle" style="background: transparent url(/image/system/bgheademenu.gif) repeat scroll 0% 0%; padding-bottom: 3px; vertical-align: bottom; padding-top: 3px; text-align: left; -moz-background-clip: border; -moz-background-origin: padding; -moz-background-inline-policy: continuous;" width="100%" align="middle" background="dulichag_files/bgheademenu.gif">
-<p align="center" class="style1"><strong>Phương Tiện & Dịch Vụ</strong></p></td>
+<p align="center" class="style4">Phương Tiện & Dịch Vụ</p></td>
 </tr>
 <tr>
 <td style="vertical-align: bottom; padding-top: 5px; text-align: left;" height="20"><img alt="" src="dulichag_files/sao.gif" width="8" border="0" height="8"> <a href=""><span style="font-weight: bold;">Xe ôtô</span></a></td></tr>
@@ -167,7 +159,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <tbody>
 <tr>
 <td class="BoxTitle" style="background: transparent url(/image/system/bgheademenu.gif) repeat scroll 0% 0%; padding-bottom: 3px; vertical-align: bottom; padding-top: 3px; text-align: left; -moz-background-clip: border; -moz-background-origin: padding; -moz-background-inline-policy: continuous;" width="100%" align="middle" background="dulichag_files/bgheademenu.gif">
-<p align="center" class="style1">Hỗ trợ Trực tuyến</p></td>
+<p align="center" class="style4">Hỗ trợ Trực tuyến</p></td>
 </tr>
 <tr>
 <td style="vertical-align: bottom; padding-top: 5px; text-align: left;">
@@ -176,7 +168,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <div align="center"><a href="ymsgr:sendim?conuong77"><img style="margin-top: 10px;" alt="" src="dulichag_files/online.gif" width="133" align="middle" border="0" height="25"></a></div>
 <div align="center"><span style="font-weight: bold;">Du lịch nước ngoài</span></div>
 <div align="center"><a href="callto:dulichanz"><img style="margin-top: 6px;" alt="Click here go to Online Support" src="dulichag_files/skype.png" width="105" border="0" height="47"></a></div>
-<div skype:sendim?vietnam_agtravel?="" skype:sendim?nguyenxuandung1976="" align="center"><span style="font-weight: bold;">Skype: dulichanz</span></div></td></tr></tbody></table></td></tr></tbody></table>
+<div skype:sendim?vietnam_agtravel?="" skype:sendim?nguyenxuandung1976="" align="center"><span style="font-weight: bold;">Skype: dulichanz</span></div></td></tr></tbody></table></td></tr>
+    </table>
 
 
   </body>
