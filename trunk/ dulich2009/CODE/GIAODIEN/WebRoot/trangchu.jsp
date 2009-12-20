@@ -47,7 +47,7 @@ ty du lich Viet Nam, du lich Sa Pa</title>
 			<tbody>
 			<tr>
 				<td valign="top" width="170" nowrap="nowrap"> <jsp:include page="leftMenu.jsp" flush="false"></jsp:include> </td>       
-				<td style="width: 100%; padding-left: 15px; padding-right: 15px;" valign="top" width="100%" align="center"> <jsp:include page="body.jsp" flush="false"></jsp:include> </td> 
+				<td style="width: 100%; padding-left: 15px; padding-right: 15px;" valign="top" width="100%" align="center"> <jsp:include page="Tau.jsp" flush="false"></jsp:include> </td> 
 				<td valign="top" width="150" nowrap="nowrap"><jsp:include page="rightMenu.jsp" flush="false"></jsp:include></td>
 			</tr>
 			</tbody>

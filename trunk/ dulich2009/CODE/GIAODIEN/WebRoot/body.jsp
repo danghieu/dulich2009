@@ -21,8 +21,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	-->
 </head>
 <body>
-    <h1 style="margin-top: 1px; font-size: 11px; margin-bottom: 1px;" align="center"><font size="2">Du lịch Vietnam</font></h1>
-<p style="margin-top: 0px; font-weight: normal; margin-bottom: 0px; color: black; text-align: justify;">Du 
+	<table border="0" style="width: 764px; height: 1019px;">
+	
+      <tr>
+        <td valign="top">
+		<h1 align="center" class="style3" style="margin-top: 1px; font-size: 30px; margin-bottom: 1px;">Du lịch Vietnam</h1>
+<p class="style2" style="margin-top: 0px; font-weight: normal; margin-bottom: 0px; color: black; text-align: justify;">Du 
 lịch E-Tourism đ&atilde; c&oacute; nhiều năm kinh nghiệm trong lĩnh vực lữ h&agrave;nh quốc tế 
 v&agrave; nội địa. Với đội ngũ nh&acirc;n vi&ecirc;n năng động, nhiệt t&igrave;nh, gi&agrave;u kinh 
 nghiệm v&agrave; th&ocirc;ng thạo nhiều ngoại ngữ như : Th&aacute;i Lan, Anh, Ph&aacute;p v&agrave; Trung 
@@ -32,115 +36,9 @@ gửi đến Qu&yacute; kh&aacute;ch những chương tr&igrave;nh du lịch đ�
 tất cả t&acirc;m huyết của những người y&ecirc;u nghề v&agrave; sự tr&acirc;n trọng tuyệt đối 
 với c&aacute;c sản phẩm tour. Ch&uacute;ng t&ocirc;i cam kết đem đến cho kh&aacute;ch h&agrave;ng những 
 sản phẩm dịch vụ chất lượng tốt nhất.&nbsp;</p>
+<p class="style2" style="margin-top: 0px; font-weight: normal; margin-bottom: 0px; color: black; text-align: justify;">&nbsp;</p>
 <br>
-
-						<table width="100%" border="0" cellpadding="0" cellspacing="0">
-                        <tbody><tr>
-                          
-                        </tr>
-                    
-						
-						<tr style="display: none;" id="tag2">
-                          <td>
-<table class="border_search" width="100%" border="0" cellpadding="0" cellspacing="0" height="180">
-                            <tbody><tr valign="top">
-                              <td>
-							  <table width="100%" border="0" cellpadding="0" cellspacing="0" height="92%">
-							  <form method="get" action="http://vistalandtravel.com/?mod=search" name="ADS_FORM"></form>
-							  <input name="s_zone_id" id="s_zone_id" value="0" type="hidden">
-							   <input name="mod" id="mod" value="search" type="hidden">
-                               <!--
-							    <tr>
-                                  <td width="5"></td>
-                                  <td width="25%">Tours name</td>
-                                  <td>
-                               <input name="s_keyword" type="text" class="text_form_search" style="width: 150px">
-								  </td>
-                                  <td></td>
-                                </tr>
-							-->
-                                <tbody><tr>
-                                  <td width="5%"></td>
-                                  <td width="39%">Tour Type </td>
-                                  <td width="51%">
-										<select name="s_cat_id" style="width: 140px;" class="text_form_search">
-											
-											<option value="52">|-- Halong Bay Cruises</option>
-											<option value="6">|-- Sapa tours</option>
-											<option value="32">|-- Hanoi and vicinity </option>
-											<option value="35">|-- Hoian and vicinity</option>
-											<option value="29">|-- Mekong Delta Tours</option>
-											<option value="58">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|-- Mekong boats </option>
-											<option value="5">|-- Inbound Tours</option>
-											<option value="10">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|-- Explorer Vietnam</option>
-											<option value="11">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|-- Classical Tour</option>
-											<option value="38">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|-- HCMC and vicinity</option>
-											<option value="36">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|-- Hue and vicinity</option>
-											<option value="31">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|-- Mekong Cruises</option>
-											<option value="30">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|-- Budget travel by open bus </option>
-											<option value="33">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|-- HALONG tours</option>
-											<option value="18">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|-- Honey Moon tours</option>
-											<option value="19">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|-- Adventure</option>
-											<option value="42">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|-- Trekking tours</option>
-											<option value="37">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|-- Northern treking </option>
-											<option value="41">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|-- Southern trekking</option>
-											<option value="43">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|-- Scuba diving</option>
-											<option value="44">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|-- Kayaking and Canoeing</option>
-											<option value="45">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|-- Motorbiking </option>
-											<option value="46">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|-- Cycling tours</option>
-											<option value="39">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|-- Beach vacation</option>
-											<option value="40">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|-- Golf tours</option>
-											<option value="47">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|-- North golf tours</option>
-											<option value="48">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|-- South golf tours</option>
-											<option value="49">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|-- Vietnam golf packages</option>
-											<option value="26">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|-- Customized Tour</option>
-											<option value="53">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|-- Rainbow Flags</option>
-											<option value="54">|-- Outbound tours</option>
-											<option value="55">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|-- Tour to Cambodia</option>
-											<option value="56">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|-- Tour to Thailand</option>
-											<option value="57">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|-- Tours to China</option>
-										</select>								  </td>		
-                                   <td width="5%"></td>
-                                </tr>
-                                
- 							<tr>
-                                  <td></td>
-                                  <td>Depart</td>
-                                  <td>
-					<input class="text_form_search" name="s_tours_date_from" id="s_tours_date_from" style="width: 120px;" type="text">
-					<img src="vistalandtravel_files/icon_calendar.jpg" alt="" onClick="popUpCalendar(this,document.getElementById('s_tours_date_from'), 'mm/dd/yyyy', fnSetDate);" align="absbottom" border="0"> </td>
-                                  <td>&nbsp;</td>
-                                </tr>
-                                <tr style="display: none;">
-                                  <td></td>
-                                  <td>End</td>
-                                  <td>
-								  <input class="text_form_search" name="s_tours_date_to" id="s_tours_date_to" style="width: 120px;" type="text">
-								  <img src="vistalandtravel_files/icon_calendar.jpg" alt="" onClick="displayCalendar(document.ADS_FORM.s_tours_date_to,'mm/dd/yyyy',this)" align="absbottom" border="0"> </td>
-                                  <td>&nbsp;</td>
-                                </tr>
-                                <tr>
-                                  <td></td>
-                                  <td>&nbsp;</td>
-                                  <td>
-					<input name="s_submit" src="vistalandtravel_files/bt_search.jpg" type="image" border="0">							</td>
-                                  <td>&nbsp;</td>
-                                </tr>
-                                <tr>
-                                  <td>&nbsp;</td>
-                                  <td>&nbsp;</td>
-                                  <td>
-								  <a class="customize_css" href="http://vistalandtravel.com/customize_tour/">
-								  Customize Tour</a></td>
-                                  <td>&nbsp;</td>
-                                </tr>
- 								
-                              </tbody></table></td>
-                            </tr>
-                           </tbody></table>							</td>
-                        </tr>						
-                      </tbody></table>
-			<table id="table1" width="100%" border="0" cellpadding="0" cellspacing="0">
+<table id="table1" width="100%" border="0" cellpadding="0" cellspacing="0">
 	<tbody><tr>
 		<td class="categoryItemHome" bgcolor="#73aae7" nowrap="nowrap">
 			<a href="">Du Lịch Vietnam</a>
@@ -524,7 +422,11 @@ sản phẩm dịch vụ chất lượng tốt nhất.&nbsp;</p>
 	<tr>
 	
 	</tr>
-</tbody></table>	
-				
+</tbody></table>
+		
+		
+		</td>
+      </tr>
+    </table>
   </body>
 </html>
