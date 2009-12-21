@@ -42,7 +42,7 @@
     <td><table border="0" valign="top" style="width: 969px; height: 900px;">
   <tr>
     <td width="188" valign="top"><jsp:include page="leftMenu.jsp" flush="false"></jsp:include></td>
-    <td width="762" valign="top"><jsp:include page="FlightBody.jsp" flush="false"></jsp:include></td>
+    <td width="762" valign="top"><jsp:include page="SignInBody.jsp" flush="false"></jsp:include></td>
   </tr>
 </table>
 </td>
