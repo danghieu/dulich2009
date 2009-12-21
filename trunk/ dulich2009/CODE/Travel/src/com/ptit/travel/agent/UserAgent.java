@@ -71,11 +71,11 @@ public class UserAgent extends Agent {
 //                this.getLocalName());// E:/Develop/Netbean/Travel/
 
 //        
-        addBehaviour(new TickerBehaviour(this, 30000) {
-            protected void onTick() {
-                search("msg", "conversationId", "protocol");
-            }
-        });
+//        addBehaviour(new TickerBehaviour(this, 30000) {
+//            protected void onTick() {
+//                search("msg", "conversationId", "protocol");
+//            }
+//        });
     }
 
     /**
