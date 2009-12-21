@@ -2,11 +2,13 @@ package com.ptit.travel.common;
 
 import java.util.Vector;
 
+import org.apache.log4j.Logger;
 import org.apache.xmlrpc.XmlRpcClientLite;
 import org.apache.xmlrpc.XmlRpcException;
 
 public class CallAgent {
 
+    Logger log = Logger.getLogger(CallAgent.class.getName());
     public static final String SERVER = "http://localhost:8006";
     //"http://" + ConfigXMLConnect.HOST_USER + ":" + ConfigXMLConnect.PORT_USER;     
     XmlRpcClientLite myClient;
@@ -44,16 +46,16 @@ public class CallAgent {
         //the parameters are inserted in a vector
         Vector v = new Vector();
         v.addElement(param);
-        System.out.println("method is going to be called");
+        log.info(function + " method is going to be called");
 
         try {
 
             result = (String) myClient.execute(function, v);
         } catch (XmlRpcException e) {
-            System.out.println("exception while transmitting message " + e);
+            log.info("exception while transmitting message " + e);
             e.printStackTrace();
         } catch (java.io.IOException e) {
-            System.out.println("exception while transmitting message " + e);
+            log.info("exception while transmitting message " + e);
             e.printStackTrace();
         }
         return result;
@@ -72,17 +74,15 @@ public class CallAgent {
             v.addElement(params[i]);
         }
         
-        System.out.println("method is going to be called");
+        log.info(function + " method is going to be called");
 
         try {
 
             result = (String) myClient.execute(function, v);
         } catch (XmlRpcException e) {
-            System.out.println("exception while transmitting message " + e);
-            e.printStackTrace();
+            log.info("exception while transmitting message " + e);
         } catch (java.io.IOException e) {
-            System.out.println("exception while transmitting message " + e);
-            e.printStackTrace();
+            log.info("exception while transmitting message " + e);
         }
         return result;
     }

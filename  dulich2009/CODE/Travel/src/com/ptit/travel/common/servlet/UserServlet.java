@@ -139,10 +139,10 @@ public class UserServlet extends HttpServlet {
         if (protocol != null) {
 
             if (protocol.endsWith(Protocol.SUFFIX_SEARCH)) {
-                function = "UserAgent.search";
+                function = nickName + ".search";
                 page = "/SearchServlet";
             } else if (protocol.endsWith(Protocol.SUFFIX_BOOK)) {
-                function = "UserAgent.book";
+                function = nickName + ".book";
                 page = "/BookServlet";
             } // more... //TODO
             else {
@@ -191,11 +191,11 @@ public class UserServlet extends HttpServlet {
 
             while ("null".equals(result) && times > 0) {
                 try {
-                    Thread.sleep(3000);
+                    Thread.sleep(100);
                 } catch (Exception e) {
                     log.info(e.toString());
                 }
-                times--;
+//                times--;
                 log.info("Call " + function + "Results()");
                 result = callAgent.callTheAgentViaXmlRpc(function + "Results", msgId);
 

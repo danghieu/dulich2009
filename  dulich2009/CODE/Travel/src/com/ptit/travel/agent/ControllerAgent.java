@@ -90,7 +90,6 @@ public class ControllerAgent extends Agent {
                                 // Call DB and gain result into list
                                 receivers = new ArrayList<String>();
                                 receivers.add("HotelAgent");
-                                receivers.add("HotelAgent1");
                                 ACLMessage forwardMsg = Message.createForwardMessage(myAgent, receivers, msg,
                                         replyWith);
                                 //myAgent.addBehaviour(new Negotiate(myAgent, forwardMsg));
