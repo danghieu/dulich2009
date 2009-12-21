@@ -51,7 +51,9 @@ public class ControllerAgent extends Agent {
      */
     class HandleRecivedMessages extends Behaviour {
 
+        private String protocol;
         private String conversationId;
+        private String language;
         private ArrayList<String> msgsContent = new ArrayList<String>();
         private MessageTemplate mt; // The template to receive replies
 
@@ -68,22 +70,21 @@ public class ControllerAgent extends Agent {
         public void action() {
 
             synchronized (this) {
-                ACLMessage msg = receive();
-                if (msg != null) {
-
-                    try {
-
-                        log.info("=== [ControllerAgent] received message from " + msg.getSender().getLocalName());
-                        switch (step) {
+                try {
+                    switch (step) {
 
 
-                            case 0:
+                        case 0:
+                            ACLMessage msg = receive();
+                            if (msg != null) {
                                 // keep track of user
                                 userTracker = msg.getSender().getLocalName();
                                 replyWith = msg.getReplyWith();
+                                protocol = msg.getProtocol();
                                 conversationId = msg.getConversationId();
+                                language = msg.getLanguage();
                                 // 
-                                log.info("LANGUAGE: " + msg.getLanguage());
+                                log.info("LANGUAGE: " + language);
                                 // Language used to get all appropriate supplier agents
 
                                 // Call DB and gain result into list
@@ -100,68 +101,64 @@ public class ControllerAgent extends Agent {
                                         MessageTemplate.MatchInReplyTo(forwardMsg.getReplyWith()));
                                 log.info("Message Template: " + mt.toString());
                                 step = 1;
+                            }else {
+                                //block();
+                            }
+                            
+                            break;
+                        case 1:
+                            log.info("[ControllerAgent] Negotiating... ");
+                            ACLMessage replyMsg = receive(mt);
+                            // Negotiating here
 
-                                break;
-                            case 1:
-                                log.info("[ControllerAgent] Negotiating... ");
-                                //ACLMessage replyMsg = receive(mt);
-                                //ACLMessage replyMsg = myAgent.receive();
-                                // Negotiating here
+                            if (replyMsg != null) {
 
-                                if (mt.match(msg))
+                                //if (replyMsg.getPerformative() == ACLMessage.PROPOSE) 
                                 {
-                                    //if (replyMsg.getPerformative() == ACLMessage.PROPOSE) 
-                                    {
-                                        /**
-                                         * / check if there is any available hotel/ if yes set
-                                         * avail = true
-                                         * put msg into msgQueue of agent: 
-                                         */
-                                        //FOR TEST
-                                        log.info("=== One more received message from " + msg.getSender().getLocalName());
-                                        msgsContent.add(msg.getContent());
-                                    }
-                                    repliesCnt++;
-                                    log.info("|| RECEIVERS: " + receivers.size() + " || repliesCnt: " + repliesCnt);
-                                    if (repliesCnt >= receivers.size()) {
-                                        //We received all replies, can combine services here
-
-                                        msgQueue.put(conversationId, msgsContent);
-                                        step = finalStep; // finish negotiating
-
-                                        log.info("[ControllerAgent] Refine the results ");
-                                        //TODO.. 
-                                        ArrayList<String> contents = msgQueue.get(conversationId);
-                                        msgQueue.remove(conversationId);
-                                        ACLMessage reply = Message.createForwardMessage(myAgent, userTracker, 
-                                                msg, replyWith);
-
-                                        log.info(reply);
-                                        send(reply);
-                                    }
-                                } else {
-                                    block();
-
+                                    /**
+                                     * / check if there is any available hotel/ if yes set
+                                     * avail = true
+                                     * put msg into msgQueue of agent: 
+                                     */
+                                    //FOR TEST
+                                    log.info("=== One more received message from " + replyMsg.getSender().getLocalName());
+                                    msgsContent.add(replyMsg.getContent());
                                 }
+                                repliesCnt++;
+                                log.info("|| RECEIVERS: " + receivers.size() + " || repliesCnt: " + repliesCnt);
+                                if (repliesCnt >= receivers.size()) {
+                                    //We received all replies, can combine services here
+
+                                    msgQueue.put(conversationId, msgsContent);
+                                    step = finalStep; // finish negotiating
+
+                                    log.info("[ControllerAgent] Refine the results ");
+                                    //TODO.. 
+                                    ArrayList<String> contents = msgQueue.get(conversationId);
+                                    msgQueue.remove(conversationId);
+                                    ACLMessage reply = Message.createReplyMessage(myAgent, userTracker,
+                                            contents, language, protocol, conversationId, replyWith);
+
+                                    log.info(reply);
+                                    send(reply);
+                                }
+                            } else {
+                                block();
+
+                            }
 
 
-                                break;
-                            case finalStep:
-
-
-                                break;
-                        }
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                        log.error(e.toString());
+                            break;
                     }
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    log.error(e.toString());
                 }
-                block(); // this is to allow other behaviours
-
             }
-            ;
+            block(); // this is to allow other behaviours
 
         }
+        ;
 
         public boolean done() {
             if (step == finalStep) {

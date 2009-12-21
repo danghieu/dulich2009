@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.ptit.travel.agent.user.UserAgent;
+import com.ptit.travel.agent.UserAgent;
 import com.ptit.travel.common.AgentManager;
 import com.ptit.travel.common.CallAgent;
 import jade.wrapper.AgentController;
@@ -20,6 +20,7 @@ import jade.wrapper.ContainerController;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.TreeSet;
+import javax.servlet.http.HttpSession;
 import org.apache.log4j.Logger;
 
 /**
@@ -29,19 +30,19 @@ public class UserServlet extends HttpServlet {
 
     private Logger log = Logger.getLogger(UserServlet.class.getName());
     private static final long serialVersionUID = 1L;
-   // private String agentHost = ConfigXMLConnect.HOST_USER;
+    private String agentHost = ConfigXMLConnect.HOST_USER;
     /**
      * Generate a new port for user agent
      */ 
-    //private int agentPort = ConfigXMLConnect.nextPort("USER");
+    private int agentPort = ConfigXMLConnect.PORT_USER;
     
-    private CallAgent callAgent;// = new CallAgent(agentHost, agentPort);
+    private CallAgent callAgent = new CallAgent(agentHost, agentPort);
     private AgentController agentController = null;
     private ContainerController containerController = null;
     private String nickName;
     private String host = "localhost";
     private String port = "1099";
-    private String className = "com.ptit.travel.agent.user.UserAgent";
+    private String className = "com.ptit.travel.agent.UserAgent";
     /**
      * Huy 1 agent khi het phien lam viec, timeout hoac tat agent
      */
@@ -76,8 +77,12 @@ public class UserServlet extends HttpServlet {
         super.init();
         if (agentController == null) {
             //log.info("Generate a NEW PORT for user agent: " + agentHost);
-            nickName = "UserAgent";//"Guest" + System.currentTimeMillis();
+            nickName = "Guest" + System.currentTimeMillis();
 
+            log.info("Call agent on port " + agentPort);
+            // Generate Next port for next UserAgent
+            ConfigXMLConnect.nextPort("PORT_USER");
+            
             try {
                 log.info("|| Starting agent: " + nickName);
                 ArrayList arr = AgentManager.startAgent(host, port, nickName, className, false);
@@ -146,7 +151,7 @@ public class UserServlet extends HttpServlet {
             // create parameters to call agent
             String params[] = {msg, msgId, protocol};
 
-            callAgent = new CallAgent();
+            //callAgent = new CallAgent();
             String result = callAgentBehavior(msgId, function, params);
             request.setAttribute("result", result);
 //            request.setAttribute("callAgent", callAgent);
@@ -191,6 +196,7 @@ public class UserServlet extends HttpServlet {
                     log.info(e.toString());
                 }
                 times--;
+                log.info("Call " + function + "Results()");
                 result = callAgent.callTheAgentViaXmlRpc(function + "Results", msgId);
 
             }
@@ -246,6 +252,19 @@ public class UserServlet extends HttpServlet {
         String password = request.getParameter("password");
         // check information account
 
+        /**
+         * Truy van CSDL Agent.owl lay ra address[http://agentHost:agentPort], type, 
+         * state cua id agent
+         * Gan lai 
+         *  className = "com.ptit.travel.agent." + type ;
+         *  address 
+         *  
+         *  callAgent=new CallAgent(address);
+         * 
+         * Neu state = active: khong tao them agent
+         */
+        
+        HttpSession session = request.getSession();
         // if satified
         if (containerController != null) {
             try {
@@ -259,9 +278,26 @@ public class UserServlet extends HttpServlet {
             }
 
         }
+        /**
+         * Neu type = UserAgent: truy van CSDL booking de doc thong tin offline
+         * // TODO
+         */
         return id;
     }
 
     public void logout(HttpServletRequest request) {
+                log.info("User logout action...");
+        log.debug("# Begin method user logout");
+        
+        try{
+            HttpSession session = request.getSession();
+            session.invalidate();
+        }catch(Exception ex){
+            log.info("Error while perform user logout action..");
+            log.error(ex.getMessage());
+        }
+        log.debug("# End method user logout action");
+        log.info("User logout has been done!");
+        
     }
 }

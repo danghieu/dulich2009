@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.ptit.travel.agent.hotel;
+package com.ptit.travel.agent;
 
 import com.hp.hpl.jena.ontology.OntModel;
 import java.util.ArrayList;

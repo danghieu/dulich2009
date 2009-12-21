@@ -2,7 +2,7 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.ptit.travel.agent.user;
+package com.ptit.travel.agent;
 
 /**
  *
@@ -48,21 +48,23 @@ public class UserAgent extends Agent {
 
     private static Logger log = Logger.getLogger(UserAgent.class.getName());
     WebServer xmlrpcServer;
-    private static final int port = 8006;//ConfigXMLConnect.PORT_USER;
+    private static final int port = ConfigXMLConnect.PORT_USER;
+    
     // message queue of agent contains every satisfactory replied messages 
     private Hashtable<String, ArrayList<String>> msgQueue = new Hashtable<String, ArrayList<String>>();
 
+    @Override
     protected void setup() {
         //Message.register(this, this.getLocalName());
 
         try {
-//            xmlrpcServer = new WebServer(port);
-//            log.debug("XMLRPC Running on port: " + port);
+            xmlrpcServer = new WebServer(port);
+            log.debug("XMLRPC Running on port: " + port);
         } catch (Exception e) {
             log.error("PANIC: maybe the port " + port + " is in use");
             System.out.println(e);
         }
-//        xmlrpcServer.addHandler(this.getLocalName(), this);
+        xmlrpcServer.addHandler(this.getLocalName(), this);
 //
 //        mem = new Memory(
 //                "E:/Develop/Netbean/Travel/config/UserAgent.properties",
@@ -71,7 +73,7 @@ public class UserAgent extends Agent {
 //        
         addBehaviour(new TickerBehaviour(this, 30000) {
             protected void onTick() {
-            search("msg", "conversationId", "protocol");
+                search("msg", "conversationId", "protocol");
             }
         });
     }
@@ -273,7 +275,6 @@ public class UserAgent extends Agent {
         private ArrayList<String> receivers;
         private String conversationId;
         private Agent a;
-        private boolean avail = false;
         private ArrayList<String> msgs;
 
         public RequestInfo(Agent _a, String _content, String _conversationId, String _p) {
@@ -295,11 +296,12 @@ public class UserAgent extends Agent {
                         
                         receivers = new ArrayList<String>();
                         receivers.add("ControllerAgent");
+                        String replyWith = "[" + myAgent.getLocalName() + "]"
+						+ System.currentTimeMillis();
                         // Send the cfp to all agents
                         ACLMessage msg = Message.createInformMessage(a, receivers, content, Language.HOTEL, 
-                                protocol, conversationId);
-                        msg.setReplyWith("[" + myAgent.getLocalName() + "]"
-						+ System.currentTimeMillis());
+                                protocol, conversationId, replyWith);
+                        
                         // value
                         log.info("=== Preparing msg to send msg to: " + receivers.toString());
                         myAgent.send(msg);
@@ -317,8 +319,8 @@ public class UserAgent extends Agent {
 
                 case 1:
                     // Receive all proposals/refusals from agents
-                    //ACLMessage replyMsg = myAgent.receive(mt);
-                    ACLMessage replyMsg = myAgent.receive();
+                    ACLMessage replyMsg = myAgent.receive(mt);
+                    //ACLMessage replyMsg = myAgent.receive();
                     if (replyMsg != null) {
                         //if (replyMsg.getPerformative() == ACLMessage.PROPOSE) 
                         {
@@ -329,14 +331,15 @@ public class UserAgent extends Agent {
                              */
                             //FOR TEST
                             log.info("=== One more received message from " + replyMsg.getSender().getLocalName());
+                            log.info(replyMsg);
                             msgs.add(replyMsg.getContent());
                         }
                         repliesCnt++;
                         log.info("|| RECEIVERS: " + receivers.size() + " || repliesCnt: " + repliesCnt);
-                        //if (repliesCnt >= receivers.size()) {
+                        if (repliesCnt >= receivers.size()) {
                             // We received all replies
                             step = 2;
-                        //}
+                        }
                     } else {
                         block();
 
@@ -485,4 +488,12 @@ public class UserAgent extends Agent {
     } // End class RequestCancel
 
 
+    @Override
+    public void takeDown(){
+        if(xmlrpcServer != null){
+            log.debug("XMLRPC shut down  on " + port);
+            xmlrpcServer.shutdown();
+            xmlrpcServer = null;
+        }
+    }
 }

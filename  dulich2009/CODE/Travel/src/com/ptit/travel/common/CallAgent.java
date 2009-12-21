@@ -21,6 +21,13 @@ public class CallAgent {
         }
     }
 
+    public CallAgent(String address) {
+        try {
+            myClient = new XmlRpcClientLite(address);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
     public CallAgent(String host, int port) {
         try {
             myClient = new XmlRpcClientLite(host, port);
