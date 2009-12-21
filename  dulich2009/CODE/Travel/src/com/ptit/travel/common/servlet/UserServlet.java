@@ -119,7 +119,7 @@ public class UserServlet extends HttpServlet {
      * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
      */
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        //process(request,response);
+        process(request,response);
     }
 
     protected void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
