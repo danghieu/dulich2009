@@ -60,8 +60,9 @@ public class StartAgents {
                 "paramA" + Message.FIELD_SEPARATE +
                 "paramB" + Message.OBJECT_SEPARATE +
                 "paramX";
+        input = "@_&HaiPhong@_&cool@_&@_&inside@_&Parking@_&2@_&Swimm";
         System.out.println("|| INPUT: " + input);
-        ArrayList<String> list = Message.split(input, Message.OBJECT_SEPARATE);
+        ArrayList<String> list = Message.split(input, Message.FIELD_SEPARATE);
         System.out.println("|| SEPARATE OBJECT: " + list.toString());
         System.out.println("|| SEPARATE FIELD of 1st Ojbect: " + Message.split(list.get(0), Message.FIELD_SEPARATE));
     }
@@ -77,7 +78,7 @@ public class StartAgents {
             String className = "com.ptit.travel.agent.ControllerAgent";
             try {                
                 ContainerController containerController = (ContainerController)AgentManager.startAgent(host, port, 
-                        nickName, className,false).get(0);
+                        nickName, className,true).get(0);
                 nickName = "HotelAgent";//"Guest" + System.currentTimeMillis();
                 className = "com.ptit.travel.agent.HotelAgent";
                 agentController = AgentManager.addAgent(host, port, nickName, className,containerController);
@@ -142,7 +143,7 @@ public class StartAgents {
     public static void main(String[] args) {
         // TODO Auto-generated method stub
         StartAgents test = new StartAgents();
-        //test.testSplitMessage();
+//        test.testSplitMessage();
         //test.testConfigXMLConnect();
         //test.callTheAgentViaXmlRpc();
         test.testCreateAgentCH();        

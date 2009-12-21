@@ -111,7 +111,6 @@ public class UserAgent extends Agent {
         } catch (Exception e) {
             results = "null";
             log.info(e.toString());
-            e.printStackTrace();
         }
 
         return results;

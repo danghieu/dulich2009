@@ -4,11 +4,13 @@
  */
 package com.ptit.travel.servlet.user;
 
+import com.ptit.travel.agent.communication.Message;
 import com.ptit.travel.common.CallAgent;
 import com.ptit.travel.servlet.HandleRequest;
 import java.io.*;
 import java.net.*;
 
+import java.util.ArrayList;
 import javax.servlet.*;
 import javax.servlet.http.*;
 import org.apache.log4j.Logger;
@@ -32,6 +34,8 @@ public class SearchServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");        
         
         String result = (String) request.getAttribute("result");
+        ArrayList<String> list = Message.split(result, Message.FIELD_SEPARATE);
+                
         PrintWriter out = response.getWriter();
         try {
             //* TODO output your page here
@@ -40,7 +44,7 @@ public class SearchServlet extends HttpServlet {
             out.println("<title>Servlet SearchServlet</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet SearchServlet at " + result + "</h1>");
+            out.println("<h1>Servlet SearchServlet at " + list.toString() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         //*/
