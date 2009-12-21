@@ -291,7 +291,7 @@ public class Message {
     }
 
     public static ACLMessage createInformMessage(Agent sender, ArrayList<String> recieverNames,
-            String content, String language, String protocol, String conversationId) {
+            String content, String language, String protocol, String conversationId, String replyWith) {
 
         log.info("Preparing inform message...");
         //String content = resource2RDF(r);
@@ -305,6 +305,7 @@ public class Message {
         m.setOntology(Ontology.BASE);
         m.setProtocol(protocol);
         m.setConversationId(conversationId);
+        m.setReplyWith(replyWith);
         m.setContent(content);
         log.debug("message prepared for " + recieverNames.toString() + ": " + m);
         return m;
@@ -372,6 +373,35 @@ public class Message {
         return m;
     }
 
+    public static ACLMessage createReplyMessage(Agent sender, String reciever, ArrayList<String> contents, 
+            String language, String protocol, String conversationId, String replyWith) {
+
+        log.info("Preparing inform message...");
+        //String content = resource2RDF(r);
+        ACLMessage m = new ACLMessage(ACLMessage.INFORM);
+        m.setSender(sender.getAID());
+
+        m.addReceiver(new AID((String) reciever, false));
+
+        m.setLanguage(language);
+        m.setOntology(Ontology.BASE);
+        m.setProtocol(protocol);
+        m.setConversationId(conversationId);
+        
+        m.setInReplyTo(replyWith);
+        String content = "";
+        int size = contents.size();
+        for (int i = 0; i < size; i++) {
+            content += contents.get(i);
+            if (i < size - 1) {
+                content += Message.OBJECT_SEPARATE;
+            }
+        }
+        m.setContent(content);
+        log.debug("message prepared for " + reciever.toString() + ": " + m);
+        return m;
+    }
+
     /**
      * This method used to forward msg from USER agent to OTHER agents
      * @param sender
@@ -382,7 +412,7 @@ public class Message {
      * @throws java.lang.Exception
      */
     public static ACLMessage createForwardMessage(Agent sender,
-            ArrayList<String> recieverNames, ACLMessage msg,String replyWith) throws Exception {
+            ArrayList<String> recieverNames, ACLMessage msg, String replyWith) throws Exception {
 
         log.info("Preparing inform message...");
         //String content = resource2RDF(r);
@@ -391,13 +421,13 @@ public class Message {
         for (int i = 0; i < recieverNames.size(); i++) {
             m.addReceiver(new AID((String) recieverNames.get(i), false));
         }
-        
+
         m.setContent(msg.getContent());
         m.setLanguage(msg.getLanguage());
         m.setOntology(msg.getOntology());
         m.setProtocol(msg.getProtocol());
         m.setConversationId(msg.getConversationId());
-        
+
         m.setReplyWith(replyWith);
         log.debug("message prepared for " + recieverNames.toString() + ": " + m);
         return m;
@@ -413,7 +443,7 @@ public class Message {
      * @throws java.lang.Exception
      */
     public static ACLMessage createForwardMessage(Agent sender,
-            String reciever, ACLMessage msg,String inReplyTo) throws Exception {
+            String reciever, ACLMessage msg, String inReplyTo) throws Exception {
 
         log.info("Preparing inform message...");
         //String content = resource2RDF(r);
@@ -426,7 +456,7 @@ public class Message {
         m.setOntology(msg.getOntology());
         m.setProtocol(msg.getProtocol());
         m.setConversationId(msg.getConversationId());
-        
+
         m.setInReplyTo(inReplyTo);
         log.debug("message prepared for " + reciever + ": " + m);
         return m;

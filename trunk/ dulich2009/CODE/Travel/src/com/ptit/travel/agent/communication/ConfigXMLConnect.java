@@ -21,7 +21,7 @@ public class ConfigXMLConnect {
      *  Properties file 
      */
     static java.util.Properties config = null;
-    static String propertyFile = "conf/ConfigXMLConnect.properties";
+    static String propertyFile = "c:/ConfigXMLConnect.properties";
     /**
      *  Operators file name.
      */
@@ -44,7 +44,7 @@ public class ConfigXMLConnect {
 
             inputStream.close();
 
-            //config.load(Class.forName("com.ptit.travel.agent.onto.ConfigXMLConnect").getResourceAsStream(propertyFile));
+//            config.load(Class.forName("com.ptit.travel.agent.onto.ConfigXMLConnect").getResourceAsStream(propertyFile));
             // Test
             log.debug("property file loaded from " + propertyFile);
         //////
@@ -59,8 +59,7 @@ public class ConfigXMLConnect {
 
     public static int nextPort(String key) {
         int port = 0;
-        try {
-            key = "PORT_" + key;
+        try {            
             int span = Integer.parseInt(config.getProperty("SPAN"));
             port = Integer.parseInt(config.getProperty(key)) + span;
             if (port > 65000) {
