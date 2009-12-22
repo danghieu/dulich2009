@@ -174,84 +174,6 @@ function view_composer2(ob1) {
 
 			
 
-			if (document.book2.ngayve.value == "") {
-
-				alert ("B?n hãy nh?p Ngày v? c?a b?n !");
-
-				document.book2.ngayve.focus();
-
-				return false;
-
-			}
-
-
-
-			
-
-			if (document.book2.hoten.value == "") {
-
-				alert ("B?n hãy nh?p tên c?a b?n !");
-
-				document.book2.hoten.focus();
-
-				return false;
-
-			}
-
-			if (document.book2.email.value == "") {
-
-				alert ("B?n hãy nh?p e-mail!");
-
-				document.book2.email.focus();
-
-				return false;
-
-			} else {
-
-				var check = emailcheck2(document.book2.email.value)
-
-				if (!check) {
-
-					alert("Sai d?nh d?ng E-mail !");
-
-					document.book2.email.focus();
-
-					return false;
-
-				}
-
-			}
-
-			
-
-			if (document.book2.dienthoai.value == "") {
-
-				alert ("B?n hãy nh?p Ði?n tho?i c?a b?n !");
-
-				document.book1.dienthoai.focus();
-
-				return false;
-
-			}
-
-			if (document.book2.yeucau.value == "") {
-
-				alert ("B?n hãy nh?p Yêu c?u c?a b?n !");
-
-				document.book2.yeucau.focus();
-
-				return false;
-
-			}
-
-			if (selecteED == "0") {
-
-				alert ("B?n hãy ch?n M?c bi?t dulichhe.com t? dâu ! ");
-
-				return false;
-
-			}
-
 		}
 
 	
@@ -427,12 +349,12 @@ function view_composer2(ob1) {
                                           <tr align="left" valign="top">
 
                                             <td height="37" valign="middle">
-<input name="ngaybay1" id="ngaybay1" value="" type="hidden">
+<input name="ngaybay" id="ngaybay" value="" type="hidden">
 <input name="hienthingaybay1" type="text" class="style18" id="hienthingaybay1" size="16">
     <span id="btnngaybay1" title="Select publishing date">
     <a href="javascript:%20void(0);"><img src="vembay.php_files/img.gif" border="0"></a></span>
 <script type="text/javascript">
-    Calendar.setup({inputField : "ngaybay1", ifFormat : "%Y-%m-%d", displayArea : "hienthingaybay1", daFormat : "%d-%m-%Y", button : "btnngaybay1", showsTime : false});
+    Calendar.setup({inputField : "ngaybay", ifFormat : "%Y-%m-%d", displayArea : "hienthingaybay1", daFormat : "%Y-%m-%d", button : "btnngaybay1", showsTime : false});
 </script></td>
 
                                             <td valign="middle"><select name="giobay" class="style18" id="giobay2">
@@ -494,9 +416,9 @@ function view_composer2(ob1) {
 
                                             <td valign="middle"><select name="hangve" class="style18" id="hangve2">
 
-                                            <option selected="selected">Economy</option>
+                                            <option selected="selected" value="economy">Phổ thông</option>
 
-                                                <option>Business</option>
+                                                <option value="business">Doanh nhân</option>
 
                                             </select></td>
                                           </tr>
