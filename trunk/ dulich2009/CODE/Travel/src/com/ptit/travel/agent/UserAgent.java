@@ -49,7 +49,6 @@ public class UserAgent extends Agent {
     private static Logger log = Logger.getLogger(UserAgent.class.getName());
     WebServer xmlrpcServer;
     private static final int port = ConfigXMLConnect.PORT_USER;
-    
     // message queue of agent contains every satisfactory replied messages 
     private Hashtable<String, ArrayList<String>> msgQueue = new Hashtable<String, ArrayList<String>>();
 
@@ -97,11 +96,21 @@ public class UserAgent extends Agent {
     }
 
     public String searchResults(String conversationId) {
+        
+        ArrayList<String> msgs = null;
+        while (msgs == null) {
+            try {
+                Thread.sleep(100);
+            } catch (Exception e) {
+                //log.info(e.toString());
+            }
+            msgs = msgQueue.get(conversationId);            
+        }
+        log.info("|| message Results:" + msgs);
+        msgQueue.remove(conversationId);
         String results = "";
         try {
-            ArrayList<String> msgs = msgQueue.get(conversationId);
-            log.info("|| message Results:" + msgs);
-            msgQueue.remove(conversationId);
+            
             for (int i = 0; i < msgs.size(); i++) {
                 results += msgs.get(i).trim();
                 if (i < msgs.size() - 1) {
@@ -292,15 +301,14 @@ public class UserAgent extends Agent {
                         // collect agents who satisfy action
                         //receivers = agentDAO.getAgents("", "hotel");
                         // FOR TEST ONLY
-                        
+
                         receivers = new ArrayList<String>();
                         receivers.add("ControllerAgent");
-                        String replyWith = "[" + myAgent.getLocalName() + "]"
-						+ System.currentTimeMillis();
+                        String replyWith = "[" + myAgent.getLocalName() + "]" + System.currentTimeMillis();
                         // Send the cfp to all agents
-                        ACLMessage msg = Message.createInformMessage(a, receivers, content, Language.HOTEL, 
+                        ACLMessage msg = Message.createInformMessage(a, receivers, content, Language.HOTEL,
                                 protocol, conversationId, replyWith);
-                        
+
                         // value
                         log.info("=== Preparing msg to send msg to: " + receivers.toString());
                         myAgent.send(msg);
@@ -387,7 +395,6 @@ public class UserAgent extends Agent {
         }
 
         public void action() {
-            
         }
 
         public boolean done() {
@@ -417,7 +424,6 @@ public class UserAgent extends Agent {
         }
 
         public void action() {
-            
         }
 
         public boolean done() {
@@ -447,7 +453,6 @@ public class UserAgent extends Agent {
         }
 
         public void action() {
-            
         }
 
         public boolean done() {
@@ -477,7 +482,6 @@ public class UserAgent extends Agent {
         }
 
         public void action() {
-            
         }
 
         public boolean done() {
@@ -488,8 +492,8 @@ public class UserAgent extends Agent {
 
 
     @Override
-    public void takeDown(){
-        if(xmlrpcServer != null){
+    public void takeDown() {
+        if (xmlrpcServer != null) {
             log.debug("XMLRPC shut down  on " + port);
             xmlrpcServer.shutdown();
             xmlrpcServer = null;

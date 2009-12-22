@@ -33,9 +33,8 @@ public class UserServlet extends HttpServlet {
     private String agentHost = ConfigXMLConnect.HOST_USER;
     /**
      * Generate a new port for user agent
-     */ 
+     */
     private int agentPort = ConfigXMLConnect.PORT_USER;
-    
     private CallAgent callAgent = new CallAgent(agentHost, agentPort);
     private AgentController agentController = null;
     private ContainerController containerController = null;
@@ -43,11 +42,10 @@ public class UserServlet extends HttpServlet {
     private String host = "localhost";
     private String port = "1099";
     private String className = "com.ptit.travel.agent.UserAgent";
+
     /**
      * Huy 1 agent khi het phien lam viec, timeout hoac tat agent
      */
-    
-
     @Override
     public void destroy() {
         super.destroy();
@@ -82,7 +80,7 @@ public class UserServlet extends HttpServlet {
             log.info("Call agent on port " + agentPort);
             // Generate Next port for next UserAgent
             ConfigXMLConnect.nextPort("PORT_USER");
-            
+
             try {
                 log.info("|| Starting agent: " + nickName);
                 ArrayList arr = AgentManager.startAgent(host, port, nickName, className, false);
@@ -119,7 +117,7 @@ public class UserServlet extends HttpServlet {
      * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
      */
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        process(request,response);
+        process(request, response);
     }
 
     protected void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -187,19 +185,10 @@ public class UserServlet extends HttpServlet {
         try {
             log.info("Call " + function + "()");
             callAgent.callTheAgentViaXmlRpc(function, params);
-            int times = 5; // max times 
+            log.info("Call " + function + "Results()");
+            result = callAgent.callTheAgentViaXmlRpc(function + "Results", msgId);
 
-            while ("null".equals(result) && times > 0) {
-                try {
-                    Thread.sleep(100);
-                } catch (Exception e) {
-                    log.info(e.toString());
-                }
-//                times--;
-                log.info("Call " + function + "Results()");
-                result = callAgent.callTheAgentViaXmlRpc(function + "Results", msgId);
 
-            }
         } catch (Exception e) {
             log.error(e.toString());
             e.printStackTrace();
@@ -231,7 +220,8 @@ public class UserServlet extends HttpServlet {
         int length = params.length;
         for (int i = 0; i < length; i++) {
             param = (String) params[i];
-            msg +=  request.getParameter(param);//param + ": " +
+            msg += request.getParameter(param);//param + ": " +
+
             if (i < length - 1) {
                 msg += Message.FIELD_SEPARATE;
 
@@ -263,7 +253,6 @@ public class UserServlet extends HttpServlet {
          * 
          * Neu state = active: khong tao them agent
          */
-        
         HttpSession session = request.getSession();
         // if satified
         if (containerController != null) {
@@ -286,18 +275,18 @@ public class UserServlet extends HttpServlet {
     }
 
     public void logout(HttpServletRequest request) {
-                log.info("User logout action...");
+        log.info("User logout action...");
         log.debug("# Begin method user logout");
-        
-        try{
+
+        try {
             HttpSession session = request.getSession();
             session.invalidate();
-        }catch(Exception ex){
+        } catch (Exception ex) {
             log.info("Error while perform user logout action..");
             log.error(ex.getMessage());
         }
         log.debug("# End method user logout action");
         log.info("User logout has been done!");
-        
+
     }
 }
