@@ -12,12 +12,9 @@ import java.util.Iterator;
 
 import com.ptit.travel.agent.communication.*;
 import com.ptit.travel.agent.memory.*;
-import com.ptit.travel.agent.onto.*;
 
 import com.hp.hpl.jena.rdf.model.Resource;
 
-import com.ptit.travel.beans.SerializableBean;
-import com.ptit.travel.beans.hotel.HotelAvailability;
 import com.ptit.travel.jane.hotel.HotelProcess;
 import jade.core.Agent;
 import jade.core.behaviours.*;
@@ -124,8 +121,8 @@ public class HotelAgent extends Agent {
                             //if (Protocol.HOTEL_AVAIL.equals(protocol)) 
                             {
                                 // FOR TEST
-//                                OntModel ontModel = HotelProcess.insertMsg_HotelSearchRQ(content, 0);
-//                                content = HotelProcess.search(ontModel);
+                                OntModel ontModel = HotelProcess.insertMsg_HotelSearchRQ(content, 0);
+                                content = HotelProcess.search(ontModel);
                                 ACLMessage reply = Message.createReplyMessage(msg, content);
                                 
                                 log.info("=== [HotelAgent] sent reply message " + reply);
