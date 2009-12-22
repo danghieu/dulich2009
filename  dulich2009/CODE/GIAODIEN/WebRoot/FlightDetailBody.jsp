@@ -418,47 +418,16 @@ function view_composer1(ob1) {
 
 
 
-			if (document.book1.diden.value == "") {
-
-				alert ("Bạn hãy nhập nơi đến của bạn !");
-
-				document.book1.diden.focus();
-
-				return false;
-
-			}
-
-			
-
-			if (document.book1.ngaybay.value == "") {
-
-				alert ("Bạn hãy nhập Ngày bay của bạn !");
-
-				document.book1.ngaybay.focus();
-
-				return false;
-
-			}
-
-			
-
-			if (document.book1.ngayve.value == "") {
-
-				alert ("Bạn hãy nhập Ngày về của bạn !");
-
-				document.book1.ngayve.focus();
-
-				return false;
-
-			}
 
 
 
-			if (document.book1.hoten.value == "") {
+
+
+			if (document.book1.fullName.value == "") {
 
 				alert ("Bạn hãy nhập tên của bạn !");
 
-				document.book1.hoten.focus();
+				document.book1.fullName.focus();
 
 				return false;
 
@@ -488,11 +457,11 @@ function view_composer1(ob1) {
 
 			}
 
-			if (document.book1.dienthoai.value == "") {
+			if (document.book1.phoneNumber.value == "") {
 
 				alert ("Bạn hãy nhập Điện thoại của bạn !");
 
-				document.book1.dienthoai.focus();
+				document.book1.phoneNumber.focus();
 
 				return false;
 
@@ -500,23 +469,9 @@ function view_composer1(ob1) {
 
 			
 
-			if (document.book1.yeucau.value == "") {
 
-				alert ("Bạn hãy nhập Yêu cầu của bạn !");
 
-				document.book1.yeucau.focus();
-
-				return false;
-
-			}
-
-			if (selecteED == "0") {
-
-				alert ("Bạn hãy chọn Mục biết dulichhe.com từ đâu ! ");
-
-				return false;
-
-			}
+		
 
 		}
 
@@ -554,6 +509,11 @@ function view_composer1(ob1) {
               <div align="center" class="style1 style2">Th&ocirc;ng 
                 tin chuy&#7871;n bay </div>
           </div></td>
+        </tr>
+          <tr>
+          <td width="31%" height="39" align="right" valign="middle" bgcolor="#FFFFFF"><div align="center" class="style5">Đại lý bán vé máy bay:</div></td>
+          <td width="69%" bgcolor="#FFFFFF"></td> - 
+          <td width="69%" bgcolor="#FFFFFF"></td>
         </tr>
         <tr>
           <td width="31%" height="39" align="right" valign="middle" bgcolor="#FFFFFF"><div align="center" class="style5">H&atilde;ng h&agrave;ng kh&ocirc;ng </div></td>
@@ -616,11 +576,11 @@ function view_composer1(ob1) {
 
                                                       <td width="173" align="left">H&#7885; t&ecirc;n </td>
 
-                                                      <td width="882" align="left" valign="top"><input name="hoten" class="form" id="hoten" size="30" type="text"> 
-                                                      Nam/N&#7919;:  <select name="gioitinh" class="form_date" id="select">
+                                                      <td width="882" align="left" valign="top"><input name="fullName" class="form" id="fullName" size="30" type="text"> 
+                                                      Nam/N&#7919;:  <select name="sex" class="form_date" id="select">
                                                        
-                                                        <option value="nam" selected="selected">Nam </option>
-                                                        <option value="nu">Nữ </option>
+                                                        <option value="male" selected="selected">Nam </option>
+                                                        <option value="female">Nữ </option>
                                                         
                                                       </select></td>
 													  
@@ -639,21 +599,21 @@ function view_composer1(ob1) {
 
                                                       <td align="left">&#272;i&#7879;n tho&#7841;i </td>
 
-                                                      <td align="left" valign="top"><input name="dienthoai" class="form" id="dienthoai" type="text"></td>
+                                                      <td align="left" valign="top"><input name="phoneNumber" class="form" id="phoneNumber" type="text"></td>
 
                                                     </tr>
 													<tr>
 
                                                       <td align="left">&#272;&#7883;a ch&#7881; </td>
 
-                                                      <td align="left" valign="top"><input name="dienthoai" class="form" id="dienthoai" type="text"></td>
+                                                      <td align="left" valign="top"><input name="specificAddress" class="form" id="specificAddress" type="text"></td>
 
                                                     </tr>
 													<tr>
 
                                                       <td align="left">Th&agrave;nh ph&#7889; </td>
 
-                                                      <td align="left" valign="top"><input name="dienthoai" class="form" id="dienthoai" type="text"></td>
+                                                      <td align="left" valign="top"><input name="city" class="form" id="city" type="text"></td>
 
                                                     </tr>
 													
@@ -662,7 +622,7 @@ function view_composer1(ob1) {
 
                                                       <td width="173">T&ecirc;n n&#432;&#7899;c </td>
 
-                                                      <td valign="top"><select name="country" class="form_date" id="nhomtuoi">
+                                                      <td valign="top"><select name="country" class="form_date" id="country">
 
                                                      <option value="" selected="selected">Chọn tên nước</option>
                             <option value="Albania">Albania </option>
