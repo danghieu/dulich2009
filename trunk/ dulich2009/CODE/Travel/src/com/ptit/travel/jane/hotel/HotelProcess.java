@@ -343,14 +343,22 @@ public class HotelProcess {
                 ind.addProperty(Hotel.endTime, arr.get(2));
 
             }
-
-
-
-
+       
             if (arr.get(3) != null) {
                 ind.addProperty(Hotel.city, arr.get(3));
 
             }
+            
+           
+             if (arr.get(4) != null) {
+                ind.addProperty(Hotel.hasActivity, arr.get(4));
+
+            }
+             if (arr.get(5) != null) {
+                ind.addProperty(Hotel.hotelActivities, arr.get(5));
+
+            }
+
             /* -- trong truong hop du lieu la so  
              if (arr.get(2) != null) {
             //	ind.addProperty(Hotel.LargestSeatingCapacity,arr.get(4));
@@ -470,7 +478,7 @@ public class HotelProcess {
 
 
 
-        String input = "MeetingRoom" + Message.FIELD_SEPARATE + s_begin + Message.FIELD_SEPARATE + s_end + Message.FIELD_SEPARATE + "Nam Dinh";
+        String input = "MeetingRoom" + Message.FIELD_SEPARATE + s_begin + Message.FIELD_SEPARATE + s_end + Message.FIELD_SEPARATE + "Nam Dinh"+Message.FIELD_SEPARATE + "Spa"+Message.FIELD_SEPARATE + "Playroom";
         ontmodel = hotelprocess.insertMsg_HotelSearchRQ(input, 3);
         hotelprocess.search(ontmodel);
 
