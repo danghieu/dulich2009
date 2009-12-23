@@ -5,6 +5,7 @@
 package com.ptit.travel.agent;
 
 import com.hp.hpl.jena.ontology.OntModel;
+import com.hp.hpl.jena.rdf.model.ModelFactory;
 import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.Iterator;
@@ -23,6 +24,8 @@ import jade.lang.acl.MessageTemplate;
 
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
+
+
 
 /**
  * Hotel Agent runs also XML-RPC server on port 8000 and public methods can be
@@ -97,6 +100,7 @@ public class HotelAgent extends Agent {
     class HandleRecivedMessages extends SimpleBehaviour {
 
         private boolean finished = false;
+        HotelProcess hotel = new HotelProcess(); 
 
         public HandleRecivedMessages() {
         }
@@ -116,14 +120,23 @@ public class HotelAgent extends Agent {
 
                         case ACLMessage.INFORM:
 
+                               
                             // action of message <-> protocol of ACL
                             String protocol = msg.getProtocol();
                             //if (Protocol.HOTEL_AVAIL.equals(protocol)) 
                             {
                                 // FOR TEST
-                                log.info("Call module DB with String input: " + content);
-                                content = HotelProcess.search(content);
-                                log.info("Result: " + content);
+                                log.info("Call module DB with String input: " + content);// chu nay hien thi ra roi con ju
+                               
+//                                OntModel ont = ModelFactory.createOntologyModel();
+//                                System.out.println("hotel agent ontmodel");// nhung dong nay co thay no chay dau
+//                                ont = HotelProcess.insertMsg_HotelSearchRQ(content, 3);
+//                                
+//                                ont.write(System.out);// may in ra o day con j, thi dag thu goi den co chay ko ma
+//                     
+                                
+                                content = hotel.search(content);// chi goi DB o day
+                                log.info("RETURN RESULT: " + content);
                                 ACLMessage reply = Message.createReplyMessage(msg, content);
                                 
                                 log.info("=== [HotelAgent] sent reply message " + reply);

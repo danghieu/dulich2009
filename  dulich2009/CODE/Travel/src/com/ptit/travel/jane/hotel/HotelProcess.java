@@ -14,6 +14,7 @@ import com.hp.hpl.jena.ontology.DatatypeProperty;
 import com.hp.hpl.jena.ontology.Individual;
 import com.hp.hpl.jena.ontology.OntClass;
 import com.hp.hpl.jena.ontology.OntModel;
+import com.hp.hpl.jena.ontology.OntModelSpec;
 import com.hp.hpl.jena.ontology.OntResource;
 import com.hp.hpl.jena.query.Query;
 import com.hp.hpl.jena.query.QuerySolution;
@@ -30,6 +31,7 @@ import java.io.FileOutputStream;
 
 
 import com.hp.hpl.jena.util.iterator.ExtendedIterator;
+import org.apache.log4j.Logger;
 
 /**
  *
@@ -37,6 +39,7 @@ import com.hp.hpl.jena.util.iterator.ExtendedIterator;
  */
 public class HotelProcess {
 
+    private static Logger log = Logger.getLogger(HotelProcess.class.getName());
     /**
      * Tim kiem theo mot so dieu kien, gia tri tra ve la Model chua cac khach san va thog tin ve cac khach san nay
      * @param bar
@@ -307,12 +310,13 @@ public class HotelProcess {
      * @param total
      * @return
      */
-    public static OntModel insertMsg_HotelSearchRQ(String input, long total) {
+    public OntModel insertMsg_HotelSearchRQ(String input, long total) {
         ArrayList<String> arr = new ArrayList<String>();
 
         // Ham phan tach thog tin dua vao
         arr = Message.split(input, Message.FIELD_SEPARATE);
 
+        log.info("Resulted SPLIT: " + arr.toString());
         // Tao mot OntModel trong, de dua cac thong tin vao 1 model
         OntModel model = ModelFactory.createOntologyModel();
         Individual ind = null;
@@ -381,7 +385,8 @@ public class HotelProcess {
      * @param ontmodel: model chua thong tin yeu cau tim kiem
      * @return
      */
-    public static String search(String input) {
+    public  String search(String input) {
+        log.info("Starting search with: " + input);
         //  Database.LoadOnt2Database();
         String ont = "http://www.owl-ontologies.com/Travel.owl#";
         // lay khung du lieu tu owl
@@ -403,13 +408,15 @@ public class HotelProcess {
         OntClass cl = model.getOntClass(ont + "Msg_HotelSearchRS");
        
 
+        log.info("Insert msg to infer");
         // add model yeu cau vao ontology de tao ra 1 model moi chua tat ca cac rang buoc ke ca luat
-        Model ontmodel = HotelProcess.insertMsg_HotelSearchRQ(input, System.currentTimeMillis());
+        Model ontmodel = insertMsg_HotelSearchRQ(input, 3);
         Model model1 = model.add(ontmodel);
         ExtendedIterator<?> extendedIterator = cl.listInstances(); // lay tat ca cac the hien cua cai lop day
 
         String s = null;
 
+        
         // lay tat cac cac ket qua thoa man
         while (extendedIterator.hasNext()) {
             OntResource resource = (OntResource) extendedIterator.next();
@@ -432,7 +439,8 @@ public class HotelProcess {
             int index = hotelName.indexOf("^^");
             String hotelname = hotelName.substring(0, index);
                System.out.println("" +hotelname );
-            String queryString = null;
+            // co nghia la no ko in ra hotelname a?
+               // ko goi duoc ket qua ay, ko goi duoc cac ham trong lop nay. vo ly nhi ^^|
 
            s=printValues(hotelname);
             
@@ -454,7 +462,8 @@ public class HotelProcess {
 
         //dua ontology vao 1 model
         OntModel model = ModelFactory.createOntologyModel(
-                PelletReasonerFactory.THE_SPEC, null);
+                OntModelSpec.OWL_MEM_RULE_INF, null);
+                //PelletReasonerFactory.THE_SPEC, null);
         try {
             model.read(new FileInputStream(new File(file)), "");
         } catch (FileNotFoundException e) {
@@ -519,6 +528,9 @@ public class HotelProcess {
         System.out.println();
     }
 
+    public void hello(){
+        System.out.println("Hello world");
+    }
     public static void main(String s[]) throws Exception {
         HotelProcess hotelprocess = new HotelProcess();
 //        hotelprocess.searchHotel(false, true, false, false, false, "inside", false, true, "Nam Dinh");
@@ -531,9 +543,10 @@ public class HotelProcess {
 
 
 
+        hotelprocess.hello();
         String input = "Nam Dinh" + Message.FIELD_SEPARATE + s_begin + Message.FIELD_SEPARATE + s_end + Message.FIELD_SEPARATE + "MeetingRoom" + Message.FIELD_SEPARATE + "Spa" + Message.FIELD_SEPARATE + "Playroom";
     //    ontmodel = hotelprocess.insertMsg_HotelSearchRQ(input, 3);
-       String ss = HotelProcess.search(input);
+       String ss = hotelprocess.search(input);
        System.out.print("ss="+ss);
        // printValues("<http://www.owl-ontologies.com/Travel.owl#Hotel_1>");
 
