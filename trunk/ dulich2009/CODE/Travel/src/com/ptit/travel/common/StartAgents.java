@@ -146,7 +146,7 @@ public class StartAgents {
 //        test.testSplitMessage();
         //test.testConfigXMLConnect();
         //test.callTheAgentViaXmlRpc();
-        test.testCreateAgentCH();        
+        test.testCreateAgentUCH();        
     
     }
 
