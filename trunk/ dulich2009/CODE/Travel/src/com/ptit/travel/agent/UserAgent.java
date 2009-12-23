@@ -69,12 +69,12 @@ public class UserAgent extends Agent {
 //                "E:/Develop/Netbean/Travel/config/UserAgent.properties",
 //                this.getLocalName());// E:/Develop/Netbean/Travel/
 
-//        
-//        addBehaviour(new TickerBehaviour(this, 30000) {
-//            protected void onTick() {
-//                search("msg", "conversationId", "protocol");
-//            }
-//        });
+        
+        addBehaviour(new TickerBehaviour(this, 30000) {
+            protected void onTick() {
+                search("Nam Dinh", "conversationId", "protocol");
+            }
+        });
     }
 
     /**
