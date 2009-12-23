@@ -121,8 +121,9 @@ public class HotelAgent extends Agent {
                             //if (Protocol.HOTEL_AVAIL.equals(protocol)) 
                             {
                                 // FOR TEST
-                                OntModel ontModel = HotelProcess.insertMsg_HotelSearchRQ(content, 0);
-                                content = HotelProcess.search(ontModel);
+                                log.info("Call module DB with String input: " + content);
+                                content = HotelProcess.search(content);
+                                log.info("Result: " + content);
                                 ACLMessage reply = Message.createReplyMessage(msg, content);
                                 
                                 log.info("=== [HotelAgent] sent reply message " + reply);
