@@ -307,7 +307,7 @@ public class HotelProcess {
      * @param total
      * @return
      */
-    public static OntModel insertMsg_HotelSearchRQ(String input, int total) {
+    public static OntModel insertMsg_HotelSearchRQ(String input, long total) {
         ArrayList<String> arr = new ArrayList<String>();
 
         // Ham phan tach thog tin dua vao
@@ -381,7 +381,7 @@ public class HotelProcess {
      * @param ontmodel: model chua thong tin yeu cau tim kiem
      * @return
      */
-    public static String search(OntModel ontmodel) {
+    public static String search(String input) {
         //  Database.LoadOnt2Database();
         String ont = "http://www.owl-ontologies.com/Travel.owl#";
         // lay khung du lieu tu owl
@@ -404,6 +404,7 @@ public class HotelProcess {
        
 
         // add model yeu cau vao ontology de tao ra 1 model moi chua tat ca cac rang buoc ke ca luat
+        Model ontmodel = HotelProcess.insertMsg_HotelSearchRQ(input, System.currentTimeMillis());
         Model model1 = model.add(ontmodel);
         ExtendedIterator<?> extendedIterator = cl.listInstances(); // lay tat ca cac the hien cua cai lop day
 
@@ -531,8 +532,9 @@ public class HotelProcess {
 
 
         String input = "Nam Dinh" + Message.FIELD_SEPARATE + s_begin + Message.FIELD_SEPARATE + s_end + Message.FIELD_SEPARATE + "MeetingRoom" + Message.FIELD_SEPARATE + "Spa" + Message.FIELD_SEPARATE + "Playroom";
-        ontmodel = hotelprocess.insertMsg_HotelSearchRQ(input, 3);
-       String ss = HotelProcess.search(ontmodel);
+    //    ontmodel = hotelprocess.insertMsg_HotelSearchRQ(input, 3);
+       String ss = HotelProcess.search(input);
+       System.out.print("ss="+ss);
        // printValues("<http://www.owl-ontologies.com/Travel.owl#Hotel_1>");
 
     }
