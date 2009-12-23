@@ -140,6 +140,13 @@ public class StartAgents {
             
         
     }
+    /**
+     * chi can chay file nay thoi, no khoi tao 3 angen User, Controller, HOtel luon.
+     * ko can hay servlet
+     * 
+     * 
+     * @param args
+     */
     public static void main(String[] args) {
         // TODO Auto-generated method stub
         StartAgents test = new StartAgents();
