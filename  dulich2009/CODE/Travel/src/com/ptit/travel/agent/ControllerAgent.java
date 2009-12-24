@@ -69,6 +69,7 @@ public class ControllerAgent extends Agent {
 
         public void action() {
 
+            String content = "";
             synchronized (this) {
                 try {
                     switch (step) {
@@ -121,7 +122,10 @@ public class ControllerAgent extends Agent {
                                      */
                                     //FOR TEST
                                     log.info("=== One more received message from " + replyMsg.getSender().getLocalName());
-                                    msgsContent.add(replyMsg.getContent());
+                                    content = replyMsg.getContent();
+                                    String errorContent = "Agent not found: getContainerID() failed to find agent";
+                                    if(content != null && !content.contains(errorContent));
+                                        msgsContent.add(content);
                                 }
                                 repliesCnt++;
                                 log.info("|| RECEIVERS: " + receivers.size() + " || repliesCnt: " + repliesCnt);
