@@ -310,7 +310,7 @@ public class HotelProcess {
      * @param total
      * @return
      */
-    public OntModel insertMsg_HotelSearchRQ(String input, long total) {
+    public static OntModel insertMsg_HotelSearchRQ(String input, long total) {
         ArrayList<String> arr = new ArrayList<String>();
 
         // Ham phan tach thog tin dua vao
@@ -385,7 +385,7 @@ public class HotelProcess {
      * @param ontmodel: model chua thong tin yeu cau tim kiem
      * @return
      */
-    public  String search(String input) {
+    public  static String search(String input) {
         log.info("Starting search with: " + input);
         //  Database.LoadOnt2Database();
         String ont = "http://www.owl-ontologies.com/Travel.owl#";
@@ -442,7 +442,7 @@ public class HotelProcess {
             // co nghia la no ko in ra hotelname a?
                // ko goi duoc ket qua ay, ko goi duoc cac ham trong lop nay. vo ly nhi ^^|
 
-           s=printValues(hotelname);
+           s = printValues(hotelname);
             
         }
 
@@ -462,8 +462,8 @@ public class HotelProcess {
 
         //dua ontology vao 1 model
         OntModel model = ModelFactory.createOntologyModel(
-                OntModelSpec.OWL_MEM_RULE_INF, null);
-                //PelletReasonerFactory.THE_SPEC, null);
+                //OntModelSpec.OWL_MEM_RULE_INF, null);
+                PelletReasonerFactory.THE_SPEC, null);
         try {
             model.read(new FileInputStream(new File(file)), "");
         } catch (FileNotFoundException e) {
@@ -546,7 +546,7 @@ public class HotelProcess {
         hotelprocess.hello();
         String input = "Nam Dinh" + Message.FIELD_SEPARATE + s_begin + Message.FIELD_SEPARATE + s_end + Message.FIELD_SEPARATE + "MeetingRoom" + Message.FIELD_SEPARATE + "Spa" + Message.FIELD_SEPARATE + "Playroom";
     //    ontmodel = hotelprocess.insertMsg_HotelSearchRQ(input, 3);
-       String ss = hotelprocess.search(input);
+       String ss = HotelProcess.search(input);
        System.out.print("ss="+ss);
        // printValues("<http://www.owl-ontologies.com/Travel.owl#Hotel_1>");
 
