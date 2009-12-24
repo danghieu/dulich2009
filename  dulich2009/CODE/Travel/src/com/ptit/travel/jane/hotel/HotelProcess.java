@@ -385,7 +385,7 @@ public class HotelProcess {
      * @param ontmodel: model chua thong tin yeu cau tim kiem
      * @return
      */
-    public  static String search(String input) {
+    public static String search(String input) {
         log.info("Starting search with: " + input);
         //  Database.LoadOnt2Database();
         String ont = "http://www.owl-ontologies.com/Travel.owl#";

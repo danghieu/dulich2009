@@ -70,8 +70,10 @@
                                 <td>Thành phố</td>
                                 <td><select name="city" id="city" style="width: 140px;" class="text_form_search" onChange="javascript:ajaxLoadURL('loader.php?mod=services&amp;act=city&amp;q='+this.value,'GET','','city',2,2);s_cat_id.value=this.value;">
                                         <option value="null"> Lựa chọn </option>
-                                        <option value="HaiPhong">Hải Phòng</option>
-										<option value="KhanhHoa">Khánh Hòa</option>
+                                        <option value="Ha Noi">Hà Nội</option>
+                                        <option value="Hai Phong">Hải Phòng</option>
+                                        <option value="Nam Dinh">Nam Định</option>
+										<option value="Khanh Hoa">Khánh Hòa</option>
                                 </select>								  </td>
                                 <td>Vị tr&iacute;<br></td>
                                 <td><select name="location" id="v" style="width: 140px;" class="text_form_search" onChange="javascript:ajaxLoadURL('loader.php?mod=services&amp;act=city&amp;q='+this.value,'GET','','city',2,2);s_cat_id.value=this.value;">
