@@ -500,6 +500,10 @@ public class Message {
     public static ArrayList<String> split(String input, String separate) {
         ArrayList<String> arr = new ArrayList<String>();
         //String separate = Message.OBJECT_SEPARATE;
+        if(input == null){
+            log.error("input: " + input);
+            return null;
+        }
         int beginIndex = 0;
         int endIndex = input.indexOf(separate);
         int maxIndex = input.lastIndexOf(separate);

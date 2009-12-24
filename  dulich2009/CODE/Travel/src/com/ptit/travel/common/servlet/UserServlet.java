@@ -185,8 +185,8 @@ public class UserServlet extends HttpServlet {
         try {
             log.info("Call " + function + "()");
             callAgent.callTheAgentViaXmlRpc(function, params);
-            log.info("Call " + function + "Results()");
-            result = callAgent.callTheAgentViaXmlRpc(function + "Results", msgId);
+            log.info("Call getResults()");
+            result = callAgent.callTheAgentViaXmlRpc(nickName + ".getResults", msgId);
 
 
         } catch (Exception e) {
