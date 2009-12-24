@@ -153,7 +153,7 @@ public class StartAgents {
 //        test.testSplitMessage();
         //test.testConfigXMLConnect();
         //test.callTheAgentViaXmlRpc();
-        test.testCreateAgentUCH();        
+        test.testCreateAgentCH();   // chi chay contrller & Hotel     
     
     }
 

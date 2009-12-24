@@ -27,6 +27,31 @@ import org.apache.log4j.PropertyConfigurator;
 
 
 
+import org.mindswap.pellet.jena.PelletReasonerFactory;
+
+import com.ptit.travel.agent.communication.Message;
+import java.io.*;
+import com.hp.hpl.jena.util.iterator.ExtendedIterator;
+import com.ptit.travel.jane.hotel.Hotel;
+import com.hp.hpl.jena.ontology.ObjectProperty;
+import com.hp.hpl.jena.ontology.DatatypeProperty;
+import com.hp.hpl.jena.ontology.Individual;
+import com.hp.hpl.jena.ontology.OntClass;
+import com.hp.hpl.jena.ontology.OntModel;
+import com.hp.hpl.jena.ontology.OntModelSpec;
+import com.hp.hpl.jena.ontology.OntResource;
+import com.hp.hpl.jena.query.Query;
+import com.hp.hpl.jena.query.QuerySolution;
+import com.hp.hpl.jena.query.QueryExecution;
+import com.hp.hpl.jena.query.QueryExecutionFactory;
+import com.hp.hpl.jena.query.QueryFactory;
+import com.hp.hpl.jena.query.ResultSet;
+import com.hp.hpl.jena.sparql.core.ResultBinding;
+import com.ptit.travel.moduleJDBC.Model.*;
+import java.util.*;
+import com.hp.hpl.jena.rdf.model.*;
+import java.io.FileOutputStream;
+
 /**
  * Hotel Agent runs also XML-RPC server on port 8000 and public methods can be
  * called by outside Behaviors:
@@ -135,7 +160,7 @@ public class HotelAgent extends Agent {
 //                                ont.write(System.out);// may in ra o day con j, thi dag thu goi den co chay ko ma
 //                     
                                 
-                                content = hotel.search(content);// chi goi DB o day
+                                content = search(content);// chi goi DB o day
                                 log.info("RETURN RESULT: " + content);
                                 ACLMessage reply = Message.createReplyMessage(msg, content);
                                 
@@ -158,8 +183,10 @@ public class HotelAgent extends Agent {
 
             }
             ;
+            
 
         }
+        
 
         public boolean done() {
             return finished;
@@ -177,7 +204,7 @@ public class HotelAgent extends Agent {
      * @param resource
      *            represents type of resource in Memory Model (OWL model)
      * 
-     */
+     
     public String search(String resource) {
         final String msgId = "102";// getLocalName() +
         // System.currentTimeMillis();
@@ -188,7 +215,7 @@ public class HotelAgent extends Agent {
         System.out.println(System.currentTimeMillis());
         return "ok";
     }
-
+*/
     public String getSearchResults(String msgId) {
         String results = "";
         try {
@@ -282,5 +309,198 @@ public class HotelAgent extends Agent {
             return false;
         // hotel
         }
+        
+       
     }
+    
+            public static OntModel insertMsg_HotelSearchRQ(String input, long total) {
+        ArrayList<String> arr = new ArrayList<String>();
+
+        // Ham phan tach thog tin dua vao
+        arr = Message.split(input, Message.FIELD_SEPARATE);
+
+        log.info("Resulted SPLIT: " + arr.toString());
+        // Tao mot OntModel trong, de dua cac thong tin vao 1 model
+        OntModel model = ModelFactory.createOntologyModel();
+        Individual ind = null;
+
+        try {
+
+            //tao ra 1 lop request de lay cac thong tin yeu cau
+            OntClass oc = model.createClass(Hotel.getURI() + "Msg_HotelSearchRQ");
+            ind = model.createIndividual(Hotel.getURI() + "Msg_HotelSearchRQ" + total, oc);
+
+            // them cac thuoc tinh vao ca the can tao
+//            if (arr.get(3) != null) {
+//                ind.addProperty(Hotel.roomType, arr.get(3));
+//
+//            }
+//
+//
+//            if (arr.get(1) != null) {
+//                ind.addProperty(Hotel.beginTime, arr.get(1));
+//
+//            }
+//
+//            if (arr.get(2) != null) {
+//                ind.addProperty(Hotel.endTime, arr.get(2));
+//
+//            }
+
+            if (arr.get(0) != null) {
+                ind.addProperty(Hotel.city, arr.get(0));
+
+            }
+
+
+//            if (arr.get(4) != null) {
+//                ind.addProperty(Hotel.hasActivity, arr.get(4));
+//
+//            }
+//            if (arr.get(5) != null) {
+//                ind.addProperty(Hotel.hotelActivities, arr.get(5));
+//
+//            }
+
+        /* -- trong truong hop du lieu la so  
+        if (arr.get(2) != null) {
+        //	ind.addProperty(Hotel.LargestSeatingCapacity,arr.get(4));
+        //ind.addLiteral(Hotel.LargestSeatingCapacity, Integer.parseInt(arr.get(2)));
+        ind.addLiteral(Hotel.LargestSeatingCapacity, Float.parseFloat(arr.get(2)));
+        
+        
+        System.out.print("giatri: " + Float.parseFloat(arr.get(4)));
+        }
+         */
+
+
+
+        } catch (Exception e) {
+            System.out.println(e.toString());
+
+        }
+        model.write(System.out);
+        return model;
+    }
+
+    /**
+     * Tra ve danh sach ten cac khach san thoa man
+     * @param ontmodel: model chua thong tin yeu cau tim kiem
+     * @return
+     */
+    public static String search(String input) {
+        log.info("Starting search with: " + input);
+        //  Database.LoadOnt2Database();
+        String ont = "http://www.owl-ontologies.com/Travel.owl#";
+        // lay khung du lieu tu owl
+        String file = "C://apache-tomcat-6.0.18/webapps/MyOntology/hotel_yen6.owl";
+
+        //dua ontology vao 1 model
+        OntModel model = ModelFactory.createOntologyModel(
+                PelletReasonerFactory.THE_SPEC, null);
+        try {
+            model.read(new FileInputStream(new File(file)), "");
+        } catch (FileNotFoundException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
+        // phuc vu cho viec hien thi du lieu, cho nguoi lap trinh test
+        ObjectProperty beginPoint = model.getObjectProperty(ont + "hasHotel");
+        DatatypeProperty HotelName =model.getDatatypeProperty(ont + "HotelName");
+        OntClass cl = model.getOntClass(ont + "Msg_HotelSearchRS");
+       
+
+        log.info("Insert msg to infer");
+        // add model yeu cau vao ontology de tao ra 1 model moi chua tat ca cac rang buoc ke ca luat
+        Model ontmodel = insertMsg_HotelSearchRQ(input, 3);
+        Model model1 = model.add(ontmodel);
+        ExtendedIterator<?> extendedIterator = cl.listInstances(); // lay tat ca cac the hien cua cai lop day
+
+        String s = null;
+
+        
+        // lay tat cac cac ket qua thoa man
+        while (extendedIterator.hasNext()) {
+            OntResource resource = (OntResource) extendedIterator.next();
+            System.out.println("Dich vu ket hop: " + cl);
+            System.out.println("The hien: " + resource.getLocalName());
+
+            System.out.println("Tai Nguyen");
+            Individual individual = model.getIndividual(ont + resource.getLocalName());            
+       //     s = ((Resource) individual.listPropertyValues(beginPoint).next()).toString();
+          
+           String hotelName =  (individual.listPropertyValues(HotelName).next()).toString();
+
+             System.out.println("---------------------------------------------------------------" +s );
+           //Model hotelName = individual.getOntClass().getModel();
+
+           
+           //hotelName.write(System.out);
+         
+
+            int index = hotelName.indexOf("^^");
+            String hotelname = hotelName.substring(0, index);
+               System.out.println("" +hotelname );
+            // co nghia la no ko in ra hotelname a?
+               // ko goi duoc ket qua ay, ko goi duoc cac ham trong lop nay. vo ly nhi ^^|
+
+           s = printValues(hotelname);
+            
+        }
+
+        
+        return s;
+
+
+
+    }
+        
+ public static String printValues(String s) {
+        String file = "C://apache-tomcat-6.0.18/webapps/MyOntology/hotel_yen6.owl";
+
+        //dua ontology vao 1 model
+        OntModel model = ModelFactory.createOntologyModel(
+                //OntModelSpec.OWL_MEM_RULE_INF, null);
+                PelletReasonerFactory.THE_SPEC, null);
+        try {
+            model.read(new FileInputStream(new File(file)), "");
+        } catch (FileNotFoundException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+         Database.LoadOnt2Database();
+        Model om = Database.getOntologyModel();
+        
+        String queryString = null;
+
+
+        queryString = "PREFIX hotel: <http://www.owl-ontologies.com/Travel.owl#> \n" +
+                "SELECT DISTINCT * \n " + "WHERE \n" + "{ \n" + "?x hotel:HotelName ?hotelname. \n" +
+                " FILTER regex(?hotelname,\"" +s + "\", \"i\")}";
+        Query query = QueryFactory.create(queryString);
+        QueryExecution queryexec = QueryExecutionFactory.create(query, om);
+       // System.out.print("thuc thi");
+        Model model2 = ModelFactory.createDefaultModel();
+        String name="";
+        try {
+            ResultSet rs = queryexec.execSelect();
+         //   System.out.print("thuc thi" + rs.toString());
+            while (rs.hasNext()) {
+           //     System.out.print("thuc thi");
+                model2 = rs.getResourceModel();
+                Object obj = rs.next();
+                ResultBinding binding = (ResultBinding) obj;
+                System.out.println("truy2:" + binding.toString());
+                name = binding.getLiteral("hotelname").getValue().toString();
+		System.out.println("name:"+name);	
+	} 
+            }
+         catch (Exception e1) {
+            e1.printStackTrace();
+        }
+        return name;
+    }
+
+    
 }
