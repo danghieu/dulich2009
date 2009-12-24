@@ -74,8 +74,8 @@ public class UserAgent extends Agent {
             protected void onTick() {
                 search("Nam Dinh", "conversationId", "protocol");
             }
-        });
-         */
+        });*/
+         
     }
 
     /**
@@ -90,13 +90,13 @@ public class UserAgent extends Agent {
      * 
      */
     public String search(String msg, String conversationId, String protocol) {
-        log.info("=== ADD RequestInfo behavior to " + this.getLocalName());
+        log.info("=== ADDed RequestInfo behavior to " + this.getLocalName());
         addBehaviour(new RequestInfo(this, msg, conversationId, protocol));// duoc trieu goi tu UserServlet
 
         return "ok";
     }
 
-    public String searchResults(String conversationId) {
+    public String getResults(String conversationId) {
         
         ArrayList<String> msgs = null;
         while (msgs == null) {
@@ -119,7 +119,7 @@ public class UserAgent extends Agent {
                 }
             }
         } catch (Exception e) {
-            results = "null";
+            results = "Khoong co ket qua de hien thi";
             log.info(e.toString());
         }
 
@@ -132,36 +132,10 @@ public class UserAgent extends Agent {
      * 
      * 			resource: information about services wanting to book
      */
-    public String book(String resource) {
-        String conversationId = getLocalName() + System.currentTimeMillis(); //unique
-
-        addBehaviour(new Book(this, resource, conversationId));
-        ArrayList<String> msgs = msgQueue.get(conversationId);
-        msgQueue.remove(conversationId);
-        if (msgs != null && msgs.size() != 0) {
-            return msgs.toString();
-        } else {
-            return "_aaaNONEbbb_";
-        }
-    }
-
-    public String bookResults(String conversationId) {
-        String results = "";
-        try {
-            ArrayList<String> msgs = msgQueue.get(conversationId);
-            msgQueue.remove(conversationId);
-            for (int i = 0; i < msgs.size(); i++) {
-                results += msgs.get(i).trim();
-                if (i < msgs.size() - 1) {
-                    results += Message.OBJECT_SEPARATE;
-                }
-            }
-        } catch (Exception e) {
-            results = "";
-            e.printStackTrace();
-        }
-
-        return results;
+    public String book(String msg, String conversationId, String protocol) {
+        log.info("=== ADDed book behavior to " + this.getLocalName());
+        addBehaviour(new Book(this, msg,  conversationId,  protocol));
+        return "ok";
     }
 
     /**
@@ -384,15 +358,17 @@ public class UserAgent extends Agent {
      */
     class Book extends Behaviour {
 
-        private String resource = null;
+        private String msg = null;
         private Agent a;
         private String conversationId;
+        private String protocol;
 
-        public Book(Agent _a, String _resource, String _conversationId) {
+        public Book(Agent _a, String _msg, String _conversationId, String _p) {
             super(_a);
             a = _a;
-            resource = _resource;
+            msg = _msg;
             conversationId = _conversationId;
+            protocol = _p;
         }
 
         public void action() {

@@ -33,7 +33,7 @@ public class Database {
 
 //Password
 
-	public static final String DB_PASSWD      = "1";
+	public static final String DB_PASSWD      = "root";
 
 //Database engine name
 

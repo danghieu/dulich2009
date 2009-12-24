@@ -78,6 +78,7 @@ public class HotelAgent extends Agent {
 //                "E:/Develop/Netbean/Travel/config/HotelAgent.properties", this.getLocalName());
 
         addBehaviour(new TickerBehaviour(this, 60000) {
+
             protected void onTick() {
                 HandleRecivedMessages hrmBehaviour = new HandleRecivedMessages();
                 addBehaviour(hrmBehaviour);
@@ -125,7 +126,7 @@ public class HotelAgent extends Agent {
     class HandleRecivedMessages extends SimpleBehaviour {
 
         private boolean finished = false;
-        HotelProcess hotel = new HotelProcess(); 
+        HotelProcess hotel = new HotelProcess();
 
         public HandleRecivedMessages() {
         }
@@ -134,46 +135,39 @@ public class HotelAgent extends Agent {
             log.info("=== HOTELAGENT is Ready now");
             synchronized (this) {
                 ACLMessage msg = receive();
-                if (msg != null) {     
-                    
-                    try {                        
+                if (msg != null) {
+
+                    try {
                         String content = msg.getContent();
                         log.info("=== [HotelAgent] received from " + msg.getSender().getLocalName());
-                    switch (msg.getPerformative()) {
-                        case ACLMessage.QUERY_REF:
-                            break;
+                        switch (msg.getPerformative()) {
+                            case ACLMessage.QUERY_REF:
+                                break;
 
-                        case ACLMessage.INFORM:
+                            case ACLMessage.INFORM:
+                                // action of message <-> protocol of ACL
+                                String protocol = msg.getProtocol();
+                                if (Protocol.HOTEL_AVAIL.equals(protocol)) {
 
-                               
-                            // action of message <-> protocol of ACL
-                            String protocol = msg.getProtocol();
-                            //if (Protocol.HOTEL_AVAIL.equals(protocol)) 
-                            {
-                                // FOR TEST
-                                log.info("Call module DB with String input: " + content);// chu nay hien thi ra roi con ju
-                               
-//                                OntModel ont = ModelFactory.createOntologyModel();
-//                                System.out.println("hotel agent ontmodel");// nhung dong nay co thay no chay dau
-//                                ont = HotelProcess.insertMsg_HotelSearchRQ(content, 3);
-//                                
-//                                ont.write(System.out);// may in ra o day con j, thi dag thu goi den co chay ko ma
-//                     
-                                
-                                content = search(content);// chi goi DB o day
-                                log.info("RETURN RESULT: " + content);
-                                ACLMessage reply = Message.createReplyMessage(msg, content);
-                                
-                                log.info("=== [HotelAgent] sent reply message " + reply);
-                                send(reply);
-                                
-                                finished = true;
-                            }
-                            break;
-                        default:
-                            //TODO.. 
-                            break;
-                    }
+                                    log.info("Call module DB with String input: " + content);// chu nay hien thi ra roi con ju
+
+                                    //content = search(content);// chi goi DB o day
+
+                                    log.info("RETURN RESULT: " + content);
+                                    ACLMessage reply = Message.createReplyMessage(msg, content);
+
+                                    log.info("=== [HotelAgent] sent reply message " + reply);
+                                    send(reply);
+
+                                    finished = true;
+                                } else if (Protocol.HOTEL_RES.equals(protocol)) {
+                                    // Deal with booking...
+                                }
+                                break;
+                            default:
+                                //TODO.. 
+                                break;
+                        }
                     } catch (Exception e) {
                         e.printStackTrace();
                         log.error(e.toString());
@@ -183,10 +177,9 @@ public class HotelAgent extends Agent {
 
             }
             ;
-            
+
 
         }
-        
 
         public boolean done() {
             return finished;
@@ -204,18 +197,18 @@ public class HotelAgent extends Agent {
      * @param resource
      *            represents type of resource in Memory Model (OWL model)
      * 
-     
+    
     public String search(String resource) {
-        final String msgId = "102";// getLocalName() +
-        // System.currentTimeMillis();
-
-        ArrayList<String> msgs = new ArrayList<String>();
-        addBehaviour(new CommunicationHotel(this, resource, msgId, msgs));
-
-        System.out.println(System.currentTimeMillis());
-        return "ok";
+    final String msgId = "102";// getLocalName() +
+    // System.currentTimeMillis();
+    
+    ArrayList<String> msgs = new ArrayList<String>();
+    addBehaviour(new CommunicationHotel(this, resource, msgId, msgs));
+    
+    System.out.println(System.currentTimeMillis());
+    return "ok";
     }
-*/
+     */
     public String getSearchResults(String msgId) {
         String results = "";
         try {
@@ -309,11 +302,9 @@ public class HotelAgent extends Agent {
             return false;
         // hotel
         }
-        
-       
     }
-    
-            public static OntModel insertMsg_HotelSearchRQ(String input, long total) {
+
+    public static OntModel insertMsg_HotelSearchRQ(String input, long total) {
         ArrayList<String> arr = new ArrayList<String>();
 
         // Ham phan tach thog tin dua vao
@@ -407,9 +398,9 @@ public class HotelAgent extends Agent {
 
         // phuc vu cho viec hien thi du lieu, cho nguoi lap trinh test
         ObjectProperty beginPoint = model.getObjectProperty(ont + "hasHotel");
-        DatatypeProperty HotelName =model.getDatatypeProperty(ont + "HotelName");
+        DatatypeProperty HotelName = model.getDatatypeProperty(ont + "HotelName");
         OntClass cl = model.getOntClass(ont + "Msg_HotelSearchRS");
-       
+
 
         log.info("Insert msg to infer");
         // add model yeu cau vao ontology de tao ra 1 model moi chua tat ca cac rang buoc ke ca luat
@@ -419,7 +410,7 @@ public class HotelAgent extends Agent {
 
         String s = null;
 
-        
+
         // lay tat cac cac ket qua thoa man
         while (extendedIterator.hasNext()) {
             OntResource resource = (OntResource) extendedIterator.next();
@@ -427,36 +418,36 @@ public class HotelAgent extends Agent {
             System.out.println("The hien: " + resource.getLocalName());
 
             System.out.println("Tai Nguyen");
-            Individual individual = model.getIndividual(ont + resource.getLocalName());            
-       //     s = ((Resource) individual.listPropertyValues(beginPoint).next()).toString();
-          
-           String hotelName =  (individual.listPropertyValues(HotelName).next()).toString();
+            Individual individual = model.getIndividual(ont + resource.getLocalName());
+            //     s = ((Resource) individual.listPropertyValues(beginPoint).next()).toString();
 
-             System.out.println("---------------------------------------------------------------" +s );
-           //Model hotelName = individual.getOntClass().getModel();
+            String hotelName = (individual.listPropertyValues(HotelName).next()).toString();
 
-           
-           //hotelName.write(System.out);
-         
+            System.out.println("---------------------------------------------------------------" + s);
+            //Model hotelName = individual.getOntClass().getModel();
+
+
+            //hotelName.write(System.out);
+
 
             int index = hotelName.indexOf("^^");
             String hotelname = hotelName.substring(0, index);
-               System.out.println("" +hotelname );
+            System.out.println("" + hotelname);
             // co nghia la no ko in ra hotelname a?
-               // ko goi duoc ket qua ay, ko goi duoc cac ham trong lop nay. vo ly nhi ^^|
+            // ko goi duoc ket qua ay, ko goi duoc cac ham trong lop nay. vo ly nhi ^^|
 
-           s = printValues(hotelname);
-            
+            s = printValues(hotelname);
+
         }
 
-        
+
         return s;
 
 
 
     }
-        
- public static String printValues(String s) {
+
+    public static String printValues(String s) {
         System.out.println("goi den ham hien thi ket qua");
         String file = "C://apache-tomcat-6.0.18/webapps/MyOntology/hotel_yen6.owl";
 
@@ -469,34 +460,17 @@ public class HotelAgent extends Agent {
         } catch (FileNotFoundException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
-        }      
-        
+        }
+
         String queryString = null;
 
 
-         queryString = "PREFIX hotel: <http://www.owl-ontologies.com/Travel.owl#> \n" 
-                + "SELECT DISTINCT * \n " + "WHERE \n" + "{ \n" 
-                + "?x hotel:HotelName ?hotelname. \n"     
-                + "?x hotel:HotelLocation ?location. \n"     
-                + "?x hotel:hasHotelInfo ?info. \n"     
-                + "?x hotel:checkInTime ?checkIn. \n"     
-                + "?x hotel:checkOutTime ?checkOut. \n"     
-                + "?info hotel:StarNumber ?star. \n"     
-                + "?info hotel:AreaWeather ?areaWeather. \n"     
-                + "?x hotel:hasContact ?contact. \n" 
-                + "?contact hotel:Email ?email. \n"                 
-                + "?contact hotel:hasAddress ?Address. \n" 
-                + "?Address hotel:number ?number. \n"    
-                + "?Address hotel:street ?Street. \n"    
-                + "?Address hotel:city ?city. \n"    
-                + "?Address hotel:country ?Country. \n"               
-             
-                + " FILTER regex(?hotelname,\"" +s + "\", \"i\")}";
+        queryString = "PREFIX hotel: <http://www.owl-ontologies.com/Travel.owl#> \n" + "SELECT DISTINCT * \n " + "WHERE \n" + "{ \n" + "?x hotel:HotelName ?hotelname. \n" + "?x hotel:HotelLocation ?location. \n" + "?x hotel:hasHotelInfo ?info. \n" + "?x hotel:checkInTime ?checkIn. \n" + "?x hotel:checkOutTime ?checkOut. \n" + "?info hotel:StarNumber ?star. \n" + "?info hotel:AreaWeather ?areaWeather. \n" + "?x hotel:hasContact ?contact. \n" + "?contact hotel:Email ?email. \n" + "?contact hotel:hasAddress ?Address. \n" + "?Address hotel:number ?number. \n" + "?Address hotel:street ?Street. \n" + "?Address hotel:city ?city. \n" + "?Address hotel:country ?Country. \n" + " FILTER regex(?hotelname,\"" + s + "\", \"i\")}";
         Query query = QueryFactory.create(queryString);
         QueryExecution queryexec = QueryExecutionFactory.create(query, model);
-       // System.out.print("thuc thi");
+        // System.out.print("thuc thi");
         Model model2 = ModelFactory.createDefaultModel();
-        String result="";
+        String result = "";
         try {
             ResultSet rs = queryexec.execSelect();
             System.out.print("thuc thi");
@@ -506,76 +480,73 @@ public class HotelAgent extends Agent {
                 Object obj = rs.next();
                 ResultBinding binding = (ResultBinding) obj;
                 System.out.println("truy2:" + binding.toString());
-               
-               
+
+
                 String Address = "";
-                
-                if(binding.getLiteral("number").getValue().toString()!=null){
+
+                if (binding.getLiteral("number").getValue().toString() != null) {
                     String name = binding.getLiteral("number").getValue().toString();
-                    Address = Address + name +" _ ";
+                    Address = Address + name + " _ ";
                 }
-                if(binding.getLiteral("Street").getValue().toString()!=null){
+                if (binding.getLiteral("Street").getValue().toString() != null) {
                     String name = binding.getLiteral("Street").getValue().toString();
-                    Address = Address + name +" _ ";
+                    Address = Address + name + " _ ";
                 }
-                if(binding.getLiteral("city").getValue().toString()!=null){
+                if (binding.getLiteral("city").getValue().toString() != null) {
                     String name = binding.getLiteral("city").getValue().toString();
-                    Address = Address + name +" _ ";
+                    Address = Address + name + " _ ";
                 }
-                
-                if(binding.getLiteral("Country").getValue().toString()!=null){
+
+                if (binding.getLiteral("Country").getValue().toString() != null) {
                     String name = binding.getLiteral("Country").getValue().toString();
-                    Address = Address + name ;
+                    Address = Address + name;
                 }
-                
-                result = result + Address +Message.FIELD_SEPARATE;
-                
-                if(binding.getLiteral("areaWeather").getValue().toString()!=null){
+
+                result = result + Address + Message.FIELD_SEPARATE;
+
+                if (binding.getLiteral("areaWeather").getValue().toString() != null) {
                     String name = binding.getLiteral("areaWeather").getValue().toString();
-                    result = result + name +Message.FIELD_SEPARATE;
+                    result = result + name + Message.FIELD_SEPARATE;
                 }
-                
-                if(binding.getLiteral("checkIn").getValue().toString()!=null){
+
+                if (binding.getLiteral("checkIn").getValue().toString() != null) {
                     String name = binding.getLiteral("checkIn").getValue().toString();
-                    result = result + name +Message.FIELD_SEPARATE;
+                    result = result + name + Message.FIELD_SEPARATE;
                 }
-                
-                if(binding.getLiteral("checkOut").getValue().toString()!=null){
+
+                if (binding.getLiteral("checkOut").getValue().toString() != null) {
                     String name = binding.getLiteral("checkOut").getValue().toString();
-                    result = result + name +Message.FIELD_SEPARATE;
+                    result = result + name + Message.FIELD_SEPARATE;
                 }
-                
-                if(binding.getLiteral("email").getValue().toString()!=null){
+
+                if (binding.getLiteral("email").getValue().toString() != null) {
                     String name = binding.getLiteral("email").getValue().toString();
-                    result = result + name +Message.FIELD_SEPARATE;
+                    result = result + name + Message.FIELD_SEPARATE;
                 }
-                
-                if(binding.getLiteral("hotelname").getValue().toString()!=null){
+
+                if (binding.getLiteral("hotelname").getValue().toString() != null) {
                     String name = binding.getLiteral("hotelname").getValue().toString();
-                    result = result + name +Message.FIELD_SEPARATE;
+                    result = result + name + Message.FIELD_SEPARATE;
                 }
-                
-                if(binding.getLiteral("location").getValue().toString()!=null){
+
+                if (binding.getLiteral("location").getValue().toString() != null) {
                     String name = binding.getLiteral("location").getValue().toString();
-                    result = result + name +Message.FIELD_SEPARATE;
+                    result = result + name + Message.FIELD_SEPARATE;
                 }
-                
-                if(binding.getLiteral("star").getValue().toString()!=null){
+
+                if (binding.getLiteral("star").getValue().toString() != null) {
                     String name = binding.getLiteral("star").getValue().toString();
-                    result = result + name +Message.FIELD_SEPARATE;
+                    result = result + name + Message.FIELD_SEPARATE;
                 }
-                
-                
-                result = result +Message.OBJECT_SEPARATE;
-                
-                
-	} 
+
+
+                result = result + Message.OBJECT_SEPARATE;
+
+
             }
-         catch (Exception e1) {
+        } catch (Exception e1) {
             e1.printStackTrace();
         }
         return result;
     }
-
-    
 }
