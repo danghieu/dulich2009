@@ -69,13 +69,13 @@ public class UserAgent extends Agent {
 //                "E:/Develop/Netbean/Travel/config/UserAgent.properties",
 //                this.getLocalName());// E:/Develop/Netbean/Travel/
 
-        /* Tu gan hanh okvi search sau 0.5 s
-        addBehaviour(new TickerBehaviour(this, 30000) {
-            protected void onTick() {
-                search("Nam Dinh", "conversationId", "protocol");
-            }
-        });*/
-         
+    /* Tu gan hanh okvi search sau 0.5 s
+    addBehaviour(new TickerBehaviour(this, 30000) {
+    protected void onTick() {
+    search("Nam Dinh", "conversationId", "protocol");
+    }
+    });*/
+
     }
 
     /**
@@ -97,7 +97,7 @@ public class UserAgent extends Agent {
     }
 
     public String getResults(String conversationId) {
-        
+
         ArrayList<String> msgs = null;
         while (msgs == null) {
             try {
@@ -105,13 +105,13 @@ public class UserAgent extends Agent {
             } catch (Exception e) {
                 //log.info(e.toString());
             }
-            msgs = msgQueue.get(conversationId);            
+            msgs = msgQueue.get(conversationId);
         }
         log.info("|| message Results:" + msgs);
         msgQueue.remove(conversationId);
         String results = "";
         try {
-            
+
             for (int i = 0; i < msgs.size(); i++) {
                 results += msgs.get(i).trim();
                 if (i < msgs.size() - 1) {
@@ -134,7 +134,7 @@ public class UserAgent extends Agent {
      */
     public String book(String msg, String conversationId, String protocol) {
         log.info("=== ADDed book behavior to " + this.getLocalName());
-        addBehaviour(new Book(this, msg,  conversationId,  protocol));
+        addBehaviour(new Book(this, msg, conversationId, protocol));
         return "ok";
     }
 
@@ -314,7 +314,8 @@ public class UserAgent extends Agent {
                             //FOR TEST
                             log.info("=== One more received message from " + replyMsg.getSender().getLocalName());
                             log.info(replyMsg);
-                            msgs.add(replyMsg.getContent());
+                            msgs.add(//replyMsg.getSender().getLocalName() + Message.FIELD_SEPARATE + 
+                                    replyMsg.getContent());
                         }
                         repliesCnt++;
                         log.info("|| RECEIVERS: " + receivers.size() + " || repliesCnt: " + repliesCnt);
@@ -358,24 +359,123 @@ public class UserAgent extends Agent {
      */
     class Book extends Behaviour {
 
-        private String msg = null;
+        private String content = null;
         private Agent a;
         private String conversationId;
         private String protocol;
+        private int step = 0;
+        private MessageTemplate mt;
+        private ArrayList<String> msgs;
+        ArrayList<String> receivers;
+        private int repliesCnt;
 
         public Book(Agent _a, String _msg, String _conversationId, String _p) {
             super(_a);
             a = _a;
-            msg = _msg;
+            content = _msg;
             conversationId = _conversationId;
             protocol = _p;
+            msgs = new ArrayList<String>();
+            receivers = new ArrayList<String>();
         }
 
         public void action() {
+            switch (step) {
+                case 0:
+                    try {
+                        // collect agents who satisfy action
+                        //receivers = agentDAO.getAgents("", "hotel");
+                        log.error("Booking ... ");
+                        ArrayList<String> splitedContent = Message.split(content, Message.OBJECT_SEPARATE);
+                        if (splitedContent == null) {
+                            log.error("Invalid format input from servlet: " + content);
+                            return;
+                        }
+                        String receiver, temp;
+                        int index;
+                        ArrayList<String> contents = new ArrayList<String>();
+                        for (int i = 0; i < splitedContent.size(); i++) {
+                            temp = splitedContent.get(i);
+                            index = temp.indexOf(Message.FIELD_SEPARATE);
+                            if (index > 0) {
+                                receiver = temp.substring(0, index);
+                                receivers.add(receiver);
+                                temp = temp.replaceFirst(receiver + Message.FIELD_SEPARATE, "");
+                                contents.add(temp);
+                            }
+
+                        }
+
+                        String replyWith = "[" + myAgent.getLocalName() + "]" + System.currentTimeMillis();
+                        // Send the cfp to all agents
+                        log.info("=== Preparing msg to send msg to: " + receivers.toString());
+                        ACLMessage msg;
+                        for (int i = 0; i < receivers.size(); i++) {
+                            msg = Message.createInformMessage(a, receivers.get(i), contents.get(i), 
+                                    Language.HOTEL, protocol, conversationId, replyWith);
+
+                            // value
+
+                            myAgent.send(msg);
+                        }
+
+                        // Prepare the template to get proposals
+                        mt = MessageTemplate.and(MessageTemplate.MatchConversationId(conversationId),
+                                MessageTemplate.MatchInReplyTo(replyWith));
+
+                        step = 1;
+                        break;
+                    } catch (Exception e) {
+                        // TODO: handle exception
+                        log.error(e.toString());
+                        e.printStackTrace();
+                    }
+
+                case 1:
+                    // Receive all proposals/refusals from agents
+                    ACLMessage replyMsg = myAgent.receive(mt);
+                    //ACLMessage replyMsg = myAgent.receive();
+                    if (replyMsg != null) {
+                        //if (replyMsg.getPerformative() == ACLMessage.PROPOSE) 
+                        {
+                            /**
+                             * / check if there is any available hotel/ if yes set
+                             * avail = true
+                             * put msg into msgQueue of agent: 
+                             */
+                            //FOR TEST
+                            log.info("=== One more received message from " + replyMsg.getSender().getLocalName());
+                            log.info(replyMsg);
+                            msgs.add(replyMsg.getSender().getLocalName() + Message.FIELD_SEPARATE + 
+                                    replyMsg.getContent());
+                        }
+                        repliesCnt++;
+                        log.info("|| RECEIVERS: " + receivers.size() + " || repliesCnt: " + repliesCnt);
+                        if (repliesCnt >= receivers.size()) {
+                            // We received all replies
+                            step = 2;
+                        }
+                    } else {
+                        block();
+
+                    }
+                    break;
+                case 2:
+
+                    break;
+
+            }
         }
 
         public boolean done() {
 
+            if (step == 2) {// && avail); if finishing only exist available
+                // put messages into queue of agent
+
+                log.info("=== FIHISHED Booking behavior");
+                msgQueue.put(conversationId, msgs);
+                return true;
+            }
             return false;
         }
     } // End class RequestBook

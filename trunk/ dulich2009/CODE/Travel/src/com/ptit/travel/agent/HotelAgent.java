@@ -149,9 +149,9 @@ public class HotelAgent extends Agent {
                                 String protocol = msg.getProtocol();
                                 if (Protocol.HOTEL_AVAIL.equals(protocol)) {
 
-                                    log.info("Call module DB with String input: " + content);// chu nay hien thi ra roi con ju
+                                    log.info("Call module DB with String input: " + content);
 
-                                    //content = search(content);// chi goi DB o day
+                                    content = search(content);// chi goi DB o day
 
                                     log.info("RETURN RESULT: " + content);
                                     ACLMessage reply = Message.createReplyMessage(msg, content);
