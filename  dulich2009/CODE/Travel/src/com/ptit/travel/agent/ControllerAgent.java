@@ -101,10 +101,10 @@ public class ControllerAgent extends Agent {
                                         MessageTemplate.MatchInReplyTo(forwardMsg.getReplyWith()));
                                 log.info("Message Template: " + mt.toString());
                                 step = 1;
-                            }else {
+                            } else {
                                 //block();
                             }
-                            
+
                             break;
                         case 1:
                             log.info("[ControllerAgent] Negotiating... ");
@@ -124,8 +124,10 @@ public class ControllerAgent extends Agent {
                                     log.info("=== One more received message from " + replyMsg.getSender().getLocalName());
                                     content = replyMsg.getContent();
                                     String errorContent = "Agent not found: getContainerID() failed to find agent";
-                                    if(content != null && !content.contains(errorContent));
-                                        msgsContent.add(content);
+                                    if (content != null && !content.contains(errorContent)) {
+                                        msgsContent.add(replyMsg.getSender().getLocalName() 
+                                                + Message.FIELD_SEPARATE + content);
+                                    }
                                 }
                                 repliesCnt++;
                                 log.info("|| RECEIVERS: " + receivers.size() + " || repliesCnt: " + repliesCnt);

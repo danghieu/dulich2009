@@ -273,8 +273,8 @@ public class Message {
      *            String
      * 
      */
-    public static ACLMessage createInformMessage(Agent sender,
-            String recieverName, String content, String language, String protocol, String conversationId) {
+    public static ACLMessage createInformMessage(Agent sender, String recieverName, 
+            String content, String language, String protocol, String conversationId, String replyWith) {
 
         log.info("Preparing inform message...");
         //String content = resource2RDF(r);
