@@ -167,16 +167,7 @@
                         </tbody></table>
                     </td>
                 </tr>
-                <tr>
-                    
-                    
-                    <p>&nbsp;</p>
-                    <p>&nbsp;</p>
-                    <p>&nbsp;</p>
-                    <p>
-                        <br>
-                    </p>
-                    
+                <tr>                    
                 </tr>
                 <tr>
                 <td>
@@ -291,32 +282,17 @@
                     
                     <table border="0" cellpadding="0" cellspacing="0" width="100%">
                         <tbody><tr> 
-                                <td class="TitleLevel2" height="30">&nbsp;&nbsp;<img src="hotel_files/buttom.jpg" height="10" align="absmiddle" width="10">&nbsp;&nbsp;Tỉnh thành khác - Khách sạn phổ thông</td>
+                                <td class="TitleLevel2" height="30">&nbsp;</td>
                             </tr>
                             <tr>
-                                <td height="5"><img src="hotel_files/pixel_1_1.gif" height="1" width="1"></td>
+                                <td height="5">&nbsp;</td>
                             </tr>
                             <tr> 
                                 
-                                <td><table align="right" bgcolor="#5ebb03" border="0" cellpadding="4" cellspacing="1" width="108%">
-                                        
-                                        <tbody><tr><td><table border="0" cellpadding="0" cellspacing="0" width="100%">
-                                                        
-                                                        <tbody>
-                                                            
-                                                            <tr>
-                                                                
-                                                                
-                                                                <td height="150" bgcolor="#ffffff">
-                                                                    
-                                                                    
-                                            <div align="center"><strong>Thông tin khách sạn chưa được cập nhật</strong></div></td></tr></tbody></table></td></tr>
-                                </tbody></table></td>
-                                
-                                
+                                <td>&nbsp;</td>
                             </tr>
                             <tr>
-                                <td height="5"><img src="hotel_files/pixel_1_1.gif" height="1" width="1"></td>
+                                <td height="5">&nbsp;</td>
                             </tr>
                     </tbody></table>
                     <td>
