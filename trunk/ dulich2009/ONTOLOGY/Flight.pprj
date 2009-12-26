@@ -1,4 +1,4 @@
-; Sat Feb 06 23:29:20 PST 2010
+; Sun Feb 07 01:09:43 PST 2010
 ; 
 ;+ (version "3.4")
 ;+ (build "Build 533")
@@ -6,11 +6,11 @@
 ([BROWSER_SLOT_NAMES] of  Property_List
 
 	(properties
-		[Flight_ProjectKB_Class93]
-		[Flight_ProjectKB_Class94]
-		[Flight_ProjectKB_Class95]
-		[Flight_ProjectKB_Class96]
-		[Flight_ProjectKB_Class97]))
+		[Flight_ProjectKB_Class589]
+		[Flight_ProjectKB_Class590]
+		[Flight_ProjectKB_Class591]
+		[Flight_ProjectKB_Class592]
+		[Flight_ProjectKB_Class593]))
 
 ([CLSES_TAB] of  Widget
 
@@ -278,11 +278,36 @@
 ([Flight_ProjectKB_Class58] of  Property_List
 )
 
+([Flight_ProjectKB_Class589] of  String
+
+	(name "http://www.w3.org/2002/07/owl#Class")
+	(string_value "%3ANAME"))
+
 ([Flight_ProjectKB_Class59] of  Widget
 
 	(is_hidden TRUE)
 	(property_list [Flight_ProjectKB_Class60])
 	(widget_class_name "edu.stanford.smi.protegex.widget.pal.PalConstraintsTab"))
+
+([Flight_ProjectKB_Class590] of  String
+
+	(name ":INSTANCE-ANNOTATION")
+	(string_value "%3AANNOTATION-TEXT"))
+
+([Flight_ProjectKB_Class591] of  String
+
+	(name ":META-CLASS")
+	(string_value "%3ANAME"))
+
+([Flight_ProjectKB_Class592] of  String
+
+	(name "http://www.w3.org/2002/07/owl#Thing")
+	(string_value "%3ANAME"))
+
+([Flight_ProjectKB_Class593] of  String
+
+	(name ":PAL-CONSTRAINT")
+	(string_value "%3APAL-NAME"))
 
 ([Flight_ProjectKB_Class6] of  Property_List
 
@@ -430,31 +455,6 @@
 
 	(name "horizontal_stretcher")
 	(string_value "<<all>>"))
-
-([Flight_ProjectKB_Class93] of  String
-
-	(name "http://www.w3.org/2002/07/owl#Class")
-	(string_value "%3ANAME"))
-
-([Flight_ProjectKB_Class94] of  String
-
-	(name ":INSTANCE-ANNOTATION")
-	(string_value "%3AANNOTATION-TEXT"))
-
-([Flight_ProjectKB_Class95] of  String
-
-	(name ":META-CLASS")
-	(string_value "%3ANAME"))
-
-([Flight_ProjectKB_Class96] of  String
-
-	(name "http://www.w3.org/2002/07/owl#Thing")
-	(string_value "%3ANAME"))
-
-([Flight_ProjectKB_Class97] of  String
-
-	(name ":PAL-CONSTRAINT")
-	(string_value "%3APAL-NAME"))
 
 ([FORMS_TAB] of  Widget
 
