@@ -38,9 +38,9 @@ import org.apache.log4j.Logger;
  *
  * @author Thao Hoang
  */
-public class FlightProcess {
+public class FlightProcess_2 {
     
-    private static Logger log = Logger.getLogger(FlightProcess.class.getName());
+    private static Logger log = Logger.getLogger(FlightProcess_2.class.getName());
     public static OntModel insertMsg_FlightAvailRQ(String input, long total) {
         ArrayList<String> arr = new ArrayList<String>();
 
@@ -63,7 +63,7 @@ public class FlightProcess {
             ind.addProperty(Flight.departureAirportCity, arr.get(0));
 
             }
-          
+            
             if (arr.get(1) != null) {
             ind.addProperty(Flight.arrivalAirportCity, arr.get(1));
 
@@ -93,7 +93,7 @@ public class FlightProcess {
     }
 
     /**
-
+     * Tra ve danh sach ten cac khach san thoa man
      * @param ontmodel: model chua thong tin yeu cau tim kiem
      * @return
      */
@@ -184,19 +184,27 @@ public class FlightProcess {
                 + "SELECT DISTINCT * \n " + "WHERE \n" + "{ \n" 
                 + "?x flight:airline ?Airline. \n"     
                 + "?x flight:flightClass ?FlightClass. \n"  
-                + "?x flight:flightNumber ?FlightNumber. \n"  
+
+                + "?x flight:flightNumber ?FlightNumber. \n" 
+                + "?x flight:hasAirplane ?Airplane. \n"   
                 + "?x flight:hasArrivalAirport ?arrivalAirport. \n" 
                 + "?x flight:hasDepartureAirport ?departureAirport. \n"   
                 + "?x flight:hasArrivalDateTime ?arrivalDateTime. \n" 
                 + "?x flight:hasDepartureDateTime ?departureDateTime. \n" 
                 + "?x flight:hasPrice ?price. \n" 
-                + "?arrivalAirport flight:city ?arrivalCity. \n"     
-                + "?departureAirport flight:city ?departureCity. \n"    
-                + "?departureDateTime flight:date ?date. \n" 
-                + "?departureDateTime flight:time ?time. \n" 
+                + "?arrivalAirport flight:city ?arrivalCity. \n" 
+                + "?arrivalAirport flight:airportName ?arrivalAirportName. \n"
+                + "?departureAirport flight:city ?departureCity. \n"  
+                + "?departureAirport flight:airportName ?departureAirportName. \n"
+                + "?departureDateTime flight:date ?departureDate. \n" 
+                + "?departureDateTime flight:time ?departureTime. \n" 
+                + "?arrivalDateTime flight:date ?arrivalDate. \n" 
+                + "?arrivalDateTime flight:time ?arrivalTime. \n"                 
+                + "?Airplane flight:airplaneType ?AirplaneType. \n" 
                 + "?price flight:price ?realPrice. \n" 
+                + "?price flight:priceUnit ?PriceUnit. \n"
                 + " FILTER regex(?FlightNumber,\"" +s + "\", \"i\")"
-                + " FILTER regex(?date,\"" +s2 + "\", \"i\")}";       
+                + " FILTER regex(?departureDate,\"" +s2 + "\", \"i\")}";       
         Query query = QueryFactory.create(queryString);
         QueryExecution queryexec = QueryExecutionFactory.create(query, model);
        // System.out.print("thuc thi");
@@ -210,24 +218,54 @@ public class FlightProcess {
                 model2 = rs.getResourceModel();
                 Object obj = rs.next();
                 ResultBinding binding = (ResultBinding) obj;
-                System.out.println("truy2:" + binding.toString());    
+                System.out.println("truy2:" + binding.toString()); 
+                // Dia diem xuat phat
+                String departure="";
+                    String departureairport=binding.getLiteral("departureAirportName").getValue().toString();
+                        departure=departure+departureairport+"-";
+                    String departureCity = binding.getLiteral("departureCity").getValue().toString();
+                        departure= departure + departureCity;                   
+               // Dia diem den
+                String arrival="";
+                    String arrivalairport=binding.getLiteral("arrivalAirportName").getValue().toString();
+                        arrival=arrival+arrivalairport+"-";
+                    String arrivalCity = binding.getLiteral("arrivalCity").getValue().toString();
+                        arrival= arrival + arrivalCity;                           
+              //Thoi gian di 
+                String departuredatetime="";
+                 
+                    String departuretime = binding.getLiteral("departureTime").getValue().toString();
+                        departuredatetime= departuredatetime + departuretime+ ",";
+                    String departuredate = binding.getLiteral("departureDate").getValue().toString();
+                        departuredatetime= departuredatetime + departuredate;
+ 
+                //Thoi gian den                        
+                String arrivaldatetime="";
+                 
+                    String arrivaltime = binding.getLiteral("arrivalTime").getValue().toString();
+                        arrivaldatetime= arrivaldatetime + arrivaltime+ ",";
+                    String arrivaldate = binding.getLiteral("arrivalDate").getValue().toString();
+                        arrivaldatetime= arrivaldatetime + arrivaldate;
+               // Gia ca
+                String price="";
+                    String realprice=binding.getLiteral("realPrice").getValue().toString();
+                        price=price+realprice;
+                    String priceunit=binding.getLiteral("PriceUnit").getValue().toString();
+                        price=price+priceunit;
+               //  Hang hang khong
+                String airline = binding.getLiteral("Airline").getValue().toString();
+               // Ma so chuyen bay  
+                String flightnumber = binding.getLiteral("FlightNumber").getValue().toString();
+               //Hang ve may bay
+                String flightclass = binding.getLiteral("FlightClass").getValue().toString();
+                // Loai may bay
+                String airplanetype=binding.getLiteral("AirplaneType").getValue().toString();
                 
-                if(binding.getLiteral("Airline").getValue().toString()!=null){
-                    String name = binding.getLiteral("Airline").getValue().toString();
-                    result = result + name +Message.FIELD_SEPARATE;
-                }
-                if(binding.getLiteral("FlightClass").getValue().toString()!=null){
-                    String name = binding.getLiteral("FlightClass").getValue().toString();
-                    result = result + name +Message.FIELD_SEPARATE;
-                }
-                if(binding.getLiteral("FlightNumber").getValue().toString()!=null){
-                    String name = binding.getLiteral("FlightNumber").getValue().toString();
-                    result= result + name+ Message.FIELD_SEPARATE;;
-                }
-                if(binding.getLiteral("date").getValue().toString()!=null){
-                    String name = binding.getLiteral("date").getValue().toString();
-                    result= result + name+ Message.FIELD_SEPARATE;;
-                }                
+                result=result+ airline + Message.FIELD_SEPARATE + flightnumber + Message.FIELD_SEPARATE
+                        + departure + Message.FIELD_SEPARATE + departuredatetime + Message.FIELD_SEPARATE
+                        + arrival + Message.FIELD_SEPARATE + arrivaldatetime + Message.FIELD_SEPARATE
+                        + airplanetype + Message.FIELD_SEPARATE + flightclass + Message.FIELD_SEPARATE
+                        + price + Message.FIELD_SEPARATE;
                 
                 result = result +Message.OBJECT_SEPARATE;
                 
@@ -265,24 +303,13 @@ public class FlightProcess {
         System.out.println();
     }
 
-    public void hello(){
-        System.out.println("Hello world");
-    }
+ 
     public static void main(String s[]) throws Exception {
-        FlightProcess flightprocess = new FlightProcess();
-//        hotelprocess.searchHotel(false, true, false, false, false, "inside", false, true, "Nam Dinh");
-       // hotelprocess.search2("HaiYen", "HotelSofitel");
-
-       // String s_begin = "2009-12-19";
-       // String s_end = "2009-12-20";
-        //     hotelprocess.checkAvailability( "HaiYen", "LivingRoom", "SingleRoom");
+        FlightProcess_2 flightprocess = new FlightProcess_2();
         OntModel ontmodel = ModelFactory.createOntologyModel();
-
-        flightprocess.hello();
         String input = "Ha Noi" + Message.FIELD_SEPARATE +"Ho Chi Minh" + Message.FIELD_SEPARATE + "2010-02-01"+ Message.FIELD_SEPARATE + "economy" + Message.FIELD_SEPARATE + "1";
-    //    ontmodel = hotelprocess.insertMsg_HotelSearchRQ(input, 3);
-       String ss = flightprocess.search(input);
-       System.out.print("ss="+ss);
+        String ss = flightprocess.search(input);
+        System.out.print("ss="+ss);
        // printValues("<http://www.owl-ontologies.com/Travel.owl#Hotel_1>");
 
     }
