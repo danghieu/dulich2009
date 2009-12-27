@@ -131,8 +131,10 @@ public static void main(String s[]) throws Exception{
 	
  Address add = new Address();
 	String input = "km10"+Message.FIELD_SEPARATE +"Nguyen Trai" + Message.FIELD_SEPARATE +"Thanh xuan_ Ha Noi";
+        String input1 = "km8"+Message.FIELD_SEPARATE +"Nguyen Trai" + Message.FIELD_SEPARATE +"Thanh xuan_ Ha Noi";
         // day la 1 doi tuong dia chi, to se cho vao csdl
 	boolean a = add.insertAddress(input);
+        boolean b = add.insertAddress(input1);
 
 	
 	 
