@@ -197,17 +197,7 @@ public class HotelProcess {
         queryString = "PREFIX hotel: <http://www.owl-ontologies.com/Travel.owl#> \n" + "SELECT DISTINCT * \n " + "WHERE \n" + "{ \n" + "?x hotel:HotelName ?hotelname. \n" + "?x hotel:hasHotelRoom ?hotelRoom. \n" + "?hotelRoom hotel:roomType ?roomType. \n" + "?hotelRoom hotel:LivingRomType ?LivingRomType. \n" + "?hotelRoom hotel:hasNotAvailabilityPeriod ?notAvail. \n" + "?notAvail hotel:roomType ?roomType1. \n" + "?notAvail hotel:ToDate ?ToDate. \n" + "?notAvail hotel:LivingRomType ?LivingRomType1. \n" + " FILTER ( regex(?hotelname,\"" + hotelName + "\", \"i\"))" + " FILTER ( regex(?roomType,\"" + roomType + "\", \"i\"))";
         if (livingRoomType != null) {
             queryString = queryString + " FILTER ( regex(?LivingRomType,\"" + livingRoomType + "\", \"i\"))";
-        /*
-        +" FILTER ( regex(?roomType,\""
-        + roomType + "\", \"i\")||regex(?roomType1,\""
-        + roomType + "\", \"i\")) ";
-        
-        if(livingRoomType != null)
-        queryString = queryString    +" FILTER ( regex(?LivingRomType,\""
-        + livingRoomType + "\", \"i\")||regex(?LivingRomType1,\""
-        + livingRoomType + "\", \"i\")) ";
-         */
-        }
+     }
         queryString = queryString + "}";
         Query query = QueryFactory.create(queryString);
         QueryExecution queryexec = QueryExecutionFactory.create(query, om);
@@ -224,15 +214,7 @@ public class HotelProcess {
                 Object obj = rs.next();
                 ResultBinding binding = (ResultBinding) obj;
                 System.out.println("hotel:" + binding.toString());
-            /*   if (binding.get("notAvail").isLiteral()) {
-            
-            long todate = binding.getLiteral("ToDate").getLong();
-            long beginDate = begin.getTime();
-            if(todate < beginDate)
-            arr.add(rs);
-            }
-            else arr.add(rs);                                               
-             */
+       
             }
 
         } catch (Exception e1) {
@@ -248,26 +230,7 @@ public class HotelProcess {
                 + "?notAvail hotel:ToDate ?ToDate. \n" + "?notAvail hotel:LivingRoomType ?LivingRomType1. \n"
                 + " FILTER ( regex(?hotelname,\"" + hotelName + "\", \"i\"))" 
                 + " FILTER ( regex(?roomType1,\"" + roomType + "\", \"i\"))";
-        // + " FILTER (xsd:date(?date) >= xsd:date(\"2008-01-02\"))" ;
-
-
-
-        /*              
-        String query2 = "PREFIX ex: <http://temp.example.org/terms/>" 
-        + "PREFIX loc: <http://simile.mit.edu/2005/05/ontologies/location#>" 
-        + "PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>" 
-        + "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>" 
-        + "SELECT *"
-        + "WHERE {{?event ex:date ?date ." 
-        + " FILTER (xsd:date(?date) >= xsd:date("+begin+") && xsd:date(?date) <= xsd:date("+2008-01-11+"))}" 
-        + " UNION {?event ex:starts ?start; ex:finishes ?end." 
-        + " FILTER (xsd:date(?start) >= xsd:date("2008-01-02") && xsd:date(?end) <= xsd:date("2008-01-10"))}" 
-        + "}" 
-        + "ORDER BY ?event" +  """;
-        
-         */
-
-        if (livingRoomType != null) {
+         if (livingRoomType != null) {
             queryString = queryString + " FILTER ( regex(?LivingRomType1,\"" + livingRoomType + "\", \"i\"))";
         }
         queryString = queryString + "}";
@@ -674,10 +637,7 @@ public class HotelProcess {
         System.out.println();
     }
 
-    public void hello(){
-        System.out.println("Hello world");
-    }
-    
+
      
     
      
@@ -834,19 +794,13 @@ System.out.println("Trong next"+cl.toString());
                 + "?notAvail hotel:ToDate ?toDate. \n" 
                 + "?notAvail hotel:FromDate ?fromDate. \n" 
                 + "?notAvail hotel:Number ?number1. \n"
-              /*  
-                + "?Avail hotel:roomType ?roomType2. \n" 
-                + "?Avail hotel:ToDate ?toDate2. \n" 
-                + "?Avail hotel:FromDate ?fromDate2. \n" 
-                + "?Avail hotel:Number ?number2. \n"
-                
-                */
+        
                 + " FILTER ( regex(?hotelname,\"" + arr.get(0) + "\", \"i\"))" 
                 + " FILTER ( regex(?city,\"" + arr.get(1) + "\", \"i\"))"
                 + " FILTER ( regex(?number,\"" + arr.get(2) + "\", \"i\"))"
                 + " FILTER ( regex(?street,\"" + arr.get(3) + "\", \"i\"))"
                 + " FILTER ( regex(?roomType,\"" + arr.get(4) + "\", \"i\"))"
-           //     + " FILTER ( regex(?roomType1,\"" + arr.get(4) + "\", \"i\"))"
+          
                 + " FILTER ( regex(?roomType1,\"" + arr.get(4) + "\", \"i\"))}";
      
       Query query = QueryFactory.create(queryString);
@@ -859,6 +813,10 @@ System.out.println("Trong next"+cl.toString());
         int index1 = 0, index2 = 0;
         float number1 = 0, number2 = 0;
         boolean isOk = false;
+        String notavail=null; //  the hien co khoang thoi gian dat truoc trung voi khoang thoi gian muon dat
+        float number=0; //  luu gia tri cu
+        
+        
         try {
             ResultSet rs = queryexec.execSelect();
           
@@ -882,11 +840,11 @@ System.out.println("Trong next"+cl.toString());
                  float total1 = Float.parseFloat(binding.getLiteral("number1").getValue().toString());
                 System.out.println("so phong muon dat = "+total1);
                  // Tim ra khoang dat gan nhat phia tren ngay muon dat
-                 System.out.println("todate1:" + arr.get(7));
-                  System.out.println("fromdate1:" + arr.get(6));
                  
-                  System.out.println("min:" + min);
-                  System.out.println("max:" + max);
+                if(fromdate.equalsIgnoreCase(arr.get(6))&& todate.equalsIgnoreCase(arr.get(7))){
+                    number = total1;
+                    notavail = binding.getResource("notAvail").toString();
+                }
                   
                  if(todate.compareTo(arr.get(7))>=0 )
                 {
@@ -936,9 +894,26 @@ System.out.println("Trong next"+cl.toString());
                 
                 }
             
-                        
+            // sau khi xac dinh duoc cac khoang can ke
+            
+             
+            if(notavail != null ){
+                    Individual ind = model.getIndividual(notavail);
+                    if(ind!=null){
+                        float newNumber = number+ Float.parseFloat(arr.get(5));                        
+                        if(newNumber<=total)
+                        {
+                        System.out.println("co khoang trung");
+                        ind.removeAll(Hotel.Number);
+			ind.addLiteral(Hotel.Number, newNumber);
+                        isOk=true;
+                        }	
+                    }
+                }
+            else
             // truong hop doan dat nam ca trean 2 doan gan nhat
-           if(index1>0 && index2>0 ){
+            {
+            if(index1>0 && index2>0 ){
                
            
             if(todate1.compareTo(arr.get(6))>0 && fromdate2.compareTo(arr.get(7))<0){
@@ -1073,7 +1048,11 @@ System.out.println("Trong next"+cl.toString());
                 } 
                 }
             }
-          
+            
+            // Truong hop fromdate va todate trung voi ngay da duoc dat truoc, update them so luong
+        }
+            
+            
             }
         
             catch(Exception e){
@@ -1119,6 +1098,7 @@ System.out.print("them 1 the hien not availability");
 	}
       
    
+ 
  public static void searchNotAvailability(){
        Database.LoadOnt2Database();
        OntModel model = Database.getOntologyModel();
