@@ -1,7 +1,4 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+
 
 package com.ptit.travel.jane.hotel;
 import java.io.FileOutputStream;
@@ -81,9 +78,73 @@ public class Contact {
 		}
 		return isOk;
 	}
-		// to tim kiem theo tu khoa nao day
+		
 
-	
+
+    
+  /**
+     * @param input: Email cu - : Email moil -- PhoneNumber
+     */ 
+	public static boolean updateContact(String input ) {
+		boolean isOk = false;
+		Database.LoadOnt2Database();
+		OntModel om = Database.getOntologyModel();
+                ArrayList<String> arr = new ArrayList<String>();
+
+        // Ham phan tach thog tin dua vao
+                arr = Message.split(input, Message.FIELD_SEPARATE);
+		try {
+                    
+                    // lay ra cai the hien cua cai doi tuong can thay doi ay
+			Individual ind = om.getIndividual(Hotel.getURI() + "Contact_"+ arr.get(0));
+		
+			
+			// xoa cai cu them cai moi vao
+			if (ind != null) {
+				
+				ind.removeAll(Hotel.Email);
+				ind.addProperty(Hotel.Email, arr.get(1));
+				
+				ind.removeAll(Hotel.PhoneNumer);
+				ind.addProperty(Hotel.PhoneNumer, arr.get(2));
+				
+				
+				isOk = true;
+			}
+		} catch (Exception e) {
+			isOk = false;
+			e.printStackTrace();
+		}
+		return isOk;
+
+	}
+
+        
+        public static boolean deleteContact(String input ) {
+		boolean isOk = false;
+		Database.LoadOnt2Database();
+		OntModel om = Database.getOntologyModel();
+                ArrayList<String> arr = new ArrayList<String>();
+
+        // Ham phan tach thog tin dua vao
+                arr = Message.split(input, Message.FIELD_SEPARATE);
+		try {
+                    
+                    // lay ra cai the hien cua cai doi tuong can thay doi ay
+			Individual ind = om.getIndividual(Hotel.getURI() + "Contact_"+ arr.get(0));
+			ind.remove();
+			isOk = true;
+			
+			// xoa cai cu them cai moi vao
+			
+		} catch (Exception e) {
+			isOk = false;
+			e.printStackTrace();
+		}
+		return isOk;
+
+	}
+        
 		
 	
 	
