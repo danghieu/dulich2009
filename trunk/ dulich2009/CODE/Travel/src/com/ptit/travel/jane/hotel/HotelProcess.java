@@ -1072,6 +1072,7 @@ System.out.println("Trong next"+cl.toString());
   public static boolean processBooking(String input){
        Database.LoadOnt2Database();
       OntModel model = Database.getOntologyModel();
+        String ont = "http://www.owl-ontologies.com/Travel.owl#";  
       System.out.println("booking");
       ArrayList <String> arr = new ArrayList<String>();
       arr = Message.split(input, Message.FIELD_SEPARATE);
@@ -1112,7 +1113,7 @@ System.out.println("Trong next"+cl.toString());
         boolean isOk = false;
         String notavail=null; //  the hien co khoang thoi gian dat truoc trung voi khoang thoi gian muon dat
         float number=0; //  luu gia tri cu
-        
+        String hotelroom = null;
         
         try {
             ResultSet rs = queryexec.execSelect();
@@ -1137,10 +1138,12 @@ System.out.println("Trong next"+cl.toString());
                 Number = Float.parseFloat(binding.getLiteral("number1").getValue().toString());
               
                  // Tim ra khoang dat gan nhat phia tren ngay muon dat
-                 
+                  hotelroom = binding.getResource("hotelRoom").toString();
+                    System.out.println("hotel:"+hotelroom);
                 if(fromdate.equalsIgnoreCase(arr.get(6))&& todate.equalsIgnoreCase(arr.get(7))){
                     number = Number;
                     notavail = binding.getResource("notAvail").toString();
+                   
                     numberNotAvail = + Number;
                 }
                   
@@ -1182,13 +1185,18 @@ System.out.println("Trong next"+cl.toString());
                         
                         try {
                             System.out.println("them gia tri");
-                      OntClass oc = model.createClass(Hotel.getURI() + "NotAvailabilityPeriod");
-                      Individual ind = model.createIndividual(Hotel.getURI() + "NotAvailabilityPeriod_" + System.currentTimeMillis(),oc);
+                      OntClass oc = model.createClass("http://www.owl-ontologies.com/Travel.owl#NotAvailabilityPeriod");
+                      Individual ind = model.createIndividual(ont + "NotAvailabilityPeriod_" + System.currentTimeMillis(),oc);
                       ind.addLiteral(Hotel.roomType, arr.get(4) );                        		
 		      ind.addLiteral(Hotel.ToDate,arr.get(7));			
 		       ind.addLiteral(Hotel.FromDate,arr.get(6));			
                       
                       ind.addLiteral(Hotel.Number, Float.parseFloat(arr.get(5)));
+                      
+                      System.out.println("hotelRoom: "+hotelroom);
+                       Individual hotelRoomInd = model.getIndividual(hotelroom);
+                       hotelRoomInd.addProperty(Hotel.hasNotAvailabilityPeriod, ind);
+                       
 			isOk = true;
                         System.out.println("Them the hien NotAvailability thanh cong");
                        } catch (Exception e) {
