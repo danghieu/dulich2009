@@ -1,4 +1,4 @@
-; Sun Dec 27 22:13:16 PST 2009
+; Sun Dec 27 22:19:24 PST 2009
 ; 
 ;+ (version "3.4")
 ;+ (build "Build 533")
@@ -6,11 +6,11 @@
 ([BROWSER_SLOT_NAMES] of  Property_List
 
 	(properties
-		[Flight_ProjectKB_Class20064]
-		[Flight_ProjectKB_Class20065]
-		[Flight_ProjectKB_Class20066]
-		[Flight_ProjectKB_Class20067]
-		[Flight_ProjectKB_Class20068]))
+		[Flight_ProjectKB_Class20141]
+		[Flight_ProjectKB_Class20142]
+		[Flight_ProjectKB_Class20143]
+		[Flight_ProjectKB_Class20144]
+		[Flight_ProjectKB_Class20145]))
 
 ([CLSES_TAB] of  Widget
 
@@ -349,27 +349,27 @@
 	(name "http://www.w3.org/2000/01/rdf-schema#seeAlso")
 	(property_list [Flight_ProjectKB_Class21]))
 
-([Flight_ProjectKB_Class20064] of  String
+([Flight_ProjectKB_Class20141] of  String
 
 	(name "http://www.w3.org/2002/07/owl#Class")
 	(string_value "%3ANAME"))
 
-([Flight_ProjectKB_Class20065] of  String
+([Flight_ProjectKB_Class20142] of  String
 
 	(name ":INSTANCE-ANNOTATION")
 	(string_value "%3AANNOTATION-TEXT"))
 
-([Flight_ProjectKB_Class20066] of  String
+([Flight_ProjectKB_Class20143] of  String
 
 	(name ":META-CLASS")
 	(string_value "%3ANAME"))
 
-([Flight_ProjectKB_Class20067] of  String
+([Flight_ProjectKB_Class20144] of  String
 
 	(name "http://www.w3.org/2002/07/owl#Thing")
 	(string_value "%3ANAME"))
 
-([Flight_ProjectKB_Class20068] of  String
+([Flight_ProjectKB_Class20145] of  String
 
 	(name ":PAL-CONSTRAINT")
 	(string_value "%3APAL-NAME"))
