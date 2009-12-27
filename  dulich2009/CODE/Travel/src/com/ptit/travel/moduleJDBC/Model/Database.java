@@ -33,7 +33,7 @@ public class Database {
 
 //Password
 
-	public static final String DB_PASSWD      = "root";
+	public static final String DB_PASSWD      = "1";
 
 //Database engine name
 
@@ -86,7 +86,7 @@ public class Database {
 		
 		// duong dan den file owl
 		
-		FileManager.get().readModel(model,"http://localhost:8080/MyOntology/train.owl");
+		FileManager.get().readModel(model,"http://localhost:8080/MyOntology/hotel_yen6.owl");
 		
 		// cap nhat vao csdl
 		model.commit();
