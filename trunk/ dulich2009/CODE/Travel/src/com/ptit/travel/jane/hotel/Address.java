@@ -20,7 +20,7 @@ public class Address {
 	public Address() {
 	}
 
-	public boolean insertAddress(String input) // vi ko dung Address nua, mai trung truyen cho 1 String, to e phai tach de lay thong tin
+	public static boolean insertAddress(String input) // vi ko dung Address nua, mai trung truyen cho 1 String, to e phai tach de lay thong tin
         {
 	  ArrayList<String> arr = new ArrayList<String>();
 
@@ -63,7 +63,7 @@ public class Address {
          * @param input
          * @return
          */
-	public boolean updateAddress(String input ) {
+	public static boolean updateAddress(String input ) {
 		boolean isOk = false;
 		Database.LoadOnt2Database();
 		OntModel om = Database.getOntologyModel();
@@ -99,7 +99,7 @@ public class Address {
 	}
 
         
-        public boolean deleteAddress(String input ) {
+        public static boolean deleteAddress(String input ) {
 		boolean isOk = false;
 		Database.LoadOnt2Database();
 		OntModel om = Database.getOntologyModel();
