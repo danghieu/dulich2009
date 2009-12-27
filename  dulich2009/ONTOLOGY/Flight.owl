@@ -128,17 +128,6 @@
       </owl:Class>
     </rdfs:domain>
   </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:ID="flightInformation">
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    <rdfs:domain>
-      <owl:Class>
-        <owl:unionOf rdf:parseType="Collection">
-          <owl:Class rdf:about="#Flight"/>
-          <owl:Class rdf:about="#Msg_FlightBookChangeConfirmRQ"/>
-        </owl:unionOf>
-      </owl:Class>
-    </rdfs:domain>
-  </owl:DatatypeProperty>
   <owl:DatatypeProperty rdf:ID="contractCode">
     <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
     >Ma hop dong</rdfs:comment>
@@ -154,6 +143,17 @@
       </owl:Class>
     </rdfs:domain>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="flightInformation">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#Flight"/>
+          <owl:Class rdf:about="#Msg_FlightBookChangeConfirmRQ"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
   </owl:DatatypeProperty>
   <owl:DatatypeProperty rdf:ID="airline">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
@@ -277,20 +277,6 @@
   <owl:DatatypeProperty rdf:ID="specificAdress">
     <rdfs:domain rdf:resource="#Adress"/>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-  </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:ID="date">
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >Ngay cu the</rdfs:comment>
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    <rdfs:domain>
-      <owl:Class>
-        <owl:unionOf rdf:parseType="Collection">
-          <owl:Class rdf:about="#Msg_FlightAvailRQ"/>
-          <owl:Class rdf:about="#PointOfTime"/>
-        </owl:unionOf>
-      </owl:Class>
-    </rdfs:domain>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
   </owl:DatatypeProperty>
   <owl:FunctionalProperty rdf:ID="hasDepartureDateTime">
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
@@ -490,6 +476,20 @@
     </rdfs:domain>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#ObjectProperty"/>
     <rdfs:range rdf:resource="#Airport"/>
+  </owl:FunctionalProperty>
+  <owl:FunctionalProperty rdf:ID="date">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Ngay cu the</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#Msg_FlightAvailRQ"/>
+          <owl:Class rdf:about="#PointOfTime"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
   </owl:FunctionalProperty>
   <owl:DataRange>
     <owl:oneOf>
@@ -1746,6 +1746,10 @@
       </swrl:AtomList>
     </rdf:rest>
   </swrl:AtomList>
+  <PointOfTime rdf:ID="D_HN_19_1">
+    <time rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >19:00</time>
+  </PointOfTime>
   <Airport rdf:ID="HPH">
     <airportName rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
     >Cat Bi</airportName>
@@ -2416,9 +2420,11 @@
       </swrl:ClassAtom>
     </rdf:first>
   </swrl:AtomList>
-  <PointOfTime rdf:ID="D_HN_19">
+  <PointOfTime rdf:ID="HN_10_1">
     <time rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >19:00</time>
+    >10:00</time>
+    <date rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >2010-02-01</date>
   </PointOfTime>
   <swrl:AtomList>
     <rdf:first>
@@ -3420,6 +3426,8 @@
   <PointOfTime rdf:ID="D_HN_10">
     <time rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
     >10:00</time>
+    <date rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Cung ngay</date>
   </PointOfTime>
   <swrl:DataRangeAtom>
     <swrl:argument1 rdf:resource="#email1"/>
@@ -3662,10 +3670,6 @@
       </swrl:AtomList>
     </rdf:rest>
   </swrl:AtomList>
-  <PointOfTime rdf:ID="HN_10">
-    <time rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >10:00</time>
-  </PointOfTime>
   <swrl:AtomList>
     <rdf:first>
       <swrl:ClassAtom>
@@ -5861,6 +5865,8 @@
           <PointOfTime rdf:ID="D_HN_13">
             <time rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
             >13:00</time>
+            <date rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >Cung ngay</date>
           </PointOfTime>
         </hasArrivalDateTime>
         <hasAirplane>
@@ -5879,12 +5885,6 @@
             >VND</priceUnit>
           </Price>
         </hasPrice>
-        <hasDepartureDateTime>
-          <PointOfTime rdf:ID="HN_11">
-            <time rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-            >11:00</time>
-          </PointOfTime>
-        </hasDepartureDateTime>
         <hasArrivalAirport>
           <Airport rdf:ID="SGN">
             <country rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
@@ -5895,6 +5895,14 @@
             >Ho Chi Minh</city>
           </Airport>
         </hasArrivalAirport>
+        <hasDepartureDateTime>
+          <PointOfTime rdf:ID="HN_11_1">
+            <date rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >2010-02-01</date>
+            <time rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+            >11:00</time>
+          </PointOfTime>
+        </hasDepartureDateTime>
         <airline rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
         >Vietnam Airlines</airline>
       </Flight>
@@ -6998,6 +7006,12 @@
       </swrl:AtomList>
     </rdf:rest>
   </swrl:AtomList>
+  <PointOfTime rdf:ID="HN_17_1">
+    <date rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >2010-02-01</date>
+    <time rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >17:00</time>
+  </PointOfTime>
   <owl:DataRange>
     <owl:oneOf rdf:resource="#contractcode"/>
   </owl:DataRange>
@@ -9369,10 +9383,6 @@
       </swrl:AtomList>
     </rdf:rest>
   </swrl:AtomList>
-  <PointOfTime rdf:ID="HN15">
-    <time rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >15:00</time>
-  </PointOfTime>
   <swrl:AtomList>
     <rdf:rest>
       <swrl:AtomList>
@@ -10049,6 +10059,12 @@
       </swrl:ClassAtom>
     </rdf:first>
   </swrl:AtomList>
+  <PointOfTime rdf:ID="HN_19_1">
+    <time rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >19:00</time>
+    <date rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >2010-02-01</date>
+  </PointOfTime>
   <swrl:DataRangeAtom>
     <swrl:argument1 rdf:resource="#email1"/>
   </swrl:DataRangeAtom>
@@ -10058,10 +10074,6 @@
   <owl:DataRange>
     <owl:oneOf rdf:resource="#contractcode"/>
   </owl:DataRange>
-  <PointOfTime rdf:ID="HN_19">
-    <time rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >19:00</time>
-  </PointOfTime>
   <swrl:AtomList>
     <rdf:rest>
       <swrl:AtomList>
@@ -10901,10 +10913,6 @@
   <swrl:DataRangeAtom>
     <swrl:argument1 rdf:resource="#email1"/>
   </swrl:DataRangeAtom>
-  <PointOfTime rdf:ID="HN_8">
-    <time rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >8:00</time>
-  </PointOfTime>
   <swrl:DataRangeAtom>
     <swrl:argument1 rdf:resource="#email1"/>
   </swrl:DataRangeAtom>
@@ -11312,23 +11320,30 @@
     </rdf:first>
   </swrl:AtomList>
   <Flight rdf:ID="VN219_E">
+    <hasArrivalDateTime>
+      <PointOfTime rdf:ID="D_HN_15_1">
+        <time rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >15:00</time>
+        <date rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >Cung ngay</date>
+      </PointOfTime>
+    </hasArrivalDateTime>
     <hasAirplane rdf:resource="#Boeing_777"/>
     <airline rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
     >Vietnam Airlines</airline>
-    <hasDepartureDateTime>
-      <PointOfTime rdf:ID="HN_13">
-        <time rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-        >13:00</time>
-      </PointOfTime>
-    </hasDepartureDateTime>
     <hasPrice rdf:resource="#P_15"/>
     <flightClass rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
     >economy</flightClass>
+    <hasDepartureDateTime>
+      <PointOfTime rdf:ID="HN_13_1">
+        <time rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >13:00</time>
+        <date rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+        >2010-02-01</date>
+      </PointOfTime>
+    </hasDepartureDateTime>
     <flightNumber rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
     >VN219</flightNumber>
-    <hasArrivalDateTime>
-      <PointOfTime rdf:ID="D_HN_15"/>
-    </hasArrivalDateTime>
     <hasDepartureAirport rdf:resource="#HAN"/>
     <hasArrivalAirport rdf:resource="#SGN"/>
   </Flight>
@@ -11667,10 +11682,6 @@
   <owl:DataRange>
     <owl:oneOf rdf:resource="#contractcode"/>
   </owl:DataRange>
-  <PointOfTime rdf:ID="HN_17">
-    <time rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >17:00</time>
-  </PointOfTime>
   <owl:DataRange>
     <owl:oneOf rdf:resource="#contractcode"/>
   </owl:DataRange>
@@ -11882,6 +11893,7 @@
   <Flight rdf:ID="VN219_B">
     <flightClass rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
     >business</flightClass>
+    <hasArrivalDateTime rdf:resource="#D_HN_15_1"/>
     <hasPrice>
       <Price rdf:ID="P_20">
         <priceUnit rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
@@ -11893,10 +11905,9 @@
     <hasDepartureAirport rdf:resource="#HAN"/>
     <flightNumber rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
     >VN219</flightNumber>
-    <hasArrivalDateTime rdf:resource="#D_HN_15"/>
-    <hasDepartureDateTime rdf:resource="#HN_13"/>
     <hasAirplane rdf:resource="#Boeing_777"/>
     <hasArrivalAirport rdf:resource="#SGN"/>
+    <hasDepartureDateTime rdf:resource="#HN_13_1"/>
     <airline rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
     >Vietnam Airlines</airline>
   </Flight>
@@ -12657,6 +12668,12 @@
       </swrl:ClassAtom>
     </rdf:first>
   </swrl:AtomList>
+  <PointOfTime rdf:ID="HN15_1">
+    <date rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >2010_02_01</date>
+    <time rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >15:00</time>
+  </PointOfTime>
   <swrl:DataRangeAtom>
     <swrl:argument1 rdf:resource="#email1"/>
   </swrl:DataRangeAtom>
@@ -13338,6 +13355,12 @@
       </swrl:ClassAtom>
     </rdf:first>
   </swrl:AtomList>
+  <PointOfTime rdf:ID="HN_8_1">
+    <date rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >2010-02-01</date>
+    <time rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >8:00</time>
+  </PointOfTime>
   <swrl:AtomList>
     <rdf:first>
       <swrl:ClassAtom>
@@ -13509,7 +13532,6 @@
       <Flight rdf:ID="VN217_B">
         <airline rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
         ></airline>
-        <hasDepartureDateTime rdf:resource="#HN_11"/>
         <hasPrice rdf:resource="#P_20"/>
         <flightNumber rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
         >VN217</flightNumber>
@@ -13517,6 +13539,7 @@
         <airline rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
         >Vietnam Airlines</airline>
         <hasDepartureAirport rdf:resource="#HAN"/>
+        <hasDepartureDateTime rdf:resource="#HN_11_1"/>
         <hasAirplane rdf:resource="#Boeing_777"/>
         <hasArrivalAirport rdf:resource="#SGN"/>
         <flightClass rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
