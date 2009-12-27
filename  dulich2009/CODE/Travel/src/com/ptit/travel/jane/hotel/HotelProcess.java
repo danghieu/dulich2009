@@ -769,7 +769,7 @@ System.out.println("Trong next"+cl.toString());
        */
       
       
-   public static boolean processBooking(String input) {
+/* public static boolean processBooking(String input) {
       Database.LoadOnt2Database();
       OntModel model = Database.getOntologyModel();
       System.out.println("booking");
@@ -1060,32 +1060,184 @@ System.out.println("Trong next"+cl.toString());
                 e.printStackTrace();
             }
       return isOk; 
-      }
+      }*/
+     
+     
+     
+     
+     
+     
+     // cach tiep - co len nao
+     
+  public static boolean processBooking(String input){
+       Database.LoadOnt2Database();
+      OntModel model = Database.getOntologyModel();
+      System.out.println("booking");
+      ArrayList <String> arr = new ArrayList<String>();
+      arr = Message.split(input, Message.FIELD_SEPARATE);
+      System.out.println("arr: "+arr.toString());
+      String queryString = "PREFIX hotel: <http://www.owl-ontologies.com/Travel.owl#> \n" + "SELECT DISTINCT * \n " 
+                + "WHERE \n" + "{ \n" + "?x hotel:HotelName ?hotelname. \n"
+                + "?x hotel:hasHotelRoom ?hotelRoom. \n" 
+                + "?x hotel:hasContact ?contact. \n" 
+                + "?contact hotel:hasAddress ?add. \n" 
+                + "?add hotel:city ?city. \n" 
+                + "?add hotel:street ?street. \n" 
+                + "?add hotel:number ?number. \n" 
+                
+                + "?hotelRoom hotel:roomType ?roomType. \n"       
+                + "?hotelRoom hotel:Number ?total. \n"  
+                + "?hotelRoom hotel:hasNotAvailabilityPeriod ?notAvail. \n"
+        
+                
+                + "?notAvail hotel:roomType ?roomType1. \n" 
+                + "?notAvail hotel:ToDate ?toDate. \n" 
+                + "?notAvail hotel:FromDate ?fromDate. \n" 
+                + "?notAvail hotel:Number ?number1. \n"
+        
+                + " FILTER ( regex(?hotelname,\"" + arr.get(0) + "\", \"i\"))" 
+                + " FILTER ( regex(?city,\"" + arr.get(1) + "\", \"i\"))"
+                + " FILTER ( regex(?number,\"" + arr.get(2) + "\", \"i\"))"
+                + " FILTER ( regex(?street,\"" + arr.get(3) + "\", \"i\"))"
+                + " FILTER ( regex(?roomType,\"" + arr.get(4) + "\", \"i\"))"
+          
+                + " FILTER ( regex(?roomType1,\"" + arr.get(4) + "\", \"i\"))}";
+     
+      Query query = QueryFactory.create(queryString);
+        QueryExecution queryexec = QueryExecutionFactory.create(query, model);
+    
+
+
+        float numberNotAvail = 0, Number=0;
+        boolean isOk = false;
+        String notavail=null; //  the hien co khoang thoi gian dat truoc trung voi khoang thoi gian muon dat
+        float number=0; //  luu gia tri cu
+        
+        
+        try {
+            ResultSet rs = queryexec.execSelect();
+          
+            float total = 0;
+            float maxTotal =0;
+           
+            
+            while (rs.hasNext()) {
+                 System.out.print("co gia tri thoa man");
+              
+                Object obj = rs.next();
+                ResultBinding binding = (ResultBinding) obj;
+                System.out.println("ket qua truy van :" + binding.toString());
+            
+                total = Float.parseFloat(binding.getLiteral("total").getValue().toString());                           
+              
+                String todate = binding.getLiteral("toDate").getValue().toString();
+                System.out.println("ToDate truy van :"+todate);
+                String fromdate = binding.getLiteral("fromDate").getValue().toString();
+              System.out.println("FromDate truy van :"+fromdate);
+                Number = Float.parseFloat(binding.getLiteral("number1").getValue().toString());
+              
+                 // Tim ra khoang dat gan nhat phia tren ngay muon dat
+                 
+                if(fromdate.equalsIgnoreCase(arr.get(6))&& todate.equalsIgnoreCase(arr.get(7))){
+                    number = Number;
+                    notavail = binding.getResource("notAvail").toString();
+                    numberNotAvail = + Number;
+                }
+                  
+                 // TH1: fromdate < arr.get(6) < todate
+                 if(fromdate.compareTo(arr.get(6))<0&& todate.compareTo(arr.get(6))>0)
+                     numberNotAvail =+ Number;
+                 
+                
+                // TH2: fromdate < arr.get(7) < todate
+                 if(fromdate.compareTo(arr.get(7))<0&& todate.compareTo(arr.get(7))>0)
+                     numberNotAvail =+ Number;
+                 
+                // TH3: fromdate < arr.get(6) < arr.get(7) < todate
+                 if(fromdate.compareTo(arr.get(6))<0&& todate.compareTo(arr.get(7))>0)
+                     numberNotAvail =+ Number;
+                 
+                // TH4: arr.get(6) < fromdate <  todate <arr.get(7);
+                 if(fromdate.compareTo(arr.get(6))>0&& todate.compareTo(arr.get(7))<0)
+                     numberNotAvail =+ Number;
+                 
+                
+            // sau khi xac dinh duoc cac khoang can ke
+            
+            }
+            float newNumber = numberNotAvail+ Float.parseFloat(arr.get(5));                        
+            if(newNumber<=total)
+                 if(notavail != null ){
+                     Individual ind = model.getIndividual(notavail);
+                     if(ind!=null){                    
+                        
+                        System.out.println("co khoang trung");
+                        ind.removeAll(Hotel.Number);
+			ind.addLiteral(Hotel.Number, number+Float.parseFloat(arr.get(5)));
+                        isOk=true;
+                        	
+                         }
+                  }
+                 else{
+                        
+                        try {
+                            System.out.println("them gia tri");
+                      OntClass oc = model.createClass(Hotel.getURI() + "NotAvailabilityPeriod");
+                      Individual ind = model.createIndividual(Hotel.getURI() + "NotAvailabilityPeriod_" + System.currentTimeMillis(),oc);
+                      ind.addLiteral(Hotel.roomType, arr.get(4) );                        		
+		      ind.addLiteral(Hotel.ToDate,arr.get(7));			
+		       ind.addLiteral(Hotel.FromDate,arr.get(6));			
+                      
+                      ind.addLiteral(Hotel.Number, Float.parseFloat(arr.get(5)));
+			isOk = true;
+                        System.out.println("Them the hien NotAvailability thanh cong");
+                       } catch (Exception e) {
+			System.out.println(e.toString());
+			isOk = false;
+		}
+                        isOk=true;
+                  }
+            }catch(Exception e){
+                e.printStackTrace();
+            }
+     
+        return isOk;
+  }
+     
+     
+     
+     
      
      /**
       * input: roomtype - Number - toDate - fromDate 
       * @param input
       * @return
       */ 
- public static boolean insertNotAvailabilityPeriod(String input) // vi ko dung Address nua, mai trung truyen cho 1 String, to e phai tach de lay thong tin
+     
+     
+     
+     
+     
+     
+     
+     
+ public static boolean insertNotAvailabilityPeriod(String input, OntModel om) // vi ko dung Address nua, mai trung truyen cho 1 String, to e phai tach de lay thong tin
         {
 	  ArrayList<String> arr = new ArrayList<String>();
-System.out.print("them 1 the hien not availability");
+System.out.println("them 1 the hien not availability");
         // Ham phan tach thog tin dua vao
         arr = Message.split(input, Message.FIELD_SEPARATE);
             boolean isOk = false;
-		Database.LoadOnt2Database(); // ket noi csdl
-		OntModel om = Database.getOntologyModel();// lay model csdl
-                om.write(System.out);                   
+		            
                         
                 
 		Individual ind = null;
 		try {
                       OntClass oc = om.createClass(Hotel.getURI() + "NotAvailabilityPeriod");
                       ind = om.createIndividual(Hotel.getURI() + "NotAvailabilityPeriod_" + System.currentTimeMillis(),oc);
-                      ind.addProperty(Hotel.roomType, arr.get(0) );                        		
-		      ind.addProperty(Hotel.ToDate,arr.get(2));			
-		      ind.addProperty(Hotel.FromDate,arr.get(3));			
+                      ind.addProperty(Hotel.roomType, String.valueOf(arr.get(0)) );                        		
+		      ind.addProperty(Hotel.ToDate,String.valueOf(arr.get(3)));			
+		      ind.addProperty(Hotel.FromDate,String.valueOf(arr.get(2)));			
                       
                       ind.addLiteral(Hotel.Number, Float.parseFloat(arr.get(1)));
 			isOk = true;
@@ -1107,8 +1259,10 @@ System.out.print("them 1 the hien not availability");
       
       
         // phuc vu cho viec hien thi du lieu, cho nguoi lap trinh test
-        
+          DatatypeProperty roomtype =model.getDatatypeProperty(ont + "roomType");
          DatatypeProperty number =model.getDatatypeProperty(ont + "Number");
+          DatatypeProperty todate =model.getDatatypeProperty(ont + "ToDate");
+           DatatypeProperty fromdate =model.getDatatypeProperty(ont + "FromDate");
         OntClass cl = model.getOntClass(ont + "NotAvailabilityPeriod");
       
 
@@ -1130,10 +1284,26 @@ System.out.print("them 1 the hien not availability");
             System.out.println("Tai Nguyen");
             Individual individual = model.getIndividual(ont + resource.getLocalName());                   
            String hotelName =  (individual.listPropertyValues(number).next()).toString();
-            int index = hotelName.indexOf("^^");
-            String hotelname = hotelName.substring(0, index);
-               System.out.println("" +hotelname );
-                    
+          //  int index = hotelName.indexOf("^^");
+         //   String hotelname = hotelName.substring(0, index);
+               System.out.println("" +hotelName );
+            
+               String todate1 =  (individual.listPropertyValues(todate).next()).toString();
+           
+          //  int indexToDate = todate1.indexOf("^^");
+          //  String todate2 = todate1.substring(0, indexToDate);
+             System.out.println("" +todate1 );
+            
+            String fromdate1 =  (individual.listPropertyValues(fromdate).next()).toString();
+         //   int indexFromDate = fromdate1.indexOf("^^");
+          //  String fromdate2 = fromdate1.substring(0, indexFromDate);
+             System.out.println("" +fromdate1 );
+             String room =  (individual.listPropertyValues(roomtype).next()).toString();
+         //   int indexFromDate = fromdate1.indexOf("^^");
+          //  String fromdate2 = fromdate1.substring(0, indexFromDate);
+             System.out.println("" +room );
+            
+            
         }
  }
  
@@ -1142,15 +1312,15 @@ System.out.print("them 1 the hien not availability");
         HotelProcess hotelprocess = new HotelProcess();
 //        hotelprocess.searchHotel(false, true, false, false, false, "inside", false, true, "Nam Dinh");
       //  hotelprocess.search2("HaiYen", "HotelSofitel");
-        String s_begin = "2009-12-19";
-        String s_end = "2009-12-20";
+        String s_begin = "2009-12-29";
+        String s_end = "2009-12-30";
         //     hotelprocess.checkAvailability( "HaiYen", "LivingRoom", "SingleRoom");
       
 
         
    String input1 = "HaiYen" + Message.FIELD_SEPARATE + "Nam Dinh" + Message.FIELD_SEPARATE
                + "405" + Message.FIELD_SEPARATE + "Thanh Xuan Bac"+ Message.FIELD_SEPARATE 
-               + "MeetingRoom" + Message.FIELD_SEPARATE + "3" + Message.FIELD_SEPARATE + s_begin + Message.FIELD_SEPARATE + s_end;
+               + "MeetingRoom" + Message.FIELD_SEPARATE + "1" + Message.FIELD_SEPARATE + s_begin + Message.FIELD_SEPARATE + s_end;
    
      boolean ss1 = HotelProcess.processBooking(input1);
                
