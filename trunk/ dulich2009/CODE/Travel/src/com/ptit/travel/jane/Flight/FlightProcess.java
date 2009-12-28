@@ -38,9 +38,9 @@ import org.apache.log4j.Logger;
  *
  * @author Thao Hoang
  */
-public class FlightProcess_2 {
+public class FlightProcess{
     
-    private static Logger log = Logger.getLogger(FlightProcess_2.class.getName());
+    private static Logger log = Logger.getLogger(FlightProcess.class.getName());
     public static OntModel insertMsg_FlightAvailRQ(String input, long total) {
         ArrayList<String> arr = new ArrayList<String>();
 
@@ -70,11 +70,11 @@ public class FlightProcess_2 {
             }
      
              if (arr.get(2) != null) {
-            ind.addProperty(Flight.date, arr.get(2));
+            ind.addLiteral(Flight.date, arr.get(2));
 
             }   
             if (arr.get(3) != null) {
-            ind.addProperty(Flight.flightClass, arr.get(3));
+            ind.addLiteral(Flight.flightClass, arr.get(3));
 
             }  
             if (arr.get(4) != null) {
@@ -117,6 +117,7 @@ public class FlightProcess_2 {
         // phuc vu cho viec hien thi du lieu, cho nguoi lap trinh test
         ObjectProperty flight = model.getObjectProperty(ont + "hasFlight");
         DatatypeProperty flightNumber =model.getDatatypeProperty(ont + "flightNumber");
+        DatatypeProperty flightClass =model.getDatatypeProperty(ont + "flightClass");
         DatatypeProperty date=model.getDatatypeProperty(ont+ "date");
         
         OntClass cl = model.getOntClass(ont + "Msg_FlightAvailRS");
@@ -124,14 +125,16 @@ public class FlightProcess_2 {
         log.info("Insert msg to infer");
         // add model yeu cau vao ontology de tao ra 1 model moi chua tat ca cac rang buoc ke ca luat
         Model ontmodel = insertMsg_FlightAvailRQ(input, System.currentTimeMillis());
-        Model model1 = model.add(ontmodel);
+        model.add(ontmodel);
         ExtendedIterator<?> extendedIterator = cl.listInstances(); // lay tat ca cac the hien cua cai lop day
 
-        String s = null;
+        String s = "";
 
         
         // lay tat cac cac ket qua thoa man
         while (extendedIterator.hasNext()) {
+          
+            
             OntResource resource = (OntResource) extendedIterator.next();
             System.out.println("Dich vu ket hop: " + cl);
             System.out.println("The hien: " + resource.getLocalName());
@@ -142,12 +145,19 @@ public class FlightProcess_2 {
             int index = FlightNumber .indexOf("^^");
             String flightnumber = FlightNumber .substring(0, index);
             System.out.println("flightNumber=" +flightnumber );
+            
             String Date =  (individual.listPropertyValues(date).next()).toString();
             int index2 = Date .indexOf("^^");
             String date2 = Date.substring(0, index2);
             System.out.println("date=" + date2 );
-
-            s = printValues(flightnumber,date2);
+            
+            String FlightClass=(individual.listPropertyValues(flightClass).next()).toString();
+            int index3=FlightClass.indexOf("^^");
+            String flightclass=FlightClass.substring(0,index3);
+            System.out.println("flightclass="+flightclass);
+            
+            s = s+ printValues(flightnumber,date2,flightclass);
+            
             
         }
 
@@ -162,7 +172,7 @@ public class FlightProcess_2 {
      * @param ind
      * @param prop
      */
-    public static String printValues(String s, String s2) {
+    public static String printValues(String s, String s2,String s3) {
         System.out.println("goi den ham hien thi ket qua");
         String file = "C://apache-tomcat-6.0.18/webapps/MyOntology/Flight.owl";
 
@@ -184,7 +194,6 @@ public class FlightProcess_2 {
                 + "SELECT DISTINCT * \n " + "WHERE \n" + "{ \n" 
                 + "?x flight:airline ?Airline. \n"     
                 + "?x flight:flightClass ?FlightClass. \n"  
-
                 + "?x flight:flightNumber ?FlightNumber. \n" 
                 + "?x flight:hasAirplane ?Airplane. \n"   
                 + "?x flight:hasArrivalAirport ?arrivalAirport. \n" 
@@ -204,6 +213,7 @@ public class FlightProcess_2 {
                 + "?price flight:price ?realPrice. \n" 
                 + "?price flight:priceUnit ?PriceUnit. \n"
                 + " FILTER regex(?FlightNumber,\"" +s + "\", \"i\")"
+                + " FILTER regex(?FlightClass,\"" +s3 + "\", \"i\")"
                 + " FILTER regex(?departureDate,\"" +s2 + "\", \"i\")}";       
         Query query = QueryFactory.create(queryString);
         QueryExecution queryexec = QueryExecutionFactory.create(query, model);
@@ -305,9 +315,9 @@ public class FlightProcess_2 {
 
  
     public static void main(String s[]) throws Exception {
-        FlightProcess_2 flightprocess = new FlightProcess_2();
+        FlightProcess flightprocess = new FlightProcess();
         OntModel ontmodel = ModelFactory.createOntologyModel();
-        String input = "Ha Noi" + Message.FIELD_SEPARATE +"Ho Chi Minh" + Message.FIELD_SEPARATE + "2010-02-01"+ Message.FIELD_SEPARATE + "economy" + Message.FIELD_SEPARATE + "1";
+        String input = "ha noi" + Message.FIELD_SEPARATE +"Ho Chi Minh" + Message.FIELD_SEPARATE + "2010-02-01"+ Message.FIELD_SEPARATE + "economy" + Message.FIELD_SEPARATE + "1";
         String ss = flightprocess.search(input);
         System.out.print("ss="+ss);
        // printValues("<http://www.owl-ontologies.com/Travel.owl#Hotel_1>");
