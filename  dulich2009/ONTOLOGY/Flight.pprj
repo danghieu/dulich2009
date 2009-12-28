@@ -1,4 +1,4 @@
-; Mon Dec 28 03:14:15 PST 2009
+; Mon Dec 28 12:51:43 PST 2009
 ; 
 ;+ (version "3.4")
 ;+ (build "Build 533")
@@ -6,11 +6,11 @@
 ([BROWSER_SLOT_NAMES] of  Property_List
 
 	(properties
-		[Flight_ProjectKB_Class20074]
-		[Flight_ProjectKB_Class20075]
-		[Flight_ProjectKB_Class20076]
-		[Flight_ProjectKB_Class20077]
-		[Flight_ProjectKB_Class20078]))
+		[Flight_ProjectKB_Class20183]
+		[Flight_ProjectKB_Class20184]
+		[Flight_ProjectKB_Class20185]
+		[Flight_ProjectKB_Class20186]
+		[Flight_ProjectKB_Class20187]))
 
 ([CLSES_TAB] of  Widget
 
@@ -349,27 +349,27 @@
 	(name "http://www.w3.org/2000/01/rdf-schema#seeAlso")
 	(property_list [Flight_ProjectKB_Class21]))
 
-([Flight_ProjectKB_Class20074] of  String
+([Flight_ProjectKB_Class20183] of  String
 
 	(name "http://www.w3.org/2002/07/owl#Class")
 	(string_value "%3ANAME"))
 
-([Flight_ProjectKB_Class20075] of  String
+([Flight_ProjectKB_Class20184] of  String
 
 	(name ":INSTANCE-ANNOTATION")
 	(string_value "%3AANNOTATION-TEXT"))
 
-([Flight_ProjectKB_Class20076] of  String
+([Flight_ProjectKB_Class20185] of  String
 
 	(name ":META-CLASS")
 	(string_value "%3ANAME"))
 
-([Flight_ProjectKB_Class20077] of  String
+([Flight_ProjectKB_Class20186] of  String
 
 	(name "http://www.w3.org/2002/07/owl#Thing")
 	(string_value "%3ANAME"))
 
-([Flight_ProjectKB_Class20078] of  String
+([Flight_ProjectKB_Class20187] of  String
 
 	(name ":PAL-CONSTRAINT")
 	(string_value "%3APAL-NAME"))
@@ -1186,6 +1186,9 @@
 	(name "owl_file_name")
 	(string_value "Flight.owl"))
 
+([KB_345392_Class0] of  Map
+)
+
 ([KB_444675_Instance_0] of  String
 
 	(name "SwitchableClassDefinitionType")
@@ -1197,9 +1200,6 @@
 	(name "http://protege.stanford.edu/plugins/owl/protege#ExternalResource")
 	(property_list [XY_Instance_890])
 	(widget_class_name "edu.stanford.smi.protegex.owl.ui.widget.OWLFormWidget"))
-
-([KB_592088_Class0] of  Map
-)
 
 ([KB_632156_Instance_0] of  String
 
@@ -5835,6 +5835,7 @@
 		"http://www.w3.org/2003/11/swrl#body"
 		"http://www.w3.org/2002/07/owl#MaxCardinalityRestriction"
 		"http://www.w3.org/2001/XMLSchema#gYearMonth"
+		"http://protege.stanford.edu/plugins/owl/protege#ExternalResource"
 		"http://www.w3.org/2002/07/owl#SymmetricProperty"
 		"http://www.w3.org/2000/01/rdf-schema#domain"
 		"http://www.w3.org/2001/XMLSchema#double"
