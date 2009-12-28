@@ -38,37 +38,42 @@ public class SearchServlet extends HttpServlet {
         String services;
         ArrayList<String> supplierList = Message.split(result, Message.OBJECT_SEPARATE);
         ArrayList<String> serviceList;
+
         // Display
         out.println("<html>");
         out.println("<head>");
         out.println("<title>Servlet SearchServlet</title>");
         out.println("</head>");
         out.println("<body>");
-        out.println("<form action=\"UserServlet\" method=\"get\"> ");
+        out.println("<form action=\"pages/hotel/datphong.jsp\" method=\"get\"> ");
         int i, j;
         if (supplierList != null) {
+            log.info(supplierList.toString());
             for (i = 0; i < supplierList.size(); i++) {
                 try {
                     services = supplierList.get(i);
                     serviceList = Message.split(services, Message.FIELD_SEPARATE);
                     if (serviceList != null) {
-                        out.println("<h1>Supplier: " + serviceList.get(0) + "</h1>");
+                        out.println("<a href=\"pages/hotel/datphong.jsp\" onClick=\"\"><h1>Supplier: " +
+                                serviceList.get(0) + "</h1></a>");
                         out.println("<ul>");
                         for (j = 1; j < serviceList.size(); j++) {
                             out.println("<li> " + serviceList.get(j) + "</li>");
                         }
                         out.println("</ul>");
+                        //out.println("<a href=\"abc\" onClick=\"\">more</a>");
+                        out.println("<input type=\"submit\" name=\"submit\" value=\"Book\"/>");
                     }
 
 
-                } finally {
-                    out.close();
+                } catch (Exception e) {
                 }
             }
+
+            out.println("<input type=\"hidden\" name=\"protocol\" value=\"" + Protocol.HOTEL_RES + "\"/>");
+            out.println("<input type=\"hidden\" name=\"input\" value=\"" + result + "\"/>");
         }
-        out.println("<input type=\"submit\" name=\"submit\" value=\"Book\"/>");
-        out.println("<input type=\"hidden\" name=\"protocol\" value=\"" + Protocol.HOTEL_RES + "\"/>");
-        out.println("<input type=\"hidden\" name=\"input\" value=\"" + result + "\"/>");
+
 
         out.println("</form>");
         out.println("</body>");
