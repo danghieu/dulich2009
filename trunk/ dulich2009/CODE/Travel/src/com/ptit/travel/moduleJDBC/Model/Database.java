@@ -15,9 +15,9 @@ import com.hp.hpl.jena.util.FileManager;
 import java.sql.*;
 
 /**
- * Ket noi Ontology voi MsSQL server 2005
+ * Ket noi Ontology voi MySql
  * 
- * @author TrungHieu
+
  * 
  */
 public class Database {
@@ -25,7 +25,7 @@ public class Database {
  
 	static String databaseName = "";
 			
-	public static final String DB_URL         = "jdbc:mysql://localhost/yen" ;
+	public static final String DB_URL         = "jdbc:mysql://localhost/hotel" ;
 
 //User name
 
