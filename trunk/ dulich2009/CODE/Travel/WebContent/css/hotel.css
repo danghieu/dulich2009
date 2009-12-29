@@ -1,0 +1,21 @@
+/* 
+Document   : hotel
+Created on : Dec 29, 2009, 2:19:30 PM
+Author     : D05CNPM
+Description:
+Purpose of the stylesheet follows.
+*/
+
+/* 
+TODO customize this sample style
+Syntax recommendation http://www.w3.org/TR/REC-CSS2/
+*/
+
+root { 
+    display: block;
+}
+.hidden {
+    display:none;
+    float:left;
+}
+
