@@ -1,4 +1,6 @@
 <%@ page contentType="text/html; charset=utf-8" language="java" import="java.sql.*" errorPage="" %>
+<%@ page language="java" import="org.apache.log4j.Logger"%>
+<%@ page language="java" import="com.ptit.travel.agent.communication.Protocol" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
@@ -58,6 +60,16 @@
     </head>
     
     <body>
+        <% 
+        Logger log = Logger.getLogger("datphong.jsp");
+        String supplier = request.getParameter("supplier");
+        String services = request.getParameter("services");
+        
+        log.info("supplier: " + supplier + "services: " + services);
+        %>
+        <input type="hidden" name="protocol" value="<%=Protocol.HOTEL_RES%>">
+        <input type="hidden" name="supplier" value="<%=supplier%>">
+        <input type="hidden" name="services" value="<%=services%>">
         <table width="100%" border="0" cellpadding="0" cellspacing="0">
             <tbody><tr> 
                     <td class="TitleLevel2" height="30" align="center">&nbsp;&nbsp;<img src="dat_files/node.jpg" width="10" align="absmiddle" height="10"><font color="#0000ff">&nbsp; 
@@ -69,7 +81,7 @@
                 <tr> 
                     <td valign="top" align="left"><table width="100%" border="0" cellpadding="0" cellspacing="0">
                             <tbody><tr> 
-                                    <td valign="top" align="left"><form action="hotelbooking.asp" method="post" name="order" id="form1">
+                                    <td valign="top" align="left"><form action="UserServlet" method="get" name="order" id="form1">
                                             <table width="100%" border="0" cellpadding="0" cellspacing="0">
                                                 <tbody><tr> 
                                                         <td valign="top" align="center"><table width="100%" bgcolor="#e3e1b7" border="0" cellpadding="5" cellspacing="0">

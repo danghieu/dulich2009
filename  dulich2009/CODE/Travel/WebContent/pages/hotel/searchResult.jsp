@@ -6,9 +6,10 @@
 <%@ page language="java" import="java.util.*"%>
 <%@ page language="java" import="com.ptit.travel.agent.communication.Protocol" %>
 <%@ page language="java" import="com.ptit.travel.agent.communication.Message" %>
+<%@ page language="java" import="org.apache.log4j.Logger"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-   "http://www.w3.org/TR/html4/loose.dtd">
+"http://www.w3.org/TR/html4/loose.dtd">
 
 <html>
     <head>
@@ -19,55 +20,63 @@
     </head>
     <body>
         <%
-        String result = (String) request.getAttribute("result");
-        
-        String services;
-        ArrayList<String> supplierList = Message.split(result, Message.OBJECT_SEPARATE);
-        ArrayList<String> serviceList;
+            Logger log = Logger.getLogger("searchResult.jsp");
+            String result = (String) request.getAttribute("result");
 
-        
-        out.println("<form action=\"pages/hotel/datphong.jsp\" method=\"get\"> ");
-        int i, j;
-        if (supplierList != null) {
+            String services, supplier;
+            ArrayList<String> supplierList = Message.split(result, Message.OBJECT_SEPARATE);
+            ArrayList<String> serviceList;
+
+
             
-            for (i = 0; i < supplierList.size(); i++) {
-                try {
-                    services = supplierList.get(i);
-                    serviceList = Message.split(services, Message.FIELD_SEPARATE);
-                    if (serviceList != null) {
-                        out.println("<div style=\"padding-left: 18px;\">" +
-                                "<div align=\"left\" style=\"border-bottom: 2px solid rgb(204, 204, 204); padding-bottom: 5px; padding-top: 5px; width: 99%; " +
-                                "margin-right: 5px; clear: both;\">" +
-                                "<div align=\"left\" style=\"overflow: hidden; padding-left: 0px;\">" +
-                                "<div style=\"padding: 5px 0px; text-transform: uppercase;\">");
-                        out.println("<a href=\"pages/hotel/datphong.jsp\" onClick=\"\"><h1>" +
-                                serviceList.get(0) + "</h1></a>");
-                        out.println("</div><div align=\"center\" style=\"border: 1px solid rgb(204, 204, 204); padding: 3px; width: 73px; float: left;\">" +
+            int i, j;
+            if (supplierList != null) {
+
+                for (i = 0; i < supplierList.size(); i++) {
+                    try {
+                        services = supplierList.get(i);
+                        serviceList = Message.split(services, Message.FIELD_SEPARATE);
+                        if (serviceList != null) {
+                            supplier = serviceList.get(0);
+                            out.println("<form action=\"pages/hotel/datphong.jsp\" method=\"get\" id=\"form"+i+"\"> ");
+                            out.println("<div style=\"padding-left: 18px;\">" +
+                                    "<div align=\"left\" style=\"border-bottom: 2px solid rgb(204, 204, 204); padding-bottom: 5px; padding-top: 5px; width: 99%; " +
+                                    "margin-right: 5px; clear: both;\">" +
+                                    "<div align=\"left\" style=\"overflow: hidden; padding-left: 0px;\">" +
+                                    "<div style=\"padding: 5px 0px; text-transform: uppercase;\">");
+                            out.println("<a href=\"pages/hotel/datphong.jsp\" onClick=\"\"><h1>" +
+                                    supplier + "</h1></a>");
+                            out.println("</div><div align=\"center\" style=\"border: 1px solid rgb(204, 204, 204); padding: 3px; width: 73px; float: left;\">" +
+                                    "<img height=\"67\" border=\"0\" width=\"73\" src=\"http://congdulich.com//./uploads/hinhcongty/972972_160908085010.JPG\"/>" +
+                                    "</div><div style=\"float: left; width: 445px; padding-left: 10px;\">");
+                            out.println("<ul>");
+                            services = services.replaceFirst(supplier, "");
+                            log.info("Services: " + services);
+                            for (j = 1; j < serviceList.size(); j++) {
+                                out.println("<li>" + serviceList.get(j) + "</li>");
                                 
-                                "<img height=\"67\" border=\"0\" width=\"73\" src=\"http://congdulich.com//./uploads/hinhcongty/972972_160908085010.JPG\"/>" +
-                                "</div><div style=\"float: left; width: 445px; padding-left: 10px;\">");
-                        out.println("<ul>");
-                        for (j = 1; j < serviceList.size(); j++) {
-                            out.println("<li> " + serviceList.get(j) + "</li>");
+                            }
+                            out.println("</ul>");
+                            out.println("<input type=\"hidden\" name=\"supplier\" value=\"" + supplier + "\"/>");
+                            out.println("<input type=\"hidden\" name=\"protocol\" value=\"" + Protocol.HOTEL_RES + "\"/>");
+                            out.println("<input type=\"hidden\" name=\"services\" value=\"" + services + "\"/>");
+                            //out.println("<a href=\"abc\" onClick=\"\">more</a>");
+                            out.println("<input type=\"submit\" name=\"submit\" value=\"Book\"/>");
+                            out.println("</div><div id=\"B2FVNw_3D_3D\" style=\"overflow: hidden; padding-top: 3px; padding-bottom: 10px; display: none; clear: both;\">" +
+                                    "</div></div></div>");
+                            out.println("</form>");
                         }
-                        out.println("</ul>");
-                        //out.println("<a href=\"abc\" onClick=\"\">more</a>");
-                        out.println("<input class=\"hidden\" type=\"submit\" name=\"submit\" value=\"Book\"/>");
-                        out.println("</div><div id=\"B2FVNw_3D_3D\" style=\"overflow: hidden; padding-top: 3px; padding-bottom: 10px; display: none; clear: both;\">" +
-                                "</div></div></div>");
+
+
+                    } catch (Exception e) {
                     }
-
-
-                } catch (Exception e) {
                 }
+
+
             }
 
-            out.println("<input type=\"hidden\" name=\"protocol\" value=\"" + Protocol.HOTEL_RES + "\"/>");
-            out.println("<input type=\"hidden\" name=\"input\" value=\"" + result + "\"/>");
-        }
 
-
-        out.println("</form>");
+            
         %>
     </body>
 </html>
