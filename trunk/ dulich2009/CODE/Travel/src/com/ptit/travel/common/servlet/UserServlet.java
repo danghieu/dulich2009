@@ -138,7 +138,7 @@ public class UserServlet extends HttpServlet {
 
             if (protocol.endsWith(Protocol.SUFFIX_SEARCH)) {
                 function = nickName + ".search";
-                page = "/SearchServlet";
+                page = "/pages/hotel/searchResult.jsp";
             } else if (protocol.endsWith(Protocol.SUFFIX_BOOK)) {
                 function = nickName + ".book";
                 page = "/BookServlet";
