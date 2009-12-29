@@ -298,22 +298,6 @@ public class HotelProcess {
             OntClass oc = model.createClass(Hotel.getURI() + "Msg_HotelSearchRQ");
             ind = model.createIndividual(Hotel.getURI() + "Msg_HotelSearchRQ" + total, oc);
 
-            // them cac thuoc tinh vao ca the can tao
-//            if (arr.get(3) != null) {
-//                ind.addProperty(Hotel.roomType, arr.get(3));
-//
-//            }
-//
-//
-//            if (arr.get(1) != null) {
-//                ind.addProperty(Hotel.beginTime, arr.get(1));
-//
-//            }
-//
-//            if (arr.get(2) != null) {
-//                ind.addProperty(Hotel.endTime, arr.get(2));
-//
-//            }
 
             if (arr.get(0) != null) {
                 ind.addProperty(Hotel.city, arr.get(0));
@@ -321,25 +305,6 @@ public class HotelProcess {
             }
 
 
-//            if (arr.get(4) != null) {
-//                ind.addProperty(Hotel.hasActivity, arr.get(4));
-//
-//            }
-//            if (arr.get(5) != null) {
-//                ind.addProperty(Hotel.hotelActivities, arr.get(5));
-//
-//            }
-
-        /* -- trong truong hop du lieu la so  
-        if (arr.get(2) != null) {
-        //	ind.addProperty(Hotel.LargestSeatingCapacity,arr.get(4));
-        //ind.addLiteral(Hotel.LargestSeatingCapacity, Integer.parseInt(arr.get(2)));
-        ind.addLiteral(Hotel.LargestSeatingCapacity, Float.parseFloat(arr.get(2)));
-        
-        
-        System.out.print("giatri: " + Float.parseFloat(arr.get(4)));
-        }
-         */
 
 
 
@@ -419,8 +384,8 @@ public class HotelProcess {
           if(individual!=null)
            individual.remove();
            Individual individual1 = model.getIndividual(ont + "Msg_HotelSearchRQ5");
-           if(individual1!=null)
-           individual1.remove();
+           if(individual!=null)
+           individual.remove();
                    
 
         return s;
