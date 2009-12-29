@@ -60,7 +60,7 @@ public class StartAgents {
                 "paramA" + Message.FIELD_SEPARATE +
                 "paramB" + Message.OBJECT_SEPARATE +
                 "paramX";
-        input = "HotelAgent@_&405 _ Thanh Xuan Bac _ Nam Dinh _ Vietnam@_&warm@_&12:00.AM@_&12.00 PM@_&yennh235@gmail.com@_&HaiYen@_&inside@_&4@_&#_$";
+        input = "405 _ Thanh Xuan Bac _ Nam Dinh _ Vietnam@_&warm@_&2009-12-24@_&2009-12-27@_&yennh235@gmail.com@_&Sofitel@_&outside@_&4@_&LivingRoom@_&100.0@_&USDPartyRoom@_&250.0@_&USDConferenceRoom@_&300.0@_&USD#_$";
         System.out.println("|| INPUT: " + input);
         ArrayList<String> list = Message.split(input, Message.OBJECT_SEPARATE);
         System.out.println("|| SEPARATE OBJECT: " + list.toString());
