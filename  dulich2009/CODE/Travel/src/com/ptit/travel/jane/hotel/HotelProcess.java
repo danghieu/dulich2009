@@ -415,9 +415,13 @@ public class HotelProcess {
         }
         
         // xoa mesage search request voi respone khoi model (neu ko xoa 2 msg nay se tong tai trong csdl)
-           Individual individual = model.getIndividual(ont + "Msg_HotelSearchRQ"+total);
+           Individual individual = model.getIndividual(ont + "Msg_HotelSearchRQ"+total);           
           if(individual!=null)
            individual.remove();
+           Individual individual1 = model.getIndividual(ont + "Msg_HotelSearchRQ5");
+           if(individual1!=null)
+           individual1.remove();
+                   
 
         return s;
 
