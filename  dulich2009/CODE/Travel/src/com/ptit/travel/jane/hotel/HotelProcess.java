@@ -365,12 +365,13 @@ public class HotelProcess {
 
         //dua ontology vao 1 model
         Database.LoadOnt2Database();
-       //OntModel model = Database.getOntologyModel();
+ 
         
         OntModel model = ModelFactory.createOntologyModel(
                 PelletReasonerFactory.THE_SPEC, Database.getOntologyModel());
-       
-     /*   try {
+        
+    /*   
+       try {
             model.read(new FileInputStream(new File(file)), "");
         } catch (FileNotFoundException e) {
             // TODO Auto-generated catch block
@@ -383,46 +384,40 @@ public class HotelProcess {
         // phuc vu cho viec hien thi du lieu, cho nguoi lap trinh test
         ObjectProperty beginPoint = model.getObjectProperty(ont + "hasHotel");
         DatatypeProperty HotelName =model.getDatatypeProperty(ont + "HotelName");
+        DatatypeProperty HotelName1 =model.getDatatypeProperty(ont + "city");
         OntClass cl = model.getOntClass(ont + "Msg_HotelSearchRS");
-       
+        long total = System.currentTimeMillis();
 
         log.info("Insert msg to infer");
         // add model yeu cau vao ontology de tao ra 1 model moi chua tat ca cac rang buoc ke ca luat
-        Model ontmodel = insertMsg_HotelSearchRQ(input, 3);
-        Model model1 = model.add(ontmodel);
+        Model ontmodel = insertMsg_HotelSearchRQ(input, total);
+        model.add(ontmodel);
+        
         ExtendedIterator<?> extendedIterator = cl.listInstances(); // lay tat ca cac the hien cua cai lop day
 
-        String s = null;
+        String s = "";
 
         
         // lay tat cac cac ket qua thoa man
         while (extendedIterator.hasNext()) {
+            System.out.println("goi ham next");
             OntResource resource = (OntResource) extendedIterator.next();
             System.out.println("Dich vu ket hop: " + cl);
-            System.out.println("The hien: " + resource.getLocalName());
+            
+            System.out.println("The hien: " + resource.getLocalName());// respone
 
             System.out.println("Tai Nguyen");
-            Individual individual = model.getIndividual(ont + resource.getLocalName());            
-       //     s = ((Resource) individual.listPropertyValues(beginPoint).next()).toString();
-          
-           String hotelName =  (individual.listPropertyValues(HotelName).next()).toString();
-
-            
-           //Model hotelName = individual.getOntClass().getModel();
-
-           
-           //hotelName.write(System.out);
-         
-
-            int index = hotelName.indexOf("^^");
-            String hotelname = hotelName.substring(0, index);
-               System.out.println("" +hotelname );
-            // co nghia la no ko in ra hotelname a?
-               // ko goi duoc ket qua ay, ko goi duoc cac ham trong lop nay. vo ly nhi ^^|
-
-           s = printValues(hotelname);
+            Individual individual = model.getIndividual(ont + resource.getLocalName());                  
+            String result = HotelProcess.printPropertyValues(individual,HotelName1);
+           System.out.println("result="+result);
+        //    s = printValues(result);
             
         }
+        
+        // xoa mesage search request voi respone khoi model (neu ko xoa 2 msg nay se tong tai trong csdl)
+           Individual individual = model.getIndividual(ont + "Msg_HotelSearchRQ"+total);
+          if(individual!=null)
+           individual.remove();
 
         return s;
 
@@ -435,28 +430,35 @@ public class HotelProcess {
      * @param ind
      * @param prop
      */
-    public static String printValues(String s) {
+    public static String printValues(String input) {
         System.out.println("goi den ham hien thi ket qua");
-    /*    String file = "C://apache-tomcat-6.0.18/webapps/MyOntology/hotel_yen6.owl";
+        String file = "C://apache-tomcat-6.0.18/webapps/MyOntology/hotel_yen6.owl";
 
+         ArrayList<String> arr = new ArrayList<String>();
+         arr = Message.split(input,Message.FIELD_SEPARATE );
+         String result="";
+         String output="";
         //dua ontology vao 1 model
-        OntModel model = ModelFactory.createOntologyModel(
+   /*     OntModel model = ModelFactory.createOntologyModel(
                 //OntModelSpec.OWL_MEM_RULE_INF, null);
                 PelletReasonerFactory.THE_SPEC, null);
-        try {
+       try {
             model.read(new FileInputStream(new File(file)), "");
         } catch (FileNotFoundException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }      
         */
+      
          Database.LoadOnt2Database();
         OntModel model = Database.getOntologyModel();
         Database.LoadOnt2Database();
+       
         
         String queryString = null;
 
-
+       for(int i = 0; i<arr.size(); i++){ 
+         result="";
          queryString = "PREFIX hotel: <http://www.owl-ontologies.com/Travel.owl#> \n" 
                 + "SELECT DISTINCT * \n " + "WHERE \n" + "{ \n" 
                 + "?x hotel:HotelName ?hotelname. \n"     
@@ -480,16 +482,14 @@ public class HotelProcess {
                 + "?Address hotel:country ?Country. \n";                             
          
      
-           queryString = queryString + "?hotel hotel:hotelFacilities ?facilities"  + ".\n";          
-     
-      
-         queryString = queryString + " FILTER regex(?hotelname,\"" +s + "\", \"i\")}";
+                queryString = queryString + "?hotel hotel:hotelFacilities ?facilities"  + ".\n";          
+                queryString = queryString + " FILTER regex(?hotelname,\"" +arr.get(i) + "\", \"i\")}";
          
-        Query query = QueryFactory.create(queryString);
-        QueryExecution queryexec = QueryExecutionFactory.create(query, model);
+                Query query = QueryFactory.create(queryString);
+                QueryExecution queryexec = QueryExecutionFactory.create(query, model);
        // System.out.print("thuc thi");
-        Model model2 = ModelFactory.createDefaultModel();
-        String result="";
+     //   Model model2 = ModelFactory.createDefaultModel();
+      
         try {
             ResultSet rs = queryexec.execSelect();
             System.out.print("thuc thi");
@@ -498,7 +498,7 @@ public class HotelProcess {
         
             while (rs.hasNext()) {
                 System.out.print("ket qua");
-                model2 = rs.getResourceModel();
+              //  model2 = rs.getResourceModel();
                 Object obj = rs.next();
                 ResultBinding binding = (ResultBinding) obj;
                 System.out.println("truy2:" + binding.toString());
@@ -581,12 +581,7 @@ public class HotelProcess {
                       result = result + roomtype + Message.FIELD_SEPARATE+ binding.getLiteral("amount").getValue().toString()+Message.FIELD_SEPARATE+ binding.getLiteral("currency").getValue().toString();
                       
                    
-                }
-                    
-                
-             
-                
-           
+                }        
                     String name = binding.getLiteral("facilities").getValue().toString();    
                      int index1 = result.indexOf(roomtype);
                     
@@ -597,44 +592,48 @@ public class HotelProcess {
               
                       
                    }     
-              
-                     
-                
-               
-                
-                
+                    
 	} 
+          
             }
          catch (Exception e1) {
             e1.printStackTrace();
         }
+        output = output + result + Message.OBJECT_SEPARATE;
+       }  
+        System.out.println("ket qua:"+output );
         return result;
     }
 
     
-    public static void printPropertyValues(Individual ind, Property prop) {
+    public static String printPropertyValues(Individual ind, Property prop) {
         System.out.print(ind.getLocalName() + " has " + prop.getLocalName() + "(s): ");
-        printIterator(ind.listPropertyValues(prop));
+        String result = printIterator(ind.listPropertyValues(prop));
+        return result;
     }
 
-    public static void printInstances(OntClass cls) {
+    public static String printInstances(OntClass cls) {
         System.out.print(cls.getLocalName() + " instances: ");
-        printIterator(cls.listInstances());
+        String result = printIterator(cls.listInstances());
+        return result;
     }
 
-    public static void printIterator(ExtendedIterator i) {
+    public static String printIterator(ExtendedIterator i) {
+        String result ="";
         if (!i.hasNext()) {
             System.out.print("none");
         } else {
             while (i.hasNext()) {
-                Resource val = (Resource) i.next();
-                System.out.print(val.getLocalName());
+               Literal val = (Literal) i.next();
+                System.out.print(val.getString());
+                result= result+val.getString();
                 if (i.hasNext()) {
-                    System.out.print(", ");
+                    result = result+Message.FIELD_SEPARATE;
                 }
             }
         }
-        System.out.println();
+        
+        return result;
     }
 
 
@@ -1072,6 +1071,8 @@ System.out.println("Trong next"+cl.toString());
   public static boolean processBooking(String input){
        Database.LoadOnt2Database();
       OntModel model = Database.getOntologyModel();
+      // chuyen nguoc lai tu csdl -> OntModel
+      
         String ont = "http://www.owl-ontologies.com/Travel.owl#";  
       System.out.println("booking");
       ArrayList <String> arr = new ArrayList<String>();
@@ -1134,41 +1135,56 @@ System.out.println("Trong next"+cl.toString());
                 String todate = binding.getLiteral("toDate").getValue().toString();
                 System.out.println("ToDate truy van :"+todate);
                 String fromdate = binding.getLiteral("fromDate").getValue().toString();
-              System.out.println("FromDate truy van :"+fromdate);
+                System.out.println("FromDate truy van :"+fromdate);
                 Number = Float.parseFloat(binding.getLiteral("number1").getValue().toString());
               
                  // Tim ra khoang dat gan nhat phia tren ngay muon dat
                   hotelroom = binding.getResource("hotelRoom").toString();
                     System.out.println("hotel:"+hotelroom);
-                if(fromdate.equalsIgnoreCase(arr.get(6))&& todate.equalsIgnoreCase(arr.get(7))){
+              
+                    
+                  //TH 0: ca 2 cung trung voi 1 ngay da duoc dat truoc   
+                 if(fromdate.equalsIgnoreCase(arr.get(6))&& todate.equalsIgnoreCase(arr.get(7))){
                     number = Number;
+                    System.out.println("truong hop 0");
                     notavail = binding.getResource("notAvail").toString();
                    
-                    numberNotAvail = + Number;
+                    numberNotAvail = numberNotAvail+ Number;
                 }
                   
                  // TH1: fromdate < arr.get(6) < todate
-                 if(fromdate.compareTo(arr.get(6))<0&& todate.compareTo(arr.get(6))>0)
-                     numberNotAvail =+ Number;
+                 if(fromdate.compareTo(arr.get(6))<0&& todate.compareTo(arr.get(6))>0 && arr.get(7).compareTo(todate)>0)
+                     numberNotAvail = numberNotAvail+ Number;
                  
                 
                 // TH2: fromdate < arr.get(7) < todate
-                 if(fromdate.compareTo(arr.get(7))<0&& todate.compareTo(arr.get(7))>0)
-                     numberNotAvail =+ Number;
+                 if(fromdate.compareTo(arr.get(7))<0&& todate.compareTo(arr.get(7))>0 && fromdate.compareTo(arr.get(6))>0)
+                    numberNotAvail = numberNotAvail+ Number;
                  
                 // TH3: fromdate < arr.get(6) < arr.get(7) < todate
                  if(fromdate.compareTo(arr.get(6))<0&& todate.compareTo(arr.get(7))>0)
-                     numberNotAvail =+ Number;
+                     numberNotAvail = numberNotAvail+ Number;
                  
                 // TH4: arr.get(6) < fromdate <  todate <arr.get(7);
                  if(fromdate.compareTo(arr.get(6))>0&& todate.compareTo(arr.get(7))<0)
-                     numberNotAvail =+ Number;
-                 
+                      numberNotAvail = numberNotAvail+ Number;
+                    
+                // TH5:fromdate hoac todate bi trung
+                 if((fromdate.equals(arr.get(6))&& todate.compareTo(arr.get(7))<0)||(fromdate.compareTo(arr.get(6))>0&& todate.equals(arr.get(7))))
+                 {
+                     System.out.println("truong hop 5");
+                     numberNotAvail = numberNotAvail+ Number; 
+                 }
                 
             // sau khi xac dinh duoc cac khoang can ke
             
             }
-            float newNumber = numberNotAvail+ Float.parseFloat(arr.get(5));                        
+            
+            float newNumber = numberNotAvail+ Float.parseFloat(arr.get(5));   
+             System.out.println(" ");
+              System.out.println(" ");
+                     
+            System.out.println("Tong so phong da bi dat truoc: "+numberNotAvail +"total = "+total);
             if(newNumber<=total)
                  if(notavail != null ){
                      Individual ind = model.getIndividual(notavail);
@@ -1320,7 +1336,7 @@ System.out.println("them 1 the hien not availability");
         HotelProcess hotelprocess = new HotelProcess();
 //        hotelprocess.searchHotel(false, true, false, false, false, "inside", false, true, "Nam Dinh");
       //  hotelprocess.search2("HaiYen", "HotelSofitel");
-        String s_begin = "2009-12-29";
+        String s_begin = "2009-12-22";
         String s_end = "2009-12-30";
         //     hotelprocess.checkAvailability( "HaiYen", "LivingRoom", "SingleRoom");
       
@@ -1328,20 +1344,21 @@ System.out.println("them 1 the hien not availability");
         
    String input1 = "HaiYen" + Message.FIELD_SEPARATE + "Nam Dinh" + Message.FIELD_SEPARATE
                + "405" + Message.FIELD_SEPARATE + "Thanh Xuan Bac"+ Message.FIELD_SEPARATE 
-               + "MeetingRoom" + Message.FIELD_SEPARATE + "1" + Message.FIELD_SEPARATE + s_begin + Message.FIELD_SEPARATE + s_end;
+               + "MeetingRoom" + Message.FIELD_SEPARATE + "5" + Message.FIELD_SEPARATE + s_begin + Message.FIELD_SEPARATE + s_end;
    
-     boolean ss1 = HotelProcess.processBooking(input1);
+  //   boolean ss1 = HotelProcess.processBooking(input1);
                
+   
    
    
                
      String input = "Nam Dinh";
-   //   String ss = HotelProcess.search(input);
+     String ss = HotelProcess.search(input);
                
                
-      System.out.print("ss="+ss1);
+  //    System.out.print("ss="+ss1);
        // printValues("<http://www.owl-ontologies.com/Travel.owl#Hotel_1>");
 
-     HotelProcess.searchNotAvailability();
+//    HotelProcess.searchNotAvailability();
     }
 }
