@@ -321,49 +321,12 @@ public class HotelAgent extends Agent {
             OntClass oc = model.createClass(Hotel.getURI() + "Msg_HotelSearchRQ");
             ind = model.createIndividual(Hotel.getURI() + "Msg_HotelSearchRQ" + total, oc);
 
-            // them cac thuoc tinh vao ca the can tao
-//            if (arr.get(3) != null) {
-//                ind.addProperty(Hotel.roomType, arr.get(3));
-//
-//            }
-//
-//
-//            if (arr.get(1) != null) {
-//                ind.addProperty(Hotel.beginTime, arr.get(1));
-//
-//            }
-//
-//            if (arr.get(2) != null) {
-//                ind.addProperty(Hotel.endTime, arr.get(2));
-//
-//            }
+           
 
             if (arr.get(0) != null) {
                 ind.addProperty(Hotel.city, arr.get(0));
 
             }
-
-
-//            if (arr.get(4) != null) {
-//                ind.addProperty(Hotel.hasActivity, arr.get(4));
-//
-//            }
-//            if (arr.get(5) != null) {
-//                ind.addProperty(Hotel.hotelActivities, arr.get(5));
-//
-//            }
-
-        /* -- trong truong hop du lieu la so  
-        if (arr.get(2) != null) {
-        //	ind.addProperty(Hotel.LargestSeatingCapacity,arr.get(4));
-        //ind.addLiteral(Hotel.LargestSeatingCapacity, Integer.parseInt(arr.get(2)));
-        ind.addLiteral(Hotel.LargestSeatingCapacity, Float.parseFloat(arr.get(2)));
-        
-        
-        System.out.print("giatri: " + Float.parseFloat(arr.get(4)));
-        }
-         */
-
 
 
         } catch (Exception e) {
@@ -379,8 +342,347 @@ public class HotelAgent extends Agent {
      * @param ontmodel: model chua thong tin yeu cau tim kiem
      * @return
      */
-    public static String search(String input) {
+   public static String search(String input) {
         log.info("Starting search with: " + input);
+        //  Database.LoadOnt2Database();
+        String ont = "http://www.owl-ontologies.com/Travel.owl#";
+        // lay khung du lieu tu owl
+        String file = "C://apache-tomcat-6.0.18/webapps/MyOntology/hotel_yen6.owl";
+
+        //dua ontology vao 1 model
+        Database.LoadOnt2Database();
+ 
+        
+        OntModel model = ModelFactory.createOntologyModel(
+                PelletReasonerFactory.THE_SPEC, Database.getOntologyModel());
+        
+    /*   
+       try {
+            model.read(new FileInputStream(new File(file)), "");
+        } catch (FileNotFoundException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+
+      */
+      
+      
+        // phuc vu cho viec hien thi du lieu, cho nguoi lap trinh test
+        ObjectProperty beginPoint = model.getObjectProperty(ont + "hasHotel");
+        DatatypeProperty HotelName =model.getDatatypeProperty(ont + "HotelName");
+        DatatypeProperty HotelName1 =model.getDatatypeProperty(ont + "city");
+        OntClass cl = model.getOntClass(ont + "Msg_HotelSearchRS");
+        long total = System.currentTimeMillis();
+
+        log.info("Insert msg to infer");
+        // add model yeu cau vao ontology de tao ra 1 model moi chua tat ca cac rang buoc ke ca luat
+        Model ontmodel = insertMsg_HotelSearchRQ(input, total);
+        model.add(ontmodel);
+        
+        ExtendedIterator<?> extendedIterator = cl.listInstances(); // lay tat ca cac the hien cua cai lop day
+
+        String s = "";
+
+        
+        // lay tat cac cac ket qua thoa man
+        while (extendedIterator.hasNext()) {
+            System.out.println("goi ham next");
+            OntResource resource = (OntResource) extendedIterator.next();
+            System.out.println("Dich vu ket hop: " + cl);
+            
+            System.out.println("The hien: " + resource.getLocalName());// respone
+
+            System.out.println("Tai Nguyen");
+            Individual individual = model.getIndividual(ont + resource.getLocalName());                  
+            String result = printPropertyValues(individual,HotelName);
+           System.out.println("result="+result);
+            s = printValues(result);
+            
+        }
+        
+        // xoa mesage search request voi respone khoi model (neu ko xoa 2 msg nay se tong tai trong csdl)
+           Individual individual = model.getIndividual(ont + "Msg_HotelSearchRQ"+total);           
+          if(individual!=null)
+           individual.remove();
+           Individual individual1 = model.getIndividual(ont + "Msg_HotelSearchRQ5");
+           if(individual!=null)
+           individual.remove();
+                   
+
+        return s;
+
+
+
+    }
+
+    /**
+     * Hien thi thong tin
+     * @param ind
+     * @param prop
+     */
+    public static String printValues(String input) {
+        System.out.println("goi den ham hien thi ket qua");
+        String file = "C://apache-tomcat-6.0.18/webapps/MyOntology/hotel_yen6.owl";
+
+         ArrayList<String> arr = new ArrayList<String>();
+         arr = Message.split(input,Message.FIELD_SEPARATE );
+         String result="";
+         String output="";
+        //dua ontology vao 1 model
+   /*     OntModel model = ModelFactory.createOntologyModel(
+                //OntModelSpec.OWL_MEM_RULE_INF, null);
+                PelletReasonerFactory.THE_SPEC, null);
+       try {
+            model.read(new FileInputStream(new File(file)), "");
+        } catch (FileNotFoundException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }      
+        */
+      
+         Database.LoadOnt2Database();
+        OntModel model = Database.getOntologyModel();
+        Database.LoadOnt2Database();
+       
+        
+        String queryString = null;
+
+       for(int i = 0; i<arr.size(); i++){ 
+         result="";
+         queryString = "PREFIX hotel: <http://www.owl-ontologies.com/Travel.owl#> \n" 
+                + "SELECT DISTINCT * \n " + "WHERE \n" + "{ \n" 
+                + "?x hotel:HotelName ?hotelname. \n"     
+                + "?x hotel:HotelLocation ?location. \n"     
+                + "?x hotel:hasHotelInfo ?info. \n"                   
+                + "?info hotel:CheckIn ?checkIn. \n"     
+                + "?info hotel:CheckOut ?checkOut. \n"     
+                + "?info hotel:StarNumber ?star. \n"     
+                + "?info hotel:AreaWeather ?areaWeather. \n"     
+                + "?info hotel:hasRoomDetail ?roomdetail. \n"    
+                + "?roomdetail hotel:roomType ?roomtype. \n"    
+                + "?roomdetail hotel:hasPrice ?price. \n"    
+                + "?price hotel:Amount ?amount. \n"    
+                + "?price hotel:CurrencyCode ?currency. \n"    
+                + "?x hotel:hasContact ?contact. \n" 
+                + "?contact hotel:Email ?email. \n"                 
+                + "?contact hotel:hasAddress ?Address. \n" 
+                + "?Address hotel:number ?number. \n"    
+                + "?Address hotel:street ?Street. \n"    
+                + "?Address hotel:city ?city. \n"    
+                + "?Address hotel:country ?Country. \n";                             
+         
+     
+                queryString = queryString + "?hotel hotel:hotelFacilities ?facilities"  + ".\n";          
+                queryString = queryString + " FILTER regex(?hotelname,\"" +arr.get(i) + "\", \"i\")}";
+         
+                Query query = QueryFactory.create(queryString);
+                QueryExecution queryexec = QueryExecutionFactory.create(query, model);
+       // System.out.print("thuc thi");
+     //   Model model2 = ModelFactory.createDefaultModel();
+      
+        try {
+            ResultSet rs = queryexec.execSelect();
+            System.out.print("thuc thi");
+            String facilities ="facilities";
+           
+        
+            while (rs.hasNext()) {
+                System.out.print("ket qua");
+              //  model2 = rs.getResourceModel();
+                Object obj = rs.next();
+                ResultBinding binding = (ResultBinding) obj;
+                System.out.println("truy2:" + binding.toString());
+               
+               
+                String Address = "";
+                
+                if(binding.getLiteral("number").getValue().toString()!=null){
+                    
+                    String name = binding.getLiteral("number").getValue().toString();
+                    int index = result.indexOf(name);
+                    if(index < 0 || index > result.length())
+                    {
+                        result = result +Message.OBJECT_SEPARATE;
+                        Address = Address + name +" _ ";
+                
+                         if(binding.getLiteral("Street").getValue().toString()!=null){
+                              String street = binding.getLiteral("Street").getValue().toString();
+                              Address = Address + street +" _ ";
+                         }
+                        if(binding.getLiteral("city").getValue().toString()!=null){
+                             String city = binding.getLiteral("city").getValue().toString();
+                              Address = Address + city +" _ ";
+                          }
+                
+                        if(binding.getLiteral("Country").getValue().toString()!=null){
+                         String country = binding.getLiteral("Country").getValue().toString();
+                         Address = Address + country ;
+                         }
+                
+                       result = result + Address +Message.FIELD_SEPARATE;
+                
+                         
+                           String  area = binding.getLiteral("areaWeather").getValue().toString();
+                          result = result + area +Message.FIELD_SEPARATE;
+                      
+                
+                     
+                           String checkIn = binding.getLiteral("checkIn").getValue().toString();
+                           result = result + checkIn +Message.FIELD_SEPARATE;
+                           
+                
+                    
+                        String checkOut = binding.getLiteral("checkOut").getValue().toString();
+                        result = result + checkOut +Message.FIELD_SEPARATE;
+              
+                
+
+                       String email = binding.getLiteral("email").getValue().toString();
+                       result = result + email +Message.FIELD_SEPARATE;
+             
+                
+                
+                    String hotelname = binding.getLiteral("hotelname").getValue().toString();
+                    result = result + hotelname +Message.FIELD_SEPARATE;
+             
+                
+         
+                    String location = binding.getLiteral("location").getValue().toString();
+                    result = result + location +Message.FIELD_SEPARATE;
+              
+                
+                
+                    String star = binding.getLiteral("star").getValue().toString();
+                    result = result + star +Message.FIELD_SEPARATE;
+              
+           
+                    }
+                }
+                            
+                
+                
+             
+                    
+                    String roomtype = binding.getLiteral("roomtype").getValue().toString();
+                    int index = result.indexOf(roomtype);
+                    
+                    if(index < 0 || index > result.length())
+                    {
+                      result = result + roomtype + Message.FIELD_SEPARATE+ binding.getLiteral("amount").getValue().toString()+Message.FIELD_SEPARATE+ binding.getLiteral("currency").getValue().toString();
+                      
+                   
+                }        
+                    String name = binding.getLiteral("facilities").getValue().toString();    
+                     int index1 = result.indexOf(roomtype);
+                    
+                    if(index1 < 0 || index1 > facilities.length())
+                    {
+                     
+                      facilities = facilities + name +",";
+              
+                      
+                   }     
+                    
+	} 
+          
+            }
+         catch (Exception e1) {
+            e1.printStackTrace();
+        }
+        output = output + result + Message.OBJECT_SEPARATE;
+       }  
+        System.out.println("ket qua:"+output );
+        return result;
+    }
+
+    
+    public static String printPropertyValues(Individual ind, Property prop) {
+        System.out.print(ind.getLocalName() + " has " + prop.getLocalName() + "(s): ");
+        String result = printIterator(ind.listPropertyValues(prop));
+        return result;
+    }
+
+    public static String printInstances(OntClass cls) {
+        System.out.print(cls.getLocalName() + " instances: ");
+        String result = printIterator(cls.listInstances());
+        return result;
+    }
+
+    public static String printIterator(ExtendedIterator i) {
+        String result ="";
+        if (!i.hasNext()) {
+            System.out.print("none");
+        } else {
+            while (i.hasNext()) {
+               Literal val = (Literal) i.next();
+                System.out.print(val.getString());
+                result= result+val.getString();
+                if (i.hasNext()) {
+                    result = result+Message.FIELD_SEPARATE;
+                }
+            }
+        }
+        
+        return result;
+    }
+
+
+     
+    
+    // Thao tac voi yeu cau dat dich vu khach san
+   
+     public static OntModel insertMsg_HotelBookRQ(String input, long total) {
+        ArrayList<String> arr = new ArrayList<String>();
+
+        // Ham phan tach thog tin dua vao
+        arr = Message.split(input, Message.FIELD_SEPARATE);
+
+        log.info("Resulted SPLIT: " + arr.toString());
+        // Tao mot OntModel trong, de dua cac thong tin vao 1 model
+        OntModel model = ModelFactory.createOntologyModel();
+        Individual ind = null;
+
+        try {
+
+            //tao ra 1 lop request de lay cac thong tin yeu cau
+            OntClass oc = model.createClass(Hotel.getURI() + "Msg_HotelBookRQ");
+            ind = model.createIndividual(Hotel.getURI() + "Msg_HotelBookRQ" + total, oc);
+         if (arr.get(0) != null) {
+                ind.addProperty(Hotel.HotelName, arr.get(0));
+
+            }
+            if (arr.get(1) != null) {
+                ind.addProperty(Hotel.city, arr.get(1));
+
+            }
+            if (arr.get(2) != null) {
+                ind.addProperty(Hotel.number, arr.get(2));
+
+            }
+            if (arr.get(3) != null) {
+                ind.addProperty(Hotel.street, arr.get(3));
+
+            }
+            if (arr.get(4) != null) 
+                ind.addProperty(Hotel.roomType, arr.get(4));
+
+            if (arr.get(5) != null) 
+                ind.addLiteral(Hotel.Number, Float.parseFloat(arr.get(5)));
+
+            
+            
+
+
+        } catch (Exception e) {
+            System.out.println(e.toString());
+
+        }
+        model.write(System.out);
+        return model;
+    }
+     
+      public static String processBooking(String input) {
+        log.info("Starting Booking: " + input);
         //  Database.LoadOnt2Database();
         String ont = "http://www.owl-ontologies.com/Travel.owl#";
         // lay khung du lieu tu owl
@@ -397,14 +699,14 @@ public class HotelAgent extends Agent {
         }
 
         // phuc vu cho viec hien thi du lieu, cho nguoi lap trinh test
-        ObjectProperty beginPoint = model.getObjectProperty(ont + "hasHotel");
-        DatatypeProperty HotelName = model.getDatatypeProperty(ont + "HotelName");
-        OntClass cl = model.getOntClass(ont + "Msg_HotelSearchRS");
+     
+        DatatypeProperty result = model.getDatatypeProperty(ont + "Result");
+        OntClass cl = model.getOntClass(ont + "Msg_HotelBookRS");
 
 
-        log.info("Insert msg to infer");
+        log.info("Result Process Booking");
         // add model yeu cau vao ontology de tao ra 1 model moi chua tat ca cac rang buoc ke ca luat
-        Model ontmodel = insertMsg_HotelSearchRQ(input, 3);
+        Model ontmodel = insertMsg_HotelBookRQ(input, System.currentTimeMillis());
         Model model1 = model.add(ontmodel);
         ExtendedIterator<?> extendedIterator = cl.listInstances(); // lay tat ca cac the hien cua cai lop day
 
@@ -413,15 +715,12 @@ public class HotelAgent extends Agent {
 
         // lay tat cac cac ket qua thoa man
         while (extendedIterator.hasNext()) {
-            OntResource resource = (OntResource) extendedIterator.next();
-            System.out.println("Dich vu ket hop: " + cl);
-            System.out.println("The hien: " + resource.getLocalName());
-
+            OntResource resource = (OntResource) extendedIterator.next();                   
             System.out.println("Tai Nguyen");
             Individual individual = model.getIndividual(ont + resource.getLocalName());
             //     s = ((Resource) individual.listPropertyValues(beginPoint).next()).toString();
 
-            String hotelName = (individual.listPropertyValues(HotelName).next()).toString();
+            String Result = (individual.listPropertyValues(result).next()).toString();
 
             System.out.println("---------------------------------------------------------------" + s);
             //Model hotelName = individual.getOntClass().getModel();
@@ -430,8 +729,8 @@ public class HotelAgent extends Agent {
             //hotelName.write(System.out);
 
 
-            int index = hotelName.indexOf("^^");
-            String hotelname = hotelName.substring(0, index);
+            int index = Result.indexOf("^^");
+            String hotelname = Result.substring(0, index);
             System.out.println("" + hotelname);
             // co nghia la no ko in ra hotelname a?
             // ko goi duoc ket qua ay, ko goi duoc cac ham trong lop nay. vo ly nhi ^^|
@@ -447,106 +746,5 @@ public class HotelAgent extends Agent {
 
     }
 
-    public static String printValues(String s) {
-        System.out.println("goi den ham hien thi ket qua");
-        String file = "C://apache-tomcat-6.0.18/webapps/MyOntology/hotel_yen6.owl";
-
-        //dua ontology vao 1 model
-        OntModel model = ModelFactory.createOntologyModel(
-                //OntModelSpec.OWL_MEM_RULE_INF, null);
-                PelletReasonerFactory.THE_SPEC, null);
-        try {
-            model.read(new FileInputStream(new File(file)), "");
-        } catch (FileNotFoundException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-
-        String queryString = null;
-
-
-        queryString = "PREFIX hotel: <http://www.owl-ontologies.com/Travel.owl#> \n" + "SELECT DISTINCT * \n " + "WHERE \n" + "{ \n" + "?x hotel:HotelName ?hotelname. \n" + "?x hotel:HotelLocation ?location. \n" + "?x hotel:hasHotelInfo ?info. \n" + "?x hotel:checkInTime ?checkIn. \n" + "?x hotel:checkOutTime ?checkOut. \n" + "?info hotel:StarNumber ?star. \n" + "?info hotel:AreaWeather ?areaWeather. \n" + "?x hotel:hasContact ?contact. \n" + "?contact hotel:Email ?email. \n" + "?contact hotel:hasAddress ?Address. \n" + "?Address hotel:number ?number. \n" + "?Address hotel:street ?Street. \n" + "?Address hotel:city ?city. \n" + "?Address hotel:country ?Country. \n" + " FILTER regex(?hotelname,\"" + s + "\", \"i\")}";
-        Query query = QueryFactory.create(queryString);
-        QueryExecution queryexec = QueryExecutionFactory.create(query, model);
-        // System.out.print("thuc thi");
-        Model model2 = ModelFactory.createDefaultModel();
-        String result = "";
-        try {
-            ResultSet rs = queryexec.execSelect();
-            System.out.print("thuc thi");
-            while (rs.hasNext()) {
-                System.out.print("ket qua");
-                model2 = rs.getResourceModel();
-                Object obj = rs.next();
-                ResultBinding binding = (ResultBinding) obj;
-                System.out.println("truy2:" + binding.toString());
-
-
-                String Address = "";
-
-                if (binding.getLiteral("number").getValue().toString() != null) {
-                    String name = binding.getLiteral("number").getValue().toString();
-                    Address = Address + name + " _ ";
-                }
-                if (binding.getLiteral("Street").getValue().toString() != null) {
-                    String name = binding.getLiteral("Street").getValue().toString();
-                    Address = Address + name + " _ ";
-                }
-                if (binding.getLiteral("city").getValue().toString() != null) {
-                    String name = binding.getLiteral("city").getValue().toString();
-                    Address = Address + name + " _ ";
-                }
-
-                if (binding.getLiteral("Country").getValue().toString() != null) {
-                    String name = binding.getLiteral("Country").getValue().toString();
-                    Address = Address + name;
-                }
-
-                result = result + Address + Message.FIELD_SEPARATE;
-
-                if (binding.getLiteral("areaWeather").getValue().toString() != null) {
-                    String name = binding.getLiteral("areaWeather").getValue().toString();
-                    result = result + name + Message.FIELD_SEPARATE;
-                }
-
-                if (binding.getLiteral("checkIn").getValue().toString() != null) {
-                    String name = binding.getLiteral("checkIn").getValue().toString();
-                    result = result + name + Message.FIELD_SEPARATE;
-                }
-
-                if (binding.getLiteral("checkOut").getValue().toString() != null) {
-                    String name = binding.getLiteral("checkOut").getValue().toString();
-                    result = result + name + Message.FIELD_SEPARATE;
-                }
-
-                if (binding.getLiteral("email").getValue().toString() != null) {
-                    String name = binding.getLiteral("email").getValue().toString();
-                    result = result + name + Message.FIELD_SEPARATE;
-                }
-
-                if (binding.getLiteral("hotelname").getValue().toString() != null) {
-                    String name = binding.getLiteral("hotelname").getValue().toString();
-                    result = result + name + Message.FIELD_SEPARATE;
-                }
-
-                if (binding.getLiteral("location").getValue().toString() != null) {
-                    String name = binding.getLiteral("location").getValue().toString();
-                    result = result + name + Message.FIELD_SEPARATE;
-                }
-
-                if (binding.getLiteral("star").getValue().toString() != null) {
-                    String name = binding.getLiteral("star").getValue().toString();
-                    result = result + name + Message.FIELD_SEPARATE;
-                }
-
-
-                result = result + Message.OBJECT_SEPARATE;
-
-
-            }
-        } catch (Exception e1) {
-            e1.printStackTrace();
-        }
-        return result;
-    }
+    
 }
