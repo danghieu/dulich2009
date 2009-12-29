@@ -408,9 +408,9 @@ public class HotelProcess {
 
             System.out.println("Tai Nguyen");
             Individual individual = model.getIndividual(ont + resource.getLocalName());                  
-            String result = HotelProcess.printPropertyValues(individual,HotelName1);
+            String result = HotelProcess.printPropertyValues(individual,HotelName);
            System.out.println("result="+result);
-        //    s = printValues(result);
+            s = printValues(result);
             
         }
         
