@@ -116,9 +116,7 @@ public class FlightProcess{
 
         // phuc vu cho viec hien thi du lieu, cho nguoi lap trinh test
         ObjectProperty flight = model.getObjectProperty(ont + "hasFlight");
-        DatatypeProperty flightNumber =model.getDatatypeProperty(ont + "flightNumber");
-        DatatypeProperty flightClass =model.getDatatypeProperty(ont + "flightClass");
-        DatatypeProperty date=model.getDatatypeProperty(ont+ "date");
+        DatatypeProperty id=model.getDatatypeProperty(ont+"id");
         
         OntClass cl = model.getOntClass(ont + "Msg_FlightAvailRS");
        
@@ -141,25 +139,16 @@ public class FlightProcess{
 
             System.out.println("Tai Nguyen");
             Individual individual = model.getIndividual(ont + resource.getLocalName());            
-            String FlightNumber =  (individual.listPropertyValues(flightNumber).next()).toString();
-            int index = FlightNumber .indexOf("^^");
-            String flightnumber = FlightNumber .substring(0, index);
-            System.out.println("flightNumber=" +flightnumber );
-            
-            String Date =  (individual.listPropertyValues(date).next()).toString();
-            int index2 = Date .indexOf("^^");
-            String date2 = Date.substring(0, index2);
-            System.out.println("date=" + date2 );
-            
-            String FlightClass=(individual.listPropertyValues(flightClass).next()).toString();
-            int index3=FlightClass.indexOf("^^");
-            String flightclass=FlightClass.substring(0,index3);
-            System.out.println("flightclass="+flightclass);
-            
-            s = s+ printValues(flightnumber,date2,flightclass);
-            
+            String result = FlightProcess.printPropertyValues(individual,id);
+            System.out.println("result="+result);
+            s = printValues(result);
             
         }
+        
+        // xoa mesage search request voi respone khoi model (neu ko xoa 2 msg nay se tong tai trong csdl)
+           Individual individual = model.getIndividual(ont + "Msg_FlightAvailRQ"+System.currentTimeMillis());
+          if(individual!=null)
+           individual.remove();
 
         return s;
 
@@ -172,11 +161,15 @@ public class FlightProcess{
      * @param ind
      * @param prop
      */
-    public static String printValues(String s, String s2,String s3) {
+    public static String printValues(String input) {
         System.out.println("goi den ham hien thi ket qua");
         String file = "C://apache-tomcat-6.0.18/webapps/MyOntology/Flight.owl";
 
         //dua ontology vao 1 model
+         ArrayList<String> arr = new ArrayList<String>();
+         arr = Message.split(input,Message.FIELD_SEPARATE );
+         String result="";
+         String output="";
         OntModel model = ModelFactory.createOntologyModel(
                 //OntModelSpec.OWL_MEM_RULE_INF, null);
                 PelletReasonerFactory.THE_SPEC, null);
@@ -187,12 +180,17 @@ public class FlightProcess{
             e.printStackTrace();
         }      
         
-        String queryString = null;
+        
+       String queryString = null;
+
+       for(int i = 0; i<arr.size(); i++){ 
+         result="";
 
 
          queryString = "PREFIX flight: <http://www.owl-ontologies.com/Flight.owl#> \n" 
                 + "SELECT DISTINCT * \n " + "WHERE \n" + "{ \n" 
-                + "?x flight:airline ?Airline. \n"     
+                + "?x flight:airline ?Airline. \n"  
+                + "?x flight:id ?ID. \n" 
                 + "?x flight:flightClass ?FlightClass. \n"  
                 + "?x flight:flightNumber ?FlightNumber. \n" 
                 + "?x flight:hasAirplane ?Airplane. \n"   
@@ -212,14 +210,12 @@ public class FlightProcess{
                 + "?Airplane flight:airplaneType ?AirplaneType. \n" 
                 + "?price flight:price ?realPrice. \n" 
                 + "?price flight:priceUnit ?PriceUnit. \n"
-                + " FILTER regex(?FlightNumber,\"" +s + "\", \"i\")"
-                + " FILTER regex(?FlightClass,\"" +s3 + "\", \"i\")"
-                + " FILTER regex(?departureDate,\"" +s2 + "\", \"i\")}";       
+                + " FILTER regex(?ID,\"" +arr.get(i) + "\", \"i\")}";       
         Query query = QueryFactory.create(queryString);
         QueryExecution queryexec = QueryExecutionFactory.create(query, model);
        // System.out.print("thuc thi");
         Model model2 = ModelFactory.createDefaultModel();
-        String result="";
+       
         try {
             ResultSet rs = queryexec.execSelect();
             System.out.print("thuc thi");
@@ -264,6 +260,7 @@ public class FlightProcess{
                         price=price+priceunit;
                //  Hang hang khong
                 String airline = binding.getLiteral("Airline").getValue().toString();
+                String id=binding.getLiteral("ID").getValue().toString();
                // Ma so chuyen bay  
                 String flightnumber = binding.getLiteral("FlightNumber").getValue().toString();
                //Hang ve may bay
@@ -271,7 +268,7 @@ public class FlightProcess{
                 // Loai may bay
                 String airplanetype=binding.getLiteral("AirplaneType").getValue().toString();
                 
-                result=result+ airline + Message.FIELD_SEPARATE + flightnumber + Message.FIELD_SEPARATE
+                result=result+ id + Message.FIELD_SEPARATE+airline + Message.FIELD_SEPARATE + flightnumber + Message.FIELD_SEPARATE
                         + departure + Message.FIELD_SEPARATE + departuredatetime + Message.FIELD_SEPARATE
                         + arrival + Message.FIELD_SEPARATE + arrivaldatetime + Message.FIELD_SEPARATE
                         + airplanetype + Message.FIELD_SEPARATE + flightclass + Message.FIELD_SEPARATE
@@ -285,32 +282,43 @@ public class FlightProcess{
          catch (Exception e1) {
             e1.printStackTrace();
         }
+        output = output + result + Message.OBJECT_SEPARATE;
+       }  
+        System.out.println("ket qua:"+output );
+        return output;
+    }
+
+
+  public static String printPropertyValues(Individual ind, Property prop) {
+        System.out.print(ind.getLocalName() + " has " + prop.getLocalName() + "(s): ");
+        String result = printIterator(ind.listPropertyValues(prop));
+       // Property p1,p2,p3;
+      
         return result;
     }
 
-    public static void printPropertyValues(Individual ind, Property prop) {
-        System.out.print(ind.getLocalName() + " has " + prop.getLocalName() + "(s): ");
-        printIterator(ind.listPropertyValues(prop));
-    }
-
-    public static void printInstances(OntClass cls) {
+    public static String printInstances(OntClass cls) {
         System.out.print(cls.getLocalName() + " instances: ");
-        printIterator(cls.listInstances());
+        String result = printIterator(cls.listInstances());
+        return result;
     }
 
-    public static void printIterator(ExtendedIterator i) {
-        if (!i.hasNext()) {
+    public static String printIterator(ExtendedIterator i ) {
+        String result ="";
+        if (!i.hasNext() ) {
             System.out.print("none");
         } else {
             while (i.hasNext()) {
-                Resource val = (Resource) i.next();
-                System.out.print(val.getLocalName());
+               Literal val = (Literal) i.next();
+                System.out.print(val.getString());
+                result= result+val.getString();
                 if (i.hasNext()) {
-                    System.out.print(", ");
+                    result = result+Message.FIELD_SEPARATE;
                 }
             }
         }
-        System.out.println();
+        
+        return result;
     }
 
  
