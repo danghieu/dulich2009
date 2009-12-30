@@ -60,6 +60,7 @@
     </head>
     
     <body>
+        <form action="UserServlet" method="get" name="order" id="form1">
         <% 
         Logger log = Logger.getLogger("datphong.jsp");
         String supplier = request.getParameter("supplier");
@@ -81,7 +82,7 @@
                 <tr> 
                     <td valign="top" align="left"><table width="100%" border="0" cellpadding="0" cellspacing="0">
                             <tbody><tr> 
-                                    <td valign="top" align="left"><form action="UserServlet" method="get" name="order" id="form1">
+                                    <td valign="top" align="left">
                                             <table width="100%" border="0" cellpadding="0" cellspacing="0">
                                                 <tbody><tr> 
                                                         <td valign="top" align="center"><table width="100%" bgcolor="#e3e1b7" border="0" cellpadding="5" cellspacing="0">
@@ -464,7 +465,7 @@
                                                         </tbody></table></td>
                                                     </tr>
                                             </tbody></table>
-                                    </form></td>
+                                    </td>
                                 </tr>
                     </tbody></table></td>
                 </tr>
@@ -473,5 +474,6 @@
                     back</strong></a> ]</div></td>
                 </tr>
         </tbody></table>
+        </form>
     </body>
 </html>

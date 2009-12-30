@@ -28,7 +28,7 @@
             ArrayList<String> serviceList;
 
 
-            
+
             int i, j;
             if (supplierList != null) {
 
@@ -38,7 +38,8 @@
                         serviceList = Message.split(services, Message.FIELD_SEPARATE);
                         if (serviceList != null) {
                             supplier = serviceList.get(0);
-                            out.println("<form action=\"pages/hotel/datphong.jsp\" method=\"get\" id=\"form"+i+"\"> ");
+
+                            out.println("<form action=\"pages/hotel/datphong.jsp\" method=\"get\" id=\"form" + i + "\"> ");
                             out.println("<div style=\"padding-left: 18px;\">" +
                                     "<div align=\"left\" style=\"border-bottom: 2px solid rgb(204, 204, 204); padding-bottom: 5px; padding-top: 5px; width: 99%; " +
                                     "margin-right: 5px; clear: both;\">" +
@@ -52,11 +53,41 @@
                             out.println("<ul>");
                             services = services.replaceFirst(supplier, "");
                             log.info("Services: " + services);
+                            int size = serviceList.size();
+                            /*
                             for (j = 1; j < serviceList.size(); j++) {
-                                out.println("<li>" + serviceList.get(j) + "</li>");
-                                
-                            }
+                            out.println("<li>" + serviceList.get(j) + "</li>");                                
+                            }/*/
+                            out.println("<li>Khách sạn: " + serviceList.get(6) + "</li>");
+                            out.println("<li>Địa chỉ: " + serviceList.get(1) + "</li>");
+                            out.println("<li>" + serviceList.get(8) + " sao</li>");
+                            out.println("<li>Vị trí: " + serviceList.get(7) + "</li>");
+                            //*/
                             out.println("</ul>");
+        %>
+        
+        <table width="250" border="1">
+            <tr>
+                <td>Loại phòng</td>
+                <td>Giá</td>
+                <td>Đơn vị</td>
+            </tr>
+            <%
+                        for (int k = 9; k < size;) {
+            %>
+            <tr>
+                <td><%=serviceList.get(k)%></td>
+                <td><%=serviceList.get(k + 1)%></td>
+                <td><%=serviceList.get(k + 2)%></td>
+            </tr>
+            <%
+                            k += 3;
+                        }
+            %>
+        </table>
+        
+        
+        <%
                             out.println("<input type=\"hidden\" name=\"supplier\" value=\"" + supplier + "\"/>");
                             out.println("<input type=\"hidden\" name=\"protocol\" value=\"" + Protocol.HOTEL_RES + "\"/>");
                             out.println("<input type=\"hidden\" name=\"services\" value=\"" + services + "\"/>");
@@ -76,7 +107,7 @@
             }
 
 
-            
+
         %>
     </body>
 </html>
