@@ -20,6 +20,8 @@ public class Address {
 	public Address() {
 	}
 
+        
+        // ham nay t dung de insert 1 the hien address vao csdl jena vua roi ay
 	public static boolean insertAddress(String input) // vi ko dung Address nua, mai trung truyen cho 1 String, to e phai tach de lay thong tin
         {
 	  ArrayList<String> arr = new ArrayList<String>();
@@ -40,6 +42,8 @@ public class Address {
 	
 				ind.addProperty(Hotel.country, "Viet Nam");
                         
+                                
+                                // them tung thuoc tinh la cac datatypeProperty ay
 			if (arr.get(2)!= null) 
 				ind.addProperty(Hotel.street,arr.get(2));
                                // Hotel.street thuc ra la de co cai the
@@ -58,6 +62,8 @@ public class Address {
 		return isOk;
 	}
 
+        
+        
         /**
          * input = city, number, street (cu -> moi)
          * @param input
@@ -134,7 +140,7 @@ public static void main(String s[]) throws Exception{
         String input1 = "km8"+Message.FIELD_SEPARATE +"Nguyen Trai" + Message.FIELD_SEPARATE +"Thanh xuan_ Ha Noi";
         // day la 1 doi tuong dia chi, to se cho vao csdl
 	boolean a = add.insertAddress(input);
-        boolean b = add.insertAddress(input1);
+        //boolean b = add.insertAddress(input1);
 
 	
 	 

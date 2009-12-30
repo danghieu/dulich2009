@@ -253,19 +253,7 @@ public class HotelProcess {
 
                 String todate = binding.getLiteral("ToDate").getValue().toString();
                 System.out.print("todate:" + todate);
-            //   int toDate= todate.hashCode();
-            //     int Begin = begin.hashCode();
-            //    System.out.println("todate:"+todate);
-            //    System.out.println("begin:"+begin);
-                  /*      if(toDate < Begin) {
-            System.out.println("availability");
-            System.out.print( rs.getRowNumber());
-            //       rs.next().getLiteral(begin);
-            //         model.addLiteral(arg0, arg1, Begin);
-            //         ResultSet.class
-            
-            
-            }  */
+           
             }
         } catch (Exception e1) {
             e1.printStackTrace();
@@ -283,7 +271,7 @@ public class HotelProcess {
      */
     public static OntModel insertMsg_HotelSearchRQ(String input, long total) {
         ArrayList<String> arr = new ArrayList<String>();
-
+System.out.println("goi den search1");
         // Ham phan tach thog tin dua vao
         arr = Message.split(input, Message.FIELD_SEPARATE);
 
@@ -315,6 +303,111 @@ public class HotelProcess {
         model.write(System.out);
         return model;
     }
+    
+    
+     public static OntModel insertMsg_HotelSearchRQFull(String input, long total) {
+        ArrayList<String> arr = new ArrayList<String>();
+
+        // Ham phan tach thog tin dua vao
+        arr = Message.split(input, Message.FIELD_SEPARATE);
+
+        log.info("Resulted SPLIT: " + arr.toString());
+        // Tao mot OntModel trong, de dua cac thong tin vao 1 model
+        OntModel model = ModelFactory.createOntologyModel();
+        Individual ind = null;
+
+        try {
+
+            //tao ra 1 lop request de lay cac thong tin yeu cau
+            OntClass oc = model.createClass(Hotel.getURI() + "Msg_HotelSearchRQFull");
+            ind = model.createIndividual(Hotel.getURI() + "Msg_HotelSearchRQFull" + total, oc);
+
+
+            if (arr.get(0) != null) {
+                ind.addLiteral(Hotel.city, arr.get(0));
+            }
+           
+            if(arr.get(2)!=null){
+                ind.addLiteral(Hotel.AreaWeather, arr.get(2));
+            }
+            
+            if(arr.get(1)!=null)
+                ind.addLiteral(Hotel.HotelLocation, arr.get(2));
+
+        } catch (Exception e) {
+            System.out.println(e.toString());
+
+        }
+        model.write(System.out);
+        return model;
+    }
+    
+ 
+    //Truong hop chi co thoi tiet
+         public static OntModel insertMsg_HotelSearchRQ2(String input, long total) {
+        ArrayList<String> arr = new ArrayList<String>();
+ System.out.println("goi den search2");
+        // Ham phan tach thog tin dua vao
+        arr = Message.split(input, Message.FIELD_SEPARATE);
+
+        log.info("Resulted SPLIT: " + arr.toString());
+        // Tao mot OntModel trong, de dua cac thong tin vao 1 model
+        OntModel model = ModelFactory.createOntologyModel();
+        Individual ind = null;
+
+        try {
+
+            //tao ra 1 lop request de lay cac thong tin yeu cau
+            OntClass oc = model.createClass(Hotel.getURI() + "Msg_HotelSearchRQ2");
+            ind = model.createIndividual(Hotel.getURI() + "Msg_HotelSearchRQ2" + total, oc);
+
+
+            
+            
+            if(arr.get(2)!=null){
+                ind.addLiteral(Hotel.AreaWeather, arr.get(2));
+            }
+           
+        } catch (Exception e) {
+            System.out.println(e.toString());
+
+        }
+        model.write(System.out);
+        return model;
+    }
+    
+     // truong hop chi co vi tri    
+           public static OntModel insertMsg_HotelSearchRQ3(String input, long total) {
+      
+               System.out.println("goi den search3");
+               ArrayList<String> arr = new ArrayList<String>();
+
+        // Ham phan tach thog tin dua vao
+        arr = Message.split(input, Message.FIELD_SEPARATE);
+
+        log.info("Resulted SPLIT: " + arr.toString());
+        // Tao mot OntModel trong, de dua cac thong tin vao 1 model
+        OntModel model = ModelFactory.createOntologyModel();
+        Individual ind = null;
+
+        try {
+
+            //tao ra 1 lop request de lay cac thong tin yeu cau
+            OntClass oc = model.createClass(Hotel.getURI() + "Msg_HotelSearchRQ3");
+            ind = model.createIndividual(Hotel.getURI() + "Msg_HotelSearchRQ3" + total, oc);
+        
+            if(arr.get(1)!=null)
+                ind.addLiteral(Hotel.HotelLocation, arr.get(1));
+
+        } catch (Exception e) {
+            System.out.println(e.toString());
+
+        }
+        model.write(System.out);
+        return model;
+    }
+           
+    
 
     /**
      * Tra ve danh sach ten cac khach san thoa man
@@ -326,11 +419,14 @@ public class HotelProcess {
         //  Database.LoadOnt2Database();
         String ont = "http://www.owl-ontologies.com/Travel.owl#";
         // lay khung du lieu tu owl
-        String file = "C://apache-tomcat-6.0.18/webapps/MyOntology/hotel_yen6.owl";
+        
+        ArrayList<String> arr = new ArrayList<String>();
+        arr = Message.split(input, Message.FIELD_SEPARATE);
 
         //dua ontology vao 1 model
+        
+        
         Database.LoadOnt2Database();
- 
         
         OntModel model = ModelFactory.createOntologyModel(
                 PelletReasonerFactory.THE_SPEC, Database.getOntologyModel());
@@ -355,8 +451,24 @@ public class HotelProcess {
 
         log.info("Insert msg to infer");
         // add model yeu cau vao ontology de tao ra 1 model moi chua tat ca cac rang buoc ke ca luat
-        Model ontmodel = insertMsg_HotelSearchRQ(input, total);
-        model.add(ontmodel);
+        OntModel ontmodel = ModelFactory.createOntologyModel();
+       if(arr.get(0).equals(" ") && arr.get(1)!=null && arr.get(2).equals(" ") )
+         
+        ontmodel = insertMsg_HotelSearchRQ3(input, total);
+        
+       if(!arr.get(0).equalsIgnoreCase(" ") && !arr.get(1).equalsIgnoreCase(" ")&& !arr.get(2).equals(""))
+       ontmodel = insertMsg_HotelSearchRQFull(input, total);
+       
+        if(arr.get(0).equals(" ") && arr.get(1).equals(" ") && arr.get(2)!=null )
+        ontmodel = insertMsg_HotelSearchRQ2(input, total);
+          
+        
+        if(arr.get(0)!=null && arr.get(1).equals(" ") && arr.get(2).equals(" "))
+        ontmodel = HotelProcess.insertMsg_HotelSearchRQ(input, total);
+        
+        
+        
+           model.add(ontmodel);
         
         ExtendedIterator<?> extendedIterator = cl.listInstances(); // lay tat ca cac the hien cua cai lop day
 
@@ -383,9 +495,7 @@ public class HotelProcess {
            Individual individual = model.getIndividual(ont + "Msg_HotelSearchRQ"+total);           
           if(individual!=null)
            individual.remove();
-           Individual individual1 = model.getIndividual(ont + "Msg_HotelSearchRQ5");
-           if(individual!=null)
-           individual.remove();
+          
                    
 
         return s;
@@ -481,7 +591,7 @@ public class HotelProcess {
                     int index = result.indexOf(name);
                     if(index < 0 || index > result.length())
                     {
-                        result = result +Message.OBJECT_SEPARATE;
+                       
                         Address = Address + name +" _ ";
                 
                          if(binding.getLiteral("Street").getValue().toString()!=null){
@@ -547,7 +657,7 @@ public class HotelProcess {
                     
                     if(index < 0 || index > result.length())
                     {
-                      result = result + roomtype + Message.FIELD_SEPARATE+ binding.getLiteral("amount").getValue().toString()+Message.FIELD_SEPARATE+ binding.getLiteral("currency").getValue().toString();
+                      result = result + roomtype + Message.FIELD_SEPARATE+ binding.getLiteral("amount").getValue().toString()+Message.FIELD_SEPARATE+ binding.getLiteral("currency").getValue().toString()+Message.FIELD_SEPARATE;
                       
                    
                 }        
@@ -1309,7 +1419,8 @@ System.out.println("them 1 the hien not availability");
         String s_end = "2009-12-30";
         //     hotelprocess.checkAvailability( "HaiYen", "LivingRoom", "SingleRoom");
       
-
+  String input = " "+Message.FIELD_SEPARATE+"Gan nha ga"+Message.FIELD_SEPARATE+" ";
+       
         
    String input1 = "HaiYen" + Message.FIELD_SEPARATE + "Nam Dinh" + Message.FIELD_SEPARATE
                + "405" + Message.FIELD_SEPARATE + "Thanh Xuan Bac"+ Message.FIELD_SEPARATE 
@@ -1321,7 +1432,7 @@ System.out.println("them 1 the hien not availability");
    
    
                
-     String input = "Nam Dinh";
+   // String input = "Nam Dinh"+Message.FIELD_SEPARATE+null+Message.FIELD_SEPARATE+null;
      String ss = HotelProcess.search(input);
                
                
