@@ -218,10 +218,14 @@ public class UserServlet extends HttpServlet {
         log.info("|| Parameter: " + paramSet);
         Object[] params = paramSet.toArray();
         int length = params.length;
+        String value = "";
         for (int i = 0; i < length; i++) {
             param = (String) params[i];
-            msg += request.getParameter(param);//param + ": " +
-
+            
+            value = request.getParameter(param);//param + ": " +
+            if(value == null || "".equals(value))
+                value = "null";
+            msg += value;
             if (i < length - 1) {
                 msg += Message.FIELD_SEPARATE;
 
