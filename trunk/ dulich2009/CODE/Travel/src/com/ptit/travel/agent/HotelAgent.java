@@ -500,9 +500,8 @@ public class HotelAgent extends Agent {
                     
                     String name = binding.getLiteral("number").getValue().toString();
                     int index = result.indexOf(name);
-                    if(index < 0 || index > result.length())
-                    {
-                        result = result +Message.OBJECT_SEPARATE;
+                    if(index < 0 || index > result.length())                    {
+                        
                         Address = Address + name +" _ ";
                 
                          if(binding.getLiteral("Street").getValue().toString()!=null){
@@ -568,7 +567,9 @@ public class HotelAgent extends Agent {
                     
                     if(index < 0 || index > result.length())
                     {
-                      result = result + roomtype + Message.FIELD_SEPARATE+ binding.getLiteral("amount").getValue().toString()+Message.FIELD_SEPARATE+ binding.getLiteral("currency").getValue().toString();
+                      result = result + roomtype + Message.FIELD_SEPARATE+ 
+                              binding.getLiteral("amount").getValue().toString()+Message.FIELD_SEPARATE+ 
+                              binding.getLiteral("currency").getValue().toString()+Message.FIELD_SEPARATE;
                       
                    
                 }        
