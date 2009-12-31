@@ -124,6 +124,7 @@ public class UserServlet extends HttpServlet {
 
 
         String protocol = request.getParameter("protocol");
+        log.info("POTOCOL: " + protocol);
         //*
 
         String msgId = "guest" + System.currentTimeMillis();
