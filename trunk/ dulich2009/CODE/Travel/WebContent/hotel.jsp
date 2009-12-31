@@ -21,7 +21,7 @@
                 </div>
             </div>
             <div id="templatemo_right_column">
-                <jsp:include page="searchRoom.jsp" flush="false"></jsp:include>  
+                <jsp:include page="/pages/hotel/searchRoom.jsp" flush="false"></jsp:include>  
             </div>
             <div id="templatemo_bot"></div>
         </div>
