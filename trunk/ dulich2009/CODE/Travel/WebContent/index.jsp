@@ -15,19 +15,19 @@
             <div id="templatemo_left_column">
                 <div id="templatemo_menu_top"></div>
                 <div class="templatemo_menu"> 
-                    <jsp:include page="menu.jsp" flush="false"></jsp:include>
+                    <jsp:include page="/pages/layout/menu.jsp" flush="false"></jsp:include>
                 </div>
                 <div id="templatemo_contact">
-                    <jsp:include page="contact.jsp" flush="false"></jsp:include>  
-				</div>
+                    <jsp:include page="/pages/layout/contact.jsp" flush="false"></jsp:include>  
+                </div>
             </div>
             <div id="templatemo_right_column">
-                <jsp:include page="body.jsp" flush="false"></jsp:include>  
+                <jsp:include page="/pages/layout/body.jsp" flush="false"></jsp:include>  
             </div>
             <div id="templatemo_bot"></div>
         </div>
         <div id="templatemo_footer"> 
-			<jsp:include page="footer.jsp" flush="false"></jsp:include>  
-		</div>
+            <jsp:include page="/pages/layout/footer.jsp" flush="false"></jsp:include>  
+        </div>
     </body>
 </html>
