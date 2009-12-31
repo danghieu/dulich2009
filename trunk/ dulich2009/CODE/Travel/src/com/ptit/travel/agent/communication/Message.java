@@ -31,6 +31,8 @@ import jade.domain.FIPAAgentManagement.ServiceDescription;
 public class Message {
 
     private static Logger log = Logger.getLogger(Message.class.getName());
+    public static String SUCCESS = "SUCCESS";
+    public static String FAIL = "FAIL";
     /**
      * special string uesed to separate objects
      *  #_$
