@@ -5,7 +5,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <title>E-Tourism: Du l&#7883;ch b&#7889;n ph&#432;&#417;ng</title>
-        <link href="../pages/layout/templatemo_style.css" rel="stylesheet" type="text/css" />
+        <link href="templatemo_style.css" rel="stylesheet" type="text/css" />
         <style type="text/css">
             .hidden {
                 display:none;

@@ -10,7 +10,7 @@
             <li><a href="#">Trang ch&#7911; </a></li>
             <li><a href="#">Tour </a></li>
             <li><a href="#">Ð&#7883;a &#273;i&#7875;m </a></li>
-            <li><a href="pages/hotel/hotel.jsp">Khách s&#7841;n </a></li>
+            <li><a href="hotel.jsp">Khách s&#7841;n </a></li>
             <li><a href="#">Máy bay </a></li>
             
             <li><a href="#">Tàu h&#7887;a</a></li>

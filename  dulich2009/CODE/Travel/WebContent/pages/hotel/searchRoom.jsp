@@ -88,18 +88,24 @@
 										<option value="warm"> ấm áp </option>
 										<option value="snow"> có tuyết </option>
                                 </select>								  </td>
-                                <td width="79">Vị tr&iacute;</td>
-                                <td width="236"><select name="location" id="select" style="width: 140px;" class="text_form_search" onChange="javascript:ajaxLoadURL('loader.php?mod=services&amp;act=city&amp;q='+this.value,'GET','','city',2,2);s_cat_id.value=this.value;">
-                                  <option value=""> Lựa chọn</option>
-                                  <option value="inside">inside </option>
-                                  <option value="outside">outside</option>
-                                  <option value="deck">deck</option>
-                                  <option value ="lowerLevel">lowerLevel</option>
-                                  <option value="upperLevel">upperLevel </option>
-                                </select></td>
+                                <td width="79"></td>
+                                <td width="236">&nbsp;</td>
                             </tr>
                             
-                       
+                        <tr>
+                                <td height="49"></td>
+                                <td width="79">V&#7883; tr&iacute; </td>
+                                <td width="236"><select name="location" id="select" style="width: 140px;" class="text_form_search" onChange="javascript:ajaxLoadURL('loader.php?mod=services&amp;act=city&amp;q='+this.value,'GET','','city',2,2);s_cat_id.value=this.value;">
+                                    <option value=""> L&#7921;a ch&#7885;n </option>
+                                    <option value="inside">inside </option>
+                                    <option value="outside">outside</option>
+                                    <option value="deck">deck</option>
+                                    <option value ="lowerLevel">lowerLevel</option>
+                                    <option value="upperLevel">upperLevel </option>
+                                </select></td>
+                                <td>&nbsp;</td>
+                                <td>&nbsp;</td>
+                            </tr>
                             <tr>
                                 <td></td>
                                 
