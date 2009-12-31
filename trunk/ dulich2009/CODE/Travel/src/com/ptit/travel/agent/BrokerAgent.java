@@ -4,7 +4,6 @@ package com.ptit.travel.agent;
  *
  * @author D05CNPM
  */
-import com.ptit.travel.DAO.AgentDAO;
 import com.ptit.travel.agent.communication.*;
 import com.ptit.travel.agent.memory.*;
 import java.io.IOException;
@@ -43,7 +42,6 @@ public class BrokerAgent extends Agent {
     private Memory mem;
     // message queue of agent contains every satisfactory replied messages 
     private Hashtable<String, ArrayList<String>> msgQueue = new Hashtable<String, ArrayList<String>>();
-    private AgentDAO agentDAO = new AgentDAO(); // manipulate with agent db
 
 
     @Override
