@@ -69,12 +69,12 @@ public class UserAgent extends Agent {
 //                "E:/Develop/Netbean/Travel/config/UserAgent.properties",
 //                this.getLocalName());// E:/Develop/Netbean/Travel/
 
-    /* Tu gan hanh okvi search sau 0.5 s
+    //* Tu gan hanh okvi search sau 0.5 s
     addBehaviour(new TickerBehaviour(this, 30000) {
     protected void onTick() {
-    search("Nam Dinh", "conversationId", "protocol");
+    search("Nam Dinh", "conversationId", Protocol.HOTEL_AVAIL);
     }
-    });*/
+    });//*/
 
     }
 
