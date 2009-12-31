@@ -3,14 +3,12 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <title>E-Tourism: Du l&#7883;ch b&#7889;n ph&#432;&#417;ng</title>
-        <link href="templatemo_style.css" rel="stylesheet" type="text/css" />
         
     </head>
     <body>
         <div id="templatemo_maincontainer">
             <div id="templatemo_topsection">
-                <div id="templatemo_title">E-TOURISM</div>
-                <div id="templatemo_slogan">SEE  THE  WOLRD </div>
+                <jsp:include page="/pages/layout/header.jsp" flush="false"></jsp:include>
             </div>
             <div id="templatemo_left_column">
                 <div id="templatemo_menu_top"></div>
