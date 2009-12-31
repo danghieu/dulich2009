@@ -23,7 +23,7 @@
             Logger log = Logger.getLogger("searchResult.jsp");
             String result = (String) request.getAttribute("result");
 
-            String services, supplier;
+            String services, supplier, hotelName, address;
             ArrayList<String> supplierList = Message.split(result, Message.OBJECT_SEPARATE);
             ArrayList<String> serviceList;
 
@@ -38,8 +38,11 @@
                         serviceList = Message.split(services, Message.FIELD_SEPARATE);
                         if (serviceList != null) {
                             supplier = serviceList.get(0);
-
-                            out.println("<form action=\"pages/hotel/datphong.jsp\" method=\"get\" id=\"form" + i + "\"> ");
+                            hotelName = serviceList.get(6);
+                            address = serviceList.get(1); 
+                            log.info("[HOTEL INFO] supplier: " + supplier + " hotelName: " 
+                                    +hotelName+ " address: " + address);
+                            out.println("<form action=\"pages/hotel/bookRoom.jsp\" method=\"get\" id=\"form" + i + "\"> ");
                             out.println("<div style=\"padding-left: 18px;\">" +
                                     "<div align=\"left\" style=\"border-bottom: 2px solid rgb(204, 204, 204); padding-bottom: 5px; padding-top: 5px; width: 99%; " +
                                     "margin-right: 5px; clear: both;\">" +
@@ -58,8 +61,8 @@
                             for (j = 1; j < serviceList.size(); j++) {
                             out.println("<li>" + serviceList.get(j) + "</li>");                                
                             }/*/
-                            out.println("<li>Khách sạn: " + serviceList.get(6) + "</li>");
-                            out.println("<li>Địa chỉ: " + serviceList.get(1) + "</li>");
+                            out.println("<li>Khách sạn: " + hotelName + "</li>");
+                            out.println("<li>Địa chỉ: " + address + "</li>");
                             out.println("<li>" + serviceList.get(8) + " sao</li>");
                             out.println("<li>Vị trí: " + serviceList.get(7) + "</li>");
                             //*/
@@ -89,6 +92,8 @@
         
         <%
                             out.println("<input type=\"hidden\" name=\"supplier\" value=\"" + supplier + "\"/>");
+                            out.println("<input type=\"hidden\" name=\"hotelName\" value=\"" + hotelName + "\"/>");
+                            out.println("<input type=\"hidden\" name=\"address\" value=\"" + address + "\"/>");
                             out.println("<input type=\"hidden\" name=\"protocol\" value=\"" + Protocol.HOTEL_RES + "\"/>");
                             out.println("<input type=\"hidden\" name=\"services\" value=\"" + services + "\"/>");
                             //out.println("<a href=\"abc\" onClick=\"\">more</a>");
@@ -100,6 +105,7 @@
 
 
                     } catch (Exception e) {
+                        log.error(e);
                     }
                 }
 

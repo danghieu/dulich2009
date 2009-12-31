@@ -3,7 +3,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <title>E-Tourism: Du lịch bốn phương</title>
-        
+        <link href="templatemo_style.css" rel="stylesheet" type="text/css" />
         
     </head>
     <body>

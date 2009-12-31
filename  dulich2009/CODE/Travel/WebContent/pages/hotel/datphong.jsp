@@ -64,8 +64,9 @@
         <% 
         Logger log = Logger.getLogger("datphong.jsp");
         String supplier = request.getParameter("supplier");
+		
         String services = request.getParameter("services");
-        
+        String address = request.getParameter("address"); 
         log.info("supplier: " + supplier + "services: " + services);
         %>
         <input type="hidden" name="protocol" value="<%=Protocol.HOTEL_RES%>">
@@ -221,16 +222,16 @@
                                                                     <tr> 
                                                                         <td align="right" valign="middle" bgcolor="#FFFFFF"><div align="right">Tên 
                                                                         khách sạn </div></td>
-                                                                        <td bgcolor="#FFFFFF"><b>CUU LONG HOTEL 
-                                                                                <input name="txtHotelsname" id="txtHotelsname" value="CUU LONG HOTEL" type="hidden">
+                                                                        <td bgcolor="#FFFFFF"><b><%=hotelName%> 
+                                                                                <input name="hotelName" id="txtHotelName" value="<%=hotelName%>" type="hidden">
                                                                         </b></td>
                                                                     </tr>
                                                                     <tr> 
                                                                         <td align="right" valign="middle" bgcolor="#FFFFFF"><div align="right">Địa 
                                                                                 chỉ <br>
                                                                         </div></td>
-                                                                        <td bgcolor="#FFFFFF"><b>52 Quang Trung St. 
-                                                                                <input name="txtHotelsAddress" id="txtHotelsAddress" value="52 Quang Trung St." type="hidden">
+                                                                        <td bgcolor="#FFFFFF"><b><%=address%>
+                                                                            <input name="txtHotelsAddress" id="txtHotelsAddress" value="<%=address%>" type="hidden">
                                                                         </b></td>
                                                                     </tr>
                                                                     
