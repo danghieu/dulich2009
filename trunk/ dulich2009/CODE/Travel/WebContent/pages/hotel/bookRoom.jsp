@@ -49,8 +49,7 @@
     <body>
         <div id="templatemo_maincontainer">
             <div id="templatemo_topsection">
-                <div id="templatemo_title">E-TOURISM</div>
-                <div id="templatemo_slogan">SEE  THE  WOLRD </div>
+                <jsp:include page="/pages/layout/header.jsp" flush="false"></jsp:include>
             </div>
             <div id="templatemo_left_column">
                 <div id="templatemo_menu_top"></div>
@@ -67,7 +66,7 @@
                 <table width="100%" border="0" cellpadding="0" cellspacing="0">
                     <tbody><tr> 
                             <td class="TitleLevel2" height="30" align="center">&nbsp;&nbsp;<img src="dat_files/node.jpg" width="10" align="absmiddle" height="10"><font color="#0000ff">&nbsp; 
-                            ??T PH&Ograve;NG KH&Aacute;CH S?N</font> </td>
+                            ƒê·∫∂T PH&Ograve;NG KH&Aacute;CH S·∫†N</font> </td>
                         </tr>
                         
                         <tr> 
@@ -80,13 +79,13 @@
                                                                 <td valign="top" align="center"><table width="100%" bgcolor="#e3e1b7" border="0" cellpadding="5" cellspacing="0">
                                                                         <tbody><tr bgcolor="#ccc87b"> 
                                                                                 <td height="25" colspan="2" align="right" valign="middle" bgcolor="#3399CC"><div align="left" class="style1">
-                                                                                        <div align="center">ThÙng 
-                                                                                        tin ng??i s? d?ng</div>
+                                                                                        <div align="center">Thng 
+                                                                                        tin ng∆∞·ªùi s·ª≠ d·ª•ng</div>
                                                                                 </div></td>
                                                                             </tr>
                                                                             <tr> 
-                                                                                <td width="30%" align="right" valign="middle" bgcolor="#FFFFFF"><div align="right">Kh·ch 
-                                                                                h‡ng (<font color="#ff0000">*</font>)</div></td>
+                                                                                <td width="30%" align="right" valign="middle" bgcolor="#FFFFFF"><div align="right">Khch 
+                                                                                hng (<font color="#ff0000">*</font>)</div></td>
                                                                                 <td bgcolor="#FFFFFF"><input name="txtCustomer" id="txtCustomer" size="35" type="text"></td>
                                                                             </tr>
                                                                             <tr> 
@@ -99,7 +98,7 @@
                                                                                 <td bgcolor="#FFFFFF"><input name="email" id="email" size="35" type="text"></td>
                                                                             </tr>
                                                                             <tr> 
-                                                                                <td align="right" valign="middle" bgcolor="#FFFFFF"><div align="right">?i?n tho?i(<font color="#ff0000">*</font>)</div></td>
+                                                                                <td align="right" valign="middle" bgcolor="#FFFFFF"><div align="right">S·ªë ƒëi·ªán tho·∫°i(<font color="#ff0000">*</font>)</div></td>
                                                                                 <td bgcolor="#FFFFFF"><input name="txtAddress" id="txtAddress" size="35" type="text"></td>
                                                                             </tr>
                                                                             
@@ -118,50 +117,40 @@
                                                             <tr> 
                                                                 <td valign="top" align="center"><table width="100%" bgcolor="#e3e1b7" border="1" cellpadding="5" cellspacing="0">
                                                                         <tbody><tr bgcolor="#ccc87b"> 
-                                                                                <td width="30%" align="right" valign="middle" bgcolor="#FFFFFF"><div align="right"><strong>ThÙng 
-                                                                                tin kh·ch s?n</strong></div></td>
+                                                                                <td width="30%" align="right" valign="middle" bgcolor="#FFFFFF"><div align="right"><strong>Thng 
+                                                                                tin khch s·∫°n</strong></div></td>
                                                                                 
                                                                             </tr>                  
                                                                             
                                                                             
                                                                             <tr> 
-                                                                                <td align="right" valign="top" bgcolor="#FFFFFF"><div align="right">Lo?i 
-                                                                                phÚng </div></td>
+                                                                                <td align="right" valign="top" bgcolor="#FFFFFF"><div align="right">Lo·∫°i ph√≤ng </div></td>
                                                                                 <td bgcolor="#FFFFFF" COLSPAN=2> <select name="roomType" size="1" id="roomType" onchange="choseRoomType()" >
-                                                                                        <option value="bedding" selected="selected">Lo?i phÚng</option>
-                                                                                        <option value="livingRom">PhÚng ng? - Livingroom</option>
-                                                                                        <option value="meetingRoom">PhÚng h?p - Meetingroom</option>
-                                                                                        <option value="partyRoom">PhÚng ti?c - PartyRoom</option>
+                                                                                        <option value="bedding" selected="selected">Lo·∫°i ph√≤ng</option>
+                                                                                        <option value="livingRom">Phng ng·ªß - Livingroom</option>
+                                                                                        <option value="meetingRoom">Phng h·ªçp - Meetingroom</option>
+                                                                                        <option value="partyRoom">Phng ti·ªác - PartyRoom</option>
                                                                                         
                                                                                     </select>
-                                                                                    <span  id="lblRoomType" >Loai gi??ng </span>
-                                                                                    <select  name="bedType" size="1" id="bedType">
-                                                                                        <option value="Bedding" selected="selected">Lo?i gi??ng</option>
-                                                                                        <option value="Gi??ng ??n">Gi??ng ??n</option>
-                                                                                        <option value="Gi??ng ?Ùi">Gi??ng ?Ùi</option>
-                                                                                        <option value="Hai gi??ng ??n">Hai gi??ng ??n</option>
-                                                                                        <option value="M?t ??n + m?t ?Ùi">M?t ??n 
-                                                                                        + m?t ?Ùi</option>
-                                                                                    </select>
-                                                                                <input  name="quantity" id="quantity" size="10" type="text" value="s? l??ng" onclick="empty()"/>                          </td>
+                                                                                s·ªë l∆∞·ª£ng 
+                                                                                  <input  name="quantity" id="quantity" size="10" type="text" onclick="empty()"/>                          </td>
                                                                             </tr>
                                                                             
                                                                             <tr> 
-                                                                                <td align="right" valign="middle" bgcolor="#FFFFFF"><div align="right">Ng‡y 
-                                                                                ??n </div></td>
+                                                                                <td align="right" valign="middle" bgcolor="#FFFFFF"><div align="right">Ng√†y ƒë·∫øn </div></td>
                                                                                 <td bgcolor="#FFFFFF">
                                                                                 <input name="fromDate" id="fromDate" size="35" type="text" /></td>
                                                                             </tr>
                                                                             <tr> 
-                                                                                <td align="right" valign="middle" bgcolor="#FFFFFF"><div align="right">Ng‡y 
-                                                                                v? </div></td>
+                                                                                <td align="right" valign="middle" bgcolor="#FFFFFF"><div align="right">Ngy 
+                                                                                v·ªÅ </div></td>
                                                                                 <td bgcolor="#FFFFFF">
                                                                                 <input name="toDate" id="toDate" size="35" type="text" /></td>
                                                                             </tr>
                                                                             
                                                                             <tr> 
-                                                                                <td align="right" valign="top" bgcolor="#FFFFFF"><div align="right">YÍu 
-                                                                                c?u kh·c </div></td>
+                                                                                <td align="right" valign="top" bgcolor="#FFFFFF"><div align="right">Yu 
+                                                                                c·∫ßu kh√°c </div></td>
                                                                                 <td bgcolor="#FFFFFF"><textarea name="txtComments" cols="30" rows="6" id="txtComments"></textarea></td>
                                                                             </tr>
                                                                 </tbody></table></td>
@@ -175,8 +164,8 @@
                                                             <tr> 
                                                                 <td valign="top" align="center" height="1"><table width="50%" align="center" border="0" cellpadding="0" cellspacing="0">
                                                                         <tbody><tr> 
-                                                                                <td><input name="Button" onClick="clickSubmit();" value="  ??t phÚng  " type="button"></td>
-                                                                                <td><input name="clear" value=" Nh?p l?i " type="reset"></td>
+                                                                                <td><input name="submit" onClick="clickSubmit();" value="ƒê·∫∑t ph√≤ng" type="button"></td>
+                                                                                <td><input name="submit" value="Nh·∫≠p l·∫°i" type="reset"></td>
                                                                             </tr>
                                                                 </tbody></table></td>
                                                             </tr>
