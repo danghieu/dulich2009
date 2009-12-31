@@ -108,7 +108,7 @@
                                                                             <tr> 
                                                                                 <td width="30%" align="right" valign="middle" bgcolor="#FFFFFF"><div align="right">Khách 
                                                                                 hàng (<font color="#ff0000">*</font>)</div></td>
-                                                                                <td bgcolor="#FFFFFF"><input name="name" id="name" size="35" type="text"></td>
+                                                                                <td bgcolor="#FFFFFF"><input name="fullName" id="fullName" size="35" type="text"></td>
                                                                             </tr>
                                                                             <tr> 
                                                                                 <td align="right" valign="middle" bgcolor="#FFFFFF"><div align="right">CMND (<font color="#ff0000">*</font>)<br>
@@ -175,13 +175,13 @@
                                                                             <tr> 
                                                                                 <td align="right" valign="middle" bgcolor="#FFFFFF"><div align="right">Ngày đến </div></td>
                                                                                 <td bgcolor="#FFFFFF">
-                                                                                <input name="fromDate" id="fromDate" size="35" type="text" /></td>
+                                                                                <input name="fromdate" id="fromdate" size="35" type="text" /></td>
                                                                             </tr>
                                                                             <tr> 
                                                                                 <td align="right" valign="middle" bgcolor="#FFFFFF"><div align="right">Ngy 
                                                                                 về </div></td>
                                                                                 <td bgcolor="#FFFFFF">
-                                                                                <input name="toDate" id="toDate" size="35" type="text" /></td>
+                                                                                <input name="todate" id="todate" size="35" type="text" /></td>
                                                                             </tr>
                                                                             
                                                                             <tr> 
