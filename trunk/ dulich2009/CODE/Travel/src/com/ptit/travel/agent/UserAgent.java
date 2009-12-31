@@ -385,7 +385,7 @@ public class UserAgent extends Agent {
                     try {
                         // collect agents who satisfy action
                         //receivers = agentDAO.getAgents("", "hotel");
-                        log.error("Booking ... ");
+                        log.info("Booking ... ");
                         ArrayList<String> splitedContent = Message.split(content, Message.OBJECT_SEPARATE);
                         if (splitedContent == null) {
                             log.error("Invalid format input from servlet: " + content);
