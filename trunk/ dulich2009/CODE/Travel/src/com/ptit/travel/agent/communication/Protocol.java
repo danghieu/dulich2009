@@ -55,4 +55,8 @@ public class Protocol {
      * statistic
      */
     public final static String HOTEL_STATISTICS = "Statistics" + SUFFIX_SEARCH;
+    
+    public final static String CAR_AVAIL = "CarAvail" + SUFFIX_SEARCH;
+    public final static String FLIGHT_AVAIL = "FlightAvail" + SUFFIX_SEARCH;
+    public final static String TRAIN_AVAIL = "TrainAvail" + SUFFIX_SEARCH;
 }
