@@ -1147,7 +1147,7 @@ System.out.println("Trong next"+cl.toString());
                 PelletReasonerFactory.THE_SPEC, Database.getOntologyModel());
       // chuyen nguoc lai tu csdl -> OntModel
       
-        String ont = "http://www.owl-ontologies.com/Travel.owl#";  
+      String ont = "http://www.owl-ontologies.com/Travel.owl#";  
       System.out.println("booking");
       ArrayList <String> arr = new ArrayList<String>();
       arr = Message.split(input, Message.FIELD_SEPARATE);
@@ -1305,7 +1305,7 @@ System.out.println("Trong next"+cl.toString());
                 isOk = false;
             }
      
-        if(isOk == true){
+     /*   if(isOk == true){
             System.out.println("xu ly lay gia cuoi cung");
             OntModel ontmodel = HotelProcess.insertMsg_HotelBookRQ(input, System.currentTimeMillis());
             model.add(ontmodel);
@@ -1333,9 +1333,9 @@ System.out.println("Trong next"+cl.toString());
                   
             
         }
+            */
             
-            
-        }
+       // }
         return isOk;
   }
      
@@ -1356,35 +1356,7 @@ System.out.println("Trong next"+cl.toString());
      
      
      
- public static boolean insertNotAvailabilityPeriod(String input, OntModel om) // vi ko dung Address nua, mai trung truyen cho 1 String, to e phai tach de lay thong tin
-        {
-	  ArrayList<String> arr = new ArrayList<String>();
-System.out.println("them 1 the hien not availability");
-        // Ham phan tach thog tin dua vao
-        arr = Message.split(input, Message.FIELD_SEPARATE);
-            boolean isOk = false;
-		            
-                        
-                
-		Individual ind = null;
-		try {
-                      OntClass oc = om.createClass(Hotel.getURI() + "NotAvailabilityPeriod");
-                      ind = om.createIndividual(Hotel.getURI() + "NotAvailabilityPeriod_" + System.currentTimeMillis(),oc);
-                      ind.addProperty(Hotel.roomType, String.valueOf(arr.get(0)) );                        		
-		      ind.addProperty(Hotel.ToDate,String.valueOf(arr.get(3)));			
-		      ind.addProperty(Hotel.FromDate,String.valueOf(arr.get(2)));			
-                      
-                      ind.addLiteral(Hotel.Number, Float.parseFloat(arr.get(1)));
-			isOk = true;
-                        System.out.println("Them the hien NotAvailability thanh cong");
-		} catch (Exception e) {
-			System.out.println(e.toString());
-			isOk = false;
-		}
-		return isOk;
-	}
-      
-   
+ 
  
  public static void searchNotAvailability(){
        Database.LoadOnt2Database();
@@ -1447,8 +1419,8 @@ System.out.println("them 1 the hien not availability");
         HotelProcess hotelprocess = new HotelProcess();
 //        hotelprocess.searchHotel(false, true, false, false, false, "inside", false, true, "Nam Dinh");
       //  hotelprocess.search2("HaiYen", "HotelSofitel");
-        String s_begin = "2010-01-1";
-        String s_end = "2010-01-4";
+        String s_begin = "2010-01-6";
+        String s_end = "2010-01-7";
         //     hotelprocess.checkAvailability( "HaiYen", "LivingRoom", "SingleRoom");
       
   String input = " "+Message.FIELD_SEPARATE+"inside"+Message.FIELD_SEPARATE+" ";
@@ -1472,6 +1444,6 @@ System.out.println("them 1 the hien not availability");
   //    System.out.print("ss="+ss1);
        // printValues("<http://www.owl-ontologies.com/Travel.owl#Hotel_1>");
 
-    HotelProcess.searchNotAvailability();
+  //  HotelProcess.searchNotAvailability();
     }
 }
