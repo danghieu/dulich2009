@@ -18,17 +18,14 @@
                     <jsp:include page="menu.jsp" flush="false"></jsp:include>
                 </div>
                 <div id="templatemo_contact">
-                    <strong>Liên hệ nhanh <br />
-                    </strong>
-                    Tel :01688599785<br />
-                    <br />
-                Email:pqtrung.it@gmail.com</div>
+                    <jsp:include page="contact.jsp" flush="false"></jsp:include>  
+                </div>
             </div>
             <div id="templatemo_right_column">
                 <jsp:include page="pages/hotel/searchRoom.jsp" flush="false"></jsp:include>  
             </div>
             <div id="templatemo_bot"></div>
         </div>
-        <div id="templatemo_footer">Copyright ©  E-Tourism - Designed by <a href="#" target="_parent">E-Tourism Group </a></div>
+        <div id="templatemo_footer"><jsp:include page="footer.jsp" flush="false"></jsp:include>  </div>
     </body>
 </html>
