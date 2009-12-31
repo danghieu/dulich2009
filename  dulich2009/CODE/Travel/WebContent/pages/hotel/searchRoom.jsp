@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@ page contentType="text/html; charset=iso-8859-1" language="java" import="java.sql.*" errorPage="" %>
 <%@ page language="java" import="com.ptit.travel.agent.communication.Protocol" %>
 <%
             String path = request.getContextPath();
@@ -8,6 +8,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
     <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
         <base href="<%=basePath%>">
         
         <title>E-tourism - Hotel</title>
@@ -25,10 +26,10 @@
     
     <body>
         <form action="UserServlet" method="get"> 
-            <table width="200" border="1">
+            <table >
             <tr>
             <td>
-            <table border="0" cellpadding="5" cellspacing="0" width="100%">
+
             <tbody><tr>
                 <td valign="top">
                     <table border="0" cellpadding="0" cellspacing="0" width="59%">
@@ -40,10 +41,10 @@
             </tr>
             <tr>
             <td>
-            <table border="0" cellpadding="5" cellspacing="0" width="100%">
+
             <tbody><tr>
             <td valign="top">
-            <table border="0" cellpadding="0" cellspacing="0" width="59%">
+            
                 <tbody><tr>
                     <td width="64%">
                         <table width="604" height="40">
@@ -148,8 +149,7 @@
                                                 <td><div align="center"> 
                                                         <table border="0" cellpadding="0" cellspacing="0" width="180">
                                                             <tbody><tr> 
-                                                                    <td class="mnhotel" onMouseOver="this.className='mnhotel_ac';" onMouseOut="this.className='mnhotel';" onClick="window.location.href='?lang=0&amp;mn1=1&amp;mn2=8&amp;city=1#destination';" height="20">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Thành 
-                                                                    phố Cần Thơ</td>
+                                                                    <td class="mnhotel" onMouseOver="this.className='mnhotel_ac';" onMouseOut="this.className='mnhotel';" onClick="window.location.href='?lang=0&amp;mn1=1&amp;mn2=8&amp;city=1#destination';" height="20">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Thành phố cần thơ </td>
                                                                 </tr>
                                                                 <tr> 
                                                                     <td class="mnhotel" onMouseOver="this.className='mnhotel_ac';" onMouseOut="this.className='mnhotel';" onClick="window.location.href='?lang=0&amp;mn1=1&amp;mn2=8&amp;city=2#destination';" height="20">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Đảo 

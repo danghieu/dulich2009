@@ -82,108 +82,21 @@ function choseRoomType()
                         <td bgcolor="#FFFFFF"><input name="txtCustomer" id="txtCustomer" size="35" type="text"></td>
                       </tr>
                       <tr> 
-                        <td align="right" valign="middle" bgcolor="#FFFFFF"><div align="right">Người 
-                            liên hệ (<font color="#ff0000">*</font>)<br>
+                        <td align="right" valign="middle" bgcolor="#FFFFFF"><div align="right">CMND (<font color="#ff0000">*</font>)<br>
                           </div></td>
-                        <td bgcolor="#FFFFFF"><input name="txtContactperson" id="txtContactperson" size="35" type="text"></td>
+                        <td bgcolor="#FFFFFF"><input name="txtEmail" id="txtEmail" size="35" type="text" /></td>
                       </tr>
                       <tr> 
-                        <td align="right" valign="middle" bgcolor="#FFFFFF"><div align="right">Hộp 
-                            thư điện tử (<font color="#ff0000">*</font>)</div></td>
-                        <td bgcolor="#FFFFFF"><input name="txtEmail" id="txtEmail" size="35" type="text"></td>
+                        <td align="right" valign="middle" bgcolor="#FFFFFF"><div align="right">E-mail (<font color="#ff0000">*</font>)</div></td>
+                        <td bgcolor="#FFFFFF"><input name="email" id="email" size="35" type="text"></td>
                       </tr>
                       <tr> 
-                        <td align="right" valign="middle" bgcolor="#FFFFFF"><div align="right">Địa 
-                            chỉ (<font color="#ff0000">*</font>)</div></td>
+                        <td align="right" valign="middle" bgcolor="#FFFFFF"><div align="right">Điện thoại(<font color="#ff0000">*</font>)</div></td>
                         <td bgcolor="#FFFFFF"><input name="txtAddress" id="txtAddress" size="35" type="text"></td>
                       </tr>
-                      <tr> 
-                        <td align="right" valign="middle" bgcolor="#FFFFFF"><div align="right">Tỉnh/Thành 
-                            phố (<font color="#ff0000">*</font>)</div></td>
-                        <td bgcolor="#FFFFFF"><input name="txtCity" id="txtCity" size="35" type="text"></td>
-                      </tr>
-                      <tr> 
-                        <td align="right" valign="middle" bgcolor="#FFFFFF"><div align="right">Tên 
-                            nước (<font color="#ff0000">*</font>)</div></td>
-                        <td bgcolor="#FFFFFF"><select name="txtCountry" id="txtCountry">
-                            <option value="" selected="selected">Chọn tên nước</option>
-                            <option value="Albania">Albania </option>
-                            <option value="Argentina">Argentina </option>
-                            <option value="Australia">Australia </option>
-                            <option value="Austria">Austria </option>
-                            <option value="Bangladesh">Bangladesh </option>
-                            <option value="Belarus">Belarus </option>
-                            <option value="Belgium">Belgium </option>
-                            <option value="Bolivia">Bolivia </option>
-                            <option value="Brazil">Brazil </option>
-                            <option value="Bulgaria">Bulgaria </option>
-                            <option value="Canada">Canada </option>
-                            <option value="Chile">Chile </option>
-                            <option value="China">China </option>
-                            <option value="Colombia">Colombia </option>
-                            <option value="Czech Republic">Czech Republic</option>
-                            <option value="Denmark">Denmark </option>
-                            <option value="Ecuador">Ecuador </option>
-                            <option value="Estonia">Estonia </option>
-                            <option value="Finland">Finland </option>
-                            <option value="France">France </option>
-                            <option value="French Guiana">French Guiana </option>
-                            <option value="Georgia">Georgia </option>
-                            <option value="Germany">Germany </option>
-                            <option value="Greece">Greece </option>
-                            <option value="HongKong">HongKong</option>
-                            <option value="Hungary">Hungary </option>
-                            <option value="Iceland ">Iceland </option>
-                            <option value="India">India </option>
-                            <option value="Indonesia">Indonesia </option>
-                            <option value="Ireland">Ireland </option>
-                            <option value="Italy">Italy </option>
-                            <option value="Japan">Japan </option>
-                            <option value="Latvia">Latvia </option>
-                            <option value="Lithuania">Lithuania </option>
-                            <option value="Luxembourg">Luxembourg </option>
-                            <option value="Malaysia">Malaysia </option>
-                            <option value="Mexico">Mexico </option>
-                            <option value="Netherlands">Netherlands </option>
-                            <option value="North Korea">North Korea </option>
-                            <option value="Norway">Norway </option>
-                            <option value="Paraguay">Paraguay </option>
-                            <option value="Peru">Peru </option>
-                            <option value="Poland">Poland </option>
-                            <option value="Portugal">Portugal </option>
-                            <option value="Romania">Romania </option>
-                            <option value="Russia">Russia </option>
-                            <option value="Slovakia">Slovakia </option>
-                            <option value="South Africa">South Africa </option>
-                            <option value="South Korea">South Korea </option>
-                            <option value="Spain">Spain </option>
-                            <option value="Suriname">Suriname </option>
-                            <option value="Sweden">Sweden </option>
-                            <option value="Switzerland">Switzerland </option>
-                            <option value="Turkey">Turkey </option>
-                            <option value="Ukraine">Ukraine </option>
-                            <option value="United Kingdom">United Kingdom </option>
-                            <option value="United States">United States </option>
-                            <option value="Uruguay">Uruguay </option>
-                            <option value="Venezuela">Venezuela </option>
-                            <option value="Vietnam">Vietnam</option>
-                          </select></td>
-                      </tr>
-                      <tr> 
-                        <td align="right" valign="middle" bgcolor="#FFFFFF"><div align="right">Mã 
-                            vùng </div></td>
-                        <td bgcolor="#FFFFFF"><input name="txtCode" id="txtCode" size="35" type="text" /></td>
-                      </tr>
-                      <tr> 
-                        <td align="right" valign="middle" bgcolor="#FFFFFF"><div align="right">Điện 
-                            thoại (<font color="#ff0000">*</font>) </div></td>
-                        <td bgcolor="#FFFFFF"><table width="100%" border="0" cellpadding="0" cellspacing="0">
-                            <tbody><tr> 
-                              <td><input name="txtPhone" id="txtPhone" value=" Nơi làm việc " size="12" type="text"></td>
-                              <td bgcolor="#FFFFFF"><input name="txtHome" id="txtHome" value=" Nhà riêng " size="12" type="text"></td>
-                            </tr>
-                          </tbody></table></td>
-                      </tr>
+                
+                   
+                      
                       <tr> 
                         <td align="right" valign="middle" bgcolor="#FFFFFF"><div align="right">Fax 
                           </div></td>
@@ -202,16 +115,7 @@ function choseRoomType()
                         
                       </tr>                  
                       
-                      <tr> 
-                        <td align="right" valign="middle" bgcolor="#FFFFFF"><div align="right">Số 
-                            người </div></td>
-                        <td bgcolor="#FFFFFF"><input name="txtNoguest" id="txtNoguest" size="30" type="text"></td>
-                      </tr>
-                      <tr> 
-                        <td align="right" valign="middle" bgcolor="#FFFFFF"><div align="right">Số 
-                            phòng </div></td>
-                        <td bgcolor="#FFFFFF"><input name="txtNoroom" id="txtNoroom" size="30" type="text"></td>
-                      </tr>
+                    
                       <tr> 
                         <td align="right" valign="top" bgcolor="#FFFFFF"><div align="right">Loại 
                             phòng </div></td>
@@ -382,10 +286,7 @@ function choseRoomType()
                     <p><strong>Ghi 
                             chú :</strong> <font color="#ff0000">Những thông tin 
                             được đanh dấu (*) là yêu cầu tối thiểu.</font></p>
-                    <p>Vui 
-                      lòng bấm chọn nút <font color="#990000">"<strong>Đặt 
-                        phòng</strong>"</font> để cập nhật thông tin đặt phòng 
-                      khách sạn vào hệ thống của Du Lịch Online.</p>
+                    <p>&nbsp;</p>
                   </div></td>
                 </tr>
                 <tr> 
