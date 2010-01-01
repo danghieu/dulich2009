@@ -128,7 +128,8 @@ public class UserServlet extends HttpServlet {
         //*
 
         String msgId = "guest" + System.currentTimeMillis();
-        String msg = extractMsg(request);
+        
+        String msg;// = extractMsg(request);
         String function = "";
 
         // Foward to JSP to view
@@ -138,14 +139,17 @@ public class UserServlet extends HttpServlet {
         if (protocol != null) {
 
             if (protocol.endsWith(Protocol.SUFFIX_SEARCH)) {
+                msg = extractSearchMsg(request);
                 function = nickName + ".search";
                 page = "/pages/hotel/searchResult.jsp";
             } else if (protocol.endsWith(Protocol.SUFFIX_BOOK)) {
+                msg = extractBookMsg(request);
                 function = nickName + ".book";
                 page = "/BookServlet";
             } // more... //TODO
             else {
                 log.error("Don't understand protocol: " + protocol);
+                return;
             }
             // create parameters to call agent
             String params[] = {msg, msgId, protocol};
@@ -203,7 +207,7 @@ public class UserServlet extends HttpServlet {
      * @param request
      * @return ([) + SEPARATE + getParameter(param1) + ...]
      */
-    public String extractMsg(HttpServletRequest request) {
+    public String extractSearchMsg(HttpServletRequest request) {
         String param = null;
         String msg = "";
         Enumeration paramList = request.getParameterNames();
@@ -237,6 +241,33 @@ public class UserServlet extends HttpServlet {
         return msg;
     }
 
+    public String extractBookMsg(HttpServletRequest request){
+        String msg = "";
+        String  hotelName,city , street,number, roomType, fromdate, todate, 
+                fullName, profession, identityCard;
+        hotelName = request.getParameter("hotelName");
+        city = request.getParameter("city");
+        street = request.getParameter("street");
+        number = request.getParameter("number");
+        roomType = request.getParameter("roomType");
+        fromdate = request.getParameter("fromdate");
+        todate = request.getParameter("todate");
+        fullName = request.getParameter("fullName");
+        profession = request.getParameter("profession");
+        identityCard = request.getParameter("identityCard");
+        
+        msg = "" + hotelName+ Message.FIELD_SEPARATE +
+                city + Message.FIELD_SEPARATE +
+                street+ Message.FIELD_SEPARATE +
+                number+ Message.FIELD_SEPARATE + 
+                roomType+ Message.FIELD_SEPARATE +
+                fromdate+ Message.FIELD_SEPARATE +
+                todate+ Message.FIELD_SEPARATE + 
+                fullName + Message.FIELD_SEPARATE + 
+                profession + Message.FIELD_SEPARATE + 
+                identityCard;
+        return msg;
+    }
     /**
      * khi co yeu cau dang nhap
      * @param request
