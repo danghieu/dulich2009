@@ -48,6 +48,7 @@
           <owl:Class rdf:about="#Msg_FlightBookRS"/>
           <owl:Class rdf:about="#Msg_FlightBookChangeRS"/>
           <owl:Class rdf:about="#Msg_FlightBookChangeConfirmRQ"/>
+          <owl:Class rdf:about="#FlightBookContract"/>
         </owl:unionOf>
       </owl:Class>
     </rdfs:domain>
@@ -185,9 +186,56 @@
     <rdfs:domain rdf:resource="#Address"/>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
   </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="introduce">
+    <rdfs:domain rdf:resource="#Msg_FlightRegisterRQ"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="bookNumber">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#Msg_FlightBookRQ"/>
+          <owl:Class rdf:about="#FlightBookContract"/>
+          <owl:Class rdf:about="#Msg_FlightAvailRQ"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="totalNumber">
+    <rdfs:domain rdf:resource="#FlightManager"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+  </owl:DatatypeProperty>
   <owl:DatatypeProperty rdf:ID="price">
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
     <rdfs:domain rdf:resource="#Price"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="phoneNumber">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#Customer"/>
+          <owl:Class rdf:about="#FlightAgentInfo"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="contractCode">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Ma hop dong</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#SecurityCode"/>
+          <owl:Class rdf:about="#Msg_FlightBookChangeRQ"/>
+          <owl:Class rdf:about="#Msg_FlightBookChangeRS"/>
+          <owl:Class rdf:about="#Msg_FlightBookChangeConfirmRQ"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
   </owl:DatatypeProperty>
   <owl:DatatypeProperty rdf:ID="flightInformation">
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
@@ -204,6 +252,7 @@
         <owl:unionOf rdf:parseType="Collection">
           <owl:Class rdf:about="#Msg_FlightAvailRS"/>
           <owl:Class rdf:about="#FlightManager"/>
+          <owl:Class rdf:about="#FlightBookContract"/>
         </owl:unionOf>
       </owl:Class>
     </rdfs:domain>
@@ -233,6 +282,23 @@
     <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
     >Hang hang khong</rdfs:comment>
   </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="email">
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#Customer"/>
+          <owl:Class rdf:about="#FlightAgentInfo"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="notification">
+    <rdfs:domain rdf:resource="#Msg_FlightBookRS"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Thong bao kem theo</rdfs:comment>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </owl:DatatypeProperty>
   <owl:DatatypeProperty rdf:ID="flightClass">
     <rdfs:domain>
       <owl:Class>
@@ -240,7 +306,6 @@
           <owl:Class rdf:about="#Flight"/>
           <owl:Class rdf:about="#Msg_FlightAvailRQ"/>
           <owl:Class rdf:about="#Msg_FlightBookChangeConfirmRQ"/>
-          <owl:Class rdf:about="#FlightBookContract"/>
         </owl:unionOf>
       </owl:Class>
     </rdfs:domain>
@@ -273,97 +338,6 @@
       </owl:Class>
     </rdfs:domain>
   </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:ID="fax">
-    <rdfs:domain rdf:resource="#FlightAgentInfo"/>
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-  </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:ID="flightNumber">
-    <rdfs:domain>
-      <owl:Class>
-        <owl:unionOf rdf:parseType="Collection">
-          <owl:Class rdf:about="#Flight"/>
-          <owl:Class rdf:about="#Msg_FlightBookChangeConfirmRQ"/>
-          <owl:Class rdf:about="#FlightBookContract"/>
-        </owl:unionOf>
-      </owl:Class>
-    </rdfs:domain>
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >Ma so chuyen bay</rdfs:comment>
-  </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:ID="time">
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >Thoi gian cu the trong ngay</rdfs:comment>
-    <rdfs:domain rdf:resource="#PointOfTime"/>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-  </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:ID="introduce">
-    <rdfs:domain rdf:resource="#Msg_FlightRegisterRQ"/>
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-  </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:ID="bookNumber">
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
-    <rdfs:domain>
-      <owl:Class>
-        <owl:unionOf rdf:parseType="Collection">
-          <owl:Class rdf:about="#Msg_FlightBookRQ"/>
-          <owl:Class rdf:about="#FlightBookContract"/>
-          <owl:Class rdf:about="#Msg_FlightAvailRQ"/>
-        </owl:unionOf>
-      </owl:Class>
-    </rdfs:domain>
-  </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:ID="totalNumber">
-    <rdfs:domain rdf:resource="#FlightManager"/>
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
-  </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:ID="phoneNumber">
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    <rdfs:domain>
-      <owl:Class>
-        <owl:unionOf rdf:parseType="Collection">
-          <owl:Class rdf:about="#Customer"/>
-          <owl:Class rdf:about="#FlightAgentInfo"/>
-          <owl:Class rdf:about="#FlightBookContract"/>
-        </owl:unionOf>
-      </owl:Class>
-    </rdfs:domain>
-  </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:ID="contractCode">
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >Ma hop dong</rdfs:comment>
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    <rdfs:domain>
-      <owl:Class>
-        <owl:unionOf rdf:parseType="Collection">
-          <owl:Class rdf:about="#SecurityCode"/>
-          <owl:Class rdf:about="#Msg_FlightBookChangeRQ"/>
-          <owl:Class rdf:about="#Msg_FlightBookChangeRS"/>
-          <owl:Class rdf:about="#Msg_FlightBookChangeConfirmRQ"/>
-        </owl:unionOf>
-      </owl:Class>
-    </rdfs:domain>
-    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-  </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:ID="email">
-    <rdfs:domain>
-      <owl:Class>
-        <owl:unionOf rdf:parseType="Collection">
-          <owl:Class rdf:about="#Customer"/>
-          <owl:Class rdf:about="#FlightAgentInfo"/>
-          <owl:Class rdf:about="#FlightBookContract"/>
-        </owl:unionOf>
-      </owl:Class>
-    </rdfs:domain>
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-  </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:ID="notification">
-    <rdfs:domain rdf:resource="#Msg_FlightBookRS"/>
-    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
-    >Thong bao kem theo</rdfs:comment>
-    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-  </owl:DatatypeProperty>
   <owl:DatatypeProperty rdf:ID="priceUnit">
     <rdfs:range>
       <owl:DataRange>
@@ -381,17 +355,37 @@
     <rdfs:domain rdf:resource="#Price"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
   </owl:DatatypeProperty>
-  <owl:DatatypeProperty rdf:ID="bookdate">
+  <owl:DatatypeProperty rdf:ID="fax">
+    <rdfs:domain rdf:resource="#FlightAgentInfo"/>
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    <rdfs:domain rdf:resource="#FlightBookContract"/>
   </owl:DatatypeProperty>
   <owl:DatatypeProperty rdf:ID="flightAgentName">
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
     <rdfs:domain rdf:resource="#FlightAgentInfo"/>
   </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="flightNumber">
+    <rdfs:domain>
+      <owl:Class>
+        <owl:unionOf rdf:parseType="Collection">
+          <owl:Class rdf:about="#Flight"/>
+          <owl:Class rdf:about="#Msg_FlightBookChangeConfirmRQ"/>
+        </owl:unionOf>
+      </owl:Class>
+    </rdfs:domain>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Ma so chuyen bay</rdfs:comment>
+  </owl:DatatypeProperty>
   <owl:DatatypeProperty rdf:ID="description">
     <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
     <rdfs:domain rdf:resource="#Msg_PublishFlightRQ"/>
+  </owl:DatatypeProperty>
+  <owl:DatatypeProperty rdf:ID="time">
+    <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string"
+    >Thoi gian cu the trong ngay</rdfs:comment>
+    <rdfs:domain rdf:resource="#PointOfTime"/>
+    <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
   </owl:DatatypeProperty>
   <owl:DatatypeProperty rdf:ID="departureAirportCity">
     <rdfs:domain rdf:resource="#Msg_FlightAvailRQ"/>
@@ -406,7 +400,6 @@
         <owl:unionOf rdf:parseType="Collection">
           <owl:Class rdf:about="#Msg_FlightAvailRQ"/>
           <owl:Class rdf:about="#PointOfTime"/>
-          <owl:Class rdf:about="#FlightBookContract"/>
         </owl:unionOf>
       </owl:Class>
     </rdfs:domain>
@@ -441,7 +434,6 @@
         <owl:unionOf rdf:parseType="Collection">
           <owl:Class rdf:about="#Customer"/>
           <owl:Class rdf:about="#Msg_FlightBookChangeRQ"/>
-          <owl:Class rdf:about="#FlightBookContract"/>
         </owl:unionOf>
       </owl:Class>
     </rdfs:domain>
@@ -479,14 +471,7 @@
         </owl:oneOf>
       </owl:DataRange>
     </rdfs:range>
-    <rdfs:domain>
-      <owl:Class>
-        <owl:unionOf rdf:parseType="Collection">
-          <owl:Class rdf:about="#Customer"/>
-          <owl:Class rdf:about="#FlightBookContract"/>
-        </owl:unionOf>
-      </owl:Class>
-    </rdfs:domain>
+    <rdfs:domain rdf:resource="#Customer"/>
     <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#DatatypeProperty"/>
   </owl:FunctionalProperty>
   <owl:FunctionalProperty rdf:ID="country">
