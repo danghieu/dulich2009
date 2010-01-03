@@ -111,6 +111,28 @@ public class StartAgents {
             
         
     }
+        public void testCreateAgentUCF(){
+        AgentController agentController;
+            String host = "localhost";
+            String port = "1099";
+            String nickName = "ControllerAgent";//"Guest" + System.currentTimeMillis();
+            String className = "com.ptit.travel.agent.ControllerAgent";
+            try {                
+                ContainerController containerController = (ContainerController)AgentManager.startAgent(host, port, 
+                        nickName, className,true).get(0);
+                nickName = "FlightAgent";//"Guest" + System.currentTimeMillis();
+                className = "com.ptit.travel.agent.FlightAgent";
+                agentController = AgentManager.addAgent(host, port, nickName, className,containerController);
+                nickName = "UserAgent";//"Guest" + System.currentTimeMillis();
+                className = "com.ptit.travel.agent.UserAgent";
+                agentController = AgentManager.addAgent(host, port, nickName, className,containerController);
+                
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            
+        
+    }
     public void testCreateAgentUC2H(){
         AgentController agentController;
             String host = "localhost";
@@ -153,8 +175,8 @@ public class StartAgents {
 //        test.testSplitMessage();
         //test.testConfigXMLConnect();
         //test.callTheAgentViaXmlRpc();
-        test.testCreateAgentCH();   // chi chay contrller & Hotel     
-    
+        test.testCreateAgentUCF();   // chi chay contrller & Hotel     
+
     }
 
 }

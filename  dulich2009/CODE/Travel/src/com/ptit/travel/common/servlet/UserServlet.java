@@ -70,6 +70,7 @@ public class UserServlet extends HttpServlet {
      * chi chay 1 lan, duoc goi khi nguoi dung request den server
      * @throws javax.servlet.ServletException
      */
+    /*
     @Override
     public void init() throws ServletException {
         super.init();
@@ -105,21 +106,6 @@ public class UserServlet extends HttpServlet {
     // TODO Auto-generated constructor stub
     }
 
-    /**
-     * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-     */
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        process(request, response);
-
-    }
-
-    /**
-     * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-     */
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        process(request, response);
-    }
-
     protected void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 
@@ -135,7 +121,7 @@ public class UserServlet extends HttpServlet {
         // Foward to JSP to view
 
 
-        String page = "/SearchServlet";
+        String page = "index.jsp";
         if (protocol != null) {
 
             if (protocol.endsWith(Protocol.SUFFIX_SEARCH)) {
@@ -145,7 +131,7 @@ public class UserServlet extends HttpServlet {
             } else if (protocol.endsWith(Protocol.SUFFIX_BOOK)) {
                 msg = extractBookMsg(request);
                 function = nickName + ".book";
-                page = "/BookServlet";
+                page = "/bookResult.jsp";
             } // more... //TODO
             else {
                 log.error("Don't understand protocol: " + protocol);
@@ -155,7 +141,7 @@ public class UserServlet extends HttpServlet {
             String params[] = {msg, msgId, protocol};
 
             //callAgent = new CallAgent();
-            String result = callAgentBehavior(msgId, function, params);
+            String result = msg;//callAgentBehavior(msgId, function, params);
             request.setAttribute("result", result);
 //            request.setAttribute("callAgent", callAgent);
 //            request.setAttribute("msgId", msgId);
@@ -325,4 +311,14 @@ public class UserServlet extends HttpServlet {
         log.info("User logout has been done!");
 
     }
+    
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        process(request, response);
+
+    }
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        process(request, response);
+    }
+
+
 }
