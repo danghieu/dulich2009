@@ -1,4 +1,4 @@
-; Fri Jan 01 00:50:58 PST 2010
+; Sun Jan 03 20:48:00 PST 2010
 ; 
 ;+ (version "3.4")
 ;+ (build "Build 533")
@@ -6,11 +6,11 @@
 ([BROWSER_SLOT_NAMES] of  Property_List
 
 	(properties
-		[Flight_ProjectKB_Class20064]
-		[Flight_ProjectKB_Class20065]
-		[Flight_ProjectKB_Class20066]
-		[Flight_ProjectKB_Class20067]
-		[Flight_ProjectKB_Class20068]))
+		[Flight_ProjectKB_Class172]
+		[Flight_ProjectKB_Class173]
+		[Flight_ProjectKB_Class174]
+		[Flight_ProjectKB_Class175]
+		[Flight_ProjectKB_Class176]))
 
 ([CLSES_TAB] of  Widget
 
@@ -29,6 +29,9 @@
 	(boolean_value TRUE)
 	(name "parser_namespace_database_inclusion_version"))
 
+([Flight_ProjectKB_Class0] of  Map
+)
+
 ([Flight_ProjectKB_Class1] of  Widget
 
 	(is_hidden FALSE)
@@ -40,268 +43,6 @@
 
 	(name "vertical_stretcher")
 	(string_value "http://www.w3.org/2003/11/swrl#body"))
-
-([Flight_ProjectKB_Class10004] of  Widget
-
-	(is_hidden TRUE)
-	(property_list [Flight_ProjectKB_Class10005])
-	(widget_class_name "TGViztab.TGVizTab"))
-
-([Flight_ProjectKB_Class10005] of  Property_List
-)
-
-([Flight_ProjectKB_Class10006] of  Widget
-
-	(is_hidden TRUE)
-	(property_list [Flight_ProjectKB_Class10007])
-	(widget_class_name "dfki.protege.ontoviz_tab.OntovizTab"))
-
-([Flight_ProjectKB_Class10007] of  Property_List
-)
-
-([Flight_ProjectKB_Class10008] of  Widget
-
-	(is_hidden TRUE)
-	(property_list [Flight_ProjectKB_Class10009])
-	(widget_class_name "script.ProtegeScriptTab"))
-
-([Flight_ProjectKB_Class10009] of  Property_List
-)
-
-([Flight_ProjectKB_Class10010] of  Widget
-
-	(is_hidden TRUE)
-	(property_list [Flight_ProjectKB_Class10011])
-	(widget_class_name "edu.stanford.smi.protegex.evaluation.MetaAnalysis"))
-
-([Flight_ProjectKB_Class10011] of  Property_List
-)
-
-([Flight_ProjectKB_Class10012] of  Widget
-
-	(is_hidden TRUE)
-	(property_list [Flight_ProjectKB_Class10013])
-	(widget_class_name "edu.stanford.smi.protege.keywordsearch.StringSearch"))
-
-([Flight_ProjectKB_Class10013] of  Property_List
-)
-
-([Flight_ProjectKB_Class10014] of  Widget
-
-	(is_hidden TRUE)
-	(property_list [Flight_ProjectKB_Class10015])
-	(widget_class_name "edu.stanford.smi.RemoteKBTab.WordNetTab"))
-
-([Flight_ProjectKB_Class10015] of  Property_List
-)
-
-([Flight_ProjectKB_Class10016] of  Widget
-
-	(is_hidden TRUE)
-	(property_list [Flight_ProjectKB_Class10017])
-	(widget_class_name "edu.stanford.smi.protegex.changes.ChangesTab"))
-
-([Flight_ProjectKB_Class10017] of  Property_List
-)
-
-([Flight_ProjectKB_Class10018] of  Widget
-
-	(is_hidden TRUE)
-	(property_list [Flight_ProjectKB_Class10019])
-	(widget_class_name "ezpal.EZPalTab"))
-
-([Flight_ProjectKB_Class10019] of  Property_List
-)
-
-([Flight_ProjectKB_Class10020] of  Widget
-
-	(is_hidden TRUE)
-	(property_list [Flight_ProjectKB_Class10021])
-	(widget_class_name "edu.stanford.smi.protegex.fctab.FacetConstraintsTab"))
-
-([Flight_ProjectKB_Class10021] of  Property_List
-)
-
-([Flight_ProjectKB_Class10022] of  Widget
-
-	(is_hidden TRUE)
-	(property_list [Flight_ProjectKB_Class10023])
-	(widget_class_name "edu.stanford.smi.protegex.changes.changesKBViewTab.ChangesKBViewTab"))
-
-([Flight_ProjectKB_Class10023] of  Property_List
-)
-
-([Flight_ProjectKB_Class10024] of  Widget
-
-	(is_hidden TRUE)
-	(property_list [Flight_ProjectKB_Class10025])
-	(widget_class_name "edu.stanford.smi.protegex.xml.tab.XMLTab"))
-
-([Flight_ProjectKB_Class10025] of  Property_List
-)
-
-([Flight_ProjectKB_Class10026] of  Widget
-
-	(is_hidden TRUE)
-	(property_list [Flight_ProjectKB_Class10027])
-	(widget_class_name "edu.stanford.smi.protegex.prompt.PromptTab"))
-
-([Flight_ProjectKB_Class10027] of  Property_List
-)
-
-([Flight_ProjectKB_Class10028] of  Widget
-
-	(is_hidden TRUE)
-	(property_list [Flight_ProjectKB_Class10029])
-	(widget_class_name "edu.stanford.smi.protege.widget.ProtegePropertiesTab"))
-
-([Flight_ProjectKB_Class10029] of  Property_List
-)
-
-([Flight_ProjectKB_Class10030] of  Widget
-
-	(is_hidden TRUE)
-	(property_list [Flight_ProjectKB_Class10031])
-	(widget_class_name "edu.stanford.smi.protegex.widget.pal.PalConstraintsTab"))
-
-([Flight_ProjectKB_Class10031] of  Property_List
-)
-
-([Flight_ProjectKB_Class10032] of  Widget
-
-	(is_hidden TRUE)
-	(property_list [Flight_ProjectKB_Class10033])
-	(widget_class_name "edu.stanford.smi.protege.widget.instance_tree.KnowledgeTreeTab"))
-
-([Flight_ProjectKB_Class10033] of  Property_List
-)
-
-([Flight_ProjectKB_Class10034] of  Widget
-
-	(is_hidden TRUE)
-	(property_list [Flight_ProjectKB_Class10035])
-	(widget_class_name "edu.stanford.smi.protege.widget.instance_tree.InstanceTreeTab"))
-
-([Flight_ProjectKB_Class10035] of  Property_List
-)
-
-([Flight_ProjectKB_Class10036] of  Widget
-
-	(is_hidden TRUE)
-	(property_list [Flight_ProjectKB_Class10037])
-	(widget_class_name "edu.stanford.smi.protegex.changes.stats.ChangeStatisticsTab"))
-
-([Flight_ProjectKB_Class10037] of  Property_List
-)
-
-([Flight_ProjectKB_Class10038] of  Widget
-
-	(is_hidden TRUE)
-	(property_list [Flight_ProjectKB_Class10039])
-	(widget_class_name "se.liu.ida.JessTab.JessTab"))
-
-([Flight_ProjectKB_Class10039] of  Property_List
-)
-
-([Flight_ProjectKB_Class10040] of  Widget
-
-	(is_hidden TRUE)
-	(property_list [Flight_ProjectKB_Class10041])
-	(widget_class_name "ca.uvic.csr.shrimp.jambalaya.JambalayaTab"))
-
-([Flight_ProjectKB_Class10041] of  Property_List
-)
-
-([Flight_ProjectKB_Class10042] of  Widget
-
-	(is_hidden TRUE)
-	(property_list [Flight_ProjectKB_Class10043])
-	(widget_class_name "edu.stanford.smi.protegex.datamaster.DataMasterTab"))
-
-([Flight_ProjectKB_Class10043] of  Property_List
-)
-
-([Flight_ProjectKB_Class10044] of  Widget
-
-	(is_hidden TRUE)
-	(property_list [Flight_ProjectKB_Class10045])
-	(widget_class_name "org.algernon.kb.okbc.protege.plugins.AlgernonTab"))
-
-([Flight_ProjectKB_Class10045] of  Property_List
-)
-
-([Flight_ProjectKB_Class10046] of  Widget
-
-	(is_hidden TRUE)
-	(property_list [Flight_ProjectKB_Class10047])
-	(widget_class_name "edu.stanford.smi.protegex.widget.pal.PalQueriesTab"))
-
-([Flight_ProjectKB_Class10047] of  Property_List
-)
-
-([Flight_ProjectKB_Class10048] of  Widget
-
-	(is_hidden TRUE)
-	(property_list [Flight_ProjectKB_Class10049])
-	(widget_class_name "edu.stanford.smi.protegex.chatPlugin.ChatTab"))
-
-([Flight_ProjectKB_Class10049] of  Property_List
-)
-
-([Flight_ProjectKB_Class10050] of  Widget
-
-	(is_hidden TRUE)
-	(property_list [Flight_ProjectKB_Class10051])
-	(widget_class_name "edu.stanford.smi.RemoteKBTab.UMLSTab"))
-
-([Flight_ProjectKB_Class10051] of  Property_List
-)
-
-([Flight_ProjectKB_Class10052] of  Widget
-
-	(is_hidden TRUE)
-	(property_list [Flight_ProjectKB_Class10053])
-	(widget_class_name "edu.stanford.smi.protegex.server_changes.prompt.UsersTab"))
-
-([Flight_ProjectKB_Class10053] of  Property_List
-)
-
-([Flight_ProjectKB_Class10054] of  Widget
-
-	(is_hidden TRUE)
-	(property_list [Flight_ProjectKB_Class10055])
-	(widget_class_name "uk.ac.man.cs.mig.coode.owlviz.ui.OWLVizTab"))
-
-([Flight_ProjectKB_Class10055] of  Property_List
-)
-
-([Flight_ProjectKB_Class10056] of  Widget
-
-	(is_hidden FALSE)
-	(label "Name")
-	(name ":NAME")
-	(property_list [Flight_ProjectKB_Class10058])
-	(widget_class_name "edu.stanford.smi.protege.widget.FormWidget"))
-
-([Flight_ProjectKB_Class10057] of  Widget
-
-	(is_hidden FALSE)
-	(label "Comment")
-	(name "http://www.w3.org/2000/01/rdf-schema#comment")
-	(widget_class_name "edu.stanford.smi.protege.widget.FormWidget"))
-
-([Flight_ProjectKB_Class10058] of  Property_List
-)
-
-([Flight_ProjectKB_Class10059] of  String
-
-	(name "JENA-SCHEMAGEN-FILE")
-	(string_value "C:\\Documents and Settings\\Thao Hoang\\Desktop\\Flight.java"))
-
-([Flight_ProjectKB_Class10060] of  String
-
-	(name "JENA-SCHEMAGEN-PACKAGE")
-	(string_value "com.ptit.travel.jane.flight"))
 
 ([Flight_ProjectKB_Class11] of  Widget
 
@@ -334,6 +75,41 @@
 ([Flight_ProjectKB_Class17] of  Property_List
 )
 
+([Flight_ProjectKB_Class170] of  String
+
+	(name "JENA-SCHEMAGEN-FILE")
+	(string_value "C:\\Documents and Settings\\Thao Hoang\\Desktop\\Flight.java"))
+
+([Flight_ProjectKB_Class171] of  String
+
+	(name "JENA-SCHEMAGEN-PACKAGE")
+	(string_value "com.ptit.travel.jane.Flight"))
+
+([Flight_ProjectKB_Class172] of  String
+
+	(name "http://www.w3.org/2002/07/owl#Class")
+	(string_value "%3ANAME"))
+
+([Flight_ProjectKB_Class173] of  String
+
+	(name ":INSTANCE-ANNOTATION")
+	(string_value "%3AANNOTATION-TEXT"))
+
+([Flight_ProjectKB_Class174] of  String
+
+	(name ":META-CLASS")
+	(string_value "%3ANAME"))
+
+([Flight_ProjectKB_Class175] of  String
+
+	(name "http://www.w3.org/2002/07/owl#Thing")
+	(string_value "%3ANAME"))
+
+([Flight_ProjectKB_Class176] of  String
+
+	(name ":PAL-CONSTRAINT")
+	(string_value "%3APAL-NAME"))
+
 ([Flight_ProjectKB_Class18] of  Widget
 
 	(is_hidden FALSE)
@@ -348,31 +124,6 @@
 	(is_hidden FALSE)
 	(name "http://www.w3.org/2000/01/rdf-schema#seeAlso")
 	(property_list [Flight_ProjectKB_Class21]))
-
-([Flight_ProjectKB_Class20064] of  String
-
-	(name "http://www.w3.org/2002/07/owl#Class")
-	(string_value "%3ANAME"))
-
-([Flight_ProjectKB_Class20065] of  String
-
-	(name ":INSTANCE-ANNOTATION")
-	(string_value "%3AANNOTATION-TEXT"))
-
-([Flight_ProjectKB_Class20066] of  String
-
-	(name ":META-CLASS")
-	(string_value "%3ANAME"))
-
-([Flight_ProjectKB_Class20067] of  String
-
-	(name "http://www.w3.org/2002/07/owl#Thing")
-	(string_value "%3ANAME"))
-
-([Flight_ProjectKB_Class20068] of  String
-
-	(name ":PAL-CONSTRAINT")
-	(string_value "%3APAL-NAME"))
 
 ([Flight_ProjectKB_Class21] of  Property_List
 )
@@ -418,6 +169,39 @@
 ([Flight_ProjectKB_Class32] of  Property_List
 )
 
+([Flight_ProjectKB_Class33] of  Widget
+
+	(is_hidden TRUE)
+	(property_list [Flight_ProjectKB_Class34])
+	(widget_class_name "TGViztab.TGVizTab"))
+
+([Flight_ProjectKB_Class34] of  Property_List
+)
+
+([Flight_ProjectKB_Class35] of  Widget
+
+	(is_hidden TRUE)
+	(property_list [Flight_ProjectKB_Class36])
+	(widget_class_name "dfki.protege.ontoviz_tab.OntovizTab"))
+
+([Flight_ProjectKB_Class36] of  Property_List
+)
+
+([Flight_ProjectKB_Class37] of  Widget
+
+	(is_hidden TRUE)
+	(property_list [Flight_ProjectKB_Class38])
+	(widget_class_name "script.ProtegeScriptTab"))
+
+([Flight_ProjectKB_Class38] of  Property_List
+)
+
+([Flight_ProjectKB_Class39] of  Widget
+
+	(is_hidden TRUE)
+	(property_list [Flight_ProjectKB_Class40])
+	(widget_class_name "edu.stanford.smi.protegex.evaluation.MetaAnalysis"))
+
 ([Flight_ProjectKB_Class4] of  Property_List
 
 	(properties
@@ -433,6 +217,51 @@
 		[Flight_ProjectKB_Class26]
 		[Flight_ProjectKB_Class31]))
 
+([Flight_ProjectKB_Class40] of  Property_List
+)
+
+([Flight_ProjectKB_Class41] of  Widget
+
+	(is_hidden TRUE)
+	(property_list [Flight_ProjectKB_Class42])
+	(widget_class_name "edu.stanford.smi.protege.keywordsearch.StringSearch"))
+
+([Flight_ProjectKB_Class42] of  Property_List
+)
+
+([Flight_ProjectKB_Class43] of  Widget
+
+	(is_hidden TRUE)
+	(property_list [Flight_ProjectKB_Class44])
+	(widget_class_name "edu.stanford.smi.RemoteKBTab.WordNetTab"))
+
+([Flight_ProjectKB_Class44] of  Property_List
+)
+
+([Flight_ProjectKB_Class45] of  Widget
+
+	(is_hidden TRUE)
+	(property_list [Flight_ProjectKB_Class46])
+	(widget_class_name "edu.stanford.smi.protegex.changes.ChangesTab"))
+
+([Flight_ProjectKB_Class46] of  Property_List
+)
+
+([Flight_ProjectKB_Class47] of  Widget
+
+	(is_hidden TRUE)
+	(property_list [Flight_ProjectKB_Class48])
+	(widget_class_name "ezpal.EZPalTab"))
+
+([Flight_ProjectKB_Class48] of  Property_List
+)
+
+([Flight_ProjectKB_Class49] of  Widget
+
+	(is_hidden TRUE)
+	(property_list [Flight_ProjectKB_Class50])
+	(widget_class_name "edu.stanford.smi.protegex.fctab.FacetConstraintsTab"))
+
 ([Flight_ProjectKB_Class5] of  Widget
 
 	(height 120)
@@ -445,11 +274,146 @@
 	(x 0)
 	(y 0))
 
+([Flight_ProjectKB_Class50] of  Property_List
+)
+
+([Flight_ProjectKB_Class51] of  Widget
+
+	(is_hidden TRUE)
+	(property_list [Flight_ProjectKB_Class52])
+	(widget_class_name "edu.stanford.smi.protegex.changes.changesKBViewTab.ChangesKBViewTab"))
+
+([Flight_ProjectKB_Class52] of  Property_List
+)
+
+([Flight_ProjectKB_Class53] of  Widget
+
+	(is_hidden TRUE)
+	(property_list [Flight_ProjectKB_Class54])
+	(widget_class_name "edu.stanford.smi.protegex.xml.tab.XMLTab"))
+
+([Flight_ProjectKB_Class54] of  Property_List
+)
+
+([Flight_ProjectKB_Class55] of  Widget
+
+	(is_hidden TRUE)
+	(property_list [Flight_ProjectKB_Class56])
+	(widget_class_name "edu.stanford.smi.protegex.prompt.PromptTab"))
+
+([Flight_ProjectKB_Class56] of  Property_List
+)
+
+([Flight_ProjectKB_Class57] of  Widget
+
+	(is_hidden TRUE)
+	(property_list [Flight_ProjectKB_Class58])
+	(widget_class_name "edu.stanford.smi.protege.widget.ProtegePropertiesTab"))
+
+([Flight_ProjectKB_Class58] of  Property_List
+)
+
+([Flight_ProjectKB_Class59] of  Widget
+
+	(is_hidden TRUE)
+	(property_list [Flight_ProjectKB_Class60])
+	(widget_class_name "edu.stanford.smi.protegex.widget.pal.PalConstraintsTab"))
+
 ([Flight_ProjectKB_Class6] of  Property_List
 
 	(properties
-		[Flight_ProjectKB_Class10056]
-		[Flight_ProjectKB_Class10057]))
+		[Flight_ProjectKB_Class85]
+		[Flight_ProjectKB_Class86]))
+
+([Flight_ProjectKB_Class60] of  Property_List
+)
+
+([Flight_ProjectKB_Class61] of  Widget
+
+	(is_hidden TRUE)
+	(property_list [Flight_ProjectKB_Class62])
+	(widget_class_name "edu.stanford.smi.protege.widget.instance_tree.KnowledgeTreeTab"))
+
+([Flight_ProjectKB_Class62] of  Property_List
+)
+
+([Flight_ProjectKB_Class63] of  Widget
+
+	(is_hidden TRUE)
+	(property_list [Flight_ProjectKB_Class64])
+	(widget_class_name "edu.stanford.smi.protege.widget.instance_tree.InstanceTreeTab"))
+
+([Flight_ProjectKB_Class64] of  Property_List
+)
+
+([Flight_ProjectKB_Class65] of  Widget
+
+	(is_hidden TRUE)
+	(property_list [Flight_ProjectKB_Class66])
+	(widget_class_name "edu.stanford.smi.protegex.changes.stats.ChangeStatisticsTab"))
+
+([Flight_ProjectKB_Class66] of  Property_List
+)
+
+([Flight_ProjectKB_Class67] of  Widget
+
+	(is_hidden TRUE)
+	(property_list [Flight_ProjectKB_Class68])
+	(widget_class_name "se.liu.ida.JessTab.JessTab"))
+
+([Flight_ProjectKB_Class68] of  Property_List
+)
+
+([Flight_ProjectKB_Class69] of  Widget
+
+	(is_hidden TRUE)
+	(property_list [Flight_ProjectKB_Class70])
+	(widget_class_name "ca.uvic.csr.shrimp.jambalaya.JambalayaTab"))
+
+([Flight_ProjectKB_Class70] of  Property_List
+)
+
+([Flight_ProjectKB_Class71] of  Widget
+
+	(is_hidden TRUE)
+	(property_list [Flight_ProjectKB_Class72])
+	(widget_class_name "edu.stanford.smi.protegex.datamaster.DataMasterTab"))
+
+([Flight_ProjectKB_Class72] of  Property_List
+)
+
+([Flight_ProjectKB_Class73] of  Widget
+
+	(is_hidden TRUE)
+	(property_list [Flight_ProjectKB_Class74])
+	(widget_class_name "org.algernon.kb.okbc.protege.plugins.AlgernonTab"))
+
+([Flight_ProjectKB_Class74] of  Property_List
+)
+
+([Flight_ProjectKB_Class75] of  Widget
+
+	(is_hidden TRUE)
+	(property_list [Flight_ProjectKB_Class76])
+	(widget_class_name "edu.stanford.smi.protegex.widget.pal.PalQueriesTab"))
+
+([Flight_ProjectKB_Class76] of  Property_List
+)
+
+([Flight_ProjectKB_Class77] of  Widget
+
+	(is_hidden TRUE)
+	(property_list [Flight_ProjectKB_Class78])
+	(widget_class_name "edu.stanford.smi.protegex.chatPlugin.ChatTab"))
+
+([Flight_ProjectKB_Class78] of  Property_List
+)
+
+([Flight_ProjectKB_Class79] of  Widget
+
+	(is_hidden TRUE)
+	(property_list [Flight_ProjectKB_Class80])
+	(widget_class_name "edu.stanford.smi.RemoteKBTab.UMLSTab"))
 
 ([Flight_ProjectKB_Class8] of  Property_List
 
@@ -457,6 +421,45 @@
 	(properties
 		[Flight_ProjectKB_Class9]
 		[Flight_ProjectKB_Class10]))
+
+([Flight_ProjectKB_Class80] of  Property_List
+)
+
+([Flight_ProjectKB_Class81] of  Widget
+
+	(is_hidden TRUE)
+	(property_list [Flight_ProjectKB_Class82])
+	(widget_class_name "edu.stanford.smi.protegex.server_changes.prompt.UsersTab"))
+
+([Flight_ProjectKB_Class82] of  Property_List
+)
+
+([Flight_ProjectKB_Class83] of  Widget
+
+	(is_hidden TRUE)
+	(property_list [Flight_ProjectKB_Class84])
+	(widget_class_name "uk.ac.man.cs.mig.coode.owlviz.ui.OWLVizTab"))
+
+([Flight_ProjectKB_Class84] of  Property_List
+)
+
+([Flight_ProjectKB_Class85] of  Widget
+
+	(is_hidden FALSE)
+	(label "Name")
+	(name ":NAME")
+	(property_list [Flight_ProjectKB_Class87])
+	(widget_class_name "edu.stanford.smi.protege.widget.FormWidget"))
+
+([Flight_ProjectKB_Class86] of  Widget
+
+	(is_hidden FALSE)
+	(label "Comment")
+	(name "http://www.w3.org/2000/01/rdf-schema#comment")
+	(widget_class_name "edu.stanford.smi.protege.widget.FormWidget"))
+
+([Flight_ProjectKB_Class87] of  Property_List
+)
 
 ([Flight_ProjectKB_Class9] of  String
 
@@ -1072,9 +1075,6 @@
 	(y 0))
 
 ([KB_221055_Instance_71] of  Property_List
-)
-
-([KB_260145_Class0] of  Map
 )
 
 ([KB_301165_Instance_1013] of  Widget
@@ -5865,8 +5865,8 @@
 		"http://www.w3.org/1999/02/22-rdf-syntax-ns#Bag"
 		":META-CLASS"
 		":PAL-DESCRIPTION"
-		":SLOT-DEFAULTS"
 		"http://www.w3.org/2001/XMLSchema#duration"
+		":SLOT-DEFAULTS"
 		":DIRECT-DOMAIN"
 		"http://www.w3.org/2002/07/owl#AnonymousClass"
 		"http://www.w3.org/2003/11/swrl#AtomList"
@@ -5919,8 +5919,8 @@
 		":DOCUMENTATION"
 		":ANNOTATION-TEXT"
 		"http://www.w3.org/2001/XMLSchema#unsignedLong"
-		"http://www.w3.org/2001/XMLSchema#long"
 		"http://www.w3.org/2001/XMLSchema#hexBinary"
+		"http://www.w3.org/2001/XMLSchema#long"
 		"http://www.w3.org/2002/07/owl#HasValueRestriction"
 		"http://protege.stanford.edu/plugins/owl/protege#inferredSubclassOf"
 		"http://www.w3.org/2001/XMLSchema#short"
@@ -5936,8 +5936,8 @@
 		":DEFAULTS"
 		"http://www.w3.org/2002/07/owl#LogicalClass"
 		":DIRECT-SUPERCLASSES"
-		"http://www.w3.org/2001/XMLSchema#unsignedInt"
 		":DOCUMENTATION-IN-FRAME"
+		"http://www.w3.org/2001/XMLSchema#unsignedInt"
 		"http://www.w3.org/2002/07/owl#oneOf"
 		"http://www.w3.org/2001/XMLSchema#gDay"
 		"http://www.w3.org/1999/02/22-rdf-syntax-ns#rest"
@@ -5950,8 +5950,8 @@
 		":DIRECT-SUBCLASSES"
 		":ASSOCIATED-SLOT"
 		":SYSTEM-CLASS"
-		"http://www.w3.org/2001/XMLSchema#language"
 		":OWL-ONTOLOGY-POINTER-CLASS"
+		"http://www.w3.org/2001/XMLSchema#language"
 		"http://www.w3.org/2002/07/owl#Ontology"
 		":ANNOTATION"
 		"http://www.w3.org/2003/11/swrl#dataRange"
@@ -6052,8 +6052,8 @@
 		[KB_325529_Class4]
 		[empty.owl_ProjectKB_Class5]
 		[empty.owl_ProjectKB_Class6]
-		[Flight_ProjectKB_Class10059]
-		[Flight_ProjectKB_Class10060]))
+		[Flight_ProjectKB_Class170]
+		[Flight_ProjectKB_Class171]))
 
 ([STANDARD_CLASS_FORM_WIDGET] of  Widget
 
@@ -6439,6 +6439,19 @@
 
 	(name "vertical_stretcher")
 	(string_value "http://www.w3.org/2002/07/owl#imports"))
+
+([XY_Instance_217] of  Widget
+
+	(height 0)
+	(is_hidden FALSE)
+	(name ":OWL-ONTOLOGY-PREFIXES")
+	(property_list [XY_Instance_218])
+	(width 0)
+	(x 0)
+	(y 0))
+
+([XY_Instance_218] of  Property_List
+)
 
 ([XY_Instance_235] of  Widget
 
