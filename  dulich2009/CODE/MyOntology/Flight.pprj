@@ -1,4 +1,4 @@
-; Sun Jan 03 20:48:00 PST 2010
+; Sun Jan 03 23:51:24 PST 2010
 ; 
 ;+ (version "3.4")
 ;+ (build "Build 533")
@@ -6,11 +6,11 @@
 ([BROWSER_SLOT_NAMES] of  Property_List
 
 	(properties
-		[Flight_ProjectKB_Class172]
-		[Flight_ProjectKB_Class173]
-		[Flight_ProjectKB_Class174]
-		[Flight_ProjectKB_Class175]
-		[Flight_ProjectKB_Class176]))
+		[Flight_ProjectKB_Class650]
+		[Flight_ProjectKB_Class651]
+		[Flight_ProjectKB_Class652]
+		[Flight_ProjectKB_Class653]
+		[Flight_ProjectKB_Class654]))
 
 ([CLSES_TAB] of  Widget
 
@@ -84,31 +84,6 @@
 
 	(name "JENA-SCHEMAGEN-PACKAGE")
 	(string_value "com.ptit.travel.jane.Flight"))
-
-([Flight_ProjectKB_Class172] of  String
-
-	(name "http://www.w3.org/2002/07/owl#Class")
-	(string_value "%3ANAME"))
-
-([Flight_ProjectKB_Class173] of  String
-
-	(name ":INSTANCE-ANNOTATION")
-	(string_value "%3AANNOTATION-TEXT"))
-
-([Flight_ProjectKB_Class174] of  String
-
-	(name ":META-CLASS")
-	(string_value "%3ANAME"))
-
-([Flight_ProjectKB_Class175] of  String
-
-	(name "http://www.w3.org/2002/07/owl#Thing")
-	(string_value "%3ANAME"))
-
-([Flight_ProjectKB_Class176] of  String
-
-	(name ":PAL-CONSTRAINT")
-	(string_value "%3APAL-NAME"))
 
 ([Flight_ProjectKB_Class18] of  Widget
 
@@ -351,6 +326,31 @@
 	(is_hidden TRUE)
 	(property_list [Flight_ProjectKB_Class66])
 	(widget_class_name "edu.stanford.smi.protegex.changes.stats.ChangeStatisticsTab"))
+
+([Flight_ProjectKB_Class650] of  String
+
+	(name "http://www.w3.org/2002/07/owl#Class")
+	(string_value "%3ANAME"))
+
+([Flight_ProjectKB_Class651] of  String
+
+	(name ":INSTANCE-ANNOTATION")
+	(string_value "%3AANNOTATION-TEXT"))
+
+([Flight_ProjectKB_Class652] of  String
+
+	(name ":META-CLASS")
+	(string_value "%3ANAME"))
+
+([Flight_ProjectKB_Class653] of  String
+
+	(name "http://www.w3.org/2002/07/owl#Thing")
+	(string_value "%3ANAME"))
+
+([Flight_ProjectKB_Class654] of  String
+
+	(name ":PAL-CONSTRAINT")
+	(string_value "%3APAL-NAME"))
 
 ([Flight_ProjectKB_Class66] of  Property_List
 )
