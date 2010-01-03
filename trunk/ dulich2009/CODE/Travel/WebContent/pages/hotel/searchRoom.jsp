@@ -1,5 +1,5 @@
 <%@ page contentType="text/html; charset=iso-8859-1" language="java" import="java.sql.*" errorPage="" %>
-<%@ page language="java" import="com.ptit.travel.agent.communication.Protocol" %>
+
 <%
             String path = request.getContextPath();
             String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
@@ -275,7 +275,7 @@
                 
                 
             </table>
-            <input type="hidden" name="protocol" value="<%=Protocol.HOTEL_AVAIL%>">
+            
         </form>
     </body>
 </html>
