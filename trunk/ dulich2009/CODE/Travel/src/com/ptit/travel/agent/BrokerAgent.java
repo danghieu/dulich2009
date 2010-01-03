@@ -90,10 +90,10 @@ public class BrokerAgent extends Agent {
 
                         case ACLMessage.INFORM:
                             // read language to know
-                            String language = msg.getLanguage();
+                            String protocol = msg.getProtocol();
                             //if it is hotel to process
-                            if (language.equals(Language.TOURSERVICE)) {
-                                String protocol = msg.getProtocol();
+                            if (protocol.contains(Protocol.PREFIX_TOURSERVICE)) {
+                                
                                 //if(protocol.equals("AVAIL"))// hoi xem dv cio kha dung ko?
                                 /**
                                  * Doc CSDL lay ve thong tin chi tiet ve tour, sau do hien thi len giao dien
