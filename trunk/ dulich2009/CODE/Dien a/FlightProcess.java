@@ -32,16 +32,16 @@ import java.io.FileOutputStream;
 
 import com.hp.hpl.jena.util.iterator.ExtendedIterator;
 import com.ptit.travel.jane.Flight.Flight;
-import com.ptit.travel.moduleJDBC.Model.FlightDatabase;
+
 import org.apache.log4j.Logger;
 
 /**
  *
  * @author Thao Hoang
  */
-public class FlightProcess2{
+public class FlightProcess{
     
-    private static Logger log = Logger.getLogger(FlightProcess2.class.getName());
+    private static Logger log = Logger.getLogger(FlightProcess.class.getName());
     public static OntModel insertMsg_FlightAvailRQ(String input, long total) {
         ArrayList<String> arr = new ArrayList<String>();
 
@@ -112,7 +112,7 @@ public class FlightProcess2{
        
 
         // phuc vu cho viec hien thi du lieu, cho nguoi lap trinh test
-        ObjectProperty flightAgentInfo = model.getObjectProperty(ont + "hasAgentFlightInfo");
+        
         ObjectProperty flight = model.getObjectProperty(ont + "hasFlight");
         DatatypeProperty id=model.getDatatypeProperty(ont+"id");
         
@@ -128,14 +128,16 @@ public class FlightProcess2{
 
         
         // lay tat cac cac ket qua thoa man
-        while (extendedIterator.hasNext()) {       
+        while (extendedIterator.hasNext()) {
+          
+            
             OntResource resource = (OntResource) extendedIterator.next();
             System.out.println("Dich vu ket hop: " + cl);
             System.out.println("The hien: " + resource.getLocalName());
 
             System.out.println("Tai Nguyen");
             Individual individual = model.getIndividual(ont + resource.getLocalName());            
-            String result = FlightProcess2.printPropertyValues(individual,id);
+            String result = FlightProcess.printPropertyValues(individual,id);
             System.out.println("result="+result);
             s = printValues(result);
             
@@ -179,19 +181,8 @@ public class FlightProcess2{
 
          queryString = "PREFIX flight: <http://www.owl-ontologies.com/Flight.owl#> \n" 
                 + "SELECT DISTINCT * \n " + "WHERE \n" + "{ \n" 
-                +"?FlightManager  flight:hasFlight ?x. \n"
-                +"?FlightManager flight:hasPrice ?Price. \n" 
-                +"?FlightManager flight:id ?ID. \n" 
-                +"?FlightManager flight:hasFlightAgent ?FlightAgent. \n" 
-                +"?FlightAgent hasAgentFlightInfo ?AgentFlightInfo. \n" 
-                +"?AgentFlightInfo  flight:flightAgentName ?FlightAgentName. \n" 
-                +"?AgentFlightInfo  flight:email ?Email. \n" 
-                +"?AgentFlightInfo  flight:fax ?Fax. \n" 
-                +"?AgentFlightInfo  flight:phoneNumber ?PhoneNumber. \n" 
-                +"?AgentFlightInfo  flight:hasAddress ?Address. \n"
-                +"?Address  flight:specificAdress ?SpecificAddress. \n"
-                +"?Address  flight:city ?City. \n"                
                 + "?x flight:airline ?Airline. \n"  
+                + "?x flight:id ?ID. \n" 
                 + "?x flight:flightClass ?FlightClass. \n"  
                 + "?x flight:flightNumber ?FlightNumber. \n" 
                 + "?x flight:hasAirplane ?Airplane. \n"   
@@ -199,6 +190,7 @@ public class FlightProcess2{
                 + "?x flight:hasDepartureAirport ?departureAirport. \n"   
                 + "?x flight:hasArrivalDateTime ?arrivalDateTime. \n" 
                 + "?x flight:hasDepartureDateTime ?departureDateTime. \n" 
+                + "?x flight:hasPrice ?price. \n" 
                 + "?arrivalAirport flight:city ?arrivalCity. \n" 
                 + "?arrivalAirport flight:airportName ?arrivalAirportName. \n"
                 + "?departureAirport flight:city ?departureCity. \n"  
@@ -208,49 +200,23 @@ public class FlightProcess2{
                 + "?arrivalDateTime flight:date ?arrivalDate. \n" 
                 + "?arrivalDateTime flight:time ?arrivalTime. \n"                 
                 + "?Airplane flight:airplaneType ?AirplaneType. \n" 
-                + "?Price flight:price ?realPrice. \n" 
-                + "?Price flight:priceUnit ?PriceUnit. \n"
+                + "?price flight:price ?realPrice. \n" 
+                + "?price flight:priceUnit ?PriceUnit. \n"
                 + " FILTER regex(?ID,\"" +arr.get(i) + "\", \"i\")}";       
         Query query = QueryFactory.create(queryString);
         QueryExecution queryexec = QueryExecutionFactory.create(query, model);
        // System.out.print("thuc thi");
-      //  Model model2 = ModelFactory.createDefaultModel();
+        Model model2 = ModelFactory.createDefaultModel();
        
         try {
             ResultSet rs = queryexec.execSelect();
-            System.out.print("thuc thi" +i+":");
-            System.out.println("RS="+rs.getRowNumber());
+            System.out.print("thuc thi");
             while (rs.hasNext()) {
-                System.out.print("\n ket qua :");
-              //  model2 = rs.getResourceModel();
+                System.out.print("ket qua");
+                model2 = rs.getResourceModel();
                 Object obj = rs.next();
                 ResultBinding binding = (ResultBinding) obj;
                 System.out.println("truy2:" + binding.toString()); 
-                
-                //Dai ly ban ve may bay
-                
-                String flightAgent="";
-                    String agentname=binding.getLiteral("FlightAgentName").getValue().toString();
-                         flightAgent=flightAgent+agentname + "-";
-
-                    String specificaddress=binding.getLiteral("SpecificAddress").getValue().toString();
-                         flightAgent=flightAgent+specificaddress + "-";
-                         
-
-                    String city=binding.getLiteral("City").getValue().toString();
-                         flightAgent=flightAgent+city + "-";     
-                         
-
-                    String email=binding.getLiteral("Email").getValue().toString();
-                         flightAgent=flightAgent+email + "-"; 
-                         
- 
-                    String phoneNumber=binding.getLiteral("PhoneNumber").getValue().toString();
-                         flightAgent=flightAgent+phoneNumber + "-";    
-                         
-  
-                    String fax=binding.getLiteral("Fax").getValue().toString();
-                         flightAgent=flightAgent+fax;                          
                 // Dia diem xuat phat
                 String departure="";
                     String departureairport=binding.getLiteral("departureAirportName").getValue().toString();
@@ -294,10 +260,9 @@ public class FlightProcess2{
                 // Loai may bay
                 String airplanetype=binding.getLiteral("AirplaneType").getValue().toString();
                 
-                result=result+ id + Message.FIELD_SEPARATE +  flightAgent+ Message.FIELD_SEPARATE+airline + Message.FIELD_SEPARATE + flightnumber + Message.FIELD_SEPARATE
+                result=result+ id + Message.FIELD_SEPARATE+airline + Message.FIELD_SEPARATE + flightnumber + Message.FIELD_SEPARATE
                         + departure + Message.FIELD_SEPARATE + departuredatetime + Message.FIELD_SEPARATE
                         + arrival + Message.FIELD_SEPARATE + arrivaldatetime + Message.FIELD_SEPARATE
-                        + flightnumber + Message.FIELD_SEPARATE 
                         + airplanetype + Message.FIELD_SEPARATE + flightclass + Message.FIELD_SEPARATE
                         + price + Message.FIELD_SEPARATE;
                 
@@ -311,7 +276,7 @@ public class FlightProcess2{
         }
         output = output + result + Message.OBJECT_SEPARATE;
        }  
-       // System.out.println("ket qua cuoi:"+output );
+        System.out.println("ket qua:"+output );
         return output;
     }
 
@@ -319,6 +284,8 @@ public class FlightProcess2{
   public static String printPropertyValues(Individual ind, Property prop) {
         System.out.print(ind.getLocalName() + " has " + prop.getLocalName() + "(s): ");
         String result = printIterator(ind.listPropertyValues(prop));
+       // Property p1,p2,p3;
+      
         return result;
     }
 
@@ -336,7 +303,6 @@ public class FlightProcess2{
             while (i.hasNext()) {
                Literal val = (Literal) i.next();
                 System.out.print(val.getString());
-              
                 result= result+val.getString();
                 if (i.hasNext()) {
                     result = result+Message.FIELD_SEPARATE;
@@ -346,130 +312,12 @@ public class FlightProcess2{
         
         return result;
     }
-/*
- public static boolean processingBooking(String input){
-     FlightDB.LoadOnt2Database();
-     OntModel model = FlightDB.getOntologyModel();
-      String ont = "http://www.owl-ontologies.com/Flight.owl#";  
-      System.out.println("booking");
-      ArrayList <String> arr = new ArrayList<String>();
-      arr = Message.split(input, Message.FIELD_SEPARATE);
-      System.out.println("arr: "+arr.toString());
-      String queryString = "PREFIX flight: <http://www.owl-ontologies.com/Flight.owl#> \n" + "SELECT DISTINCT * \n " 
-                + "WHERE \n" + "{ \n" 
-                + "?flightManager flight:hasFlight ?Flight \n"  
-                + "?flightManager flight:totalBookNumber ?TotalBookNumber. \n" 
-                + "?flightManager flight:totalNumber ?TotalNumber. \n"  
-                + "?Flight flight:airline ?Airline. \n"  
-                + "?Flight flight:id ?ID. \n" 
-                + "?Flight flight:flightClass ?FlightClass. \n"  
-                + "?Flight flight:flightNumber ?FlightNumber. \n" 
-                + "?Flight flight:hasAirplane ?Airplane. \n"   
-                + "?Flight flight:hasArrivalAirport ?arrivalAirport. \n" 
-                + "?Flight flight:hasDepartureAirport ?departureAirport. \n"   
-                + "?Flight flight:hasArrivalDateTime ?arrivalDateTime. \n" 
-                + "?Flight flight:hasDepartureDateTime ?departureDateTime. \n" 
-                + "?Flight flight:hasPrice ?price. \n" 
-                + "?arrivalAirport flight:city ?arrivalCity. \n" 
-                + "?arrivalAirport flight:airportName ?arrivalAirportName. \n"
-                + "?departureAirport flight:city ?departureCity. \n"  
-                + "?departureAirport flight:airportName ?departureAirportName. \n"
-                + "?departureDateTime flight:date ?departureDate. \n" 
-                + "?departureDateTime flight:time ?departureTime. \n" 
-                + "?arrivalDateTime flight:date ?arrivalDate. \n" 
-                + "?arrivalDateTime flight:time ?arrivalTime. \n"                 
-                + "?Airplane flight:airplaneType ?AirplaneType. \n" 
-                + "?price flight:price ?realPrice. \n" 
-                + "?price flight:priceUnit ?PriceUnit. \n"
-                + " FILTER ( regex(?FlightNumber,\"" + arr.get(0) + "\", \"i\"))" 
-                + " FILTER ( regex(?FightClass,\"" + arr.get(1) + "\", \"i\"))"      
-                + " FILTER ( regex(?departureDate,\"" + arr.get(2) + "\", \"i\"))}";
-     
-      Query query = QueryFactory.create(queryString);
-      QueryExecution queryexec = QueryExecutionFactory.create(query, model);
-      Float booknumber=Float.parseFloat(arr.get(3));
-
-
-        boolean isOk = false;
-
-
-         try {
-            ResultSet rs = queryexec.execSelect();
-           if(rs!=null){
-                System.out.print("co gia tri thoa man");
-                Object obj = rs.next();
-                ResultBinding binding = (ResultBinding) obj;
-                System.out.println("ket qua truy van :" + binding.toString());
-            
-   
-                String flightnumber=binding.getLiteral("FlightNumber").getValue().toString();
-                System.out.println("Flight Number="+flightnumber);
-                String flightclass=binding.getLiteral("FlightClass").getValue().toString();
-                System.out.println("Flight Class="+flightclass);              
-                String date = binding.getLiteral("departureDate").getValue().toString();
-                System.out.println("ToDate truy van :"+date);
-
-                float totalnumber = Float.parseFloat(binding.getLiteral("TotalNumber").getValue().toString());   
-                System.out.print("Total Number=" +totalnumber); 
-
-                float totalboonumber = Float.parseFloat(binding.getLiteral("TotalBookNumber").getValue().toString());   
-                System.out.print("Total Book Number=" +totalboonumber); 
  
-               
-                System.out.print("Book Number=" +booknumber);     
-                
-                
-                float tong=booknumber + totalboonumber;
-                if(tong<=totalnumber){
-                    isOk = true;
-                    System.out.println("Bat dau ghi nay");
-                   try {
-                      System.out.println("them gia tri");
-                      OntClass oc = model.createClass("http://www.owl-ontologies.com/Flight.owl#FlightBookContract");
-                      Individual ind = model.createIndividual(ont + "FlightBookContract_" + System.currentTimeMillis(),oc);
-                      ind.addLiteral(Flight.bookNumber, arr.get(3) );   
-                      ind.addLiteral(Flight.bookdate, System.currentTimeMillis());
-                      ind.addLiteral(Flight.flightNumber, arr.get(0)); 
-                      ind.addLiteral(Flight.flightClass,arr.get(1));
-                      ind.addLiteral(Flight.date,arr.get(2));
-                      ind.addLiteral(Flight.fullName, arr.get(4));
-                      ind.addLiteral(Flight.gender, arr.get(5));
-                      ind.addLiteral(Flight.email, arr.get(6));
-                      ind.addLiteral(Flight.phoneNumber,arr.get(7));
-                                          
-                      System.out.println("hotelRoom: "+hotelroom);
-                       Individual hotelRoomInd = model.getIndividual(hotelroom);
-                       hotelRoomInd.addProperty(Hotel.hasNotAvailabilityPeriod, ind);
-                       
-			isOk = true;
-                        System.out.println("Them the hien NotAvailability thanh cong");
-                       } catch (Exception e) {
-			System.out.println(e.toString());
-			isOk = false;
-		}
-                
-                }
-                else {
-                    isOk=false;
-                    System.out.println("Khong du dau");
-                }
-         }
-         else{
-             System.out.println("Khong thay");
-         }
-              
-            }catch(Exception e){
-                e.printStackTrace();
-            }
-     
-        return isOk;
-  }
-   */  
     public static void main(String s[]) throws Exception {
-        System.out.println("Dien a?");
-        FlightProcess2 flightprocess = new FlightProcess2();
+        
+        FlightProcess flightprocess = new FlightProcess();
         OntModel ontmodel = ModelFactory.createOntologyModel();
-        String input = "Ha noi" + Message.FIELD_SEPARATE +"Ho Chi Minh" + Message.FIELD_SEPARATE + "2010-02-01"+ Message.FIELD_SEPARATE + "economy" + Message.FIELD_SEPARATE + "1";
+        String input = "ha noi" + Message.FIELD_SEPARATE +"Ho Chi Minh" + Message.FIELD_SEPARATE + "2010-02-01"+ Message.FIELD_SEPARATE + "economy" + Message.FIELD_SEPARATE + "1";
         String ss = flightprocess.search(input);
         System.out.print("ss="+ss);
        // printValues("<http://www.owl-ontologies.com/Travel.owl#Hotel_1>");
