@@ -86,7 +86,7 @@ public class HotelAgent extends Agent {
         });
     }
 
-    // this method sends result to AskAgent
+
     private void informAskAgent(Resource r) {
         this.addBehaviour(new BehaviourSendResult(this, r));
     }

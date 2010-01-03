@@ -83,14 +83,28 @@ public class ControllerAgent extends Agent {
                                 replyWith = msg.getReplyWith();
                                 protocol = msg.getProtocol();
                                 conversationId = msg.getConversationId();
-                                language = msg.getLanguage();
+
                                 // 
-                                log.info("LANGUAGE: " + language);
+                                log.info("protocol: " + protocol);
                                 // Language used to get all appropriate supplier agents
 
                                 // Call DB and gain result into list
                                 receivers = new ArrayList<String>();
-                                receivers.add("HotelAgent");
+                                if (protocol.contains(Protocol.PREFIX_HOTEL)) {
+                                    receivers.add("HotelAgent");
+                                }
+                                if (protocol.contains(Protocol.PREFIX_CAR)) {
+                                    receivers.add("CarAgent");
+                                }
+                                if (protocol.contains(Protocol.PREFIX_FLIGHT)) {
+                                    receivers.add("FlightAgent");
+                                }
+                                if (protocol.contains(Protocol.PREFIX_TRAIN)) {
+                                    receivers.add("TrainAgent");
+                                }
+                                if (protocol.contains(Protocol.PREFIX_TOURSERVICE)) {
+                                    receivers.add("BrokerAgent");
+                                }
                                 ACLMessage forwardMsg = Message.createForwardMessage(myAgent, receivers, msg,
                                         replyWith);
                                 //myAgent.addBehaviour(new Negotiate(myAgent, forwardMsg));
@@ -125,8 +139,7 @@ public class ControllerAgent extends Agent {
                                     content = replyMsg.getContent();
                                     String errorContent = "Agent not found: getContainerID() failed to find agent";
                                     if (content != null && !content.contains(errorContent)) {
-                                        msgsContent.add(replyMsg.getSender().getLocalName() 
-                                                + Message.FIELD_SEPARATE + content);
+                                        msgsContent.add(replyMsg.getSender().getLocalName() + Message.FIELD_SEPARATE + content);
                                     }
                                 }
                                 repliesCnt++;

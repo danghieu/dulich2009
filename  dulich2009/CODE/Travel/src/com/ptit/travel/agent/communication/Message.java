@@ -23,6 +23,7 @@ import jade.domain.DFService;
 import jade.domain.FIPAException;
 import jade.domain.FIPAAgentManagement.DFAgentDescription;
 import jade.domain.FIPAAgentManagement.ServiceDescription;
+import java.util.Hashtable;
 
 /**
  * Contain of relevant methods for communication using OWL or RDF models
@@ -37,12 +38,12 @@ public class Message {
      * special string uesed to separate objects
      *  #_$
      */
-    public static String OBJECT_SEPARATE = "#_&";
+    public final static String OBJECT_SEPARATE = "#_&";
     /**
      * special string uesed to separate fields of the object
      * @_&
      */
-    public static String FIELD_SEPARATE = "@_&";
+    public final static String FIELD_SEPARATE = "  ";//"@_&";
 
     /**
      * This method returns XML/RDF text representation of RDF Resource
@@ -275,7 +276,7 @@ public class Message {
      *            String
      * 
      */
-    public static ACLMessage createInformMessage(Agent sender, String recieverName, 
+    public static ACLMessage createInformMessage(Agent sender, String recieverName,
             String content, String language, String protocol, String conversationId, String replyWith) {
 
         log.info("Preparing inform message...");
@@ -375,7 +376,7 @@ public class Message {
         return m;
     }
 
-    public static ACLMessage createReplyMessage(Agent sender, String reciever, ArrayList<String> contents, 
+    public static ACLMessage createReplyMessage(Agent sender, String reciever, ArrayList<String> contents,
             String language, String protocol, String conversationId, String replyWith) {
 
         log.info("Preparing inform message...");
@@ -389,7 +390,7 @@ public class Message {
         m.setOntology(Ontology.BASE);
         m.setProtocol(protocol);
         m.setConversationId(conversationId);
-        
+
         m.setInReplyTo(replyWith);
         String content = "";
         int size = contents.size();
@@ -502,7 +503,7 @@ public class Message {
     public static ArrayList<String> split(String input, String separate) {
         ArrayList<String> arr = new ArrayList<String>();
         //String separate = Message.OBJECT_SEPARATE;
-        if(input == null){
+        if (input == null) {
             log.error("input: " + input);
             return null;
         }
@@ -522,10 +523,11 @@ public class Message {
                 s = s.replaceAll(separate, "");
                 arr.add(s);
             } else {
-                s = input.substring(beginIndex, input.length());                
+                s = input.substring(beginIndex, input.length());
                 s = s.replaceAll(separate, "");
-                if(!s.equals(""))
+                if (!s.equals("")) {
                     arr.add(s);
+                }
                 break;
             }
 
@@ -533,7 +535,42 @@ public class Message {
         }
         return arr;
     }
-        public static void main(String[] args) {
+
+    /**
+     * This method extract string input into agent and agent's msg
+     * @param input: agentName-MF-msg-MO-agentName-MF-msg...
+     * @return Hasttable<agentName, msg>
+     */
+    public static Hashtable<String, String> extractAgentMsg(String input) {
+        ArrayList<String> splitedContent = Message.split(input, Message.OBJECT_SEPARATE);
+        if (splitedContent == null) {
+            //log.error("Invalid format input from servlet: " + input);
+            return null;
+        }
+        Hashtable<String, String> agentMsg = new Hashtable<String, String>();
+        String receiver, content;
+        int index;
+        
+        for (int i = 0; i < splitedContent.size(); i++) {
+            content = splitedContent.get(i);
+            index = content.indexOf(Message.FIELD_SEPARATE);
+            if (index > 0) {
+                receiver = content.substring(0, index);
+                //receivers.add(receiver);
+                content = content.replaceFirst(receiver + Message.FIELD_SEPARATE, "");
+                // if there is more message for the agent 
+                if(agentMsg.containsKey(receiver)){
+                    content = agentMsg.get(receiver) + Message.OBJECT_SEPARATE + content;                    
+                }
+                agentMsg.put(receiver, content);
+                
+            }
+
+        }
+        return agentMsg;
+    }
+
+    public static void main(String[] args) {
         String input = "param1" + Message.FIELD_SEPARATE +
                 "param2@" + Message.FIELD_SEPARATE +
                 "param3$" + Message.OBJECT_SEPARATE +

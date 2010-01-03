@@ -8,25 +8,16 @@ package com.ptit.travel.agent;
  *
  * @author D05CNPM
  */
-import com.ptit.travel.agent.onto.*;
-import com.ptit.travel.agent.memory.*;
 import com.ptit.travel.agent.communication.*;
-import java.io.StringWriter;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Hashtable;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
-import com.hp.hpl.jena.ontology.OntModel;
-import com.hp.hpl.jena.rdf.model.ModelFactory;
-import com.hp.hpl.jena.rdf.model.Resource;
 
 import jade.core.Agent;
 import jade.core.behaviours.*;
 import jade.lang.acl.ACLMessage;
 import jade.lang.acl.MessageTemplate;
 
+import java.util.Set;
 import org.apache.log4j.Logger;
 import org.apache.xmlrpc.WebServer;
 
@@ -72,7 +63,7 @@ public class UserAgent extends Agent {
     //* Tu gan hanh okvi search sau 0.5 s
     addBehaviour(new TickerBehaviour(this, 30000) {
     protected void onTick() {
-    search("Nam Dinh", "conversationId", Protocol.HOTEL_AVAIL);
+    search("Nam Dinh", "conversationId", Protocol.FLIGHT_AVAIL);
     }
     });//*/
 
@@ -281,7 +272,7 @@ public class UserAgent extends Agent {
                         receivers.add("ControllerAgent");
                         String replyWith = "[" + myAgent.getLocalName() + "]" + System.currentTimeMillis();
                         // Send the cfp to all agents
-                        ACLMessage msg = Message.createInformMessage(a, receivers, content, Language.HOTEL,
+                        ACLMessage msg = Message.createInformMessage(a, receivers, content, null,
                                 protocol, conversationId, replyWith);
 
                         // value
@@ -366,7 +357,7 @@ public class UserAgent extends Agent {
         private int step = 0;
         private MessageTemplate mt;
         private ArrayList<String> msgs;
-        ArrayList<String> receivers;
+        Set<String> receivers;
         private int repliesCnt;
 
         public Book(Agent _a, String _msg, String _conversationId, String _p) {
@@ -376,7 +367,7 @@ public class UserAgent extends Agent {
             conversationId = _conversationId;
             protocol = _p;
             msgs = new ArrayList<String>();
-            receivers = new ArrayList<String>();
+            //receivers = new Set<String>();
         }
 
         public void action() {
@@ -386,36 +377,24 @@ public class UserAgent extends Agent {
                         // collect agents who satisfy action
                         //receivers = agentDAO.getAgents("", "hotel");
                         log.info("Booking ... ");
-                        ArrayList<String> splitedContent = Message.split(content, Message.OBJECT_SEPARATE);
-                        if (splitedContent == null) {
+                        Hashtable<String, String> agentMsg = Message.extractAgentMsg(content);
+                        
+                        if (agentMsg == null) {
                             log.error("Invalid format input from servlet: " + content);
                             return;
                         }
-                        String receiver, temp;
-                        int index;
-                        ArrayList<String> contents = new ArrayList<String>();
-                        for (int i = 0; i < splitedContent.size(); i++) {
-                            temp = splitedContent.get(i);
-                            index = temp.indexOf(Message.FIELD_SEPARATE);
-                            if (index > 0) {
-                                receiver = temp.substring(0, index);
-                                receivers.add(receiver);
-                                temp = temp.replaceFirst(receiver + Message.FIELD_SEPARATE, "");
-                                contents.add(temp);
-                            }
-
-                        }
-
+                        
+                        receivers = agentMsg.keySet();
+                        
                         String replyWith = "[" + myAgent.getLocalName() + "]" + System.currentTimeMillis();
                         // Send the cfp to all agents
                         log.info("=== Preparing msg to send msg to: " + receivers.toString());
                         ACLMessage msg;
+                        String receiver;
                         for (int i = 0; i < receivers.size(); i++) {
-                            msg = Message.createInformMessage(a, receivers.get(i), contents.get(i), 
+                            receiver = (String)receivers.toArray()[i];
+                            msg = Message.createInformMessage(a, receiver, agentMsg.get(receiver), 
                                     Language.HOTEL, protocol, conversationId, replyWith);
-
-                            // value
-
                             myAgent.send(msg);
                         }
 
