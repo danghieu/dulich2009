@@ -166,7 +166,10 @@ public class FlightProcess{
 
         //dua ontology vao 1 model
          ArrayList<String> arr = new ArrayList<String>();
-         arr = Message.split(input,Message.FIELD_SEPARATE );
+         arr = Message.split(input,Message.FIELD_SEPARATE);
+ 
+         
+         
          String result="";
          String output="";
          FlightDatabase.LoadOnt2Database();
@@ -350,31 +353,63 @@ public class FlightProcess{
         
         return result;
     }
- 
-/*
- public static boolean processingBooking(String input){
-     FlightDB.LoadOnt2Database();
-     OntModel model = FlightDB.getOntologyModel();
+  public static boolean processingBooking(String input){
+     FlightDatabase.LoadOnt2Database();
+     OntModel model = FlightDatabase.getOntologyModel();
       String ont = "http://www.owl-ontologies.com/Flight.owl#";  
       System.out.println("booking");
-      ArrayList <String> arr = new ArrayList<String>();
-      arr = Message.split(input, Message.FIELD_SEPARATE);
+      ArrayList<String> arrLT = new ArrayList<String>();
+      arrLT = Message.split(input,Message.OBJECT_SEPARATE);
+      System.out.println("arrLT: "+arrLT.toString());
+ 
+      ArrayList<String> arr = new ArrayList<String>();
+      arr = Message.split(arrLT.get(0),Message.FIELD_SEPARATE);  // id, agent, booknumber
       System.out.println("arr: "+arr.toString());
+      
+      String input_id=arr.get(0);
+      String input_agentInfo=arr.get(1);
+      float input_BookNumber=Float.parseFloat(arr.get(2));
+      
+     
+      ArrayList<String> arr_customer = new ArrayList<String>(); // hoten, gioi tinh,email, dien thoai, dia chi cu the, thanh pho, nuoc
+      arr_customer = Message.split(arrLT.get(1),Message.FIELD_SEPARATE);
+      System.out.println("CustomerInfo: "+arr_customer);    
+      System.out.println("arr_customer="+arr_customer.toString());
+      
+      String c_fullname=arr_customer.get(0);
+      String c_sex=arr_customer.get(1);
+      String c_email=arr_customer.get(2);
+      String c_phone=arr_customer.get(3);
+      String c_specificAddress=arr_customer.get(4);
+      String c_city=arr_customer.get(5);
+      String c_country=arr_customer.get(6);
+              
+              
+
       String queryString = "PREFIX flight: <http://www.owl-ontologies.com/Flight.owl#> \n" + "SELECT DISTINCT * \n " 
                 + "WHERE \n" + "{ \n" 
-                + "?flightManager flight:hasFlight ?Flight \n"  
-                + "?flightManager flight:totalBookNumber ?TotalBookNumber. \n" 
-                + "?flightManager flight:totalNumber ?TotalNumber. \n"  
-                + "?Flight flight:airline ?Airline. \n"  
-                + "?Flight flight:id ?ID. \n" 
-                + "?Flight flight:flightClass ?FlightClass. \n"  
-                + "?Flight flight:flightNumber ?FlightNumber. \n" 
-                + "?Flight flight:hasAirplane ?Airplane. \n"   
-                + "?Flight flight:hasArrivalAirport ?arrivalAirport. \n" 
-                + "?Flight flight:hasDepartureAirport ?departureAirport. \n"   
-                + "?Flight flight:hasArrivalDateTime ?arrivalDateTime. \n" 
-                + "?Flight flight:hasDepartureDateTime ?departureDateTime. \n" 
-                + "?Flight flight:hasPrice ?price. \n" 
+                +"?FlightAgent flight:hasFlightManager ?FlightManager. \n"
+                +"?FlightAgent flight:hasAgentFlightInfo ?AgentFlightInfo. \n"
+                +"?FlightManager  flight:hasFlight ?x. \n"
+                +"?FlightManager flight:hasPrice ?Price. \n" 
+                +"?FlightManager flight:id ?ID. \n" 
+                +"?FlightManager flight:totalBookNumber ?TotalBookNumber. \n" 
+                +"?FlightManager flight:totalNumber ?TotalNumber. \n" 
+                +"?AgentFlightInfo  flight:flightAgentName ?FlightAgentName. \n" 
+                +"?AgentFlightInfo  flight:email ?Email. \n" 
+                +"?AgentFlightInfo flight:fax ?Fax. \n" 
+                +"?AgentFlightInfo  flight:phoneNumber ?PhoneNumber. \n" 
+                +"?AgentFlightInfo  flight:hasAddress ?Address. \n"
+                +"?Address  flight:specificAddress ?SpecificAddress. \n"
+                +"?Address  flight:city ?City. \n"                
+                + "?x flight:airline ?Airline. \n"  
+                + "?x flight:flightClass ?FlightClass. \n"  
+                + "?x flight:flightNumber ?FlightNumber. \n" 
+                + "?x flight:hasAirplane ?Airplane. \n"   
+                + "?x flight:hasArrivalAirport ?arrivalAirport. \n" 
+                + "?x flight:hasDepartureAirport ?departureAirport. \n"   
+                + "?x flight:hasArrivalDateTime ?arrivalDateTime. \n" 
+                + "?x flight:hasDepartureDateTime ?departureDateTime. \n" 
                 + "?arrivalAirport flight:city ?arrivalCity. \n" 
                 + "?arrivalAirport flight:airportName ?arrivalAirportName. \n"
                 + "?departureAirport flight:city ?departureCity. \n"  
@@ -384,84 +419,150 @@ public class FlightProcess{
                 + "?arrivalDateTime flight:date ?arrivalDate. \n" 
                 + "?arrivalDateTime flight:time ?arrivalTime. \n"                 
                 + "?Airplane flight:airplaneType ?AirplaneType. \n" 
-                + "?price flight:price ?realPrice. \n" 
-                + "?price flight:priceUnit ?PriceUnit. \n"
-                + " FILTER ( regex(?FlightNumber,\"" + arr.get(0) + "\", \"i\"))" 
-                + " FILTER ( regex(?FightClass,\"" + arr.get(1) + "\", \"i\"))"      
-                + " FILTER ( regex(?departureDate,\"" + arr.get(2) + "\", \"i\"))}";
+                + "?Price flight:price ?realPrice. \n" 
+                + "?Price flight:priceUnit ?PriceUnit. \n"     
+                + " FILTER ( regex(?ID,\"" + input_id + "\", \"i\"))}";
      
       Query query = QueryFactory.create(queryString);
       QueryExecution queryexec = QueryExecutionFactory.create(query, model);
-      Float booknumber=Float.parseFloat(arr.get(3));
-
+     // Float booknumber=Float.parseFloat(arr.get(3));
 
         boolean isOk = false;
 
 
          try {
             ResultSet rs = queryexec.execSelect();
-           if(rs!=null){
-                System.out.print("co gia tri thoa man");
+         
+               String result=null;
                 Object obj = rs.next();
                 ResultBinding binding = (ResultBinding) obj;
-                System.out.println("ket qua truy van :" + binding.toString());
-            
-   
-                String flightnumber=binding.getLiteral("FlightNumber").getValue().toString();
-                System.out.println("Flight Number="+flightnumber);
-                String flightclass=binding.getLiteral("FlightClass").getValue().toString();
-                System.out.println("Flight Class="+flightclass);              
-                String date = binding.getLiteral("departureDate").getValue().toString();
-                System.out.println("ToDate truy van :"+date);
+                 System.out.print("co gia tri thoa man:"+ binding.getLiteral("ID").getValue().toString());
+                String flightAgent="";
+                    String agentname=binding.getLiteral("FlightAgentName").getValue().toString();
+                         flightAgent=flightAgent+agentname + "-";
+
+                    String specificaddress=binding.getLiteral("SpecificAddress").getValue().toString();
+                         flightAgent=flightAgent+specificaddress + "-";
+                         
+
+                    String city=binding.getLiteral("City").getValue().toString();
+                         flightAgent=flightAgent+city + "-";     
+                         
+
+                    String email=binding.getLiteral("Email").getValue().toString();
+                         flightAgent=flightAgent+email + "-"; 
+                         
+ 
+                    String phoneNumber=binding.getLiteral("PhoneNumber").getValue().toString();
+                         flightAgent=flightAgent+phoneNumber + "-";    
+                         
+  
+                    String fax=binding.getLiteral("Fax").getValue().toString();
+                         flightAgent=flightAgent+fax;                          
+                // Dia diem xuat phat
+                String departure="";
+                    String departureairport=binding.getLiteral("departureAirportName").getValue().toString();
+                        departure=departure+departureairport+"-";
+                    String departureCity = binding.getLiteral("departureCity").getValue().toString();
+                        departure= departure + departureCity;                   
+               // Dia diem den
+                String arrival="";
+                    String arrivalairport=binding.getLiteral("arrivalAirportName").getValue().toString();
+                        arrival=arrival+arrivalairport+"-";
+                    String arrivalCity = binding.getLiteral("arrivalCity").getValue().toString();
+                        arrival= arrival + arrivalCity;                           
+              //Thoi gian di 
+                String departuredatetime="";
+                 
+                    String departuretime = binding.getLiteral("departureTime").getValue().toString();
+                        departuredatetime= departuredatetime + departuretime+ ",";
+                    String departuredate = binding.getLiteral("departureDate").getValue().toString();
+                        departuredatetime= departuredatetime + departuredate;
+ 
+                //Thoi gian den                        
+                String arrivaldatetime="";
+                 
+                    String arrivaltime = binding.getLiteral("arrivalTime").getValue().toString();
+                        arrivaldatetime= arrivaldatetime + arrivaltime+ ",";
+                    String arrivaldate = binding.getLiteral("arrivalDate").getValue().toString();
+                        arrivaldatetime= arrivaldatetime + arrivaldate;
+               // Gia ca
+                String price="";
+                    String realprice=binding.getLiteral("realPrice").getValue().toString();
+                        price=price+realprice;
+                    String priceunit=binding.getLiteral("PriceUnit").getValue().toString();
+                        price=price+priceunit;
+               //  Hang hang khong
+                String airline = binding.getLiteral("Airline").getValue().toString();
+                String id=binding.getLiteral("ID").getValue().toString();
+               // Ma so chuyen bay  
+                String flightnumber = binding.getLiteral("FlightNumber").getValue().toString();
+               //Hang ve may bay
+                String flightclass = binding.getLiteral("FlightClass").getValue().toString();
+                // Loai may bay
+                String airplanetype=binding.getLiteral("AirplaneType").getValue().toString();
 
                 float totalnumber = Float.parseFloat(binding.getLiteral("TotalNumber").getValue().toString());   
                 System.out.print("Total Number=" +totalnumber); 
 
-                float totalboonumber = Float.parseFloat(binding.getLiteral("TotalBookNumber").getValue().toString());   
-                System.out.print("Total Book Number=" +totalboonumber); 
- 
-               
-                System.out.print("Book Number=" +booknumber);     
-                
-                
-                float tong=booknumber + totalboonumber;
+                float totalbooknumber = Float.parseFloat(binding.getLiteral("TotalBookNumber").getValue().toString());   
+                System.out.print("Total Book Number=" +totalbooknumber); 
+// 
+//                  result=result+ id + Message.FIELD_SEPARATE+ flightAgent + Message.FIELD_SEPARATE+airline + Message.FIELD_SEPARATE + flightnumber + Message.FIELD_SEPARATE
+//                        + departure + Message.FIELD_SEPARATE + departuredatetime + Message.FIELD_SEPARATE
+//                        + arrival + Message.FIELD_SEPARATE + arrivaldatetime + Message.FIELD_SEPARATE
+//                        + flightnumber + Message.FIELD_SEPARATE 
+//                        + airplanetype + Message.FIELD_SEPARATE + flightclass + Message.FIELD_SEPARATE
+//                        + price + Message.FIELD_SEPARATE;
+//                System.out.println("The hien:"+result);
+                float tong=input_BookNumber + totalbooknumber;
                 if(tong<=totalnumber){
-                    isOk = true;
+                    
+                    
                     System.out.println("Bat dau ghi nay");
-                   try {
-                      System.out.println("them gia tri");
-                      OntClass oc = model.createClass("http://www.owl-ontologies.com/Flight.owl#FlightBookContract");
-                      Individual ind = model.createIndividual(ont + "FlightBookContract_" + System.currentTimeMillis(),oc);
-                      ind.addLiteral(Flight.bookNumber, arr.get(3) );   
-                      ind.addLiteral(Flight.bookdate, System.currentTimeMillis());
-                      ind.addLiteral(Flight.flightNumber, arr.get(0)); 
-                      ind.addLiteral(Flight.flightClass,arr.get(1));
-                      ind.addLiteral(Flight.date,arr.get(2));
-                      ind.addLiteral(Flight.fullName, arr.get(4));
-                      ind.addLiteral(Flight.gender, arr.get(5));
-                      ind.addLiteral(Flight.email, arr.get(6));
-                      ind.addLiteral(Flight.phoneNumber,arr.get(7));
-                                          
-                      System.out.println("hotelRoom: "+hotelroom);
-                       Individual hotelRoomInd = model.getIndividual(hotelroom);
-                       hotelRoomInd.addProperty(Hotel.hasNotAvailabilityPeriod, ind);
-                       
-			isOk = true;
-                        System.out.println("Them the hien NotAvailability thanh cong");
-                       } catch (Exception e) {
-			System.out.println(e.toString());
-			isOk = false;
-		}
-                
+                    try{
+                        // Tang tong so luong dat
+                        String new_flightmanager=binding.getResource("FlightManager").toString();
+                        if(new_flightmanager!=null){
+                            Individual ind1=model.getIndividual(new_flightmanager);
+                            if(ind1!=null){
+                                ind1.removeAll(Flight.totalBookNumber);
+                                ind1.addLiteral(Flight.totalBookNumber, totalbooknumber+input_BookNumber);
+                        System.out.println("Them gia tri"); 
+                        OntClass oc_address=model.createClass("http://www.owl-ontologies.com/Flight.owl#Address");
+                        Individual ind_address=model.createIndividual(ont + "Address_" + System.currentTimeMillis(),oc_address);
+                        ind_address.addLiteral(Flight.specificAddress, c_specificAddress);
+                        ind_address.addLiteral(Flight.city,c_city);
+                        ind_address.addLiteral(Flight.country, c_country);
+
+                        
+                        OntClass oc_customer=model.createClass("http://www.owl-ontologies.com/Flight.owl#Customer");
+                        Individual ind_customer=model.createIndividual(ont + "Customer_" + System.currentTimeMillis(),oc_customer);
+                        ind_customer.addLiteral(Flight.fullName, c_fullname);
+                        ind_customer.addLiteral(Flight.gender,c_sex);
+                        ind_customer.addLiteral(Flight.email, c_email);
+                        ind_customer.addLiteral(Flight.phoneNumber, c_phone);
+                        ind_customer.addProperty(Flight.hasAddress, ind_address);
+                        
+                        OntClass oc_contract=model.createClass("http://www.owl-ontologies.com/Flight.owl#FlightBookContract");
+                        Individual ind_contract=model.createIndividual(ont + "FlightBookContract_" + System.currentTimeMillis(),oc_contract);
+                        ind_contract.addLiteral(Flight.bookNumber, input_BookNumber);
+                        ind_contract.addLiteral(Flight.id, id);
+                        ind_contract.addProperty(Flight.hasCustomer, ind_customer);
+                        isOk=true;
+                                
+                            }
+                        }
+  
+                        
+                    }
+                    catch(Exception e1){
+                    e1.printStackTrace();}
                 }
-                else {
-                    isOk=false;
+                else 
                     System.out.println("Khong du dau");
-                }
-         }
-         else{
-             System.out.println("Khong thay");
-         }
+//                
+    
               
             }catch(Exception e){
                 e.printStackTrace();
@@ -469,15 +570,69 @@ public class FlightProcess{
      
         return isOk;
   }
-   */  
+  public static void searchFlightContract(){
+       FlightDatabase.LoadOnt2Database();
+       OntModel model = FlightDatabase.getOntologyModel();
+        String ont = "http://www.owl-ontologies.com/Flight.owl#";  
+    
+      
+      
+        // phuc vu cho viec hien thi du lieu, cho nguoi lap trinh test
+          DatatypeProperty booknumber =model.getDatatypeProperty(ont + "bookNumber");
+         DatatypeProperty id =model.getDatatypeProperty(ont + "id");
+         ObjectProperty customer=model.getObjectProperty(ont+"hasCustomer");
+         
+        OntClass cl = model.getOntClass(ont + "FlightBookContract");
+      
+
+        log.info("Insert msg to infer");
+        // add model yeu cau vao ontology de tao ra 1 model moi chua tat ca cac rang buoc ke ca luat
+    
+   
+        ExtendedIterator<?> extendedIterator = cl.listInstances(); // lay tat ca cac the hien cua cai lop day
+
+        String s = null;
+
+        
+        // lay tat cac cac ket qua thoa man
+        while (extendedIterator.hasNext()) {
+            OntResource resource = (OntResource) extendedIterator.next();
+            System.out.println("Dich vu ket hop: " + cl);
+            System.out.println("The hien: " + resource.getLocalName());
+
+            System.out.println("Tai Nguyen");
+            Individual individual = model.getIndividual(ont + resource.getLocalName());                   
+            String bookNumber =  (individual.listPropertyValues(booknumber).next()).toString();
+            System.out.println("booknumber=" + bookNumber );
+            
+            String ID =  (individual.listPropertyValues(id).next()).toString();
+
+             System.out.println("ID=" +ID );
+ 
+          
+             String Customer =  (individual.listPropertyValues(customer).next()).toString();
+         //   int indexFromDate = fromdate1.indexOf("^^");
+          //  String fromdate2 = fromdate1.substring(0, indexFromDate);
+             System.out.println("Customer" +Customer );
+            
+            
+        }
+  }
     public static void main(String s[]) throws Exception {
     
         FlightProcess flightprocess = new FlightProcess();
         OntModel ontmodel = ModelFactory.createOntologyModel();
-        String input = "Ha noi" + Message.FIELD_SEPARATE +"Ho Chi Minh" + Message.FIELD_SEPARATE + "2010-02-01"+ Message.FIELD_SEPARATE + "economy" + Message.FIELD_SEPARATE + "1";
-        String ss = flightprocess.search(input);
+//        String input = "Ha noi" + Message.FIELD_SEPARATE +"Ho Chi Minh" + Message.FIELD_SEPARATE + "2010-02-01"+ Message.FIELD_SEPARATE + "economy" + Message.FIELD_SEPARATE + "1";
+//        String ss = flightprocess.search(input);
+//        System.out.print("ss="+ss);
+         String input = "M_BL791_E1_1" + Message.FIELD_SEPARATE +"Ho Chi Minh" + Message.FIELD_SEPARATE + "2"+ 
+                Message.OBJECT_SEPARATE + "Hoang Thao" + Message.FIELD_SEPARATE + "Nu"+ 
+                Message.FIELD_SEPARATE+"thaohoang87@gmail.com" + Message.FIELD_SEPARATE +"0918523376" +
+                Message.FIELD_SEPARATE+"Thanh xuan" + Message.FIELD_SEPARATE + "Ha Noi" + 
+                Message.FIELD_SEPARATE+"Viet Nam";
+        boolean ss = flightprocess.processingBooking(input);
         System.out.print("ss="+ss);
-       // printValues("<http://www.owl-ontologies.com/Travel.owl#Hotel_1>");
+        flightprocess.searchFlightContract();
 
     }
 }
