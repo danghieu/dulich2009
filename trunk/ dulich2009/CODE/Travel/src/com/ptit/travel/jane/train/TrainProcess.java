@@ -78,13 +78,14 @@ private static Logger log = Logger.getLogger(TrainProcess.class.getName());
             return model;
         }
         
-        public static String search(String input){
+        public static String searchTrain(String input){
         log.info("Starting search with: " + input);
         //  Database.LoadOnt2Database();
         String ont = "http://www.owl-ontologies.com/Train.owl#";
         // lay khung du lieu tu owl
-        String file = "C://Program Files/Apache Software Foundation/Tomcat 6.0/webapps/MyOntology/Train.owl";
-
+     //  String file = "C://Program Files/Apache Software Foundation/Tomcat 6.0/webapps/MyOntology/Train1.owl";
+        String file = "C://apache-tomcat-6.0.18/webapps/MyOntology/Train1.owl";
+        
         //dua ontology vao 1 model
        OntModel model = ModelFactory.createOntologyModel(
                 PelletReasonerFactory.THE_SPEC, null);
@@ -111,6 +112,7 @@ private static Logger log = Logger.getLogger(TrainProcess.class.getName());
         // add model yeu cau vao ontology de tao ra 1 model moi chua tat ca cac rang buoc ke ca luat
         System.out.print("Truoc insert");
         Model ontmodel = insertMsg_TrainAvailRQ(input, System.currentTimeMillis());
+        
         System.out.print("model insert /n");
         ontmodel.write(System.out);
          System.out.print("a /n");
@@ -135,24 +137,25 @@ private static Logger log = Logger.getLogger(TrainProcess.class.getName());
             Individual individual = model.getIndividual(ont + resource.getLocalName());            
             String result = TrainProcess.printPropertyValues(individual,ticketid);
             System.out.println("result="+result);
-            s = printValues(result);
+            s = printValuesTrain(result);
             
         }
         
         // xoa mesage search request voi respone khoi model (neu ko xoa 2 msg nay se tong tai trong csdl)
-           Individual individual = model.getIndividual(ont + "Msg_TrainAvailRQ"+System.currentTimeMillis());
-          if(individual!=null)
-           individual.remove();
+     //      Individual individual = model.getIndividual(ont + "Msg_TrainAvailRQ"+System.currentTimeMillis());
+    //      if(individual!=null)
+    //       individual.remove();
 
         return s;
 
 
 
     }
-        public static String printValues(String s){
+        public static String printValuesTrain(String s){
             System.out.println("goi den ham hien thi ket qua");
-        String file = "C://Program Files/Apache Software Foundation/Tomcat 6.0/webapps/MyOntology/Train.owl";
-         ArrayList<String> arr = new ArrayList<String>();
+      // String file = "C://Program Files/Apache Software Foundation/Tomcat 6.0/webapps/MyOntology/Train1.owl";
+          String file ="C:/apache-tomcat-6.0.18/webapps/MyOntology/Train1.owl";
+            ArrayList<String> arr = new ArrayList<String>();
          arr = Message.split(s,Message.FIELD_SEPARATE );
          String result="";
          String output="";
@@ -170,7 +173,7 @@ private static Logger log = Logger.getLogger(TrainProcess.class.getName());
 
        for(int i = 0; i<arr.size(); i++){ 
          result="";
-         queryString="PREPIX train:<http://www.owl-ontologies.com/Travel.owl#> \n"
+         queryString="PREFIX train: <http://www.owl-ontologies.com/Train.owl#> \n"
                 + "SELECT DISTINCT * \n" + "WHERE \n" +"{\n"
                 +"?x train:ticketID ?ticketid. \n"
        //         +"?x train:hasTrainTicket ?TrainTicket. \n"
@@ -181,10 +184,10 @@ private static Logger log = Logger.getLogger(TrainProcess.class.getName());
                 +"?x train:trainJourneyClass ?class. \n"
                 +"?x train:trainJourneyCode ?code. \n"
                 
-                +"?change train:hasBeginPoint ?DepartureRailway. \n"
-                +"?DepartureRailway train:name ?dRailway. \n"
-                +"?change train:hasEndPoint ?ArriavalRailway. \n"
-                +"?ArrivalRailway train:name ?aRailway. \n"
+                +"?change train:hasBeginPoint ?Departure. \n"
+                +"?Departure train:name ?dRailway. \n"
+                +"?change train:hasEndPoint ?Arriaval. \n"
+                +"?Arriaval train:name ?aRailway. \n"
                 +"?change train:hasBeginTime ?beginTime. \n"
                 +"?beginTime train:date ?date1. \n"
                 +"?beginTime train:time ?time1. \n"
@@ -310,8 +313,9 @@ public static String printPropertyValues(Individual ind, Property prop) {
         TrainProcess trainprocess=new TrainProcess();
         OntModel ontmodel = ModelFactory.createOntologyModel();
         trainprocess.hello();
-        String input="Ha Noi"+Message.FIELD_SEPARATE+"Phu Ly"+Message.FIELD_SEPARATE+"2009-12-31";
-        String ss=trainprocess.search(input);
+        String input="Ha Noi"+Message.FIELD_SEPARATE+"Nam Dinh"+Message.FIELD_SEPARATE+"2009-12-29";
+     String ss=trainprocess.searchTrain(input);
+      
         System.out.print("ss="+ss);
     } 
 
