@@ -123,7 +123,7 @@ public class UserServlet extends HttpServlet {
             if (protocol.equals(Protocol.HOTEL_AVAIL)) {
                 msg = extractSearchMsg(request);
                 function = nickName + ".search";
-                page = "/pages/hotel/searchResult.jsp";
+                page = "/searchResult.jsp";
             } else if (protocol.equals(Protocol.FLIGHT_AVAIL)) {
                 msg = extractSearchFlightMsg(request);
                 function = nickName + ".search";
@@ -252,13 +252,17 @@ public class UserServlet extends HttpServlet {
 
     public String extractBookRoomMsg(HttpServletRequest request){
         String msg = "";
-        String  agentName,hotelName,city , street,number, roomType, fromdate, todate, 
+        String  agentName,hotelName,city ,number, street,quantity, roomType, fromdate, todate, 
                 fullName, profession, identityCard;
         agentName = request.getParameter("agentName");
         hotelName = request.getParameter("hotelName");
-        city = request.getParameter("city");
-        street = request.getParameter("street");
-        number = request.getParameter("number");
+        String address = request.getParameter("address");
+        ArrayList<String> arr = Message.split(address, " _ ");
+        log.debug("SPLITED ADDRESS: " + arr);
+        city = arr.get(2);
+        number = arr.get(0);
+        street = arr.get(1);
+        quantity = request.getParameter("quantity");
         roomType = request.getParameter("roomType");
         fromdate = request.getParameter("fromdate");
         todate = request.getParameter("todate");
@@ -269,9 +273,10 @@ public class UserServlet extends HttpServlet {
         msg = "" + agentName+ Message.FIELD_SEPARATE +
                 hotelName+ Message.FIELD_SEPARATE +
                 city + Message.FIELD_SEPARATE +
-                street+ Message.FIELD_SEPARATE +
-                number+ Message.FIELD_SEPARATE + 
+                number+ Message.FIELD_SEPARATE +
+                street+ Message.FIELD_SEPARATE +                
                 roomType+ Message.FIELD_SEPARATE +
+                quantity+ Message.FIELD_SEPARATE + 
                 fromdate+ Message.FIELD_SEPARATE +
                 todate+ Message.FIELD_SEPARATE + 
                 fullName + Message.FIELD_SEPARATE + 
