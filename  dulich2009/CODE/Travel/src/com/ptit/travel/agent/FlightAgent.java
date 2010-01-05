@@ -5,7 +5,6 @@
 package com.ptit.travel.agent;
 
 import com.ptit.travel.agent.communication.*;
-import com.ptit.travel.jane.hotel.HotelProcess;
 import jade.core.Agent;
 import jade.core.behaviours.*;
 import jade.lang.acl.ACLMessage;
@@ -54,7 +53,6 @@ public class FlightAgent extends Agent{
     class HandleRecivedMessages extends SimpleBehaviour {
 
         private boolean finished = false;
-        HotelProcess hotel = new HotelProcess();
 
         public HandleRecivedMessages() {
         }
@@ -90,8 +88,8 @@ public class FlightAgent extends Agent{
 
                                     finished = true;
                                 } else if (Protocol.FLIGHT_RES.equals(protocol)) {
-                                    /*
-                                    boolean booking = processBooking(msg.getContent());
+                                    //*
+                                    boolean booking = FlightProcess.processingBooking(msg.getContent());
                                     if (booking) {
                                         content = Message.SUCCESS;
                                     } else {
@@ -103,7 +101,7 @@ public class FlightAgent extends Agent{
                                     log.info("=== [FLIGHTAGENT] sent reply message " + reply);
                                     send(reply);
                                     finished = true;
-                                     * */
+                                     //*/
                                 }else{
                                     content = "Not understand protocol";
                                     log.info("RETURN RESULT: " + content);

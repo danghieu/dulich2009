@@ -19,10 +19,6 @@ import jade.core.AID;
 import jade.core.Agent;
 import jade.lang.acl.ACLMessage;
 
-import jade.domain.DFService;
-import jade.domain.FIPAException;
-import jade.domain.FIPAAgentManagement.DFAgentDescription;
-import jade.domain.FIPAAgentManagement.ServiceDescription;
 import java.util.Hashtable;
 
 /**
@@ -32,8 +28,8 @@ import java.util.Hashtable;
 public class Message {
 
     private static Logger log = Logger.getLogger(Message.class.getName());
-    public static String SUCCESS = "SUCCESS";
-    public static String FAIL = "FAIL";
+    public static String SUCCESS = "Đặt thành công";
+    public static String FAIL = "Đặt không thành công";
     /**
      * special string uesed to separate objects
      *  #_$
@@ -289,6 +285,7 @@ public class Message {
         m.setProtocol(protocol);
         m.setConversationId(conversationId);
         m.setContent(content);
+        m.setReplyWith(replyWith);
         log.debug("message prepared for " + recieverName + ": " + m);
         return m;
     }
