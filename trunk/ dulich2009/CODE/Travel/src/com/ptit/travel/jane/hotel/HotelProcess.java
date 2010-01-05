@@ -347,7 +347,7 @@ System.out.println("goi den search1");
     //Truong hop chi co thoi tiet
          public static OntModel insertMsg_HotelSearchRQ2(String input, long total) {
         ArrayList<String> arr = new ArrayList<String>();
- System.out.println("goi den search2");
+        System.out.println("goi den search2");
         // Ham phan tach thog tin dua vao
         arr = Message.split(input, Message.FIELD_SEPARATE);
 
@@ -360,10 +360,7 @@ System.out.println("goi den search1");
 
             //tao ra 1 lop request de lay cac thong tin yeu cau
             OntClass oc = model.createClass(Hotel.getURI() + "Msg_HotelSearchRQ2");
-            ind = model.createIndividual(Hotel.getURI() + "Msg_HotelSearchRQ2" + total, oc);
-
-
-            
+            ind = model.createIndividual(Hotel.getURI() + "Msg_HotelSearchRQ2" + total, oc);        
             
             if(arr.get(2)!=null){
                 ind.addLiteral(Hotel.AreaWeather, arr.get(2));
@@ -1153,32 +1150,41 @@ System.out.println("Trong next"+cl.toString());
       ArrayList <String> arr = new ArrayList<String>();
       arr = Message.split(input, Message.FIELD_SEPARATE);
       System.out.println("arr: "+arr.toString());
-      String queryString = "PREFIX hotel: <http://www.owl-ontologies.com/Travel.owl#> \n" + "SELECT DISTINCT * \n " 
-                + "WHERE \n" + "{ \n" + "?x hotel:HotelName ?hotelname. \n"
-                + "?x hotel:hasHotelRoom ?hotelRoom. \n" 
+      String queryString = "PREFIX hotel: <http://www.owl-ontologies.com/Travel.owl#> \n" + "SELECT * \n " 
+                + "WHERE \n" + "{ \n" + "?x hotel:HotelName ?hotel_Name. \n"
+                + "?x hotel:hasHotelRoom ?hotel_Room. \n" 
                 + "?x hotel:hasContact ?contact. \n" 
                 + "?contact hotel:hasAddress ?add. \n" 
-                + "?add hotel:city ?city. \n" 
-                + "?add hotel:street ?street. \n" 
-                + "?add hotel:number ?number. \n" 
+                + "?add hotel:city ?add_city. \n" 
+                + "?add hotel:street ?add_street. \n" 
+                + "?add hotel:number ?add_number. \n" 
                 
-                + "?hotelRoom hotel:roomType ?roomType. \n"       
-                + "?hotelRoom hotel:Number ?total. \n"  
-                + "?hotelRoom hotel:hasNotAvailabilityPeriod ?notAvail. \n"
+                + "?hotel_Room hotel:roomType ?room_Type. \n"       
+                + "?hotel_Room hotel:Number ?total. \n"  
+                + "?hotel_Room hotel:hasNotAvailabilityPeriod ?notAvail. \n"
         
                 
-                + "?notAvail hotel:roomType ?roomType1. \n" 
-                + "?notAvail hotel:ToDate ?toDate. \n" 
-                + "?notAvail hotel:FromDate ?fromDate. \n" 
+                + "?notAvail hotel:roomType ?room_Type1. \n" 
+                + "?notAvail hotel:ToDate ?to_Date. \n" 
+                + "?notAvail hotel:FromDate ?from_Date. \n" 
                 + "?notAvail hotel:Number ?number1. \n"
-        
-                + " FILTER ( regex(?hotelname,\"" + arr.get(0) + "\", \"i\"))" 
-                + " FILTER ( regex(?city,\"" + arr.get(1) + "\", \"i\"))"
-                + " FILTER ( regex(?number,\"" + arr.get(2) + "\", \"i\"))"
-                + " FILTER ( regex(?street,\"" + arr.get(3) + "\", \"i\"))"
-                + " FILTER ( regex(?roomType,\"" + arr.get(4) + "\", \"i\"))"
+        /*
+                + " FILTER ( regex(?hotel_Name,\"" + arr.get(0) + "\"))" 
+                + " FILTER ( regex(?add_city,\"" + arr.get(1) + "\"))"
+                + " FILTER ( regex(?add_number,\"" + arr.get(2) + "\"))"
+                + " FILTER ( regex(?add_street,\"" + arr.get(3) + "\"))"
+                + " FILTER ( regex(?room_Type,\"" + arr.get(4) + "\"))"
           
-                + " FILTER ( regex(?roomType1,\"" + arr.get(4) + "\", \"i\"))}";
+                + " FILTER ( regex(?room_Type1,\"" + arr.get(4) + "\"))}";
+      */
+                
+                + " FILTER ( regex(?hotel_Name,\"" + arr.get(0) + "\", \"i\"))" 
+                + " FILTER ( regex(?add_city,\"" + arr.get(1) + "\", \"i\"))"
+                + " FILTER ( regex(?add_number,\"" + arr.get(2) + "\", \"i\"))"
+                + " FILTER ( regex(?add_street,\"" + arr.get(3) + "\", \"i\"))"
+                + " FILTER ( regex(?room_Type,\"" + arr.get(4) + "\", \"i\"))"
+          
+                + " FILTER ( regex(?room_Type1,\"" + arr.get(4) + "\", \"i\"))}";
      
       Query query = QueryFactory.create(queryString);
         QueryExecution queryexec = QueryExecutionFactory.create(query, model);
@@ -1207,14 +1213,14 @@ System.out.println("Trong next"+cl.toString());
             
                 total = Float.parseFloat(binding.getLiteral("total").getValue().toString());                           
               
-                String todate = binding.getLiteral("toDate").getValue().toString();
+                String todate = binding.getLiteral("to_Date").getValue().toString();
                 System.out.println("ToDate truy van :"+todate);
-                String fromdate = binding.getLiteral("fromDate").getValue().toString();
+                String fromdate = binding.getLiteral("from_Date").getValue().toString();
                 System.out.println("FromDate truy van :"+fromdate);
                 Number = Float.parseFloat(binding.getLiteral("number1").getValue().toString());
               
                  // Tim ra khoang dat gan nhat phia tren ngay muon dat
-                  hotelroom = binding.getResource("hotelRoom").toString();
+                  hotelroom = binding.getResource("hotel_Room").toString();
                     System.out.println("hotel:"+hotelroom);
               
                     
@@ -1306,7 +1312,7 @@ System.out.println("Trong next"+cl.toString());
                 isOk = false;
             }
      
-     /*   if(isOk == true){
+        if(isOk == true){
             System.out.println("xu ly lay gia cuoi cung");
             OntModel ontmodel = HotelProcess.insertMsg_HotelBookRQ(input, System.currentTimeMillis());
             model.add(ontmodel);
@@ -1334,9 +1340,9 @@ System.out.println("Trong next"+cl.toString());
                   
             
         }
-            */
             
-       // }
+            
+        }
         return isOk;
   }
      
@@ -1680,7 +1686,7 @@ System.out.println("Trong next"+cl.toString());
                + "MeetingRoom" + Message.FIELD_SEPARATE + "2" + Message.FIELD_SEPARATE + s_begin + Message.FIELD_SEPARATE + s_end
                +Message.FIELD_SEPARATE+"Hanh"+Message.FIELD_SEPARATE+"Sinh Vien" + Message.FIELD_SEPARATE+"162882805";
    
-  //   boolean ss1 = HotelProcess.processBooking(input1);
+     boolean ss1 = HotelProcess.processBooking(input1);
                
    
    
@@ -1693,10 +1699,10 @@ System.out.println("Trong next"+cl.toString());
   //    System.out.print("ss="+ss1);
        // printValues("<http://www.owl-ontologies.com/Travel.owl#Hotel_1>");
 
-  //  HotelProcess.searchNotAvailability();
-   
+    HotelProcess.searchNotAvailability();
+   /*
        String inputTrain="Ha Noi"+Message.FIELD_SEPARATE+"Nam Dinh"+Message.FIELD_SEPARATE+"2009-12-29";
         String ss=HotelProcess.searchTrain(inputTrain);
-        System.out.print("ss="+ss);
+        System.out.print("ss="+ss);*/
     }
 }
