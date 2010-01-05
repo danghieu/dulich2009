@@ -60,8 +60,8 @@ public class StartAgents {
                 "paramA" + Message.FIELD_SEPARATE +
                 "paramB" + Message.OBJECT_SEPARATE +
                 "paramX";
-        input = "405 _ Thanh Xuan Bac _ Nam Dinh _ Vietnam@_&warm@_&2009-12-24@_&2009-12-27@_&yennh235@gmail.com@_&Sofitel@_&outside@_&4@_&LivingRoom@_&100.0@_&USDPartyRoom@_&250.0@_&USDConferenceRoom@_&300.0@_&USD#_$";
-        System.out.println("|| INPUT: " + input);
+        input = "Ha Noi@_&Ho Chi Minh@_&05-01-2010@_&economy@_&3" ;
+                        System.out.println("|| INPUT: " + input);
         ArrayList<String> list = Message.split(input, Message.OBJECT_SEPARATE);
         System.out.println("|| SEPARATE OBJECT: " + list.toString());
         System.out.println("|| SEPARATE FIELD of 1st Ojbect: " + Message.split(list.get(0), Message.FIELD_SEPARATE));
@@ -133,6 +133,26 @@ public class StartAgents {
             
         
     }
+   public void testCreateAgentCF(){
+        AgentController agentController;
+            String host = "localhost";
+            String port = "1099";
+            String nickName = "ControllerAgent";//"Guest" + System.currentTimeMillis();
+            String className = "com.ptit.travel.agent.ControllerAgent";
+            try {                
+                ContainerController containerController = (ContainerController)AgentManager.startAgent(host, port, 
+                        nickName, className,true).get(0);
+                nickName = "FlightAgent";//"Guest" + System.currentTimeMillis();
+                className = "com.ptit.travel.agent.FlightAgent";
+                agentController = AgentManager.addAgent(host, port, nickName, className,containerController);
+             
+                
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            
+        
+    }
     public void testCreateAgentUC2H(){
         AgentController agentController;
             String host = "localhost";
@@ -175,7 +195,8 @@ public class StartAgents {
 //        test.testSplitMessage();
         //test.testConfigXMLConnect();
         //test.callTheAgentViaXmlRpc();
-        test.testCreateAgentUCF();   // chi chay contrller & Hotel     
+        test.testCreateAgentCF();   // chi chay contrller & Hotel     
+        
 
     }
 

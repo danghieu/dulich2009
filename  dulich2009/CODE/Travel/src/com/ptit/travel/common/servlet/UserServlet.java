@@ -4,15 +4,11 @@ import com.ptit.travel.agent.communication.ConfigXMLConnect;
 import com.ptit.travel.agent.communication.Message;
 import com.ptit.travel.agent.communication.Protocol;
 import java.io.IOException;
-import java.io.PrintWriter;
-
-import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.ptit.travel.agent.UserAgent;
 import com.ptit.travel.common.AgentManager;
 import com.ptit.travel.common.CallAgent;
 import jade.wrapper.AgentController;
@@ -70,7 +66,7 @@ public class UserServlet extends HttpServlet {
      * chi chay 1 lan, duoc goi khi nguoi dung request den server
      * @throws javax.servlet.ServletException
      */
-    /*
+    //*
     @Override
     public void init() throws ServletException {
         super.init();
@@ -108,7 +104,7 @@ public class UserServlet extends HttpServlet {
 
     protected void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-
+        
         String protocol = request.getParameter("protocol");
         log.info("POTOCOL: " + protocol);
         //*
@@ -124,12 +120,20 @@ public class UserServlet extends HttpServlet {
         String page = "index.jsp";
         if (protocol != null) {
 
-            if (protocol.endsWith(Protocol.SUFFIX_SEARCH)) {
+            if (protocol.equals(Protocol.HOTEL_AVAIL)) {
                 msg = extractSearchMsg(request);
                 function = nickName + ".search";
                 page = "/pages/hotel/searchResult.jsp";
-            } else if (protocol.endsWith(Protocol.SUFFIX_BOOK)) {
-                msg = extractBookMsg(request);
+            } else if (protocol.equals(Protocol.FLIGHT_AVAIL)) {
+                msg = extractSearchFlightMsg(request);
+                function = nickName + ".search";
+                page = "/searchFlightResult.jsp";
+            }else if (protocol.equals(Protocol.HOTEL_RES)) {
+                msg = extractBookRoomMsg(request);
+                function = nickName + ".book";
+                page = "/bookResult.jsp";
+            } else if (protocol.equals(Protocol.FLIGHT_RES)) {
+                msg = extractBookFlightMsg(request);
                 function = nickName + ".book";
                 page = "/bookResult.jsp";
             } // more... //TODO
@@ -141,7 +145,8 @@ public class UserServlet extends HttpServlet {
             String params[] = {msg, msgId, protocol};
 
             //callAgent = new CallAgent();
-            String result = msg;//callAgentBehavior(msgId, function, params);
+            String result = //"FlightAgent  VN213_20100201_E  Information  Vietnam Airlines  VN213  Noi Bai-Ha Noi  8:00,2010-02-01  Tan Son Nhat-Ho Chi Minh  10:00,Cung ngay  Boeing777  economy  1500000.0VND  #_&#_&VN217_20100201_E  Information  Vietnam Airlines  VN217  Noi Bai-Ha Noi  11:00,2010-02-01  Tan Son Nhat-Ho Chi Minh  13:00,Cung ngay  Boeing777  economy  1500000.0VND  #_&#_&VN219_20100201_E  Information  Vietnam Airlines  VN219  Noi Bai-Ha Noi  13:00,2010-02-01  Tan Son Nhat-Ho Chi Minh  15:00,Cung ngay  Boeing777  economy  1500000.0VND  #_&#_&";
+                callAgentBehavior(msgId, function, params);
             request.setAttribute("result", result);
 //            request.setAttribute("callAgent", callAgent);
 //            request.setAttribute("msgId", msgId);
@@ -223,14 +228,33 @@ public class UserServlet extends HttpServlet {
 
             }
         }
-        log.info("|| " + msg);
+        log.info("SEARCH HOTEL Msg: " + msg);
+        return msg;
+    }
+   public String extractSearchFlightMsg(HttpServletRequest request) {
+        String msg = "";
+        String  depart,destination,takeOffDate , ticket,quatity;
+        depart = request.getParameter("depart");
+        destination = request.getParameter("destination");
+        takeOffDate = request.getParameter("takeOffDate");
+        ticket = request.getParameter("ticket");
+        quatity = request.getParameter("quatity");
+        
+        
+        msg = "" + depart+ Message.FIELD_SEPARATE +
+                destination+ Message.FIELD_SEPARATE +
+                takeOffDate + Message.FIELD_SEPARATE +
+                ticket+ Message.FIELD_SEPARATE +
+                quatity;
+        log.info("SEARCH FLIGHT Msg: " + msg);
         return msg;
     }
 
-    public String extractBookMsg(HttpServletRequest request){
+    public String extractBookRoomMsg(HttpServletRequest request){
         String msg = "";
-        String  hotelName,city , street,number, roomType, fromdate, todate, 
+        String  agentName,hotelName,city , street,number, roomType, fromdate, todate, 
                 fullName, profession, identityCard;
+        agentName = request.getParameter("agentName");
         hotelName = request.getParameter("hotelName");
         city = request.getParameter("city");
         street = request.getParameter("street");
@@ -242,7 +266,8 @@ public class UserServlet extends HttpServlet {
         profession = request.getParameter("profession");
         identityCard = request.getParameter("identityCard");
         
-        msg = "" + hotelName+ Message.FIELD_SEPARATE +
+        msg = "" + agentName+ Message.FIELD_SEPARATE +
+                hotelName+ Message.FIELD_SEPARATE +
                 city + Message.FIELD_SEPARATE +
                 street+ Message.FIELD_SEPARATE +
                 number+ Message.FIELD_SEPARATE + 
@@ -252,7 +277,42 @@ public class UserServlet extends HttpServlet {
                 fullName + Message.FIELD_SEPARATE + 
                 profession + Message.FIELD_SEPARATE + 
                 identityCard;
+        log.debug("BOOK ROOM Msg: " + msg);
         return msg;
+    }
+        public String extractBookFlightMsg(HttpServletRequest request){
+        String msg = "";
+        String  agentName,id , agent,booknumber, fullName, sex, email, 
+                phoneNumber, specificAddress, city, country;
+        agentName = request.getParameter("agentName");
+        id = request.getParameter("id");
+        agent = request.getParameter("agent");
+        booknumber = request.getParameter("booknumber");
+        fullName = request.getParameter("fullName");
+        sex = request.getParameter("sex");
+        email = request.getParameter("email");
+        phoneNumber = request.getParameter("phoneNumber");
+        specificAddress = request.getParameter("specificAddress");
+        city = request.getParameter("city");
+        country = request.getParameter("country");
+        
+        msg = "" + agentName+ Message.FIELD_SEPARATE +
+                id + Message.FIELD_SEPARATE +
+                agent+ Message.FIELD_SEPARATE +
+                booknumber+ 
+                
+                Message.OBJECT_SEPARATE + 
+                
+                fullName+ Message.FIELD_SEPARATE +
+                sex+ Message.FIELD_SEPARATE +
+                email+ Message.FIELD_SEPARATE + 
+                phoneNumber + Message.FIELD_SEPARATE + 
+                specificAddress + Message.FIELD_SEPARATE + 
+                city + Message.FIELD_SEPARATE + 
+                country;
+        log.debug("BOOK FLIGHT Msg: " + msg);
+        return msg;
+        
     }
     /**
      * khi co yeu cau dang nhap
