@@ -7,17 +7,17 @@
 <html>
     <body>
         <ul>
-            <li><a href="#">Trang ch&#7911; </a></li>
-            <li><a href="#">Tour </a></li>
-            <li><a href="#">Ð&#7883;a &#273;i&#7875;m </a></li>
-            <li><a href="hotel.jsp">Khách s&#7841;n </a></li>
-            <li><a href="#">Máy bay </a></li>
+            <li><a href="#" style="color: #fff;	text-decoration: none">Trang ch&#7911; </a></li>
+            <li><a href="#" style="color: #fff;	text-decoration: none">Tour </a></li>
+            <li><a href="#" style="color: #fff;	text-decoration: none">Ð&#7883;a &#273;i&#7875;m </a></li>
+            <li><a href="hotel.jsp" style="color: #fff;	text-decoration: none">Khách s&#7841;n </a></li>
+            <li><a href="#" style="color: #fff;	text-decoration: none">Máy bay </a></li>
             
-            <li><a href="#">Tàu h&#7887;a</a></li>
-            <li><a href="#">Thuê xe</a></li>
-            <li><a href="#"> S&#7921; ki&#7879;n </a></li>
-            <li><a href="#">Tin t&#7913;c </a></li>
-            <li><a href="#">Liên h&#7879; </a></li>
+            <li><a href="#" style="color: #fff;	text-decoration: none">Tàu h&#7887;a</a></li>
+            <li><a href="#"style="color: #fff;	text-decoration: none">Thuê xe</a></li>
+            <li><a href="#"style="color: #fff;	text-decoration: none"> S&#7921; ki&#7879;n </a></li>
+            <li><a href="#"style="color: #fff;	text-decoration: none">Tin t&#7913;c </a></li>
+            <li><a href="#"style="color: #fff;	text-decoration: none">Liên h&#7879; </a></li>            
         </ul>
     </body>
 </html>

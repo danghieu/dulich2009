@@ -42,7 +42,7 @@
                             address = serviceList.get(1); 
                             log.info("[HOTEL INFO] supplier: " + supplier + " hotelName: " 
                                     +hotelName+ " address: " + address);
-                            out.println("<form action=\"pages/hotel/bookRoom.jsp\" method=\"get\" id=\"form" + i + "\"> ");
+                            out.println("<form action=\"bookRoom.jsp\" method=\"get\" id=\"form" + i + "\"> ");
                             out.println("<div style=\"padding-left: 18px;\">" +
                                     "<div align=\"left\" style=\"border-bottom: 2px solid rgb(204, 204, 204); padding-bottom: 5px; padding-top: 5px; width: 99%; " +
                                     "margin-right: 5px; clear: both;\">" +
@@ -97,7 +97,7 @@
                             out.println("<input type=\"hidden\" name=\"protocol\" value=\"" + Protocol.HOTEL_RES + "\"/>");
                             out.println("<input type=\"hidden\" name=\"services\" value=\"" + services + "\"/>");
                             //out.println("<a href=\"abc\" onClick=\"\">more</a>");
-                            out.println("<input type=\"submit\" name=\"submit\" value=\"Book\"/>");
+                            out.println("<input type=\"submit\" name=\"submit\" value=\"Đặt\"/>");
                             out.println("</div><div id=\"B2FVNw_3D_3D\" style=\"overflow: hidden; padding-top: 3px; padding-bottom: 10px; display: none; clear: both;\">" +
                                     "</div></div></div>");
                             out.println("</form>");
