@@ -43,7 +43,7 @@ public class Message {
      * special string uesed to separate fields of the object
      * @_&
      */
-    public final static String FIELD_SEPARATE = "  ";//"@_&";
+    public final static String FIELD_SEPARATE = "@_&";
 
     /**
      * This method returns XML/RDF text representation of RDF Resource
@@ -550,7 +550,7 @@ public class Message {
         Hashtable<String, String> agentMsg = new Hashtable<String, String>();
         String receiver, content;
         int index;
-        
+        log.debug("|| Receiver and Msg extracted: ");
         for (int i = 0; i < splitedContent.size(); i++) {
             content = splitedContent.get(i);
             index = content.indexOf(Message.FIELD_SEPARATE);
@@ -563,7 +563,8 @@ public class Message {
                     content = agentMsg.get(receiver) + Message.OBJECT_SEPARATE + content;                    
                 }
                 agentMsg.put(receiver, content);
-                
+                log.debug("|| AGENT  : " + receiver);
+                log.debug("|| Message: " + content);
             }
 
         }

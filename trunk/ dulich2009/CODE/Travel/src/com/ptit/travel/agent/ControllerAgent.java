@@ -4,11 +4,8 @@
  */
 package com.ptit.travel.agent;
 
-import com.ptit.travel.agent.communication.Language;
 import com.ptit.travel.agent.communication.Message;
 import com.ptit.travel.agent.communication.Protocol;
-import com.ptit.travel.beans.SerializableBean;
-import jade.core.AID;
 import jade.core.Agent;
 import jade.core.behaviours.Behaviour;
 import jade.core.behaviours.TickerBehaviour;

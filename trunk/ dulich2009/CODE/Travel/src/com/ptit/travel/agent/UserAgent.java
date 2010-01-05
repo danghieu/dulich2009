@@ -60,10 +60,12 @@ public class UserAgent extends Agent {
 //                "E:/Develop/Netbean/Travel/config/UserAgent.properties",
 //                this.getLocalName());// E:/Develop/Netbean/Travel/
 
-    //* Tu gan hanh okvi search sau 0.5 s
+    /* Tu gan hanh okvi search sau 0.5 s
     addBehaviour(new TickerBehaviour(this, 30000) {
     protected void onTick() {
-    search("Nam Dinh", "conversationId", Protocol.FLIGHT_AVAIL);
+        String content = "ha noi" + Message.FIELD_SEPARATE +"Ho Chi Minh" + Message.FIELD_SEPARATE + 
+                "2010-02-01"+ Message.FIELD_SEPARATE + "economy" + Message.FIELD_SEPARATE + "1";
+    search(content, "conversationId", Protocol.FLIGHT_AVAIL);
     }
     });//*/
 
@@ -110,7 +112,7 @@ public class UserAgent extends Agent {
                 }
             }
         } catch (Exception e) {
-            results = "Khoong co ket qua de hien thi";
+            results = "Khong co ket qua de hien thi";
             log.info(e.toString());
         }
 
@@ -376,7 +378,7 @@ public class UserAgent extends Agent {
                     try {
                         // collect agents who satisfy action
                         //receivers = agentDAO.getAgents("", "hotel");
-                        log.info("Booking ... ");
+                        log.info("Start Booking ... ");
                         Hashtable<String, String> agentMsg = Message.extractAgentMsg(content);
                         
                         if (agentMsg == null) {
@@ -451,7 +453,7 @@ public class UserAgent extends Agent {
             if (step == 2) {// && avail); if finishing only exist available
                 // put messages into queue of agent
 
-                log.info("=== FIHISHED Booking behavior");
+                log.info("=== FIHISHED Booking");
                 msgQueue.put(conversationId, msgs);
                 return true;
             }
