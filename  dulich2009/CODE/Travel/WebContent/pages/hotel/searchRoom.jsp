@@ -1,5 +1,6 @@
-<%@ page contentType="text/html; charset=iso-8859-1" language="java" import="java.sql.*" errorPage="" %>
-
+<%@ page contentType="text/html; charset=iso-8859-1" errorPage="" %>
+<%@ page language="java" import="org.apache.log4j.Logger"%>
+<%@ page language="java" import="com.ptit.travel.agent.communication.Protocol" %>
 <%
             String path = request.getContextPath();
             String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort() + path + "/";
@@ -26,6 +27,7 @@
     
     <body>
         <form action="UserServlet" method="get"> 
+        <input type="hidden" name="protocol" value="<%=Protocol.HOTEL_AVAIL%>">
             <table >
             <tr>
             <td>
