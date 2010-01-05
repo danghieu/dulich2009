@@ -3,34 +3,22 @@
  * and open the template in the editor.
  */
 package com.ptit.travel.agent;
-
-import com.hp.hpl.jena.ontology.OntModel;
-import com.hp.hpl.jena.rdf.model.ModelFactory;
-import java.util.ArrayList;
-import java.util.Hashtable;
-import java.util.Iterator;
-
-
 import com.ptit.travel.agent.communication.*;
 import com.ptit.travel.agent.memory.*;
 
-import com.hp.hpl.jena.rdf.model.Resource;
 
-import com.ptit.travel.jane.hotel.HotelProcess;
 import jade.core.Agent;
 import jade.core.behaviours.*;
 import jade.lang.acl.ACLMessage;
 import jade.lang.acl.MessageTemplate;
 
 import org.apache.log4j.Logger;
-import org.apache.log4j.PropertyConfigurator;
 
 
 
 import org.mindswap.pellet.jena.PelletReasonerFactory;
 
 import com.ptit.travel.agent.communication.Message;
-import java.io.*;
 import com.hp.hpl.jena.util.iterator.ExtendedIterator;
 import com.ptit.travel.jane.hotel.Hotel;
 import com.hp.hpl.jena.ontology.ObjectProperty;
@@ -38,10 +26,8 @@ import com.hp.hpl.jena.ontology.DatatypeProperty;
 import com.hp.hpl.jena.ontology.Individual;
 import com.hp.hpl.jena.ontology.OntClass;
 import com.hp.hpl.jena.ontology.OntModel;
-import com.hp.hpl.jena.ontology.OntModelSpec;
 import com.hp.hpl.jena.ontology.OntResource;
 import com.hp.hpl.jena.query.Query;
-import com.hp.hpl.jena.query.QuerySolution;
 import com.hp.hpl.jena.query.QueryExecution;
 import com.hp.hpl.jena.query.QueryExecutionFactory;
 import com.hp.hpl.jena.query.QueryFactory;
@@ -50,7 +36,6 @@ import com.hp.hpl.jena.sparql.core.ResultBinding;
 import com.ptit.travel.moduleJDBC.Model.*;
 import java.util.*;
 import com.hp.hpl.jena.rdf.model.*;
-import java.io.FileOutputStream;
 
 /**
  * Hotel Agent runs also XML-RPC server on port 8000 and public methods can be
@@ -126,7 +111,6 @@ public class HotelAgent extends Agent {
     class HandleRecivedMessages extends SimpleBehaviour {
 
         private boolean finished = false;
-        HotelProcess hotel = new HotelProcess();
 
         public HandleRecivedMessages() {
         }
@@ -187,8 +171,6 @@ public class HotelAgent extends Agent {
                 block(); // this is to allow other behaviours
 
             }
-            ;
-
 
         }
 

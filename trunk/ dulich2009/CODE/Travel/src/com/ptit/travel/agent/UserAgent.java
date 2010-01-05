@@ -60,14 +60,26 @@ public class UserAgent extends Agent {
 //                "E:/Develop/Netbean/Travel/config/UserAgent.properties",
 //                this.getLocalName());// E:/Develop/Netbean/Travel/
 
-    /* Tu gan hanh okvi search sau 0.5 s
-    addBehaviour(new TickerBehaviour(this, 30000) {
-    protected void onTick() {
-        String content = "ha noi" + Message.FIELD_SEPARATE +"Ho Chi Minh" + Message.FIELD_SEPARATE + 
-                "2010-02-01"+ Message.FIELD_SEPARATE + "economy" + Message.FIELD_SEPARATE + "1";
-    search(content, "conversationId", Protocol.FLIGHT_AVAIL);
-    }
-    });//*/
+        /* Tu gan hanh okvi search sau 0.5 s
+        addBehaviour(new TickerBehaviour(this, 30000) {
+
+            protected void onTick() {
+                String content = "ha noi" + Message.FIELD_SEPARATE + "Ho Chi Minh" + Message.FIELD_SEPARATE +
+                        "2010-02-01" + Message.FIELD_SEPARATE + "economy" + Message.FIELD_SEPARATE + "1";
+                String s_begin = "2010-01-6";
+                String s_end = "2010-01-7";
+                //     hotelprocess.checkAvailability( "HaiYen", "LivingRoom", "SingleRoom");
+
+                content = "HotelAgent" + Message.FIELD_SEPARATE + "HaiYen" + Message.FIELD_SEPARATE + "Nam Dinh" + 
+                        Message.FIELD_SEPARATE + "405" + Message.FIELD_SEPARATE + "Thanh Xuan Bac" + 
+                        Message.FIELD_SEPARATE + "MeetingRoom" + Message.FIELD_SEPARATE + "2" + 
+                        Message.FIELD_SEPARATE + s_begin + Message.FIELD_SEPARATE + s_end + Message.FIELD_SEPARATE +
+                        "Hanh" + Message.FIELD_SEPARATE + "Sinh Vien" + Message.FIELD_SEPARATE + "162882805";
+
+                String input = "Nam Dinh"+Message.FIELD_SEPARATE+null+Message.FIELD_SEPARATE+null;
+                search(input, "conversationId", Protocol.HOTEL_AVAIL);
+            }
+        });//*/
 
     }
 
@@ -369,7 +381,7 @@ public class UserAgent extends Agent {
             conversationId = _conversationId;
             protocol = _p;
             msgs = new ArrayList<String>();
-            //receivers = new Set<String>();
+        //receivers = new Set<String>();
         }
 
         public void action() {
@@ -380,22 +392,22 @@ public class UserAgent extends Agent {
                         //receivers = agentDAO.getAgents("", "hotel");
                         log.info("Start Booking ... ");
                         Hashtable<String, String> agentMsg = Message.extractAgentMsg(content);
-                        
+
                         if (agentMsg == null) {
                             log.error("Invalid format input from servlet: " + content);
                             return;
                         }
-                        
+
                         receivers = agentMsg.keySet();
-                        
+
                         String replyWith = "[" + myAgent.getLocalName() + "]" + System.currentTimeMillis();
                         // Send the cfp to all agents
                         log.info("=== Preparing msg to send msg to: " + receivers.toString());
                         ACLMessage msg;
                         String receiver;
                         for (int i = 0; i < receivers.size(); i++) {
-                            receiver = (String)receivers.toArray()[i];
-                            msg = Message.createInformMessage(a, receiver, agentMsg.get(receiver), 
+                            receiver = (String) receivers.toArray()[i];
+                            msg = Message.createInformMessage(a, receiver, agentMsg.get(receiver),
                                     Language.HOTEL, protocol, conversationId, replyWith);
                             myAgent.send(msg);
                         }
@@ -427,8 +439,7 @@ public class UserAgent extends Agent {
                             //FOR TEST
                             log.info("=== One more received message from " + replyMsg.getSender().getLocalName());
                             log.info(replyMsg);
-                            msgs.add(replyMsg.getSender().getLocalName() + Message.FIELD_SEPARATE + 
-                                    replyMsg.getContent());
+                            msgs.add(replyMsg.getContent());
                         }
                         repliesCnt++;
                         log.info("|| RECEIVERS: " + receivers.size() + " || repliesCnt: " + repliesCnt);
