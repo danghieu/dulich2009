@@ -69,6 +69,7 @@
             }
             log.info("supplier: " + supplier + "services: " + services);
             %>
+            <input name="agentName" value="<%=supplier%>" type="hidden">
             <div id="templatemo_maincontainer">
                 <div id="templatemo_topsection">
                     <jsp:include page="/pages/layout/header.jsp" flush="false"></jsp:include>
@@ -155,7 +156,7 @@
                                                                                 chỉ <br>
                                                                         </div></td>
                                                                         <td bgcolor="#FFFFFF"><b><%=address%>
-                                                                            <input name="hotelAddress" id="hotelAddress" value="<%=address%>" type="hidden">
+                                                                            <input name="address" id="hotelAddress" value="<%=address%>" type="hidden">
                                                                         </b></td>
                                                                     </tr>
                                                                             
