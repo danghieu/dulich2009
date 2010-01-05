@@ -9,36 +9,12 @@ import com.ptit.travel.jane.hotel.HotelProcess;
 import jade.core.Agent;
 import jade.core.behaviours.*;
 import jade.lang.acl.ACLMessage;
-import jade.lang.acl.MessageTemplate;
 
 import org.apache.log4j.Logger;
-import org.apache.log4j.PropertyConfigurator;
-
-
-
-import org.mindswap.pellet.jena.PelletReasonerFactory;
-
 import com.ptit.travel.agent.communication.Message;
-import java.io.*;
-import com.hp.hpl.jena.util.iterator.ExtendedIterator;
-import com.ptit.travel.jane.hotel.Hotel;
-import com.hp.hpl.jena.ontology.ObjectProperty;
-import com.hp.hpl.jena.ontology.DatatypeProperty;
-import com.hp.hpl.jena.ontology.Individual;
-import com.hp.hpl.jena.ontology.OntClass;
-import com.hp.hpl.jena.ontology.OntModel;
-import com.hp.hpl.jena.ontology.OntModelSpec;
-import com.hp.hpl.jena.ontology.OntResource;
-import com.hp.hpl.jena.query.Query;
-import com.hp.hpl.jena.query.QuerySolution;
-import com.hp.hpl.jena.query.QueryExecution;
-import com.hp.hpl.jena.query.QueryExecutionFactory;
-import com.hp.hpl.jena.query.QueryFactory;
-import com.hp.hpl.jena.query.ResultSet;
-import com.hp.hpl.jena.sparql.core.ResultBinding;
-import com.ptit.travel.moduleJDBC.Model.*;
+
 import java.util.*;
-import com.hp.hpl.jena.rdf.model.*;
+import com.ptit.travel.jane.Flight.FlightProcess;
 import java.io.FileOutputStream;
 
 /**
@@ -103,7 +79,8 @@ public class FlightAgent extends Agent{
 
                                     log.info("Call module DB with String input: " + content);
 
-                                    //content = search(content);// chi goi DB o day
+                                    //content = "ha noi" + Message.FIELD_SEPARATE +"Ho Chi Minh" + Message.FIELD_SEPARATE + "2010-02-01"+ Message.FIELD_SEPARATE + "economy" + Message.FIELD_SEPARATE + "1";
+                                    content = FlightProcess.search(content);// chi goi DB o day
 
                                     log.info("RETURN RESULT: " + content);
                                     ACLMessage reply = Message.createReplyMessage(msg, content);
