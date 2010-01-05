@@ -22,7 +22,8 @@
             <div id="templatemo_right_column">
                 <% 
                 String msg = (String)request.getAttribute("result");
-                out.println(msg);
+                
+                out.println("<h2>"+msg+"</h2>");
                 %>  
             </div>
             <div id="templatemo_bot"></div>
