@@ -104,14 +104,15 @@ public class UserServlet extends HttpServlet {
 
     protected void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        
+
         String protocol = request.getParameter("protocol");
         log.info("POTOCOL: " + protocol);
         //*
 
         String msgId = "guest" + System.currentTimeMillis();
-        
+
         String msg;// = extractMsg(request);
+
         String function = "";
 
         // Foward to JSP to view
@@ -128,7 +129,11 @@ public class UserServlet extends HttpServlet {
                 msg = extractSearchFlightMsg(request);
                 function = nickName + ".search";
                 page = "/searchFlightResult.jsp";
-            }else if (protocol.equals(Protocol.HOTEL_RES)) {
+            } else if (protocol.equals(Protocol.TRAIN_AVAIL)) {
+                msg = extractSearchFlightMsg(request);
+                function = nickName + ".search";
+                page = "/searchTrainResult.jsp";
+            } else if (protocol.equals(Protocol.HOTEL_RES)) {
                 msg = extractBookRoomMsg(request);
                 function = nickName + ".book";
                 page = "/bookResult.jsp";
@@ -136,7 +141,11 @@ public class UserServlet extends HttpServlet {
                 msg = extractBookFlightMsg(request);
                 function = nickName + ".book";
                 page = "/bookResult.jsp";
-            } // more... //TODO
+            } else if (protocol.equals(Protocol.TRAIN_RES)) {
+                msg = extractBookTrainMsg(request);
+                function = nickName + ".book";
+                page = "/bookResult.jsp";
+            }// more... //TODO
             else {
                 log.error("Don't understand protocol: " + protocol);
                 return;
@@ -146,7 +155,7 @@ public class UserServlet extends HttpServlet {
 
             //callAgent = new CallAgent();
             String result = //"FlightAgent  VN213_20100201_E  Information  Vietnam Airlines  VN213  Noi Bai-Ha Noi  8:00,2010-02-01  Tan Son Nhat-Ho Chi Minh  10:00,Cung ngay  Boeing777  economy  1500000.0VND  #_&#_&VN217_20100201_E  Information  Vietnam Airlines  VN217  Noi Bai-Ha Noi  11:00,2010-02-01  Tan Son Nhat-Ho Chi Minh  13:00,Cung ngay  Boeing777  economy  1500000.0VND  #_&#_&VN219_20100201_E  Information  Vietnam Airlines  VN219  Noi Bai-Ha Noi  13:00,2010-02-01  Tan Son Nhat-Ho Chi Minh  15:00,Cung ngay  Boeing777  economy  1500000.0VND  #_&#_&";
-                callAgentBehavior(msgId, function, params);
+                    callAgentBehavior(msgId, function, params);
             request.setAttribute("result", result);
 //            request.setAttribute("callAgent", callAgent);
 //            request.setAttribute("msgId", msgId);
@@ -217,10 +226,12 @@ public class UserServlet extends HttpServlet {
         String value = "";
         for (int i = 0; i < length; i++) {
             param = (String) params[i];
-            
+
             value = request.getParameter(param);//param + ": " +
-            if(value == null || "".equals(value))
+
+            if (value == null || "".equals(value)) {
                 value = "null";
+            }
             msg += value;
             if (i < length - 1) {
                 msg += Message.FIELD_SEPARATE;
@@ -231,28 +242,29 @@ public class UserServlet extends HttpServlet {
         log.info("SEARCH HOTEL Msg: " + msg);
         return msg;
     }
-   public String extractSearchFlightMsg(HttpServletRequest request) {
+
+    public String extractSearchFlightMsg(HttpServletRequest request) {
         String msg = "";
-        String  depart,destination,takeOffDate , ticket,quatity;
+        String depart, destination, takeOffDate, ticket, quatity;
         depart = request.getParameter("depart");
         destination = request.getParameter("destination");
         takeOffDate = request.getParameter("takeOffDate");
         ticket = request.getParameter("ticket");
         quatity = request.getParameter("quatity");
-        
-        
-        msg = "" + depart+ Message.FIELD_SEPARATE +
-                destination+ Message.FIELD_SEPARATE +
+
+
+        msg = "" + depart + Message.FIELD_SEPARATE +
+                destination + Message.FIELD_SEPARATE +
                 takeOffDate + Message.FIELD_SEPARATE +
-                ticket+ Message.FIELD_SEPARATE +
+                ticket + Message.FIELD_SEPARATE +
                 quatity;
         log.info("SEARCH FLIGHT Msg: " + msg);
         return msg;
     }
 
-    public String extractBookRoomMsg(HttpServletRequest request){
+    public String extractBookRoomMsg(HttpServletRequest request) {
         String msg = "";
-        String  agentName,hotelName,city ,number, street,quantity, roomType, fromdate, todate, 
+        String agentName, hotelName, city, number, street, quantity, roomType, fromdate, todate,
                 fullName, profession, identityCard;
         agentName = request.getParameter("agentName");
         hotelName = request.getParameter("hotelName");
@@ -269,25 +281,26 @@ public class UserServlet extends HttpServlet {
         fullName = request.getParameter("fullName");
         profession = request.getParameter("profession");
         identityCard = request.getParameter("identityCard");
-        
-        msg = "" + agentName+ Message.FIELD_SEPARATE +
-                hotelName+ Message.FIELD_SEPARATE +
+
+        msg = "" + agentName + Message.FIELD_SEPARATE +
+                hotelName + Message.FIELD_SEPARATE +
                 city + Message.FIELD_SEPARATE +
-                number+ Message.FIELD_SEPARATE +
-                street+ Message.FIELD_SEPARATE +                
-                roomType+ Message.FIELD_SEPARATE +
-                quantity+ Message.FIELD_SEPARATE + 
-                fromdate+ Message.FIELD_SEPARATE +
-                todate+ Message.FIELD_SEPARATE + 
-                fullName + Message.FIELD_SEPARATE + 
-                profession + Message.FIELD_SEPARATE + 
+                number + Message.FIELD_SEPARATE +
+                street + Message.FIELD_SEPARATE +
+                roomType + Message.FIELD_SEPARATE +
+                quantity + Message.FIELD_SEPARATE +
+                fromdate + Message.FIELD_SEPARATE +
+                todate + Message.FIELD_SEPARATE +
+                fullName + Message.FIELD_SEPARATE +
+                profession + Message.FIELD_SEPARATE +
                 identityCard;
         log.debug("BOOK ROOM Msg: " + msg);
         return msg;
     }
-        public String extractBookFlightMsg(HttpServletRequest request){
+
+    public String extractBookFlightMsg(HttpServletRequest request) {
         String msg = "";
-        String  agentName,id , agent,booknumber, fullName, sex, email, 
+        String agentName, id, agent, booknumber, fullName, sex, email,
                 phoneNumber, specificAddress, city, country;
         agentName = request.getParameter("agentName");
         id = request.getParameter("id");
@@ -300,25 +313,56 @@ public class UserServlet extends HttpServlet {
         specificAddress = request.getParameter("specificAddress");
         city = request.getParameter("city");
         country = request.getParameter("country");
-        
-        msg = "" + agentName+ Message.FIELD_SEPARATE +
+
+        msg = "" + agentName + Message.FIELD_SEPARATE +
                 id + Message.FIELD_SEPARATE +
-                agent+ Message.FIELD_SEPARATE +
-                booknumber+ 
-                
-                Message.OBJECT_SEPARATE + 
-                
-                fullName+ Message.FIELD_SEPARATE +
-                sex+ Message.FIELD_SEPARATE +
-                email+ Message.FIELD_SEPARATE + 
-                phoneNumber + Message.FIELD_SEPARATE + 
-                specificAddress + Message.FIELD_SEPARATE + 
-                city + Message.FIELD_SEPARATE + 
+                agent + Message.FIELD_SEPARATE +
+                booknumber +
+                Message.OBJECT_SEPARATE +
+                fullName + Message.FIELD_SEPARATE +
+                sex + Message.FIELD_SEPARATE +
+                email + Message.FIELD_SEPARATE +
+                phoneNumber + Message.FIELD_SEPARATE +
+                specificAddress + Message.FIELD_SEPARATE +
+                city + Message.FIELD_SEPARATE +
                 country;
         log.debug("BOOK FLIGHT Msg: " + msg);
         return msg;
-        
+
     }
+ public String extractBookTrainMsg(HttpServletRequest request) {
+        String msg = "";
+        String agentName, id, agent, booknumber, fullName, sex, email,
+                phoneNumber, specificAddress, city, country;
+        agentName = request.getParameter("agentName");
+        id = request.getParameter("id");
+        agent = request.getParameter("agent");
+        booknumber = request.getParameter("booknumber");
+        fullName = request.getParameter("fullName");
+        sex = request.getParameter("sex");
+        email = request.getParameter("email");
+        phoneNumber = request.getParameter("phoneNumber");
+        specificAddress = request.getParameter("specificAddress");
+        city = request.getParameter("city");
+        country = request.getParameter("country");
+
+        msg = "" + agentName + Message.FIELD_SEPARATE +
+                id + Message.FIELD_SEPARATE +
+                agent + Message.FIELD_SEPARATE +
+                booknumber +
+                Message.OBJECT_SEPARATE +
+                fullName + Message.FIELD_SEPARATE +
+                sex + Message.FIELD_SEPARATE +
+                email + Message.FIELD_SEPARATE +
+                phoneNumber + Message.FIELD_SEPARATE +
+                specificAddress + Message.FIELD_SEPARATE +
+                city + Message.FIELD_SEPARATE +
+                country;
+        log.debug("BOOK TRAIN Msg: " + msg);
+        return msg;
+
+    }
+
     /**
      * khi co yeu cau dang nhap
      * @param request
@@ -376,14 +420,13 @@ public class UserServlet extends HttpServlet {
         log.info("User logout has been done!");
 
     }
-    
+
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         process(request, response);
 
     }
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         process(request, response);
     }
-
-
 }
