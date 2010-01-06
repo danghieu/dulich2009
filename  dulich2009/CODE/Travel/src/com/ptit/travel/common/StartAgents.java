@@ -153,6 +153,57 @@ public class StartAgents {
             
         
     }
+    public void testCreateAgentCHF(){
+        AgentController agentController;
+            String host = "localhost";
+            String port = "1099";
+            String nickName = "ControllerAgent";//"Guest" + System.currentTimeMillis();
+            String className = "com.ptit.travel.agent.ControllerAgent";
+            try {                
+                ContainerController containerController = (ContainerController)AgentManager.startAgent(host, port, 
+                        nickName, className,true).get(0);
+                nickName = "FlightAgent";//"Guest" + System.currentTimeMillis();
+                className = "com.ptit.travel.agent.FlightAgent";
+                agentController = AgentManager.addAgent(host, port, nickName, className,containerController);
+             
+                nickName = "HotelAgent";//"Guest" + System.currentTimeMillis();
+                className = "com.ptit.travel.agent.HotelAgent";
+                agentController = AgentManager.addAgent(host, port, nickName, className,containerController);
+
+                
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            
+        
+    }
+    public void testCreateAgentCHFT(){
+        AgentController agentController;
+            String host = "localhost";
+            String port = "1099";
+            String nickName = "ControllerAgent";//"Guest" + System.currentTimeMillis();
+            String className = "com.ptit.travel.agent.ControllerAgent";
+            try {                
+                ContainerController containerController = (ContainerController)AgentManager.startAgent(host, port, 
+                        nickName, className,true).get(0);
+                nickName = "FlightAgent";//"Guest" + System.currentTimeMillis();
+                className = "com.ptit.travel.agent.FlightAgent";
+                agentController = AgentManager.addAgent(host, port, nickName, className,containerController);
+             	nickName = "TrainAgent";//"Guest" + System.currentTimeMillis();
+                className = "com.ptit.travel.agent.TrainAgent";
+                agentController = AgentManager.addAgent(host, port, nickName, className,containerController);
+             
+                nickName = "HotelAgent";//"Guest" + System.currentTimeMillis();
+                className = "com.ptit.travel.agent.HotelAgent";
+                agentController = AgentManager.addAgent(host, port, nickName, className,containerController);
+
+                
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            
+        
+    }
     public void testCreateAgentUC2H(){
         AgentController agentController;
             String host = "localhost";
@@ -196,7 +247,7 @@ public class StartAgents {
         //test.testConfigXMLConnect();
         //test.callTheAgentViaXmlRpc();
 //        test.testCreateAgentCF();   // chi chay contrller & Hotel     
-        test.testCreateAgentCH();
+        test.testCreateAgentCHFT();
 
     }
 
