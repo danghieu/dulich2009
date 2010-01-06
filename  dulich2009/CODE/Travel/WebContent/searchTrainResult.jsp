@@ -40,7 +40,7 @@
                                     <td align="center" valign="middle" bgcolor="#3366FF"><font color="#FFFFFF" size="2"><strong>Loại ghế</strong></font></td>
                                     
                                     <td align="center" valign="middle" bgcolor="#3366FF"><font size="1"><strong><font color="#FFFFFF" size="2">Giá vé </font></strong></font></td>
-                                    <td align="center" valign="middle" bgcolor="#3366FF"><strong><font color="#FFFFFF" size="2"><b>Thông tin bổ sung</b></font></strong></td>
+                                   
                                 </tr>
                                 <%
             Logger log = Logger.getLogger("searchResult.jsp");
@@ -74,17 +74,17 @@
                                 <tr bgcolor="#FFFFFF">
                                     
                                                                         
-                                    <td width="65" align="center" valign="middle"><%=serviceList.get(0) %></td>
-                                    <td width="93" align="center" valign="middle"><%=serviceList.get(1) %></td>
-                                    <td width="76" align="center" valign="middle"><%=serviceList.get(2) %></td>
-                                    <td width="90" align="center" valign="middle"><%=serviceList.get(3) %></td>
-                                    <td width="84" align="center" valign="middle"><%=serviceList.get(4) %></td>
-                                    <td width="72" align="center" valign="middle"><%=serviceList.get(5) %></td>
-                                    <td width="70" align="center" valign="middle"><%=serviceList.get(6) %></td>
-                                    <td width="68" align="center" valign="middle"><%=serviceList.get(7) %></td>
-									<td width="58" align="center" valign="middle"><%=serviceList.get(8)%></td>
-                                    <td width="93" align="center" valign="middle">
-                                    <input type="submit" name="Submit" value="Đặt" /></td>                                    
+                                    <td width="52" align="center" valign="middle"><%=serviceList.get(1) %></td>
+                                    <td width="71" align="center" valign="middle"><%=serviceList.get(2) %></td>
+                                    <td width="60" align="center" valign="middle"><%=serviceList.get(3) %></td>
+                                    <td width="70" align="center" valign="middle"><%=serviceList.get(4) %></td>
+                                    <td width="69" align="center" valign="middle"><%=serviceList.get(5) %></td>
+                                    <td width="69" align="center" valign="middle"><%=serviceList.get(6) %></td>
+                                    <td width="69" align="center" valign="middle"><%=serviceList.get(7) %></td>
+                                    <td width="71" align="center" valign="middle"><%=serviceList.get(8) %></td>
+									
+                                    <td width="52" align="center" valign="middle">
+                                  <input type="submit" name="Submit" value="Đặt" /></td>                                    
                                     
                                 </tr>
                                 <%
