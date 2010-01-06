@@ -6,9 +6,6 @@ import java.io.Serializable;
 import java.io.StringWriter;
 
 import com.ptit.travel.agent.onto.*;
-import com.ptit.travel.beans.Address;
-
-import com.ptit.travel.beans.SerializableBean;
 import java.util.ArrayList;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -28,8 +25,8 @@ import java.util.Hashtable;
 public class Message {
 
     private static Logger log = Logger.getLogger(Message.class.getName());
-    public static String SUCCESS = "Đặt thành công";
-    public static String FAIL = "Đặt không thành công";
+    public static String SUCCESS = "Dat thanh cong";
+    public static String FAIL = "Dat khong thanh cong";
     /**
      * special string uesed to separate objects
      *  #_$
@@ -538,7 +535,7 @@ public class Message {
      * @param input: agentName-MF-msg-MO-agentName-MF-msg...
      * @return Hasttable<agentName, msg>
      */
-    public static Hashtable<String, String> extractAgentMsg(String input) {
+    public static Hashtable<String, String> extractAgentsMsgs(String input) {
         ArrayList<String> splitedContent = Message.split(input, Message.OBJECT_SEPARATE);
         if (splitedContent == null) {
             //log.error("Invalid format input from servlet: " + input);
@@ -556,8 +553,8 @@ public class Message {
                 //receivers.add(receiver);
                 content = content.replaceFirst(receiver + Message.FIELD_SEPARATE, "");
                 // if there is more message for the agent 
-                if(agentMsg.containsKey(receiver)){
-                    content = agentMsg.get(receiver) + Message.OBJECT_SEPARATE + content;                    
+                if (agentMsg.containsKey(receiver)) {
+                    content = agentMsg.get(receiver) + Message.OBJECT_SEPARATE + content;
                 }
                 agentMsg.put(receiver, content);
                 log.debug("|| AGENT  : " + receiver);
@@ -565,6 +562,28 @@ public class Message {
             }
 
         }
+        return agentMsg;
+    }
+
+    public static Hashtable<String, String> extractAgentMsg(String content) {
+        if (content == null) {
+            //log.error("Invalid format input from servlet: " + input);
+            return null;
+        }
+        Hashtable<String, String> agentMsg = new Hashtable<String, String>();
+        String receiver;
+        int index;
+        log.debug("|| Receiver and Msg extracted: ");
+        index = content.indexOf(Message.FIELD_SEPARATE);
+        if (index > 0) {
+            receiver = content.substring(0, index);
+            content = content.replaceFirst(receiver + Message.FIELD_SEPARATE, "");
+            agentMsg.put(receiver, content);
+            log.debug("|| AGENT  : " + receiver);
+            log.debug("|| Message: " + content);
+        }
+
+
         return agentMsg;
     }
 
