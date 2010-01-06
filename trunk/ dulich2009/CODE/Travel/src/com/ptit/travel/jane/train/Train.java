@@ -317,7 +317,10 @@ public class Train {
     
     public static final OntClass SeatUnit = m_model.createClass( "http://www.owl-ontologies.com/Train.owl#SeatUnit" );
     
-    
+    /** <p>các d?ch v? du l?ch (c? lo?i c? b?n và k?t h?p). TourismService cung c?p m?t 
+     *  giao di?n chung cho t?t c? các d?ch v? du l?ch, giao di?n này ??a ra các thu?c 
+     *  tính c?n thi?t cho vi?c t?o m?t d?ch v? du l?ch</p>
+     */
     public static final OntClass TourismService = m_model.createClass( "http://www.owl-ontologies.com/Train.owl#TourismService" );
     
     public static final OntClass Train = m_model.createClass( "http://www.owl-ontologies.com/Train.owl#Train" );
@@ -374,7 +377,7 @@ public class Train {
     
     public static final Individual HCM = m_model.createIndividual( "http://www.owl-ontologies.com/Train.owl#HCM", Address );
     
-    /** <p>H� N?i</p> */
+    /** <p>Hà N?i</p> */
     public static final Individual HN = m_model.createIndividual( "http://www.owl-ontologies.com/Train.owl#HN", Address );
     
     public static final Individual HN_ND_SE1 = m_model.createIndividual( "http://www.owl-ontologies.com/Train.owl#HN_ND_SE1", Change );
@@ -523,10 +526,10 @@ public class Train {
     
     public static final Individual TrainTickets_PL_ND_SE1 = m_model.createIndividual( "http://www.owl-ontologies.com/Train.owl#TrainTickets_PL_ND_SE1", TrainTickets );
     
-   
+    /** <p>ch?a nh?p h?t các thu?c tín</p> */
     public static final Individual Train_DN_HCM = m_model.createIndividual( "http://www.owl-ontologies.com/Train.owl#Train_DN_HCM", TrainJourney );
     
-
+    /** <p>ch?a nh?p h?t các thu?c tín</p> */
     public static final Individual Train_HN_DN = m_model.createIndividual( "http://www.owl-ontologies.com/Train.owl#Train_HN_DN", TrainJourney );
     
     public static final Individual Transport1 = m_model.createIndividual( "http://www.owl-ontologies.com/Train.owl#Transport1", Transport );
