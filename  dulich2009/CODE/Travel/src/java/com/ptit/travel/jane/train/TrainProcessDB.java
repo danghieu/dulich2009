@@ -215,6 +215,14 @@ private static Logger log = Logger.getLogger(TrainProcessDB.class.getName());
                 String datetime1="";
                 String datetime2="";
                 String price1="";
+                   if(binding.getLiteral("code").getValue().toString()!=null){
+                    String name = binding.getLiteral("code").getValue().toString();
+                    result = result + name +Message.FIELD_SEPARATE;
+                }
+                if(binding.getLiteral("ticketid").getValue().toString()!=null){
+                    String name = binding.getLiteral("ticketid").getValue().toString();
+                    result = result + name +Message.FIELD_SEPARATE;
+                }
                 if(binding.getLiteral("dRailway").getValue().toString()!=null){
                     String name = binding.getLiteral("dRailway").getValue().toString();
                     result = result + name +Message.FIELD_SEPARATE;
@@ -225,7 +233,7 @@ private static Logger log = Logger.getLogger(TrainProcessDB.class.getName());
                 }
                 if(binding.getLiteral("date1").getValue().toString()!=null){
                     String name = binding.getLiteral("date1").getValue().toString();
-                    datetime1 = datetime1 + name +Message.FIELD_SEPARATE;
+                    datetime1 = datetime1 + name +",";
                 }
                 if(binding.getLiteral("time1").getValue().toString()!=null){
                     String name = binding.getLiteral("time1").getValue().toString();
@@ -234,7 +242,7 @@ private static Logger log = Logger.getLogger(TrainProcessDB.class.getName());
                 result=result+datetime1+Message.FIELD_SEPARATE;
                 if(binding.getLiteral("date2").getValue().toString()!=null){
                     String name = binding.getLiteral("date2").getValue().toString();
-                    datetime2 = datetime2 + name +Message.FIELD_SEPARATE;
+                    datetime2 = datetime2 + name +",";
                 }
                 if(binding.getLiteral("time2").getValue().toString()!=null){
                     String name = binding.getLiteral("time2").getValue().toString();
@@ -245,13 +253,10 @@ private static Logger log = Logger.getLogger(TrainProcessDB.class.getName());
                     String name = binding.getLiteral("class").getValue().toString();
                     result = result + name +Message.FIELD_SEPARATE;
                 }
-                if(binding.getLiteral("code").getValue().toString()!=null){
-                    String name = binding.getLiteral("code").getValue().toString();
-                    result = result + name +Message.FIELD_SEPARATE;
-                }
+            
                 if(binding.getLiteral("amount").getValue().toString()!=null){
                     String name = binding.getLiteral("amount").getValue().toString();
-                    price1 = price1 + name +Message.FIELD_SEPARATE;
+                    price1 = price1 + name +" ";
                 }
                 if(binding.getLiteral("currencyCode").getValue().toString()!=null){
                     String name = binding.getLiteral("currencyCode").getValue().toString();
@@ -301,7 +306,20 @@ public static String printPropertyValues(Individual ind, Property prop) {
         
         return result;
     }
-
+// public static boolean processBooking(String input){
+//     Database.LoadOnt2Database();
+//        
+//        OntModel model = ModelFactory.createOntologyModel(
+//                PelletReasonerFactory.THE_SPEC, Database.getOntologyModel());
+//      // chuyen nguoc lai tu csdl -> OntModel
+//      
+//      String ont = "http://www.owl-ontologies.com/Train.owl#";  
+//      System.out.println("booking");
+//      ArrayList <String> arr = new ArrayList<String>();
+//      arr = Message.split(input, Message.FIELD_SEPARATE);
+//      System.out.println("arr: "+arr.toString());
+//      
+// }
     public static void main(String arg[]) throws Exception{
         TrainProcessDB trainprocess=new TrainProcessDB();
         OntModel ontmodel = ModelFactory.createOntologyModel();
