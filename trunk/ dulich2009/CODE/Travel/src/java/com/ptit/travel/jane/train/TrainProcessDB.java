@@ -237,7 +237,7 @@ private static Logger log = Logger.getLogger(TrainProcessDB.class.getName());
                 }
                 if(binding.getLiteral("time1").getValue().toString()!=null){
                     String name = binding.getLiteral("time1").getValue().toString();
-                    datetime1 = datetime1 + name +Message.FIELD_SEPARATE;
+                    datetime1 = datetime1 + name;
                 }
                 result=result+datetime1+Message.FIELD_SEPARATE;
                 if(binding.getLiteral("date2").getValue().toString()!=null){
@@ -246,7 +246,7 @@ private static Logger log = Logger.getLogger(TrainProcessDB.class.getName());
                 }
                 if(binding.getLiteral("time2").getValue().toString()!=null){
                     String name = binding.getLiteral("time2").getValue().toString();
-                    datetime2 = datetime2 + name +Message.FIELD_SEPARATE;
+                    datetime2 = datetime2 + name;
                 }
                 result=result+datetime2+Message.FIELD_SEPARATE;
                 if(binding.getLiteral("class").getValue().toString()!=null){
@@ -306,20 +306,95 @@ public static String printPropertyValues(Individual ind, Property prop) {
         
         return result;
     }
-// public static boolean processBooking(String input){
-//     Database.LoadOnt2Database();
-//        
-//        OntModel model = ModelFactory.createOntologyModel(
-//                PelletReasonerFactory.THE_SPEC, Database.getOntologyModel());
-//      // chuyen nguoc lai tu csdl -> OntModel
-//      
-//      String ont = "http://www.owl-ontologies.com/Train.owl#";  
-//      System.out.println("booking");
-//      ArrayList <String> arr = new ArrayList<String>();
-//      arr = Message.split(input, Message.FIELD_SEPARATE);
-//      System.out.println("arr: "+arr.toString());
-//      
-// }
+ public static boolean processBooking(String input){
+     Database.LoadOnt2Database();
+        
+        OntModel model = ModelFactory.createOntologyModel(
+                PelletReasonerFactory.THE_SPEC, Database.getOntologyModel());
+      // chuyen nguoc lai tu csdl -> OntModel
+      
+      String ont = "http://www.owl-ontologies.com/Train.owl#";  
+      System.out.println("booking");
+      ArrayList <String> arrLT = new ArrayList<String>();
+      arrLT = Message.split(input, Message.FIELD_SEPARATE);
+      System.out.println("arr: "+arrLT.toString());
+      
+      ArrayList<String> arr_customer = new ArrayList<String>(); 
+      //ho ten, gioi tinh, tuoi, email, dien thoai, so nha, duong, thanh pho, doi tuong
+      arr_customer = Message.split(arrLT.get(1),Message.FIELD_SEPARATE);
+      System.out.println("CustomerInfo: "+arr_customer);    
+      System.out.println("arr_customer="+arr_customer.toString());
+      String c_fullname=arr_customer.get(0);
+      String c_sex=arr_customer.get(1);
+      String c_age=arr_customer.get(2);
+      String c_email=arr_customer.get(3);
+      String c_phone=arr_customer.get(4);
+      String c_houseNumber=arr_customer.get(5);
+      String c_Street=arr_customer.get(6);
+      String c_city=arr_customer.get(7);
+      String c_personType=arr_customer.get(8);
+      
+      ArrayList<String> arr = new ArrayList<String>();
+      //ticketID, trainJourneyCode,number
+      arr = Message.split(arrLT.get(0),Message.FIELD_SEPARATE);  
+      System.out.println("arr: "+arr.toString());
+      
+      String input_ticketid=arr.get(0);
+      String input_trainCode=arr.get(1);
+      float input_BookNumber=Float.parseFloat(arr.get(2));
+      String queryString="";
+      queryString="PREFIX train: <http://www.owl-ontologies.com/Train.owl#> \n"
+                + "SELECT DISTINCT * \n" + "WHERE \n" +"{\n"
+                
+                +"?x train:ticketID ?ticketid. \n"
+                +"?x train:hasChanges ?change. \n"
+                +"?x train:hasPrice ?price. \n"
+                +"?x train:trainJourneyClass ?class. \n"
+                +"?x train:trainJourneyCode ?code. \n"
+                +"?x train:numbetTickets ?totalNum. \n"
+                +"?x train:numberbookedTicket ?bookedNum. \n"
+                
+                +"?change train:hasBeginPoint ?Departure. \n"
+                +"?Departure train:name ?dRailway. \n"
+                +"?change train:hasEndPoint ?Arrival. \n"
+                +"?Arrival train:name ?aRailway. \n"
+                +"?change train:hasBeginTime ?beginTime. \n"
+                +"?beginTime train:date ?date1. \n"
+                +"?beginTime train:time ?time1. \n"
+                +"?change train:hasEndTime ?endTime. \n"
+                +"?endTime train:date ?date2. \n"
+                +"?endTime train:time ?time2. \n"
+                        
+                +"?price train:Amount ?amount. \n"
+                +"?price train:CurrencyCode ?currencyCode. \n"
+      
+                + " FILTER regex(?ticketid,\"" + input_ticketid + "\", \"i\")}"; 
+     Query query = QueryFactory.create(queryString);
+     QueryExecution queryexec = QueryExecutionFactory.create(query, model);
+      
+      boolean isOk = false;
+      
+      try{
+          ResultSet rs = queryexec.execSelect();
+         
+          String result=null;
+          Object obj = rs.next();
+          ResultBinding binding = (ResultBinding) obj;
+          float totalnumber = Float.parseFloat(binding.getLiteral("totalNum").getValue().toString());   
+                System.out.print("Total Number=" +totalnumber); 
+
+          float totalbooknumber = Float.parseFloat(binding.getLiteral("bookedNum").getValue().toString());   
+                System.out.print("Total Book Number=" +totalbooknumber);
+           float tong=input_BookNumber + totalbooknumber;
+          if(tong<=totalnumber){
+              
+          }
+                
+      }catch(Exception e){
+                e.printStackTrace();
+            }
+      return isOk;
+ }
     public static void main(String arg[]) throws Exception{
         TrainProcessDB trainprocess=new TrainProcessDB();
         OntModel ontmodel = ModelFactory.createOntologyModel();
