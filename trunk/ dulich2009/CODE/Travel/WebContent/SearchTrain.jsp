@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <title>E-Tourism: Du l&#7883;ch b&#7889;n ph&#432;&#417;ng</title>
+        <title>E-Tourism: Tàu hỏa</title>
         <link href="templatemo_style.css" rel="stylesheet" type="text/css" />
         
         
