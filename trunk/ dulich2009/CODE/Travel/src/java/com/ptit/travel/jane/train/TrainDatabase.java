@@ -29,7 +29,7 @@ public class TrainDatabase {
 
 //Password
 
-	public static final String DB_PASSWD      = "root";
+	public static final String DB_PASSWD      = "1234";
 
 //Database engine name
 
@@ -82,7 +82,7 @@ public class TrainDatabase {
 		
 		// duong dan den file owl
 		
-		FileManager.get().readModel(model,"C:/apache-tomcat-6.0.16/webapps/MyOntology/Train1.owl");
+		FileManager.get().readModel(model,"C:/apache-tomcat-6.0.16/webapps/MyOntology/Train2.owl");
 		
 		// cap nhat vao csdl
           
