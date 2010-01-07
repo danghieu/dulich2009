@@ -57,7 +57,6 @@ private static Logger log = Logger.getLogger(TrainProcessDB.class.getName());
                 //them cac thuoc tinh vao ca the can tao
                 if(arr.get(0)!=null){
                     ind.addLiteral(Train.DepartureRailway, arr.get(0));
-               //     System.out.print("ga di="+arr.get(0));
                 }
                 if (arr.get(1)!=null){
                     ind.addLiteral(Train.ArrivalRailway, arr.get(1));
@@ -65,16 +64,10 @@ private static Logger log = Logger.getLogger(TrainProcessDB.class.getName());
                 if(arr.get(2)!=null){
                     ind.addLiteral(Train.DepartureDate, arr.get(2));
                 }
-           //     if(arr.get(3)!=null){
-          //          ind.addProperty(Train.date, arr.get(3));
-          //      }
             }catch (Exception e) {
             System.out.println(e.toString());
 
-        }
-//            System.out.print("insert/n");
-//            model.write(System.out);
-            
+        }           
             return model;
         }
         
@@ -120,7 +113,7 @@ private static Logger log = Logger.getLogger(TrainProcessDB.class.getName());
         }
         
      //    xoa mesage search request voi respone khoi model (neu ko xoa 2 msg nay se tong tai trong csdl)
-           Individual individual = model.getIndividual(ont + "Msg_TrainAvailRQ"+System.currentTimeMillis());
+          Individual individual = model.getIndividual(ont + "Msg_TrainAvailRQ"+System.currentTimeMillis());
           if(individual!=null)
            individual.remove();
 
@@ -129,7 +122,7 @@ private static Logger log = Logger.getLogger(TrainProcessDB.class.getName());
 
 
     }
-        public static String searchID(String input){
+   /*     public static String searchID(String input){
         log.info("Starting search with: " + input);
         //  Database.LoadOnt2Database();
         String ont = "http://www.owl-ontologies.com/Train.owl#";
@@ -179,8 +172,8 @@ private static Logger log = Logger.getLogger(TrainProcessDB.class.getName());
 
 
 
-    }
-        public static String printValuesID(String s){
+    }*/
+   /*     public static String printValuesID(String s){
             System.out.println("goi den ham hien thi ket qua");
    //     String file = "C://Program Files/Apache Software Foundation/Tomcat 6.0/webapps/MyOntology/Train.owl";
           String file ="C:/apache-tomcat-6.0.16/webapps/MyOntology/Train2.owl";
@@ -247,7 +240,7 @@ private static Logger log = Logger.getLogger(TrainProcessDB.class.getName());
    //    }  
 //        System.out.println("ket qua:"+output );
         return output;
-    }
+    }*/
         public static String printValues(String s){
             System.out.println("goi den ham hien thi ket qua");
    //     String file = "C://Program Files/Apache Software Foundation/Tomcat 6.0/webapps/MyOntology/Train.owl";
@@ -272,8 +265,8 @@ private static Logger log = Logger.getLogger(TrainProcessDB.class.getName());
                 +"?x train:hasPrice ?price. \n"
                 +"?x train:trainJourneyClass ?class. \n"
                 +"?x train:trainJourneyCode ?code. \n"
-                +"?x train:numberTickets ?totalNum. \n"
-                +"?x train:numberbookedTicket ?bookedNum. \n"
+       //         +"?x train:numberTickets ?totalNum. \n"
+          //      +"?x train:numberbookedTicket ?bookedNum. \n"
                 
                 +"?change train:hasBeginPoint ?Departure. \n"
                 +"?Departure train:name ?dRailway. \n"
