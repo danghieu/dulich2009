@@ -316,27 +316,27 @@ public static String printPropertyValues(Individual ind, Property prop) {
       String ont = "http://www.owl-ontologies.com/Train.owl#";  
       System.out.println("booking");
       ArrayList <String> arrLT = new ArrayList<String>();
-      arrLT = Message.split(input, Message.FIELD_SEPARATE);
+      arrLT = Message.split(input, Message.OBJECT_SEPARATE);
       System.out.println("arr: "+arrLT.toString());
       
       ArrayList<String> arr_customer = new ArrayList<String>(); 
-      //ho ten, gioi tinh, tuoi, email, dien thoai, so nha, duong, thanh pho, doi tuong
-      arr_customer = Message.split(arrLT.get(1),Message.FIELD_SEPARATE);
+      //ho ten, tuoi, email, dien thoai, so nha, duong, thanh pho, doi tuong
+      arr_customer = Message.split(arrLT.get(0),Message.FIELD_SEPARATE);
       System.out.println("CustomerInfo: "+arr_customer);    
       System.out.println("arr_customer="+arr_customer.toString());
       String c_fullname=arr_customer.get(0);
-      String c_sex=arr_customer.get(1);
-      String c_age=arr_customer.get(2);
-      String c_email=arr_customer.get(3);
-      String c_phone=arr_customer.get(4);
-      String c_houseNumber=arr_customer.get(5);
-      String c_Street=arr_customer.get(6);
-      String c_city=arr_customer.get(7);
-      String c_personType=arr_customer.get(8);
+ //     String c_sex=arr_customer.get(1);
+      String c_age=arr_customer.get(1);
+      String c_email=arr_customer.get(2);
+      String c_phone=arr_customer.get(3);
+      String c_houseNumber=arr_customer.get(4);
+      String c_Street=arr_customer.get(5);
+      String c_city=arr_customer.get(6);
+      String c_personType=arr_customer.get(7);
       
       ArrayList<String> arr = new ArrayList<String>();
       //ticketID, trainJourneyCode,number
-      arr = Message.split(arrLT.get(0),Message.FIELD_SEPARATE);  
+      arr = Message.split(arrLT.get(1),Message.FIELD_SEPARATE);  
       System.out.println("arr: "+arr.toString());
       
       String input_ticketid=arr.get(0);
@@ -387,7 +387,43 @@ public static String printPropertyValues(Individual ind, Property prop) {
                 System.out.print("Total Book Number=" +totalbooknumber);
            float tong=input_BookNumber + totalbooknumber;
           if(tong<=totalnumber){
-              
+              try{
+                   String new_ticket=binding.getResource("x").toString();
+                   if(new_ticket!=null){
+                       Individual ind1=model.getIndividual(new_ticket);
+                       if(ind1!=null){
+                           ind1.removeAll(Train.numberbookedTicket);
+                           ind1.addLiteral(Train.numberbookedTicket, totalbooknumber+input_BookNumber);
+                        System.out.println("Them gia tri"); 
+                        OntClass oc_address=model.createClass("http://www.owl-ontologies.com/Train.owl#Address");
+                        Individual ind_address=model.createIndividual(ont + "Address_" + System.currentTimeMillis(),oc_address);
+                        ind_address.addLiteral(Train.houseNumber, c_houseNumber);
+                        ind_address.addLiteral(Train.street,c_Street);
+                        ind_address.addLiteral(Train.city, c_city);
+
+                        
+                        OntClass oc_customer=model.createClass("http://www.owl-ontologies.com/Train.owl#CustomerData");
+                        Individual ind_customer=model.createIndividual(ont + "CustomerData_" + System.currentTimeMillis(),oc_customer);
+                        ind_customer.addLiteral(Train.GivenName, c_fullname);
+                        ind_customer.addLiteral(Train.age,c_age);
+                        ind_customer.addLiteral(Train.Email, c_email);
+                        ind_customer.addLiteral(Train.PhoneNumer, c_phone);
+                        ind_customer.addLiteral(Train.personType, c_personType);
+                        ind_customer.addProperty(Train.hasAddress, ind_address);
+                        
+//                        OntClass oc_contract=model.createClass("http://www.owl-ontologies.com/Flight.owl#FlightBookContract");
+//                        Individual ind_contract=model.createIndividual(ont + "FlightBookContract_" + System.currentTimeMillis(),oc_contract);
+//                        ind_contract.addLiteral(Flight.bookNumber, input_BookNumber);
+//                        ind_contract.addLiteral(Flight.id, id);
+//                        ind_contract.addProperty(Flight.hasCustomer, ind_customer);
+                        isOk=true;
+                       }
+                       else 
+                    System.out.println("Khong du dau");
+                   }
+              }catch(Exception e){
+                e.printStackTrace();
+            }
           }
                 
       }catch(Exception e){
@@ -398,9 +434,16 @@ public static String printPropertyValues(Individual ind, Property prop) {
     public static void main(String arg[]) throws Exception{
         TrainProcessDB trainprocess=new TrainProcessDB();
         OntModel ontmodel = ModelFactory.createOntologyModel();
-        String input="Ha Noi"+Message.FIELD_SEPARATE+"Phu Ly"+Message.FIELD_SEPARATE+"2009-12-29";
-        String ss=trainprocess.search(input);
-        System.out.print("ss="+ss);
+   //     String input="Ha Noi"+Message.FIELD_SEPARATE+"Phu Ly"+Message.FIELD_SEPARATE+"2009-12-29";
+   //     String ss=trainprocess.search(input);
+   //     System.out.print("ss="+ss);
+        String input="Hanh"+Message.FIELD_SEPARATE+"22"+Message.FIELD_SEPARATE
+                +"amin200587@yahoo.com"+Message.FIELD_SEPARATE+"38546204"
+                +"19"+Message.FIELD_SEPARATE+"Khuat Duy Tien"+Message.FIELD_SEPARATE
+                +"Ha Noi"+Message.FIELD_SEPARATE+"student"+Message.OBJECT_SEPARATE
+                +"HN_PL_SE1_1"+Message.FIELD_SEPARATE+"SE1"+Message.FIELD_SEPARATE+"5";
+        boolean ss=trainprocess.processBooking(input);
+        System.out.println("ss=" +ss);
     } 
 
 }
