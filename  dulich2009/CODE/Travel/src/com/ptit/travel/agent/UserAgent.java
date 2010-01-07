@@ -77,7 +77,8 @@ public class UserAgent extends Agent {
                         "Hanh" + Message.FIELD_SEPARATE + "Sinh Vien" + Message.FIELD_SEPARATE + "162882805";
 
                 String input = "Nam Dinh"+Message.FIELD_SEPARATE+null+Message.FIELD_SEPARATE+null;
-                search(input, "conversationId", Protocol.HOTEL_AVAIL);
+                input="Ha Noi"+Message.FIELD_SEPARATE+"Phu Ly"+Message.FIELD_SEPARATE+"2009-12-29";
+                search(input, "conversationId", Protocol.TRAIN_AVAIL);
             }
         });//*/
 
