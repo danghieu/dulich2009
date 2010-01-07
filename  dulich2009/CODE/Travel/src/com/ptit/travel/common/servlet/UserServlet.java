@@ -130,7 +130,7 @@ public class UserServlet extends HttpServlet {
                 function = nickName + ".search";
                 page = "/searchFlightResult.jsp";
             } else if (protocol.equals(Protocol.TRAIN_AVAIL)) {
-                msg = extractSearchFlightMsg(request);
+                msg = extractSearchTrainMsg(request);
                 function = nickName + ".search";
                 page = "/searchTrainResult.jsp";
             } else if (protocol.equals(Protocol.HOTEL_RES)) {
@@ -245,17 +245,35 @@ public class UserServlet extends HttpServlet {
 
     public String extractSearchFlightMsg(HttpServletRequest request) {
         String msg = "";
-        String depart, destination, takeOffDate, ticket, quatity;
-        depart = request.getParameter("depart");
-        destination = request.getParameter("destination");
-        takeOffDate = request.getParameter("takeOffDate");
+        String depart, destination, startDate, ticket, quatity;
+        depart = request.getParameter("city");
+        destination = request.getParameter("climate");
+        startDate = request.getParameter("startDate");
         ticket = request.getParameter("ticket");
         quatity = request.getParameter("quatity");
 
 
         msg = "" + depart + Message.FIELD_SEPARATE +
                 destination + Message.FIELD_SEPARATE +
-                takeOffDate + Message.FIELD_SEPARATE +
+                startDate + Message.FIELD_SEPARATE +
+                ticket + Message.FIELD_SEPARATE +
+                quatity;
+        log.info("SEARCH FLIGHT Msg: " + msg);
+        return msg;
+    }
+public String extractSearchTrainMsg(HttpServletRequest request) {
+        String msg = "";
+        String depart, destination, startDate, ticket, quatity;
+        depart = request.getParameter("city");
+        destination = request.getParameter("climate");
+        startDate = request.getParameter("startDate");
+        ticket = request.getParameter("ticket");
+        quatity = request.getParameter("quatity");
+
+
+        msg = "" + depart + Message.FIELD_SEPARATE +
+                destination + Message.FIELD_SEPARATE +
+                startDate + Message.FIELD_SEPARATE +
                 ticket + Message.FIELD_SEPARATE +
                 quatity;
         log.info("SEARCH FLIGHT Msg: " + msg);
