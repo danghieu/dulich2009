@@ -119,128 +119,8 @@ private static Logger log = Logger.getLogger(TrainProcessDB.class.getName());
 
         return s;
 
-
-
     }
-   /*     public static String searchID(String input){
-        log.info("Starting search with: " + input);
-        //  Database.LoadOnt2Database();
-        String ont = "http://www.owl-ontologies.com/Train.owl#";
-        // lay khung du lieu tu owl
-  //      String file = "C://Program Files/Apache Software Foundation/Tomcat 6.0/webapps/MyOntology/Train.owl";
-        String file = "C:/apache-tomcat-6.0.16/webapps/MyOntology/Train2.owl";
-        //dua ontology vao 1 model
-              TrainDatabase.LoadOnt2Database();
-        OntModel model = ModelFactory.createOntologyModel(
-                PelletReasonerFactory.THE_SPEC, TrainDatabase.getOntologyModel());
-         // phuc vu cho viec hien thi du lieu, cho nguoi lap trinh test
-        System.out.print("Khai bao");
-        ObjectProperty train = model.getObjectProperty(ont + "hasTrainTicket");
-        DatatypeProperty ticketid=model.getDatatypeProperty(ont+ "ticketID");
-        
-        OntClass cl = model.getOntClass(ont + "Msg_TrainAvailRS");
-       
-        log.info("Insert msg to infer");
-        // add model yeu cau vao ontology de tao ra 1 model moi chua tat ca cac rang buoc ke ca luat
-        Model ontmodel = insertMsg_TrainAvailRQ(input, System.currentTimeMillis());
-        model.add(ontmodel);
-        ExtendedIterator<?> extendedIterator = cl.listInstances(); // lay tat ca cac the hien cua cai lop day
-        String s = "";
-
-        
-        while (extendedIterator.hasNext()) {
-          
-            
-            OntResource resource = (OntResource) extendedIterator.next();
-            System.out.println("Dich vu ket hop: " + cl);
-            System.out.println("The hien: " + resource.getLocalName());
-
-            System.out.println("Tai Nguyen");
-            Individual individual = model.getIndividual(ont + resource.getLocalName());            
-            String result = TrainProcess.printPropertyValues(individual,ticketid);
-            System.out.println("\n result="+result);
-            s = printValuesID(result);
-            
-        }
-        
-     //    xoa mesage search request voi respone khoi model (neu ko xoa 2 msg nay se tong tai trong csdl)
-           Individual individual = model.getIndividual(ont + "Msg_TrainAvailRQ"+System.currentTimeMillis());
-          if(individual!=null)
-           individual.remove();
-
-        return s;
-
-
-
-    }*/
-   /*     public static String printValuesID(String s){
-            System.out.println("goi den ham hien thi ket qua");
-   //     String file = "C://Program Files/Apache Software Foundation/Tomcat 6.0/webapps/MyOntology/Train.owl";
-          String file ="C:/apache-tomcat-6.0.16/webapps/MyOntology/Train2.owl";
-    //        ArrayList<String> arr = new ArrayList<String>();
-    //     arr = Message.split(s,Message.FIELD_SEPARATE );
-         String result="";
-         String output="";
-          TrainDatabase.LoadOnt2Database();
-        OntModel model = TrainDatabase.getOntologyModel();
-        TrainDatabase.LoadOnt2Database();   
    
-       String queryString = null;
-
-    //   for(int i = 0; i<arr.size(); i++){ 
-         result="";
-         queryString="PREFIX train: <http://www.owl-ontologies.com/Train.owl#> \n"
-                + "SELECT DISTINCT * \n" + "WHERE \n" +"{\n"
-                +"?x train:ticketID ?ticketid. \n"
-
-                +"?x train:numberTickets ?totalNum. \n"
-                +"?x train:numberbookedTicket ?bookedNum. \n"
-                
-    
-
-                
-                  + " FILTER regex(?ticketid,\"" +s + "\", \"i\")}";   
-         
-        Query query = QueryFactory.create(queryString);
-        QueryExecution queryexec = QueryExecutionFactory.create(query, model);
-       // System.out.print("thuc thi");
-        Model model2 = ModelFactory.createDefaultModel();
-
-        try{
-            ResultSet rs = queryexec.execSelect();
-            System.out.print("thuc thi");
-            while(rs.hasNext()){
-                System.out.print("ket qua");
-                model2 = rs.getResourceModel();
-                Object obj = rs.next();
-                ResultBinding binding = (ResultBinding) obj;
-                System.out.println("truy2:" + binding.toString());
-
-                if(binding.getLiteral("ticketid").getValue().toString()!=null){
-                    String name = binding.getLiteral("ticketid").getValue().toString();
-                    result = result + name +Message.FIELD_SEPARATE;
-                }
-                if(binding.getLiteral("totalNum").getValue().toString()!=null){
-                    String name = binding.getLiteral("totalNum").getValue().toString();
-                    result = result + name +Message.FIELD_SEPARATE;
-                }
-                if(binding.getLiteral("bookedNum").getValue().toString()!=null){
-                    String name = binding.getLiteral("bookedNum").getValue().toString();
-                    result = result + name +Message.FIELD_SEPARATE;
-                }
-
-//                
-                 result = result +Message.OBJECT_SEPARATE;
-
-            }
-        }         catch (Exception e1) {
-            e1.printStackTrace();
-        }
-        output = output + result + Message.OBJECT_SEPARATE;
-   //    }  
-//        System.out.println("ket qua:"+output );
-        return output;
-    }*/
         public static String printValues(String s){
             System.out.println("goi den ham hien thi ket qua");
    //     String file = "C://Program Files/Apache Software Foundation/Tomcat 6.0/webapps/MyOntology/Train.owl";
@@ -395,7 +275,7 @@ public static String printPropertyValues(Individual ind, Property prop) {
         
         return result;
     }
- public static boolean processBooking(String input){
+ public static String processBooking(String input){
      TrainDatabase.LoadOnt2Database();
      OntModel model = TrainDatabase.getOntologyModel();
 //        OntModel model = ModelFactory.createOntologyModel(
@@ -414,6 +294,8 @@ public static String printPropertyValues(Individual ind, Property prop) {
       System.out.println("CustomerInfo: "+arr_customer);    
       System.out.println("arr_customer="+arr_customer.toString());
       String c_fullname=arr_customer.get(0);
+      c_fullname = c_fullname.substring(3, c_fullname.length());
+      System.out.println(c_fullname);
  //     String c_sex=arr_customer.get(1);
       float c_age=Float.parseFloat(arr_customer.get(1));
       String c_email=arr_customer.get(2);
@@ -462,11 +344,12 @@ public static String printPropertyValues(Individual ind, Property prop) {
      QueryExecution queryexec = QueryExecutionFactory.create(query, model);
       
       boolean isOk = false;
+      String respone=null;
       
       try{
           ResultSet rs = queryexec.execSelect();
-          boolean a=rs.hasNext();
-         System.out.print(a);
+//          boolean a=rs.hasNext();
+//         System.out.print(a);
      //     System.out.print(rs.toString());
          while(rs.hasNext()){
                       // boolean a=rs.hasNext();
@@ -480,7 +363,11 @@ public static String printPropertyValues(Individual ind, Property prop) {
           float totalbooknumber = Float.parseFloat(binding.getLiteral("bookedNum").getValue().toString());   
                 System.out.print("Total Book Number=" +totalbooknumber);
           
+          float money = Float.parseFloat(binding.getLiteral("amount").getValue().toString());   
+                System.out.print("Total Price=" +money);
+          String tiente= binding.getLiteral("currencyCode").getValue().toString();
            float tong=input_BookNumber + totalbooknumber;
+           float total=input_BookNumber*money;
           if(tong<=totalnumber){
               try{
                    String new_ticket=binding.getResource("x").toString();
@@ -506,14 +393,27 @@ public static String printPropertyValues(Individual ind, Property prop) {
                         ind_customer.addLiteral(Train.personType, c_personType);
                         ind_customer.addProperty(Train.hasAddress, ind_address);
                         
+                        Individual ind_price=model.createIndividual(ont + "Price_" + System.currentTimeMillis(),oc_address);
+                  //      ind_address.addLiteral(Train.houseNumber, c_houseNumber);
+                        ind_price.addLiteral(Train.Amount,total);
+                        ind_price.addLiteral(Train.CurrencyCode, tiente);
+                        long ma=System.currentTimeMillis();
                         OntClass oc_contract=model.createClass("http://www.owl-ontologies.com/Train.owl#Msg_BookTrainRS");
-                        Individual ind_contract=model.createIndividual(ont + "Msg_BookTrainRS_" + System.currentTimeMillis(),oc_contract);
+                        Individual ind_contract=model.createIndividual(ont + "Msg_BookTrainRS_" + ma,oc_contract);
                         ind_contract.addLiteral(Train.numberOfTickets, input_BookNumber);
-                        ind_contract.addLiteral(Train.BookTrainID, input_ticketid +c_phone );
-                        ind_contract.addLiteral(Train.securityCode, c_email +c_phone );
+                        ind_contract.addLiteral(Train.BookTrainID, ma +c_phone );
+                        ind_contract.addLiteral(Train.securityCode, c_fullname +c_phone );
                         ind_contract.addProperty(Train.hasCustomerData, ind_customer);
                         ind_contract.addProperty(Train.hasTrainTicket, ind1);
+                        ind_contract.addProperty(Train.hasPrice, ind_price);
                         isOk=true;
+                        respone=input_ticketid +c_phone+Message.FIELD_SEPARATE
+                                +c_fullname +c_phone+Message.FIELD_SEPARATE
+                                +c_fullname+Message.FIELD_SEPARATE
+                                +input_ticketid+Message.FIELD_SEPARATE
+                                +input_BookNumber+Message.FIELD_SEPARATE
+                                +total + tiente;
+                    //    System.out.println(respone);
                        }
                        else 
                     System.out.println("Khong du dau");
@@ -528,7 +428,8 @@ public static String printPropertyValues(Individual ind, Property prop) {
       }catch(Exception e){
                 e.printStackTrace();
             }
-      return isOk;
+    //  return isOk;
+      return respone;
  }
     public static void searchBookRS(){
         TrainDatabase.LoadOnt2Database();
@@ -560,13 +461,9 @@ public static String printPropertyValues(Individual ind, Property prop) {
  
           
              String Customer =  (individual.listPropertyValues(customer).next()).toString();
-         //   int indexFromDate = fromdate1.indexOf("^^");
-          //  String fromdate2 = fromdate1.substring(0, indexFromDate);
              System.out.println("Customer" +Customer );
             
              String Ticket =  (individual.listPropertyValues(ticket).next()).toString();
-         //   int indexFromDate = fromdate1.indexOf("^^");
-          //  String fromdate2 = fromdate1.substring(0, indexFromDate);
              System.out.println("Ticket" +Ticket );
             
         }
@@ -583,9 +480,9 @@ public static String printPropertyValues(Individual ind, Property prop) {
                 +"amin200587@yahoo.com"+Message.FIELD_SEPARATE+"38546204"+Message.FIELD_SEPARATE
                 +"Khuat Duy Tien"+Message.FIELD_SEPARATE
                 +"Ha Noi"+Message.FIELD_SEPARATE+"student";
-        boolean ss=trainprocess.processBooking(input);
+        String ss=trainprocess.processBooking(input);
         System.out.println("ss=" +ss);
-        trainprocess.searchBookRS();
+    //    trainprocess.searchBookRS();
     } 
 
 }
