@@ -47,7 +47,7 @@
         ArrayList<String> serviceList = Message.split(msg, Message.FIELD_SEPARATE);
 
         out.println("<input type=\"hidden\" name=\"agentName\" value=\"" + agentName + "\"/>");
-        out.println("<input type=\"hidden\" name=\"id\" value=\"" + serviceList.get(0) + "\"/>");
+        out.println("<input type=\"hidden\" name=\"id\" value=\"" + serviceList.get(2) + "\"/>");
         out.println("<input type=\"hidden\" name=\"agent\" value=\"" + serviceList.get(1) + "\"/>");
         %>
                 <script>
@@ -146,18 +146,18 @@
                           <tr bgcolor="#ccc87b">
                             <td height="25" colspan="2" align="right" valign="middle" bgcolor="#3399FF"><div align="left" class="style1">
                                 <div align="center" class="style1 style2">Th&ocirc;ng 
-                                  tin ??t v� t�u </div>
+                                  tin đặt vé tàu </div>
                             </div></td>
                           </tr>
                           <tr>
                            
                             - </tr>
                           <tr>
-                      <td width="34%" height="38" align="right" valign="middle" bgcolor="#FFFFFF"><div align="center" class="style5">S&#7889; hi&#7879;u chuy&#7871;n t�u </div></td>
+                      <td width="34%" height="38" align="right" valign="middle" bgcolor="#FFFFFF"><div align="center" class="style5">S&#7889; hi&#7879;u chuy&#7871;n tàu </div></td>
                             <td width="62%" bgcolor="#FFFFFF"><%=serviceList.get(1)%> </td>
                           </tr>
                           <tr>
-                            <td width="34%" height="38" align="right" valign="middle" bgcolor="#FFFFFF"><div align="center" class="style5">M� s? v� t�u </div></td>
+                            <td width="34%" height="38" align="right" valign="middle" bgcolor="#FFFFFF"><div align="center" class="style5">Mã vé tàu </div></td>
                             <td width="62%" bgcolor="#FFFFFF"><%=serviceList.get(2)%> </td>
                           </tr>
                           <tr>
@@ -192,10 +192,14 @@
                               <td align="left">H&#7885; t&ecirc;n </td>
                               <td align="left" valign="top"><input name="fullName" class="form" id="fullName" size="30" type="text" />
                                                              </td>
-                              <td align="left">Tu?i</td>
+                              <td align="left">Tuổi</td>
                               <td align="left" valign="top"><input name="age" class="form" id="age" size="5" type="text" /></td>
                             </tr>
                             <tr>
+                              <td align="left">Nghề nghiệp</td>
+                              <td align="left" valign="top"><input name="job" class="form" id="job" size="30" type="text" /></td>
+                            </tr>
+							     <tr>
                               <td align="left">Email*</td>
                               <td align="left" valign="top"><input name="email" class="form" id="email" size="30" type="text" /></td>
                             </tr>
@@ -214,7 +218,7 @@
                             
                             <tr>
                               <td align="left">&nbsp;</td>
-                              <td align="center" valign="top"><input name="datvetau" id="datvetau" value="   ??t   " type="submit"></td>
+                              <td align="center" valign="top"><input name="datvetau" id="datvetau" value="  Đặt   " type="submit"></td>
                             </tr>
                           </tbody>
                         </table>
