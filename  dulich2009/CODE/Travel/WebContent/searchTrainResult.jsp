@@ -52,8 +52,8 @@
                 return;
             }
             //result = "FlightAgent  VN213_20100201_E  Information  Vietnam Airlines  VN213  Noi Bai-Ha Noi  8:00,2010-02-01  Tan Son Nhat-Ho Chi Minh  10:00,Cung ngay  Boeing777  economy  1500000.0VND  #_&#_&VN217_20100201_E  Vietnam Airlines  VN217  Noi Bai-Ha Noi  11:00,2010-02-01  Tan Son Nhat-Ho Chi Minh  13:00,Cung ngay  Boeing777  economy  1500000.0VND  #_&#_&VN219_20100201_E  Vietnam Airlines  VN219  Noi Bai-Ha Noi  13:00,2010-02-01  Tan Son Nhat-Ho Chi Minh  15:00,Cung ngay  Boeing777  economy  1500000.0VND  #_&#_&";
-     //       String agentName = result.substring(0, result.indexOf(Message.FIELD_SEPARATE));
-     //       result = result.replace(agentName, "");
+            String agentName = result.substring(0, result.indexOf(Message.FIELD_SEPARATE));
+            //result = result.replace(agentName, "");
       //      log.info(result);
             String services;
             ArrayList<String> supplierList = Message.split(result, Message.OBJECT_SEPARATE);
@@ -67,8 +67,8 @@
                         serviceList = Message.split(services, Message.FIELD_SEPARATE);
                         if (serviceList != null && serviceList.size() > 9) {
                             log.info(services);
-                             out.println("<form action=\"bookFlight.jsp\" method=\"get\" id=\"form" + i + "\"> ");
-                             out.println("<input type=\"hidden\" name=\"agentName\" value=\"" + "TrainAgent" + "\"/>");
+                             out.println("<form action=\"bookTrain.jsp\" method=\"get\" id=\"form" + i + "\"> ");
+                             out.println("<input type=\"hidden\" name=\"agentName\" value=\"" + agentName + "\"/>");
                              out.println("<input type=\"hidden\" name=\"msg\" value=\"" + services + "\"/>");
                                 %>
                                 <tr bgcolor="#FFFFFF">
