@@ -116,7 +116,28 @@ public class TrainAgent extends Agent {
 
                                     finished = true;
                                 } else if (Protocol.TRAIN_RES.equals(protocol)) {
-                                    // Deal with booking...
+                                    boolean booking = train.processBooking(msg.getContent());
+                                    if (booking) {
+                                        content = Message.SUCCESS;
+                                    } else {
+                                        content = Message.FAIL;
+                                    }
+                                    log.info("RETURN RESULT: " + content);
+                                    ACLMessage reply = Message.createReplyMessage(msg, content);
+
+                                    log.info("=== [FLIGHTAGENT] sent reply message " + reply);
+                                    send(reply);
+                                    finished = true;
+                                     //*/
+                                }else{
+                                    content = "Not understand protocol";
+                                    log.info("RETURN RESULT: " + content);
+                                    ACLMessage reply = Message.createReplyMessage(msg, content);
+
+                                    log.info("=== [TRAINAGENT] sent reply message " + reply);
+                                    send(reply);
+
+                                    finished = true;
                                 }
                                 break;
                             default:

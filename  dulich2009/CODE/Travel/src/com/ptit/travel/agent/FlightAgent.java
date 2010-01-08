@@ -14,8 +14,6 @@ import com.ptit.travel.agent.communication.Message;
 
 import java.util.*;
 import com.ptit.travel.jane.Flight.FlightProcess;
-import java.io.FileOutputStream;
-
 /**
  *
  * @author D05CNPM
