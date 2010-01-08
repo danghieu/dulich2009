@@ -506,11 +506,13 @@ public static String printPropertyValues(Individual ind, Property prop) {
                         ind_customer.addLiteral(Train.personType, c_personType);
                         ind_customer.addProperty(Train.hasAddress, ind_address);
                         
-//                        OntClass oc_contract=model.createClass("http://www.owl-ontologies.com/Flight.owl#FlightBookContract");
-//                        Individual ind_contract=model.createIndividual(ont + "FlightBookContract_" + System.currentTimeMillis(),oc_contract);
-//                        ind_contract.addLiteral(Flight.bookNumber, input_BookNumber);
-//                        ind_contract.addLiteral(Flight.id, id);
-//                        ind_contract.addProperty(Flight.hasCustomer, ind_customer);
+                        OntClass oc_contract=model.createClass("http://www.owl-ontologies.com/Train.owl#Msg_BookTrainRS");
+                        Individual ind_contract=model.createIndividual(ont + "Msg_BookTrainRS_" + System.currentTimeMillis(),oc_contract);
+                        ind_contract.addLiteral(Train.numberOfTickets, input_BookNumber);
+                        ind_contract.addLiteral(Train.BookTrainID, input_ticketid +c_phone );
+                        ind_contract.addLiteral(Train.securityCode, c_email +c_phone );
+                        ind_contract.addProperty(Train.hasCustomerData, ind_customer);
+                        ind_contract.addProperty(Train.hasTrainTicket, ind1);
                         isOk=true;
                        }
                        else 
@@ -528,22 +530,62 @@ public static String printPropertyValues(Individual ind, Property prop) {
             }
       return isOk;
  }
+    public static void searchBookRS(){
+        TrainDatabase.LoadOnt2Database();
+       OntModel model = TrainDatabase.getOntologyModel();
+        String ont = "http://www.owl-ontologies.com/Train.owl#";
+        DatatypeProperty booknumber =model.getDatatypeProperty(ont + "numberOfTickets");
+         DatatypeProperty id =model.getDatatypeProperty(ont + "BookTrainID");
+         DatatypeProperty serCode =model.getDatatypeProperty(ont + "securityCode");
+         ObjectProperty customer=model.getObjectProperty(ont+"hasCustomerData");
+         ObjectProperty ticket=model.getObjectProperty(ont+"hasTrainTicket");
+         OntClass cl = model.getOntClass(ont + "Msg_BookTrainRS");
+         log.info("Insert msg to infer");
+         ExtendedIterator<?> extendedIterator = cl.listInstances(); // lay tat ca cac the hien cua cai lop day
+
+        String s = null;
+        while (extendedIterator.hasNext()) {
+            OntResource resource = (OntResource) extendedIterator.next();
+            System.out.println("Dich vu ket hop: " + cl);
+            System.out.println("The hien: " + resource.getLocalName());
+
+            System.out.println("Tai Nguyen");
+            Individual individual = model.getIndividual(ont + resource.getLocalName());                   
+            String bookNumber =  (individual.listPropertyValues(booknumber).next()).toString();
+            System.out.println("booknumber=" + bookNumber );
+            
+            String ID =  (individual.listPropertyValues(id).next()).toString();
+
+             System.out.println("ID=" +ID );
+ 
+          
+             String Customer =  (individual.listPropertyValues(customer).next()).toString();
+         //   int indexFromDate = fromdate1.indexOf("^^");
+          //  String fromdate2 = fromdate1.substring(0, indexFromDate);
+             System.out.println("Customer" +Customer );
+            
+             String Ticket =  (individual.listPropertyValues(ticket).next()).toString();
+         //   int indexFromDate = fromdate1.indexOf("^^");
+          //  String fromdate2 = fromdate1.substring(0, indexFromDate);
+             System.out.println("Ticket" +Ticket );
+            
+        }
+    }
     public static void main(String arg[]) throws Exception{
         TrainProcessDB trainprocess=new TrainProcessDB();
         OntModel ontmodel = ModelFactory.createOntologyModel();
-//        String input="Ha Noi"+Message.FIELD_SEPARATE+"Phu Ly"+Message.FIELD_SEPARATE+"2009-12-29";
-//        String ss=trainprocess.search(input);
-//        System.out.print("ss="+ss);
-//        String input1="HN_PL_SE1_1";
-//        String s=trainprocess.searchID(input1);
-//        System.out.print(s);
-        String input="HN_PL_SE1_1"+Message.FIELD_SEPARATE+"SE1"+Message.FIELD_SEPARATE+"5"
-                +Message.OBJECT_SEPARATE+"Hanh"+Message.FIELD_SEPARATE+"22"+Message.FIELD_SEPARATE
-                +"amin200587@yahoo.com"+Message.FIELD_SEPARATE+"38546204"+Message.FIELD_SEPARATE
-                +"Khuat Duy Tien"+Message.FIELD_SEPARATE
-                +"Ha Noi"+Message.FIELD_SEPARATE+"student";
-        boolean ss=trainprocess.processBooking(input);
-        System.out.println("ss=" +ss);
+        String input="Ha Noi"+Message.FIELD_SEPARATE+"Phu Ly"+Message.FIELD_SEPARATE+"2009-12-29";
+        String ss=trainprocess.search(input);
+        System.out.print("ss="+ss);
+
+//        String input="HN_PL_SE1_1"+Message.FIELD_SEPARATE+"SE1"+Message.FIELD_SEPARATE+"5"
+//                +Message.OBJECT_SEPARATE+"Hanh"+Message.FIELD_SEPARATE+"22"+Message.FIELD_SEPARATE
+//                +"amin200587@yahoo.com"+Message.FIELD_SEPARATE+"38546204"+Message.FIELD_SEPARATE
+//                +"Khuat Duy Tien"+Message.FIELD_SEPARATE
+//                +"Ha Noi"+Message.FIELD_SEPARATE+"student";
+//        boolean ss=trainprocess.processBooking(input);
+//        System.out.println("ss=" +ss);
+//        trainprocess.searchBookRS();
     } 
 
 }
