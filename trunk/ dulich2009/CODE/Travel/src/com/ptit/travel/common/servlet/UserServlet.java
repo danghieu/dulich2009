@@ -350,19 +350,19 @@ public String extractSearchTrainMsg(HttpServletRequest request) {
     }
  public String extractBookTrainMsg(HttpServletRequest request) {
         String msg = "";
-        String agentName, id, agent, booknumber, fullName, sex, email,
-                phoneNumber, specificAddress, city, country;
+        String agentName, id, agent, booknumber, fullName, age, email,
+                phoneNumber, specificAddress, city, job;
         agentName = request.getParameter("agentName");
         id = request.getParameter("id");
         agent = request.getParameter("agent");
         booknumber = request.getParameter("booknumber");
         fullName = request.getParameter("fullName");
-        sex = request.getParameter("sex");
+        age = request.getParameter("age");
         email = request.getParameter("email");
         phoneNumber = request.getParameter("phoneNumber");
         specificAddress = request.getParameter("specificAddress");
         city = request.getParameter("city");
-        country = request.getParameter("country");
+        job = request.getParameter("job");
 
         msg = "" + agentName + Message.FIELD_SEPARATE +
                 id + Message.FIELD_SEPARATE +
@@ -370,12 +370,12 @@ public String extractSearchTrainMsg(HttpServletRequest request) {
                 booknumber +
                 Message.OBJECT_SEPARATE +
                 fullName + Message.FIELD_SEPARATE +
-                sex + Message.FIELD_SEPARATE +
+                age + Message.FIELD_SEPARATE +
                 email + Message.FIELD_SEPARATE +
                 phoneNumber + Message.FIELD_SEPARATE +
                 specificAddress + Message.FIELD_SEPARATE +
                 city + Message.FIELD_SEPARATE +
-                country;
+                job;
         log.debug("BOOK TRAIN Msg: " + msg);
         return msg;
 
