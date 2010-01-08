@@ -265,8 +265,8 @@ private static Logger log = Logger.getLogger(TrainProcessDB.class.getName());
                 +"?x train:hasPrice ?price. \n"
                 +"?x train:trainJourneyClass ?class. \n"
                 +"?x train:trainJourneyCode ?code. \n"
-       //         +"?x train:numberTickets ?totalNum. \n"
-          //      +"?x train:numberbookedTicket ?bookedNum. \n"
+                +"?x train:numberTickets ?totalNum. \n"
+                +"?x train:numberbookedTicket ?bookedNum. \n"
                 
                 +"?change train:hasBeginPoint ?Departure. \n"
                 +"?Departure train:name ?dRailway. \n"
@@ -415,13 +415,13 @@ public static String printPropertyValues(Individual ind, Property prop) {
       System.out.println("arr_customer="+arr_customer.toString());
       String c_fullname=arr_customer.get(0);
  //     String c_sex=arr_customer.get(1);
-      String c_age=arr_customer.get(1);
+      float c_age=Float.parseFloat(arr_customer.get(1));
       String c_email=arr_customer.get(2);
       String c_phone=arr_customer.get(3);
-      String c_houseNumber=arr_customer.get(4);
-      String c_Street=arr_customer.get(5);
-      String c_city=arr_customer.get(6);
-      String c_personType=arr_customer.get(7);
+ //     String c_houseNumber=arr_customer.get(4);
+      String c_Street=arr_customer.get(4);
+      String c_city=arr_customer.get(5);
+      String c_personType=arr_customer.get(6);
       
       ArrayList<String> arr = new ArrayList<String>();
       //ticketID, trainJourneyCode,number
@@ -479,6 +479,7 @@ public static String printPropertyValues(Individual ind, Property prop) {
 
           float totalbooknumber = Float.parseFloat(binding.getLiteral("bookedNum").getValue().toString());   
                 System.out.print("Total Book Number=" +totalbooknumber);
+          
            float tong=input_BookNumber + totalbooknumber;
           if(tong<=totalnumber){
               try{
@@ -491,7 +492,7 @@ public static String printPropertyValues(Individual ind, Property prop) {
                         System.out.println("Them gia tri"); 
                         OntClass oc_address=model.createClass("http://www.owl-ontologies.com/Train.owl#Address");
                         Individual ind_address=model.createIndividual(ont + "Address_" + System.currentTimeMillis(),oc_address);
-                        ind_address.addLiteral(Train.houseNumber, c_houseNumber);
+                  //      ind_address.addLiteral(Train.houseNumber, c_houseNumber);
                         ind_address.addLiteral(Train.street,c_Street);
                         ind_address.addLiteral(Train.city, c_city);
 
@@ -530,19 +531,19 @@ public static String printPropertyValues(Individual ind, Property prop) {
     public static void main(String arg[]) throws Exception{
         TrainProcessDB trainprocess=new TrainProcessDB();
         OntModel ontmodel = ModelFactory.createOntologyModel();
-        String input="Ha Noi"+Message.FIELD_SEPARATE+"Phu Ly"+Message.FIELD_SEPARATE+"2009-12-29";
-        String ss=trainprocess.search(input);
-        System.out.print("ss="+ss);
+//        String input="Ha Noi"+Message.FIELD_SEPARATE+"Phu Ly"+Message.FIELD_SEPARATE+"2009-12-29";
+//        String ss=trainprocess.search(input);
+//        System.out.print("ss="+ss);
 //        String input1="HN_PL_SE1_1";
 //        String s=trainprocess.searchID(input1);
 //        System.out.print(s);
-//        String input="HN_PL_SE1_1"+Message.FIELD_SEPARATE+"SE1"+Message.FIELD_SEPARATE+"5"
-//                +Message.OBJECT_SEPARATE+"Hanh"+Message.FIELD_SEPARATE+"22"+Message.FIELD_SEPARATE
-//                +"amin200587@yahoo.com"+Message.FIELD_SEPARATE+"38546204"+Message.FIELD_SEPARATE
-//                +"19"+Message.FIELD_SEPARATE+"Khuat Duy Tien"+Message.FIELD_SEPARATE
-//                +"Ha Noi"+Message.FIELD_SEPARATE+"student";
-//        boolean ss=trainprocess.processBooking(input);
-//        System.out.println("ss=" +ss);
+        String input="HN_PL_SE1_1"+Message.FIELD_SEPARATE+"SE1"+Message.FIELD_SEPARATE+"5"
+                +Message.OBJECT_SEPARATE+"Hanh"+Message.FIELD_SEPARATE+"22"+Message.FIELD_SEPARATE
+                +"amin200587@yahoo.com"+Message.FIELD_SEPARATE+"38546204"+Message.FIELD_SEPARATE
+                +"Khuat Duy Tien"+Message.FIELD_SEPARATE
+                +"Ha Noi"+Message.FIELD_SEPARATE+"student";
+        boolean ss=trainprocess.processBooking(input);
+        System.out.println("ss=" +ss);
     } 
 
 }
