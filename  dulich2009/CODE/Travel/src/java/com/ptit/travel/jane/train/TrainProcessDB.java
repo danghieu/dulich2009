@@ -88,10 +88,10 @@ private static Logger log = Logger.getLogger(TrainProcessDB.class.getName());
         DatatypeProperty ticketid=model.getDatatypeProperty(ont+ "ticketID");
         
         OntClass cl = model.getOntClass(ont + "Msg_TrainAvailRS");
-       
+       long total= System.currentTimeMillis();
         log.info("Insert msg to infer");
         // add model yeu cau vao ontology de tao ra 1 model moi chua tat ca cac rang buoc ke ca luat
-        Model ontmodel = insertMsg_TrainAvailRQ(input, System.currentTimeMillis());
+        Model ontmodel = insertMsg_TrainAvailRQ(input, total);
         model.add(ontmodel);
         ExtendedIterator<?> extendedIterator = cl.listInstances(); // lay tat ca cac the hien cua cai lop day
         String s = "";
@@ -113,7 +113,7 @@ private static Logger log = Logger.getLogger(TrainProcessDB.class.getName());
         }
         
      //    xoa mesage search request voi respone khoi model (neu ko xoa 2 msg nay se tong tai trong csdl)
-          Individual individual = model.getIndividual(ont + "Msg_TrainAvailRQ"+System.currentTimeMillis());
+          Individual individual = model.getIndividual(ont + "Msg_TrainAvailRQ"+total);
           if(individual!=null)
            individual.remove();
 
@@ -574,18 +574,18 @@ public static String printPropertyValues(Individual ind, Property prop) {
     public static void main(String arg[]) throws Exception{
         TrainProcessDB trainprocess=new TrainProcessDB();
         OntModel ontmodel = ModelFactory.createOntologyModel();
-        String input="Ha Noi"+Message.FIELD_SEPARATE+"Phu Ly"+Message.FIELD_SEPARATE+"2009-12-29";
-        String ss=trainprocess.search(input);
-        System.out.print("ss="+ss);
+//        String input="Ha Noi"+Message.FIELD_SEPARATE+"Phu Ly"+Message.FIELD_SEPARATE+"2009-12-29";
+//        String ss=trainprocess.search(input);
+//        System.out.print("ss="+ss);
 
-//        String input="HN_PL_SE1_1"+Message.FIELD_SEPARATE+"SE1"+Message.FIELD_SEPARATE+"5"
-//                +Message.OBJECT_SEPARATE+"Hanh"+Message.FIELD_SEPARATE+"22"+Message.FIELD_SEPARATE
-//                +"amin200587@yahoo.com"+Message.FIELD_SEPARATE+"38546204"+Message.FIELD_SEPARATE
-//                +"Khuat Duy Tien"+Message.FIELD_SEPARATE
-//                +"Ha Noi"+Message.FIELD_SEPARATE+"student";
-//        boolean ss=trainprocess.processBooking(input);
-//        System.out.println("ss=" +ss);
-//        trainprocess.searchBookRS();
+        String input="HN_PL_SE1_1"+Message.FIELD_SEPARATE+"SE1"+Message.FIELD_SEPARATE+"5"
+                +Message.OBJECT_SEPARATE+"Hanh"+Message.FIELD_SEPARATE+"22"+Message.FIELD_SEPARATE
+                +"amin200587@yahoo.com"+Message.FIELD_SEPARATE+"38546204"+Message.FIELD_SEPARATE
+                +"Khuat Duy Tien"+Message.FIELD_SEPARATE
+                +"Ha Noi"+Message.FIELD_SEPARATE+"student";
+        boolean ss=trainprocess.processBooking(input);
+        System.out.println("ss=" +ss);
+        trainprocess.searchBookRS();
     } 
 
 }
