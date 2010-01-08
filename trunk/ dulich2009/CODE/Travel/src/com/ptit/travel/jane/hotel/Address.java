@@ -85,13 +85,8 @@ public class Address {
 			
 			// xoa cai cu them cai moi vao
 			if (ind != null) {
+				ind.remove();
 				
-				ind.removeAll(Hotel.street);
-				ind.addProperty(Hotel.street, arr.get(5));
-				ind.removeAll(Hotel.number);
-				ind.addProperty(Hotel.number, arr.get(4));
-				ind.removeAll(Hotel.city);
-				ind.addProperty(Hotel.city, arr.get(3));
 				
 				
 				isOk = true;
@@ -140,7 +135,7 @@ public static void main(String s[]) throws Exception{
         String input1 = "km8"+Message.FIELD_SEPARATE +"Nguyen Trai" + Message.FIELD_SEPARATE +"Thanh xuan_ Ha Noi";
         // day la 1 doi tuong dia chi, to se cho vao csdl
 	boolean a = add.insertAddress(input);
-        //boolean b = add.insertAddress(input1);
+      //  boolean b = add.deleteAddress(input);
 
 	
 	 
