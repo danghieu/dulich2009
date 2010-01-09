@@ -84,8 +84,8 @@ public class AgentProcess {
     public static void main(String arg[]) throws Exception{
         AgentProcess agent=new AgentProcess();
         String s="controller";
-        String ss=agent.searchAgent(s);
-      //  int ss=agent.searchState("ControllerAgent");
+    //    String ss=agent.searchAgent(s);
+        int ss=agent.searchState("ControllerAgent");
         System.out.println(ss);
         
     }
