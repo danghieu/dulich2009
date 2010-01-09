@@ -53,10 +53,7 @@
     </table></td>
   </tr>
   <tr>
-  <td valign="middle" align="center"><form id="form1" name="form1" method="post" action="">
-    
-    <input type="submit" name="Submit" value="Cập nhật thông tin" />
-  </form>  </td>
+  <td valign="middle" align="center">  </td>
   </tr>
     <tr>
     <td>  <table width="761" border="1">
@@ -95,20 +92,21 @@
     <td width="56" align="center" valign="middle"></td>
     <td width="206" align="center" valign="middle"><table width="200" border="0">
         <tr>
-          <td><table width="200" border="1">
+          <td>
+		  <table width="200" border="1">
             <tr>
              <td width="58" align="center" valign="middle">Phổ thông</td>
               <td width="58" align="center" valign="middle"> </td>
               <td width="58" align="center" valign="middle"></td>
              <td width="58" align="center" valign="middle"></td>
             </tr>
-			  <tr>
-             <td width="58" align="center" valign="middle">Doanh nhân </td>
-              <td width="58" align="center" valign="middle"> </td>
-              <td width="58" align="center" valign="middle"></td>
-             <td width="58" align="center" valign="middle"></td>
-            </tr>
-          </table></td>
+			
+          </table>
+		  </td>
+		  <td width="58" align="center" valign="middle"> </td>
+		   <td width="58" align="center" valign="middle"> </td>
+		    <td width="58" align="center" valign="middle"> </td>
+			
         </tr>
       </table></td>
     <td width="76" align="center" valign="middle">Xem chi tiết </td>
