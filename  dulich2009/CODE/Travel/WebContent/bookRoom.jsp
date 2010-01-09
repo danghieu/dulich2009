@@ -63,7 +63,7 @@
             if(protocol == null || "".equals(protocol)){
                 log.error("INVALID INPUT");
                 %>
-                <jsp:forward page="/pages/hotel/searchRoom.jsp" /> 
+                <jsp:forward page="/searchRoom.jsp" /> 
                 <%
                 return;
             }
