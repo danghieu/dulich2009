@@ -416,7 +416,8 @@ public static String printPropertyValues(Individual ind, Property prop) {
                     //    System.out.println(respone);
                        }
                        else 
-                    System.out.println("Khong du dau");
+                    respone="False";
+                           System.out.println("Khong du dau");
                    }
               }catch(Exception e){
                 e.printStackTrace();
@@ -471,17 +472,17 @@ public static String printPropertyValues(Individual ind, Property prop) {
     public static void main(String arg[]) throws Exception{
         TrainProcessDB trainprocess=new TrainProcessDB();
         OntModel ontmodel = ModelFactory.createOntologyModel();
-//        String input="Ha Noi"+Message.FIELD_SEPARATE+"Phu Ly"+Message.FIELD_SEPARATE+"2009-12-29";
-//        String ss=trainprocess.search(input);
-//        System.out.print("ss="+ss);
+        String input="Ha Noi"+Message.FIELD_SEPARATE+"Phu Ly"+Message.FIELD_SEPARATE+"2009-12-29";
+        String ss=trainprocess.search(input);
+        System.out.print("ss="+ss);
 
-        String input="HN_PL_SE1_1"+Message.FIELD_SEPARATE+"SE1"+Message.FIELD_SEPARATE+"5"
-                +Message.OBJECT_SEPARATE+"Hanh"+Message.FIELD_SEPARATE+"22"+Message.FIELD_SEPARATE
-                +"amin200587@yahoo.com"+Message.FIELD_SEPARATE+"38546204"+Message.FIELD_SEPARATE
-                +"Khuat Duy Tien"+Message.FIELD_SEPARATE
-                +"Ha Noi"+Message.FIELD_SEPARATE+"student";
-        String ss=trainprocess.processBooking(input);
-        System.out.println("ss=" +ss);
+//        String input="HN_PL_SE1_1"+Message.FIELD_SEPARATE+"SE1"+Message.FIELD_SEPARATE+"5"
+//                +Message.OBJECT_SEPARATE+"Hanh"+Message.FIELD_SEPARATE+"22"+Message.FIELD_SEPARATE
+//                +"amin200587@yahoo.com"+Message.FIELD_SEPARATE+"38546204"+Message.FIELD_SEPARATE
+//                +"Khuat Duy Tien"+Message.FIELD_SEPARATE
+//                +"Ha Noi"+Message.FIELD_SEPARATE+"student";
+//        String ss=trainprocess.processBooking(input);
+//        System.out.println("ss=" +ss);
     //    trainprocess.searchBookRS();
     } 
 
