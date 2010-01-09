@@ -25,6 +25,8 @@
                 
                 out.println("<h2>"+msg+"</h2>");
                 %>  
+                <p></p>
+                <a href="index.jsp" style="color: #fff;	text-decoration: none">Trang ch&#7911; </a>
             </div>
             <div id="templatemo_bot"></div>
         </div>
