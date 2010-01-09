@@ -75,7 +75,7 @@
              <td width="55" align="center" valign="middle" bgcolor="#3366FF"><font color="#FFFFFF" size="2"><strong>Hạng vé </strong></font></td>
               <td width="38" align="center" valign="middle" bgcolor="#3366FF"><font color="#FFFFFF" size="2"><strong>Giá vé </strong></font></td>
               <td width="39" align="center" valign="middle" bgcolor="#3366FF"><font color="#FFFFFF" size="2"><strong>Tổng số vé </strong></font></td>
-             <td width="40" align="center" valign="middle" bgcolor="#3366FF"><font color="#FFFFFF" size="2"><strong>Số lượng vé còn</strong></font> </td>
+             <td width="40" align="center" valign="middle" bgcolor="#3366FF"><font color="#FFFFFF" size="2"><strong>Số lượng đã đặt </strong></font> </td>
             </tr>
           </table></td>
         </tr>
