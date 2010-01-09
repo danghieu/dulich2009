@@ -1,4 +1,4 @@
-; Fri Jan 01 00:50:58 PST 2010
+; Sat Jan 09 09:31:46 PST 2010
 ; 
 ;+ (version "3.4")
 ;+ (build "Build 533")
@@ -6,11 +6,11 @@
 ([BROWSER_SLOT_NAMES] of  Property_List
 
 	(properties
-		[Flight_ProjectKB_Class20064]
-		[Flight_ProjectKB_Class20065]
-		[Flight_ProjectKB_Class20066]
-		[Flight_ProjectKB_Class20067]
-		[Flight_ProjectKB_Class20068]))
+		[Flight_ProjectKB_Class10059]
+		[Flight_ProjectKB_Class10060]
+		[Flight_ProjectKB_Class10061]
+		[Flight_ProjectKB_Class10062]
+		[Flight_ProjectKB_Class10063]))
 
 ([CLSES_TAB] of  Widget
 
@@ -295,13 +295,28 @@
 
 ([Flight_ProjectKB_Class10059] of  String
 
-	(name "JENA-SCHEMAGEN-FILE")
-	(string_value "C:\\Documents and Settings\\Thao Hoang\\Desktop\\Flight.java"))
+	(name "http://www.w3.org/2002/07/owl#Class")
+	(string_value "%3ANAME"))
 
 ([Flight_ProjectKB_Class10060] of  String
 
-	(name "JENA-SCHEMAGEN-PACKAGE")
-	(string_value "com.ptit.travel.jane.flight"))
+	(name ":INSTANCE-ANNOTATION")
+	(string_value "%3AANNOTATION-TEXT"))
+
+([Flight_ProjectKB_Class10061] of  String
+
+	(name ":META-CLASS")
+	(string_value "%3ANAME"))
+
+([Flight_ProjectKB_Class10062] of  String
+
+	(name "http://www.w3.org/2002/07/owl#Thing")
+	(string_value "%3ANAME"))
+
+([Flight_ProjectKB_Class10063] of  String
+
+	(name ":PAL-CONSTRAINT")
+	(string_value "%3APAL-NAME"))
 
 ([Flight_ProjectKB_Class11] of  Widget
 
@@ -334,6 +349,16 @@
 ([Flight_ProjectKB_Class17] of  Property_List
 )
 
+([Flight_ProjectKB_Class170] of  String
+
+	(name "JENA-SCHEMAGEN-FILE")
+	(string_value "C:\\Documents and Settings\\Thao Hoang\\Desktop\\Flight.java"))
+
+([Flight_ProjectKB_Class171] of  String
+
+	(name "JENA-SCHEMAGEN-PACKAGE")
+	(string_value "com.ptit.travel.jane.Flight"))
+
 ([Flight_ProjectKB_Class18] of  Widget
 
 	(is_hidden FALSE)
@@ -348,31 +373,6 @@
 	(is_hidden FALSE)
 	(name "http://www.w3.org/2000/01/rdf-schema#seeAlso")
 	(property_list [Flight_ProjectKB_Class21]))
-
-([Flight_ProjectKB_Class20064] of  String
-
-	(name "http://www.w3.org/2002/07/owl#Class")
-	(string_value "%3ANAME"))
-
-([Flight_ProjectKB_Class20065] of  String
-
-	(name ":INSTANCE-ANNOTATION")
-	(string_value "%3AANNOTATION-TEXT"))
-
-([Flight_ProjectKB_Class20066] of  String
-
-	(name ":META-CLASS")
-	(string_value "%3ANAME"))
-
-([Flight_ProjectKB_Class20067] of  String
-
-	(name "http://www.w3.org/2002/07/owl#Thing")
-	(string_value "%3ANAME"))
-
-([Flight_ProjectKB_Class20068] of  String
-
-	(name ":PAL-CONSTRAINT")
-	(string_value "%3APAL-NAME"))
 
 ([Flight_ProjectKB_Class21] of  Property_List
 )
@@ -1074,9 +1074,6 @@
 ([KB_221055_Instance_71] of  Property_List
 )
 
-([KB_260145_Class0] of  Map
-)
-
 ([KB_301165_Instance_1013] of  Widget
 
 	(is_hidden FALSE)
@@ -1188,6 +1185,9 @@
 
 	(name "owl_file_name")
 	(string_value "Flight.owl"))
+
+([KB_397599_Class0] of  Map
+)
 
 ([KB_444675_Instance_0] of  String
 
@@ -5865,8 +5865,8 @@
 		"http://www.w3.org/1999/02/22-rdf-syntax-ns#Bag"
 		":META-CLASS"
 		":PAL-DESCRIPTION"
-		":SLOT-DEFAULTS"
 		"http://www.w3.org/2001/XMLSchema#duration"
+		":SLOT-DEFAULTS"
 		":DIRECT-DOMAIN"
 		"http://www.w3.org/2002/07/owl#AnonymousClass"
 		"http://www.w3.org/2003/11/swrl#AtomList"
@@ -5919,8 +5919,8 @@
 		":DOCUMENTATION"
 		":ANNOTATION-TEXT"
 		"http://www.w3.org/2001/XMLSchema#unsignedLong"
-		"http://www.w3.org/2001/XMLSchema#long"
 		"http://www.w3.org/2001/XMLSchema#hexBinary"
+		"http://www.w3.org/2001/XMLSchema#long"
 		"http://www.w3.org/2002/07/owl#HasValueRestriction"
 		"http://protege.stanford.edu/plugins/owl/protege#inferredSubclassOf"
 		"http://www.w3.org/2001/XMLSchema#short"
@@ -5936,8 +5936,8 @@
 		":DEFAULTS"
 		"http://www.w3.org/2002/07/owl#LogicalClass"
 		":DIRECT-SUPERCLASSES"
-		"http://www.w3.org/2001/XMLSchema#unsignedInt"
 		":DOCUMENTATION-IN-FRAME"
+		"http://www.w3.org/2001/XMLSchema#unsignedInt"
 		"http://www.w3.org/2002/07/owl#oneOf"
 		"http://www.w3.org/2001/XMLSchema#gDay"
 		"http://www.w3.org/1999/02/22-rdf-syntax-ns#rest"
@@ -5950,8 +5950,8 @@
 		":DIRECT-SUBCLASSES"
 		":ASSOCIATED-SLOT"
 		":SYSTEM-CLASS"
-		"http://www.w3.org/2001/XMLSchema#language"
 		":OWL-ONTOLOGY-POINTER-CLASS"
+		"http://www.w3.org/2001/XMLSchema#language"
 		"http://www.w3.org/2002/07/owl#Ontology"
 		":ANNOTATION"
 		"http://www.w3.org/2003/11/swrl#dataRange"
@@ -6052,8 +6052,8 @@
 		[KB_325529_Class4]
 		[empty.owl_ProjectKB_Class5]
 		[empty.owl_ProjectKB_Class6]
-		[Flight_ProjectKB_Class10059]
-		[Flight_ProjectKB_Class10060]))
+		[Flight_ProjectKB_Class170]
+		[Flight_ProjectKB_Class171]))
 
 ([STANDARD_CLASS_FORM_WIDGET] of  Widget
 
