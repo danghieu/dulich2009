@@ -262,7 +262,7 @@ public class AgentDB {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		Database db=new Database(); 
+		AgentDB db=new AgentDB(); 
                 
 		//IDBConnection db1 = db.getConnection(true);
 		boolean result = db.loadData(true);
