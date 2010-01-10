@@ -175,7 +175,7 @@ public class AgentProcess {
         agent.insertAgent(info);
         String s = "hotel";
         ArrayList<String> ss = agent.searchAgent(s);    
-        System.out.println("RESULT: " + ss);
+        System.out.println("RESULT: " +ss);
         agent.searchAgent2(s);
 
     }
