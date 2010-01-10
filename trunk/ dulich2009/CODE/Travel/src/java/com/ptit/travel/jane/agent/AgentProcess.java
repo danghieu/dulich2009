@@ -162,6 +162,31 @@ public class AgentProcess {
         }
         System.out.println(ma+diachi+trangthai);
     }
+    public static void deleteAgent(String s){
+        AgentDB.LoadOnt2Database();
+       OntModel model = AgentDB.getOntologyModel();
+       String ont="http://www.owl-ontologies.com/Ontology1254907557.owl#";
+       DatatypeProperty  ma = model.getDatatypeProperty(ont + "id");
+       OntClass cl = model.getOntClass(ont + "Agent");
+       log.info("Insert msg to infer");
+         ExtendedIterator<?> extendedIterator = cl.listInstances(); // lay tat ca cac the hien cua cai lop day
+
+   //    s=s+"^^http://www.w3.org/2001/XMLSchema#string";
+        while (extendedIterator.hasNext()) {
+            OntResource resource = (OntResource) extendedIterator.next();
+           
+            Individual individual = model.getIndividual(ont + resource.getLocalName());                   
+            String tenAgent =  (individual.listPropertyValues(ma).next()).toString();
+            int index= tenAgent.indexOf("^^");
+            tenAgent= tenAgent.substring(0,index);
+            System.out.println("Ten agent: " + tenAgent );
+            if(tenAgent.matches(s)){
+                individual.remove();
+                System.out.println("xoa roi");
+            }
+                                 
+        }
+    }
 
     public static void main(String arg[]) throws Exception {
         AgentProcess agent = new AgentProcess();
