@@ -130,7 +130,16 @@
                                                                             <tr> 
                                                                                 <td align="right" valign="middle" bgcolor="#FFFFFF"><div align="right">Fax 
                                                                                 </div></td>
-                                                                                <td bgcolor="#FFFFFF"><input name="txtFax" id="txtFax" size="35" type="text"></td>
+                                                                                <td bgcolor="#FFFFFF"><input name="fax" id="txtFax" size="35" type="text"></td>
+                                                                            </tr>
+																			  <tr> 
+                                                                                <td align="right" valign="middle" bgcolor="#FFFFFF"><div align="right">Địa chỉ cụ thể </div></td>
+                                                                                <td bgcolor="#FFFFFF"><input name="specificAddress" id="specificAddress" size="35" type="text"></td>
+                                                                            </tr>
+																			  <tr> 
+                                                                                <td align="right" valign="middle" bgcolor="#FFFFFF"><div align="right">Thành phố
+                                                                                </div></td>
+                                                                                <td bgcolor="#FFFFFF"><input name="userCity" id="userCity" size="35" type="text"></td>
                                                                             </tr>
                                                                 </tbody></table></td>
                                                             </tr>

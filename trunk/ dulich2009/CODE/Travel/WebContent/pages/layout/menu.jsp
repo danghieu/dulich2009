@@ -19,6 +19,7 @@
             <li><a href="#"style="color: #fff;	text-decoration: none">Tin t&#7913;c </a></li>
             <li><a href="#"style="color: #fff;	text-decoration: none">Liên h&#7879; </a></li>        
             <li><a href="flightAgentUpdate.jsp"style="color: #fff;	text-decoration: none">Quản lý thông tin </a></li>            
+            <li><a href="login.jsp"style="color: #fff;	text-decoration: none">Thành viên </a></li>            
         </ul>
     </body>
 </html>
