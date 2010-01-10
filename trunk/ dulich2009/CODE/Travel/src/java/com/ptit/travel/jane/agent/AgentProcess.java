@@ -149,7 +149,7 @@ public class AgentProcess {
      * @param type
      * @return
      */
-    public Hashtable<String, ArrayList<String>> getAgentByType(String type) {
+    public static Hashtable<String, ArrayList<String>> getAgentByType(String type) {
         AgentDB.LoadOnt2Database();
         OntModel model = AgentDB.getOntologyModel();
         Hashtable<String, ArrayList<String>> hashtable = new Hashtable<String, ArrayList<String>>();
@@ -181,7 +181,7 @@ public class AgentProcess {
 
     }
 
-    public ArrayList<String> getAgentById(String a) {
+    public static ArrayList<String> getAgentById(String id) {
         AgentDB.LoadOnt2Database();
         OntModel model = AgentDB.getOntologyModel();
         String trangthai = "";
@@ -192,15 +192,13 @@ public class AgentProcess {
                 + "?x agent:type ?Type. \n" 
                 + "?x agent:state ?State. \n" 
                 + "?x agent:address ?Address. \n" 
-                + "FILTER regex(?ID,\"" + a + "\",\"i\")}";
+                + "FILTER regex(?ID,\"" + id + "\",\"i\")}";
         Query query = QueryFactory.create(queryString);
         QueryExecution queryexec = QueryExecutionFactory.create(query, model);
         try {
             ResultSet rs = queryexec.execSelect();
             ArrayList<String> arr = new ArrayList<String>();
-            System.out.println("Hello_1");
             while (rs.hasNext()) {
-            System.out.println("Hello_21");
                 Object obj = rs.next();
                 ResultBinding binding = (ResultBinding) obj;
                 //loai = binding.getLiteral("Type").getValue().toString();
@@ -251,11 +249,11 @@ public class AgentProcess {
 ////        int ss=agent.searchState("ControllerAgent");
 //        System.out.println("RESULT: " + ss);
         String info = "dia chi" + Message.FIELD_SEPARATE + "mo ta" + Message.FIELD_SEPARATE + "id" + Message.FIELD_SEPARATE + "owner" + Message.FIELD_SEPARATE + "active" + Message.FIELD_SEPARATE + "hotel";
-        agent.insertAgent(info);
+        //agent.insertAgent(info);
         String s = "hotel";
         ArrayList<String> ss = agent.getActiveAgents(s);
         System.out.println("RESULT: " + ss);
-        s = "id";
+        s = "Sofitel";
         System.out.println("Result: " + agent.getAgentById(s));
 
     }
