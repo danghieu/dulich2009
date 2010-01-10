@@ -86,7 +86,7 @@
                         </tr>
                         <tr>
                             <td><strong>Ng&agrave;y v&#7873; </strong></td>
-                            <td><input name="returnDate" type="text" id="returnDate" value="2010-02-01" size="14" /></td>
+                            <td><input name="returnDate" type="text" id="returnDate" size="14" /></td>
                         </tr>
                         <tr>
                             <td>&nbsp;</td>
