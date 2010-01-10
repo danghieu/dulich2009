@@ -81,12 +81,12 @@
                         <tr>
                             <td><strong>Ng&agrave;y &#273;i </strong></td>
                             <td><label>
-                                    <input name="startDate" type="text" id="startDate" value="17-01-2010" size="14" />
+                                    <input name="startDate" type="text" id="startDate" value="2009-12-29" size="14" />
                             </label></td>
                         </tr>
                         <tr>
                             <td><strong>Ng&agrave;y v&#7873; </strong></td>
-                            <td><input name="returnDate" type="text" id="returnDate" value="01-02-2010" size="14" /></td>
+                            <td><input name="returnDate" type="text" id="returnDate" value="2010-02-01" size="14" /></td>
                         </tr>
                         <tr>
                             <td>&nbsp;</td>
