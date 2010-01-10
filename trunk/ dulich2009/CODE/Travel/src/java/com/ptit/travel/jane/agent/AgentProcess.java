@@ -39,12 +39,20 @@ public class AgentProcess {
 
     private static Logger log = Logger.getLogger(AgentProcess.class.getName());
 
-    public static ArrayList<String> searchAgent(String s) {
+
+    /**
+     * 
+     * @param type: type of agent, example: hotel, flight, customer, ...
+     * @return
+     */
+    public static ArrayList<String> getActiveAgents(String type) {
         AgentDB.LoadOnt2Database();
         OntModel model = AgentDB.getOntologyModel();
         ArrayList<String> result = new ArrayList<String>();
 
-        String queryString = "PREFIX agent: <http://www.owl-ontologies.com/Ontology1254907557.owl#> \n" + "SELECT DISTINCT * \n" + "WHERE \n" + "{\n" + "?x agent:id ?ID. \n" + "?x agent:type ?Type. \n" + "?x agent:state ?State. \n" + "FILTER regex(?Type,\"" + s + "\",\"i\")}";
+        String queryString = "PREFIX agent: <http://www.owl-ontologies.com/Ontology1254907557.owl#> \n" +
+                "SELECT DISTINCT * \n" + "WHERE \n" + "{\n" + "?x agent:id ?ID. \n" + "?x agent:type ?Type. \n" +
+                "?x agent:state ?State. \n" + "FILTER regex(?Type,\"" + type + "\",\"i\")}";
         Query query = QueryFactory.create(queryString);
         QueryExecution queryexec = QueryExecutionFactory.create(query, model);
         try {
@@ -71,7 +79,9 @@ public class AgentProcess {
         int giatri = 0;
         AgentDB.LoadOnt2Database();
         OntModel model = AgentDB.getOntologyModel();
-        String queryString = "PREFIX agent: <http://www.owl-ontologies.com/Ontology1254907557.owl#> \n" + "SELECT DISTINCT * \n" + "WHERE \n" + "{\n" + "?x agent:id ?ID. \n" + "?x agent:type ?Type. \n" + "?x agent:state ?State. \n" + "FILTER regex(?ID, \"" + id + "\",\"i\")}";
+        String queryString = "PREFIX agent: <http://www.owl-ontologies.com/Ontology1254907557.owl#> \n" +
+                "SELECT DISTINCT * \n" + "WHERE \n" + "{\n" + "?x agent:id ?ID. \n" + "?x agent:type ?Type. \n" +
+                "?x agent:state ?State. \n" + "FILTER regex(?ID, \"" + id + "\",\"i\")}";
         Query query = QueryFactory.create(queryString);
         QueryExecution queryexec = QueryExecutionFactory.create(query, model);
         try {
@@ -94,60 +104,64 @@ public class AgentProcess {
         }
         return giatri;
     }
-    public static void insertAgent(String info){
-         ArrayList<String> arr = new ArrayList<String>();
-         arr = Message.split(info, Message.FIELD_SEPARATE);
-            log.info ("Return Split: "+ arr.toString());
-            //Tao OntoModel trong de dua thong tin vao model
-         AgentDB.LoadOnt2Database();
-         OntModel model = AgentDB.getOntologyModel();
-            Individual ind=null;
-            try{
-            // tao ra 1 lop request de lay cac thong tin duoc yeu cau
-                OntClass oc= model.createClass(Agent.getURI()+ "Agent");
-                ind= model.createIndividual(Agent.getURI()+ "Agent_"+ System.currentTimeMillis(),oc);
-                //them cac thuoc tinh vao ca the can tao
-                if(arr.get(0)!=null){
-                    ind.addLiteral(Agent.address, arr.get(0));
-                }
-                if (arr.get(1)!=null){
-                    ind.addLiteral(Agent.discription, arr.get(1));
-                }
-                if(arr.get(2)!=null){
-                    ind.addLiteral(Agent.id, arr.get(2));
-                }
-                if(arr.get(3)!=null){
-                    ind.addLiteral(Agent.owner, arr.get(3));
-                }
-                if(arr.get(4)!=null){
-                    ind.addLiteral(Agent.state, arr.get(4));
-                }
-                if(arr.get(5)!=null){
-                    ind.addLiteral(Agent.type, arr.get(5));
-                }
-            }catch (Exception e) {
-            System.out.println(e.toString());
 
-        }           
-    }
-    public void searchAgent2(String s){
+    public static boolean insertAgent(String info) {
+        ArrayList<String> arr = new ArrayList<String>();
+        arr = Message.split(info, Message.FIELD_SEPARATE);
+        log.info("Return Split: " + arr.toString());
+        //Tao OntoModel trong de dua thong tin vao model
         AgentDB.LoadOnt2Database();
         OntModel model = AgentDB.getOntologyModel();
-        String ma="";
-        String trangthai="";
-        String diachi="";
-        String queryString = "PREFIX agent: <http://www.owl-ontologies.com/Ontology1254907557.owl#> \n" 
-                + "SELECT DISTINCT * \n" + "WHERE \n" 
-                + "{\n" + "?x agent:id ?ID. \n" 
-                + "?x agent:type ?Type. \n" 
-                + "?x agent:state ?State. \n" 
-                + "?x agent:address ?Address. \n"
-                + "FILTER regex(?Type,\"" + s + "\",\"i\")}";
+        Individual ind = null;
+        try {
+            // tao ra 1 lop request de lay cac thong tin duoc yeu cau
+            OntClass oc = model.createClass(Agent.getURI() + "Agent");
+            ind = model.createIndividual(Agent.getURI() + "Agent_" + System.currentTimeMillis(), oc);
+            //them cac thuoc tinh vao ca the can tao
+            if (arr.get(0) != null) {
+                ind.addLiteral(Agent.address, arr.get(0));
+            }
+            if (arr.get(1) != null) {
+                ind.addLiteral(Agent.discription, arr.get(1));
+            }
+            if (arr.get(2) != null) {
+                ind.addLiteral(Agent.id, arr.get(2));
+            }
+            if (arr.get(3) != null) {
+                ind.addLiteral(Agent.owner, arr.get(3));
+            }
+            if (arr.get(4) != null) {
+                ind.addLiteral(Agent.state, arr.get(4));
+            }
+            if (arr.get(5) != null) {
+                ind.addLiteral(Agent.type, arr.get(5));
+            }
+        } catch (Exception e) {
+            System.out.println(e.toString());
+            return false;
+
+        }
+        return true;
+    }
+
+    /**
+     * 
+     * @param type
+     * @return
+     */
+    public Hashtable<String, ArrayList<String>> getAgentByType(String type) {
+        AgentDB.LoadOnt2Database();
+        OntModel model = AgentDB.getOntologyModel();
+        Hashtable<String, ArrayList<String>> hashtable = new Hashtable<String, ArrayList<String>>();
+        String ma = "";
+        String trangthai = "";
+        String diachi = "";
+        String queryString = "PREFIX agent: <http://www.owl-ontologies.com/Ontology1254907557.owl#> \n" + "SELECT DISTINCT * \n" + "WHERE \n" + "{\n" + "?x agent:id ?ID. \n" + "?x agent:type ?Type. \n" + "?x agent:state ?State. \n" + "?x agent:address ?Address. \n" + "FILTER regex(?Type,\"" + type + "\",\"i\")}";
         Query query = QueryFactory.create(queryString);
         QueryExecution queryexec = QueryExecutionFactory.create(query, model);
         try {
             ResultSet rs = queryexec.execSelect();
-
+            ArrayList<String> arr = new ArrayList<String>();
             while (rs.hasNext()) {
 
                 Object obj = rs.next();
@@ -155,36 +169,75 @@ public class AgentProcess {
                 ma = binding.getLiteral("ID").getValue().toString();
                 //loai = binding.getLiteral("Type").getValue().toString();
                 trangthai = binding.getLiteral("State").getValue().toString();
-                diachi= binding.getLiteral("Address").getValue().toString();
+                diachi = binding.getLiteral("Address").getValue().toString();
+                arr.add(trangthai);
+                arr.add(diachi);
+                hashtable.put(ma, arr);
             }
         } catch (Exception e) {
             System.out.println(e.toString());
         }
-        System.out.println(ma+diachi+trangthai);
-    }
-    public static void deleteAgent(String s){
-        AgentDB.LoadOnt2Database();
-       OntModel model = AgentDB.getOntologyModel();
-       String ont="http://www.owl-ontologies.com/Ontology1254907557.owl#";
-       DatatypeProperty  ma = model.getDatatypeProperty(ont + "id");
-       OntClass cl = model.getOntClass(ont + "Agent");
-       log.info("Insert msg to infer");
-         ExtendedIterator<?> extendedIterator = cl.listInstances(); // lay tat ca cac the hien cua cai lop day
+        return hashtable;
 
-   //    s=s+"^^http://www.w3.org/2001/XMLSchema#string";
+    }
+
+    public ArrayList<String> getAgentById(String a) {
+        AgentDB.LoadOnt2Database();
+        OntModel model = AgentDB.getOntologyModel();
+        String trangthai = "";
+        String diachi = "";
+        String queryString = "PREFIX agent: <http://www.owl-ontologies.com/Ontology1254907557.owl#> \n" + 
+                "SELECT DISTINCT * \n" + "WHERE \n" + "{\n" + "?x agent:id ?ID. \n" + "?x agent:type ?Type. \n" + 
+                "?x agent:state ?State. \n" + "?x agent:address ?Address. \n" + 
+                "FILTER regex(?ID,\"" + a + "\",\"i\")}";
+        Query query = QueryFactory.create(queryString);
+        QueryExecution queryexec = QueryExecutionFactory.create(query, model);
+        try {
+            ResultSet rs = queryexec.execSelect();
+            ArrayList<String> arr = new ArrayList<String>();
+            System.out.println("Hello_1");
+            while (rs.hasNext()) {
+            System.out.println("Hello_21");
+                Object obj = rs.next();
+                ResultBinding binding = (ResultBinding) obj;
+                //loai = binding.getLiteral("Type").getValue().toString();
+                trangthai = binding.getLiteral("State").getValue().toString();
+                diachi = binding.getLiteral("Address").getValue().toString();
+                arr.add(trangthai);
+                arr.add(diachi);
+                return arr;
+            }
+        } catch (Exception e) {
+            System.out.println(e.toString());
+        }
+        return null;
+
+    }
+
+    public static void deleteAgent(String s) {
+        AgentDB.LoadOnt2Database();
+        OntModel model = AgentDB.getOntologyModel();
+        String ont = "http://www.owl-ontologies.com/Ontology1254907557.owl#";
+        DatatypeProperty ma = model.getDatatypeProperty(ont + "id");
+        OntClass cl = model.getOntClass(ont + "Agent");
+        log.info("Insert msg to infer");
+        ExtendedIterator<?> extendedIterator = cl.listInstances(); // lay tat ca cac the hien cua cai lop day
+
+        //    s=s+"^^http://www.w3.org/2001/XMLSchema#string";
         while (extendedIterator.hasNext()) {
             OntResource resource = (OntResource) extendedIterator.next();
-           
-            Individual individual = model.getIndividual(ont + resource.getLocalName());                   
-            String tenAgent =  (individual.listPropertyValues(ma).next()).toString();
-            int index= tenAgent.indexOf("^^");
-            tenAgent= tenAgent.substring(0,index);
-            System.out.println("Ten agent: " + tenAgent );
-            if(tenAgent.matches(s)){
+
+            Individual individual = model.getIndividual(ont + resource.getLocalName());
+            String tenAgent = (individual.listPropertyValues(ma).next()).toString();
+            int index = tenAgent.indexOf("^^");
+            tenAgent = tenAgent.substring(0, index);
+            System.out.println("Ten agent: " + tenAgent);
+            if (tenAgent.matches(s)) {
                 individual.remove();
+                log.info(tenAgent + " Deleted from DB");
                 System.out.println("xoa roi");
             }
-                                 
+
         }
     }
 
@@ -194,14 +247,13 @@ public class AgentProcess {
 //        ArrayList<String> ss = agent.searchAgent(s);
 ////        int ss=agent.searchState("ControllerAgent");
 //        System.out.println("RESULT: " + ss);
-        String info="dia chi"+Message.FIELD_SEPARATE+"mo ta"+Message.FIELD_SEPARATE
-                +"id"+ Message.FIELD_SEPARATE+"owner"+Message.FIELD_SEPARATE
-                +"active"+Message.FIELD_SEPARATE+"hotel";
+        String info = "dia chi" + Message.FIELD_SEPARATE + "mo ta" + Message.FIELD_SEPARATE + "id" + Message.FIELD_SEPARATE + "owner" + Message.FIELD_SEPARATE + "active" + Message.FIELD_SEPARATE + "hotel";
         agent.insertAgent(info);
         String s = "hotel";
-        ArrayList<String> ss = agent.searchAgent(s);    
-        System.out.println("RESULT: " +ss);
-        agent.searchAgent2(s);
+        ArrayList<String> ss = agent.getActiveAgents(s);
+        System.out.println("RESULT: " + ss);
+        s = "Sofitel";
+        System.out.println("Result: " + agent.getAgentById(s));
 
     }
 }
