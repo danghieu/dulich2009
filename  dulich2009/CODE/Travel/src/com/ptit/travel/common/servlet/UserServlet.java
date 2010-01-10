@@ -1,9 +1,11 @@
 package com.ptit.travel.common.servlet;
 
 import com.ptit.travel.agent.communication.ConfigXMLConnect;
+import com.ptit.travel.agent.communication.Language;
 import com.ptit.travel.agent.communication.Message;
 import com.ptit.travel.agent.communication.Protocol;
 import java.io.IOException;
+import java.util.logging.Level;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -11,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.ptit.travel.common.AgentManager;
 import com.ptit.travel.common.CallAgent;
+import com.ptit.travel.jane.Flight.FlightProcess;
 import jade.wrapper.AgentController;
 import jade.wrapper.ContainerController;
 import java.util.ArrayList;
@@ -99,7 +102,7 @@ public class UserServlet extends HttpServlet {
      */
     public UserServlet() {
         super();
-    // TODO Auto-generated constructor stub
+        // TODO Auto-generated constructor stub
     }
 
     protected void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -111,7 +114,7 @@ public class UserServlet extends HttpServlet {
 
         String msgId = "guest" + System.currentTimeMillis();
 
-        String msg;// = extractMsg(request);
+        String msg = "";// = extractMsg(request);
 
         String function = "";
 
@@ -145,6 +148,9 @@ public class UserServlet extends HttpServlet {
                 msg = extractBookTrainMsg(request);
                 function = nickName + ".book";
                 page = "/bookResult.jsp";
+            } else if (protocol.equals("LOGIN")) {
+                login(request, response);
+                return;
             }// more... //TODO
             else {
                 log.error("Don't understand protocol: " + protocol);
@@ -175,6 +181,92 @@ public class UserServlet extends HttpServlet {
         } else {
             log.error("Not identified protocol yet");
         }
+    }
+
+    /**
+     * khi co yeu cau dang nhap
+     * @param request
+     * @return
+     */
+    public String login(HttpServletRequest request, HttpServletResponse response) {
+        String userName = request.getParameter("userName");
+        String password = request.getParameter("password");
+        String type = request.getParameter("type");
+        
+        String result = "";
+        String page = "#";
+        // check information account
+
+        
+        HttpSession session = request.getSession();        
+        
+        log.debug("TYPE : " + type);
+        if (type.equals(Language.FLIGHT)) {
+            page = "/flightAgentUpdate.jsp";
+            String input = userName +  Message.FIELD_SEPARATE + password;
+            log.debug("CALL FlightServiceManager() with: " + input);
+            result = FlightProcess.FlightServiceManager(input);
+            log.debug("RETURN FROM FlightServiceManager(): " + result);
+            if(!"".equals(result)){
+                session.setAttribute("isValidate", "true");                
+            }else{
+                page = "/login.jsp";
+                log.debug("LOGIN FAIL");
+            }
+            request.setAttribute("result", result);
+            try {
+                getServletConfig().getServletContext().getRequestDispatcher(page).forward(request, response);
+            } catch (ServletException ex) {
+                java.util.logging.Logger.getLogger(UserServlet.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IOException ex) {
+                java.util.logging.Logger.getLogger(UserServlet.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        // if satified
+        if (containerController != null) {
+            try {
+                page = "/index.jsp";
+                agentController.kill();
+                nickName = userName;
+                /**
+                 * Truy van CSDL Agent.owl lay ra address[http://agentHost:agentPort], type, 
+                 * state cua id agent
+                 * Gan lai 
+                 *  className = "com.ptit.travel.agent." + type ;
+                 *  address 
+                 *  
+                 *  callAgent=new CallAgent(address);
+                 * 
+                 * Neu state = active: khong tao them agent
+                 */
+                agentController = AgentManager.addAgent(host, port, nickName, className, containerController);
+                session.setAttribute("userContext", nickName);
+            } catch (Exception e) {
+                userName = null;
+            }
+
+        } 
+        /**
+         * Neu type = UserAgent: truy van CSDL booking de doc thong tin offline
+         * // TODO
+         */
+        return userName;
+    }
+
+    public void logout(HttpServletRequest request) {
+        log.info("User logout action...");
+        log.debug("# Begin method user logout");
+
+        try {
+            HttpSession session = request.getSession();
+            session.invalidate();
+        } catch (Exception ex) {
+            log.info("Error while perform user logout action..");
+            log.error(ex.getMessage());
+        }
+        log.debug("# End method user logout action");
+        log.info("User logout has been done!");
+
     }
 
     /**
@@ -245,7 +337,7 @@ public class UserServlet extends HttpServlet {
 
     public String extractSearchFlightMsg(HttpServletRequest request) {
         String msg = "";
-        String depart, destination, startDate, ticket, quatity;
+        String depart,destination ,startDate ,ticket ,quatity ;
         depart = request.getParameter("city");
         destination = request.getParameter("climate");
         startDate = request.getParameter("startDate");
@@ -261,9 +353,10 @@ public class UserServlet extends HttpServlet {
         log.info("SEARCH FLIGHT Msg: " + msg);
         return msg;
     }
-public String extractSearchTrainMsg(HttpServletRequest request) {
+
+    public String extractSearchTrainMsg(HttpServletRequest request) {
         String msg = "";
-        String depart, destination, startDate, ticket, quatity;
+        String depart,destination ,startDate ,ticket ,quatity ;
         depart = request.getParameter("city");
         destination = request.getParameter("climate");
         startDate = request.getParameter("startDate");
@@ -282,8 +375,7 @@ public String extractSearchTrainMsg(HttpServletRequest request) {
 
     public String extractBookRoomMsg(HttpServletRequest request) {
         String msg = "";
-        String agentName, hotelName, city, number, street, quantity, roomType, fromdate, todate,
-                fullName, profession, identityCard;
+        String agentName,hotelName ,city ,number ,street ,quantity ,roomType ,fromdate ,todate ,fullName ,profession ,identityCard ;
         agentName = request.getParameter("agentName");
         hotelName = request.getParameter("hotelName");
         String address = request.getParameter("address");
@@ -300,6 +392,11 @@ public String extractSearchTrainMsg(HttpServletRequest request) {
         profession = request.getParameter("profession");
         identityCard = request.getParameter("identityCard");
 
+        String email = request.getParameter("email");
+        String phoneNumber = request.getParameter("phoneNumber");
+        String fax = request.getParameter("fax");
+        String specificAddress = request.getParameter("specificAddress");
+        String userCity = request.getParameter("userCity");
         msg = "" + agentName + Message.FIELD_SEPARATE +
                 hotelName + Message.FIELD_SEPARATE +
                 city + Message.FIELD_SEPARATE +
@@ -310,16 +407,20 @@ public String extractSearchTrainMsg(HttpServletRequest request) {
                 fromdate + Message.FIELD_SEPARATE +
                 todate + Message.FIELD_SEPARATE +
                 fullName + Message.FIELD_SEPARATE +
-                profession + Message.FIELD_SEPARATE +
-                identityCard;
+                profession + Message.FIELD_SEPARATE +                
+                identityCard + Message.FIELD_SEPARATE + 
+                email + Message.FIELD_SEPARATE +
+                fax  + Message.FIELD_SEPARATE +
+                phoneNumber  + Message.FIELD_SEPARATE +
+                specificAddress + Message.FIELD_SEPARATE +
+                userCity;
         log.debug("BOOK ROOM Msg: " + msg);
         return msg;
     }
 
     public String extractBookFlightMsg(HttpServletRequest request) {
         String msg = "";
-        String agentName, id, agent, booknumber, fullName, sex, email,
-                phoneNumber, specificAddress, city, country;
+        String agentName,id ,agent ,booknumber ,fullName ,sex ,email ,phoneNumber ,specificAddress ,city ,country ;
         agentName = request.getParameter("agentName");
         id = request.getParameter("id");
         agent = request.getParameter("agent");
@@ -348,10 +449,10 @@ public String extractSearchTrainMsg(HttpServletRequest request) {
         return msg;
 
     }
- public String extractBookTrainMsg(HttpServletRequest request) {
+
+    public String extractBookTrainMsg(HttpServletRequest request) {
         String msg = "";
-        String agentName, id, agent, booknumber, fullName, age, email,
-                phoneNumber, specificAddress, city, job;
+        String agentName,id ,agent ,booknumber ,fullName ,age ,email ,phoneNumber ,specificAddress ,city ,job ;
         agentName = request.getParameter("agentName");
         id = request.getParameter("id");
         agent = request.getParameter("agent");
@@ -378,64 +479,6 @@ public String extractSearchTrainMsg(HttpServletRequest request) {
                 job;
         log.debug("BOOK TRAIN Msg: " + msg);
         return msg;
-
-    }
-
-    /**
-     * khi co yeu cau dang nhap
-     * @param request
-     * @return
-     */
-    public String login(HttpServletRequest request) {
-        String id = request.getParameter("userName");
-        String password = request.getParameter("password");
-        // check information account
-
-        /**
-         * Truy van CSDL Agent.owl lay ra address[http://agentHost:agentPort], type, 
-         * state cua id agent
-         * Gan lai 
-         *  className = "com.ptit.travel.agent." + type ;
-         *  address 
-         *  
-         *  callAgent=new CallAgent(address);
-         * 
-         * Neu state = active: khong tao them agent
-         */
-        HttpSession session = request.getSession();
-        // if satified
-        if (containerController != null) {
-            try {
-                agentController.kill();
-                containerController.kill();
-                containerController = null;
-                nickName = id;
-                agentController = AgentManager.addAgent(host, port, nickName, className, containerController);
-            } catch (Exception e) {
-                id = null;
-            }
-
-        }
-        /**
-         * Neu type = UserAgent: truy van CSDL booking de doc thong tin offline
-         * // TODO
-         */
-        return id;
-    }
-
-    public void logout(HttpServletRequest request) {
-        log.info("User logout action...");
-        log.debug("# Begin method user logout");
-
-        try {
-            HttpSession session = request.getSession();
-            session.invalidate();
-        } catch (Exception ex) {
-            log.info("Error while perform user logout action..");
-            log.error(ex.getMessage());
-        }
-        log.debug("# End method user logout action");
-        log.info("User logout has been done!");
 
     }
 
