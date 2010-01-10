@@ -186,10 +186,13 @@ public class AgentProcess {
         OntModel model = AgentDB.getOntologyModel();
         String trangthai = "";
         String diachi = "";
-        String queryString = "PREFIX agent: <http://www.owl-ontologies.com/Ontology1254907557.owl#> \n" + 
-                "SELECT DISTINCT * \n" + "WHERE \n" + "{\n" + "?x agent:id ?ID. \n" + "?x agent:type ?Type. \n" + 
-                "?x agent:state ?State. \n" + "?x agent:address ?Address. \n" + 
-                "FILTER regex(?ID,\"" + a + "\",\"i\")}";
+        String queryString = "PREFIX agent: <http://www.owl-ontologies.com/Ontology1254907557.owl#> \n" 
+                +"SELECT DISTINCT * \n" + "WHERE \n" + "{\n" 
+                + "?x agent:id ?ID. \n" 
+                + "?x agent:type ?Type. \n" 
+                + "?x agent:state ?State. \n" 
+                + "?x agent:address ?Address. \n" 
+                + "FILTER regex(?ID,\"" + a + "\",\"i\")}";
         Query query = QueryFactory.create(queryString);
         QueryExecution queryexec = QueryExecutionFactory.create(query, model);
         try {
@@ -252,7 +255,7 @@ public class AgentProcess {
         String s = "hotel";
         ArrayList<String> ss = agent.getActiveAgents(s);
         System.out.println("RESULT: " + ss);
-        s = "Sofitel";
+        s = "id";
         System.out.println("Result: " + agent.getAgentById(s));
 
     }
