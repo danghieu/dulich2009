@@ -170,7 +170,7 @@
                                               <tbody>
                                                 <tr align="left" valign="top">
                                                   <td align="right" width="50%" height="37" valign="middle"><span class="style18">Kh&#7903;i h&agrave;nh  (*)</span></td>
-                                                  <td width="50%" valign="middle" class="style18"><select name="depart" id="depart">
+                                                  <td width="50%" valign="middle" class="style18"><select name="city" id="city">
                                                       <option > Bu&ocirc;n Ma Thu&#7897;t </option>
                                                       <option> C&agrave; Mau </option>
                                                       <option> C&ocirc;n &#272;&#7843;o </option>
@@ -192,7 +192,7 @@
                                                 </tr>
                                                 <tr align="left" valign="top">
                                                   <td align="right" height="48" valign="middle"><span class="style18"> &#272;i &#273;&#7871;n (*)</span></td>
-                                                  <td valign="middle"><select name="destination" id="destination" valign="middle">
+                                                  <td valign="middle"><select name="climate" id="climate" valign="middle">
                                                       <option > Bu&ocirc;n Ma Thu&#7897;t </option>
                                                       <option> C&agrave; Mau </option>
                                                       <option> C&ocirc;n &#272;&#7843;o </option>
@@ -422,7 +422,7 @@ s.prop5 = "144555";
   <div class="mgnTop7">
     <div class="homepage_depart mgnLft2">
       
-      <input name="takeOffDate" value="2010-02-01" id="hs_arrival" class="width88 hcomDate hcomCheckin" type="text">
+      <input name="startDate" value="2010-02-01" id="hs_arrival" class="width88 hcomDate hcomCheckin" type="text">
       <img src="hotel_files/cal.gif" onmouseover="if (!document.forms['searchForm']['searchParams.departureDate'].disabled) this.style.cursor='pointer'; return;" id="hs_arrival_cal" alt="Calendar" class="mgnLftMin2 hcomDate" width="24" align="top" border="0" height="20"> </div>
    
   </div>
@@ -447,7 +447,7 @@ s.prop5 = "144555";
                                                 </tr>
                                                 <tr align="left" valign="top">
                                                   <td align="right" height="34" valign="middle"><span class="style18">S&#7889; l&#432;&#7907;ng </span></td>
-                                                  <td align="left" valign="top"><input name="quatity" class="style18" id="soluong" size="10" type="text" />
+                                                  <td align="left" valign="top"><input name="returnDate" class="style18" id="soluong" size="10" type="text" />
                                                   </td>
                                                 </tr>
                                               </tbody>
