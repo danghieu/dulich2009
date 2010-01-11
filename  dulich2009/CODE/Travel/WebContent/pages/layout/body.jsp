@@ -53,10 +53,10 @@
                 <form id="form1" name="form1" method="get" action="UserServlet">
                     <table width="247">
                         <tr>
-                            <td width="74"><input type="radio" name="protocol" value="<%=Protocol.FLIGHT_AVAIL%>" id="search_flight" onchange="typeSearch()" />
+                            <td width="74"><input type="radio" name="protocol" value="<%=Protocol.FLIGHT_AVAIL%>" id="search_flight" onchange="typeSearch()"  checked="checked"  />
                             <strong>M&aacute;y bay </strong></td>
                             <td width="171"><label>
-                                    <input type="radio" name="protocol" value="<%=Protocol.HOTEL_AVAIL%>" id="search_hotel" onchange="typeSearch()"  checked="checked" />
+                                    <input type="radio" name="protocol" value="<%=Protocol.HOTEL_AVAIL%>" id="search_hotel" onchange="typeSearch()"/>
                             <strong>Kh&aacute;ch s&#7841;n </strong></label></td>
                         </tr>
                         <tr>
