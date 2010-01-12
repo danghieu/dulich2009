@@ -817,11 +817,11 @@ public class HotelAgent extends Agent {
 
         if (isOk == false) {
             System.out.println("khong dat duoc");
-            return isOk+"";
+            return "Dat Khong Thanh Cong";
         }
 
         String totalprice = processCustomer(isOk, input);
-        String result = isOk +Message.FIELD_SEPARATE + totalprice;
+        String result = "Dat Thanh Cong" +Message.FIELD_SEPARATE + totalprice;
         return result;
     }
 
