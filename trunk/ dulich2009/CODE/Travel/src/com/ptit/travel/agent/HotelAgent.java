@@ -472,7 +472,7 @@ public class HotelAgent extends Agent {
         while (extendedIterator.hasNext()) {
             OntResource resource = (OntResource) extendedIterator.next();
             Individual individual = model.getIndividual(ont + resource.getLocalName());
-            result = result +Message.FIELD_SEPARATE + printPropertyValues(individual, HotelName);
+            result = result  + printPropertyValues(individual, HotelName)+Message.FIELD_SEPARATE;
             System.out.println("result=" + result);          
 
             // xoa mesage search request voi respone khoi model (neu ko xoa 2 msg nay se tong tai trong csdl)
@@ -488,7 +488,7 @@ public class HotelAgent extends Agent {
     /**
      * Hien thi thong tin chi tiet ve cac k hach san theo yeu cau
      * @param input: Ten cac khach san muon hien thi thong tin chi tiet     
-     * output: address ( number -street - city) - areaweather -checin - checkout - email -  location - star - (roomType - amount - total): có nhieu
+     * output: address ( number -street - city) - areaweather -checin - checkout - email -  location - star - (roomType - amount - total): có nhieu + facilities
      */
     public static String printValues(String input) {
         System.out.println("goi den ham hien thi ket qua");
