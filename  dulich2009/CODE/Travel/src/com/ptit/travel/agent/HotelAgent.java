@@ -145,7 +145,7 @@ public class HotelAgent extends Agent {
 
                                     finished = true;
                                 } else if (Protocol.HOTEL_RES.equals(protocol)) {
-                                    boolean booking = processBooking(msg.getContent());
+                                    String booking = processBooking(msg.getContent());
                                     if (booking) {
                                         content = Message.SUCCESS;
                                     } else {
@@ -677,7 +677,7 @@ public class HotelAgent extends Agent {
      HotelName - City - number-street - roomType -Number -  fromdate - todate - fullName - Profession - IdentityCard 
      * @return Dat duoc hoac khong dat duoc
      */
-    public static boolean processBooking(String input) {
+      public static String processBooking(String input) {
         Database.LoadOnt2Database();
         OntModel model = ModelFactory.createOntologyModel(
                 PelletReasonerFactory.THE_SPEC, Database.getOntologyModel());
@@ -817,11 +817,12 @@ public class HotelAgent extends Agent {
 
         if (isOk == false) {
             System.out.println("khong dat duoc");
-            return false;
+            return isOk+"";
         }
 
-        processCustomer(isOk, input);
-        return isOk;
+        String totalprice = processCustomer(isOk, input);
+        String result = isOk +Message.FIELD_SEPARATE + totalprice;
+        return result;
     }
 
     /**
@@ -830,10 +831,11 @@ public class HotelAgent extends Agent {
      * @param input
      * @return
      */
-    public static void processCustomer(boolean b, String input) {
+    public static String processCustomer(boolean b, String input) {
+      String totalprice="";
         if (b == false) {
             System.out.println("khong dat duoc");
-            return;
+            return totalprice;
         }
         String ont = "http://www.owl-ontologies.com/Travel.owl#";
         Database.LoadOnt2Database();
@@ -854,7 +856,7 @@ public class HotelAgent extends Agent {
             int index = price2.indexOf("^^");
             String price1 = price2.substring(0, index);
             System.out.println("Gia khach hang phai tra: " + price1);
-            
+            totalprice = price1;
             // xoa the hien cua MsgBookRQ va RS trong model
             individual.remove();
         }
@@ -869,7 +871,7 @@ public class HotelAgent extends Agent {
             Individual ind = model.getIndividual("http://www.owl-ontologies.com/Travel.owl#Customer_" + arr.get(10));
             if (ind != null) {
                 System.out.println("Co khach hang nay trong sdl");
-                return;
+                return totalprice;
             }
 
             ind = model.createIndividual("http://www.owl-ontologies.com/Travel.owl#Customer_" + arr.get(10), oc);
@@ -881,6 +883,7 @@ public class HotelAgent extends Agent {
             ind.addLiteral(Hotel.specificAddress, arr.get(14));
         } catch (Exception e) {
         }
+        return totalprice;
     }
 
 /**
