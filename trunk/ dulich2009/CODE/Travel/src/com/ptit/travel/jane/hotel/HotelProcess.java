@@ -21,6 +21,10 @@ import com.hp.hpl.jena.rdf.model.*;
 import java.io.FileOutputStream;
 import com.hp.hpl.jena.util.iterator.ExtendedIterator;
 import org.apache.log4j.Logger;
+import java.util.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  *
@@ -386,8 +390,9 @@ public class HotelProcess {
         arr = Message.split(input, Message.FIELD_SEPARATE);
         OntModel model = ModelFactory.createOntologyModel();
         Individual ind = null;
+       
         try {
-            
+             float numberOfDay = subDay(arr.get(6), arr.get(7), "yyyy-mm-dd");
             //tao ra 1 lop request de lay cac thong tin yeu cau
             OntClass oc = model.createClass("http://www.owl-ontologies.com/Travel.owl#Msg_HotelBookRQ");
             ind = model.createIndividual(Hotel.getURI() + "Msg_HotelBookRQ" + System.currentTimeMillis(), oc);
@@ -400,7 +405,7 @@ public class HotelProcess {
             ind.addLiteral(Hotel.fullName, arr.get(8));
             ind.addLiteral(Hotel.profession, arr.get(9));
             ind.addLiteral(Hotel.IdentityCard, arr.get(10));
-            ind.addLiteral(Hotel.numberOfDay, Float.parseFloat(arr.get(11)));
+            ind.addLiteral(Hotel.numberOfDay, numberOfDay);
         } catch (Exception e) {
             System.out.println(e.toString());
         }
@@ -608,18 +613,19 @@ public class HotelProcess {
             System.out.println("them khach hang");
             //tao ra 1 lop request de lay cac thong tin yeu cau
             OntClass oc = databaseModel.createClass("http://www.owl-ontologies.com/Travel.owl#Customer");
-            Individual ind =databaseModel.getIndividual("http://www.owl-ontologies.com/Travel.owl#Customer_" + arr.get(10));
+            Individual ind =databaseModel.getIndividual("http://www.owl-ontologies.com/Travel.owl#Customer_" + arr.get(11));
             if (ind != null) {
                 System.out.println("Co khach hang nay trong sdl");
                 return totalprice;
             }
 
-            ind = databaseModel.createIndividual("http://www.owl-ontologies.com/Travel.owl#Customer_" + arr.get(10), oc);
-            ind.addLiteral(Hotel.fullName, arr.get(8));
-            ind.addLiteral(Hotel.profession, arr.get(9));
-            ind.addLiteral(Hotel.IdentityCard, arr.get(10));
-            ind.addLiteral(Hotel.PhoneNumer, arr.get(13));
-            ind.addLiteral(Hotel.fax, arr.get(12));
+            ind = databaseModel.createIndividual("http://www.owl-ontologies.com/Travel.owl#Customer_" + arr.get(11), oc);
+            ind.addLiteral(Hotel.Email, arr.get(8));
+            ind.addLiteral(Hotel.fullName, arr.get(9));
+            ind.addLiteral(Hotel.profession, arr.get(10));
+            ind.addLiteral(Hotel.IdentityCard, arr.get(11));
+            ind.addLiteral(Hotel.PhoneNumer, arr.get(12));
+            ind.addLiteral(Hotel.fax, arr.get(13));
             ind.addLiteral(Hotel.specificAddress, arr.get(14));
         } catch (Exception e) {
         }
@@ -656,6 +662,22 @@ public class HotelProcess {
         }
     }
 
+     public static float subDay(String fromDate, String toDate, String pattern) throws Exception {
+        float days = -1;
+        SimpleDateFormat format = new SimpleDateFormat(pattern);
+        try {
+            Date date1 = format.parse(fromDate);
+            long time1 = date1.getTime();
+            Date date2 = format.parse(toDate);
+            long time2 = date2.getTime();
+            days = (float) ((time2 - time1) / (1000 * 60 * 60 * 24));
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw e;//ParseException();
+        }
+        return days;
+    }
+     
     public static void main(String s[]) throws Exception {
         HotelProcess hotelprocess = new HotelProcess();
          Database.LoadOnt2Database();
@@ -668,7 +690,7 @@ public class HotelProcess {
         
         String input = "Nam Dinh" + Message.FIELD_SEPARATE + " " + Message.FIELD_SEPARATE + " ";
         String input1 = "HaiYen" + Message.FIELD_SEPARATE + "Nam Dinh" + Message.FIELD_SEPARATE + "405" + Message.FIELD_SEPARATE
-                + "Thanh Xuan Bac" + Message.FIELD_SEPARATE + "MeetingRoom" + Message.FIELD_SEPARATE + "1" + Message.FIELD_SEPARATE + s_begin + Message.FIELD_SEPARATE + s_end + Message.FIELD_SEPARATE + "Hanh" + Message.FIELD_SEPARATE + "Broker" + Message.FIELD_SEPARATE + "162882805" + Message.FIELD_SEPARATE + "4" + Message.FIELD_SEPARATE + "0948226160" + Message.FIELD_SEPARATE + "0948226160" + Message.FIELD_SEPARATE + "Y yen - Nam Dinh";
+                + "Thanh Xuan Bac" + Message.FIELD_SEPARATE + "MeetingRoom" + Message.FIELD_SEPARATE + "1" + Message.FIELD_SEPARATE + s_begin + Message.FIELD_SEPARATE + s_end + Message.FIELD_SEPARATE + "Hanh" + Message.FIELD_SEPARATE + "Broker" + Message.FIELD_SEPARATE + "162882805"  + Message.FIELD_SEPARATE + "0948226160" + Message.FIELD_SEPARATE + "0948226160" + Message.FIELD_SEPARATE + "Y yen - Nam Dinh";
 
        String ss1 = HotelProcess.processBooking(input1);
       System.out.print("ket qua: "+ ss1);
