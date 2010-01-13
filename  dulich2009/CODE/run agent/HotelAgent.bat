@@ -1,0 +1,1 @@
+java -XX:MaxPermSize=128m jade.Boot -host localhost -container HotelAgent:com.ptit.travel.agent.HotelAgent
