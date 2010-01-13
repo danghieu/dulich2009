@@ -56,7 +56,6 @@ public class FlightAgent extends Agent{
         }
 
         public void action() {
-            log.info("=== FLIGHTAGENT is Ready now");
             synchronized (this) {
                 ACLMessage msg = receive();
                 if (msg != null) {
@@ -101,7 +100,7 @@ public class FlightAgent extends Agent{
                                     finished = true;
                                      //*/
                                 }else{
-                                    content = "Not understand protocol";
+                                    content = Message.PROTOCOL_NOT_UNDERSTAND;
                                     log.info("RETURN RESULT: " + content);
                                     ACLMessage reply = Message.createReplyMessage(msg, content);
 

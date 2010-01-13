@@ -4,8 +4,10 @@
  */
 package com.ptit.travel.agent;
 
+import com.ptit.travel.agent.communication.Language;
 import com.ptit.travel.agent.communication.Message;
 import com.ptit.travel.agent.communication.Protocol;
+import com.ptit.travel.jane.agent.AgentProcess;
 import jade.core.Agent;
 import jade.core.behaviours.Behaviour;
 import jade.core.behaviours.TickerBehaviour;
@@ -29,8 +31,6 @@ public class ControllerAgent extends Agent {
 
         log.info("CONTROLLER AGENT now is ready ");
         //Message.register(this, this.getName());
-
-
         addBehaviour(new TickerBehaviour(this, 60000) {
 
             protected void onTick() {
@@ -38,6 +38,7 @@ public class ControllerAgent extends Agent {
                 addBehaviour(hrmBehaviour);
             }
         });
+        
     }
 
     /**
@@ -81,27 +82,29 @@ public class ControllerAgent extends Agent {
                                 protocol = msg.getProtocol();
                                 conversationId = msg.getConversationId();
 
-                                // 
+                                
                                 log.info("protocol: " + protocol);
                                 // Language used to get all appropriate supplier agents
 
                                 // Call DB and gain result into list
                                 receivers = new ArrayList<String>();
                                 if (protocol.contains(Protocol.PREFIX_HOTEL)) {
-                                    receivers.add("HotelAgent");
+                                    receivers = AgentProcess.getActiveAgents(Language.HOTEL);
+                                    //receivers.add("HotelAgent");
                                 }
                                 if (protocol.contains(Protocol.PREFIX_CAR)) {
-                                    receivers.add("CarAgent");
+                                    receivers = AgentProcess.getActiveAgents(Language.CAR);
                                 }
                                 if (protocol.contains(Protocol.PREFIX_FLIGHT)) {
-                                    receivers.add("FlightAgent");
+                                    receivers = AgentProcess.getActiveAgents(Language.FLIGHT);
                                 }
                                 if (protocol.contains(Protocol.PREFIX_TRAIN)) {
-                                    receivers.add("TrainAgent");
+                                    receivers = AgentProcess.getActiveAgents(Language.TRAIN);
                                 }
                                 if (protocol.contains(Protocol.PREFIX_TOURSERVICE)) {
-                                    receivers.add("BrokerAgent");
+                                    receivers = AgentProcess.getActiveAgents(Language.BROKER);
                                 }
+                                
                                 ACLMessage forwardMsg = Message.createForwardMessage(myAgent, receivers, msg,
                                         replyWith);
                                 //myAgent.addBehaviour(new Negotiate(myAgent, forwardMsg));
@@ -134,8 +137,10 @@ public class ControllerAgent extends Agent {
                                     //FOR TEST
                                     log.info("=== One more received message from " + replyMsg.getSender().getLocalName());
                                     content = replyMsg.getContent();
-                                    String errorContent = "Agent not found: getContainerID() failed to find agent";
-                                    if (content != null && !content.contains(errorContent)) {
+                                    String errorContent = "Agent not found: getContainerID() failed to find agent " ;// NOT EXIST agent
+                                            
+                                    if (content != null && !content.contains(errorContent)&&
+                                                    !content.contains(Message.PROTOCOL_NOT_UNDERSTAND)) {
                                         msgsContent.add(replyMsg.getSender().getLocalName() + Message.FIELD_SEPARATE + content);
                                     }
                                 }
