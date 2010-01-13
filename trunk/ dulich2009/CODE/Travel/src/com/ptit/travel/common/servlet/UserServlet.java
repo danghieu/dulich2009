@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.ptit.travel.common.AgentManager;
 import com.ptit.travel.common.CallAgent;
 import com.ptit.travel.jane.Flight.FlightProcess;
+import com.ptit.travel.jane.agent.AgentProcess;
 import jade.wrapper.AgentController;
 import jade.wrapper.ContainerController;
 import java.util.ArrayList;
@@ -51,7 +52,7 @@ public class UserServlet extends HttpServlet {
         if (agentController != null) {
             try {
                 log.info("|| Killing agent: " + nickName);
-                agentController.kill();
+                AgentManager.kill(agentController, nickName);
                 if (containerController != null) {
                     log.info("|| Killing container: " + containerController.getContainerName());
                     containerController.kill();
@@ -83,7 +84,15 @@ public class UserServlet extends HttpServlet {
 
             try {
                 log.info("|| Starting agent: " + nickName);
-                ArrayList arr = AgentManager.startAgent(host, port, nickName, className, false);
+                String address = agentHost + ":" + agentHost;
+                ArrayList arr = AgentManager.startAgent(host, port, nickName, className, false,address);
+//                String agentInfo = agentHost + ":" + agentPort +
+//                        "temp agent" +
+//                        nickName +
+//                        "" + // no owner
+//                        "active" +
+//                        Language.CUSTOMER;
+//                AgentProcess.insertAgent(agentInfo);
                 if (arr != null && arr.size() == 2) {
                     containerController = (ContainerController) arr.get(0);
                     agentController = (AgentController) arr.get(1);
@@ -102,7 +111,7 @@ public class UserServlet extends HttpServlet {
      */
     public UserServlet() {
         super();
-        // TODO Auto-generated constructor stub
+    // TODO Auto-generated constructor stub
     }
 
     protected void process(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -192,41 +201,40 @@ public class UserServlet extends HttpServlet {
         String userName = request.getParameter("userName");
         String password = request.getParameter("password");
         String type = request.getParameter("type");
-        
+        String input = userName + Message.FIELD_SEPARATE + password;
         String result = "";
         String page = "#";
         // check information account
+        HttpSession session = request.getSession();
 
-        
-        HttpSession session = request.getSession();        
-        
         log.debug("TYPE : " + type);
         if (type.equals(Language.FLIGHT)) {
             page = "/flightAgentUpdate.jsp";
-            String input = userName +  Message.FIELD_SEPARATE + password;
+
             log.debug("CALL FlightServiceManager() with: " + input);
             result = FlightProcess.FlightServiceManager(input);
             log.debug("RETURN FROM FlightServiceManager(): " + result);
-            if(!"".equals(result)){
-                session.setAttribute("isValidate", "true");                
-            }else{
+            if (!"".equals(result)) {
+                session.setAttribute("isValidate", Language.FLIGHT);
+            } else {
                 page = "/login.jsp";
                 log.debug("LOGIN FAIL");
             }
             request.setAttribute("result", result);
             try {
                 getServletConfig().getServletContext().getRequestDispatcher(page).forward(request, response);
-            } catch (ServletException ex) {
-                java.util.logging.Logger.getLogger(UserServlet.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (IOException ex) {
-                java.util.logging.Logger.getLogger(UserServlet.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (Exception ex) {
+                ex.printStackTrace();
             }
+        } else{
+            
         }
         // if satified
         if (containerController != null) {
             try {
                 page = "/index.jsp";
-                agentController.kill();
+
+                AgentManager.kill(agentController, nickName);
                 nickName = userName;
                 /**
                  * Truy van CSDL Agent.owl lay ra address[http://agentHost:agentPort], type, 
@@ -239,13 +247,16 @@ public class UserServlet extends HttpServlet {
                  * 
                  * Neu state = active: khong tao them agent
                  */
-                agentController = AgentManager.addAgent(host, port, nickName, className, containerController);
+                ArrayList<String> agent = AgentProcess.getAgentById(nickName);
+                //if (agent == null) {
+                agentController = AgentManager.addAgent(host, port, nickName, className, containerController, "");
+                //}
                 session.setAttribute("userContext", nickName);
             } catch (Exception e) {
                 userName = null;
             }
 
-        } 
+        }
         /**
          * Neu type = UserAgent: truy van CSDL booking de doc thong tin offline
          * // TODO
@@ -342,7 +353,7 @@ public class UserServlet extends HttpServlet {
         destination = request.getParameter("climate");
         startDate = request.getParameter("startDate");
         ticket = request.getParameter("ticket");
-        quatity = request.getParameter("quatity");
+        quatity = request.getParameter("returnDate");// trung voi index.jsp
 
 
         msg = "" + depart + Message.FIELD_SEPARATE +
@@ -407,11 +418,11 @@ public class UserServlet extends HttpServlet {
                 fromdate + Message.FIELD_SEPARATE +
                 todate + Message.FIELD_SEPARATE +
                 fullName + Message.FIELD_SEPARATE +
-                profession + Message.FIELD_SEPARATE +                
-                identityCard + Message.FIELD_SEPARATE + 
+                profession + Message.FIELD_SEPARATE +
+                identityCard + Message.FIELD_SEPARATE +
                 email + Message.FIELD_SEPARATE +
-                fax  + Message.FIELD_SEPARATE +
-                phoneNumber  + Message.FIELD_SEPARATE +
+                fax + Message.FIELD_SEPARATE +
+                phoneNumber + Message.FIELD_SEPARATE +
                 specificAddress + Message.FIELD_SEPARATE +
                 userCity;
         log.debug("BOOK ROOM Msg: " + msg);

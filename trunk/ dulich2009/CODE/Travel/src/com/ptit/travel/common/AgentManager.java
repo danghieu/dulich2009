@@ -1,12 +1,17 @@
 package com.ptit.travel.common;
 
+import com.ptit.travel.agent.communication.Language;
+import com.ptit.travel.agent.communication.Message;
+import com.ptit.travel.jane.agent.AgentProcess;
 import jade.core.Agent;
 import jade.core.Profile;
 import jade.core.ProfileImpl;
 import jade.core.Runtime;
 import jade.wrapper.AgentController;
 import jade.wrapper.ContainerController;
+import jade.wrapper.StaleProxyException;
 import java.util.ArrayList;
+import java.util.logging.Level;
 import org.apache.log4j.Logger;
 
 public class AgentManager {
@@ -21,9 +26,8 @@ public class AgentManager {
      * else return -1;
      */
     public static AgentController addAgent(String host, String port,
-            String nickName, String className, ContainerController containerController) throws Exception {
+            String nickName, String className, ContainerController containerController, String address) throws Exception {
 
-        Runtime rt = Runtime.instance();
         // Create a default profile
         Profile p = new ProfileImpl();
         p.setParameter(Profile.MAIN_HOST, host);
@@ -36,6 +40,27 @@ public class AgentManager {
             ac = containerController.createNewAgent(nickName, className, null);
             ac.start();
             ac.activate();
+            //*
+            String type = getType(className);
+            try {
+                if (type != null) {
+                    if (address == null || "".equals(address)) {
+                        address = "localhost:1099";
+                    }
+                    String agentInfo = address + Message.FIELD_SEPARATE +
+                            "temp agent" + Message.FIELD_SEPARATE +
+                            nickName + Message.FIELD_SEPARATE +
+                            "" + Message.FIELD_SEPARATE + // no owner
+                            "active" + Message.FIELD_SEPARATE +
+                            type;
+                    AgentProcess.insertAgent(agentInfo);
+                } else {
+                    log.error("Cannot obtain the type of the agent: " + type);
+                    log.error("Cannot insert into DB the agent: " + nickName);
+                }
+            } catch (Exception e) {
+                log.error("Cannot update DB agent: " + e);
+            }//*/
             return ac;
         } catch (Exception e1) {
             // TODO Auto-generated catch block
@@ -46,7 +71,7 @@ public class AgentManager {
     }
 
     public static ArrayList startAgent(String host, String port,
-            String nickName, String className, boolean main) throws Exception {
+            String nickName, String className, boolean main, String address) throws Exception {
 
         ArrayList arr = new ArrayList();
         ContainerController cc = null;
@@ -68,8 +93,9 @@ public class AgentManager {
             }
         } else {
             cc = rt.createAgentContainer(p);// 
+
         }
-        log.info("Created a container: " + cc.getContainerName());
+        //log.info("Created a container: " + cc.getContainerName());
         arr.add(cc);
         AgentController ac;
         try {
@@ -78,6 +104,28 @@ public class AgentManager {
             ac.start();
             ac.activate();
             arr.add(ac);
+            //*
+            String type = getType(className);
+            try {
+                if (type != null) {
+                    if (address == null || "".equals(address)) {
+                        address = "localhost:1099";
+                    }
+
+                    String agentInfo = address + Message.FIELD_SEPARATE +
+                            "temp agent" + Message.FIELD_SEPARATE +
+                            nickName + Message.FIELD_SEPARATE +
+                            "" + Message.FIELD_SEPARATE + // no owner
+                            "active" + Message.FIELD_SEPARATE +
+                            type;
+                    AgentProcess.insertAgent(agentInfo);
+                } else {
+                    log.error("Cannot obtain the type of the agent: " + type);
+                    log.error("Cannot insert into DB the agent: " + nickName);
+                }
+            } catch (Exception e) {
+                log.error("Cannot update DB agent: " + e);
+            }//*/
             return arr;
         } catch (Exception e1) {
             // TODO Auto-generated catch block
@@ -86,5 +134,45 @@ public class AgentManager {
 
         }
         return arr;
+    }
+
+    public static boolean kill(AgentController agentController, String nickName) {
+
+        try {
+            // kill from jade
+            agentController.kill();
+            // delete from DB
+            AgentProcess.deleteAgent(nickName);
+        } catch (StaleProxyException ex) {
+            ex.printStackTrace();
+            return false;
+        }
+        return true;
+    }
+
+    public static String getType(String className) {
+        className = className.toLowerCase();
+        if (className.contains(Language.CAR)) {
+            return Language.CAR;
+        }
+        if (className.contains(Language.CONTROLLER)) {
+            return Language.CONTROLLER;
+        }
+        if (className.contains(Language.CUSTOMER)) {
+            return Language.CUSTOMER;
+        }
+        if (className.contains(Language.FLIGHT)) {
+            return Language.FLIGHT;
+        }
+        if (className.contains(Language.HOTEL)) {
+            return Language.HOTEL;
+        }
+        if (className.contains(Language.BROKER)) {
+            return Language.BROKER;
+        }
+        if (className.contains(Language.TRAIN)) {
+            return Language.TRAIN;
+        }
+        return null;
     }
 }
