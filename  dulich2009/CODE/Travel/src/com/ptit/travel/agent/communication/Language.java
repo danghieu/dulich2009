@@ -12,5 +12,7 @@ public class Language {
 	public final static String EVENT = "event";
 	public final static String DESTINATION = "destination";
 	public final static String FLIGHT = "flight";
-        public final static String TOURSERVICE = "tourservice";
+        public final static String BROKER = "broker";
+        public final static String CUSTOMER = "customer";
+        public final static String CONTROLLER = "controller";
 }

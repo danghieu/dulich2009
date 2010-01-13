@@ -87,7 +87,6 @@ public class TrainAgent extends Agent {
         }
 
         public void action() {
-            log.info("=== TRAINAGENT is Ready now");
             synchronized (this) {
                 ACLMessage msg = receive();
                 if (msg != null) {
@@ -116,12 +115,8 @@ public class TrainAgent extends Agent {
 
                                     finished = true;
                                 } else if (Protocol.TRAIN_RES.equals(protocol)) {
-                                    boolean booking = train.processBooking(msg.getContent());
-                                    if (booking) {
-                                        content = Message.SUCCESS;
-                                    } else {
-                                        content = Message.FAIL;
-                                    }
+                                    content = train.processBooking(msg.getContent());
+                                    
                                     log.info("RETURN RESULT: " + content);
                                     ACLMessage reply = Message.createReplyMessage(msg, content);
 

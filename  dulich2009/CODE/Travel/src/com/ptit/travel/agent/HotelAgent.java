@@ -115,15 +115,14 @@ public class HotelAgent extends Agent {
         public HandleRecivedMessages() {
         }
 
-        public void action() {
-            log.info("=== HOTELAGENT is Ready now");
+        public void action() {            
             synchronized (this) {
                 ACLMessage msg = receive();
                 if (msg != null) {
 
                     try {
                         String content = msg.getContent();
-                        log.info("=== [HotelAgent] received from " + msg.getSender().getLocalName());
+                        System.out.println("=== [HotelAgent] received from " + msg.getSender().getLocalName());
                         switch (msg.getPerformative()) {
                             case ACLMessage.QUERY_REF:
                                 break;
@@ -133,28 +132,24 @@ public class HotelAgent extends Agent {
                                 String protocol = msg.getProtocol();
                                 if (Protocol.HOTEL_AVAIL.equals(protocol)) {
 
-                                    log.info("Call module DB with String input: " + content);
+                                    System.out.println("Call module DB with String input: " + content);
 
                                     content = search(content);// chi goi DB o day
 
-                                    log.info("RETURN RESULT: " + content);
+                                    System.out.println("RETURN RESULT: " + content);
                                     ACLMessage reply = Message.createReplyMessage(msg, content);
 
-                                    log.info("=== [HotelAgent] sent reply message " + reply);
+                                    System.out.println("=== [HotelAgent] sent reply message " + reply);
                                     send(reply);
 
                                     finished = true;
                                 } else if (Protocol.HOTEL_RES.equals(protocol)) {
-                                    String booking = processBooking(msg.getContent());
-                                    if (booking) {
-                                        content = Message.SUCCESS;
-                                    } else {
-                                        content = Message.FAIL;
-                                    }
-                                    log.info("RETURN RESULT: " + content);
+                                    content = processBooking(msg.getContent());
+                                    
+                                    System.out.println("RETURN RESULT: " + content);
                                     ACLMessage reply = Message.createReplyMessage(msg, content);
 
-                                    log.info("=== [HotelAgent] sent reply message " + reply);
+                                    System.out.println("=== [HotelAgent] sent reply message " + reply);
                                     send(reply);
                                     finished = true;
                                 }

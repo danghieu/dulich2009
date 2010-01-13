@@ -27,6 +27,7 @@ public class Message {
     private static Logger log = Logger.getLogger(Message.class.getName());
     public static String SUCCESS = "Dat thanh cong";
     public static String FAIL = "Dat khong thanh cong";
+    public static String PROTOCOL_NOT_UNDERSTAND = "Not understand protocol";
     /**
      * special string uesed to separate objects
      *  #_$
@@ -411,7 +412,8 @@ public class Message {
     public static ACLMessage createForwardMessage(Agent sender,
             ArrayList<String> recieverNames, ACLMessage msg, String replyWith) throws Exception {
 
-        log.info("Preparing inform message...");
+        log.info("|| SENDER: " + sender.getLocalName());
+        log.info("|| RECEIRERS: " + recieverNames);
         //String content = resource2RDF(r);
         ACLMessage m = new ACLMessage(ACLMessage.INFORM);
         m.setSender(sender.getAID());

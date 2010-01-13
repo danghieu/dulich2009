@@ -9,6 +9,7 @@ package com.ptit.travel.agent;
  * @author D05CNPM
  */
 import com.ptit.travel.agent.communication.*;
+import com.ptit.travel.jane.agent.AgentProcess;
 import java.util.ArrayList;
 import java.util.Hashtable;
 
@@ -60,27 +61,27 @@ public class UserAgent extends Agent {
 //                "E:/Develop/Netbean/Travel/config/UserAgent.properties",
 //                this.getLocalName());// E:/Develop/Netbean/Travel/
 
-        /* Tu gan hanh okvi search sau 0.5 s
-        addBehaviour(new TickerBehaviour(this, 30000) {
-
-            protected void onTick() {
-                String content = "ha noi" + Message.FIELD_SEPARATE + "Ho Chi Minh" + Message.FIELD_SEPARATE +
-                        "2010-02-01" + Message.FIELD_SEPARATE + "economy" + Message.FIELD_SEPARATE + "1";
-                String s_begin = "2010-01-6";
-                String s_end = "2010-01-7";
-                //     hotelprocess.checkAvailability( "HaiYen", "LivingRoom", "SingleRoom");
-
-                content = "HotelAgent" + Message.FIELD_SEPARATE + "HaiYen" + Message.FIELD_SEPARATE + "Nam Dinh" + 
-                        Message.FIELD_SEPARATE + "405" + Message.FIELD_SEPARATE + "Thanh Xuan Bac" + 
-                        Message.FIELD_SEPARATE + "MeetingRoom" + Message.FIELD_SEPARATE + "2" + 
-                        Message.FIELD_SEPARATE + s_begin + Message.FIELD_SEPARATE + s_end + Message.FIELD_SEPARATE +
-                        "Hanh" + Message.FIELD_SEPARATE + "Sinh Vien" + Message.FIELD_SEPARATE + "162882805";
-
-                String input = "Nam Dinh"+Message.FIELD_SEPARATE+null+Message.FIELD_SEPARATE+null;
-                input="Ha Noi"+Message.FIELD_SEPARATE+"Phu Ly"+Message.FIELD_SEPARATE+"2009-12-29";
-                search(input, "conversationId", Protocol.TRAIN_AVAIL);
-            }
-        });//*/
+    /* Tu gan hanh okvi search sau 0.5 s
+    addBehaviour(new TickerBehaviour(this, 30000) {
+    
+    protected void onTick() {
+    String content = "ha noi" + Message.FIELD_SEPARATE + "Ho Chi Minh" + Message.FIELD_SEPARATE +
+    "2010-02-01" + Message.FIELD_SEPARATE + "economy" + Message.FIELD_SEPARATE + "1";
+    String s_begin = "2010-01-6";
+    String s_end = "2010-01-7";
+    //     hotelprocess.checkAvailability( "HaiYen", "LivingRoom", "SingleRoom");
+    
+    content = "HotelAgent" + Message.FIELD_SEPARATE + "HaiYen" + Message.FIELD_SEPARATE + "Nam Dinh" + 
+    Message.FIELD_SEPARATE + "405" + Message.FIELD_SEPARATE + "Thanh Xuan Bac" + 
+    Message.FIELD_SEPARATE + "MeetingRoom" + Message.FIELD_SEPARATE + "2" + 
+    Message.FIELD_SEPARATE + s_begin + Message.FIELD_SEPARATE + s_end + Message.FIELD_SEPARATE +
+    "Hanh" + Message.FIELD_SEPARATE + "Sinh Vien" + Message.FIELD_SEPARATE + "162882805";
+    
+    String input = "Nam Dinh"+Message.FIELD_SEPARATE+null+Message.FIELD_SEPARATE+null;
+    //input="Ha Noi"+Message.FIELD_SEPARATE+"Phu Ly"+Message.FIELD_SEPARATE+"2009-12-29";
+    search(input, "conversationId", Protocol.HOTEL_AVAIL);
+    }
+    });//*/
 
     }
 
@@ -378,6 +379,10 @@ public class UserAgent extends Agent {
         public Book(Agent _a, String _msg, String _conversationId, String _p) {
             super(_a);
             a = _a;
+            String s_begin = "2010-01-6";
+        String s_end = "2010-01-7";
+            String input1 = "HaiYen" + Message.FIELD_SEPARATE + "Nam Dinh" + Message.FIELD_SEPARATE + "405" + Message.FIELD_SEPARATE + "Thanh Xuan Bac" + Message.FIELD_SEPARATE + "MeetingRoom" + Message.FIELD_SEPARATE + "1" + Message.FIELD_SEPARATE + 
+                    s_begin + Message.FIELD_SEPARATE + s_end + Message.FIELD_SEPARATE + "Hanh" + Message.FIELD_SEPARATE + "Broker" + Message.FIELD_SEPARATE + "162882805" + Message.FIELD_SEPARATE + "4" + Message.FIELD_SEPARATE + "0948226160" + Message.FIELD_SEPARATE + "0948226160" + Message.FIELD_SEPARATE + "Y yen - Nam Dinh";
             content = _msg;
             conversationId = _conversationId;
             protocol = _p;
@@ -567,6 +572,7 @@ public class UserAgent extends Agent {
             log.debug("XMLRPC shut down  on " + port);
             xmlrpcServer.shutdown();
             xmlrpcServer = null;
+
         }
     }
 }
