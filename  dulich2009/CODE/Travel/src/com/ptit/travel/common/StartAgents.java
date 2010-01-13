@@ -22,6 +22,7 @@ import com.ptit.travel.beans.Address;
 import com.ptit.travel.beans.AgentBean;
 import com.ptit.travel.common.AgentManager;
 import com.ptit.travel.common.CallAgent;
+import com.ptit.travel.moduleJDBC.Model.AgentDB;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -83,11 +84,11 @@ public class StartAgents {
         String className = "com.ptit.travel.agent.ControllerAgent";
         try {
             ContainerController containerController = (ContainerController) AgentManager.startAgent(host, port,
-                    nickName, className, true).get(0);
+                    nickName, className, true,"").get(0);
             nickName = "HotelAgent";//"Guest" + System.currentTimeMillis();
 
             className = "com.ptit.travel.agent.HotelAgent";
-            agentController = AgentManager.addAgent(host, port, nickName, className, containerController);
+            agentController = AgentManager.addAgent(host, port, nickName, className, containerController,"");
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -105,15 +106,15 @@ public class StartAgents {
         String className = "com.ptit.travel.agent.ControllerAgent";
         try {
             ContainerController containerController = (ContainerController) AgentManager.startAgent(host, port,
-                    nickName, className, true).get(0);
+                    nickName, className, true,"").get(0);
             nickName = "HotelAgent";//"Guest" + System.currentTimeMillis();
 
             className = "com.ptit.travel.agent.HotelAgent";
-            agentController = AgentManager.addAgent(host, port, nickName, className, containerController);
+            agentController = AgentManager.addAgent(host, port, nickName, className, containerController,"");
             nickName = "UserAgent";//"Guest" + System.currentTimeMillis();
 
             className = "com.ptit.travel.agent.UserAgent";
-            agentController = AgentManager.addAgent(host, port, nickName, className, containerController);
+            agentController = AgentManager.addAgent(host, port, nickName, className, containerController,"");
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -122,6 +123,27 @@ public class StartAgents {
 
     }
 
+    public void testCreateAgentUC() {
+        AgentController agentController;
+        String host = "localhost";
+        String port = "1099";
+        String nickName = "ControllerAgent";//"Guest" + System.currentTimeMillis();
+
+        String className = "com.ptit.travel.agent.ControllerAgent";
+        try {
+            ContainerController containerController = (ContainerController) AgentManager.startAgent(host, port,
+                    nickName, className, false,"").get(0);
+             nickName = "UserAgent";//"Guest" + System.currentTimeMillis();
+
+            className = "com.ptit.travel.agent.UserAgent";
+            agentController = AgentManager.addAgent(host, port, nickName, className, containerController,"");
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
+    }
     public void testCreateAgentUCF() {
         AgentController agentController;
         String host = "localhost";
@@ -131,20 +153,19 @@ public class StartAgents {
         String className = "com.ptit.travel.agent.ControllerAgent";
         try {
             ContainerController containerController = (ContainerController) AgentManager.startAgent(host, port,
-                    nickName, className, true).get(0);
+                    nickName, className, true,"").get(0);
             nickName = "FlightAgent";//"Guest" + System.currentTimeMillis();
 
             className = "com.ptit.travel.agent.FlightAgent";
-            agentController = AgentManager.addAgent(host, port, nickName, className, containerController);
+            agentController = AgentManager.addAgent(host, port, nickName, className, containerController,"");
             nickName = "UserAgent";//"Guest" + System.currentTimeMillis();
 
             className = "com.ptit.travel.agent.UserAgent";
-            agentController = AgentManager.addAgent(host, port, nickName, className, containerController);
+            agentController = AgentManager.addAgent(host, port, nickName, className, containerController,"");
 
         } catch (Exception e) {
             e.printStackTrace();
         }
-
 
     }
 
@@ -157,11 +178,11 @@ public class StartAgents {
         String className = "com.ptit.travel.agent.ControllerAgent";
         try {
             ContainerController containerController = (ContainerController) AgentManager.startAgent(host, port,
-                    nickName, className, true).get(0);
+                    nickName, className, true,"").get(0);
             nickName = "FlightAgent";//"Guest" + System.currentTimeMillis();
 
             className = "com.ptit.travel.agent.FlightAgent";
-            agentController = AgentManager.addAgent(host, port, nickName, className, containerController);
+            agentController = AgentManager.addAgent(host, port, nickName, className, containerController,"");
 
 
         } catch (Exception e) {
@@ -170,7 +191,24 @@ public class StartAgents {
 
 
     }
+    public void testCreateAgentC(boolean main) {
+        AgentController agentController;
+        String host = "localhost";
+        String port = "1099";
+        String nickName = "ControllerAgent";//"Guest" + System.currentTimeMillis();
 
+        String className = "com.ptit.travel.agent.ControllerAgent";
+        try {
+            ContainerController containerController = (ContainerController) AgentManager.startAgent(host, port,
+                    nickName, className, main,"").get(0);
+    
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
+    }
     public void testCreateAgentCHF() {
         AgentController agentController;
         String host = "localhost";
@@ -180,16 +218,16 @@ public class StartAgents {
         String className = "com.ptit.travel.agent.ControllerAgent";
         try {
             ContainerController containerController = (ContainerController) AgentManager.startAgent(host, port,
-                    nickName, className, true).get(0);
+                    nickName, className, true,"").get(0);
             nickName = "FlightAgent";//"Guest" + System.currentTimeMillis();
 
             className = "com.ptit.travel.agent.FlightAgent";
-            agentController = AgentManager.addAgent(host, port, nickName, className, containerController);
+            agentController = AgentManager.addAgent(host, port, nickName, className, containerController,"");
 
             nickName = "HotelAgent";//"Guest" + System.currentTimeMillis();
 
             className = "com.ptit.travel.agent.HotelAgent";
-            agentController = AgentManager.addAgent(host, port, nickName, className, containerController);
+            agentController = AgentManager.addAgent(host, port, nickName, className, containerController,"");
 
 
         } catch (Exception e) {
@@ -208,20 +246,20 @@ public class StartAgents {
         String className = "com.ptit.travel.agent.ControllerAgent";
         try {
             ContainerController containerController = (ContainerController) AgentManager.startAgent(host, port,
-                    nickName, className, true).get(0);
+                    nickName, className, true,"").get(0);
             nickName = "FlightAgent";//"Guest" + System.currentTimeMillis();
 
             className = "com.ptit.travel.agent.FlightAgent";
-            agentController = AgentManager.addAgent(host, port, nickName, className, containerController);
+            agentController = AgentManager.addAgent(host, port, nickName, className, containerController,"");
             nickName = "TrainAgent";//"Guest" + System.currentTimeMillis();
 
             className = "com.ptit.travel.agent.TrainAgent";
-            agentController = AgentManager.addAgent(host, port, nickName, className, containerController);
+            agentController = AgentManager.addAgent(host, port, nickName, className, containerController,"");
 
             nickName = "HotelAgent";//"Guest" + System.currentTimeMillis();
 
             className = "com.ptit.travel.agent.HotelAgent";
-            agentController = AgentManager.addAgent(host, port, nickName, className, containerController);
+            agentController = AgentManager.addAgent(host, port, nickName, className, containerController,"");
 
 
         } catch (Exception e) {
@@ -240,15 +278,15 @@ public class StartAgents {
         String className = "com.ptit.travel.agent.ControllerAgent";
         try {
             ContainerController containerController = (ContainerController) AgentManager.startAgent(host, port,
-                    nickName, className, true).get(0);
+                    nickName, className, true,"").get(0);
             nickName = "UserAgent";//"Guest" + System.currentTimeMillis();
 
             className = "com.ptit.travel.agent.UserAgent";
-            agentController = AgentManager.addAgent(host, port, nickName, className, containerController);
+            agentController = AgentManager.addAgent(host, port, nickName, className, containerController,"");
             nickName = "TrainAgent";//"Guest" + System.currentTimeMillis();
 
             className = "com.ptit.travel.agent.TrainAgent";
-            agentController = AgentManager.addAgent(host, port, nickName, className, containerController);
+            agentController = AgentManager.addAgent(host, port, nickName, className, containerController,"");
 
 
         } catch (Exception e) {
@@ -267,20 +305,20 @@ public class StartAgents {
         String className = "com.ptit.travel.agent.ControllerAgent";
         try {
             ContainerController containerController = (ContainerController) AgentManager.startAgent(host,
-                    port, nickName, className, false).get(0);
+                    port, nickName, className, false,"").get(0);
             nickName = "HotelAgent";//"Guest" + System.currentTimeMillis();
 
             className = "com.ptit.travel.agent.HotelAgent";
-            agentController = AgentManager.addAgent(host, port, nickName, className, containerController);
+            agentController = AgentManager.addAgent(host, port, nickName, className, containerController,"");
             nickName = "HotelAgent1";//"Guest" + System.currentTimeMillis();
 
             className = "com.ptit.travel.agent.HotelAgent";
-            agentController = AgentManager.addAgent(host, port, nickName, className, containerController);
+            agentController = AgentManager.addAgent(host, port, nickName, className, containerController,"");
 
             nickName = "UserAgent";//"Guest" + System.currentTimeMillis();
 
             className = "com.ptit.travel.agent.UserAgent";
-            agentController = AgentManager.addAgent(host, port, nickName, className, containerController);
+            agentController = AgentManager.addAgent(host, port, nickName, className, containerController,"");
 //                nickName = "UserAgent2";//"Guest" + System.currentTimeMillis();
 //                className = "com.ptit.travel.agent.user.UserAgent";
 //                agentController = AgentManager.addAgent(host, port, nickName, className,containerController);
@@ -324,14 +362,16 @@ public class StartAgents {
      * @param args
      */
     public static void main(String[] args) throws Exception{
-        // TODO Auto-generated method stub
+        AgentDB db=new AgentDB();
+                
+	boolean result = db.loadData(true);
         StartAgents test = new StartAgents();
 //        test.testSplitMessage();
         //test.testConfigXMLConnect();
         //test.callTheAgentViaXmlRpc();
 //        test.testCreateAgentCF();   // chi chay contrller & Hotel     
-//        test.testCreateAgentCHFT();
-        System.out.println(test.subDay("2009-12-30", "2010-01-01", "yyyy-MM-dd"));
+        test.testCreateAgentCHFT();
+//        System.out.println(test.subDay("2009-12-30", "2010-01-01", "yyyy-MM-dd"));
         
 
     }
