@@ -1,8 +1,9 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
 package com.ptit.travel.moduleJDBC.Model;
-
-//lop anh xa csdl quan he va ontology
-
-
 import com.hp.hpl.jena.db.DBConnection;
 import com.hp.hpl.jena.db.IDBConnection;
 import com.hp.hpl.jena.db.ModelRDB;
@@ -15,118 +16,64 @@ import com.hp.hpl.jena.util.FileManager;
 import java.sql.*;
 
 /**
- * Ket noi Ontology voi MySql
- * 
-
- * 
+ *
+ * @author HaiYen
  */
 public class Database {
-
- 
+    
 	static String databaseName = "";
 			
 	public static final String DB_URL         = "jdbc:mysql://localhost/hotel" ;
-
-//User name
-
 	public static final String DB_USER        = "root";
-
-//Password
-
 	public static final String DB_PASSWD      = "1";
-
-//Database engine name
-
-	public static final String DB = "MySQL";
-	static Connection connection;
-	private Statement statement; 
-
-//JDBC driver
-
+	public static final String DB = "MySQL";	
 	public static final String DB_DRIVER = "com.mysql.jdbc.Driver";
-
 	private static String s_dbURL = DB_URL;
-
 	private static String s_dbUser = DB_USER;
-
 	private static String s_dbPw = DB_PASSWD;
-
 	private static String s_dbType = DB;
-
 	private static String s_dbDriver = DB_DRIVER;
 
-
-	// if true, reload the data
+	// if true,Lấy lại dữ liệu ban dau
 	private static boolean s_reload = false;
 
 	// duong dan den file dat owl.
-	private static String s_source = "http://localhost:8080/MyOntology ";
-
+	private static String s_source = "C:/apache-tomcat-6.0.18/webapps/MyOntology/hotel_yen10.owl";
 	private static ModelMaker maker;
-
 	private static Model base;
 
 	/**
-	 * Dung Ham nay cho lan dau thoi , canh bao nguy hiem
+	 * load du lieu tu ontology vao csdl
 	 * s_reload =true tuc la xoa het roi them moi, lay toan bo owl chuyen vao database
 	 */
-	public static boolean loadData(boolean b_reload) {
-		
-		// neu la true, xoa toan bo csdl, tra ve 1 model macker lay tu csdl
-		ModelMaker maker = getRDBModelMaker(b_reload);
-		
-		// anh xa sag csdl quan he
-		
-		//Tim mot model theo source
+	public static boolean loadData(boolean b_reload) {		
+		ModelMaker maker = getRDBModelMaker(b_reload);			
 		ModelRDB model = (ModelRDB) maker.openModel(s_source);
 		
-		// tap cac gia tri cua doDuplicateCheck
-		model.setDoDuplicateCheck(true);
-		model.begin();
-		
-		// duong dan den file owl
-		
-		FileManager.get().readModel(model,"http://localhost:8080/MyOntology/hotel_yen6.owl");
-		
-		// cap nhat vao csdl
-		model.commit();
-		model.close();
-		System.out.print("commit xong");
-		
+                // tao ra 1 mode tu file s_source
+		 FileManager.get().readModel(model,s_source);         
+                 model.commit();
+                 System.out.print("commit xong");
+		 model.close();		
 		return true;
 	}
-	/**
-	 * Neu cleanDB==true thi se xoa het database va import lai file owl vao database
-	 * @param cleanDB
-	 * @return
-	 * 
-	 * ModelMaker:interface chua mot tap model duoc dinh danh, phuong thuc tao mot model moi va mo model theo ten, xoa model
-	 * truy cao 1 model mac dich
-	 */
+/**
+ * Lay ra mot doi tuong ModelMaker chua cac mo hinh duoc lay ra tu doi tuong ket noi IDBConnection
+ * @param cleanDB
+ * @return
+ */
 	private static ModelMaker getRDBModelMaker(boolean cleanDB) {
 		return ModelFactory.createModelRDBMaker(getConnection(cleanDB));
 	}
 
-	/**
-	 * Tra ve ket noi jdbc hoac null 
+    /**
+	 * Tra ve ket noi csdl
 	 * @param cleanDB = true  xoa tat ca cac thong tin RDF tu csdl. tat ca cac bang RDF duoc xoa
 	 * @return
 	 */
 	private static IDBConnection getConnection(boolean cleanDB) {
 		try {
-			Class.forName(s_dbDriver);
-			/*
-			 *  try {
-			 
-					connection = DriverManager.getConnection(s_dbURL, s_dbUser, s_dbPw);
-					Statement stm=connection.createStatement();
-					stm.executeUpdate("CREATE DATABASE MyDB"); 
-					s_dbURL    = "jdbc:mysql://localhost/MyDB";
-				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				*/
+			Class.forName(s_dbDriver);			
 			
 		} catch (ClassNotFoundException e) {
 			throw new RuntimeException(
@@ -137,7 +84,7 @@ public class Database {
 			// tao 1 ket noi csdl
 			IDBConnection conn=new DBConnection(s_dbURL,s_dbUser,s_dbPw,s_dbType);
 		
-			//	con=DriverManager.getConnection(DB_URL,DB_USER,DB_PASSWD);	
+			
 			if(cleanDB){
 				 conn.cleanDB();
 			}
@@ -149,16 +96,14 @@ public class Database {
 		return null;
 	}
 
-	// /-----------------------------------Ket thuc thu
-	// nghiem---------------------
-	
-	
-	// ket noi csdl
+/**
+ * Muc dich lay ra modelMaker tu csdl hoac tạo 1 model trong
+ */
 	public static void LoadOnt2Database() {
 		// OntologyModel.load();
 		try {
 			
-	// ket noi csdl
+	//load driver
 			Class.forName(s_dbDriver); 
 			
 		
@@ -169,25 +114,21 @@ public class Database {
 		}
 		
 		// lay mo hinh rdf tu owl, dua ra modelmaker
-		if (s_reload) {
-		
-			
+		if (s_reload) {		
 			
 			maker = getRDBMaker(s_dbURL, s_dbUser, s_dbPw, s_dbType, true);
 			loadDB(maker, s_source);
 		
-		}
-                
-		maker = getRDBMaker(s_dbURL, s_dbUser, s_dbPw, s_dbType, false);
-		
-	
-                // tao ra 1 model tu file nguon
+		}                
+		maker = getRDBMaker(s_dbURL, s_dbUser, s_dbPw, s_dbType, false);			
+              
+                // s_source la ten cua model. false: mo hinh da ton tai
                 base = maker.createModel(s_source, false);
 			}
 
 	
-        /**
-         * Dug de lay 1 model. Toạ ra 1 model tu 
+  /**
+         * Dug de lay 1ontModel 
          * @return
          */
 	public static OntModel getOntologyModel() {
@@ -196,24 +137,14 @@ public class Database {
 		return m;
 	}
 
-	/**
-	 * tra ve moot ModelMaker hoac null, tao ra 1 mo hinh rdb
-	 * @param dbURL
-	 * @param dbUser
-	 * @param dbPw
-	 * @param dbType
-	 * @param cleanDB = true tra ve ModelMaker
-	 * @return
-	 */
+
+        
 	private static ModelMaker getRDBMaker(String dbURL, String dbUser,
 			String dbPw, String dbType, boolean cleanDB) {
 		try {
 			
-			// ket noi den csdl
-			IDBConnection conn = new DBConnection(dbURL, dbUser, dbPw, dbType);
 			
-			// cleanDB = true, xoa tat ca thong tin rdf tu csdl.
-			// tra ve 1 ModelMaker ma no truy xuat vao cac model duoc sao luu csdl theo connection conn
+			IDBConnection conn = new DBConnection(dbURL, dbUser, dbPw, dbType);			
 			if (cleanDB) {
 				conn.cleanDB();
 			}
@@ -225,11 +156,6 @@ public class Database {
 		return null;
 	}
 
-	/*
-	 * public static String getDefaultSource() {
-	 * OntDocumentManager.getInstance().addAltEntry(ONT,
-	 * "http://localhost:8080/Ontology/Book/Book.owl"); return ONT; }
-	 */
 
 	private static void loadDB(ModelMaker maker, String source) {
 		
@@ -241,32 +167,17 @@ public class Database {
 				.createOntologyModel(getModelSpec(maker), base);
 		m.read(source);
 	}
-
-	//tra ve mot mieu ta dong goi cac thanh phan cua 1 mo hinh ontology,
-	//chua ca scheme, suy dien va ho so ngon ngu
+	
 	private static OntModelSpec getModelSpec(ModelMaker maker) {
-		// owl_mem dac ta cac mo hinh owl ma duoc lu tru trong bo nho va
-		// ko them suy dien ke thua
-            //   A specification for OWL models that are stored in memory and do no additional entailment reasoning
 		OntModelSpec spec = new OntModelSpec(OntModelSpec.OWL_MEM);
-                
-                // Set the model maker that will be used when the ontology model needs
-                //to create an additional container for an imported ontology
-                
-		spec.setImportModelMaker(maker);
+                spec.setImportModelMaker(maker);
 		return spec;
 	}
-	
-	/**
-	 * Tao mot csdl theo owl
-	 * @param args
-	 */
-	public static void main(String[] args) {
-		Database db=new Database(); 
-                
-		//IDBConnection db1 = db.getConnection(true);
-		boolean result = db.loadData(true);
-		System.out.println("KET QUA:"+result);
-	}
-}
+        public static void main(String args[]){
+                System.out.print("Bat dau anh xa:");
+                Database db=new Database(); 
+	        boolean result = db.loadData(true);
 
+                 System.out.println("KET QUA:"+result);
+    }
+}
