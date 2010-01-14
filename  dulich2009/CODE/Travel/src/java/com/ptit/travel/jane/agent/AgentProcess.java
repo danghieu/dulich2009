@@ -33,6 +33,7 @@ import java.util.ArrayList;
 import com.hp.hpl.jena.rdf.model.*;
 import java.io.FileOutputStream;
 import com.hp.hpl.jena.util.iterator.ExtendedIterator;
+import com.ptit.travel.agent.communication.Language;
 import org.apache.log4j.Logger;
 
 public class AgentProcess {
@@ -251,10 +252,10 @@ public class AgentProcess {
         String info = "dia chi" + Message.FIELD_SEPARATE + "mo ta" + Message.FIELD_SEPARATE + "id" + Message.FIELD_SEPARATE + "owner" + Message.FIELD_SEPARATE + "active" + Message.FIELD_SEPARATE + "hotel";
         //agent.insertAgent(info);
         String s = "hotel";
-        ArrayList<String> ss = agent.getActiveAgents(s);
+        ArrayList<String> ss = agent.getActiveAgents(Language.HOTEL);
         System.out.println("RESULT: " + ss);
         s = "Sofitel";
-        System.out.println("Result: " + agent.getAgentById(s));
+        //System.out.println("Result: " + agent.getAgentById(s));
 
     }
 }
