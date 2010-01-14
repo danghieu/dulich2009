@@ -61,8 +61,8 @@ public class UserAgent extends Agent {
 //                "E:/Develop/Netbean/Travel/config/UserAgent.properties",
 //                this.getLocalName());// E:/Develop/Netbean/Travel/
 
-    /* Tu gan hanh okvi search sau 0.5 s
-    addBehaviour(new TickerBehaviour(this, 30000) {
+    //* Tu gan hanh okvi search sau 0.5 s
+    addBehaviour(new TickerBehaviour(this, 60000) {
     
     protected void onTick() {
     String content = "ha noi" + Message.FIELD_SEPARATE + "Ho Chi Minh" + Message.FIELD_SEPARATE +
@@ -293,6 +293,7 @@ public class UserAgent extends Agent {
 
                         // value
                         log.info("=== Preparing msg to send msg to: " + receivers.toString());
+                        log.info(msg);
                         myAgent.send(msg);
                         // Prepare the template to get proposals
                         mt = MessageTemplate.and(MessageTemplate.MatchConversationId(conversationId),
@@ -348,7 +349,7 @@ public class UserAgent extends Agent {
             if (step == 2) {// && avail); if finishing only exist available
                 // put messages into queue of agent
 
-                log.info("=== FIHISHED RequestInfo behavior");
+                log.info("========== KET THUC QUA TIM KIEM ============");
                 msgQueue.put(conversationId, msgs);
                 return true;
             }
@@ -408,16 +409,18 @@ public class UserAgent extends Agent {
 
                         String replyWith = "[" + myAgent.getLocalName() + "]" + System.currentTimeMillis();
                         // Send the cfp to all agents
-                        log.info("=== Preparing msg to send msg to: " + receivers.toString());
+                        log.info(" ######## Gui Thong Diep toi " + receivers.toString());
+                        
                         ACLMessage msg;
                         String receiver;
                         for (int i = 0; i < receivers.size(); i++) {
                             receiver = (String) receivers.toArray()[i];
                             msg = Message.createInformMessage(a, receiver, agentMsg.get(receiver),
                                     Language.HOTEL, protocol, conversationId, replyWith);
+                            log.info(msg);
                             myAgent.send(msg);
                         }
-
+                        
                         // Prepare the template to get proposals
                         mt = MessageTemplate.and(MessageTemplate.MatchConversationId(conversationId),
                                 MessageTemplate.MatchInReplyTo(replyWith));
@@ -443,12 +446,12 @@ public class UserAgent extends Agent {
                              * put msg into msgQueue of agent: 
                              */
                             //FOR TEST
-                            log.info("=== One more received message from " + replyMsg.getSender().getLocalName());
+                            log.info("   ####### Nhan Thong Diep tu " + replyMsg.getSender().getLocalName());
                             log.info(replyMsg);
                             msgs.add(replyMsg.getContent());
                         }
                         repliesCnt++;
-                        log.info("|| RECEIVERS: " + receivers.size() + " || repliesCnt: " + repliesCnt);
+                        //log.info("|| RECEIVERS: " + receivers.size() + " || repliesCnt: " + repliesCnt);
                         if (repliesCnt >= receivers.size()) {
                             // We received all replies
                             step = 2;
@@ -470,7 +473,7 @@ public class UserAgent extends Agent {
             if (step == 2) {// && avail); if finishing only exist available
                 // put messages into queue of agent
 
-                log.info("=== FIHISHED Booking");
+                log.info("========== KET THUC QUA TRINH DAT DICH VU ============");
                 msgQueue.put(conversationId, msgs);
                 return true;
             }
