@@ -8,7 +8,7 @@
     <body>
         <ul>
             <li><a href="index.jsp" style="color: #fff;	text-decoration: none">Trang ch&#7911; </a></li>
-            <li><a href="#" style="color: #fff;	text-decoration: none">Tour </a></li>
+            <li><a href="tour.jsp" style="color: #fff;	text-decoration: none">Tour </a></li>
             <li><a href="#" style="color: #fff;	text-decoration: none">Ð&#7883;a &#273;i&#7875;m </a></li>
             <li><a href="hotel.jsp" style="color: #fff;	text-decoration: none">Khách s&#7841;n </a></li>
             <li><a href="searchFlight.jsp" style="color: #fff;	text-decoration: none">Máy bay </a></li>

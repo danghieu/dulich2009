@@ -1,23 +1,13 @@
-<%-- 
-    Document   : SearchResult
-    Created on : Dec 29, 2009, 3:03:10 PM
-    Author     : D05CNPM
---%>
 <%@ page language="java" import="java.util.*"%>
 <%@ page language="java" import="com.ptit.travel.agent.communication.Protocol" %>
 <%@ page language="java" import="com.ptit.travel.agent.communication.Message" %>
 <%@ page language="java" import="org.apache.log4j.Logger"%>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-"http://www.w3.org/TR/html4/loose.dtd">
-
-<html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>E-Tourism</title>
-        <link rel="stylesheet" type="text/css"
-              href="css/hotel.css" />
-        <link href="templatemo_style.css" rel="stylesheet" type="text/css" />      
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>E-Tourism: Du l&#7883;ch b&#7889;n ph&#432;&#417;ng</title>
+        <link href="templatemo_style.css" rel="stylesheet" type="text/css" />
     </head>
     <body>
         <div id="templatemo_maincontainer">
@@ -34,7 +24,7 @@
                 </div>
             </div>
             <div id="templatemo_right_column">
-        <%
+              <%
             Logger log = Logger.getLogger("searchResult.jsp");
             String result = (String) request.getAttribute("result");
             //405 _ Thanh Xuan Bac _ Nam Dinh _ Vietnam@_&warm@_&2009-12-24@_&2009-12-27@_&yennh235@gmail.com
@@ -78,43 +68,41 @@
                             for (j = 1; j < serviceList.size(); j++) {
                             out.println("<li>" + serviceList.get(j) + "</li>");                                
                             }/*/
-                            out.println("<li>Khách sạn: " + hotelName + "</li>");
-                            out.println("<li>Địa chỉ: " + address + "</li>");
+                            out.println("<li>Kh&aacute;ch s&#7841;n: " + hotelName + "</li>");
+                            out.println("<li>&#272;&#7883;a ch&#7881;: " + address + "</li>");
                             out.println("<li>" + serviceList.get(8) + " sao</li>");
-                            out.println("<li>Vị trí: " + serviceList.get(7) + "</li>");
+                            out.println("<li>V&#7883; tr&iacute;: " + serviceList.get(7) + "</li>");
+                            out.println("<li>Các tiện ích: " + serviceList.get(12) + "</li>");
                             //*/
                             out.println("</ul>");
         %>
-        
-        <table width="250" border="1">
-            <tr>
-                <td>Loại phòng</td>
-                <td>Giá</td>
-                <td>Đơn vị</td>
-            </tr>
-            <%
+              <table width="250" border="1">
+                <tr>
+                  <td>Lo&#7841;i ph&ograve;ng</td>
+                  <td>Gi&aacute;</td>
+                  <td>&#272;&#417;n v&#7883;</td>
+                </tr>
+                <%
                         for (int k = 9; k < size;) {
             %>
-            <tr>
-                <td><%=serviceList.get(k)%></td>
-                <td><%=serviceList.get(k + 1)%></td>
-                <td><%=serviceList.get(k + 2)%></td>
-            </tr>
-            <%
-                            k += 3;
+                <tr>
+                  <td><%=serviceList.get(k)%></td>
+                  <td><%=serviceList.get(k + 1)%></td>
+                  <td><%=serviceList.get(k + 2)%></td>
+                </tr>
+                <%
+                            k += 4;
                         }
             %>
-        </table>
-        
-        
-        <%
+              </table>
+              <%
                             out.println("<input type=\"hidden\" name=\"supplier\" value=\"" + supplier + "\"/>");
                             out.println("<input type=\"hidden\" name=\"hotelName\" value=\"" + hotelName + "\"/>");
                             out.println("<input type=\"hidden\" name=\"address\" value=\"" + address + "\"/>");
                             out.println("<input type=\"hidden\" name=\"protocol\" value=\"" + Protocol.HOTEL_RES + "\"/>");
                             out.println("<input type=\"hidden\" name=\"services\" value=\"" + services + "\"/>");
                             //out.println("<a href=\"abc\" onClick=\"\">more</a>");
-                            out.println("<input type=\"submit\" name=\"submit\" value=\"Đặt\"/>");
+                            out.println("<input type=\"submit\" name=\"submit\" value=\"&#272;&#7863;t\"/>");
                             out.println("</div><div id=\"B2FVNw_3D_3D\" style=\"overflow: hidden; padding-top: 3px; padding-bottom: 10px; display: none; clear: both;\">" +
                                     "</div></div></div>");
                             out.println("</form>");
@@ -132,7 +120,7 @@
 
 
         %>
-        </div>
+            </div>
             <div id="templatemo_bot"></div>
         </div>
         <div id="templatemo_footer"> 
