@@ -60,7 +60,7 @@ public class ControllerAgent extends Agent {
         private int step = 0;
         private int repliesCnt;
         private final int finalStep = 100;
-        private ArrayList<String> receivers;
+        private int receiverNumber;
 
         public HandleRecivedMessages() {
         }
@@ -77,7 +77,7 @@ public class ControllerAgent extends Agent {
                             ACLMessage msg = receive();
                             if (msg != null) {
                                 // keep track of user
-                                log.info("                #### Nhan Thong Diep  tu" + 
+                                log.info("--------  Nhan Thong Diep  tu " + 
                                             msg.getSender().getLocalName() +
                                             " \n" + msg);
                                 userTracker = msg.getSender().getLocalName();
@@ -85,12 +85,13 @@ public class ControllerAgent extends Agent {
                                 protocol = msg.getProtocol();
                                 conversationId = msg.getConversationId();
 
-                                
+                                content = msg.getContent();
                                 log.info("protocol: " + protocol);
                                 // Language used to get all appropriate supplier agents
 
                                 // Call DB and gain result into list
-                                receivers = new ArrayList<String>();
+                                ArrayList<String> receivers = new ArrayList<String>();
+                                ArrayList<String> temp = new ArrayList<String>();
                                 if (protocol.contains(Protocol.PREFIX_HOTEL)) {
                                     receivers = AgentProcess.getActiveAgents(Language.HOTEL);
                                     //receivers.add("HotelAgent");
@@ -104,16 +105,35 @@ public class ControllerAgent extends Agent {
                                 if (protocol.contains(Protocol.PREFIX_TRAIN)) {
                                     receivers = AgentProcess.getActiveAgents(Language.TRAIN);
                                 }
-                                if (protocol.contains(Protocol.PREFIX_TOURSERVICE)) {
-                                    receivers = AgentProcess.getActiveAgents(Language.BROKER);
+//                                if (protocol.contains(Protocol.PREFIX_TOURSERVICE)) {
+//                                    receivers = AgentProcess.getActiveAgents(Language.BROKER);
+//                                }
+                                if (protocol.equals(Protocol.TOURSERVICE_AVAIL)) {
+                                    temp = AgentProcess.getActiveAgents(Language.HOTEL);
+                                    ACLMessage tempMsg = Message.createForwardMessage(myAgent, temp, msg,
+                                        replyWith);
+                                    content = Message.split(content, Message.FIELD_SEPARATE).get(1) +
+                                            Message.FIELD_SEPARATE +
+                                            " " + Message.FIELD_SEPARATE +
+                                            " ";
+                                    
+                                    tempMsg.setContent(content);
+                                    tempMsg.setProtocol(Protocol.HOTEL_AVAIL);
+                                    log.info("--------  Gui Thong Diep toi " + temp + "\n" + tempMsg);
+                                    send(tempMsg);
+                                    
+                                    receivers = AgentProcess.getActiveAgents(Language.TRAIN);
                                 }
-                                
+                                receiverNumber = receivers.size() + temp.size();
                                 ACLMessage forwardMsg = Message.createForwardMessage(myAgent, receivers, msg,
                                         replyWith);
+                                if (protocol.equals(Protocol.TOURSERVICE_AVAIL)){
+                                    forwardMsg.setProtocol(Protocol.TRAIN_AVAIL);
+                                }
                                 //myAgent.addBehaviour(new Negotiate(myAgent, forwardMsg));
                                 //log.info("HandleRecivedMessages behavior is blocked " + this.STATE_BLOCKED);
 
-                                log.info("###############  Gui Thong Diep toi " + receivers +
+                                log.info("--------  Gui Thong Diep toi " + receivers +
                                         "\n" + forwardMsg);
                                 send(forwardMsg);
                                 mt = MessageTemplate.and(MessageTemplate.MatchConversationId(forwardMsg.getConversationId()),
@@ -140,7 +160,7 @@ public class ControllerAgent extends Agent {
                                      * put msg into msgQueue of agent: 
                                      */
                                     //FOR TEST
-                                    log.info("                #### Nhan Thong Diep  tu" + 
+                                    log.info("-------- Nhan Thong Diep  tu" + 
                                             replyMsg.getSender().getLocalName() +
                                             " \n" + replyMsg);
                                     content = replyMsg.getContent();
@@ -152,8 +172,8 @@ public class ControllerAgent extends Agent {
                                     }
                                 }
                                 repliesCnt++;
-                                log.info("|| RECEIVERS: " + receivers.size() + " || repliesCnt: " + repliesCnt);
-                                if (repliesCnt >= receivers.size()) {
+                                log.info("|| RECEIVERS: " + receiverNumber + " || repliesCnt: " + repliesCnt);
+                                if (repliesCnt >= receiverNumber) {
                                     //We received all replies, can combine services here
 
                                     msgQueue.put(conversationId, msgsContent);
@@ -166,7 +186,7 @@ public class ControllerAgent extends Agent {
                                     ACLMessage reply = Message.createReplyMessage(myAgent, userTracker,
                                             contents, language, protocol, conversationId, replyWith);
 
-                                    log.info(reply);
+                                    log.info("--------  Goi Thong Diep toi " + userTracker + "\n" +reply);
                                     send(reply);
                                 }
                             } else {

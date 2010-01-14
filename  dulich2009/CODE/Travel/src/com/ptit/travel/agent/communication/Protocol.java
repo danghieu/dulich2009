@@ -25,17 +25,7 @@ public class Protocol {
     public final static String HOTEL_AVAIL_GET = PREFIX_HOTEL + "AvailGet" + SUFFIX_SEARCH;
     /**
      *  HOTEL_RES provides the ability for a booking source to obtain 
-     *	availability status from one or more specified hotel properties.
-     *Coming message:
-     *	  <StatusApplication Start="2006-05-20" End="2006-05-23" InvTypeCode="N2DRAC"/>
-     *			<GuestCounts> 
-     *                <GuestCount AgeQualifyingCode="10" Count="1"/> 
-     *                <!--AgeQualifyingCode 10=Adult--> 
-     *                <GuestCount AgeQualifyingCode="8" Count="1"/> 
-     *                <!--AgeQualifyingCode 8=Child--> 
-     *         </GuestCounts>  
-     *         
-     *                   
+     *	availability status from one or more specified hotel properties.                
      */
     public final static String HOTEL_RES = PREFIX_HOTEL + "Res" + SUFFIX_BOOK;
     public final static String HOTEL_CANCEL = PREFIX_HOTEL + "Cancel";
