@@ -145,6 +145,10 @@ public class UserServlet extends HttpServlet {
                 msg = extractSearchTrainMsg(request);
                 function = nickName + ".search";
                 page = "/searchTrainResult.jsp";
+            } else if (protocol.equals(Protocol.TOURSERVICE_AVAIL)) {
+                msg = extractSearchTourMsg(request);
+                function = nickName + ".search";
+                page = "/searchTourResult.jsp";
             } else if (protocol.equals(Protocol.HOTEL_RES)) {
                 msg = extractBookRoomMsg(request);
                 function = nickName + ".book";
@@ -157,7 +161,7 @@ public class UserServlet extends HttpServlet {
                 msg = extractBookTrainMsg(request);
                 function = nickName + ".book";
                 page = "/bookResult.jsp";
-            } else if (protocol.equals("LOGIN")) {
+            }else if (protocol.equals("LOGIN")) {
                 login(request, response);
                 return;
             }// more... //TODO
@@ -381,6 +385,22 @@ public class UserServlet extends HttpServlet {
                 ticket + Message.FIELD_SEPARATE +
                 quatity;
         log.info("SEARCH FLIGHT Msg: " + msg);
+        return msg;
+    }
+    public String extractSearchTourMsg(HttpServletRequest request) {
+        String msg = "";
+        String beginPoit,endPoit ,beginTime ,endTime;
+        beginPoit = request.getParameter("beginPoit");
+        endPoit = request.getParameter("endPoit");
+        beginTime = request.getParameter("beginTime");
+        endTime = request.getParameter("endTime");
+
+
+        msg = "" + beginPoit + Message.FIELD_SEPARATE +
+                endPoit + Message.FIELD_SEPARATE +
+                beginTime + Message.FIELD_SEPARATE +
+                endTime;
+        log.info("SEARCH TOUR Msg: " + msg);
         return msg;
     }
 
