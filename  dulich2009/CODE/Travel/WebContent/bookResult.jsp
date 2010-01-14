@@ -25,8 +25,10 @@
                 
                 out.println("<h2>"+msg+"</h2>");
                 %>  
+				Đặt thành công.
+				Tổng giá: 327 USD.
                 <p></p>
-                <a href="index.jsp" style="color: #fff;	text-decoration: none">Trang ch&#7911; </a>
+                <a href="index.jsp" style="color: #3333FF;	text-decoration: none">Trang ch&#7911; </a>
             </div>
             <div id="templatemo_bot"></div>
         </div>
