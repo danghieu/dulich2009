@@ -5,19 +5,15 @@
 package com.ptit.travel.agent;
 import com.ptit.travel.agent.communication.*;
 import com.ptit.travel.agent.memory.*;
-
-
 import jade.core.Agent;
 import jade.core.behaviours.*;
 import jade.lang.acl.ACLMessage;
 import jade.lang.acl.MessageTemplate;
-
 import org.apache.log4j.Logger;
-
-
-
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import org.mindswap.pellet.jena.PelletReasonerFactory;
-
 import com.ptit.travel.agent.communication.Message;
 import com.hp.hpl.jena.util.iterator.ExtendedIterator;
 import com.ptit.travel.jane.hotel.Hotel;
@@ -639,13 +635,14 @@ public class HotelAgent extends Agent {
      * @param total: bien xac dinh tinh duy nhat cua Msg
      * @return: 1 model chua thong tin dung trong viec xu ly dat dich vu khach san.
      */
-    public static OntModel insertMsg_HotelBookRQ(String input) {
+public static OntModel insertMsg_HotelBookRQ(String input) {
         ArrayList<String> arr = new ArrayList<String>();
         arr = Message.split(input, Message.FIELD_SEPARATE);
         OntModel model = ModelFactory.createOntologyModel();
         Individual ind = null;
+       
         try {
-            
+             float numberOfDay = subDay(arr.get(6), arr.get(7), "yyyy-mm-dd");
             //tao ra 1 lop request de lay cac thong tin yeu cau
             OntClass oc = model.createClass("http://www.owl-ontologies.com/Travel.owl#Msg_HotelBookRQ");
             ind = model.createIndividual(Hotel.getURI() + "Msg_HotelBookRQ" + System.currentTimeMillis(), oc);
@@ -658,13 +655,14 @@ public class HotelAgent extends Agent {
             ind.addLiteral(Hotel.fullName, arr.get(8));
             ind.addLiteral(Hotel.profession, arr.get(9));
             ind.addLiteral(Hotel.IdentityCard, arr.get(10));
-            ind.addLiteral(Hotel.numberOfDay, Float.parseFloat(arr.get(11)));
+            ind.addLiteral(Hotel.numberOfDay, numberOfDay);
         } catch (Exception e) {
             System.out.println(e.toString());
         }
         model.write(System.out);
         return model;
     }
+
 
     /**
      *  Xu ly dat dich vu theo cac thong tin yeu cau 
@@ -869,12 +867,14 @@ public class HotelAgent extends Agent {
                 return totalprice;
             }
 
-            ind = model.createIndividual("http://www.owl-ontologies.com/Travel.owl#Customer_" + arr.get(10), oc);
-            ind.addLiteral(Hotel.fullName, arr.get(8));
-            ind.addLiteral(Hotel.profession, arr.get(9));
-            ind.addLiteral(Hotel.IdentityCard, arr.get(10));
-            ind.addLiteral(Hotel.PhoneNumer, arr.get(13));
-            ind.addLiteral(Hotel.fax, arr.get(12));
+            ind = model.createIndividual("http://www.owl-ontologies.com/Travel.owl#Customer_" + arr.get(10), oc);            
+            ind.addLiteral(Hotel.Email, arr.get(8));
+            ind.addLiteral(Hotel.fullName, arr.get(9));
+            ind.addLiteral(Hotel.profession, arr.get(10));
+            ind.addLiteral(Hotel.IdentityCard, arr.get(11));
+            ind.addLiteral(Hotel.PhoneNumer, arr.get(12));
+            ind.addLiteral(Hotel.fax, arr.get(13));
+            ind.addLiteral(Hotel.specificAddress, arr.get(14));
             ind.addLiteral(Hotel.specificAddress, arr.get(14));
         } catch (Exception e) {
         }
@@ -909,6 +909,21 @@ public class HotelAgent extends Agent {
             String room = (individual.listPropertyValues(roomtype).next()).toString();        
             System.out.println("Loai phog dat: " + room);
         }
+    }
+     public static float subDay(String fromDate, String toDate, String pattern) throws Exception {
+        float days = -1;
+        SimpleDateFormat format = new SimpleDateFormat(pattern);
+        try {
+            Date date1 = format.parse(fromDate);
+            long time1 = date1.getTime();
+            Date date2 = format.parse(toDate);
+            long time2 = date2.getTime();
+            days = (float) ((time2 - time1) / (1000 * 60 * 60 * 24));
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw e;//ParseException();
+        }
+        return days;
     }
 
 }
