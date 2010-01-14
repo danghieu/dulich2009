@@ -61,7 +61,7 @@ public class UserAgent extends Agent {
 //                "E:/Develop/Netbean/Travel/config/UserAgent.properties",
 //                this.getLocalName());// E:/Develop/Netbean/Travel/
 
-    //* Tu gan hanh okvi search sau 0.5 s
+    /* Tu gan hanh okvi search sau 0.5 s
     addBehaviour(new TickerBehaviour(this, 60000) {
     
     protected void onTick() {
@@ -78,8 +78,8 @@ public class UserAgent extends Agent {
     "Hanh" + Message.FIELD_SEPARATE + "Sinh Vien" + Message.FIELD_SEPARATE + "162882805";
     
     String input = "Nam Dinh"+Message.FIELD_SEPARATE+null+Message.FIELD_SEPARATE+null;
-    //input="Ha Noi"+Message.FIELD_SEPARATE+"Phu Ly"+Message.FIELD_SEPARATE+"2009-12-29";
-    search(input, "conversationId", Protocol.HOTEL_AVAIL);
+    input="Ha Noi"+Message.FIELD_SEPARATE+"Phu Ly"+Message.FIELD_SEPARATE+"2009-12-29" +Message.FIELD_SEPARATE+"2009-12-31";
+    search(input, "conversationId", Protocol.TOURSERVICE_AVAIL);
     }
     });//*/
 
@@ -292,8 +292,7 @@ public class UserAgent extends Agent {
                                 protocol, conversationId, replyWith);
 
                         // value
-                        log.info("=== Preparing msg to send msg to: " + receivers.toString());
-                        log.info(msg);
+                        log.info("-------- Gui Thong Diep toi " + receivers.toString()+ "\n" + msg);
                         myAgent.send(msg);
                         // Prepare the template to get proposals
                         mt = MessageTemplate.and(MessageTemplate.MatchConversationId(conversationId),
@@ -320,8 +319,8 @@ public class UserAgent extends Agent {
                              * put msg into msgQueue of agent: 
                              */
                             //FOR TEST
-                            log.info("=== One more received message from " + replyMsg.getSender().getLocalName());
-                            log.info(replyMsg);
+                            log.info("-------- Nhan Thong Diep tu " + 
+                                    replyMsg.getSender().getLocalName() + "\n" + replyMsg);
                             msgs.add(//replyMsg.getSender().getLocalName() + Message.FIELD_SEPARATE + 
                                     replyMsg.getContent());
                         }
@@ -409,7 +408,7 @@ public class UserAgent extends Agent {
 
                         String replyWith = "[" + myAgent.getLocalName() + "]" + System.currentTimeMillis();
                         // Send the cfp to all agents
-                        log.info(" ######## Gui Thong Diep toi " + receivers.toString());
+                        log.info("-------- Gui Thong Diep toi " + receivers.toString());
                         
                         ACLMessage msg;
                         String receiver;
@@ -446,8 +445,8 @@ public class UserAgent extends Agent {
                              * put msg into msgQueue of agent: 
                              */
                             //FOR TEST
-                            log.info("   ####### Nhan Thong Diep tu " + replyMsg.getSender().getLocalName());
-                            log.info(replyMsg);
+                            log.info("-------- Nhan Thong Diep tu " + 
+                                    replyMsg.getSender().getLocalName()+ "\n" + replyMsg);
                             msgs.add(replyMsg.getContent());
                         }
                         repliesCnt++;

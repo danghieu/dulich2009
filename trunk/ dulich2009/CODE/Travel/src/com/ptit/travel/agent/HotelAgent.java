@@ -68,35 +68,6 @@ public class HotelAgent extends Agent {
     }
 
 
-    private void informAskAgent(Resource r) {
-        this.addBehaviour(new BehaviourSendResult(this, r));
-    }
-
-    /**
-     * 
-     *Behaviour is used with AnswerAgent and it sends RDF Resources to other
-     * Agents
-     * 
-     * @author D05CNPM
-     */
-    class BehaviourSendResult extends OneShotBehaviour {
-
-        private Resource r = null;
-        private Agent a;
-
-        public BehaviourSendResult(Agent _a, Resource _r) {
-            super(_a);
-            a = _a;
-            r = _r;
-        }
-
-        public void action() {
-            System.out.println("sends RDF Resources to UserAgent");
-            send(Message.createInformMessage(a, "UserAgent", r));
-        }
-    } // End class BehaviourSendResult
-
-
     /**
      * 
      *This behaviour is used by HotelAgent to handle received messages return
@@ -118,7 +89,7 @@ public class HotelAgent extends Agent {
 
                     try {
                         String content = msg.getContent();
-                        log.info("=== [HotelAgent] received from " + msg.getSender().getLocalName());
+                        log.info("--------  Nhan Thong Diep tu " + msg.getSender().getLocalName());
                         switch (msg.getPerformative()) {
                             case ACLMessage.QUERY_REF:
                                 break;
@@ -135,7 +106,7 @@ public class HotelAgent extends Agent {
                                     log.info("RETURN RESULT: " + content);
                                     ACLMessage reply = Message.createReplyMessage(msg, content);
 
-                                    log.info("=== [HotelAgent] sent reply message " + reply);
+                                    log.info("--------  Gui Thong Diep di " + reply);
                                     send(reply);
 
                                     finished = true;
@@ -145,7 +116,7 @@ public class HotelAgent extends Agent {
                                     log.info("RETURN RESULT: " + content);
                                     ACLMessage reply = Message.createReplyMessage(msg, content);
 
-                                    log.info("=== [HotelAgent] sent reply message " + reply);
+                                    log.info("--------  Gui Thong Diep di " + reply);
                                     send(reply);
                                     finished = true;
                                 }

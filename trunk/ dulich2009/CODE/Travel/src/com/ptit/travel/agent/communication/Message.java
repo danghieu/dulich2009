@@ -39,6 +39,7 @@ public class Message {
      */
     public final static String FIELD_SEPARATE = "@_&";
 
+    public final static String AGENT_SEPARATE = "@&#";
     /**
      * This method returns XML/RDF text representation of RDF Resource
      * 
@@ -411,6 +412,39 @@ public class Message {
      */
     public static ACLMessage createForwardMessage(Agent sender,
             ArrayList<String> recieverNames, ACLMessage msg, String replyWith) throws Exception {
+
+        log.info("|| SENDER: " + sender.getLocalName());
+        log.info("|| RECEIRERS: " + recieverNames);
+        //String content = resource2RDF(r);
+        ACLMessage m = new ACLMessage(ACLMessage.INFORM);
+        m.setSender(sender.getAID());
+        for (int i = 0; i < recieverNames.size(); i++) {
+            m.addReceiver(new AID((String) recieverNames.get(i), false));
+        }
+
+        m.setContent(msg.getContent());
+        m.setLanguage(msg.getLanguage());
+        m.setOntology(msg.getOntology());
+        m.setProtocol(msg.getProtocol());
+        m.setConversationId(msg.getConversationId());
+
+        m.setReplyWith(replyWith);
+        log.debug("message prepared for " + recieverNames.toString() + ": " + m);
+        return m;
+    }
+
+    /**
+     * 
+     * @param sender
+     * @param recieverNames
+     * @param msg
+     * @param replyWith
+     * @param protocol
+     * @return
+     * @throws java.lang.Exception
+     */
+    public static ACLMessage createForwardMessage(Agent sender,
+            ArrayList<String> recieverNames, ACLMessage msg, String replyWith, String protocol) throws Exception {
 
         log.info("|| SENDER: " + sender.getLocalName());
         log.info("|| RECEIRERS: " + recieverNames);

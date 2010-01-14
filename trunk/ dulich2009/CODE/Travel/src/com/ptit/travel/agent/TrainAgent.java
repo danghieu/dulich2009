@@ -93,7 +93,7 @@ public class TrainAgent extends Agent {
 
                     try {
                         String content = msg.getContent();
-                        log.info("=== [TrainAgent] received from " + msg.getSender().getLocalName());
+                        log.info("-------- " + msg.getSender().getLocalName());
                         switch (msg.getPerformative()) {
                             case ACLMessage.QUERY_REF:
                                 break;
@@ -110,7 +110,7 @@ public class TrainAgent extends Agent {
                                     log.info("RETURN RESULT: " + content);
                                     ACLMessage reply = Message.createReplyMessage(msg, content);
 
-                                    log.info("=== [TrainAgent] sent reply message " + reply);
+                                    log.info("-------- Gui Thong Diep tra loi " + reply);
                                     send(reply);
 
                                     finished = true;
@@ -120,7 +120,7 @@ public class TrainAgent extends Agent {
                                     log.info("RETURN RESULT: " + content);
                                     ACLMessage reply = Message.createReplyMessage(msg, content);
 
-                                    log.info("=== [FLIGHTAGENT] sent reply message " + reply);
+                                    log.info("-------- Gui Thong Diep toi " + reply);
                                     send(reply);
                                     finished = true;
                                      //*/
@@ -129,7 +129,7 @@ public class TrainAgent extends Agent {
                                     log.info("RETURN RESULT: " + content);
                                     ACLMessage reply = Message.createReplyMessage(msg, content);
 
-                                    log.info("=== [TRAINAGENT] sent reply message " + reply);
+                                    log.info("-------- Gui Thong Diep toi " + reply);
                                     send(reply);
 
                                     finished = true;
