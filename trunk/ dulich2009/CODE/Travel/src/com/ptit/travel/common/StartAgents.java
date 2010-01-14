@@ -64,7 +64,7 @@ public class StartAgents {
                 "paramA" + Message.FIELD_SEPARATE +
                 "paramB" + Message.OBJECT_SEPARATE +
                 "paramX";
-        input = "Ha Noi@_&Ho Chi Minh@_&05-01-2010@_&economy@_&3";
+        input = "HotelAgent@_&405 _ Thanh Xuan Bac _ Nam Dinh _ Vietnam@_&warm@_&10. AM@_&10 AM@_&yennh235@gmail.com@_&HaiYen@_&LakeSide@_&4@_&MeetingRoom@_&100.0@_&USD@_&LivingRoom@_&50.0@_&USD@_&PartyRoom@_&250.0@_&USD@_&ConferenceRoom@_&300.0@_&USD@_&Km5 _ Ton That Tung _ Nam Dinh _ Vietnam@_&warm@_&10AM@_&10AM@_&Thien Truong@_&Thien Truong@_&Center@_&4@_&15 _ Tran Phu _ Ha Noi _ Vietnam@_&warm@_&11AM@_&11AM@_&ThienHuong@gmail.com@_&Thien Huong@_&Center@_&4@_&@_&Parking,BabySittingService,LaundryService,nightClub,24HoursReception,CurrencyExchangeCounter,DryCleaningService,MoutainBikeDentalService,Spa,SwimmingPool,#_&#_&TrainAgent@_&SE1@_&HN_PL_SE1_2@_&Ha Noi@_&Phu Ly@_&2009-12-29,19:00:00@_&2009-12-29,20:02:00@_&Ghe cung@_&22000.0 VND@_&@_&#_&#_&SE1@_&HN_PL_SE1_1@_&Ha Noi@_&Phu Ly@_&2009-12-29,19:00:00@_&2009-12-29,20:02:00@_&Ghe mem@_&24000.0 VND@_&@_&#_&#_&";
         System.out.println("|| INPUT: " + input);
         ArrayList<String> list = Message.split(input, Message.OBJECT_SEPARATE);
         System.out.println("|| SEPARATE OBJECT: " + list.toString());
@@ -169,7 +169,7 @@ public class StartAgents {
 
     }
 
-    public void testCreateAgentCF() {
+    public void testCreateAgentUCHFT() {
         AgentController agentController;
         String host = "localhost";
         String port = "1099";
@@ -179,6 +179,42 @@ public class StartAgents {
         try {
             ContainerController containerController = (ContainerController) AgentManager.startAgent(host, port,
                     nickName, className, true,"").get(0);
+            nickName = "FlightAgent";//"Guest" + System.currentTimeMillis();
+
+            className = "com.ptit.travel.agent.FlightAgent";
+            agentController = AgentManager.addAgent(host, port, nickName, className, containerController,"");
+            nickName = "TrainAgent";//"Guest" + System.currentTimeMillis();
+
+            className = "com.ptit.travel.agent.TrainAgent";
+            agentController = AgentManager.addAgent(host, port, nickName, className, containerController,"");
+
+            nickName = "HotelAgent";//"Guest" + System.currentTimeMillis();
+
+            className = "com.ptit.travel.agent.HotelAgent";
+            agentController = AgentManager.addAgent(host, port, nickName, className, containerController,"");
+
+            nickName = "UserAgent";//"Guest" + System.currentTimeMillis();
+
+            className = "com.ptit.travel.agent.UserAgent";
+            agentController = AgentManager.addAgent(host, port, nickName, className, containerController,"");
+
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
+    }
+    public void testCreateAgentCF(boolean main) {
+        AgentController agentController;
+        String host = "localhost";
+        String port = "1099";
+        String nickName = "ControllerAgent";//"Guest" + System.currentTimeMillis();
+
+        String className = "com.ptit.travel.agent.ControllerAgent";
+        try {
+            ContainerController containerController = (ContainerController) AgentManager.startAgent(host, port,
+                    nickName, className, main,"").get(0);
             nickName = "FlightAgent";//"Guest" + System.currentTimeMillis();
 
             className = "com.ptit.travel.agent.FlightAgent";
@@ -369,7 +405,7 @@ public class StartAgents {
 //        test.testSplitMessage();
         //test.testConfigXMLConnect();
         //test.callTheAgentViaXmlRpc();
-//        test.testCreateAgentCF();   // chi chay contrller & Hotel     
+//        test.testCreateAgentCF(false);   // chi chay contrller & Hotel     
         test.testCreateAgentCHFT();
 //        System.out.println(test.subDay("2009-12-30", "2010-01-01", "yyyy-MM-dd"));
         
