@@ -118,7 +118,7 @@ public class HotelAgent extends Agent {
 
                     try {
                         String content = msg.getContent();
-                        System.out.println("=== [HotelAgent] received from " + msg.getSender().getLocalName());
+                        log.info("=== [HotelAgent] received from " + msg.getSender().getLocalName());
                         switch (msg.getPerformative()) {
                             case ACLMessage.QUERY_REF:
                                 break;
@@ -128,24 +128,24 @@ public class HotelAgent extends Agent {
                                 String protocol = msg.getProtocol();
                                 if (Protocol.HOTEL_AVAIL.equals(protocol)) {
 
-                                    System.out.println("Call module DB with String input: " + content);
+                                    log.info("Call module DB with String input: " + content);
 
                                     content = search(content);// chi goi DB o day
 
-                                    System.out.println("RETURN RESULT: " + content);
+                                    log.info("RETURN RESULT: " + content);
                                     ACLMessage reply = Message.createReplyMessage(msg, content);
 
-                                    System.out.println("=== [HotelAgent] sent reply message " + reply);
+                                    log.info("=== [HotelAgent] sent reply message " + reply);
                                     send(reply);
 
                                     finished = true;
                                 } else if (Protocol.HOTEL_RES.equals(protocol)) {
                                     content = processBooking(msg.getContent());
                                     
-                                    System.out.println("RETURN RESULT: " + content);
+                                    log.info("RETURN RESULT: " + content);
                                     ACLMessage reply = Message.createReplyMessage(msg, content);
 
-                                    System.out.println("=== [HotelAgent] sent reply message " + reply);
+                                    log.info("=== [HotelAgent] sent reply message " + reply);
                                     send(reply);
                                     finished = true;
                                 }

@@ -77,6 +77,9 @@ public class ControllerAgent extends Agent {
                             ACLMessage msg = receive();
                             if (msg != null) {
                                 // keep track of user
+                                log.info("                #### Nhan Thong Diep  tu" + 
+                                            msg.getSender().getLocalName() +
+                                            " \n" + msg);
                                 userTracker = msg.getSender().getLocalName();
                                 replyWith = msg.getReplyWith();
                                 protocol = msg.getProtocol();
@@ -110,6 +113,8 @@ public class ControllerAgent extends Agent {
                                 //myAgent.addBehaviour(new Negotiate(myAgent, forwardMsg));
                                 //log.info("HandleRecivedMessages behavior is blocked " + this.STATE_BLOCKED);
 
+                                log.info("###############  Gui Thong Diep toi " + receivers +
+                                        "\n" + forwardMsg);
                                 send(forwardMsg);
                                 mt = MessageTemplate.and(MessageTemplate.MatchConversationId(forwardMsg.getConversationId()),
                                         MessageTemplate.MatchInReplyTo(forwardMsg.getReplyWith()));
@@ -135,7 +140,9 @@ public class ControllerAgent extends Agent {
                                      * put msg into msgQueue of agent: 
                                      */
                                     //FOR TEST
-                                    log.info("=== One more received message from " + replyMsg.getSender().getLocalName());
+                                    log.info("                #### Nhan Thong Diep  tu" + 
+                                            replyMsg.getSender().getLocalName() +
+                                            " \n" + replyMsg);
                                     content = replyMsg.getContent();
                                     String errorContent = "Agent not found: getContainerID() failed to find agent " ;// NOT EXIST agent
                                             
