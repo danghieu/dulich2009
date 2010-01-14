@@ -1,4 +1,4 @@
-; Thu Jan 14 10:29:41 ICT 2010
+; Thu Jan 14 10:42:13 ICT 2010
 ; 
 ;+ (version "3.4")
 ;+ (build "Build 533")
@@ -6,11 +6,11 @@
 ([BROWSER_SLOT_NAMES] of  Property_List
 
 	(properties
-		[Tourism_ProjectKB_Class126]
-		[Tourism_ProjectKB_Class127]
-		[Tourism_ProjectKB_Class128]
-		[Tourism_ProjectKB_Class129]
-		[Tourism_ProjectKB_Class130]))
+		[Tourism_ProjectKB_Class239]
+		[Tourism_ProjectKB_Class240]
+		[Tourism_ProjectKB_Class241]
+		[Tourism_ProjectKB_Class242]
+		[Tourism_ProjectKB_Class243]))
 
 ([CLSES_TAB] of  Widget
 
@@ -35,153 +35,6 @@
 	(label "Forms")
 	(property_list [Instance_85])
 	(widget_class_name "edu.stanford.smi.protege.widget.FormsTab"))
-
-([hotel_yen10_ProjectKB_Class1] of  Widget
-
-	(is_hidden FALSE)
-	(name "http://www.w3.org/2003/11/swrl#Imp")
-	(property_list [hotel_yen10_ProjectKB_Class4])
-	(widget_class_name "edu.stanford.smi.protegex.owl.ui.widget.OWLFormWidget"))
-
-([hotel_yen10_ProjectKB_Class10] of  String
-
-	(name "vertical_stretcher")
-	(string_value "http://www.w3.org/2003/11/swrl#body"))
-
-([hotel_yen10_ProjectKB_Class11] of  Widget
-
-	(height 0)
-	(is_hidden FALSE)
-	(name "http://protege.stanford.edu/plugins/owl/protege#inferredType")
-	(property_list [hotel_yen10_ProjectKB_Class12])
-	(width 0)
-	(x 0)
-	(y 0))
-
-([hotel_yen10_ProjectKB_Class12] of  Property_List
-)
-
-([hotel_yen10_ProjectKB_Class14] of  Widget
-
-	(is_hidden FALSE)
-	(name "http://www.w3.org/2002/07/owl#versionInfo")
-	(property_list [hotel_yen10_ProjectKB_Class15]))
-
-([hotel_yen10_ProjectKB_Class15] of  Property_List
-)
-
-([hotel_yen10_ProjectKB_Class16] of  Widget
-
-	(is_hidden FALSE)
-	(name "http://www.w3.org/2000/01/rdf-schema#isDefinedBy")
-	(property_list [hotel_yen10_ProjectKB_Class17]))
-
-([hotel_yen10_ProjectKB_Class17] of  Property_List
-)
-
-([hotel_yen10_ProjectKB_Class18] of  Widget
-
-	(is_hidden FALSE)
-	(name "http://www.w3.org/2000/01/rdf-schema#comment")
-	(property_list [hotel_yen10_ProjectKB_Class19]))
-
-([hotel_yen10_ProjectKB_Class19] of  Property_List
-)
-
-([hotel_yen10_ProjectKB_Class20] of  Widget
-
-	(is_hidden FALSE)
-	(name "http://www.w3.org/2000/01/rdf-schema#seeAlso")
-	(property_list [hotel_yen10_ProjectKB_Class21]))
-
-([hotel_yen10_ProjectKB_Class21] of  Property_List
-)
-
-([hotel_yen10_ProjectKB_Class22] of  Widget
-
-	(is_hidden FALSE)
-	(name "http://www.w3.org/2000/01/rdf-schema#label")
-	(property_list [hotel_yen10_ProjectKB_Class23]))
-
-([hotel_yen10_ProjectKB_Class23] of  Property_List
-)
-
-([hotel_yen10_ProjectKB_Class24] of  Widget
-
-	(is_hidden FALSE)
-	(name "http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled")
-	(property_list [hotel_yen10_ProjectKB_Class25]))
-
-([hotel_yen10_ProjectKB_Class25] of  Property_List
-)
-
-([hotel_yen10_ProjectKB_Class26] of  Widget
-
-	(is_hidden FALSE)
-	(name "http://swrl.stanford.edu/ontologies/3.3/swrla.owl#hasRuleGroup")
-	(property_list [hotel_yen10_ProjectKB_Class27]))
-
-([hotel_yen10_ProjectKB_Class27] of  Property_List
-)
-
-([hotel_yen10_ProjectKB_Class31] of  Widget
-
-	(height 300)
-	(is_hidden FALSE)
-	(name "http://www.w3.org/2003/11/swrl#body")
-	(property_list [hotel_yen10_ProjectKB_Class32])
-	(widget_class_name "edu.stanford.smi.protegex.owl.swrl.ui.widget.SWRLRuleSlotWidget")
-	(width 200)
-	(x 0)
-	(y 120))
-
-([hotel_yen10_ProjectKB_Class32] of  Property_List
-)
-
-([hotel_yen10_ProjectKB_Class4] of  Property_List
-
-	(properties
-		[hotel_yen10_ProjectKB_Class5]
-		[hotel_yen10_ProjectKB_Class8]
-		[hotel_yen10_ProjectKB_Class11]
-		[hotel_yen10_ProjectKB_Class14]
-		[hotel_yen10_ProjectKB_Class16]
-		[hotel_yen10_ProjectKB_Class18]
-		[hotel_yen10_ProjectKB_Class20]
-		[hotel_yen10_ProjectKB_Class22]
-		[hotel_yen10_ProjectKB_Class24]
-		[hotel_yen10_ProjectKB_Class26]
-		[hotel_yen10_ProjectKB_Class31]))
-
-([hotel_yen10_ProjectKB_Class5] of  Widget
-
-	(height 120)
-	(is_hidden FALSE)
-	(label "Name")
-	(name ":NAME")
-	(property_list [hotel_yen10_ProjectKB_Class6])
-	(widget_class_name "edu.stanford.smi.protegex.owl.ui.metadata.NameDocumentationWidget")
-	(width 200)
-	(x 0)
-	(y 0))
-
-([hotel_yen10_ProjectKB_Class6] of  Property_List
-
-	(properties
-		[Tourism_ProjectKB_Class56]
-		[Tourism_ProjectKB_Class57]))
-
-([hotel_yen10_ProjectKB_Class8] of  Property_List
-
-	(name "layout properties")
-	(properties
-		[hotel_yen10_ProjectKB_Class9]
-		[hotel_yen10_ProjectKB_Class10]))
-
-([hotel_yen10_ProjectKB_Class9] of  String
-
-	(name "horizontal_stretcher")
-	(string_value "<<all>>"))
 
 ([Instance_1005] of  Widget
 
@@ -412,9 +265,6 @@
 	(y 0))
 
 ([KB_024013_Instance_5] of  Property_List
-)
-
-([KB_044771_Class0] of  Map
 )
 
 ([KB_100699_Instance_0] of  Widget
@@ -5500,8 +5350,8 @@
 		[STANDARD_CLASS_FORM_WIDGET]
 		[PAL_FORM_WIDGET]
 		[KB_691299_Instance_398]
-		[KB_938545_Instance_329]
 		[KB_313796_Instance_852]
+		[KB_938545_Instance_329]
 		[KB_713803_Instance_303]
 		[KB_764103_Instance_545]
 		[KB_303942_Instance_68]
@@ -5514,12 +5364,12 @@
 		[KB_313796_Instance_943]
 		[KB_301165_Instance_856]
 		[KB_713803_Instance_477]
-		[hotel_yen10_ProjectKB_Class1]
+		[Tourism_ProjectKB_Class1]
 		[INSTANCE_ANNOTATION_FORM_WIDGET]
 		[KB_713803_Instance_648]
 		[KB_938545_Instance_661]
-		[Instance_443]
 		[KB_713803_Instance_780]
+		[Instance_443]
 		[KB_938545_Instance_166])
 	(default_cls_metaclass "http://www.w3.org/2002/07/owl#Class")
 	(default_facet_metaclass ":STANDARD-FACET")
@@ -5535,17 +5385,17 @@
 		":FACET"
 		"http://www.w3.org/2001/XMLSchema#nonPositiveInteger"
 		"http://www.w3.org/2002/07/owl#AllValuesFromRestriction"
-		"http://www.w3.org/2000/01/rdf-schema#Container"
 		"http://www.w3.org/2000/01/rdf-schema#range"
+		"http://www.w3.org/2000/01/rdf-schema#Container"
 		":SLOT"
-		"http://www.w3.org/2002/07/owl#DatatypeProperty"
 		"http://www.w3.org/1999/02/22-rdf-syntax-ns#Seq"
+		"http://www.w3.org/2002/07/owl#DatatypeProperty"
 		":CREATION-TIMESTAMP"
-		"http://www.w3.org/2003/11/swrl#body"
-		"http://www.w3.org/2002/07/owl#FunctionalProperty"
-		"http://www.w3.org/2002/07/owl#AllDifferent"
-		":VALUES"
 		"http://www.w3.org/1999/02/22-rdf-syntax-ns#value"
+		":VALUES"
+		"http://www.w3.org/2002/07/owl#AllDifferent"
+		"http://www.w3.org/2002/07/owl#FunctionalProperty"
+		"http://www.w3.org/2003/11/swrl#body"
 		"http://www.w3.org/2002/07/owl#MaxCardinalityRestriction"
 		"http://www.w3.org/2001/XMLSchema#gYearMonth"
 		"http://protege.stanford.edu/plugins/owl/protege#ExternalResource"
@@ -5573,18 +5423,18 @@
 		"http://www.w3.org/2003/11/swrl#argument1"
 		"http://protege.stanford.edu/plugins/owl/protege#DIRECTED-BINARY-RELATION"
 		"http://www.w3.org/2000/01/rdf-schema#Datatype"
-		"http://www.w3.org/2003/11/swrlb#args"
 		"http://www.w3.org/2003/11/swrlb#minArgs"
+		"http://www.w3.org/2003/11/swrlb#args"
 		"http://protege.stanford.edu/plugins/owl/protege#PAL-DESCRIPTION"
-		":META-CLASS"
 		"http://www.w3.org/1999/02/22-rdf-syntax-ns#Bag"
+		":META-CLASS"
 		":PAL-DESCRIPTION"
-		":SLOT-DEFAULTS"
 		"http://www.w3.org/2001/XMLSchema#duration"
+		":SLOT-DEFAULTS"
 		":DIRECT-DOMAIN"
 		"http://www.w3.org/2002/07/owl#AnonymousClass"
-		"http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom"
 		"http://www.w3.org/2003/11/swrl#AtomList"
+		"http://www.w3.org/2003/11/swrl#DatavaluedPropertyAtom"
 		"http://www.w3.org/2003/11/swrl#DifferentIndividualsAtom"
 		"http://www.w3.org/2002/07/owl#SomeValuesFromRestriction"
 		"http://www.w3.org/2001/XMLSchema#normalizedString"
@@ -5592,25 +5442,25 @@
 		"http://www.w3.org/2003/11/swrl#Atom"
 		"http://www.w3.org/2002/07/owl#sameAs"
 		"http://www.w3.org/2001/XMLSchema#negativeInteger"
-		"http://www.w3.org/2002/07/owl#ObjectProperty"
 		":ASSOCIATED-FACET"
-		":OWL-ANONYMOUS-ROOT"
+		"http://www.w3.org/2002/07/owl#ObjectProperty"
 		":MINIMUM-CARDINALITY"
+		":OWL-ANONYMOUS-ROOT"
 		"http://www.w3.org/2001/XMLSchema#IDREF"
 		":INSTANCE-ANNOTATION"
-		"http://www.w3.org/2003/11/swrl#argument2"
 		"http://www.w3.org/2002/07/owl#cardinality"
-		":SLOT-VALUES"
+		"http://www.w3.org/2003/11/swrl#argument2"
 		"http://www.w3.org/1999/02/22-rdf-syntax-ns#subject"
+		":SLOT-VALUES"
 		":STANDARD-FACET"
 		"http://www.w3.org/2002/07/owl#onProperty"
 		"http://www.w3.org/2002/07/owl#complementOf"
 		"http://www.w3.org/2003/11/swrl#SameIndividualAtom"
 		"http://www.w3.org/2000/01/rdf-schema#subPropertyOf"
 		"http://www.w3.org/2001/XMLSchema#ENTITY"
-		"http://www.w3.org/2003/11/swrl#DataRangeAtom"
-		"http://www.w3.org/2003/11/swrl#Builtin"
 		"http://www.w3.org/2002/07/owl#distinctMembers"
+		"http://www.w3.org/2003/11/swrl#Builtin"
+		"http://www.w3.org/2003/11/swrl#DataRangeAtom"
 		"http://www.w3.org/2003/11/swrl#builtin"
 		"http://www.w3.org/1999/02/22-rdf-syntax-ns#XMLLiteral"
 		"http://www.w3.org/1999/02/22-rdf-syntax-ns#first"
@@ -5720,8 +5570,8 @@
 		":ANNOTATED-INSTANCE"
 		"http://www.w3.org/2000/01/rdf-schema#member"
 		":SLOT-VALUE-TYPE"
-		"http://www.w3.org/2001/XMLSchema#unsignedShort"
 		"http://www.w3.org/2001/XMLSchema#decimal"
+		"http://www.w3.org/2001/XMLSchema#unsignedShort"
 		"http://www.w3.org/2003/11/swrl#classPredicate")
 	(journaling_enabled FALSE)
 	(next_frame_number 0)
@@ -5765,9 +5615,7 @@
 		[KB_632156_Instance_0]
 		[KB_325529_Class4]
 		[empty.owl_ProjectKB_Class5]
-		[empty.owl_ProjectKB_Class6]
-		[Tourism_ProjectKB_Class176]
-		[Tourism_ProjectKB_Class177]))
+		[empty.owl_ProjectKB_Class6]))
 
 ([STANDARD_CLASS_FORM_WIDGET] of  Widget
 
@@ -5787,292 +5635,432 @@
 	(property_list [XY_Instance_725])
 	(widget_class_name "edu.stanford.smi.protege.widget.FormWidget"))
 
-([Tourism_ProjectKB_Class10] of  Widget
-
-	(is_hidden TRUE)
-	(property_list [Tourism_ProjectKB_Class11])
-	(widget_class_name "edu.stanford.smi.protegex.evaluation.MetaAnalysis"))
-
-([Tourism_ProjectKB_Class11] of  Property_List
+([Tourism_ProjectKB_Class0] of  Map
 )
 
-([Tourism_ProjectKB_Class12] of  Widget
+([Tourism_ProjectKB_Class1] of  Widget
 
-	(is_hidden TRUE)
-	(property_list [Tourism_ProjectKB_Class13])
-	(widget_class_name "edu.stanford.smi.protege.keywordsearch.StringSearch"))
+	(is_hidden FALSE)
+	(name "http://www.w3.org/2003/11/swrl#Imp")
+	(property_list [Tourism_ProjectKB_Class4])
+	(widget_class_name "edu.stanford.smi.protegex.owl.ui.widget.OWLFormWidget"))
 
-([Tourism_ProjectKB_Class126] of  String
+([Tourism_ProjectKB_Class10] of  String
 
-	(name "http://www.w3.org/2002/07/owl#Class")
-	(string_value "%3ANAME"))
+	(name "vertical_stretcher")
+	(string_value "http://www.w3.org/2003/11/swrl#body"))
 
-([Tourism_ProjectKB_Class127] of  String
+([Tourism_ProjectKB_Class11] of  Widget
 
-	(name ":INSTANCE-ANNOTATION")
-	(string_value "%3AANNOTATION-TEXT"))
+	(height 0)
+	(is_hidden FALSE)
+	(name "http://protege.stanford.edu/plugins/owl/protege#inferredType")
+	(property_list [Tourism_ProjectKB_Class12])
+	(width 0)
+	(x 0)
+	(y 0))
 
-([Tourism_ProjectKB_Class128] of  String
-
-	(name ":META-CLASS")
-	(string_value "%3ANAME"))
-
-([Tourism_ProjectKB_Class129] of  String
-
-	(name "http://www.w3.org/2002/07/owl#Thing")
-	(string_value "%3ANAME"))
-
-([Tourism_ProjectKB_Class13] of  Property_List
+([Tourism_ProjectKB_Class12] of  Property_List
 )
-
-([Tourism_ProjectKB_Class130] of  String
-
-	(name ":PAL-CONSTRAINT")
-	(string_value "%3APAL-NAME"))
 
 ([Tourism_ProjectKB_Class14] of  Widget
 
-	(is_hidden TRUE)
-	(property_list [Tourism_ProjectKB_Class15])
-	(widget_class_name "edu.stanford.smi.RemoteKBTab.WordNetTab"))
+	(is_hidden FALSE)
+	(name "http://www.w3.org/2002/07/owl#versionInfo")
+	(property_list [Tourism_ProjectKB_Class15]))
 
 ([Tourism_ProjectKB_Class15] of  Property_List
 )
 
 ([Tourism_ProjectKB_Class16] of  Widget
 
-	(is_hidden TRUE)
-	(property_list [Tourism_ProjectKB_Class17])
-	(widget_class_name "edu.stanford.smi.protegex.changes.ChangesTab"))
+	(is_hidden FALSE)
+	(name "http://www.w3.org/2000/01/rdf-schema#isDefinedBy")
+	(property_list [Tourism_ProjectKB_Class17]))
 
 ([Tourism_ProjectKB_Class17] of  Property_List
 )
 
-([Tourism_ProjectKB_Class176] of  String
-
-	(name "JENA-SCHEMAGEN-FILE")
-	(string_value "C:\\Documents and Settings\\Administrator\\Desktop\\Tourism.java"))
-
-([Tourism_ProjectKB_Class177] of  String
-
-	(name "JENA-SCHEMAGEN-PACKAGE")
-	(string_value "com.ptit.travel.jane.Tourism"))
-
 ([Tourism_ProjectKB_Class18] of  Widget
 
-	(is_hidden TRUE)
-	(property_list [Tourism_ProjectKB_Class19])
-	(widget_class_name "ezpal.EZPalTab"))
+	(is_hidden FALSE)
+	(name "http://www.w3.org/2000/01/rdf-schema#comment")
+	(property_list [Tourism_ProjectKB_Class19]))
 
 ([Tourism_ProjectKB_Class19] of  Property_List
 )
 
 ([Tourism_ProjectKB_Class20] of  Widget
 
-	(is_hidden TRUE)
-	(property_list [Tourism_ProjectKB_Class21])
-	(widget_class_name "edu.stanford.smi.protegex.fctab.FacetConstraintsTab"))
+	(is_hidden FALSE)
+	(name "http://www.w3.org/2000/01/rdf-schema#seeAlso")
+	(property_list [Tourism_ProjectKB_Class21]))
 
 ([Tourism_ProjectKB_Class21] of  Property_List
 )
 
 ([Tourism_ProjectKB_Class22] of  Widget
 
-	(is_hidden TRUE)
-	(property_list [Tourism_ProjectKB_Class23])
-	(widget_class_name "edu.stanford.smi.protegex.changes.changesKBViewTab.ChangesKBViewTab"))
+	(is_hidden FALSE)
+	(name "http://www.w3.org/2000/01/rdf-schema#label")
+	(property_list [Tourism_ProjectKB_Class23]))
 
 ([Tourism_ProjectKB_Class23] of  Property_List
 )
 
+([Tourism_ProjectKB_Class239] of  String
+
+	(name "http://www.w3.org/2002/07/owl#Class")
+	(string_value "%3ANAME"))
+
 ([Tourism_ProjectKB_Class24] of  Widget
 
-	(is_hidden TRUE)
-	(property_list [Tourism_ProjectKB_Class25])
-	(widget_class_name "edu.stanford.smi.protegex.xml.tab.XMLTab"))
+	(is_hidden FALSE)
+	(name "http://swrl.stanford.edu/ontologies/3.3/swrla.owl#isRuleEnabled")
+	(property_list [Tourism_ProjectKB_Class25]))
+
+([Tourism_ProjectKB_Class240] of  String
+
+	(name ":INSTANCE-ANNOTATION")
+	(string_value "%3AANNOTATION-TEXT"))
+
+([Tourism_ProjectKB_Class241] of  String
+
+	(name ":META-CLASS")
+	(string_value "%3ANAME"))
+
+([Tourism_ProjectKB_Class242] of  String
+
+	(name "http://www.w3.org/2002/07/owl#Thing")
+	(string_value "%3ANAME"))
+
+([Tourism_ProjectKB_Class243] of  String
+
+	(name ":PAL-CONSTRAINT")
+	(string_value "%3APAL-NAME"))
 
 ([Tourism_ProjectKB_Class25] of  Property_List
 )
 
 ([Tourism_ProjectKB_Class26] of  Widget
 
-	(is_hidden TRUE)
-	(property_list [Tourism_ProjectKB_Class27])
-	(widget_class_name "edu.stanford.smi.protegex.prompt.PromptTab"))
+	(is_hidden FALSE)
+	(name "http://swrl.stanford.edu/ontologies/3.3/swrla.owl#hasRuleGroup")
+	(property_list [Tourism_ProjectKB_Class27]))
 
 ([Tourism_ProjectKB_Class27] of  Property_List
 )
 
-([Tourism_ProjectKB_Class28] of  Widget
+([Tourism_ProjectKB_Class31] of  Widget
 
-	(is_hidden TRUE)
-	(property_list [Tourism_ProjectKB_Class29])
-	(widget_class_name "edu.stanford.smi.protege.widget.ProtegePropertiesTab"))
+	(height 300)
+	(is_hidden FALSE)
+	(name "http://www.w3.org/2003/11/swrl#body")
+	(property_list [Tourism_ProjectKB_Class32])
+	(widget_class_name "edu.stanford.smi.protegex.owl.swrl.ui.widget.SWRLRuleSlotWidget")
+	(width 200)
+	(x 0)
+	(y 120))
 
-([Tourism_ProjectKB_Class29] of  Property_List
+([Tourism_ProjectKB_Class32] of  Property_List
 )
 
-([Tourism_ProjectKB_Class30] of  Widget
+([Tourism_ProjectKB_Class33] of  Widget
 
 	(is_hidden TRUE)
-	(property_list [Tourism_ProjectKB_Class31])
-	(widget_class_name "edu.stanford.smi.protegex.widget.pal.PalConstraintsTab"))
-
-([Tourism_ProjectKB_Class31] of  Property_List
-)
-
-([Tourism_ProjectKB_Class32] of  Widget
-
-	(is_hidden TRUE)
-	(property_list [Tourism_ProjectKB_Class33])
-	(widget_class_name "edu.stanford.smi.protege.widget.instance_tree.KnowledgeTreeTab"))
-
-([Tourism_ProjectKB_Class33] of  Property_List
-)
-
-([Tourism_ProjectKB_Class34] of  Widget
-
-	(is_hidden TRUE)
-	(property_list [Tourism_ProjectKB_Class35])
-	(widget_class_name "edu.stanford.smi.protege.widget.instance_tree.InstanceTreeTab"))
-
-([Tourism_ProjectKB_Class35] of  Property_List
-)
-
-([Tourism_ProjectKB_Class36] of  Widget
-
-	(is_hidden TRUE)
-	(property_list [Tourism_ProjectKB_Class37])
-	(widget_class_name "edu.stanford.smi.protegex.changes.stats.ChangeStatisticsTab"))
-
-([Tourism_ProjectKB_Class37] of  Property_List
-)
-
-([Tourism_ProjectKB_Class38] of  Widget
-
-	(is_hidden TRUE)
-	(property_list [Tourism_ProjectKB_Class39])
-	(widget_class_name "se.liu.ida.JessTab.JessTab"))
-
-([Tourism_ProjectKB_Class39] of  Property_List
-)
-
-([Tourism_ProjectKB_Class4] of  Widget
-
-	(is_hidden TRUE)
-	(property_list [Tourism_ProjectKB_Class5])
+	(property_list [Tourism_ProjectKB_Class34])
 	(widget_class_name "TGViztab.TGVizTab"))
 
-([Tourism_ProjectKB_Class40] of  Widget
+([Tourism_ProjectKB_Class34] of  Property_List
+)
+
+([Tourism_ProjectKB_Class35] of  Widget
 
 	(is_hidden TRUE)
-	(property_list [Tourism_ProjectKB_Class41])
+	(property_list [Tourism_ProjectKB_Class36])
+	(widget_class_name "dfki.protege.ontoviz_tab.OntovizTab"))
+
+([Tourism_ProjectKB_Class36] of  Property_List
+)
+
+([Tourism_ProjectKB_Class37] of  Widget
+
+	(is_hidden TRUE)
+	(property_list [Tourism_ProjectKB_Class38])
+	(widget_class_name "script.ProtegeScriptTab"))
+
+([Tourism_ProjectKB_Class38] of  Property_List
+)
+
+([Tourism_ProjectKB_Class39] of  Widget
+
+	(is_hidden TRUE)
+	(property_list [Tourism_ProjectKB_Class40])
+	(widget_class_name "edu.stanford.smi.protege.keywordsearch.StringSearch"))
+
+([Tourism_ProjectKB_Class4] of  Property_List
+
+	(properties
+		[Tourism_ProjectKB_Class5]
+		[Tourism_ProjectKB_Class8]
+		[Tourism_ProjectKB_Class11]
+		[Tourism_ProjectKB_Class14]
+		[Tourism_ProjectKB_Class16]
+		[Tourism_ProjectKB_Class18]
+		[Tourism_ProjectKB_Class20]
+		[Tourism_ProjectKB_Class22]
+		[Tourism_ProjectKB_Class24]
+		[Tourism_ProjectKB_Class26]
+		[Tourism_ProjectKB_Class31]))
+
+([Tourism_ProjectKB_Class40] of  Property_List
+)
+
+([Tourism_ProjectKB_Class41] of  Widget
+
+	(is_hidden TRUE)
+	(property_list [Tourism_ProjectKB_Class42])
+	(widget_class_name "edu.stanford.smi.protegex.evaluation.MetaAnalysis"))
+
+([Tourism_ProjectKB_Class42] of  Property_List
+)
+
+([Tourism_ProjectKB_Class43] of  Widget
+
+	(is_hidden TRUE)
+	(property_list [Tourism_ProjectKB_Class44])
+	(widget_class_name "edu.stanford.smi.RemoteKBTab.WordNetTab"))
+
+([Tourism_ProjectKB_Class44] of  Property_List
+)
+
+([Tourism_ProjectKB_Class45] of  Widget
+
+	(is_hidden TRUE)
+	(property_list [Tourism_ProjectKB_Class46])
+	(widget_class_name "edu.stanford.smi.protegex.changes.ChangesTab"))
+
+([Tourism_ProjectKB_Class46] of  Property_List
+)
+
+([Tourism_ProjectKB_Class47] of  Widget
+
+	(is_hidden TRUE)
+	(property_list [Tourism_ProjectKB_Class48])
+	(widget_class_name "ezpal.EZPalTab"))
+
+([Tourism_ProjectKB_Class48] of  Property_List
+)
+
+([Tourism_ProjectKB_Class49] of  Widget
+
+	(is_hidden TRUE)
+	(property_list [Tourism_ProjectKB_Class50])
+	(widget_class_name "edu.stanford.smi.protegex.fctab.FacetConstraintsTab"))
+
+([Tourism_ProjectKB_Class5] of  Widget
+
+	(height 120)
+	(is_hidden FALSE)
+	(label "Name")
+	(name ":NAME")
+	(property_list [Tourism_ProjectKB_Class6])
+	(widget_class_name "edu.stanford.smi.protegex.owl.ui.metadata.NameDocumentationWidget")
+	(width 200)
+	(x 0)
+	(y 0))
+
+([Tourism_ProjectKB_Class50] of  Property_List
+)
+
+([Tourism_ProjectKB_Class51] of  Widget
+
+	(is_hidden TRUE)
+	(property_list [Tourism_ProjectKB_Class52])
+	(widget_class_name "edu.stanford.smi.protegex.changes.changesKBViewTab.ChangesKBViewTab"))
+
+([Tourism_ProjectKB_Class52] of  Property_List
+)
+
+([Tourism_ProjectKB_Class53] of  Widget
+
+	(is_hidden TRUE)
+	(property_list [Tourism_ProjectKB_Class54])
+	(widget_class_name "edu.stanford.smi.protegex.xml.tab.XMLTab"))
+
+([Tourism_ProjectKB_Class54] of  Property_List
+)
+
+([Tourism_ProjectKB_Class55] of  Widget
+
+	(is_hidden TRUE)
+	(property_list [Tourism_ProjectKB_Class56])
+	(widget_class_name "edu.stanford.smi.protegex.prompt.PromptTab"))
+
+([Tourism_ProjectKB_Class56] of  Property_List
+)
+
+([Tourism_ProjectKB_Class57] of  Widget
+
+	(is_hidden TRUE)
+	(property_list [Tourism_ProjectKB_Class58])
+	(widget_class_name "edu.stanford.smi.protege.widget.ProtegePropertiesTab"))
+
+([Tourism_ProjectKB_Class58] of  Property_List
+)
+
+([Tourism_ProjectKB_Class59] of  Widget
+
+	(is_hidden TRUE)
+	(property_list [Tourism_ProjectKB_Class60])
+	(widget_class_name "edu.stanford.smi.protegex.widget.pal.PalConstraintsTab"))
+
+([Tourism_ProjectKB_Class6] of  Property_List
+
+	(properties
+		[Tourism_ProjectKB_Class85]
+		[Tourism_ProjectKB_Class86]))
+
+([Tourism_ProjectKB_Class60] of  Property_List
+)
+
+([Tourism_ProjectKB_Class61] of  Widget
+
+	(is_hidden TRUE)
+	(property_list [Tourism_ProjectKB_Class62])
+	(widget_class_name "edu.stanford.smi.protege.widget.instance_tree.KnowledgeTreeTab"))
+
+([Tourism_ProjectKB_Class62] of  Property_List
+)
+
+([Tourism_ProjectKB_Class63] of  Widget
+
+	(is_hidden TRUE)
+	(property_list [Tourism_ProjectKB_Class64])
+	(widget_class_name "edu.stanford.smi.protege.widget.instance_tree.InstanceTreeTab"))
+
+([Tourism_ProjectKB_Class64] of  Property_List
+)
+
+([Tourism_ProjectKB_Class65] of  Widget
+
+	(is_hidden TRUE)
+	(property_list [Tourism_ProjectKB_Class66])
+	(widget_class_name "edu.stanford.smi.protegex.changes.stats.ChangeStatisticsTab"))
+
+([Tourism_ProjectKB_Class66] of  Property_List
+)
+
+([Tourism_ProjectKB_Class67] of  Widget
+
+	(is_hidden TRUE)
+	(property_list [Tourism_ProjectKB_Class68])
+	(widget_class_name "se.liu.ida.JessTab.JessTab"))
+
+([Tourism_ProjectKB_Class68] of  Property_List
+)
+
+([Tourism_ProjectKB_Class69] of  Widget
+
+	(is_hidden TRUE)
+	(property_list [Tourism_ProjectKB_Class70])
 	(widget_class_name "ca.uvic.csr.shrimp.jambalaya.JambalayaTab"))
 
-([Tourism_ProjectKB_Class41] of  Property_List
+([Tourism_ProjectKB_Class70] of  Property_List
 )
 
-([Tourism_ProjectKB_Class42] of  Widget
+([Tourism_ProjectKB_Class71] of  Widget
 
 	(is_hidden TRUE)
-	(property_list [Tourism_ProjectKB_Class43])
+	(property_list [Tourism_ProjectKB_Class72])
 	(widget_class_name "edu.stanford.smi.protegex.datamaster.DataMasterTab"))
 
-([Tourism_ProjectKB_Class43] of  Property_List
+([Tourism_ProjectKB_Class72] of  Property_List
 )
 
-([Tourism_ProjectKB_Class44] of  Widget
+([Tourism_ProjectKB_Class73] of  Widget
 
 	(is_hidden TRUE)
-	(property_list [Tourism_ProjectKB_Class45])
-	(widget_class_name "org.algernon.kb.okbc.protege.plugins.AlgernonTab"))
-
-([Tourism_ProjectKB_Class45] of  Property_List
-)
-
-([Tourism_ProjectKB_Class46] of  Widget
-
-	(is_hidden TRUE)
-	(property_list [Tourism_ProjectKB_Class47])
+	(property_list [Tourism_ProjectKB_Class74])
 	(widget_class_name "edu.stanford.smi.protegex.widget.pal.PalQueriesTab"))
 
-([Tourism_ProjectKB_Class47] of  Property_List
+([Tourism_ProjectKB_Class74] of  Property_List
 )
 
-([Tourism_ProjectKB_Class48] of  Widget
+([Tourism_ProjectKB_Class75] of  Widget
 
 	(is_hidden TRUE)
-	(property_list [Tourism_ProjectKB_Class49])
+	(property_list [Tourism_ProjectKB_Class76])
+	(widget_class_name "org.algernon.kb.okbc.protege.plugins.AlgernonTab"))
+
+([Tourism_ProjectKB_Class76] of  Property_List
+)
+
+([Tourism_ProjectKB_Class77] of  Widget
+
+	(is_hidden TRUE)
+	(property_list [Tourism_ProjectKB_Class78])
 	(widget_class_name "edu.stanford.smi.protegex.chatPlugin.ChatTab"))
 
-([Tourism_ProjectKB_Class49] of  Property_List
+([Tourism_ProjectKB_Class78] of  Property_List
 )
 
-([Tourism_ProjectKB_Class5] of  Property_List
-)
-
-([Tourism_ProjectKB_Class50] of  Widget
+([Tourism_ProjectKB_Class79] of  Widget
 
 	(is_hidden TRUE)
-	(property_list [Tourism_ProjectKB_Class51])
+	(property_list [Tourism_ProjectKB_Class80])
 	(widget_class_name "edu.stanford.smi.RemoteKBTab.UMLSTab"))
 
-([Tourism_ProjectKB_Class51] of  Property_List
+([Tourism_ProjectKB_Class8] of  Property_List
+
+	(name "layout properties")
+	(properties
+		[Tourism_ProjectKB_Class9]
+		[Tourism_ProjectKB_Class10]))
+
+([Tourism_ProjectKB_Class80] of  Property_List
 )
 
-([Tourism_ProjectKB_Class52] of  Widget
+([Tourism_ProjectKB_Class81] of  Widget
 
 	(is_hidden TRUE)
-	(property_list [Tourism_ProjectKB_Class53])
+	(property_list [Tourism_ProjectKB_Class82])
 	(widget_class_name "edu.stanford.smi.protegex.server_changes.prompt.UsersTab"))
 
-([Tourism_ProjectKB_Class53] of  Property_List
+([Tourism_ProjectKB_Class82] of  Property_List
 )
 
-([Tourism_ProjectKB_Class54] of  Widget
+([Tourism_ProjectKB_Class83] of  Widget
 
 	(is_hidden TRUE)
-	(property_list [Tourism_ProjectKB_Class55])
+	(property_list [Tourism_ProjectKB_Class84])
 	(widget_class_name "uk.ac.man.cs.mig.coode.owlviz.ui.OWLVizTab"))
 
-([Tourism_ProjectKB_Class55] of  Property_List
+([Tourism_ProjectKB_Class84] of  Property_List
 )
 
-([Tourism_ProjectKB_Class56] of  Widget
+([Tourism_ProjectKB_Class85] of  Widget
 
 	(is_hidden FALSE)
 	(label "Name")
 	(name ":NAME")
-	(property_list [Tourism_ProjectKB_Class58])
+	(property_list [Tourism_ProjectKB_Class87])
 	(widget_class_name "edu.stanford.smi.protege.widget.FormWidget"))
 
-([Tourism_ProjectKB_Class57] of  Widget
+([Tourism_ProjectKB_Class86] of  Widget
 
 	(is_hidden FALSE)
 	(label "Comment")
 	(name "http://www.w3.org/2000/01/rdf-schema#comment")
 	(widget_class_name "edu.stanford.smi.protege.widget.FormWidget"))
 
-([Tourism_ProjectKB_Class58] of  Property_List
+([Tourism_ProjectKB_Class87] of  Property_List
 )
 
-([Tourism_ProjectKB_Class6] of  Widget
+([Tourism_ProjectKB_Class9] of  String
 
-	(is_hidden TRUE)
-	(property_list [Tourism_ProjectKB_Class7])
-	(widget_class_name "dfki.protege.ontoviz_tab.OntovizTab"))
-
-([Tourism_ProjectKB_Class7] of  Property_List
-)
-
-([Tourism_ProjectKB_Class8] of  Widget
-
-	(is_hidden TRUE)
-	(property_list [Tourism_ProjectKB_Class9])
-	(widget_class_name "script.ProtegeScriptTab"))
-
-([Tourism_ProjectKB_Class9] of  Property_List
-)
+	(name "horizontal_stretcher")
+	(string_value "<<all>>"))
 
 ([XY_Instance_0] of  Property_List
 
@@ -6440,6 +6428,19 @@
 
 	(name "vertical_stretcher")
 	(string_value "http://www.w3.org/2002/07/owl#imports"))
+
+([XY_Instance_217] of  Widget
+
+	(height 0)
+	(is_hidden FALSE)
+	(name ":OWL-ONTOLOGY-PREFIXES")
+	(property_list [XY_Instance_218])
+	(width 0)
+	(x 0)
+	(y 0))
+
+([XY_Instance_218] of  Property_List
+)
 
 ([XY_Instance_235] of  Widget
 
