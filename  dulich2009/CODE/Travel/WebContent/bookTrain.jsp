@@ -47,8 +47,8 @@
         ArrayList<String> serviceList = Message.split(msg, Message.FIELD_SEPARATE);
 
         out.println("<input type=\"hidden\" name=\"agentName\" value=\"" + agentName + "\"/>");
-        out.println("<input type=\"hidden\" name=\"id\" value=\"" + serviceList.get(2) + "\"/>");
-        out.println("<input type=\"hidden\" name=\"agent\" value=\"" + serviceList.get(1) + "\"/>");
+        out.println("<input type=\"hidden\" name=\"id\" value=\"" + serviceList.get(1) + "\"/>");
+        out.println("<input type=\"hidden\" name=\"agent\" value=\"" + serviceList.get(0) + "\"/>");
         %>
                 <script>
 
@@ -196,16 +196,8 @@
                               <td align="left" valign="top"><input name="age" class="form" id="age" size="5" type="text" /></td>
                             </tr>
                             <tr>
-							<td align="left">Nghề nghiệp</td>
-							<td align="left"><select name="job" class="form" id="job" >
-                                                      
-                                                      <option selected="selected" value="teacher"> Giáo viên </option>
-                                                      <option selected="selected" value="student"> Sinh viên </option>
-                                                      <option selected="selected" value="doctor"> Bác sỹ </option>
-                                                      <option selected="selected" value="engineering"> Kỹ sư </option>
-                                                                                                        </select></td>
-                              
-                              
+                              <td align="left">Nghề nghiệp</td>
+                              <td align="left" valign="top"><input name="job" class="form" id="job" size="30" type="text" /></td>
                             </tr>
 							     <tr>
                               <td align="left">Email*</td>
