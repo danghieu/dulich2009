@@ -83,6 +83,7 @@
                                     <td width="70" align="center" valign="middle"><%=serviceList.get(8) %></td>
                                     <td width="68" align="center" valign="middle"><%=serviceList.get(9) %></td>
 									<td width="58" align="center" valign="middle"><%=serviceList.get(10)%></td>
+                                                                       
                                     <td width="93" align="center" valign="middle">
                                     <input type="submit" name="Submit" value="Đặt" /></td>                                    
                                     
