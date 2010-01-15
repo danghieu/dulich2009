@@ -38,7 +38,7 @@ public class Database {
 	private static boolean s_reload = false;
 
 	// duong dan den file dat owl.
-	private static String s_source = "C:/apache-tomcat-6.0.18/webapps/MyOntology/hotel_yen10.owl";
+	private static String s_source = "C:/apache-tomcat-6.0.18/webapps/MyOntology/hotel.owl";
 	private static ModelMaker maker;
 	private static Model base;
 
