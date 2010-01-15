@@ -1,9 +1,8 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package com.ptit.travel.moduleJDBC.Model;
+
+//lop anh xa csdl quan he va ontology
+
+
 import com.hp.hpl.jena.db.DBConnection;
 import com.hp.hpl.jena.db.IDBConnection;
 import com.hp.hpl.jena.db.ModelRDB;
@@ -15,13 +14,18 @@ import com.hp.hpl.jena.rdf.model.ModelMaker;// ModelMaker ????
 import com.hp.hpl.jena.util.FileManager;
 import java.sql.*;
 
+/**
+ * Ket noi Ontology voi MsSQL server 2005
+ * 
+ * @author TrungHieu
+ * 
+ */
+public class MemberDatabase {
 
-
-public class TrainDatabase {
-    
+ 
 	static String databaseName = "";
 			
-	public static final String DB_URL         = "jdbc:mysql://localhost/train" ;
+	public static final String DB_URL         = "jdbc:mysql://localhost/member" ;
 
 //User name
 
@@ -82,15 +86,12 @@ public class TrainDatabase {
 		
 		// duong dan den file owl
 		
-		FileManager.get().readModel(model,"C:/apache-tomcat-6.0.18/webapps/MyOntology/Train2.owl");
+		FileManager.get().readModel(model,"C:/apache-tomcat-6.0.16/webapps/MyOntology/Member.owl");
 		
 		// cap nhat vao csdl
-          
-                    model.commit();
-                    System.out.print("commit xong");
-
+		model.commit();
 		model.close();
-		
+		System.out.print("commit xong");
 		
 		return true;
 	}
@@ -255,15 +256,17 @@ public class TrainDatabase {
 		spec.setImportModelMaker(maker);
 		return spec;
 	}
-    public static void main(String args[]){
-                    System.out.print("Bat dau anh xa:");
-		TrainDatabase db=new TrainDatabase(); 
+	
+	/**
+	 * Tao mot csdl theo owl
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		MemberDatabase db=new MemberDatabase(); 
                 
 		//IDBConnection db1 = db.getConnection(true);
-                 boolean result = db.loadData(true);
-//                 FlightDatabase.LoadOnt2Database();
-//                 OntModel ont = FlightDatabase.getsOntologyModel();
-//                 ont.write(System.out);
-                 System.out.println("KET QUA:"+result);
-    }
+		boolean result = db.loadData(true);
+		System.out.println("KET QUA:"+result);
+	}
 }
+

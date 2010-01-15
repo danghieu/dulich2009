@@ -303,7 +303,7 @@ public class FlightProcess{
                 result=result+ id + Message.FIELD_SEPARATE+ flightAgent + Message.FIELD_SEPARATE+airline + Message.FIELD_SEPARATE + flightnumber + Message.FIELD_SEPARATE
                         + departure + Message.FIELD_SEPARATE + departuredatetime + Message.FIELD_SEPARATE
                         + arrival + Message.FIELD_SEPARATE + arrivaldatetime + Message.FIELD_SEPARATE
-                        + flightnumber + Message.FIELD_SEPARATE 
+                        //+ flightnumber + Message.FIELD_SEPARATE 
                         + airplanetype + Message.FIELD_SEPARATE + flightclass + Message.FIELD_SEPARATE
                         + price + Message.FIELD_SEPARATE;
                 

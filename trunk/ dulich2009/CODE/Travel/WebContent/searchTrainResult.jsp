@@ -53,7 +53,7 @@
             }
             //result = "FlightAgent  VN213_20100201_E  Information  Vietnam Airlines  VN213  Noi Bai-Ha Noi  8:00,2010-02-01  Tan Son Nhat-Ho Chi Minh  10:00,Cung ngay  Boeing777  economy  1500000.0VND  #_&#_&VN217_20100201_E  Vietnam Airlines  VN217  Noi Bai-Ha Noi  11:00,2010-02-01  Tan Son Nhat-Ho Chi Minh  13:00,Cung ngay  Boeing777  economy  1500000.0VND  #_&#_&VN219_20100201_E  Vietnam Airlines  VN219  Noi Bai-Ha Noi  13:00,2010-02-01  Tan Son Nhat-Ho Chi Minh  15:00,Cung ngay  Boeing777  economy  1500000.0VND  #_&#_&";
             String agentName = result.substring(0, result.indexOf(Message.FIELD_SEPARATE));
-            //result = result.replace(agentName, "");
+            result = result.replace(agentName, "");
       //      log.info(result);
             String services;
             ArrayList<String> supplierList = Message.split(result, Message.OBJECT_SEPARATE);
@@ -61,11 +61,12 @@
             int i, j;
             if (supplierList != null) {
 
+                log.info("SIZE: " + result);
                 for (i = 0; i < supplierList.size(); i++) {
                     try {
                         services = supplierList.get(i);
                         serviceList = Message.split(services, Message.FIELD_SEPARATE);
-                        if (serviceList != null && serviceList.size() > 9) {
+                        if (serviceList != null && serviceList.size() > 5) {
                             log.info(services);
                              out.println("<form action=\"bookTrain.jsp\" method=\"get\" id=\"form" + i + "\"> ");
                              out.println("<input type=\"hidden\" name=\"agentName\" value=\"" + agentName + "\"/>");
@@ -73,7 +74,7 @@
                                 %>
                                 <tr bgcolor="#FFFFFF">
                                     
-                                                                        
+                                    <td width="71" align="center" valign="middle"><%=serviceList.get(0) %></td>                                    
                                     <td width="52" align="center" valign="middle"><%=serviceList.get(1) %></td>
                                     <td width="71" align="center" valign="middle"><%=serviceList.get(2) %></td>
                                     <td width="60" align="center" valign="middle"><%=serviceList.get(3) %></td>
@@ -81,7 +82,7 @@
                                     <td width="69" align="center" valign="middle"><%=serviceList.get(5) %></td>
                                     <td width="69" align="center" valign="middle"><%=serviceList.get(6) %></td>
                                     <td width="69" align="center" valign="middle"><%=serviceList.get(7) %></td>
-                                    <td width="71" align="center" valign="middle"><%=serviceList.get(8) %></td>
+                                    
 									
                                     <td width="52" align="center" valign="middle">
                                   <input type="submit" name="Submit" value="Đặt" /></td>                                    
@@ -94,8 +95,6 @@
 
                     } catch (Exception e) {
                         log.error(e);
-                        System.out.println("BREAK: " + i);
-                        e.printStackTrace();
                         return;
                     }
                 }

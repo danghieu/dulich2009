@@ -58,7 +58,7 @@ public class FlightDatabase {
 	private static boolean s_reload = false;
 
 	// duong dan den file dat owl.
-	private static String s_source = "http://localhost:8080/MyOntology ";
+	private static String s_source = "C://apache-tomcat-6.0.18/webapps/MyOntology/Flight.owl";
 
 	private static ModelMaker maker;
 
@@ -84,7 +84,7 @@ public class FlightDatabase {
 		
 		// duong dan den file owl
 		
-		FileManager.get().readModel(model,"http://localhost:8080/MyOntology/Flight.owl");
+		FileManager.get().readModel(model,s_source);
 		
 		// cap nhat vao csdl
           

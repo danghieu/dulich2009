@@ -82,27 +82,8 @@
                         <td align="left" background="vembay.php_files/bg_dot_06.htm" height="3" valign="top"><hr /></td>
                       </tr>
                       <tr>
-                        <td class="normal" align="left" valign="top"><table class="normal" width="300" align="right" border="0" cellpadding="5" cellspacing="5">
-                            <tbody>
-                              <tr>
-                                <td align="left" valign="top"><p class="style2" style="margin-top: 0px; font-weight: normal; margin-bottom: 0px; color: black; text-align: justify;"><span class="style18"><strong>L&#7883;ch bay &amp; b&#7843;ng gi&aacute; tuy&#7871;n n&#7897;i &#273;&#7883;a</strong></span><span class="style18"><img src="images/timetable.gif" style="margin-right: 3px;" width="100" align="left" height="86" /></span></p>
-                                    <p class="style18"> Tham kh&#7843;o l&#7883;ch bay v&agrave; gi&aacute; v&eacute; tham kh&#7843;o cho c&aacute;c tuy&#7871;n bay n&#7897;i &#273;&#7883;a c&#7911;a Vietnam Airlines v&agrave; Pacific Airlines </p></td>
-                              </tr>
-                            </tbody>
-                          </table>
-                            <p class="style2" style="margin-top: 0px; font-weight: normal; margin-bottom: 0px; color: black; text-align: justify;"><span class="style12"><span class="style14"><span class="style17"><strong>T</strong>&#7841;i 
-                              E-Tourism, b&#7841;n c&oacute; th&#7875; d&#7877; d&agrave;ng &#273;&#7863;t v&eacute; m&aacute;y bay theo h&agrave;nh tr&igrave;nh 
-                              mong mu&#7889;n. E-Tourism
-                              lu&ocirc;n s&#7861;n s&agrave;ng t&#432; v&#7845;n cho b&#7841;n v&#7873; c&aacute;c &#273;&#432;&#7901;ng bay ph&ugrave; h&#7907;p nh&#7845;t v&#7899;i h&agrave;nh
-                              tr&igrave;nh v&agrave; c&oacute; chi ph&iacute; h&#7907;p l&yacute; nh&#7845;t. Trong tr&#432;&#7901;ng h&#7907;p c&oacute; y&ecirc;u c&#7847;u, b&#7841;n c&oacute;
-                              th&#7875; nh&#7853;n v&eacute; t&#7841;i v&#259;n ph&ograve;ng l&agrave;m vi&#7879;c ho&#7863;c t&#7841;i nh&agrave; ri&ecirc;ng trong n&#7897;i th&agrave;nh.
-                              Ph&#432;&#417;ng th&#7913;c thanh to&aacute;n r&#7845;t linh ho&#7841;t, thu&#7853;n ti&#7879;n b&#7857;ng ti&#7873;n m&#7863;t, chuy&#7875;n
-                              kho&#7843;n, ho&#7863;c b&#7857;ng th&#7867; t&iacute;n d&#7909;ng. V&#7899;i kh&aacute;ch &#273;i du l&#7883;ch theo t&#7915;ng &#273;o&agrave;n, &#273;i
-                              du h&#7885;c ho&#7863;c &#273;&#7883;nh c&#432;, ch&uacute;ng t&ocirc;i &#273;&#7873;u &aacute;p d&#7909;ng nh&#7919;ng m&#7913;c gi&aacute; &#432;u &#273;&atilde;i. </span></span></span></p>
-                          <p class="style13" style="margin-top: 0px; font-weight: normal; margin-bottom: 0px; color: black; text-align: justify;">M&#7901;i
-                            b&#7841;n &#273;i&#7873;n th&ocirc;ng tin &#273;&#7863;t v&eacute; theo y&ecirc;u c&#7847;u, E-Tourism s&#7869; cung c&#7845;p
-                            &#273;&#7847;y &#273;&#7911; th&ocirc;ng tin cho b&#7841;n trong kho&#7843;ng th&#7901;i gian ng&#7855;n nh&#7845;t. </p>
-                          <p align="justify">&nbsp;</p></td>
+                        <td class="normal" align="left" valign="top"><p class="style2" style="margin-top: 0px; font-weight: normal; margin-bottom: 0px; color: black; text-align: justify;">&nbsp;</p>
+                        </td>
                       </tr>
                       <tr>
                         <td align="left" valign="top"><table class="normal10" width="100%" border="0" cellpadding="2" cellspacing="0">
@@ -446,8 +427,8 @@ s.prop5 = "144555";
                                                   </select></td>
                                                 </tr>
                                                 <tr align="left" valign="top">
-                                                  <td align="right" height="34" valign="middle"><span class="style18">S&#7889; l&#432;&#7907;ng </span></td>
-                                                  <td align="left" valign="top"><input name="returnDate" class="style18" id="soluong" size="10" type="text" />
+                                                  <td align="right" height="34" valign="middle">&nbsp;</td>
+                                                  <td align="left" valign="top"><input name="returnDate" class="style18" id="soluong" size="10" type="hidden" value="1" />
                                                   </td>
                                                 </tr>
                                               </tbody>

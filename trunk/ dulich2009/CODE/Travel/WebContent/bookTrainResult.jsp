@@ -39,12 +39,13 @@
         if(msg == null){
             log.error("No train selected yet!");
             // FOR TEST
-          msg= " HN_PL_SE1_138546204@_&Hanh38546204@_&Hanh@_&HN_PL_SE1_1@_&5.0@_&120000.0";
+          //msg= " HN_PL_SE1_138546204@_&Hanh38546204@_&Hanh@_&HN_PL_SE1_1@_&5.0@_&120000.0";
 
       //      msg="TrainAgent@_&SE1@_&HN_PL_SE1_1@_&Ha Noi@_&Phu Ly@_&2009-12-29,19:00:00@_&2009-12-29,20:02:00@_&Ghe mem@_&24000.0 VND@_&@_&";
       //      msg = "VN213_20100201_E  Infomation  Vietnam Airlines  VN213  Noi Bai-Ha Noi  8:00,2010-02-01  Tan Son Nhat-Ho Chi Minh  10:00,Cung ngay  Boeing777  economy  1500000.0VND ";
             //return;
         }
+        //String agentName = msg.substring(0, msg.indexOf(Message.FIELD_SEPARATE));
         ArrayList<String> serviceList = Message.split(msg, Message.FIELD_SEPARATE);
 
    //     out.println("<input type=\"hidden\" name=\"agentName\" value=\"" + agentName + "\"/>");
