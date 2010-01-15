@@ -13,7 +13,7 @@
             <li><a href="hotel.jsp" style="color: #fff;	text-decoration: none">Khách s&#7841;n </a></li>
             <li><a href="searchFlight.jsp" style="color: #fff;	text-decoration: none">Máy bay </a></li>
             
-            <li><a href="searchTrain.jsp" style="color: #fff;	text-decoration: none">Tàu h&#7887;a</a></li>
+            <li><a href="SearchTrain.jsp" style="color: #fff;	text-decoration: none">Tàu h&#7887;a</a></li>
             <li><a href="#"style="color: #fff;	text-decoration: none">Thuê xe</a></li>
             <li><a href="#"style="color: #fff;	text-decoration: none"> S&#7921; ki&#7879;n </a></li>
             <li><a href="#"style="color: #fff;	text-decoration: none">Tin t&#7913;c </a></li>
