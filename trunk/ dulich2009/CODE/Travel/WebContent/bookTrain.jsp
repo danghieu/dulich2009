@@ -196,8 +196,16 @@
                               <td align="left" valign="top"><input name="age" class="form" id="age" size="5" type="text" /></td>
                             </tr>
                             <tr>
-                              <td align="left">Nghề nghiệp</td>
-                              <td align="left" valign="top"><input name="job" class="form" id="job" size="30" type="text" /></td>
+							<td align="left">Nghề nghiệp</td>
+							<td align="left"><select name="job" class="form" id="job" >
+                                                      
+                                                      <option selected="selected" value="teacher"> Giáo viên </option>
+                                                      <option selected="selected" value="student"> Sinh viên </option>
+                                                      <option selected="selected" value="doctor"> Bác sỹ </option>
+                                                      <option selected="selected" value="engineering"> Kỹ sư </option>
+                                                                                                        </select></td>
+                              
+                              
                             </tr>
 							     <tr>
                               <td align="left">Email*</td>
