@@ -33,7 +33,7 @@ public class MemberDatabase {
 
 //Password
 
-	public static final String DB_PASSWD      = "1234";
+	public static final String DB_PASSWD      = "root";
 
 //Database engine name
 
