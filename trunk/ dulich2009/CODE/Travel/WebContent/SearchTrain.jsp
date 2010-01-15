@@ -1,3 +1,6 @@
+<%@ page language="java" import="org.apache.log4j.Logger"%>
+<%@ page language="java" import="com.ptit.travel.agent.communication.Protocol" %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
@@ -22,6 +25,8 @@
                 </div>
             </div>
             <div id="templatemo_right_column">
+                <form action="UserServlet" method="get">
+                    <input type="hidden" name="protocol" value="<%=Protocol.TRAIN_AVAIL%>" />
                 <table border="0" cellpadding="0" cellspacing="0" width="59%">
                     <tbody><tr>
                             <td><img src="hotel_files/vietnam_train.jpg" width="640" height="120"/></td>
@@ -34,17 +39,17 @@
                         </tr>
                         <tr>
                             <td align="right"><strong> Ng&agrave;y kh&#7903;i h&agrave;nh : </strong></td>
-                            <td><input size="11" maxlength="10" name="checkin" value="" type="text" />
+                            <td><input size="11" maxlength="10" name="startDate" value="" type="text" />
                             &nbsp;<a href="#" onclick="fPopCalendar(checkin,checkin); return false"></a>&nbsp;&nbsp;(n&#259;m-th&aacute;ng-ng&agrave;y)</td>
                         </tr>
                         <tr>
                             <td align="right"><strong>Ga xu&#7845;t ph&aacute;t : </strong></td>
-                            <td><input size="36" maxlength="50" name="departure_station" value="" type="text" />
+                            <td><input size="36" maxlength="50" name="city" value="" type="text" />
                             &nbsp;(<font color="#ff0000">*</font>)</td>
                         </tr>
                         <tr>
                             <td align="right"><strong>Ga &#273;&#7871;n : </strong></td>
-                            <td><input size="36" maxlength="50" name="arrival_station" value="" type="text" />
+                            <td><input size="36" maxlength="50" name="climate" value="" type="text" />
                             &nbsp;(<font color="#ff0000">*</font>)</td>
                         </tr>
                         <tr> </tr>
@@ -55,6 +60,7 @@
                         </tr>
                     </tbody>
                 </table>
+				</form>
             </div>
             <div id="templatemo_bot"></div>
         </div>
